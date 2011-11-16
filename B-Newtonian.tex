@@ -1,0 +1,187 @@
+% \chapter{Derivation of Newtonian equations of motion}
+%\label{cha:Derivation-of-Newtonian}
+
+%Classical Newtonian mechanics tells us that the gravitational force a body experiences towards another is 
+%\begin{equation}
+%\mathbf{F}=-m\frac{GM_{\oplus}}{r^{2}}\mathbf{\hat{r}}\label{eq:F}
+%\end{equation}
+%
+%where \(\mathbf{r}\) is the distance and direction of the second body. Motion of spacecraft is
+%
+%\begin{eqnarray}
+%\mathbf{a} & = & \frac{\sum\mathbf{F}}{m}=\sum_{bodies}\frac{GM}{r^{2}}\mathbf{\hat{r}}+\delta\mathbf{g}+\delta\mathbf{q}+\delta\mathbf{T}
+%\label{eq:grav_acceleration}
+%\end{eqnarray}
+%
+%Mass is monotonously decreasing
+%
+%\begin{equation}
+%\dot{m}=-\frac{T}{v_{ex}}\label{eq:m_dot}
+%\end{equation}
+%
+%\citet{Kaplan1976} provides a thorough derivation of orbital dynamics. From Newtonian mechanics,\begin{equation}
+%\frac{d^{2}\mathbf{r}}{dt^{2}}+\frac{\mu}{r^{3}}\mathbf{r}=0\label{eq:Newton}
+%\end{equation}
+%
+%Now, cross-multiplying both sides by \(\mathbf{r}\) gives
+%
+%\begin{equation}
+%\mathbf{r}\times\frac{d^{2}\mathbf{r}}{dt^{2}}+\frac{\mu}{r^{3}}\mathbf{r}\times\mathbf{r}=0\label{eq:temp}
+%\end{equation}
+%
+%and since \begin{equation}
+%\mathbf{r}\times\mathbf{r}\equiv0\label{eq:r_x_r}
+%\end{equation}
+%
+%we arrive at the result \begin{equation}
+%\mathbf{r}\times\frac{d^{2}\mathbf{r}}{dt^{2}}=0\label{eq:r_x_d2rdt2}
+%\end{equation}
+%
+%Differentiating \(\mathbf{r}\times\frac{d\mathbf{r}}{dt}\) gives
+%
+%\begin{equation}
+%\frac{d}{dt}\left(\mathbf{r}\times\frac{d\mathbf{r}}{dt}\right)=\frac{d\mathbf{r}}{dt}\times\frac{d\mathbf{r}}{dt}+\mathbf{r}\times\frac{d^{2}\mathbf{r}}{dt^{2}}\label{eq:temp2}
+%\end{equation}
+%
+%which, using \eqref{eq:r_x_r} and \eqref{eq:r_x_d2rdt2} reduces to 
+%
+%\begin{equation}
+%\frac{d}{dt}\left(\mathbf{r}\times\frac{d\mathbf{r}}{dt}\right)=0\label{eq:ddt_r_x_drdt}
+%\end{equation}
+%
+%Defining angular momentum per unit mass as 
+%
+%\begin{equation}
+%\mathbf{h}=\mathbf{r}\times\frac{d\mathbf{r}}{dt}\label{eq:angular_momentum}
+%\end{equation}
+%
+%observe that its direction, orthogonal to both \(\mathbf{r}\) (radial to the orbit) and \(\frac{d\mathbf{r}}{dt}\) (tangential to the orbit), must be normal to the plane of motion.
+%
+%Multiplying this through both sides of \eqref{eq:Newton} gives
+%\begin{eqnarray}
+%\frac{d^{2}\mathbf{r}}{dt^{2}}\times\mathbf{h} & = & -\frac{\mu}{r^{3}}\mathbf{r}\times\mathbf{h}\\
+% & = & -\frac{\mu}{r^{3}}\mathbf{r}\times\left(\mathbf{r}\times\frac{d\mathbf{r}}{dt}\right)
+% \end{eqnarray}
+%
+%using a vector triple product expands to
+%\begin{equation}
+%\frac{d^{2}\mathbf{r}}{dt^{2}}\times\mathbf{h}=-\frac{\mu}{r^{3}}\left(\mathbf{r}\left(\mathbf{r}\cdot\frac{d\mathbf{r}}{dt}\right)-\frac{d\mathbf{r}}{dt}\left(\mathbf{r}\cdot\mathbf{r}\right)\right)
+%
+%which, using the scalar products \(\mathbf{r}\cdot\frac{d\mathbf{r}}{dt}=r\frac{dr}{dt}\) and 
+%\(\mathbf{r}\cdot\mathbf{r}=r^{2}\) gives
+%
+%\begin{eqnarray}
+%\frac{d^{2}\mathbf{r}}{dt^{2}}\times\mathbf{h} & = & -\frac{\mu}{r^{3}}\left(\mathbf{r}r\frac{dr}{dt}-\frac{d\mathbf{r}}{dt}r^{2}\right)\\
+% & = & \mu\left(\frac{\frac{d\mathbf{r}}{dt}r-\mathbf{r}\frac{dr}{dt}}{r^{2}}\right)
+% \end{eqnarray}
+%
+%and observing that the bracketed term is \(\frac{\mathbf{r}}{r}\) differentiated using the quotient rule, the final result is derived 
+%
+%\begin{equation}
+%\frac{d^{2}\mathbf{r}}{dt^{2}}\times\mathbf{h}=\mu\frac{d}{dt}\left(\frac{\mathbf{r}}{r}\right)\label{eq:d2rdt2_x_h}
+%\end{equation}
+%
+%Since \(\mathbf{h}\) is constant, \eqref{eq:d2rdt2_x_h} may be integrated to
+%\begin{equation}
+%\frac{d\mathbf{r}}{dt}\times\mathbf{h}=\mu\left(\frac{\mathbf{r}}{r}+\mathbf{e}\right)
+%\end{equation}
+%
+%where \(\mathbf{e}\) represents the constant of integration, called the \emph{eccentricity vector}.
+%
+%\begin{equation} 
+%\left(\frac{d\mathbf{r}}{dt}\times\mathbf{h}\right)\cdot\mathbf{h}=\frac{\mu}{r}\left(\mathbf{r}+r\mathbf{e}\right)\cdot\mathbf{h}
+%\end{equation}
+%
+%rearranging the scalar triple product allows
+%
+%\begin{equation}
+%\left(\mathbf{h}\times\mathbf{h}\right)\cdot\frac{d\mathbf{r}}{dt}=\frac{\mu}{r}\left(\mathbf{r}\cdot\mathbf{h}+r\mathbf{e}\cdot\mathbf{h}\right)
+%\end{equation}
+%
+%where \eqref{eq:r_x_r} and \eqref{eq:angular_momentum} give
+%
+%\begin{equation}
+%0=\frac{\mu}{r}\left(\mathbf{r}\cdot\left(\mathbf{r}\times\frac{d\mathbf{r}}{dt}\right)+r\mathbf{e}\cdot\mathbf{h}\right)
+%\end{equation}
+%
+%once again rearranging the scalar triple product
+%
+%\begin{eqnarray}
+%0 & = & \frac{\mu}{r}\left(\frac{d\mathbf{r}}{dt}\cdot\left(\mathbf{r}\times\mathbf{r}\right)+r\mathbf{e}\cdot\mathbf{h}\right)\\
+% & = & \frac{\mu}{r}\left(r\mathbf{e}\cdot\mathbf{h}\right)
+% \end{eqnarray}
+%
+%Multiplying the scalars over to the left hand side this equation gives some meaning.
+%
+%\begin{equation}
+%0=\mathbf{e}\cdot\mathbf{h}
+%\end{equation}
+%
+%or, in words, \(\mathbf{e}\) must be within the plane of motion.
+%
+%\begin{equation}
+%\left(\frac{d\mathbf{r}}{dt}\times\mathbf{h}\right)\cdot\mathbf{r}=\frac{\mu}{r}\left(\mathbf{r}+r\mathbf{e}\right)\cdot\mathbf{r}
+%\end{equation}
+%
+%rearranging the scalar triple product allows
+%
+%\begin{equation}
+%\left(\frac{d\mathbf{r}}{dt}\times\mathbf{r}\right)\cdot\mathbf{h}=\frac{\mu}{r}\left(\mathbf{r}\cdot\mathbf{r}+r\mathbf{e}\cdot\mathbf{r}\right)
+%\end{equation}
+%
+%where \eqref{eq:angular_momentum} gives 
+%
+%\begin{eqnarray}
+%\mathbf{h}\cdot\mathbf{h} & = & \frac{\mu}{r}\left(r^{2}+r\mathbf{e}\cdot\mathbf{r}\right)\\
+%\frac{h^{2}}{\mu} & = & r+er\cos\theta\\
+%r & = & \frac{h^{2}}{\mu(1+e\cos\theta)}
+%\end{eqnarray}
+%
+%where \(\theta\) represents the angle between \(\mathbf{r}\) and \(\mathbf{e}\).
+%
+%\chapter{N-body problem} \label{cha:N-body-problem}
+%
+%Defining \(\mathbf{p}_{k}\) as the position of body \(k\) relative to some absolute inertial reference (\(k=0\) for primary body, \(k>0\) for secondary bodies) the acceleration of a given body in an N-body field is described by 
+%
+%\begin{equation}
+%\frac{d^{2}\mathbf{p}_{k}}{dt^{2}}=G\sum_{j\neq k}^{N}\frac{m_{j}}{\left|p_{j}-p_{k}\right|^{3}}(\mathbf{p}_{j}-\mathbf{p}_{k})\label{eq:d2pkdt2}
+%\end{equation}
+%
+%Defining \(\mathbf{r}\) as the position of the spacecraft relative to the primary body (\(\mathbf{s}_{craft}\))
+%
+%\begin{equation}
+%\mathbf{r=p}_{craft}-\mathbf{p}_{0}
+%\end{equation}
+%
+%so
+%\begin{eqnarray}
+%\mathbf{\ddot{r}} & = & \frac{d^{2}}{dt^{2}}(\mathbf{p}_{craft}-\mathbf{p}_{0})
+%\end{eqnarray}
+%
+%using Equation \eqref{eq:d2pkdt2}
+%
+%\begin{eqnarray}
+%\mathbf{\ddot{r}} & = & G\sum_{j\neq craft}^{N}\frac{m_{j}}{\left|p_{j}-p_{craft}\right|^{3}}(\mathbf{p}_{j}-\mathbf{p}_{craft})-G\sum_{j\neq0}^{N}\frac{m_{j}}{\left|p_{j}-p_{0}\right|^{3}}(\mathbf{p}_{j}-\mathbf{p}_{0})
+%\end{eqnarray}
+%
+%Now defining \(\mathbf{s}_{k}\) as the position of secondary body \(k\) relative to the primary body (\(\mathbf{s}_{0}=0\), \(\mathbf{s}_{craft}=\mathbf{r}\))
+%
+%\begin{equation}
+%\mathbf{s}_{k}=\mathbf{p}_{k}-\mathbf{p}_{0}
+%\end{equation}
+%
+%and defining \(\mathbf{d}_{k}\) as the position of the spacecraft relative to secondary body \(k\)
+%(\(\mathbf{d}_{0}=\mathbf{r}\), \(\mathbf{d}_{craft}=0\))
+%
+%\begin{equation}
+%\mathbf{d}_{k}=\mathbf{p}_{craft}-\mathbf{p}_{k}=-\left(\mathbf{p}_{k}-\mathbf{p}_{craft}\right)
+%\end{equation}
+%
+%gives
+%
+%\begin{eqnarray}
+%\mathbf{\ddot{r}} & =Gm_{0}\frac{\mathbf{-r}}{r^{3}}+ & G\sum_{j=1}^{N}m_{j}\frac{\mathbf{-d}_{j}}{d_{j}^{3}}+G\sum_{j=1}^{N}m_{j}\frac{\mathbf{-s}_{j}}{\mbox{}s_{j}^{3}}\\
+% & = & -Gm_{0}\frac{\mathbf{r}}{r^{3}}-\sum_{j=1}^{N}Gm_{j}\left[\frac{\mathbf{d}_{j}}{d_{j}}+\frac{\mathbf{s}_{j}}{s_{j}}\right]
+% \end{eqnarray}
+%
+%The first term here represents the acceleration of the spacecraft due to the primary body. The first term with the summation represents the acceleration of the spacecraft due to secondary bodies. Surprisingly at first, the second term in the summation represents the acceleration of the primary body due to the secondary bodies. This must be taken into account because it represents the reference frame (the Earth) accelerating. Consequently the reference frame is \emph{not} inertial, and this term corrects for the accelerating frame.

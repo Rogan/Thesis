@@ -1,0 +1,539 @@
+% \chapter{Derivation of Newtonian equations of motion}
+%\label{cha:Derivation-of-Newtonian}
+
+%Classical Newtonian mechanics tells us that the gravitational force a body experiences towards another is 
+%\begin{equation}
+%\mathbf{F}=-m\frac{GM_{\oplus}}{r^{2}}\mathbf{\hat{r}}\label{eq:F}
+%\end{equation}
+%
+%where \(\mathbf{r}\) is the distance and direction of the second body. Motion of spacecraft is
+%
+%\begin{eqnarray}
+%\mathbf{a} & = & \frac{\sum\mathbf{F}}{m}=\sum_{bodies}\frac{GM}{r^{2}}\mathbf{\hat{r}}+\delta\mathbf{g}+\delta\mathbf{q}+\delta\mathbf{T}
+%\label{eq:grav_acceleration}
+%\end{eqnarray}
+%
+%Mass is monotonously decreasing
+%
+%\begin{equation}
+%\dot{m}=-\frac{T}{v_{ex}}\label{eq:m_dot}
+%\end{equation}
+%
+%\citet{Kaplan1976} provides a thorough derivation of orbital dynamics. From Newtonian mechanics,\begin{equation}
+%\frac{d^{2}\mathbf{r}}{dt^{2}}+\frac{\mu}{r^{3}}\mathbf{r}=0\label{eq:Newton}
+%\end{equation}
+%
+%Now, cross-multiplying both sides by \(\mathbf{r}\) gives
+%
+%\begin{equation}
+%\mathbf{r}\times\frac{d^{2}\mathbf{r}}{dt^{2}}+\frac{\mu}{r^{3}}\mathbf{r}\times\mathbf{r}=0\label{eq:temp}
+%\end{equation}
+%
+%and since \begin{equation}
+%\mathbf{r}\times\mathbf{r}\equiv0\label{eq:r_x_r}
+%\end{equation}
+%
+%we arrive at the result \begin{equation}
+%\mathbf{r}\times\frac{d^{2}\mathbf{r}}{dt^{2}}=0\label{eq:r_x_d2rdt2}
+%\end{equation}
+%
+%Differentiating \(\mathbf{r}\times\frac{d\mathbf{r}}{dt}\) gives
+%
+%\begin{equation}
+%\frac{d}{dt}\left(\mathbf{r}\times\frac{d\mathbf{r}}{dt}\right)=\frac{d\mathbf{r}}{dt}\times\frac{d\mathbf{r}}{dt}+\mathbf{r}\times\frac{d^{2}\mathbf{r}}{dt^{2}}\label{eq:temp2}
+%\end{equation}
+%
+%which, using \eqref{eq:r_x_r} and \eqref{eq:r_x_d2rdt2} reduces to 
+%
+%\begin{equation}
+%\frac{d}{dt}\left(\mathbf{r}\times\frac{d\mathbf{r}}{dt}\right)=0\label{eq:ddt_r_x_drdt}
+%\end{equation}
+%
+%Defining angular momentum per unit mass as 
+%
+%\begin{equation}
+%\mathbf{h}=\mathbf{r}\times\frac{d\mathbf{r}}{dt}\label{eq:angular_momentum}
+%\end{equation}
+%
+%observe that its direction, orthogonal to both \(\mathbf{r}\) (radial to the orbit) and \(\frac{d\mathbf{r}}{dt}\) (tangential to the orbit), must be normal to the plane of motion.
+%
+%Multiplying this through both sides of \eqref{eq:Newton} gives
+%\begin{eqnarray}
+%\frac{d^{2}\mathbf{r}}{dt^{2}}\times\mathbf{h} & = & -\frac{\mu}{r^{3}}\mathbf{r}\times\mathbf{h}\\
+% & = & -\frac{\mu}{r^{3}}\mathbf{r}\times\left(\mathbf{r}\times\frac{d\mathbf{r}}{dt}\right)
+% \end{eqnarray}
+%
+%using a vector triple product expands to
+%\begin{equation}
+%\frac{d^{2}\mathbf{r}}{dt^{2}}\times\mathbf{h}=-\frac{\mu}{r^{3}}\left(\mathbf{r}\left(\mathbf{r}\cdot\frac{d\mathbf{r}}{dt}\right)-\frac{d\mathbf{r}}{dt}\left(\mathbf{r}\cdot\mathbf{r}\right)\right)
+%
+%which, using the scalar products \(\mathbf{r}\cdot\frac{d\mathbf{r}}{dt}=r\frac{dr}{dt}\) and 
+%\(\mathbf{r}\cdot\mathbf{r}=r^{2}\) gives
+%
+%\begin{eqnarray}
+%\frac{d^{2}\mathbf{r}}{dt^{2}}\times\mathbf{h} & = & -\frac{\mu}{r^{3}}\left(\mathbf{r}r\frac{dr}{dt}-\frac{d\mathbf{r}}{dt}r^{2}\right)\\
+% & = & \mu\left(\frac{\frac{d\mathbf{r}}{dt}r-\mathbf{r}\frac{dr}{dt}}{r^{2}}\right)
+% \end{eqnarray}
+%
+%and observing that the bracketed term is \(\frac{\mathbf{r}}{r}\) differentiated using the quotient rule, the final result is derived 
+%
+%\begin{equation}
+%\frac{d^{2}\mathbf{r}}{dt^{2}}\times\mathbf{h}=\mu\frac{d}{dt}\left(\frac{\mathbf{r}}{r}\right)\label{eq:d2rdt2_x_h}
+%\end{equation}
+%
+%Since \(\mathbf{h}\) is constant, \eqref{eq:d2rdt2_x_h} may be integrated to
+%\begin{equation}
+%\frac{d\mathbf{r}}{dt}\times\mathbf{h}=\mu\left(\frac{\mathbf{r}}{r}+\mathbf{e}\right)
+%\end{equation}
+%
+%where \(\mathbf{e}\) represents the constant of integration, called the \emph{eccentricity vector}.
+%
+%\begin{equation} 
+%\left(\frac{d\mathbf{r}}{dt}\times\mathbf{h}\right)\cdot\mathbf{h}=\frac{\mu}{r}\left(\mathbf{r}+r\mathbf{e}\right)\cdot\mathbf{h}
+%\end{equation}
+%
+%rearranging the scalar triple product allows
+%
+%\begin{equation}
+%\left(\mathbf{h}\times\mathbf{h}\right)\cdot\frac{d\mathbf{r}}{dt}=\frac{\mu}{r}\left(\mathbf{r}\cdot\mathbf{h}+r\mathbf{e}\cdot\mathbf{h}\right)
+%\end{equation}
+%
+%where \eqref{eq:r_x_r} and \eqref{eq:angular_momentum} give
+%
+%\begin{equation}
+%0=\frac{\mu}{r}\left(\mathbf{r}\cdot\left(\mathbf{r}\times\frac{d\mathbf{r}}{dt}\right)+r\mathbf{e}\cdot\mathbf{h}\right)
+%\end{equation}
+%
+%once again rearranging the scalar triple product
+%
+%\begin{eqnarray}
+%0 & = & \frac{\mu}{r}\left(\frac{d\mathbf{r}}{dt}\cdot\left(\mathbf{r}\times\mathbf{r}\right)+r\mathbf{e}\cdot\mathbf{h}\right)\\
+% & = & \frac{\mu}{r}\left(r\mathbf{e}\cdot\mathbf{h}\right)
+% \end{eqnarray}
+%
+%Multiplying the scalars over to the left hand side this equation gives some meaning.
+%
+%\begin{equation}
+%0=\mathbf{e}\cdot\mathbf{h}
+%\end{equation}
+%
+%or, in words, \(\mathbf{e}\) must be within the plane of motion.
+%
+%\begin{equation}
+%\left(\frac{d\mathbf{r}}{dt}\times\mathbf{h}\right)\cdot\mathbf{r}=\frac{\mu}{r}\left(\mathbf{r}+r\mathbf{e}\right)\cdot\mathbf{r}
+%\end{equation}
+%
+%rearranging the scalar triple product allows
+%
+%\begin{equation}
+%\left(\frac{d\mathbf{r}}{dt}\times\mathbf{r}\right)\cdot\mathbf{h}=\frac{\mu}{r}\left(\mathbf{r}\cdot\mathbf{r}+r\mathbf{e}\cdot\mathbf{r}\right)
+%\end{equation}
+%
+%where \eqref{eq:angular_momentum} gives 
+%
+%\begin{eqnarray}
+%\mathbf{h}\cdot\mathbf{h} & = & \frac{\mu}{r}\left(r^{2}+r\mathbf{e}\cdot\mathbf{r}\right)\\
+%\frac{h^{2}}{\mu} & = & r+er\cos\theta\\
+%r & = & \frac{h^{2}}{\mu(1+e\cos\theta)}
+%\end{eqnarray}
+%
+%where \(\theta\) represents the angle between \(\mathbf{r}\) and \(\mathbf{e}\).
+%
+%\chapter{N-body problem} \label{cha:N-body-problem}
+%
+%Defining \(\mathbf{p}_{k}\) as the position of body \(k\) relative to some absolute inertial reference (\(k=0\) for primary body, \(k>0\) for secondary bodies) the acceleration of a given body in an N-body field is described by 
+%
+%\begin{equation}
+%\frac{d^{2}\mathbf{p}_{k}}{dt^{2}}=G\sum_{j\neq k}^{N}\frac{m_{j}}{\left|p_{j}-p_{k}\right|^{3}}(\mathbf{p}_{j}-\mathbf{p}_{k})\label{eq:d2pkdt2}
+%\end{equation}
+%
+%Defining \(\mathbf{r}\) as the position of the spacecraft relative to the primary body (\(\mathbf{s}_{craft}\))
+%
+%\begin{equation}
+%\mathbf{r=p}_{craft}-\mathbf{p}_{0}
+%\end{equation}
+%
+%so
+%\begin{eqnarray}
+%\mathbf{\ddot{r}} & = & \frac{d^{2}}{dt^{2}}(\mathbf{p}_{craft}-\mathbf{p}_{0})
+%\end{eqnarray}
+%
+%using Equation \eqref{eq:d2pkdt2}
+%
+%\begin{eqnarray}
+%\mathbf{\ddot{r}} & = & G\sum_{j\neq craft}^{N}\frac{m_{j}}{\left|p_{j}-p_{craft}\right|^{3}}(\mathbf{p}_{j}-\mathbf{p}_{craft})-G\sum_{j\neq0}^{N}\frac{m_{j}}{\left|p_{j}-p_{0}\right|^{3}}(\mathbf{p}_{j}-\mathbf{p}_{0})
+%\end{eqnarray}
+%
+%Now defining \(\mathbf{s}_{k}\) as the position of secondary body \(k\) relative to the primary body (\(\mathbf{s}_{0}=0\), \(\mathbf{s}_{craft}=\mathbf{r}\))
+%
+%\begin{equation}
+%\mathbf{s}_{k}=\mathbf{p}_{k}-\mathbf{p}_{0}
+%\end{equation}
+%
+%and defining \(\mathbf{d}_{k}\) as the position of the spacecraft relative to secondary body \(k\)
+%(\(\mathbf{d}_{0}=\mathbf{r}\), \(\mathbf{d}_{craft}=0\))
+%
+%\begin{equation}
+%\mathbf{d}_{k}=\mathbf{p}_{craft}-\mathbf{p}_{k}=-\left(\mathbf{p}_{k}-\mathbf{p}_{craft}\right)
+%\end{equation}
+%
+%gives
+%
+%\begin{eqnarray}
+%\mathbf{\ddot{r}} & =Gm_{0}\frac{\mathbf{-r}}{r^{3}}+ & G\sum_{j=1}^{N}m_{j}\frac{\mathbf{-d}_{j}}{d_{j}^{3}}+G\sum_{j=1}^{N}m_{j}\frac{\mathbf{-s}_{j}}{\mbox{}s_{j}^{3}}\\
+% & = & -Gm_{0}\frac{\mathbf{r}}{r^{3}}-\sum_{j=1}^{N}Gm_{j}\left[\frac{\mathbf{d}_{j}}{d_{j}}+\frac{\mathbf{s}_{j}}{s_{j}}\right]
+% \end{eqnarray}
+%
+%The first term here represents the acceleration of the spacecraft due to the primary body. The first term with the summation represents the acceleration of the spacecraft due to secondary bodies. Surprisingly at first, the second term in the summation represents the acceleration of the primary body due to the secondary bodies. This must be taken into account because it represents the reference frame (the Earth) accelerating. Consequently the reference frame is \emph{not} inertial, and this term corrects for the accelerating frame.
+
+\chapter{Gravitational potential} \label{cha:Gravitational-potential}
+
+Equation \ref{eq:Grav-Potential} presents the gravitational potential of the Earth, as defined by \citet{WGS84}. Within two summation series, there is a term described as a normalised associated Legendre polynomial. The detailed definition from \citet{WGS84} is reproduced below, where \(n\) and \(m\) are the degree and order of the normalised gravitational coefficients, \(r\) is the distance from the Earth’s centre of mass and \(\phi'\) is the geocentric latitude. For \(m = 0\), \(k = 1\) and for \(m 6= 0\), \(k = 2\).
+
+\begin{eqnarray}
+\bar{P}_{nm}\left(\sin\phi'\right) & = & \text{Normalized associated Legendre polynomial}\\
+ & = & \left[\frac{\left(n-m\right)!\left(2n+1\right)k}{\left(n+m\right)!}\right]^{\frac{1}{2}}P_{nm}\left(\sin\phi'\right)\\
+P_{nm}\left(\sin\phi'\right) & = & \text{Associated Legendre polynomial}\\
+ & = & \left(\cos\phi'\right)^{m}\frac{d^{m}}{d\left(\sin\phi'\right)^{m}}\left[P_{n}\left(\sin\phi'\right)\right]\\
+P_{n}\left(\sin\phi'\right) & = & \text{Legendre polynomial}\\
+ & = & \frac{d^{n}}{2^{n}n!d\left(\sin\phi'\right)^{n}}\left(\sin^{2}\phi'-1\right)^{n}
+\end{eqnarray}
+
+The series is theoretically valid for \(r\geq a\), though it can be used with probably negligible error near or on the Earth's surface, that is, \(r\geq\text{Earth's surface}\). But the series should not be used for \(r<\text{Earth's surface}\).
+
+The first few normalised gravitational coefficients, \(\bar{C}_{nm}\) and \(\bar{S}_{nm}\) are presented in Table \ref{tab:Gravitational-Harmonic-Coefficients}. It can clearly be seen that the first harmonic, \(\bar{C}_{2,0}\) is more than two orders of magnitude greater than any other, due to the Earth’s oblateness.
+
+\begin{table}
+\caption{Gravitational Harmonic Coefficients, taken from \citet{web_GeoForschungsZentrum2009}.}
+\label{tab:Gravitational-Harmonic-Coefficients}
+\begin{center}
+\begin{tabular}{|C{0.15\textwidth}|C{0.15\textwidth}|C{0.30\textwidth}|C{0.30\textwidth}|}
+\hline
+\multicolumn{2}{|C{0.3\textwidth}|}{Degree and Order} & \multicolumn{2}{C{0.6\textwidth}|}{Normalized Gravitational Coefficients}\\
+\hline
+n & m & \(\bar{C}_{nm}\) & \(\bar{S}_{nm}\) \\
+%\hline
+%2 & 0 & -0.484165371736 \(\times10^{-3}\) \\
+%2 & 1 & -0.186987635955 \(\times10^{-9}\) & 0.119528012031 \(\times10^{-8}\) \\
+%2 & 2  & 0.243914352398 \(\times10^{-5}\) & -0.140016683654 \(\times10^{-5}\) \\
+%3 & 0 & 0.957254173792 \(\times10^{-6}\) \\
+%3 & 1  & 0.202998882184 \(\times10^{-5}\) & 0.248513158716 \(\times10^{-6}\) \\
+%3 & 2 & 0.904627768605 \(\times10^{-6}\) & -0.619025944205 \(\times10^{-6}\) \\
+%3 & 3 & 0.721072657057 \(\times10^{-6}\) & 0.141435626958 \(\times10^{-6}\) \\
+%\(\vdots\) & \(\vdots\) & \(\vdots\) & \(\vdots\) \\
+%\hline
+\end{tabular}
+\end{center}
+\end{table}
+
+% ---MODEL PARAMETERS---
+\chapter{ASTOS model parameters} \label{cha:ASTOS-model-parameters}
+
+These parameters were used for the preliminary modelling and simulation performed in ASTOS, and presented in Chapter 7.
+
+% MODEL DEFINITION
+\begin{table}
+\caption{ASTOS model definition}
+\label{tab: ASTOS-model-definition}
+\begin{center}
+\begin{tabular}{|cc|}
+\hline
+Parameter & Value\\
+\hline
+\hline
+Atmospheres & None\\
+Celestial Bodies & See Table \ref{tab: ASTOS-model-definition>celestial-bodies}\\
+Wind & None\\
+Aerodynamics & None\\
+Ephemeris & See Table \ref{tab: ASTOS-model-definition>ephemeris}\\
+Propulsions & See Table \ref{tab: ASTOS-model-definition>propulsions}\\
+Components & See Table \ref{tab: ASTOS-model-definition>components}\\
+\hline
+\end{tabular}
+\end{center}
+\end{table}
+
+\begin{table}
+\caption{ASTOS model definition > Celestial bodies}
+\label{tab: ASTOS-model-definition>celestial-bodies}
+\begin{center}
+\begin{tabular}{|cc|}
+\hline
+Parameter & Value\\
+\hline
+\hline
+Earth & See Table \ref{tab: ASTOS-model-definition>celestial-bodies>earth}\\
+Moon & See Table \ref{tab: ASTOS-model-definition>celestial-bodies>moon}\\
+\hline
+\end{tabular}
+\end{center}
+\end{table}
+
+\begin{table}
+\caption{ASTOS model definition > Celestial bodies > Earth}
+\label{tab: ASTOS-model-definition>celestial-bodies>earth}
+\begin{center}
+\begin{tabular}{|cc|}
+\hline
+Parameter & Value\\
+\hline
+\hline
+Parent body & Moon\\
+Shape type & Sphere\\
+Radius & 6378.0 km\\
+Gravity type & Spherical\\
+%Gravity constant & 398600.0 \(\unitfrac{km^{3}}{s^{2}}\) \\
+Ephemeris type & JPL \\
+Library ID & JPL405 \\
+Body ID & 3\\
+\hline
+\end{tabular}
+\end{center}
+\end{table}
+
+\begin{table}
+\caption{ASTOS model definition > Celestial bodies > Moon}
+\label{tab: ASTOS-model-definition>celestial-bodies>moon}
+\begin{center}
+\begin{tabular}{|cc|}
+\hline
+Parameter & Value\\
+\hline
+\hline
+Parent body & Earth\\
+Shape type & Sphere\\
+Radius & 1738.0 km\\
+Gravity Type & Spherical\\
+%Gravity Constant & 4903.0 \(\unitfrac{km^{3}}{s^{2}}\) \\
+Ephemeris Type & JPL\\
+Library ID & JPL405\\
+Body ID & 10\\
+\hline
+\end{tabular}
+\end{center}
+\end{table}
+
+\begin{table}
+\caption{ASTOS model definition > Ephemeris}
+\label{tab: ASTOS-model-definition>ephemeris}
+\begin{center}
+\begin{tabular}{|cc|}
+\hline
+Parameter & Value\\
+\hline
+\hline
+Ephemeris & JPL\\
+Library path & jpleph-km.dll\\
+\hline
+\end{tabular}
+\end{center}
+\end{table}
+
+\begin{table}
+\caption{ASTOS model definition > Propulsions}
+\label{tab: ASTOS-model-definition>propulsions}
+\begin{center}
+\begin{tabular}{|cc|}
+\hline
+Parameter & Value\\
+\hline
+\hline
+Propulsions & Rocket\\
+Sub-type & Basic Design\\
+Throttle setting & 1.0\\
+Upper bound & 1.0\\
+Lower bound & 0.0\\
+Nozzle \(A_{e}\) & 0.0 \(\text{m}^{2}\) \\
+Vacuum thrust & 6.0 \(\text{mN}\) \\
+%Exhaust velocity & 24800.0 \(\unitfrac{m}{s}\) \\
+Engine mass correlation & Exponential\\
+A coefficient & 6.32\\
+B coefficient & 0.873\\
+Engine sizing factor & 1.0\\
+Upper bound & 1.15\\
+Lower bound & 0.85\\
+\hline
+\end{tabular}
+\end{center}
+\end{table}
+
+\begin{table}
+\caption{ASTOS model definition > Components}
+\label{tab: ASTOS-model-definition>components}
+\begin{center}
+\begin{tabular}{|cc|}
+\hline
+Parameter & Value\\
+\hline
+\hline
+Components & Basic Vehicle Stage\\
+Structural mass & 100.0 kg\\
+Propellant mass & 40.0 kg\\
+Filling ratio & 1.0\\
+\hline
+\end{tabular}
+\end{center}
+\end{table}
+
+% PHASE CONFIGURATIONS
+\newpage
+
+\begin{table}
+\caption{ASTOS phase configurations > Initial state}
+\label{tab:ASTOS-phase-configurations>initial-state}
+\begin{center}
+\begin{tabular}{|cc|}
+\hline
+Parameter & Value\\
+\hline
+\hline
+Initial time & 0.0 s\\
+Upper bound & 10.0 s\\
+Lower bound & -10.0 s\\
+\hline
+State type & Orbit\_J2000\\
+\hline
+Inclination & 7.0º\\
+Upper bound & 8.0º\\
+Lower bound & 6.0º\\
+\hline
+Ascending node & 348.0º\\
+Upper bound & 0.0º\\
+Lower bound & 360.0º\\
+\hline
+True anomaly & 0.0º\\
+Upper bound & 180.0º\\
+Lower bound & -180.0º\\
+\hline
+Orbit type & Elliptic\\
+\hline
+Semi-major axis & 180000.0 km\\
+Upper bound & 180000.0 km\\
+Lower bound & 160000.0 km\\
+\hline
+Non-circular & Yes\\
+\hline
+Eccentricity & 0.7\\
+Upper bound & 0.75\\
+Lower bound & 0.65\\
+\hline
+Perigee argument & 180.0º\\
+Upper bound & 200.0º\\
+Lower bound & 160.0º\\
+Subtype & Initial orbit\\
+\hline
+\end{tabular}
+\end{center}
+\end{table}
+
+\begin{table}
+\caption{ASTOS phase configurations > Geocentric}
+\label{tab:ASTOS-phase-configurations>geocentric}
+\begin{center}
+\begin{tabular}{|cc|}
+\hline
+Parameter & Value\\
+\hline
+\hline
+Equations of Motion & Equinoctial Elements\\
+Coordinate frame & J2000\\
+Duration & 30.0 days\\
+Upper bound & 35.0 days\\
+Lower bound & 28.0 days\\
+Environment type & Orbital\\
+Central body & Earth\\
+Gravitational perturbation & Moon\\
+Attitude controls & Reduced Euler angles LO\\
+Yaw & Optimised\\
+Pitch & Optimised\\
+\hline
+\end{tabular}
+\end{center}
+\end{table}
+
+\begin{table}
+\caption{ASTOS phase configurations > Around EML1}
+\label{tab:ASTOS-phase-configurations>around-l1}
+\begin{center}
+\begin{tabular}{|cc|}
+\hline
+Parameter & Value\\
+\hline
+\hline
+Equations of Motion & Equinoctial Elements\\
+Coordinate frame & J2000\\
+Duration & 3.0 days\\
+Upper bound & 4.0 days\\
+Lower bound & 2.0 days\\
+Environment type & Orbital\\
+\hline
+Central body & Earth\\
+Gravitational perturbation & Moon\\
+Attitude controls & Reduced Euler angles LO\\
+Yaw & Optimised\\
+Pitch & Optimised\\
+\hline
+\end{tabular}
+\end{center}
+\end{table}
+
+\begin{table}
+\caption{ASTOS phase configurations > At Moon}
+\label{tab:ASTOS-phase-configurations>at-moon}
+\begin{center}
+\begin{tabular}{|cc|}
+\hline
+Parameter & Value\\
+\hline
+\hline
+Equations of Motion & Equinoctial Elements\\
+Coordinate frame & J2000\\
+Duration & 1.0 s\\
+Environment type & Orbital\\
+Central body & Moon\\
+Gravitational perturbation & Earth\\
+Attitude controls & Reduced Euler angles LO\\
+Yaw & Optimised\\
+Pitch & Optimised\\
+\hline
+\end{tabular}
+\end{center}
+\end{table}
+
+% MISSION DEFINITION
+\newpage
+
+\begin{table}
+\caption{ASTOS mission definition}
+\label{tab:ASTOS-mission-definition}
+\begin{center}
+\begin{tabular}{|cc|}
+\hline
+Parameter & Value\\
+\hline
+\hline
+System of time & UTC\\
+Format of time & JD\\
+Julian date & 2455500.5\\
+Normalized times & Yes\\
+Cost function & See Table \ref{tab:ASTOS-mission-definition>cost-function}\\
+\hline
+\end{tabular}
+\end{center}
+\end{table}
+
+\begin{table}
+\caption{ASTOS mission definition > Cost function}
+\label{tab:ASTOS-mission-definition>cost-function}
+\begin{center}
+\begin{tabular}{|cc|}
+\hline
+Parameter & Value\\
+\hline
+\hline
+Type & Max final value\\
+Subtype & Specific energy\\
+\hline
+\end{tabular}
+\end{center}
+\end{table}

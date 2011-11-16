@@ -1,0 +1,14 @@
+\chapter*{Abstract}
+\markboth{Abstract}{Abstract}
+
+\vfill
+
+The University of Stuttgart is engaging in a research program to build a succession of small satellites. The ultimate goal of this program is to build and launch a craft named \BW\ (after the federal state Stuttgart is in, Baden-W\"{u}rttemberg) into lunar orbit, for eventual impact with the Moon. Due to the prohibitive costs associated with launching mass into space, it is necessary to minimise the amount of fuel needed by this spacecraft.
+
+This thesis outlines work conducted to find a robust fuel-optimal trajectory for \BW\ to reach the Moon. Several unique aspects of this craft require a novel approach to that optimisation. Firstly, the spacecraft uses a new low-cost propulsion system, which has an order of magnitude lower thrust than any craft ever to leave Earth orbit before. Secondly, to reduce the mass and complexity of moving parts, the solar panels are fixed to the body; consequently, the craft must rotate itself to point its solar panels towards the Sun to recharge. No thrusting can occur during this time. This magnifies the effect of the third design decision, to limit the weight of the craft by giving it very little on-board power storage. After approximately an hour of accelerating, it must recharge its batteries, resulting in a relatively high frequency stop-go-stop thrust profile.
+
+Due to these constraints, the trajectory optimisation is more complex than any previously attempted. Since the craft will be built and launched, many simplifications made in purely theoretical studies could not be utilised, such as neglecting the forces acting on the spacecraft in cis-lunar space. Very low thrust results in very long transfer times, during which even small magnitude forces acting on the spacecraft can perturb its trajectory. Additionally, these forces create non-linearities in the equations of motion associated with spacecraft trajectories, limiting the optimisation methods that could be used, and increasing computational complexity.
+
+Although optimisation methods for low-thrust spacecraft trajectories have been the subject of much research, most studies conclude that knowledge is still lacking in this area. Furthermore, many optimisation methods investigated in existing literature are incompatible with the intermittent thrust profile required by the \BW\ thrusters. For this reason it was necessary to thoroughly review available optimisation methods and determine which may be adapted to this scenario. The resulting optimisation method was applied to the \BW\ mission scenario to determine the optimal thrusting profile.
+
+\vfill

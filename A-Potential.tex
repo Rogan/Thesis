@@ -1,0 +1,16 @@
+\chapter{Gravitational potential} \label{cha:Gravitational-potential}
+
+\autoref{eq:Grav-Potential} presents the gravitational potential of a body, as defined by \textcite{WGS84}. Within two summation series, there is a term described as a normalised associated Legendre polynomial. The detailed definition from \textcite{WGS84} is reproduced below, where $n$ and $m$ are the degree and order of the normalised gravitational coefficients, $r$ is the distance from the body’s centre of mass and $\phi'$ is the geocentric latitude. For $m = 0$, $k = 1$ and for $m \neq 0$, $k = 2$.
+
+\begin{eqnarray}\notag
+\bar{P}_{nm}\left(\sin\phi'\right) & = & \text{Normalized associated Legendre polynomial}\\
+ & = & \left[\frac{\left(n-m\right)!\left(2n+1\right)k}{\left(n+m\right)!}\right]^{\frac{1}{2}}P_{nm}\left(\sin\phi'\right)\\\notag
+P_{nm}\left(\sin\phi'\right) & = & \text{Associated Legendre polynomial}\\
+ & = & \left(\cos\phi'\right)^{m}\frac{d^{m}}{d\left(\sin\phi'\right)^{m}}\left[P_{n}\left(\sin\phi'\right)\right]\\\notag
+P_{n}\left(\sin\phi'\right) & = & \text{Legendre polynomial}\\
+ & = & \frac{d^{n}}{2^{n}n!d\left(\sin\phi'\right)^{n}}\left(\sin^{2}\phi'-1\right)^{n}
+\end{eqnarray}
+
+According to \textcite{WGS84} the series is theoretically valid for $r\geq a$, though it can be used with probably negligible error near or on the body's surface, that is, $r\geq\text{body's surface}$. But the series should not be used for $r<\text{body's surface}$.
+
+The normalised gravitational coefficients $\bar{C}_{nm}$ and $\bar{S}_{nm}$ for the Earth were taken from the Joint Gravity Model 3 \cite{Tapley1996} due to availability of data. Several newer models have been released such as the \textcite{EIGEN-5C}, but the JGM3 accuracy was sufficient for this project. The lunar gravitational potential utilised \textcite{LP165}.
