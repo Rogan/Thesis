@@ -1,4 +1,4 @@
-\chapter{Optimisation methods} \label{cha:Optimisation-methods}
+\chapter{Optimisation} \label{cha:Optimisation}
 \section{Introduction} \label{sec:Optimisation-Introduction}
 
 Optimisation is, intuitively, the process of finding an optimum value (minimum or maximum) for a given function. This is achieved by defining an \emph{objective function} or \emph{cost function} to rank results based on perceived value, allowing the result with the highest value to be chosen. The difficulty of performing optimisation arises from the potentially large number of results, and the difficulty of mathematically defining what is \enquote{good} or \enquote{bad}. This chapter describes the mathematical process of optimisation, and how it applies to spacecraft trajectories.
@@ -21,7 +21,7 @@ g_{ineq}(\vec{x}(t),\vec{u}(t),\vec{p},t) &\ge 0
 
 A differential equation describes how the state evolves over the trajectory:
 \begin{equation}\label{eq:generic-DE}
-\dot{\vec{x}} = f(\vec{x}(t),\vec{u}(t),\vec{p},t)
+\frac{d\vec{x}}{dt} = f(\vec{x}(t),\vec{u}(t),\vec{p},t)
 \end{equation}
 
 For computational reasons (see \autoref{sub:Scaling}), upper and lower bounds are supplied for the states, controls and optimisation parameters such that:
@@ -173,7 +173,7 @@ Lunar Longitude of the Ascending Node, $\Omega$ (rad) &$\le$& 4.9742 \\\bottomru
 \end{table}
 
 % Path constraints
-\subsection{Path constraints} \label{sec:Path-constraints}
+\subsection{Path constraints} \label{sub:Path-constraints}
 
 While the path between initial and final states is defined by the differential equations of motion outlined in \autoref{sec:state-vector}, there are a number of additional constraints on the trajectory, both physical and operational.
 
@@ -185,52 +185,21 @@ Equinoctial elements are better for this optimisation than Keplerian elements, b
 
 Upon implementation of the power generation and consumption model, the constraint that battery charge must be greater than zero had a significant affect on the trajectory, particularly introducing coast phases in the Ascent phase. A final intuitive but hugely important numerical constraint is that the spacecraft mass must remain positive! 
 
+
 % Trajectory propagation
 \section{Trajectory propagation}
 The path between initial and final states is defined by the differential equations of motion outlined in \autoref{sec:state-vector}. A number of numerical methods are available for approximating the solution to differential equations such as these. In general, the gradient at some starting point is used to estimate another point a small distance away. The most common methods are the Runge-Kutta methods, which use an iterative estimate of the gradient at the midpoint to get a more accurate estimate for the endpoint. Adaptive Runge-Kutta methods use the difference between two fixed-step Runge-Kutta methods to place bounds on the accuracy of the estimated endpoint. If the accuracy is not within some predefined tolerance, the interval size is revised. Particular care must be taken when integrating a non-linear differential equation over an extended duration such as the \BW, due to the accumulation of numerical errors.
 
-For this project, a Runge-Kutta 4/5 integrator was used to propagate the trajectory from the initial state, using the initial guesses for optimisable parameters and control profile. This trajectory is then assigned a score based on the constraint violations defined above and the objective function score. An optimisation technique adjusts the optimisable parameters to satisfy the constraints and achieve a better score.
-
-% Optimisation techniques
-\section{Optimisation techniques}\label{sec:Techniques}
-
-Any solution to the boundary value problem stated in \autoref{sec:Boundary-value-problem}, within acceptable error bounds, is a potential solution to the optimisation. Cases may be ranked depending on their objective function value. The remaining problem is to evaluate enough potential solutions to be confident that the chosen one is indeed optimal. There are several approaches to this problem.
-
-\subsection{Gradient based methods}
-
-\textcite{Gauss1827} pioneered gradient-based optimisation methods in the early 19th century, based on selecting a candidate solution, and evaluating the gradient at that point by varying each optimisable parameter, in order to find a better solution. When a candidate solution is found with no gradient that leads to a better solution, the solution must be a local optimum.
-
-\subsection{Non linear programming}
-
-Various gradient-based deterministic optimisation methods have been developed for specific spacecraft trajectory scenarios since the 1960s \parencite{Betts1998}. Consequently there is a need to classify them, and identify why particular methods are used for particular scenarios. The following classifications are consistently applied across literature such as \textcite{Betts1998} and \textcite{ASTOS_guide}.
-
-The first classification is based on whether the differential equations that they solve are explicit or implicit.
-Explicit differential equations allow the derivative to be defined explicitly in terms of independent variables and parameters, $\frac{d^ny}{dx^n}=f(x,y,\frac{dy}{dx},\frac{d^2y}{dx^2},\dots,\frac{d^{n-1}y}{dx^{n-1}})$. Optimisation techniques based on explicit differential equations are called \emph{direct methods}. Implicit differential equations either cannot or should not be reduced to their explicit form, $f(x,y,\frac{dy}{dx},\frac{d^2y}{dx^2},\dots,\frac{d^{n}y}{dx^{n}})=0$. Optimisation techniques based on implicit differential equations are called \emph{indirect methods}.
-
-The key difference between direct and indirect optimisation methods is that indirect methods require the adjoint matrix to be calculated by inverting the relevant differential equations. This process becomes increasingly difficult with more complex differential equations, so indirect methods often make simplifications and assumptions (for example by neglecting many of the perturbing forces listed in \autoref{sec:Perturbations}). Since the first order differential equations in this scenario (\autoref{eq:state-updates}) are explicit, direct methods may be used.
-
-Indirect methods rely on complex mathematics, as outlined by \textcite{Pontryagin1962}.
-Pontryagin's minimum principle
-calculus of variations
-
-\enquote{According to these classifications, the sequential gradient restoration algorithm (SGRA \parencite{Miele1975}) is an indirect method as are the codes ASTROP developed by Biggs et al. (19XX) and BNDSCO \parencite{Burlisch1971}. ASTROP has been used at the European Space Operations Center (ESOC) extensively for exo-atmospheric trajectory optimization. POST \parencite{Brauer1987} uses a single shooting direct method with control parametrization; it has been developed by US industry. OTIS \parencite{Hargraves} uses a direct collocation method and has been developed by US industry, too. Both of these codes are in widespread use at NASA and at various US government laboratories as well as US universities - but are not in general available to European organizations. The SOCS code which is at present probably the fastest direct collocation code available, is an optional add-on of GESOP since 2002. OPERA is a direct collocation code developed by ONERA which also has seen widespread use for rocket trajectory optimization. TOMP \parencite{Kraft1980} is a direct method, using single shooting, similar to the method within POST. MUSCOD \parencite{Bock1984} is the first direct method that combines control parametrization with multiple shooting. TROPIC and PROMIS are codes initially developed by DLR, \parencite{Jänsch1990,Schnepper1992}. TROPIC is a direct collocation code similar to the one used within OTIS, but has additional features such as automatic function- and parameter scaling, PROMIS is a similar method to MUSCOD, but also has parameter- and function scaling and a very flexible problem interface. CAMTOS \parencite{Gath2001}, our new in-house optimizer, is a hybrid optimizer, which allows the choice of collocation and multiple shooting in each phase.}\cite{ASTOS_guide}
-
-
-% PARAMETERISATION
-
-% Transcription
-
-Each phase is divided into a number of intervals based on the placement of nodes, either manually or automatically.
-Over each of these intervals, multiple shooting methods integrate the state independently based on an initial guesses at each node. Discontinuities between intervals get added to the list of constraints, and the initial guesses get added to the list of optimisable parameters, so that the final trajectory is continuous. However, with long phases requiring many thousands of control nodes, the size of the problem becomes huge (typically hundreds of thousands of parameters).
-Within each of these shooting intervals, a finer mesh of control nodes may be specified. The state and control profile are approximated over each of these sub-intervals as a piecewise polynomial function. Thus, with enough control nodes, the state and control profiles appear almost continuously variable.
-Single shooting methods only use the major nodes (ignore control refinement mesh). SOCS is a single shooting method.
-Constraint violations are evaluated at each shooting node, although a finer mesh may be specified by the user. SOCS does not support additional constraint evaluations.
-
-So each interval becomes a non-linear problem (NLP).
-
-HDSNLP within SOCS
+For this project, a Runge-Kutta 4/5 integrator was used to propagate the trajectory from the initial state, using the initial guesses for optimisable parameters and control profile. This trajectory is then assigned a score using the Lagrangian matrix. An optimisation technique adjusts the optimisable parameters to satisfy the constraints and achieve a better score. %Lagrangian matrix?!
 
 %-------------------------------
+
+ The following classifications are consistently applied across literature such as \textcite{Betts1998} and \textcite{ASTOS_guide}.
+
+The first classification is based on whether the differential equations that they solve are explicit or implicit.
+Explicit differential equations allow the derivative to be defined explicitly in terms of independent variables and parameters, $\frac{d^ny}{dx^n}=f(x,y,\frac{dy}{dx},\frac{d^2y}{dx^2},\dots,\frac{d^{n-1}y}{dx^{n-1}})$. Optimisation techniques based on explicit differential equations are called \emph{direct methods}. Implicit differential equations either cannot or should not be reduced to their explicit form, so $f(x,y,\frac{dy}{dx},\frac{d^2y}{dx^2},\dots,\frac{d^{n}y}{dx^{n}})=0$. Optimisation techniques based on implicit differential equations are called \emph{indirect methods}.
+
+The key difference between direct and indirect optimisation methods is that indirect methods require the adjoint matrix to be calculated by inverting the relevant differential equations. This process becomes increasingly difficult with more complex differential equations, so indirect methods often make simplifications and assumptions (for example by neglecting many of the perturbing forces listed in \autoref{sec:Perturbations}). Since the first order differential equations in this scenario (\autoref{eq:state-updates}) are explicit, direct methods may be used.
 
 \subsection{Integration methods}
 
@@ -238,53 +207,152 @@ Regardless of the numerical method used, trajectory optimisation requires solvin
 
 Finally, to save on computational complexity the changes in control and/or state over time may be approximated by a piecewise linear or polynomial function. Any algorithm that uses a simplification like this is said to solve the \emph{parameterised optimal control problem}. If the algorithm approximates control and state nodes at the same points, it is a \emph{collocation} method. Since this reduces the number of nodes required, collocation is generally faster than multiple shooting, but not as accurate.%cite
 
-\subsection{Newton's method}
-
-All optimisation methods rely on some manner of iterative evaluation and improvement. A large subset stem from the work of \cite{Newton1711}. 
-
-Use the direction of fastest descent. $p_k=-\nabla f_k$ only requires calculation of the gradient. Prone to slow optimisation particularly with stiff problems.
-
-Alternative is Netwon's method, requires calcualtion of the Hessian. $p_k=-(\nabla^2f_k)^{-1}\nabla f_k$
-Faster rate of local convergence.
-
-\subsection{Gradient based method}
-% Betts \cite{SOCS_guide} calls this SQP
-For an nonlinear algebraic equation $a(\vec{x})=0$, an initial guess is taken for $\vec{x}$. An improved estimate $x'$ can be established by stepping a certain distance $\alpha$ in a certain direction $\vec{p}$.
-\begin{equation}
-x'=x+\alpha\vec{p}
-\end{equation}
-The simplest search direction is often based on the gradient (in the form of the Jacobian matrix) of the cost function $F$ at $\vec{x}$, such that $p=-\nabla\vec{F}(\vec{x})$. This method assumes a linear response from the function. \textcite{Newton1711}'s method improves on this by using the second order gradient (the Hessian matrix), which assumes a quadratic response, thereby usually converging faster.
-
-SQP - assumes lots of little quadratic problems, uses the Hessian of the Lagrangian (the cost function and constraint matrices concatenated).
-
-\subsection{Optimal control}
-indirect, needs the inverse equations to determine the gradient
-
-\subsection{Nonlinear programming}
-direct, makes small changes to parameters in order to test objective function
-\subsubsection{Direct shooting}
-generally nees a relatively small number of optimization variables
+\subsubsection{Single shooting}
+generally needs a relatively small number of optimization variables
 can model trajectory as a function, but small changes early on create large changes later in the trajectory, which can make the constraints behave very non-linearly \cite{Betts1998}
-\subsubsection{Indirect shooting}
 \subsubsection{Multiple shooting}
 sometimes called parallel shooting, because each segment may be calculated in parallel. this method therefore lends itself well to parallel processing.
-\subsubsection{Direct transcription}
-\subsubsection{Indirect transcription}
 
-\subsection{Dynamic programming}
 
-\subsection{Genetic algorithms}
+% Optimisation techniques
+\section{Optimisation techniques}\label{sec:Techniques}
+
+Any solution to the boundary value problem stated in \autoref{sec:Boundary-value-problem}, within acceptable error bounds, is a potential solution to the optimisation. These solutions may then be ranked using the Lagrangian. The remaining problem is to evaluate enough potential solutions to be confident that the highest scoring one is indeed optimal. There are several approaches to this problem.
+
+\subsection{Necessary and sufficient conditions}
+
+Pierre Fermat first outlined that optima of unconstrained problems are found at stationary points in the objective function. The addition of inequality constraints adds some complexity in that the global optimum may be located on the edge of the acceptable set; that is, where an active constraint disallows any points deeper along the gradient. These constraints may be included in the objective function using Lagrange multipliers, to model the overall problem as an unconstrained set. Because this test requires the gradient be calculated, it is called a \enquote{first order condition}.
+
+While the first derivative test identifies points that might be optima, this test does not disinguish a point which is a minimum from one that is a maximum or one that is neither. When the objective function is twice differentiable, these cases can be distinguished by checking the second derivative or the matrix of second derivatives (called the Hessian matrix) in unconstrained problems, or the matrix of second derivatives of the objective function and the constraints called the bordered Hessian in constrained problems. The conditions that distinguish maxima, or minima, from other stationary points are called \enquote{second order conditions}. If a candidate solution satisfies the first order conditions, then satisfaction of the second order conditions as well is sufficient to establish at least local optimality.
+
+
+% Lagrangian
+\subsection{Lagrangian} \label{sub:Lagrangian}
+
+For the purposes of numerical optimisation, the constraints are appended to the objective function(s). This is known as the Lagrangian, $\mathcal{L}$.
+\begin{equation} \label{eq:Lagrangian}
+\mathcal{L}(\vec{x},\lambda) = F(\vec{x}) - \sum\lambda g_{eq}(\vec{x}) - \sum\mu g_{ineq}(\vec{x})
+\end{equation}
+The Karush-Kuhn-Tucker multipliers, $\lambda$ and $\mu$, are added to the set of optimisable parameters, and subject to additional constraints ($\lambda\ge0$ and $\mu\ge0$). %For any feasible solution, the equality constraints and active inequality constraints will give $g(\vec{x})=0$.  Since the inactive inequality constraints $g(\vec{x})>0$, their respective Lagrangian multipliers will be driven down to improve the Lagrangian until $\lambda=0$. Therefore, by minimising the Lagrangian minimises the objective function and ensures all constraints are met.
+
+% If there are no inequality constraints, the remaining KKT multipliers $\lambda$ are also known as Lagrangian multipliers.
+
+%In order to optimise the cost function (Lagrangian), a necessary condition is for the gradient of the cost function to be zero.
+%
+%\begin{equation}
+%\nabla\mathcal{L}=0
+%\end{equation}
+%
+%\begin{gather}
+%\label{eq:stationarity} \nabla F(\vec{x})+\sum\mu\nabla g_{eq}(\vec{x})+\sum\lambda\nabla g_{ineq}(\vec{x})=0 \\
+%\label{eq:primal-feas} g_{ineq}(\vec{x})\ge 0 \\
+%\label{eq:primal-feas2} g_{eq}(\vec{x})=0 \\
+%\label{eq:dual-feas} \mu\ge 0 \\
+%\label{eq:complementary-slackness-condition} \mu g_{eq}(\vec{x})=0
+%\end{gather}
+
+NLP necessary conditions (Karush-Kuhn-Tucker conditions) approach the optimal control necessary conditions as the number of variables grow \parencite{Betts1998}. The NLP Lagrange multipliers can be interpreted as discrete approximations to the optimal control adjoint variables.
+
+\subsection{Optimal control}
+
+A common classification of optimisation techniques is based upon the differential equations that they optimise. 
+
+Pontryagin's minimum principle \textcite{Pontryagin1962}.
+
+calculus of variations
+
+narrower basin of convergence
+
+%Gradient-based methods for optimising spacecraft trajectories have traditionally utilised optimal control laws based on Pontryagin's Minimum Principle. This states that optimising the Hamiltonian of a system is a necessary condition for the optimal control of that system. As shown by \citet{Ren2007}, generating the Hamiltonian for the modified equinoctial elements is simple, by placing \autoref{eq:state-updates} in the form $\vec{\dot{x}}=\mathbf{B}\Delta+\vec{d}$
+% Matrix equation should be $\dot{x}=\mathbf{A}\vec{x}+\mathbf{B}\vec{u}$
+%where the state variable $\vec{x}=\left[\begin{array}{cccccc} p & f & g & h & k & L\end{array}\right]^{T}$
+%consists of the equinoctial element set defined in Section \ref{sec:Orbital-Elements}, $\mathbf{B}$ is a $3\times6$ matrix that represents the thrust coefficients, and $\vec{d}=\left[\begin{array}{cccccc}
+%0 & 0 & 0 & 0 & 0 & D\end{array}\right]^{T}$
+%where $D=\sqrt{\mu p}\left(\frac{w}{p}\right)^{2}$ and represents the natural circular motion (zero thrust trajectory).
+
+%The Hamiltonian is then %need to define terms here too, 
+%$\lambda,\lambda_{L},\lambda_{m},m$
+%\begin{equation}
+%H=\vec{\lambda}^{T}\mathbf{B\Delta}+\lambda_{L}d-\lambda_{m}\frac{T}{I_{sp}g_{0}}\label{eq:hamiltonian}
+%\end{equation}
+%with costate equations
+%\begin{equation}
+%\vec{\dot{\lambda}}=-\frac{\delta H}{\delta\vec{x}}=-\vec{\lambda}^{T}\frac{\delta\mathbf{B}}{\delta\vec{x}}\Delta-\lambda_{L}\frac{\delta d}{\delta\vec{x}}\label{eq:lambda_dot}
+%\end{equation}
+%\begin{equation}
+%\dot{\lambda}_{m}=-\frac{\delta H}{\delta m}=\vec{\lambda}^{T}\mathbf{B}\frac{\mathbf{\Delta}}{m}=\left\Vert \vec{\lambda}^{T}\mathbf{B}\right\Vert \frac{T}{m^{2}}\label{eq:lambda_m_dot}
+%\end{equation}
+
+% check http://en.wikipedia.org/wiki/Optimal_control 
+
+% explain what is done once the Hamiltonian is optimised
+
+
+\subsection{Nonlinear programming} \label{sub:NLP}
+
+The process of optimising an objective function subject to a number of constraints over a set of unknown real variables where some of the constraints and/or the objective function are non-linear is called nonlinear programming. The general approach is take candidate solution, $\vec{x}_0$. An iterative procedure is then used to improve this solution by varying the state a certain amount, $\alpha$, in a certain direction, $\vec{k}$ \parencite{Betts1998}. The sign of the step direction, $\alpha$, determines whether the algorithm finds a minimum or a maximum.
+
+\begin{equation} \label{eq:NLP}
+\vec{x}_{n+1}=\vec{x}_n+\alpha\vec{k}
+\end{equation}
+
+\textcite{Gauss1827} pioneered gradient-based methods in the early 19th century, by using the Jacobian of the Lagrangian with respect to the state vector, $\nabla\mathcal{L}$, as the search direction. This technique is also known as the method of steepest descent, because the Jacobian matrix functions as a multi-dimensional gradient. When a candidate solution is found with no gradient that leads to a better solution, the candidate solution must be a local optimum.
+
+\begin{equation} \label{eq:gradient-method}
+\vec{x}_{n+1}=\vec{x}_n + \alpha\nabla\mathcal{L}(\vec{x}_n)
+\end{equation}
+
+Various schemes exist to calculate the step size, $\alpha$. These algorithms, collectively called a line search, can often be very computationally inefficient and time consuming. Furthermore, pure gradient methods are prone to slow optimisation, particularly with stiff problems. %define stiff problems, cite
+
+A second-order variant on this scheme is often referred to as \emph{Newton's method} because it uses the iterative root-finding scheme devised by \textcite{Newton1711, Newton1736} to determine the zeroes of the gradient. Since the gradient is itself a derivative of the Lagrangian, this technique requires computation of a second derivative. The curvature information held within the second derivative matrix (called the Hessian matrix, $\nabla^2\mathcal{L}$) allows this technique to converge faster, but each iteration takes more computational effort.
+
+\begin{equation} \label{eq:newtons-method}
+\vec{x}_{n+1}=\vec{x}_n + \alpha\frac{\nabla\mathcal{L}(\vec{x}_n)}{\nabla^2\mathcal{L}(\vec{x}_n)}
+\end{equation}
+
+\subsection{Sequential quadratic programming} \label{sub:SQP}
+
+When the step size, $\alpha$ is equal to one, gradient methods assume a linear behaviour in the vicinity of the candidate solution, and select the next iteration accordingly. Newton's method assumes a quadratic behaviour in the vicinity. Variations on Newton's method have been used to great success in many optimisation applications, not least trajectory optimisation, leading to the techniques being collectively named sequential quadratic programming (SQP). 
+
+To aid in describing the differences between SQP methods, certain classifications must be used.
+
+
+% PARAMETERISATION
+
+% Transcription
+\subsubsection{Transcription}
+
+Each phase is divided into a number of intervals based on the placement of nodes, either manually or automatically.
+Over each of these intervals, multiple shooting methods integrate the state independently based on an initial guesses at each node. Discontinuities between intervals get added to the list of constraints, and the initial guesses get added to the list of optimisable parameters, so that the final trajectory is continuous. However, with long phases requiring many thousands of control nodes, the size of the problem becomes huge (typically hundreds of thousands of parameters). Within each of these shooting intervals, a finer mesh of control nodes may be specified. The state and control profile are approximated over each of these sub-intervals as a piecewise polynomial function. Thus, with enough control nodes, the state and control profiles appear almost continuously variable.
+
+Single shooting methods only use the major nodes (ignore control refinement mesh). SOCS is a single shooting method.
+
+Constraint violations are evaluated at each shooting node, although a finer mesh may be specified by the user. SOCS does not support additional constraint evaluations.
+
+So each interval becomes a non-linear problem (NLP).
+
+HDSNLP within SOCS
+
+\subsection{Other methods}
+
+\subsubsection{Dynamic programming}
+
+Dynamic programming is a technique particularly used in mathematical programming and management science, with the aim of finding the path of least cost in a discrete system by evaluating each step backwards from the goal using the recursive Bellman equations. and the cost required using Bellman-Hamilton-Jacobi theory. Needs heavily discretised states and paths between states (controls). As Stated by Bellman
+
+\subsubsection{Genetic algorithms}
 
 Avoids local minima by performing random mutations. In theory this will find the global optimum as the number of mutations increases; in other words, as this technique approaches a brute force search.
 
 \textcite{Nocedal2006} baisc intro to optimisation
 
-\subsection{Simulated annealing}
+\subsubsection{Simulated annealing}
 
 First proposed by \textcite{Kirkpatrick1983}, simulated annealing once again avoids local minima by performing random mutations and checking whether the change improves the heuristic score.
 \textcite{Dreo2006} more detailed intro to metaheuristics
 
 named after a technique in blacksmithing whereby the metal is cooled slowly to allow the particles to align into an optimised (crystallised) low energy state.
+
+
 
 % Numerical considerations
 \section{Numerical considerations} \label{sec:Numerical-considerations}
@@ -303,6 +371,7 @@ In any optimisation the parameters should be scaled so that the optimisation alg
 
 Linear scaling is often sufficient, however if changes in a variable are very small relative to the average value of that variable the process of linear scaling on a computer will result in loss of precision due to truncation. The affine transformation \parencite{ASTOS_guide} uses expected upper and lower bounds for each optimisable parameter to scale it to within 1 and -1.
 
+% ------------------------------------------------ GESOP ------------------------------------------------
 \section{GESOP} \label{sec:GESOP}
 
 Trajectory optimisation has been studied for many years at Universit\"{a}t Stuttgart. In 1989 a number of optimisation algorithms were coded for specific application to trajectory optimisation at Deutsches Zentrum f\"{u}r Luft- und Raumfahrt (German Centre for Aeronautics and Astronautics, DLR) in Oberpfaffenhofen. This project was continued at the Institut f\"{u}r Flugmekanik und Flugregelung (Institute of Flight Mechanics and Flight Control, IFR) in Stuttgart from 1994 and designated GESOP (Graphical Environment for Simulation and OPtimisation).

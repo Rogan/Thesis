@@ -19,7 +19,8 @@
 }
 
 % citation and bibliography style control
-\usepackage[style=Bibliography/au-standard,backref,uniquename=init,usetranslator]{biblatex}
+% backref 			adds bibliography references to where work is cited
+\usepackage[bibstyle=Bibliography/au-standard,citestyle=Bibliography/authoryear-comp,backref,maxnames=2]{biblatex}
 \bibliography{Bibliography/Thesis,Bibliography/Launcher-manuals,Bibliography/BW1-papers}
 
 % allows editing of caption style
@@ -48,8 +49,14 @@
 % use with %\rowcolors {2}{}{gray!35}
 % seems to conflict with booktabs
 
+
 % load hyperref last
-\usepackage[bookmarks,colorlinks]{hyperref}
+\usepackage[pdftex,
+                     pdfauthor={Rogan Shimmin},
+                     pdftitle={Trajectory Design for a Very-Low-Thrust Lunar Mission Subject to Highly Non-Linear Constraints},
+                     pdfsubject={Spacecraft trajectory optimisation},
+                     bookmarks,
+                    colorlinks]{hyperref}
 \definecolor{hypercolor}{rgb}{0.4,0,0}
 \hypersetup{linkcolor=hypercolor,urlcolor=hypercolor,filecolor=hypercolor,citecolor=hypercolor}
 \def\chapterautorefname{Section}

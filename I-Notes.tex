@@ -14,6 +14,7 @@ Need review of \cite{Herman1998}
 
 need review of SMART-1 optimisation \cite{Schoenmaekers2004}
 
+% Optimisation methods
 \subsection{Optimisation methods}
 \textcite{McKay2011} provide a survey of non-keplerian orbits, which they define as any orbit with forces additional to the primary point-mass gravitational force. Their study was focussed towards using low thrust propulsion to maintain a stable orbit in the presence of these secondary forces, and while \BW\ requires a transfer trajectory rather than a stable orbit their paper does conclude that there are some serious deficiencies with established research in the area:
 \enquote{It is clear, however, that work still has to be done to transform the steadily growing body of literature on highly-non-Keplerian orbits from interesting theory into actual, practical missions.} 
@@ -69,8 +70,8 @@ T/W ratio of 1.3e-4
 
 All constant thrust, constant mass flow, giant spacecraft, does not address initial launch (inclination, capability to launch that mass). Due to simplifications like no external forces and constant thrust, the inverse costate equations were found allowing the Pontryagin principle to be exploited in order to get a very accurate initial guess for the thrust profiles in ascent and descent phases. SQP is then used to blend the phases together.
 
+% ------------------------------------------------ MODELLING ------------------------------------------------
 \section{MODELLING}
-\cite{Newton1687}
 \subsection{Time}
 \subsection{Reference frames}
 model keplerian coordinates diagram on \cite{Pollard2000}
@@ -119,7 +120,7 @@ much more worrying is the inner belt which extends from an altitude of 100~km (t
 
 reaction wheels for attitude control; at the moment no external thrusters for attitude control. It has been suggested to use the PPTs for reaction wheel desaturation, although they can only remove pitch and yaw, not roll.
 
-
+% ------------------------------------------------ OPTIMISATION ------------------------------------------------
 \section{OPTIMISATION}
 \subsection{Formulation}
 \subsection{State vector}
@@ -222,3 +223,40 @@ The ITRF93 high accuracy Earth rotation model takes into account:
 \item  True sidereal time using accurate values of TAI-UT1
 \item  Polar motion
 \end{itemize}
+
+
+
+backwards propagation allows optimisation of mass - once final dry mass is known, can propagate backwards to determine how much wet mass is required.
+
+
+\cite{Yam2011} attempts global search using basin hopping and simulated annealing, each hybridized with a local search algorithm. Has to approximate the low thrust maneouvre as a series of impulsive maneouvers.
+cartesian state
+theoretical nuclear electric mission to Jupiter, 2.26~N, 6000~s, 20000~kg with gravitational swing-bys.
+another one to Mercury, 1300~kg, 0.34~N and 3200~s.
+
+
+homotopy/embedding/continuation methods: optimise a simplified case (two body problem), then use that solution as the initial guess for a more sophisticated case, etc.
+
+
+direct transcription
+\begin{gather}
+n \approx (n_y + n_u)MN
+n_y = 8
+n_u = 4
+M = 4 optimisable phases
+N = 80,000 grid points per phase
+=2.56e6
+\end{gather}
+\cite{Betts1998}
+
+SOCS implements a sparse SQP method based on a Schur-complement algorithm suggested by Gill et al. (Stanford technical papers)
+Jacobian and Hessian matrices are computed efficiently using sparse finite differencing as proposed by Coleman1983 SIAM journal of numerical analysis and Curtis1974 Journal of the Institute of Mathematics and Applications
+
+\section{SOCS output}
+No DOF : number of parameters minus active constraints. Approx 50,000 for Cruise phase
+Cond KKT system: condition number of Hessian matrix of Lagrangian, from Newton's method: $A\vec{x}=\vec{b}$ where $A$ is the Hessian, $\vec{x}$ is the system and $\vec{b}$ represents the perturbations. A high condition number means the system is highly sensitive to small changes in the perturbation vector. Approx 1e11
+
+SOCS uses BFGS quasi-Netwon method to approximate Hessian (Broyden, Fletcher, Goldfarb, Schanno).
+
+Cruise with NASA libraries: 200000000 doubles and 80000000 words
+1e-4 opt tolerance, 1e-5 constraint tolerance, 2e-5 ODE tolerance

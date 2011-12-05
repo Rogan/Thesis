@@ -1,7 +1,10 @@
 \chapter{Conclusion} \label{cha:Conclusion}
 
+In any complex, concave optimisation problem the only way to be certain of an optimal solution is a brute force search. This is of course computationally prohibitive. Luckily, in the context of planetary missions it is not an operational requirement to find the optimal path, merely to find a good path. 
+
+
 \section{Summary of major findings}
-initial guess for trajectory perhaps not good. use velocity vector instead of tangent? This will maintain eccentricity, since lunar assist is best at "circularising" (lunar force will be applied at apoapsis, which will raise periapsis).
+initial guess for trajectory perhaps not good. use velocity vector instead of tangent? This will maintain eccentricity, since lunar assist is best at \enquote{circularising} (lunar force will be applied at apoapsis, which will raise periapsis).
 Also, if we can focus thrust around periapsis this will generate more delta v according to Oberth effect. This will increase the apoapsis, allowing lunar assists to increase the periapsis.
 
 \section{Conclusions of the research}
@@ -15,3 +18,11 @@ power surplus - use higher pulse frequency or additional thruster units
 Further applications of low thrust trajectory optimisation using SOCS and GESOP? IAC2011 paper
 try additional thrust profiles, for initial guess sensitivity (basins of convergence), montecarlo for trajectory sensitivity, and of course optimise the whole lot linked together - cruise phase should define descent
 use flight angle instead of unit thrust vector (no constraint evaluation required).
+
+
+
+
+
+
+
+
