@@ -657,7 +657,7 @@
 
 % --- Macro definitions ---
 
-\renewbibmacro*{maintitle+title}{%
+\newbibmacro*{maintitle+title}{%
   \iffieldsequal{maintitle}{title}
     {\clearfield{maintitle}%
      \clearfield{mainsubtitle}%
@@ -674,7 +674,7 @@
   \usebibmacro{title}%
   \newunit}
 
-\renewbibmacro*{maintitle+booktitle}{%
+\newbibmacro*{maintitle+booktitle}{%
   \iffieldundef{maintitle}
     {}
     {\usebibmacro{maintitle}%
@@ -687,7 +687,7 @@
   \usebibmacro{booktitle}%
   \newunit}
 
-\renewbibmacro*{journal+issuetitle}{%
+\newbibmacro*{journal+issuetitle}{%
   \usebibmacro{journal}%
   \setunit*{\addspace}%
   \iffieldundef{series}
@@ -702,7 +702,7 @@
   \usebibmacro{issue}%
   \newunit}
 
-\renewbibmacro*{volume+number+eid}{%
+\newbibmacro*{volume+number+eid}{%
   \printfield{volume}%
   \setunit*{}%\adddot}%
 \bibopenparen
@@ -711,7 +711,7 @@
   \setunit{}%\addcomma\space}%
   \printfield{eid}}
 
-\renewbibmacro*{title+issuetitle}{%
+\newbibmacro*{title+issuetitle}{%
   \usebibmacro{periodical}%
   \setunit*{\addspace}%
   \iffieldundef{series}
@@ -730,7 +730,7 @@
   \usebibmacro{issue}%
   \newunit}
 
-\renewbibmacro*{issue+date}{%
+\newbibmacro*{issue+date}{%
   \printtext[parens]{%
     \iffieldundef{issue}
       {\usebibmacro{date}}
@@ -739,7 +739,7 @@
        \usebibmacro{date}}}%
   \newunit}
 
-\renewbibmacro*{event+venue+date}{%
+\newbibmacro*{event+venue+date}{%
   \printfield{eventtitle}%
   \ifboolexpr{
     test {\iffieldundef{venue}}
@@ -754,13 +754,13 @@
        \printeventdate}}%
   \newunit}
 
-\renewbibmacro*{series+number}{%
+\newbibmacro*{series+number}{%
   \printfield{series}%
   \setunit*{\addspace}%
   \printfield{number}%
   \newunit}
 
-\renewbibmacro*{publisher+location+date}{%
+\newbibmacro*{publisher+location+date}{%
   \printlist{publisher}%
   \setunit*{\addcomma\space}
   \printlist{location}%
@@ -768,7 +768,7 @@
   \usebibmacro{date}%
   \newunit}
 
-\renewbibmacro*{institution+location+date}{%
+\newbibmacro*{institution+location+date}{%
   \printlist{institution}%
   \setunit*{\addcomma\space}
   \printlist{location}%
@@ -776,7 +776,7 @@
   \usebibmacro{date}%
   \newunit}
 
-\renewbibmacro*{organization+location+date}{%
+\newbibmacro*{organization+location+date}{%
   \printlist{organization}%
   \setunit*{\addcomma\space}
   \printlist{location}%
@@ -784,19 +784,19 @@
   \usebibmacro{date}%
   \newunit}
 
-\renewbibmacro*{location+date}{%
+\newbibmacro*{location+date}{%
   \printlist{location}%
   \setunit*{\addcomma\space}%
   \usebibmacro{date}%
   \newunit}
 
-\renewbibmacro*{chapter+pages}{%
+\newbibmacro*{chapter+pages}{%
   \printfield{chapter}%
   \setunit{\bibpagespunct}%
   \printfield{pages}%
   \newunit}
 
-\renewbibmacro*{note+pages}{%
+\newbibmacro*{note+pages}{%
   \iftoggle{bbx:note}
     {\printfield{note}}%
     {}
@@ -804,7 +804,7 @@
   \printfield{pages}%
   \newunit}
 
-\renewbibmacro*{doi+eprint+url}{%
+\newbibmacro*{doi+eprint+url}{%
   \iftoggle{bbx:doi}
     {\printfield{doi}}
     {}%
@@ -818,18 +818,18 @@
 %    {}
 }
 
-\renewbibmacro*{addendum+pubstate}{%
+\newbibmacro*{addendum+pubstate}{%
   \printfield{addendum}%
   \newunit\newblock
   \printfield{pubstate}}
 
-\renewbibmacro*{note}{%
+\newbibmacro*{note}{%
   \iftoggle{bbx:note}
     {\printfield{note}}%
     {}
   \newunit}
 
-\renewbibmacro*{language}{%
+\newbibmacro*{language}{%
   \iftoggle{bbx:language}
     {\printlist{language}}%
     {}
@@ -868,7 +868,7 @@
 \renewbibmacro*{editor+others}{%
   \usebibmacro{bbx:editor}{editor+othersstrg}}
 
-\renewbibmacro*{bbx:editor}[1]{%
+\newbibmacro*{bbx:editor}[1]{%
   \ifboolexpr{
     test \ifuseeditor
     and
@@ -889,7 +889,7 @@
 \renewbibmacro*{translator+others}{%
   \usebibmacro{bbx:translator}{translator+othersstrg}}
 
-\renewbibmacro*{bbx:translator}[1]{%
+\newbibmacro*{bbx:translator}[1]{%
   \ifboolexpr{
     test \ifusetranslator
     and
@@ -904,12 +904,12 @@
 %  \usebibmacro{date+extrayear}
 }
 
-\renewbibmacro*{date+extrayear}{%
+\newbibmacro*{date+extrayear}{%
   \iffieldundef{year}
     {}
     {\printtext[parens]{\printdateextra}}}
 
-\renewbibmacro*{labeltitle}{%
+\newbibmacro*{labeltitle}{%
   \iffieldundef{label}
     {\iffieldundef{shorttitle}
        {\printfield{title}%
@@ -975,7 +975,7 @@
      \ifblank{#2}{}{\addlowpenspace\mkbibnamefirst{#2}\isdot}%
      \ifblank{#3}{}{\addlowpenspace\mkbibnameprefix{#3}\isdot}}}
 
-\renewbibmacro*{edition}{%
+\newbibmacro*{edition}{%
   \iffieldundef{edition}
   {}
   {\printfield{edition}\printtext{\bibstring{edition}}}

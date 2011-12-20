@@ -1,5 +1,4 @@
 \chapter{Review of relevant literature} \label{cha:Literature-review}
-% This section will normally justify the project from a review of the literature on the topic. Also list the expected research outcomes.
 
 \section{Introduction} \label{sec:Lit-Review-Introduction}
 
@@ -7,6 +6,8 @@ There are two major fields of literature relevant to this project: firstly, stud
 
 % -------------------------------------------------------- Past missions --------------------------------------------------------
 \section{Past missions} \label{sec:Past-missions}
+
+% include review of \cite{Schoenmaekers2004}
 
 While \textcite{LePage1991} shows that there have been numerous Earth-orbiting satellites using electric thrusters for attitude control or station keeping, only a small number of spacecraft have ever escaped the Earth's sphere of influence using electric propulsion as the primary thrust. These are listed in \autoref{tab:Past-low-thrust-missions}, along with key specifications of their respective propulsion systems. Thrust is the maximum force that the primary propulsion system can exert on the craft. Power consumption is the amount of electrical power used to operate at this maximum thrust. Specific impulse, $I_{sp}$, is the momentum added by the thrusters per unit weight-on-Earth of propellant, and consequently represents the fuel efficiency of the thrusters. Electric propulsion is characterised by relatively high $I_{sp}$.
 
@@ -92,10 +93,42 @@ Planned electrically propelled missions include SMART-2, also known as LISA Path
 
 
 % -------------------------------------------------------- Optimisation methods --------------------------------------------------------
+
+% \cite{McKay2011} provide a survey of non-keplerian orbits, which they define as any orbit with forces additional to the primary point-mass gravitational force. Their study was focussed towards using low thrust propulsion to maintain a stable orbit in the presence of these secondary forces, and while \BW1 requires a transfer trajectory rather than a stable orbit their paper does conclude that there are some serious deficiencies with established research in the area: \enquote{It is clear, however, that work still has to be done to transform the steadily growing body of literature on highly-non-Keplerian orbits from interesting theory into actual, practical missions.}
+%evolutionary algorithms often need distributed computing environments due to the number of computations involved \textcite{Lee2005}
+%genetic algorithms and simulated annealing \textcite{Lee2005}
+%Pareto-optimality based on the economic theory by Italian Vilfredo Pareto, implying that it is the best solution that can be found without compromising other objectives, in this case the best fuel efficiency that can be found without taking an unreasonable amount of time. \parencite{Lee2005, Coverstone2000}
+%\textcite{Enright1992} hermite simpson/RK integration, direct shooting/multiple shooting/collocation, concludes -- direct transcription, NLP, \enquote{parallel shooting} RK
+%\begin{enumerate}
+%\item future work - lower thrust levels, lower initial and final orbits, non-coplanar transfers
+%\item size of problem - much better mesh distribution, exploit sparsity
+%\item lunar eccentricity and better geopotential do not affect problem size (just time to solve; longer computation each step, but doesn't increase the number of steps).
+%\end{enumerate}
+%Pierson \& Kluever optimised Earth escape, backwards propagation for Moon \enquote{capture} to maximise lunar energy after a given time, with a cruise phase in between.
+%Comparison of retrograde and posigrade terminal orbits. Posigrade gives better performance.
+%Very minimal improvement on initial guess suggests optimisation method ineffective.
+%\enquote{Hybrid} direct/indirect approach.
+%100,000~kg and 2942~N. What kind of electric propulsion?! And are they suggesting sending the ISS to lunar orbit?!
+%Uses SQP to solve 2PBVP
+%Melbourne and Sauer - Mars trajectories under solar gravity only
+%Breakwell and Rauch - patched two-body trajectories
+%Not much work on reduced three-body problem
+%London and Stuhlinger - patched two-body segments
+%Golan and Breakwell - variable thrust magnitude trajectories with no coasting arcs
+%Enright and conway - collocation, determining a single minimum fuel, low thrust, earth-moon transfer.
+%\textcite{Kluever1996} outlines his experimental procedure to find an initial guess: simulate under thrust, modifying phase time until near SOI. Then simulate for 7-8 days to observe the lunar fly-by, adjusting initial angle (in a 2D moon-fixed frame) until coasting trajectory enters SOI with negative moon-relative radial velocity component. Backwards propagate the lunar descent, adjusting phase length until the orbital energy is about the same as the end of the coasting arc.
+%Citing other peoples' graphs in Lit Review: .... Reproduced from \cite{}
+%\textcite{Kluever1997} extends the work to 3D, even includes a polar lunar orbit. Still starting from very high earth orbit, still much higher thrust. Uses direct optimisation but pontryagin necessary conditions to parameterise the intial guess control profile.
+%Initial guess based on 2D optimisations for GEO-HLO. Optimisation slowly converts plane change from HLO-LLO phase  until it is almost entirely included in GEO-HLO phase.
+%T/W ratio of 1.3e-4
+%\textcite{Kluever1995} assumes initial LEO in lunar plane.
+% All constant thrust, constant mass flow, giant spacecraft, does not address initial launch (inclination, capability to launch that mass). Due to simplifications like no external forces and constant thrust, the inverse costate equations were found allowing the Pontryagin principle to be exploited in order to get a very accurate initial guess for the thrust profiles in ascent and descent phases. SQP is then used to blend the phases together.
+% \cite{Herman1998}
+
 \section{Optimisation methods} \label{sec:Optimisation-methods}
 Traditional high-thrust chemical rocket trajectories do not need optimisation for lunar missions, since the duration is sufficiently small that perturbing forces are negligible. In the resulting restricted three-body scenario (the Earth and Moon are static, with a spacecraft of negligible mass orbiting them) there are simple analytical solutions for the trajectory.
 
-As outlined in \autoref{cha:Objectives} the task of optimising a low-thrust trajectory is somewhat more complex due to the long duration of forces acting on the orbit requiring lengthy integrations. For the reader unfamiliar with optimisation, an outline is provided in \autoref{cha:Optimisation-methods}. Specific trajectory optimisation techniques available to accomplish this task are described in \autoref{sec:Techniques}. This section addresses how effective previous studies have found those methods to be.
+As outlined in \autoref{cha:Objectives} the task of optimising a low-thrust trajectory is somewhat more complex due to the long duration of forces acting on the orbit requiring lengthy integrations. For the reader unfamiliar with optimisation, an outline is provided in \autoref{cha:Optimisation}. Specific trajectory optimisation techniques available to accomplish this task are described in \autoref{sec:Techniques}. This section addresses how effective previous studies have found those methods to be.
 
 % Optimal control
 \subsection{Optimal control} \label{sub:Optimal-control-lit}

@@ -1,6 +1,6 @@
 \chapter{Discussion of results} \label{cha:Discussion-of-results}
 
-\section{Preliminary results} \label{sec:Preliminary-results}
+\subsection{Gravitational assists}
 
 Due to the low thrust of spacecraft \BW, it is expected that a substantial part of the orbit raising will be achieved by exploiting gravitational assists from the Moon. This technique has been well studied, although previous higher-thrust missions did not find it efficient to attempt more than one or two lunar resonances. \textcite{Kemble2006} explains that \enquote{It is possible to utilise lunar gravity to assist in the orbit raising prior to lunar encounter. This takes the form of a \emph{gravitational pumping} effect if the correct phase with respect to the Moon can be established}. He goes on to quantify that \enquote{A typical $\Delta V$ saving of 800~ms$^{-1}$ is obtained by use of lunar gravity assist}. Due to the extended duration of \BW's transit, more lunar resonances should be possible than in a \enquote{typical} scenario, so this should reduce the required delta-v for \BW's ascent from GTO to lunar orbit from 4.1~kms$^{-1}$ to less than 3.3~kms$^{-1}$.
 
@@ -14,9 +14,11 @@ Because lunar gravitational assists provide delta-v without fuel expenditure, th
 \label{fig:Lunar_resonance}
 \end{figure}
 
-Regarding the thrust profile, it is well known that thrusting at particular points in the orbit are more efficient than others. \textcite{Kemble2006} once again explains, \enquote{Insertion of coast arcs allows the apogee raising input to be concentrated closer to perigee and hence increase the efficiency of the transfer (in terms of $\Delta V$ required)}. The reason for concentrating thrust near the perigee is known as the Oberth effect: over a period of thrusting, the specific orbital energy gained per unit delta-v exerted is equal to the instantaneous speed. Therefore thrusting is more efficient at high speed, which occurs at periapsis.
+\subsection{Oberth effect}
+
+Regarding the thrust profile, it is well known that thrusting at particular points in the orbit are more efficient than others. \textcite{Kemble2006} once again explains, \enquote{Insertion of coast arcs allows the apogee raising input to be concentrated closer to perigee and hence increase the efficiency of the transfer (in terms of $\Delta V$ required)}. The reason for concentrating thrust near the perigee is known as the Oberth effect: over a period of thrusting, the specific orbital energy gained per unit delta-v exerted is equal to the instantaneous speed \parencite{Oberth1923}. Therefore thrusting is more efficient at high speed, which occurs at periapsis.
  
-The resultant effect on the trajectory is that when variable thrust is implemented, the majority of the thrusting should occur near perigee; there should be an inverse relationship between thrust magnitude and orbital radius. The reverse seems apparent in \autoref{fig:Thrust_profile}, where smooth thrust input parabola appear to map points of greater orbital radius. This will be further investigated. It is likely that the observed variations in thrust magnitude are relatively insignificant (the magnitude is 6.31625$\pm$0.002~mN, so the variations represent only 0.03\%).
+The resultant effect on the trajectory is that when variable thrust is implemented, the majority of the thrusting should occur near perigee; there should be an inverse relationship between thrust magnitude and orbital radius. 
 
 \begin{figure}
 \begin{center}
@@ -26,9 +28,9 @@ The resultant effect on the trajectory is that when variable thrust is implement
 \label{fig:Thrust_profile}
 \end{figure}
 
-% Continuous thrust (tangential to the orbital radius) leads to circular trajectories because an eccentric starting trajectory spends more time at apoapsis than periapsis; hence more thrusting occurs at apoapsis than periapsis. As demonstrated by a Hohmann transfer, thrusting at apoapsis circularises the orbit.
+Continuous thrust (tangential to the orbital radius) leads to circular trajectories because an eccentric starting trajectory spends more time at apoapsis than periapsis; hence more thrusting occurs at apoapsis than periapsis. As demonstrated by a Hohmann transfer, thrusting at apoapsis circularises the orbit.
 
-This preliminary optimisation included no complex constraints on the thrusting profile such as cycling due to battery charging, Earth shadow or ground station communications. Implementing constraints such as these will require integration of the attitude control system to orient the spacecraft appropriately for battery charging or ground station communication, resulting in a much more complex pitch profile than that seen in \autoref{fig:BW1-Pitch}. The cycling observed in the figure is due to the elliptical orbit; at apogee and perigee the spacecraft is travelling perpendicularly to its position vector, resulting in a pitch angle of zero. As it travels towards the Earth, it has negative pitch angle, and positive pitch as it travels away again.
+The cycling observed in the figure is due to the elliptical orbit; at apogee and perigee the spacecraft is travelling perpendicularly to its position vector, resulting in a pitch angle of zero. As it travels towards the Earth, it has negative pitch angle, and positive pitch as it travels away again.
  
 \begin{figure}
 \begin{center}
@@ -47,8 +49,6 @@ As observed in \autoref{fig:Thrust_profile} the thrust of \BW\ is almost constan
 \caption{\BW\ T/W ratio compared to radial position during the orbit raising. Plot exported from ASTOS.}
 \label{fig:BW1-T/W-ratio}
 \end{figure}
-
-\section{Anticipated results} \label{sec:Anticipated-results}
 
 A spacecraft orbiting the Moon (in the same direction as the Moon orbits the Earth) undergoes a period of low velocity relative to the Earth every time it is on the Earthward side of the Moon. A spacecraft orbiting the Earth in a highly elliptical orbit undergoes a period of low velocity relative to the Earth when it reaches apoapsis, which is conveniently also the furthest point from the Earth, as shown in \autoref{fig:Apoapsis-and-periapsis}. Therefore the trajectory is expected to deliver the spacecraft at apoapsis to a \enquote{stationary point} in the intended lunar orbit, such that the Moon's gravity will then pull it into a steady lunar orbit, avoiding the need for a high-thrust capture maneuvre.
 
@@ -75,6 +75,85 @@ oscillations between ur and utheta - similar result to that discovered by \textc
 \textcite{Edelbaum1964} gives an outline of some optimal low-thrust maneouvres (a, e, plane changes)
 arg of periapsis most efficiently changed at low eccentricity, inclination at high eccentricity, RAAN constant, a at periapsis.
 
+\begin{figure}
+\begin{center}
+\includegraphics[width=\textwidth,clip,trim=60 230 60 250]{Images/Ascent/3D2.pdf}
+\end{center}
+\caption{Ascent trajectory in ECI frame.}
+\label{fig:Ascent-3D}
+\end{figure}
+
+\begin{figure}
+\begin{center}
+\includegraphics[width=\textwidth,clip,trim=30 200 30 210]{Images/Ascent/dist.pdf}
+\end{center}
+\caption{Satellite's distance from Earth and Moon during Ascent phase.}
+\label{fig:Ascent-dist}
+\end{figure}
+
+\begin{figure}
+\begin{center}
+\includegraphics[width=\textwidth,clip,trim=20 200 40 210]{Images/Ascent/kep.pdf}
+\end{center}
+\caption{Keplerian elements of satellite within ECI frame during Ascent phase.}
+\label{fig:Ascent-kep}
+\end{figure}
+
+\begin{figure}
+\begin{center}
+\includegraphics[width=\textwidth,clip,trim=20 200 40 210]{Images/Ascent/mee.pdf}
+\end{center}
+\caption{Equinoctial elements of satellite within ECI frame during Ascent phase.}
+\label{fig:Ascent-mee}
+\end{figure}
+
+\begin{figure}
+\begin{center}
+\includegraphics[width=\textwidth,clip,trim=100 200 40 200]{Images/Ascent/orbeng.pdf}
+\end{center}
+\caption{Orbital energy of the satellite relative to Earth and Moon during Ascent phase.}
+\label{fig:Ascent-orbeng}
+\end{figure}
+
+\begin{figure}
+\begin{center}
+\includegraphics[width=\textwidth,clip,trim=140 260 110 270]{Images/Ascent/pert.pdf}
+\end{center}
+\caption{Perturbing accelerations acting on spacecraft during Ascent phase.}
+\label{fig:Ascent-pert}
+\end{figure}
+
+\begin{figure}
+\begin{center}
+\includegraphics[width=\textwidth,clip,trim=140 260 110 270]{Images/Ascent/pert2.pdf}
+\end{center}
+\caption{Perturbing accelerations acting on spacecraft during Ascent phase.}
+\label{fig:Ascent-pert2}
+\end{figure}
+
+\begin{figure}
+\begin{center}
+\includegraphics[width=\textwidth,clip,trim=20 200 40 230]{Images/Ascent/thrust.pdf}
+\end{center}
+\caption{Direction of thrust vector during Ascent phase.}
+\label{fig:Ascent-thrust}
+\end{figure}
+
+\begin{figure}
+\begin{center}
+\includegraphics[width=\textwidth,clip,trim=140 200 40 220]{Images/Ascent/thrustM.pdf}
+\end{center}
+\caption{Magnitude of thrust vector during Ascent phase.}
+\label{fig:Ascent-thrustM}
+\end{figure}
+
+% Phase
+% DeltaV
+% Mass
+% Energy
+
+\clearpage
+
 \section{Cruise}
 Initial guess, simulation, optimisation
 Thrust profile - demonstrating Oberth affect by thrusting more at periapsis.
@@ -85,18 +164,410 @@ found that, due to the similar launch inclination coupled with the slow ascent l
 Also, very difficult to achieve polar lunar orbit with forwards propagation. Backwards propagation from lunar orbit will ascend in polar orbit, until lunar escape velocity achieved. Provided it escapes in the right direction (and doesn't achieve Earth escape velocity) it goes into high Earth orbit near lunar inclination - which is relatively near to launch inclination. Try backwards propagation for the whole transfer?
 circular orbit - rendezvous with moon can't really be scheduled, it will happen inevitably. can schedule effect of rendezvous perhaps? change inclination/eccentricity etc?
 
+\begin{figure}
+\begin{center}
+\includegraphics[width=\textwidth,clip,trim=60 230 60 250]{Images/Cruise/3D.pdf}
+\end{center}
+\caption{Cruise trajectory in ECI frame.}
+\label{fig:Cruise-3D}
+\end{figure}
+
+\begin{figure}
+\begin{center}
+\includegraphics[width=\textwidth,clip,trim=30 200 30 210]{Images/Cruise/dist.pdf}
+\end{center}
+\caption{Satellite's distance from Earth and Moon during Cruise phase.}
+\label{fig:Cruise-dist}
+\end{figure}
+
+\begin{figure}
+\begin{center}
+\includegraphics[width=\textwidth,clip,trim=20 200 40 210]{Images/Cruise/kep.pdf}
+\end{center}
+\caption{Keplerian elements of satellite within ECI frame during Cruise phase.}
+\label{fig:Cruise-kep}
+\end{figure}
+
+\begin{figure}
+\begin{center}
+\includegraphics[width=\textwidth,clip,trim=0 200 40 210]{Images/Cruise/mee.pdf}
+\end{center}
+\caption{Equinoctial elements of satellite within ECI frame during Cruise phase.}
+\label{fig:Cruise-mee}
+\end{figure}
+
+\begin{figure}
+\begin{center}
+\includegraphics[width=\textwidth,clip,trim=100 200 30 200]{Images/Cruise/orbeng.pdf}
+\end{center}
+\caption{Orbital energy of the satellite relative to Earth and Moon during Cruise phase.}
+\label{fig:Cruise-orbeng}
+\end{figure}
+
+\begin{figure}
+\begin{center}
+\includegraphics[width=\textwidth,clip,trim=80 220 10 200]{Images/Cruise/pert.pdf}
+\end{center}
+\caption{Perturbing accelerations acting on spacecraft during Cruise phase.}
+\label{fig:Cruise-pert}
+\end{figure}
+
+\begin{figure}
+\begin{center}
+\includegraphics[width=\textwidth,clip,trim=80 220 10 200]{Images/Cruise/pert2.pdf}
+\end{center}
+\caption{Perturbing accelerations acting on spacecraft during Cruise phase.}
+\label{fig:Cruise-pert2}
+\end{figure}
+
+\begin{figure}
+\begin{center}
+\includegraphics[width=\textwidth,clip,trim=0 200 40 230]{Images/Cruise/thrust.pdf}
+\end{center}
+\caption{Direction of thrust vector during Cruise phase.}
+\label{fig:Cruise-thrust}
+\end{figure}
+
+% Thrust direction and magnitude
+% Mass
+% DeltaV
+% Energy
+% Phase
+
+\clearpage 
+
+\section{Propagate}
+Initial guess, simulation, optimisation
+
+\begin{figure}
+\begin{center}
+\includegraphics[width=\textwidth,clip,trim=60 230 60 250]{Images/Propagate/3D.pdf}
+\end{center}
+\caption{Propagate trajectory in ECI frame.}
+\label{fig:Propagate-3D}
+\end{figure}
+
+\begin{figure}
+\begin{center}
+\includegraphics[width=\textwidth,clip,trim=140 230 100 250]{Images/Propagate/3D-lci.pdf}
+\end{center}
+\caption{Propagate trajectory in LCI frame.}
+\label{fig:Propagate-3D-lci}
+\end{figure}
+
+\begin{figure}
+\begin{center}
+\includegraphics[width=\textwidth,clip,trim=140 250 100 270]{Images/Propagate/3D-sel.pdf}
+\end{center}
+\caption{Propagate trajectory in SEL frame.}
+\label{fig:Propagate-3D-sel}
+\end{figure}
+
+\begin{figure}
+\begin{center}
+\includegraphics[width=\textwidth,clip,trim=30 200 30 210]{Images/Propagate/dist.pdf}
+\end{center}
+\caption{Satellite's distance from Earth and Moon during Propagate phase.}
+\label{fig:Propagate-dist}
+\end{figure}
+
+\begin{figure}
+\begin{center}
+\includegraphics[width=\textwidth,clip,trim=20 200 40 210]{Images/Propagate/kep.pdf}
+\end{center}
+\caption{Keplerian elements of satellite within ECI frame during Propagate phase.}
+\label{fig:Propagate-kep}
+\end{figure}
+
+\begin{figure}
+\begin{center}
+\includegraphics[width=\textwidth,clip,trim=20 200 40 210]{Images/Propagate/kep-lci.pdf}
+\end{center}
+\caption{Keplerian elements of satellite within LCI frame during Propagate phase.}
+\label{fig:Propagate-kep-lci}
+\end{figure}
+
+\begin{figure}
+\begin{center}
+\includegraphics[width=\textwidth,clip,trim=0 200 40 210]{Images/Propagate/mee.pdf}
+\end{center}
+\caption{Equinoctial elements of satellite within ECI frame during Propagate phase.}
+\label{fig:Propagate-mee}
+\end{figure}
+
+\begin{figure}
+\begin{center}
+\includegraphics[width=\textwidth,clip,trim=100 200 30 200]{Images/Propagate/orbeng.pdf}
+\end{center}
+\caption{Orbital energy of the satellite relative to Earth and Moon during Propagate phase.}
+\label{fig:Propagate-orbeng}
+\end{figure}
+
+\begin{figure}
+\begin{center}
+\includegraphics[width=\textwidth,clip,trim=80 220 10 200]{Images/Propagate/pert.pdf}
+\end{center}
+\caption{Perturbing accelerations acting on spacecraft during Propagate phase.}
+\label{fig:Propagate-pert}
+\end{figure}
+
+\begin{figure}
+\begin{center}
+\includegraphics[width=\textwidth,clip,trim=80 220 10 200]{Images/Propagate/pert2.pdf}
+\end{center}
+\caption{Perturbing accelerations acting on spacecraft during Propagate phase.}
+\label{fig:Propagate-pert2}
+\end{figure}
+
+\begin{figure}
+\begin{center}
+\includegraphics[width=\textwidth,clip,trim=20 200 10 220]{Images/Propagate/phase.pdf}
+\end{center}
+\caption{Angle between spacecraft and Moon during Propagate phase.}
+\label{fig:Propagate-phase}
+\end{figure}
+
+% Energy
+
+\clearpage
+
 \section{Capture}
 Initial guess, simulation, optimisation
 Increase phase duration until it gets close to escape.
 Adjust starting date until point where difference between satellite phase and lunar phase changes direction (i.e. satellite is near the same orbit as the moon) is close to 0\degrees.
 
+\begin{figure}
+\begin{center}
+\includegraphics[width=\textwidth,clip,trim=60 230 30 230]{Images/Capture/3D-eci.pdf}
+\end{center}
+\caption{Capture trajectory in ECI frame.}
+\label{fig:Capture-3D}
+\end{figure}
+
+\begin{figure}
+\begin{center}
+\includegraphics[width=\textwidth,clip,trim=60 220 10 230]{Images/Capture/3D-lci.pdf}
+\end{center}
+\caption{Capture trajectory in LCI frame.}
+\label{fig:Capture-3D-eci}
+\end{figure}
+
+\begin{figure}
+\begin{center}
+\includegraphics[width=\textwidth,clip,trim=60 230 50 250]{Images/Capture/3D-sel-above.pdf}
+\end{center}
+\caption{Capture trajectory in SEL frame viewed from Moon's pole.}
+\label{fig:Capture-3D-sel-above}
+\end{figure}
+
+\begin{figure}
+\begin{center}
+\includegraphics[width=\textwidth,clip,trim=60 210 40 250]{Images/Capture/3D-sel-side.pdf}
+\end{center}
+\caption{Capture trajectory in SEL frame viewed from Moon's equator.}
+\label{fig:Capture-3D-sel-side}
+\end{figure}
+
+\begin{figure}
+\begin{center}
+\includegraphics[width=\textwidth,clip,trim=30 200 30 210]{Images/Capture/dist.pdf}
+\end{center}
+\caption{Satellite's distance from Earth and Moon during Capture phase.}
+\label{fig:Capture-dist}
+\end{figure}
+
+\begin{figure}
+\begin{center}
+\includegraphics[width=\textwidth,clip,trim=20 200 40 210]{Images/Capture/kep-lci.pdf}
+\end{center}
+\caption{Keplerian elements of satellite within LCI frame during Capture phase.}
+\label{fig:Capture-kep-lci}
+\end{figure}
+
+\begin{figure}
+\begin{center}
+\includegraphics[width=\textwidth,clip,trim=0 200 40 210]{Images/Capture/mee.pdf}
+\end{center}
+\caption{Equinoctial elements of satellite within LCI frame during Capture phase.}
+\label{fig:Capture-mee}
+\end{figure}
+
+\begin{figure}
+\begin{center}
+\includegraphics[width=\textwidth,clip,trim=100 200 30 200]{Images/Capture/orbeng.pdf}
+\end{center}
+\caption{Orbital energy of the satellite relative to Earth and Moon during Capture phase.}
+\label{fig:Capture-orbeng}
+\end{figure}
+
+\begin{figure}
+\begin{center}
+\includegraphics[width=\textwidth,clip,trim=80 220 10 200]{Images/Capture/pert.pdf}
+\end{center}
+\caption{Perturbing accelerations acting on spacecraft during Capture phase.}
+\label{fig:Capture-pert}
+\end{figure}
+
+\begin{figure}
+\begin{center}
+\includegraphics[width=\textwidth,clip,trim=80 220 10 200]{Images/Capture/pert2.pdf}
+\end{center}
+\caption{Perturbing accelerations acting on spacecraft during Capture phase.}
+\label{fig:Capture-pert2}
+\end{figure}
+
+\begin{figure}
+\begin{center}
+\includegraphics[width=\textwidth,clip,trim=0 200 40 230]{Images/Capture/thrust.pdf}
+\end{center}
+\caption{Direction of thrust vector during Capture phase.}
+\label{fig:Capture-thrust}
+\end{figure}
+
+% Mass
+% DeltaV
+% Energy
+% Phase
+
+\clearpage
+
 \section{Descent}
 Initial guess, simulation, optimisation
+
+\begin{figure}
+\begin{center}
+\includegraphics[width=\textwidth,clip,trim=60 230 60 250]{Images/Descent/3D-lci.pdf}
+\end{center}
+\caption{Descent trajectory in LCI frame.}
+\label{fig:Descent-3D-lci}
+\end{figure}
+
+\begin{figure}
+\begin{center}
+\includegraphics[width=\textwidth,clip,trim=60 230 60 250]{Images/Descent/3D-sel.pdf}
+\end{center}
+\caption{Descent trajectory in SEL frame.}
+\label{fig:Descent-3D-sel}
+\end{figure}
+
+\begin{figure}
+\begin{center}
+\includegraphics[width=\textwidth,clip,trim=30 200 30 210]{Images/Descent/dist.pdf}
+\end{center}
+\caption{Satellite's distance from Earth and Moon during Descent phase.}
+\label{fig:Descent-dist}
+\end{figure}
+
+\begin{figure}
+\begin{center}
+\includegraphics[width=\textwidth,clip,trim=20 200 40 210]{Images/Descent/kep-lci.pdf}
+\end{center}
+\caption{Keplerian elements of satellite within LCI frame during Descent phase.}
+\label{fig:Descent-kep-lci}
+\end{figure}
+
+\begin{figure}
+\begin{center}
+\includegraphics[width=\textwidth,clip,trim=0 200 40 210]{Images/Descent/mee.pdf}
+\end{center}
+\caption{Equinoctial elements of satellite within ECI frame during Descent phase.}
+\label{fig:Descent-mee}
+\end{figure}
+
+\begin{figure}
+\begin{center}
+\includegraphics[width=\textwidth,clip,trim=100 200 30 200]{Images/Descent/orbeng.pdf}
+\end{center}
+\caption{Orbital energy of the satellite relative to Earth and Moon during Descent phase.}
+\label{fig:Descent-orbeng}
+\end{figure}
+
+\begin{figure}
+\begin{center}
+\includegraphics[width=\textwidth,clip,trim=80 220 10 200]{Images/Descent/pert.pdf}
+\end{center}
+\caption{Perturbing accelerations acting on spacecraft during Descent phase.}
+\label{fig:Descent-pert}
+\end{figure}
+
+\begin{figure}
+\begin{center}
+\includegraphics[width=\textwidth,clip,trim=80 220 10 200]{Images/Descent/pert2.pdf}
+\end{center}
+\caption{Perturbing accelerations acting on spacecraft during Descent phase.}
+\label{fig:Descent-pert2}
+\end{figure}
+
+\begin{figure}
+\begin{center}
+\includegraphics[width=\textwidth,clip,trim=0 200 40 230]{Images/Descent/thrust.pdf}
+\end{center}
+\caption{Direction of thrust vector during Descent phase.}
+\label{fig:Descent-thrust}
+\end{figure}
+
+% Mass
+% DeltaV
+% Energy
+% Phase
+
+\clearpage
 
 \section{Science}
 Initial guess, simulation
 plot of science orbit in LCI
 plot of science orbit in SEL!!!! 
+
+\begin{figure}
+\begin{center}
+\includegraphics[width=\textwidth,clip,trim=60 230 60 250]{Images/Science/3D-lci.pdf}
+\end{center}
+\caption{Science trajectory in LCI frame.}
+\label{fig:Science-3D-lci}
+\end{figure}
+
+\begin{figure}
+\begin{center}
+\includegraphics[width=\textwidth,clip,trim=60 230 60 250]{Images/Science/3D-sel.pdf}
+\end{center}
+\caption{Science trajectory in SEL frame.}
+\label{fig:Science-3D-sel}
+\end{figure}
+
+\begin{figure}
+\begin{center}
+\includegraphics[width=\textwidth,clip,trim=20 200 40 210]{Images/Science/kep-lci.pdf}
+\end{center}
+\caption{Keplerian elements of satellite within LCI frame during Science phase.}
+\label{fig:Science-kep-lci}
+\end{figure}
+
+\begin{figure}
+\begin{center}
+\includegraphics[width=\textwidth,clip,trim=0 200 40 210]{Images/Science/mee.pdf}
+\end{center}
+\caption{Equinoctial elements of satellite within ECI frame during Science phase.}
+\label{fig:Science-mee}
+\end{figure}
+
+\begin{figure}
+\begin{center}
+\includegraphics[width=\textwidth,clip,trim=80 220 10 200]{Images/Science/pert.pdf}
+\end{center}
+\caption{Perturbing accelerations acting on spacecraft during Science phase.}
+\label{fig:Science-pert}
+\end{figure}
+
+\begin{figure}
+\begin{center}
+\includegraphics[width=\textwidth,clip,trim=80 220 10 200]{Images/Science/pert2.pdf}
+\end{center}
+\caption{Perturbing accelerations acting on spacecraft during Science phase.}
+\label{fig:Science-pert2}
+\end{figure}
+
+% Energy
+% Phase
 
 \section{Validation}
 For obvious reasons there have been few experimental flights to validate low-thrust trajectory theory, and no flight testing is possible to verify this particular proposed trajectory. However, the laws governing forces acting on spacecraft are known better than other theory, for example atmospheric trajectories. This trajectory was imported into STK (Satellite Tool Kit), the most widely used industry tool for modelling spacecraft trajectories, provided by AGI (Analytical Graphics, Inc.). There were minor differences as seen in \ref{fig:STK-verification} due to different orders of complexity in Earth oblateness and the algorithms used to calculate third body perturbations, but these differences were essentially negligible as seen in \ref{fig:STK-error}.
