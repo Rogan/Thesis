@@ -105,7 +105,6 @@ L & = & \omega+\Omega+\nu \label{eq:L}
 \end{eqnarray}
 \end{subequations}
 where $p$ represents the semi-latus rectum, as shown in \autoref{fig:Elliptical-Conic-Section}, $L$ represents the true longitude and $f$, $g$, $h$ and $k$ are convenient non-singular transformations of the Keplerian elements, with no physical meaning.
-% \textcite{Chobotov2002} (p. 194) uses the original set of equinoctial elements proposed by \textcite{Broucke1972}.
 
 \begin{figure}[h]
 \begin{center}
@@ -114,6 +113,8 @@ where $p$ represents the semi-latus rectum, as shown in \autoref{fig:Elliptical-
 \caption{Elliptical conic section parameters.}
 \label{fig:Elliptical-Conic-Section}
 \end{figure}
+
+This lack of physical meaning has hindered the uptake of the modified equinoctial element set. Many published studies still use Keplerian or even Cartesian coordinates, and many widely used textbooks do not even mention the element set. For example \textcite[][p. 194]{Chobotov2002} outlines the original set of equinoctial elements proposed by \textcite{Broucke1972}, but neglects the modified set.
 
 \subsection{Sphere of influence}\label{sub:SOI}
 A sphere of influence defines the region of space in which a primary body dominates the gravitational forces on any small object such as a spacecraft. This is traditionally used to determine coasting trajectories of chemically propelled spacecraft, thus ignoring third-body gravitational forces. Due to the longer transfer times of low-thrust spacecraft it is necessary to include these additional gravitational forces. However, the sphere of influence provides a convenient point to switch the origin of our orbital elements, and is defined as
@@ -387,8 +388,7 @@ where $D(t)$ is the instantaneous aerodynamic drag, $g$ is the local gravitation
 
 Little can be done within the scope of this project to reduce atmospheric drag and gravity drag, since these effects are strongest during launch. However, gravity drag is still present during orbit raising if the thrust line has any component parallel to the gravitational force; when this occurs, the thrust is fighting against gravity rather than increasing the velocity of the spacecraft (and providing delta-v). Similarly, thrust vectoring decreases effective delta-v because the thrust is changing the direction of the spacecraft, rather than increasing its speed. 
 % These parameters will be monitored throughout the optimisation, and if gravity drag is significant modifications will be made to improve the results, for example by relaxing the constraints on thrust angle.
-
-% When an optimal result is found, the delta-v will form a very important performance criterion. It will be particularly important to track the gravitational assists from the Moon. 
+ 
 Delta-v forms a very important performance criterion. It is particularly important in tracking gravitational assists from the Moon, as velocity may be gained without expending delta-v in the form of thrust. Initial simulations at the Institut f\"{u}r Raumfahrtsystem determined an approximate benchmark of 3.5~kms$^{-1}$ \parencite{Roeser2006}. This includes an estimated 1.1~kms$^{-1}$ in phase 2 to ascend beyond the van Allen belts, 1.6~kms$^{-1}$ in phase 3 to cruise to near EML1, 0.5~kms$^{-1}$ to in phase 4 to be captured into a lunar orbit, and 0.4~kms$^{-1}$ in phase 5 to descend into the operating orbit.
 
 \subsection{Tsiolkovsky's rocket equation} \label{sec:Tsiolkovsky}
@@ -412,8 +412,6 @@ where $I_{sp}$ is the specific impulse (impulse, or change in momentum, gained p
 % Comparison of delta Vs? Required vs. used?
 
 \section{Summary} 
-% Statement of purpose
-
 % A mission was proposed by Universit\"{a}t Stuttgart to launch a small 200~kg satellite named \BW. This satellite will use a very low-thrust electric propulsion system to accelerate outwards until a proposed rendezvous is made with the Moon.
 
 % This research project aims to find innovative methods to optimise the trajectory of \BW. Given the very low-thrust of its propulsion system, the intention is to judiciously regulate thrusting to adjust the orbital parameters such that the gravitational pull of the Moon contributes substantially to the transfer. Constraints on the thrusting profile result in a high degree of non-linearity throughout the optimisation process, requiring improvement in optimisation methods.

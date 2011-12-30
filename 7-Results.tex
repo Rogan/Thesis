@@ -6,14 +6,6 @@ Due to the low thrust of spacecraft \BW, it is expected that a substantial part 
 
 Because lunar gravitational assists provide delta-v without fuel expenditure, they should be implicitly accounted for during optimisation. Preliminary results have already shown this to be the case, as seen in \autoref{fig:Lunar_resonance}. From an initial orbit of 180,000~km (semi-cis-lunar, representing the later stages of the transfer to highlight the lunar assist) the spacecraft takes two orbits to align its phase with the Moon, then receives a very apparent boost purely from the Moon's gravity.
 
-\begin{figure}
-\begin{center}
-%\includegraphics[width=\textwidth,clip,trim=60 45 0 0]{Images/Low-thrust-Moon-transfer.jpg}
-\end{center}
-\caption{Preliminary orbit raising. Plot exported from ASTOS.}
-\label{fig:Lunar_resonance}
-\end{figure}
-
 \subsection{Oberth effect}
 
 Regarding the thrust profile, it is well known that thrusting at particular points in the orbit are more efficient than others. \textcite{Kemble2006} once again explains, \enquote{Insertion of coast arcs allows the apogee raising input to be concentrated closer to perigee and hence increase the efficiency of the transfer (in terms of $\Delta V$ required)}. The reason for concentrating thrust near the perigee is known as the Oberth effect: over a period of thrusting, the specific orbital energy gained per unit delta-v exerted is equal to the instantaneous speed \parencite{Oberth1923}. Therefore thrusting is more efficient at high speed, which occurs at periapsis.
@@ -24,7 +16,7 @@ The resultant effect on the trajectory is that when variable thrust is implement
 \begin{center}
 %\includegraphics[width=\textwidth]{Images/thrust-vs-time.jpg}
 \end{center}
-\caption{Thrust exerted by \BW\ during the orbit raising. Plot exported from ASTOS.}
+\caption{Thrust profile during orbit raising.}
 \label{fig:Thrust_profile}
 \end{figure}
 
@@ -36,7 +28,7 @@ The cycling observed in the figure is due to the elliptical orbit; at apogee and
 \begin{center}
 %\includegraphics[width=\textwidth]{Images/pitch-vs-time.jpg}
 \end{center}
-\caption{Pitch angle of \BW\ during the orbit raising. Plot exported from ASTOS.}
+\caption{Pitch angle during the orbit raising.}
 \label{fig:BW1-Pitch}
 \end{figure}
 
@@ -66,7 +58,19 @@ To maximise the gravitational effect of the Moon on the spacecraft, it should be
  
 % quantify stochastic & deterministic inputs, robustness
 
-\section{Ascent} Initial guess, simulation, optimisation
+\section{Reduced complexity optimisation}
+
+
+
+Following the reduced complexity ascent, optimisation was attempted for a reduced complexity cruise phase. However, due to 
+
+\section{STK modelling}  
+
+\section{Ascent} 
+The ascent phase was modelled subject to the initial boundary conditions outlined in \autoref{tab:Phase-2-constraints} and final boundary conditions outlined in \autoref{tab:Phase-2-3-constraints}. An initial guess was taken for the thrust profile perpendicular to the orbital radius at all times throughout ascent, in order to raise the periapsis as quickly as possible beyond the van Allen belts.
+
+The 
+
 how initial guess was developed, simulation run from starting conditions of mission architecture with initial guess for thrust profile until approaching termination condition to get initial guess for delta L. Graph of perturbations on optimised trajectory, thrust profile of optimised trajectory, not significant - therefore just adjusting launch date. Only affects position of moon?
 compare fuel used with initial guess.
 then - ascent with variable thrust

@@ -1,3 +1,5 @@
+\part{Notes}
+
 Space debris
 Radiation - hardened hardware
 Explain van Allen Belts? Picture in earlier sections as per Falke and Letterio theses
@@ -67,24 +69,27 @@ homotopy/embedding/continuation methods: optimise a simplified case (two body pr
 
 
 direct transcription
+\begin{subequations}
 \begin{gather}
-n \approx (n_y + n_u)MN
-n_y = 8
-n_u = 4
-M = 4 optimisable phases
-N = 80,000 grid points per phase
-=2.56e6
+n \approx (n_y + n_u)MN \\
+n_y = 8 \\
+n_u = 4 \\
+M = 4 optimisable phases \\
+N = 80,000 grid points per phase \\
+=2.56e6 \\
 \end{gather}
+\end{subequations}
 \cite{Betts1998}
 
 SOCS implements a sparse SQP method based on a Schur-complement algorithm suggested by Gill et al. (Stanford technical papers)
-Jacobian and Hessian matrices are computed efficiently using sparse finite differencing as proposed by Coleman1983 SIAM journal of numerical analysis and Curtis1974 Journal of the Institute of Mathematics and Applications
+
+Jacobian and Hessian matrices are computed efficiently using sparse finite differencing as proposed by \cite{Coleman1983} SIAM journal of numerical analysis and \cite{Curtis1974} Journal of the Institute of Mathematics and Applications
 
 \section{SOCS output}
 No DOF : number of parameters minus active constraints. Approx 50,000 for Cruise phase
 Cond KKT system: condition number of Hessian matrix of Lagrangian, from Newton's method: $A\vec{x}=\vec{b}$ where $A$ is the Hessian, $\vec{x}$ is the system and $\vec{b}$ represents the perturbations. A high condition number means the system is highly sensitive to small changes in the perturbation vector. Approx 1e11
 
-SOCS uses BFGS quasi-Netwon method to approximate Hessian (Broyden, Fletcher, Goldfarb, Schanno).
+SOCS uses BFGS (Broyden-Fletcher-Goldfarb-Schanno) quasi-Netwon method to approximate Hessian .
 
 Cruise with NASA libraries: 200000000 doubles and 80000000 words
 1e-4 opt tolerance, 1e-5 constraint tolerance, 2e-5 ODE tolerance
