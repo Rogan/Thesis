@@ -1,6 +1,6 @@
 %% Creator: Inkscape 0.48.2, www.inkscape.org
 %% PDF/EPS/PS + LaTeX output extension by Johan Engelen, 2010
-%% Accompanies image file 'figure14.pdf' (pdf, eps, ps)
+%% Accompanies image file 'figure6.pdf' (pdf, eps, ps)
 %%
 %% To include the image in your LaTeX document, write
 %%   \input{<filename>.pdf_tex}
@@ -49,26 +49,23 @@
   \global\let\svgscale\undefined%
   \makeatother%
   \begin{picture}(1,0.75028993)%
-    \put(0,0){\includegraphics[width=\unitlength]{Images/Ascent2/figure14.pdf}}%
-    \put(0.18677604,0.06148749){\makebox(0,0)[lb]{\smash{−4}}}%
-    \put(0.26475694,0.06148749){\makebox(0,0)[lb]{\smash{−3}}}%
-    \put(0.34259201,0.06148749){\makebox(0,0)[lb]{\smash{−2}}}%
-    \put(0.42057292,0.06148749){\makebox(0,0)[lb]{\smash{−1}}}%
-    \put(0.50853646,0.06148749){\makebox(0,0)[lb]{\smash{0}}}%
-    \put(0.58651563,0.06148749){\makebox(0,0)[lb]{\smash{1}}}%
-    \put(0.66435243,0.06148749){\makebox(0,0)[lb]{\smash{2}}}%
-    \put(0.7423316,0.06148749){\makebox(0,0)[lb]{\smash{3}}}%
-    \put(0.8201684,0.06148749){\makebox(0,0)[lb]{\smash{4}}}%
-    \put(0.89814757,0.06148749){\makebox(0,0)[lb]{\smash{5x 10}}}%
-    \put(0.89916076,0.04296876){\makebox(0,0)[lb]{\smash{8}}}%
-    \put(0.10546875,0.09794583){\makebox(0,0)[lb]{\smash{−4}}}%
-    \put(0.10546875,0.1757809){\makebox(0,0)[lb]{\smash{−3}}}%
-    \put(0.10546875,0.2536177){\makebox(0,0)[lb]{\smash{−2}}}%
-    \put(0.10546875,0.33159687){\makebox(0,0)[lb]{\smash{−1}}}%
-    \put(0.11559583,0.40943368){\makebox(0,0)[lb]{\smash{0}}}%
-    \put(0.11559583,0.48741284){\makebox(0,0)[lb]{\smash{1}}}%
-    \put(0.11559583,0.56524965){\makebox(0,0)[lb]{\smash{2}}}%
-    \put(0.11559583,0.64322881){\makebox(0,0)[lb]{\smash{3x 10}}}%
-    \put(0.16290486,0.71252881){\makebox(0,0)[lb]{\smash{8}}}%
+    \put(0,0){\includegraphics[width=\unitlength]{Images/Cruise/figure6.pdf}}%
+    \put(0.15567153,0.05){\makebox(0,0)[lb]{\smash{600}}}%
+    \put(0.28718229,0.05){\makebox(0,0)[lb]{\smash{800}}}%
+    \put(0.4140625,0.05){\makebox(0,0)[lb]{\smash{1000}}}%
+    \put(0.54557292,0.05){\makebox(0,0)[lb]{\smash{1200}}}%
+    \put(0.67722743,0.05){\makebox(0,0)[lb]{\smash{1400}}}%
+    \put(0.80873785,0.05){\makebox(0,0)[lb]{\smash{1600}}}%
+    \put(0.11,0.09418402){\makebox(0,0)[lb]{\smash{180}}}%
+    \put(0.11,0.16377361){\makebox(0,0)[lb]{\smash{182}}}%
+    \put(0.11,0.23350659){\makebox(0,0)[lb]{\smash{184}}}%
+    \put(0.11,0.30324097){\makebox(0,0)[lb]{\smash{186}}}%
+    \put(0.11,0.37297534){\makebox(0,0)[lb]{\smash{188}}}%
+    \put(0.11,0.44256388){\makebox(0,0)[lb]{\smash{190}}}%
+    \put(0.11,0.51229826){\makebox(0,0)[lb]{\smash{192}}}%
+    \put(0.11,0.5820309){\makebox(0,0)[lb]{\smash{194}}}%
+    \put(0.11,0.65162118){\makebox(0,0)[lb]{\smash{196}}}%
+    \put(0.40769618,0.02){\makebox(0,0)[lb]{\smash{Mission time $t$ [days]}}}%
+    \put(0.11733194,0.26417847){\rotatebox{90}{\makebox(0,0)[lb]{\smash{Spacecraft mass [kg]}}}}%
   \end{picture}%
 \endgroup%

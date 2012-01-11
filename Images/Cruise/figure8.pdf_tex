@@ -1,6 +1,6 @@
 %% Creator: Inkscape 0.48.2, www.inkscape.org
 %% PDF/EPS/PS + LaTeX output extension by Johan Engelen, 2010
-%% Accompanies image file 'figure14.pdf' (pdf, eps, ps)
+%% Accompanies image file 'figure8.pdf' (pdf, eps, ps)
 %%
 %% To include the image in your LaTeX document, write
 %%   \input{<filename>.pdf_tex}
@@ -49,26 +49,20 @@
   \global\let\svgscale\undefined%
   \makeatother%
   \begin{picture}(1,0.75028993)%
-    \put(0,0){\includegraphics[width=\unitlength]{Images/Ascent2/figure14.pdf}}%
-    \put(0.18677604,0.06148749){\makebox(0,0)[lb]{\smash{−4}}}%
-    \put(0.26475694,0.06148749){\makebox(0,0)[lb]{\smash{−3}}}%
-    \put(0.34259201,0.06148749){\makebox(0,0)[lb]{\smash{−2}}}%
-    \put(0.42057292,0.06148749){\makebox(0,0)[lb]{\smash{−1}}}%
-    \put(0.50853646,0.06148749){\makebox(0,0)[lb]{\smash{0}}}%
-    \put(0.58651563,0.06148749){\makebox(0,0)[lb]{\smash{1}}}%
-    \put(0.66435243,0.06148749){\makebox(0,0)[lb]{\smash{2}}}%
-    \put(0.7423316,0.06148749){\makebox(0,0)[lb]{\smash{3}}}%
-    \put(0.8201684,0.06148749){\makebox(0,0)[lb]{\smash{4}}}%
-    \put(0.89814757,0.06148749){\makebox(0,0)[lb]{\smash{5x 10}}}%
-    \put(0.89916076,0.04296876){\makebox(0,0)[lb]{\smash{8}}}%
-    \put(0.10546875,0.09794583){\makebox(0,0)[lb]{\smash{−4}}}%
-    \put(0.10546875,0.1757809){\makebox(0,0)[lb]{\smash{−3}}}%
-    \put(0.10546875,0.2536177){\makebox(0,0)[lb]{\smash{−2}}}%
-    \put(0.10546875,0.33159687){\makebox(0,0)[lb]{\smash{−1}}}%
-    \put(0.11559583,0.40943368){\makebox(0,0)[lb]{\smash{0}}}%
-    \put(0.11559583,0.48741284){\makebox(0,0)[lb]{\smash{1}}}%
-    \put(0.11559583,0.56524965){\makebox(0,0)[lb]{\smash{2}}}%
-    \put(0.11559583,0.64322881){\makebox(0,0)[lb]{\smash{3x 10}}}%
-    \put(0.16290486,0.71252881){\makebox(0,0)[lb]{\smash{8}}}%
+    \put(0,0){\includegraphics[width=\unitlength]{Images/Cruise/figure8.pdf}}%
+    \put(0.16753472,0.05){\makebox(0,0)[lb]{\smash{600}}}%
+    \put(0.29701910,0.05){\makebox(0,0)[lb]{\smash{800}}}%
+    \put(0.42173090,0.05){\makebox(0,0)[lb]{\smash{1000}}}%
+    \put(0.55107118,0.05){\makebox(0,0)[lb]{\smash{1200}}}%
+    \put(0.68055556,0.05){\makebox(0,0)[lb]{\smash{1400}}}%
+    \put(0.81003993,0.05){\makebox(0,0)[lb]{\smash{1600}}}%
+    \put(0.16377292,0.07609999){\makebox(0,0)[lb]{\smash{0}}}%
+    \put(0.14438681,0.19762812){\makebox(0,0)[lb]{\smash{500}}}%
+    \put(0.13483819,0.31901006){\makebox(0,0)[lb]{\smash{1000}}}%
+    \put(0.13483819,0.44039374){\makebox(0,0)[lb]{\smash{1500}}}%
+    \put(0.13483819,0.56177743){\makebox(0,0)[lb]{\smash{2000}}}%
+    \put(0.13483819,0.68315937){\makebox(0,0)[lb]{\smash{2500}}}%
+    \put(0.12022569,0.2615743){\rotatebox{90}{\makebox(0,0)[lb]{\smash{$\Delta v$ expended [$ms^{-1}$]}}}}%
+    \put(0.41377257,0.02){\makebox(0,0)[lb]{\smash{Mission time $t$ [days]}}}%
   \end{picture}%
 \endgroup%

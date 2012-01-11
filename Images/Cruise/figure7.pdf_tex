@@ -49,38 +49,40 @@
   \global\let\svgscale\undefined%
   \makeatother%
   \begin{picture}(1,0.75028993)%
-    \put(0,0){\includegraphics[width=\unitlength]{Images/Ascent/figure7.pdf}}%
-    \put(0.08,0.57262812){\makebox(0,0)[lb]{\smash{2.5}}}%
-    \put(0.08,0.60272013){\makebox(0,0)[lb]{\smash{3.0}}}%
-    \put(0.08,0.63281215){\makebox(0,0)[lb]{\smash{3.5}}}%
-    \put(0.08,0.6629059){\makebox(0,0)[lb]{\smash{4.0}}}%
-    \put(0.16276042,0.71252951){\makebox(0,0)[lb]{\smash{$\times10^7$}}}%
-    \put(0.06,0.61501701){\rotatebox{90}{\makebox(0,0)[lb]{\smash{[m]}}}}%
+    \put(0,0){\includegraphics[width=\unitlength]{Images/Cruise/figure7.pdf}}%
+    \put(0.08,0.57957256){\makebox(0,0)[lb]{\smash{0.5}}}%
+    \put(0.08,0.60416631){\makebox(0,0)[lb]{\smash{1.0}}}%
+    \put(0.08,0.6286177){\makebox(0,0)[lb]{\smash{1.5}}}%
+    \put(0.08,0.65321145){\makebox(0,0)[lb]{\smash{2.0}}}%
+    \put(0.08,0.67766284){\makebox(0,0)[lb]{\smash{2.5}}}%
+    \put(0.16276042,0.71267397){\makebox(0,0)[lb]{\smash{$\times10^8$}}}%
+    \put(0.04,0.61487291){\rotatebox{90}{\makebox(0,0)[lb]{\smash{[m]}}}}%
     \put(0.87673611,0.67332256){\makebox(0,0)[lb]{\smash{\tiny{$a$}}}}%
-    \put(0.08,0.41927048){\makebox(0,0)[lb]{\smash{0.5}}}%
-    \put(0.08,0.46412118){\makebox(0,0)[lb]{\smash{0.6}}}%
-    \put(0.08,0.50897013){\makebox(0,0)[lb]{\smash{0.7}}}%
-    \put(0.06,0.4519684){\rotatebox{90}{\makebox(0,0)[lb]{\smash{[-]}}}}%
+    \put(0.06,0.42173055){\makebox(0,0)[lb]{\smash{0.05}}}%
+    \put(0.06,0.44994236){\makebox(0,0)[lb]{\smash{0.10}}}%
+    \put(0.06,0.47829826){\makebox(0,0)[lb]{\smash{0.15}}}%
+    \put(0.06,0.5066559){\makebox(0,0)[lb]{\smash{0.20}}}%
+    \put(0.04,0.4519684){\rotatebox{90}{\makebox(0,0)[lb]{\smash{[-]}}}}%
     \put(0.87803819,0.50897013){\makebox(0,0)[lb]{\smash{\tiny{$e$}}}}%
-    \put(0.08,0.27314895){\makebox(0,0)[lb]{\smash{2.0}}}%
-    \put(0.08,0.31322361){\makebox(0,0)[lb]{\smash{4.0}}}%
-    \put(0.08,0.35329826){\makebox(0,0)[lb]{\smash{6.0}}}%
-    \put(0.06,0.2773434){\rotatebox{90}{\makebox(0,0)[lb]{\smash{[rad]}}}}%
+    \put(0.08,0.27676527){\makebox(0,0)[lb]{\smash{2.0}}}%
+    \put(0.08,0.31756388){\makebox(0,0)[lb]{\smash{4.0}}}%
+    \put(0.08,0.35850659){\makebox(0,0)[lb]{\smash{6.0}}}%
+    \put(0.04,0.2771993){\rotatebox{90}{\makebox(0,0)[lb]{\smash{[rad]}}}}%
     \put(0.87326389,0.34186944){\makebox(0,0)[lb]{\smash{\tiny{$i$}}}}%
     \put(0.87326389,0.33015069){\makebox(0,0)[lb]{\smash{\tiny{$\omega$}}}}%
     \put(0.87326389,0.31409166){\makebox(0,0)[lb]{\smash{\tiny{$\Omega$}}}}%
-    \put(0.10546875,0.05){\makebox(0,0)[lb]{\smash{-140}}}%
-    \put(0.22583854,0.05){\makebox(0,0)[lb]{\smash{-135}}}%
-    \put(0.34621007,0.05){\makebox(0,0)[lb]{\smash{-130}}}%
-    \put(0.46657986,0.05){\makebox(0,0)[lb]{\smash{-125}}}%
-    \put(0.58694965,0.05){\makebox(0,0)[lb]{\smash{-120}}}%
-    \put(0.70732118,0.05){\makebox(0,0)[lb]{\smash{-115}}}%
-    \put(0.82769097,0.05){\makebox(0,0)[lb]{\smash{-110}}}%
-    \put(0.07,0.11226874){\makebox(0,0)[lb]{\smash{100}}}%
-    \put(0.07,0.14916111){\makebox(0,0)[lb]{\smash{200}}}%
-    \put(0.07,0.18590937){\makebox(0,0)[lb]{\smash{300}}}%
-    \put(0.06,0.11284722){\rotatebox{90}{\makebox(0,0)[lb]{\smash{[rad]}}}}%
+    \put(0.11950208,0.05){\makebox(0,0)[lb]{\smash{600}}}%
+    \put(0.25752257,0.05){\makebox(0,0)[lb]{\smash{800}}}%
+    \put(0.39076910,0.05){\makebox(0,0)[lb]{\smash{1000}}}%
+    \put(0.52878993,0.05){\makebox(0,0)[lb]{\smash{1200}}}%
+    \put(0.66695660,0.05){\makebox(0,0)[lb]{\smash{1400}}}%
+    \put(0.80497743,0.05){\makebox(0,0)[lb]{\smash{1600}}}%
     \put(0.38975694,0.02){\makebox(0,0)[lb]{\smash{Mission time $t$ [days]}}}%
+    \put(0.05,0.10185208){\makebox(0,0)[lb]{\smash{1000}}}%
+    \put(0.05,0.12745972){\makebox(0,0)[lb]{\smash{2000}}}%
+    \put(0.05,0.15306736){\makebox(0,0)[lb]{\smash{3000}}}%
+    \put(0.05,0.17867499){\makebox(0,0)[lb]{\smash{4000}}}%
+    \put(0.04,0.11299236){\rotatebox{90}{\makebox(0,0)[lb]{\smash{[rad]}}}}%
     \put(0.87673611,0.18026701){\makebox(0,0)[lb]{\smash{\tiny{$\nu$}}}}%
   \end{picture}%
 \endgroup%

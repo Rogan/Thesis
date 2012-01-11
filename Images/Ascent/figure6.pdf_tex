@@ -49,33 +49,27 @@
   \global\let\svgscale\undefined%
   \makeatother%
   \begin{picture}(1,0.75028993)%
-    \put(0,0){\includegraphics[width=\unitlength]{figure6.pdf}}%
-    \put(0.14178264,0.06148749){\makebox(0,0)[lb]{\smash{−140}}}%
-    \put(0.25651042,0.06148749){\makebox(0,0)[lb]{\smash{−135}}}%
-    \put(0.37123785,0.06148749){\makebox(0,0)[lb]{\smash{−130}}}%
-    \put(0.48596701,0.06148749){\makebox(0,0)[lb]{\smash{−125}}}%
-    \put(0.60069444,0.06148749){\makebox(0,0)[lb]{\smash{−120}}}%
-    \put(0.71542188,0.06148749){\makebox(0,0)[lb]{\smash{−115}}}%
-    \put(0.83015104,0.06148749){\makebox(0,0)[lb]{\smash{−110}}}%
-    \put(0.13237847,0.12543402){\makebox(0,0)[lb]{\smash{195}}}%
-    \put(0.13237847,0.17664895){\makebox(0,0)[lb]{\smash{200}}}%
-    \put(0.13237847,0.22772013){\makebox(0,0)[lb]{\smash{205}}}%
-    \put(0.13237847,0.27879131){\makebox(0,0)[lb]{\smash{210}}}%
-    \put(0.13237847,0.33000659){\makebox(0,0)[lb]{\smash{215}}}%
-    \put(0.13237847,0.38107604){\makebox(0,0)[lb]{\smash{220}}}%
-    \put(0.13237847,0.43214722){\makebox(0,0)[lb]{\smash{225}}}%
-    \put(0.13237847,0.4832184){\makebox(0,0)[lb]{\smash{230}}}%
-    \put(0.13237847,0.53443368){\makebox(0,0)[lb]{\smash{235}}}%
-    \put(0.13237847,0.58550312){\makebox(0,0)[lb]{\smash{240}}}%
-    \put(0.13237847,0.6365743){\makebox(0,0)[lb]{\smash{245}}}%
-    \put(0.13237847,0.68764548){\makebox(0,0)[lb]{\smash{250}}}%
-    \put(0.40769618,0.03269722){\makebox(0,0)[lb]{\smash{Missiontime}}}%
-    \put(0.5694441,0.03269722){\makebox(0,0)[lb]{\smash{t}}}%
-    \put(0.58911979,0.03269722){\makebox(0,0)[lb]{\smash{[}}}%
-    \put(0.59693229,0.03269722){\makebox(0,0)[lb]{\smash{days}}}%
-    \put(0.65263299,0.03269722){\makebox(0,0)[lb]{\smash{]}}}%
-    \put(0.11733194,0.26417847){\rotatebox{90}{\makebox(0,0)[lb]{\smash{Spacecraftmass[}}}}%
-    \put(0.11733194,0.47135381){\rotatebox{90}{\makebox(0,0)[lb]{\smash{kg}}}}%
-    \put(0.11733194,0.50057881){\rotatebox{90}{\makebox(0,0)[lb]{\smash{]}}}}%
+    \put(0,0){\includegraphics[width=\unitlength]{Images/Ascent/figure6.pdf}}%
+    \put(0.14178264,0.05){\makebox(0,0)[lb]{\smash{-140}}}%
+    \put(0.25651042,0.05){\makebox(0,0)[lb]{\smash{-135}}}%
+    \put(0.37123785,0.05){\makebox(0,0)[lb]{\smash{-130}}}%
+    \put(0.48596701,0.05){\makebox(0,0)[lb]{\smash{-125}}}%
+    \put(0.60069444,0.05){\makebox(0,0)[lb]{\smash{-120}}}%
+    \put(0.71542188,0.05){\makebox(0,0)[lb]{\smash{-115}}}%
+    \put(0.83015104,0.05){\makebox(0,0)[lb]{\smash{-110}}}%
+    \put(0.10,0.12543402){\makebox(0,0)[lb]{\smash{195}}}%
+    \put(0.10,0.17664895){\makebox(0,0)[lb]{\smash{200}}}%
+    \put(0.10,0.22772013){\makebox(0,0)[lb]{\smash{205}}}%
+    \put(0.10,0.27879131){\makebox(0,0)[lb]{\smash{210}}}%
+    \put(0.10,0.33000659){\makebox(0,0)[lb]{\smash{215}}}%
+    \put(0.10,0.38107604){\makebox(0,0)[lb]{\smash{220}}}%
+    \put(0.10,0.43214722){\makebox(0,0)[lb]{\smash{225}}}%
+    \put(0.10,0.4832184){\makebox(0,0)[lb]{\smash{230}}}%
+    \put(0.10,0.53443368){\makebox(0,0)[lb]{\smash{235}}}%
+    \put(0.10,0.58550312){\makebox(0,0)[lb]{\smash{240}}}%
+    \put(0.10,0.6365743){\makebox(0,0)[lb]{\smash{245}}}%
+    \put(0.10,0.68764548){\makebox(0,0)[lb]{\smash{250}}}%
+    \put(0.40769618,0.02){\makebox(0,0)[lb]{\smash{Mission time $t$ [days]}}}%
+    \put(0.08,0.26417847){\rotatebox{90}{\makebox(0,0)[lb]{\smash{Spacecraft mass [kg]}}}}%
   \end{picture}%
 \endgroup%

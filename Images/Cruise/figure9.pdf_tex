@@ -49,35 +49,36 @@
   \global\let\svgscale\undefined%
   \makeatother%
   \begin{picture}(1,0.75028993)%
-    \put(0,0){\includegraphics[width=\unitlength]{Images/Ascent2/figure9.pdf}}%
-    \put(0.08,0.55){\makebox(0,0)[lb]{\smash{1.5}}}%
-    \put(0.08,0.59){\makebox(0,0)[lb]{\smash{2.0}}}%
-    \put(0.08,0.63){\makebox(0,0)[lb]{\smash{2.5}}}%
-    \put(0.08,0.67){\makebox(0,0)[lb]{\smash{3.0}}}%
-    \put(0.16,0.71){\makebox(0,0)[lb]{\smash{$\times10^7$}}}%
-    \put(0.06,0.59){\rotatebox{90}{\makebox(0,0)[lb]{\smash{[m]}}}}%
-    \put(0.87673611,0.67346666){\makebox(0,0)[lb]{\smash{\tiny{$p$}}}}%
-    \put(0.08,0.30){\makebox(0,0)[lb]{\smash{0.0}}}%
-    \put(0.08,0.34){\makebox(0,0)[lb]{\smash{0.2}}}%
-    \put(0.08,0.39){\makebox(0,0)[lb]{\smash{0.4}}}%
-    \put(0.08,0.43){\makebox(0,0)[lb]{\smash{0.6}}}%
-    \put(0.06,0.36){\rotatebox{90}{\makebox(0,0)[lb]{\smash{[-]}}}}%
+    \put(0,0){\includegraphics[width=\unitlength]{Images/Cruise/figure9.pdf}}%
+    \put(0.08,0.54108819){\makebox(0,0)[lb]{\smash{0.5}}}%
+    \put(0.08,0.57494236){\makebox(0,0)[lb]{\smash{1.0}}}%
+    \put(0.08,0.60879652){\makebox(0,0)[lb]{\smash{1.5}}}%
+    \put(0.08,0.64279479){\makebox(0,0)[lb]{\smash{2.0}}}%
+    \put(0.08,0.67664895){\makebox(0,0)[lb]{\smash{2.5}}}%
+    \put(0.16276042,0.71252881){\makebox(0,0)[lb]{\smash{$\times10^8$}}}%
+    \put(0.04,0.59331562){\rotatebox{90}{\makebox(0,0)[lb]{\smash{[m]}}}}%
+    \put(0.87673611,0.67332256){\makebox(0,0)[lb]{\smash{\tiny{$p$}}}}%
+    \put(0.07,0.30164895){\makebox(0,0)[lb]{\smash{-0.1}}}%
+    \put(0.08,0.35054999){\makebox(0,0)[lb]{\smash{0.0}}}%
+    \put(0.08,0.3993052){\makebox(0,0)[lb]{\smash{0.1}}}%
+    \put(0.08,0.44806215){\makebox(0,0)[lb]{\smash{0.2}}}%
+    \put(0.04,0.36964722){\rotatebox{90}{\makebox(0,0)[lb]{\smash{[-]}}}}%
     \put(0.87673611,0.44516805){\makebox(0,0)[lb]{\smash{\tiny{$f$}}}}%
     \put(0.87673611,0.43388333){\makebox(0,0)[lb]{\smash{\tiny{$g$}}}}%
     \put(0.87673611,0.41478611){\makebox(0,0)[lb]{\smash{\tiny{$h$}}}}%
     \put(0.87673611,0.39959513){\makebox(0,0)[lb]{\smash{\tiny{$k$}}}}%
-    \put(0.07,0.12){\makebox(0,0)[lb]{\smash{100}}}%
-    \put(0.07,0.17){\makebox(0,0)[lb]{\smash{200}}}%
-    \put(0.07,0.21){\makebox(0,0)[lb]{\smash{300}}}%
-    \put(0.06,0.13){\rotatebox{90}{\makebox(0,0)[lb]{\smash{[rad]}}}}%
+    \put(0.11950208,0.05){\makebox(0,0)[lb]{\smash{600}}}%
+    \put(0.25752257,0.05){\makebox(0,0)[lb]{\smash{800}}}%
+    \put(0.3907691,0.05){\makebox(0,0)[lb]{\smash{1000}}}%
+    \put(0.52878993,0.05){\makebox(0,0)[lb]{\smash{1200}}}%
+    \put(0.6669566,0.05){\makebox(0,0)[lb]{\smash{1400}}}%
+    \put(0.79,0.05){\makebox(0,0)[lb]{\smash{1600}}}%
+    \put(0.055,0.11096666){\makebox(0,0)[lb]{\smash{1000}}}%
+    \put(0.055,0.14597847){\makebox(0,0)[lb]{\smash{2000}}}%
+    \put(0.055,0.18084513){\makebox(0,0)[lb]{\smash{3000}}}%
+    \put(0.055,0.21585729){\makebox(0,0)[lb]{\smash{4000}}}%
+    \put(0.04,0.13454861){\rotatebox{90}{\makebox(0,0)[lb]{\smash{[rad]}}}}%
+    \put(0.38975694,0.02){\makebox(0,0)[lb]{\smash{Mission time $t$ [days]}}}%
     \put(0.87543403,0.21932951){\makebox(0,0)[lb]{\smash{\tiny{$L$}}}}%
-    \put(0.12,0.05){\makebox(0,0)[lb]{\smash{0}}}%
-    \put(0.23,0.05){\makebox(0,0)[lb]{\smash{5}}}%
-    \put(0.34,0.05){\makebox(0,0)[lb]{\smash{10}}}%
-    \put(0.46,0.05){\makebox(0,0)[lb]{\smash{15}}}%
-    \put(0.57,0.05){\makebox(0,0)[lb]{\smash{20}}}%
-    \put(0.68,0.05){\makebox(0,0)[lb]{\smash{25}}}%
-    \put(0.80,0.05){\makebox(0,0)[lb]{\smash{30}}}%
-    \put(0.38,0.02){\makebox(0,0)[lb]{\smash{Mission time $t$ [days]}}}%
   \end{picture}%
 \endgroup%

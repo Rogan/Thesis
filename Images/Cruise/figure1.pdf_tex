@@ -1,6 +1,6 @@
 %% Creator: Inkscape 0.48.2, www.inkscape.org
 %% PDF/EPS/PS + LaTeX output extension by Johan Engelen, 2010
-%% Accompanies image file 'figure14.pdf' (pdf, eps, ps)
+%% Accompanies image file 'figure1.pdf' (pdf, eps, ps)
 %%
 %% To include the image in your LaTeX document, write
 %%   \input{<filename>.pdf_tex}
@@ -49,26 +49,24 @@
   \global\let\svgscale\undefined%
   \makeatother%
   \begin{picture}(1,0.75028993)%
-    \put(0,0){\includegraphics[width=\unitlength]{Images/Ascent2/figure14.pdf}}%
-    \put(0.18677604,0.06148749){\makebox(0,0)[lb]{\smash{−4}}}%
-    \put(0.26475694,0.06148749){\makebox(0,0)[lb]{\smash{−3}}}%
-    \put(0.34259201,0.06148749){\makebox(0,0)[lb]{\smash{−2}}}%
-    \put(0.42057292,0.06148749){\makebox(0,0)[lb]{\smash{−1}}}%
-    \put(0.50853646,0.06148749){\makebox(0,0)[lb]{\smash{0}}}%
-    \put(0.58651563,0.06148749){\makebox(0,0)[lb]{\smash{1}}}%
-    \put(0.66435243,0.06148749){\makebox(0,0)[lb]{\smash{2}}}%
-    \put(0.7423316,0.06148749){\makebox(0,0)[lb]{\smash{3}}}%
-    \put(0.8201684,0.06148749){\makebox(0,0)[lb]{\smash{4}}}%
-    \put(0.89814757,0.06148749){\makebox(0,0)[lb]{\smash{5x 10}}}%
-    \put(0.89916076,0.04296876){\makebox(0,0)[lb]{\smash{8}}}%
-    \put(0.10546875,0.09794583){\makebox(0,0)[lb]{\smash{−4}}}%
-    \put(0.10546875,0.1757809){\makebox(0,0)[lb]{\smash{−3}}}%
-    \put(0.10546875,0.2536177){\makebox(0,0)[lb]{\smash{−2}}}%
-    \put(0.10546875,0.33159687){\makebox(0,0)[lb]{\smash{−1}}}%
-    \put(0.11559583,0.40943368){\makebox(0,0)[lb]{\smash{0}}}%
-    \put(0.11559583,0.48741284){\makebox(0,0)[lb]{\smash{1}}}%
-    \put(0.11559583,0.56524965){\makebox(0,0)[lb]{\smash{2}}}%
-    \put(0.11559583,0.64322881){\makebox(0,0)[lb]{\smash{3x 10}}}%
-    \put(0.16290486,0.71252881){\makebox(0,0)[lb]{\smash{8}}}%
+    \put(0,0){\includegraphics[width=\unitlength]{Images/Cruise/figure1.pdf}}%
+    \put(0.23336285,0.05){\makebox(0,0)[lb]{\smash{-2.0}}}%
+    \put(0.35474479,0.05){\makebox(0,0)[lb]{\smash{-1.0}}}%
+    \put(0.48640104,0.05){\makebox(0,0)[lb]{\smash{0.0}}}%
+    \put(0.60778299,0.05){\makebox(0,0)[lb]{\smash{1.0}}}%
+    \put(0.72916667,0.05){\makebox(0,0)[lb]{\smash{2.0}}}%
+    \put(0.85069444,0.05){\makebox(0,0)[lb]{\smash{3.0}}}%
+    \put(0.89916111,0.02){\makebox(0,0)[lb]{\smash{$\times10^8$}}}%
+    \put(0.07,0.09997152){\makebox(0,0)[lb]{\smash{-2.5}}}%
+    \put(0.07,0.16073541){\makebox(0,0)[lb]{\smash{-2.0}}}%
+    \put(0.07,0.22135381){\makebox(0,0)[lb]{\smash{-1.5}}}%
+    \put(0.07,0.28211770){\makebox(0,0)[lb]{\smash{-1.0}}}%
+    \put(0.07,0.34288159){\makebox(0,0)[lb]{\smash{-0.5}}}%
+    \put(0.08,0.40350138){\makebox(0,0)[lb]{\smash{0.0}}}%
+    \put(0.08,0.46426527){\makebox(0,0)[lb]{\smash{0.5}}}%
+    \put(0.08,0.52488506){\makebox(0,0)[lb]{\smash{1.0}}}%
+    \put(0.08,0.58564895){\makebox(0,0)[lb]{\smash{1.5}}}%
+    \put(0.08,0.64641284){\makebox(0,0)[lb]{\smash{2.0}}}%
+    \put(0.16290486,0.71252951){\makebox(0,0)[lb]{\smash{$\times10^8$}}}%
   \end{picture}%
 \endgroup%

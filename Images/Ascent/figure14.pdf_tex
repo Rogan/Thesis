@@ -49,7 +49,7 @@
   \global\let\svgscale\undefined%
   \makeatother%
   \begin{picture}(1,0.75028993)%
-    \put(0,0){\includegraphics[width=\unitlength]{figure14.pdf}}%
+    \put(0,0){\includegraphics[width=\unitlength]{Images/Ascent/figure14.pdf}}%
     \put(0.18778993,0.06148749){\makebox(0,0)[lb]{\smash{−4}}}%
     \put(0.26461285,0.06148749){\makebox(0,0)[lb]{\smash{−3}}}%
     \put(0.34143576,0.06148749){\makebox(0,0)[lb]{\smash{−2}}}%

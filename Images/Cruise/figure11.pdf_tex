@@ -1,0 +1,89 @@
+%% Creator: Inkscape 0.48.2, www.inkscape.org
+%% PDF/EPS/PS + LaTeX output extension by Johan Engelen, 2010
+%% Accompanies image file 'figure11.pdf' (pdf, eps, ps)
+%%
+%% To include the image in your LaTeX document, write
+%%   \input{<filename>.pdf_tex}
+%%  instead of
+%%   \includegraphics{<filename>.pdf}
+%% To scale the image, write
+%%   \def\svgwidth{<desired width>}
+%%   \input{<filename>.pdf_tex}
+%%  instead of
+%%   \includegraphics[width=<desired width>]{<filename>.pdf}
+%%
+%% Images with a different path to the parent latex file can
+%% be accessed with the `import' package (which may need to be
+%% installed) using
+%%   \usepackage{import}
+%% in the preamble, and then including the image with
+%%   \import{<path to file>}{<filename>.pdf_tex}
+%% Alternatively, one can specify
+%%   \graphicspath{{<path to file>/}}
+%% 
+%% For more information, please see info/svg-inkscape on CTAN:
+%%   http://tug.ctan.org/tex-archive/info/svg-inkscape
+%%
+\begingroup%
+  \makeatletter%
+  \providecommand\color[2][]{%
+    \errmessage{(Inkscape) Color is used for the text in Inkscape, but the package 'color.sty' is not loaded}%
+    \renewcommand\color[2][]{}%
+  }%
+  \providecommand\transparent[1]{%
+    \errmessage{(Inkscape) Transparency is used (non-zero) for the text in Inkscape, but the package 'transparent.sty' is not loaded}%
+    \renewcommand\transparent[1]{}%
+  }%
+  \providecommand\rotatebox[2]{#2}%
+  \ifx\svgwidth\undefined%
+    \setlength{\unitlength}{576bp}%
+    \ifx\svgscale\undefined%
+      \relax%
+    \else%
+      \setlength{\unitlength}{\unitlength * \real{\svgscale}}%
+    \fi%
+  \else%
+    \setlength{\unitlength}{\svgwidth}%
+  \fi%
+  \global\let\svgwidth\undefined%
+  \global\let\svgscale\undefined%
+  \makeatother%
+  \begin{picture}(1,0.75028993)%
+    \put(0,0){\includegraphics[width=\unitlength]{figure11.pdf}}%
+    \put(0.17303264,0.06148749){\makebox(0,0)[lb]{\smash{600}}}%
+    \put(0.30150521,0.06148749){\makebox(0,0)[lb]{\smash{800}}}%
+    \put(0.42520313,0.06148749){\makebox(0,0)[lb]{\smash{1000}}}%
+    \put(0.55367535,0.06148749){\makebox(0,0)[lb]{\smash{1200}}}%
+    \put(0.68214757,0.06148749){\makebox(0,0)[lb]{\smash{1400}}}%
+    \put(0.81061979,0.06148749){\makebox(0,0)[lb]{\smash{1600}}}%
+    \put(0.15914375,0.09895833){\makebox(0,0)[lb]{\smash{−6}}}%
+    \put(0.15914375,0.15292291){\makebox(0,0)[lb]{\smash{−4}}}%
+    \put(0.15914375,0.2067427){\makebox(0,0)[lb]{\smash{−2}}}%
+    \put(0.16927083,0.26056215){\makebox(0,0)[lb]{\smash{0}}}%
+    \put(0.16927083,0.31438159){\makebox(0,0)[lb]{\smash{2}}}%
+    \put(0.16927083,0.36834513){\makebox(0,0)[lb]{\smash{4}}}%
+    \put(0.16927083,0.42216458){\makebox(0,0)[lb]{\smash{6}}}%
+    \put(0.16927083,0.47598402){\makebox(0,0)[lb]{\smash{8}}}%
+    \put(0.15957778,0.52994756){\makebox(0,0)[lb]{\smash{10}}}%
+    \put(0.15957778,0.58376701){\makebox(0,0)[lb]{\smash{12}}}%
+    \put(0.15957778,0.63758645){\makebox(0,0)[lb]{\smash{14
+x 10}}}%
+    \put(0.21657986,0.71252881){\makebox(0,0)[lb]{\smash{6}}}%
+    \put(0.14438681,0.23741284){\rotatebox{90}{\makebox(0,0)[lb]{\smash{Orbitalenergy}}}}%
+    \put(0.14438681,0.42129652){\rotatebox{90}{\makebox(0,0)[lb]{\smash{ǫ}}}}%
+    \put(0.14438681,0.44212986){\rotatebox{90}{\makebox(0,0)[lb]{\smash{[}}}}%
+    \put(0.14438681,0.44994236){\rotatebox{90}{\makebox(0,0)[lb]{\smash{m}}}}%
+    \put(0.13440417,0.47337986){\rotatebox{90}{\makebox(0,0)[lb]{\smash{2}}}}%
+    \put(0.14438681,0.48596666){\rotatebox{90}{\makebox(0,0)[lb]{\smash{s}}}}%
+    \put(0.13440417,0.49898749){\rotatebox{90}{\makebox(0,0)[lb]{\smash{−}}}}%
+    \put(0.13440417,0.51591458){\rotatebox{90}{\makebox(0,0)[lb]{\smash{2}}}}%
+    \put(0.14438681,0.52879097){\rotatebox{90}{\makebox(0,0)[lb]{\smash{]}}}}%
+    \put(0.41637674,0.03284166){\makebox(0,0)[lb]{\smash{Missiontime}}}%
+    \put(0.57812465,0.03284166){\makebox(0,0)[lb]{\smash{t}}}%
+    \put(0.59780035,0.03284166){\makebox(0,0)[lb]{\smash{[}}}%
+    \put(0.60561285,0.03284166){\makebox(0,0)[lb]{\smash{days}}}%
+    \put(0.66131354,0.03284166){\makebox(0,0)[lb]{\smash{]}}}%
+    \put(0.75607639,0.66941631){\makebox(0,0)[lb]{\smash{RelativetoEarth}}}%
+    \put(0.75607639,0.65335729){\makebox(0,0)[lb]{\smash{RelativetoMoon}}}%
+  \end{picture}%
+\endgroup%

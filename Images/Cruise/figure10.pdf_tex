@@ -49,28 +49,30 @@
   \global\let\svgscale\undefined%
   \makeatother%
   \begin{picture}(1,0.75028993)%
-    \put(0,0){\includegraphics[width=\unitlength]{Images/Ascent2/figure10.pdf}}%
-    \put(0.08,0.13541666){\makebox(0,0)[lb]{\smash{0.5}}}%
-    \put(0.08,0.20355868){\makebox(0,0)[lb]{\smash{1.0}}}%
-    \put(0.08,0.27184687){\makebox(0,0)[lb]{\smash{1.5}}}%
-    \put(0.08,0.34013333){\makebox(0,0)[lb]{\smash{2.0}}}%
-    \put(0.08,0.40841979){\makebox(0,0)[lb]{\smash{2.5}}}%
-    \put(0.08,0.47670798){\makebox(0,0)[lb]{\smash{3.0}}}%
-    \put(0.08,0.54499444){\makebox(0,0)[lb]{\smash{3.5}}}%
-    \put(0.08,0.6132809){\makebox(0,0)[lb]{\smash{4.0}}}%
-    \put(0.08,0.68156909){\makebox(0,0)[lb]{\smash{4.5}}}%
-    \put(0.16,0.71){\makebox(0,0)[lb]{\smash{$\times10^8$}}}%
-    \put(0.06,0.36){\rotatebox{90}{\makebox(0,0)[lb]{\smash{[m]}}}}%
-    \put(0.12528958,0.05){\makebox(0,0)[lb]{\smash{0}}}%
-    \put(0.23871528,0.05){\makebox(0,0)[lb]{\smash{5}}}%
-    \put(0.34751215,0.05){\makebox(0,0)[lb]{\smash{10}}}%
-    \put(0.4609375,0.05){\makebox(0,0)[lb]{\smash{15}}}%
-    \put(0.57450868,0.05){\makebox(0,0)[lb]{\smash{20}}}%
-    \put(0.68793403,0.05){\makebox(0,0)[lb]{\smash{25}}}%
-    \put(0.80150521,0.05){\makebox(0,0)[lb]{\smash{30}}}%
-    \put(0.38946701,0.02){\makebox(0,0)[lb]{\smash{Mission time $t$ [days]}}}%
-    \put(0.37456597,0.31756388){\makebox(0,0)[lb]{\smash{\tiny{Distance from Moon}}}}%
-    \put(0.37456597,0.28804999){\makebox(0,0)[lb]{\smash{\tiny{Distance from Earth}}}}%
-    \put(0.37456597,0.25853611){\makebox(0,0)[lb]{\smash{\tiny{Distance between bodies}}}}%
+    \put(0,0){\includegraphics[width=\unitlength]{figure10.pdf}}%
+    \put(0.11950208,0.06148749){\makebox(0,0)[lb]{\smash{600}}}%
+    \put(0.25752257,0.06148749){\makebox(0,0)[lb]{\smash{800}}}%
+    \put(0.3907691,0.06148749){\makebox(0,0)[lb]{\smash{1000}}}%
+    \put(0.52878993,0.06148749){\makebox(0,0)[lb]{\smash{1200}}}%
+    \put(0.6669566,0.06148749){\makebox(0,0)[lb]{\smash{1400}}}%
+    \put(0.80497743,0.06148749){\makebox(0,0)[lb]{\smash{1600}}}%
+    \put(0.11545139,0.15104166){\makebox(0,0)[lb]{\smash{1}}}%
+    \put(0.11545139,0.24754131){\makebox(0,0)[lb]{\smash{2}}}%
+    \put(0.11545139,0.34403958){\makebox(0,0)[lb]{\smash{3}}}%
+    \put(0.11545139,0.44053784){\makebox(0,0)[lb]{\smash{4}}}%
+    \put(0.11545139,0.53703784){\makebox(0,0)[lb]{\smash{5}}}%
+    \put(0.11545139,0.63353611){\makebox(0,0)[lb]{\smash{6x 10}}}%
+    \put(0.16276042,0.71252916){\makebox(0,0)[lb]{\smash{8}}}%
+    \put(0.10040486,0.36834513){\rotatebox{90}{\makebox(0,0)[lb]{\smash{[}}}}%
+    \put(0.10040486,0.37615763){\rotatebox{90}{\makebox(0,0)[lb]{\smash{m}}}}%
+    \put(0.10040486,0.39959513){\rotatebox{90}{\makebox(0,0)[lb]{\smash{]}}}}%
+    \put(0.38975694,0.03284166){\makebox(0,0)[lb]{\smash{Missiontime}}}%
+    \put(0.55135972,0.03284166){\makebox(0,0)[lb]{\smash{t}}}%
+    \put(0.57103611,0.03284166){\makebox(0,0)[lb]{\smash{[}}}%
+    \put(0.57884861,0.03284166){\makebox(0,0)[lb]{\smash{days}}}%
+    \put(0.63454861,0.03284166){\makebox(0,0)[lb]{\smash{]}}}%
+    \put(0.20934549,0.62340937){\makebox(0,0)[lb]{\smash{DistancefromMoon}}}%
+    \put(0.20934549,0.59360555){\makebox(0,0)[lb]{\smash{DistancefromEarth}}}%
+    \put(0.20934549,0.56409166){\makebox(0,0)[lb]{\smash{DistancefromEarthtoMoon}}}%
   \end{picture}%
 \endgroup%
