@@ -1,6 +1,6 @@
 %% Creator: Inkscape 0.48.2, www.inkscape.org
 %% PDF/EPS/PS + LaTeX output extension by Johan Engelen, 2010
-%% Accompanies image file 'figure10.pdf' (pdf, eps, ps)
+%% Accompanies image file 'figure16.pdf' (pdf, eps, ps)
 %%
 %% To include the image in your LaTeX document, write
 %%   \input{<filename>.pdf_tex}
@@ -49,24 +49,30 @@
   \global\let\svgscale\undefined%
   \makeatother%
   \begin{picture}(1,0.75028993)%
-    \put(0,0){\includegraphics[width=\unitlength]{Images/Cruise/figure10.pdf}}%
-    \put(0.11950208,0.05){\makebox(0,0)[lb]{\smash{600}}}%
-    \put(0.25752257,0.05){\makebox(0,0)[lb]{\smash{800}}}%
-    \put(0.39076910,0.05){\makebox(0,0)[lb]{\smash{1000}}}%
-    \put(0.52878993,0.05){\makebox(0,0)[lb]{\smash{1200}}}%
-    \put(0.66695660,0.05){\makebox(0,0)[lb]{\smash{1400}}}%
-    \put(0.80497743,0.05){\makebox(0,0)[lb]{\smash{1600}}}%
-    \put(0.38975694,0.02){\makebox(0,0)[lb]{\smash{Mission time $t$ [days]}}}%
-    \put(0.10,0.15104166){\makebox(0,0)[lb]{\smash{1}}}%
-    \put(0.10,0.24754131){\makebox(0,0)[lb]{\smash{2}}}%
-    \put(0.10,0.34403958){\makebox(0,0)[lb]{\smash{3}}}%
-    \put(0.10,0.44053784){\makebox(0,0)[lb]{\smash{4}}}%
-    \put(0.10,0.53703784){\makebox(0,0)[lb]{\smash{5}}}%
-    \put(0.10,0.63353611){\makebox(0,0)[lb]{\smash{6}}}%
-    \put(0.16276042,0.71252916){\makebox(0,0)[lb]{\smash{$\times10^8$}}}%
-    \put(0.08,0.36834513){\rotatebox{90}{\makebox(0,0)[lb]{\smash{[m]}}}}%
-    \put(0.20934549,0.62340937){\makebox(0,0)[lb]{\smash{\tiny{From Moon}}}}%
-    \put(0.20934549,0.59360555){\makebox(0,0)[lb]{\smash{\tiny{From Earth}}}}%
-    \put(0.20934549,0.56409166){\makebox(0,0)[lb]{\smash{\tiny{Between bodies}}}}%
+    \put(0,0){\includegraphics[width=\unitlength]{figure16.pdf}}%
+    \put(0.16059028,0.06148749){\makebox(0,0)[lb]{\smash{600}}}%
+    \put(0.29137674,0.06148749){\makebox(0,0)[lb]{\smash{800}}}%
+    \put(0.41724479,0.06148749){\makebox(0,0)[lb]{\smash{1000}}}%
+    \put(0.54788715,0.06148749){\makebox(0,0)[lb]{\smash{1200}}}%
+    \put(0.67852951,0.06148749){\makebox(0,0)[lb]{\smash{1400}}}%
+    \put(0.80931771,0.06148749){\makebox(0,0)[lb]{\smash{1600}}}%
+    \put(0.15682847,0.07609999){\makebox(0,0)[lb]{\smash{0}}}%
+    \put(0.15682847,0.18171319){\makebox(0,0)[lb]{\smash{2}}}%
+    \put(0.15682847,0.28732604){\makebox(0,0)[lb]{\smash{4}}}%
+    \put(0.15682847,0.39294062){\makebox(0,0)[lb]{\smash{6}}}%
+    \put(0.15682847,0.49855347){\makebox(0,0)[lb]{\smash{8}}}%
+    \put(0.14713542,0.60402222){\makebox(0,0)[lb]{\smash{10
+x 10}}}%
+    \put(0.2041375,0.71252916){\makebox(0,0)[lb]{\smash{10}}}%
+    \put(0.13208889,0.24927743){\rotatebox{90}{\makebox(0,0)[lb]{\smash{CumulativeEnergy[}}}}%
+    \put(0.13208889,0.49797534){\rotatebox{90}{\makebox(0,0)[lb]{\smash{J}}}}%
+    \put(0.13208889,0.51620451){\rotatebox{90}{\makebox(0,0)[lb]{\smash{]}}}}%
+    \put(0.41015625,0.03269722){\makebox(0,0)[lb]{\smash{Missiontime}}}%
+    \put(0.57190417,0.03269722){\makebox(0,0)[lb]{\smash{t}}}%
+    \put(0.59157986,0.03269722){\makebox(0,0)[lb]{\smash{[}}}%
+    \put(0.59939236,0.03269722){\makebox(0,0)[lb]{\smash{days}}}%
+    \put(0.65509236,0.03269722){\makebox(0,0)[lb]{\smash{]}}}%
+    \put(0.69227431,0.66941631){\makebox(0,0)[lb]{\smash{Usedbythrusters}}}%
+    \put(0.69227431,0.64988506){\makebox(0,0)[lb]{\smash{Generatedbysolarpanels}}}%
   \end{picture}%
 \endgroup%

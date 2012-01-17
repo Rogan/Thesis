@@ -49,41 +49,28 @@
   \global\let\svgscale\undefined%
   \makeatother%
   \begin{picture}(1,0.75028993)%
-    \put(0,0){\includegraphics[width=\unitlength]{figure11.pdf}}%
-    \put(0.17303264,0.06148749){\makebox(0,0)[lb]{\smash{600}}}%
-    \put(0.30150521,0.06148749){\makebox(0,0)[lb]{\smash{800}}}%
-    \put(0.42520313,0.06148749){\makebox(0,0)[lb]{\smash{1000}}}%
-    \put(0.55367535,0.06148749){\makebox(0,0)[lb]{\smash{1200}}}%
-    \put(0.68214757,0.06148749){\makebox(0,0)[lb]{\smash{1400}}}%
-    \put(0.81061979,0.06148749){\makebox(0,0)[lb]{\smash{1600}}}%
-    \put(0.15914375,0.09895833){\makebox(0,0)[lb]{\smash{−6}}}%
-    \put(0.15914375,0.15292291){\makebox(0,0)[lb]{\smash{−4}}}%
-    \put(0.15914375,0.2067427){\makebox(0,0)[lb]{\smash{−2}}}%
-    \put(0.16927083,0.26056215){\makebox(0,0)[lb]{\smash{0}}}%
-    \put(0.16927083,0.31438159){\makebox(0,0)[lb]{\smash{2}}}%
-    \put(0.16927083,0.36834513){\makebox(0,0)[lb]{\smash{4}}}%
-    \put(0.16927083,0.42216458){\makebox(0,0)[lb]{\smash{6}}}%
-    \put(0.16927083,0.47598402){\makebox(0,0)[lb]{\smash{8}}}%
-    \put(0.15957778,0.52994756){\makebox(0,0)[lb]{\smash{10}}}%
-    \put(0.15957778,0.58376701){\makebox(0,0)[lb]{\smash{12}}}%
-    \put(0.15957778,0.63758645){\makebox(0,0)[lb]{\smash{14
-x 10}}}%
-    \put(0.21657986,0.71252881){\makebox(0,0)[lb]{\smash{6}}}%
-    \put(0.14438681,0.23741284){\rotatebox{90}{\makebox(0,0)[lb]{\smash{Orbitalenergy}}}}%
-    \put(0.14438681,0.42129652){\rotatebox{90}{\makebox(0,0)[lb]{\smash{ǫ}}}}%
-    \put(0.14438681,0.44212986){\rotatebox{90}{\makebox(0,0)[lb]{\smash{[}}}}%
-    \put(0.14438681,0.44994236){\rotatebox{90}{\makebox(0,0)[lb]{\smash{m}}}}%
-    \put(0.13440417,0.47337986){\rotatebox{90}{\makebox(0,0)[lb]{\smash{2}}}}%
-    \put(0.14438681,0.48596666){\rotatebox{90}{\makebox(0,0)[lb]{\smash{s}}}}%
-    \put(0.13440417,0.49898749){\rotatebox{90}{\makebox(0,0)[lb]{\smash{−}}}}%
-    \put(0.13440417,0.51591458){\rotatebox{90}{\makebox(0,0)[lb]{\smash{2}}}}%
-    \put(0.14438681,0.52879097){\rotatebox{90}{\makebox(0,0)[lb]{\smash{]}}}}%
-    \put(0.41637674,0.03284166){\makebox(0,0)[lb]{\smash{Missiontime}}}%
-    \put(0.57812465,0.03284166){\makebox(0,0)[lb]{\smash{t}}}%
-    \put(0.59780035,0.03284166){\makebox(0,0)[lb]{\smash{[}}}%
-    \put(0.60561285,0.03284166){\makebox(0,0)[lb]{\smash{days}}}%
-    \put(0.66131354,0.03284166){\makebox(0,0)[lb]{\smash{]}}}%
-    \put(0.75607639,0.66941631){\makebox(0,0)[lb]{\smash{RelativetoEarth}}}%
-    \put(0.75607639,0.65335729){\makebox(0,0)[lb]{\smash{RelativetoMoon}}}%
+    \put(0,0){\includegraphics[width=\unitlength]{Images/Cruise/figure11.pdf}}%
+    \put(0.17303264,0.05){\makebox(0,0)[lb]{\smash{600}}}%
+    \put(0.30150521,0.05){\makebox(0,0)[lb]{\smash{800}}}%
+    \put(0.42520313,0.05){\makebox(0,0)[lb]{\smash{1000}}}%
+    \put(0.55367535,0.05){\makebox(0,0)[lb]{\smash{1200}}}%
+    \put(0.68214757,0.05){\makebox(0,0)[lb]{\smash{1400}}}%
+    \put(0.81061979,0.05){\makebox(0,0)[lb]{\smash{1600}}}%
+    \put(0.41637674,0.02){\makebox(0,0)[lb]{\smash{Mission time $t$ [days]}}}%
+    \put(0.13,0.09895833){\makebox(0,0)[lb]{\smash{-6}}}%
+    \put(0.13,0.15292291){\makebox(0,0)[lb]{\smash{-4}}}%
+    \put(0.13,0.2067427){\makebox(0,0)[lb]{\smash{-2}}}%
+    \put(0.14,0.26056215){\makebox(0,0)[lb]{\smash{0}}}%
+    \put(0.14,0.31438159){\makebox(0,0)[lb]{\smash{2}}}%
+    \put(0.14,0.36834513){\makebox(0,0)[lb]{\smash{4}}}%
+    \put(0.14,0.42216458){\makebox(0,0)[lb]{\smash{6}}}%
+    \put(0.14,0.47598402){\makebox(0,0)[lb]{\smash{8}}}%
+    \put(0.12,0.52994756){\makebox(0,0)[lb]{\smash{10}}}%
+    \put(0.12,0.58376701){\makebox(0,0)[lb]{\smash{12}}}%
+    \put(0.12,0.63758645){\makebox(0,0)[lb]{\smash{14}}}%
+    \put(0.21657986,0.71252881){\makebox(0,0)[lb]{\smash{$\times10^6$}}}%
+    \put(0.10,0.23){\rotatebox{90}{\makebox(0,0)[lb]{\smash{Orbital energy $\epsilon$ [$m^2s^{-2}$]}}}}%
+    \put(0.75607639,0.66941631){\makebox(0,0)[lb]{\smash{\tiny{From Earth}}}}%
+    \put(0.75607639,0.65335729){\makebox(0,0)[lb]{\smash{\tiny{From Moon}}}}%
   \end{picture}%
 \endgroup%

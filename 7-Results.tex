@@ -183,7 +183,7 @@ Given the arbitrary nature of these continuity conditions, they were used for th
 \centering
 \def\svgwidth{\figurewidth}
 \input{Images/Ascent/figure10.pdf_tex}
-\caption{Satellite's distance from Earth and Moon during Ascent phase.}
+\caption{Satellite's distance from Earth and Moon during ascent phase.}
 \label{fig:Ascent-dist}
 \end{figure}
 
@@ -193,7 +193,7 @@ The orbital energy of the spacecraft relative to the two bodies shown in \autore
 \centering
 \def\svgwidth{\figurewidth}
 \input{Images/Ascent/figure11.pdf_tex}
-\caption{Orbital energy of the satellite relative to Earth and Moon during Ascent phase.}
+\caption{Orbital energy of the satellite relative to Earth and Moon during ascent phase.}
 \label{fig:Ascent-orbeng}
 \end{figure}
 
@@ -203,7 +203,7 @@ The thrust profile calculated by the optimisation is shown in \autoref{fig:Ascen
 \centering
 \def\svgwidth{\figurewidth}
 \input{Images/Ascent/figure2.pdf_tex}
-\caption{Direction of thrust vector during Ascent phase.}
+\caption{Direction of thrust vector during ascent phase.}
 \label{fig:Ascent-thrust}
 \end{figure}
 
@@ -211,7 +211,7 @@ The thrust profile calculated by the optimisation is shown in \autoref{fig:Ascen
 \centering
 \def\svgwidth{\figurewidth}
 \input{Images/Ascent/figure3.pdf_tex}
-\caption{Magnitude of thrust vector during Ascent phase.}
+\caption{Magnitude of thrust vector during ascent phase.}
 \label{fig:Ascent-thrustM}
 \end{figure}
 
@@ -221,7 +221,7 @@ The thrust profile calculated by the optimisation is shown in \autoref{fig:Ascen
 \centering
 \def\svgwidth{\figurewidth}
 \input{Images/Ascent/figure9.pdf_tex}
-\caption{Equinoctial elements of satellite within ECI frame during Ascent phase.}
+\caption{Equinoctial elements of satellite within ECI frame during ascent phase.}
 \label{fig:Ascent-mee}
 \end{figure}
 
@@ -229,17 +229,17 @@ The thrust profile calculated by the optimisation is shown in \autoref{fig:Ascen
 \centering
 \def\svgwidth{\figurewidth}
 \input{Images/Ascent/figure7.pdf_tex}
-\caption{Keplerian elements of satellite within ECI frame during Ascent phase.}
+\caption{Keplerian elements of satellite within ECI frame during ascent phase.}
 \label{fig:Ascent-kep}
 \end{figure}
 
-The stronger forces acting on the spacecraft during the ascent phase are shown in \autoref{fig:Ascent-pert}, and the weaker forces in \autoref{fig:Ascent-pert2}. It is immediately apparent that only the Earth's oblateness plays a significant role in defining the spacecraft trajectory from such a low orbit. However, as outlined in \autoref{sub:Oblateness} this only affects the argument of periapsis and right ascension of the ascending node, and therefore cannot be exploited to raise the orbit faster. As outlined above, adjusting the argument of periapsis may assist with lining up gravitational assists from the Moon later in the transfer, but due to the limitation of modelling phases separately this assist could not be incorporated. Consequently, the thrust profile was optimised purely for a fast ascent. Interestingly, the optimiser did adjust the trajectory starting date from the initial guess derived from STK, which has the effect of adjusting the phase between the spacecraft and the Moon. This shows that even the relatively weak lunar gravity present during this phase may still be exploited. The orders of magnitude between the forces shown in \autoref{fig:Ascent-pert} and the gravitational forces due to Jupiter, Venus and Mars highlight the reason why so many earlier studies neglect these forces. 
+The stronger forces acting on the spacecraft during the ascent phase are shown in \autoref{fig:Ascent-pert}, and the weaker forces in \autoref{fig:Ascent-pert2}. It is immediately apparent that only the Earth's oblateness plays a significant role in defining the spacecraft trajectory from such a low orbit. However, as outlined in \autoref{sub:Oblateness} this only affects the argument of periapsis and right ascension of the ascending node, and therefore cannot be exploited to raise the orbit faster. As outlined above, adjusting the argument of periapsis may assist with lining up gravitational assists from the Moon later in the transfer, but due to the limitation of modelling phases separately this assist could not be incorporated. Consequently, the thrust profile was optimised purely for a fast ascent. Interestingly, the optimiser did adjust the trajectory starting date from the initial guess derived from STK, which has the effect of adjusting the phase between the spacecraft and the Moon. This shows that even the relatively weak lunar gravity present during this phase may still be exploited. The orders of magnitude between the forces shown in \autoref{fig:Ascent-pert} and the gravitational forces due to Jupiter, Venus and Mars in \autoref{fig:Ascent-pert2} highlight the reason why so many earlier studies neglect these forces. 
 
 \begin{figure}
 \centering
 \def\svgwidth{\figurewidth}
 \input{Images/Ascent/figure4.pdf_tex}
-\caption{Perturbing accelerations acting on spacecraft during Ascent phase.}
+\caption{Perturbing accelerations acting on spacecraft during ascent phase.}
 \label{fig:Ascent-pert}
 \end{figure}
 
@@ -247,29 +247,32 @@ The stronger forces acting on the spacecraft during the ascent phase are shown i
 \centering
 \def\svgwidth{\figurewidth}
 \input{Images/Ascent/figure5.pdf_tex}
-\caption{Perturbing accelerations acting on spacecraft during Ascent phase.}
+\caption{Perturbing accelerations acting on spacecraft during ascent phase.}
 \label{fig:Ascent-pert2}
 \end{figure}
 
-The practically constant thrust results in a linear fuel consumption. The simulation of this phase suggested approximately 60~kg worth of ammonia would be required. %compare to initial guess?
+The practically constant thrust results in a linear fuel consumption. Consequently this simulation suggested approximately 60~kg worth of ammonia would be required for the ascent phase. %compare to initial guess?
 
 %\begin{figure}
 %\centering
 %\def\svgwidth{\figurewidth}
 %\input{Images/Ascent/figure6.pdf_tex}
-%\caption{Mass of spacecraft during Ascent phase.}
+%\caption{Mass of spacecraft during ascent phase.}
 %\label{fig:Ascent-mass}
 %\end{figure}
 
-% Phase (figure12)
+% Mass (figure6)
 % DeltaV (figure8)
+% Phase (figure12)
+% LCI kep (figure13)
+% LCI 3D (figure14)
+% SEL 3D (figure15)
 % Energy (figure16)
 
 \clearpage
 
 \section{Cruise}
-Initial guess, simulation, optimisation
-Thrust profile - demonstrating Oberth affect by thrusting more at periapsis.
+The initial guess for the cruise phase was also taken from the STK simulation, and subjected to boundary conditions as outlined in \autoref{sub:BVP}.
 Multiple different initial guesses based on power - leading to lunar capture
 optimising cruise phase forwards to given termination condition (SOI) causes numerical errors (gets pulled into lunar orbit and so L (ECI) is no longer independent, or gets thrown into escape trajectory and so L (ECI) no longer increases, or ...).
 tried backward propagating from final orbit, but thrusting tangentially does not change inclination so it is difficult to achieve the nearly polar orbit required.
@@ -288,16 +291,34 @@ circular orbit - rendezvous with moon can't really be scheduled, it will happen 
 \begin{figure}
 \centering
 \def\svgwidth{\figurewidth}
-%\input{Images/Cruise/figure10.pdf_tex}
-\caption{Satellite's distance from Earth and Moon during Cruise phase.}
+\input{Images/Cruise/figure10.pdf_tex}
+\caption{Satellite's distance from Earth and Moon during cruise phase.}
 \label{fig:Cruise-dist}
 \end{figure}
 
 \begin{figure}
 \centering
 \def\svgwidth{\figurewidth}
+\input{Images/Cruise/figure11.pdf_tex}
+\caption{Orbital energy of the satellite relative to Earth and Moon during cruise phase.}
+\label{fig:Cruise-orbeng}
+\end{figure}
+
+Not optimised, so unitary thrust magnitude.
+
+\begin{figure}
+\centering
+\def\svgwidth{\figurewidth}
+\input{Images/Cruise/figure2.pdf_tex}
+\caption{Direction of thrust vector during cruise phase.}
+\label{fig:Cruise-thrust}
+\end{figure}
+
+\begin{figure}
+\centering
+\def\svgwidth{\figurewidth}
 \input{Images/Cruise/figure7.pdf_tex}
-\caption{Keplerian elements of satellite within ECI frame during Cruise phase.}
+\caption{Keplerian elements of satellite within ECI frame during cruise phase.}
 \label{fig:Cruise-kep}
 \end{figure}
 
@@ -305,17 +326,10 @@ circular orbit - rendezvous with moon can't really be scheduled, it will happen 
 \centering
 \def\svgwidth{\figurewidth}
 \input{Images/Cruise/figure9.pdf_tex}
-\caption{Equinoctial elements of satellite within ECI frame during Cruise phase.}
+\caption{Equinoctial elements of satellite within ECI frame during cruise phase.}
 \label{fig:Cruise-mee}
 \end{figure}
 
-\begin{figure}
-\centering
-\def\svgwidth{\figurewidth}
-%\input{Images/Cruise/figure11.pdf_tex}
-\caption{Orbital energy of the satellite relative to Earth and Moon during Cruise phase.}
-\label{fig:Cruise-orbeng}
-\end{figure}
 
 Thrust slowly increasing as mass drops due to fuel use.
 
@@ -323,7 +337,7 @@ Thrust slowly increasing as mass drops due to fuel use.
 \centering
 \def\svgwidth{\figurewidth}
 \input{Images/Cruise/figure4.pdf_tex}
-\caption{Perturbing accelerations acting on spacecraft during Cruise phase.}
+\caption{Perturbing accelerations acting on spacecraft during cruise phase.}
 \label{fig:Cruise-pert}
 \end{figure}
 
@@ -331,23 +345,18 @@ Thrust slowly increasing as mass drops due to fuel use.
 \centering
 \def\svgwidth{\figurewidth}
 \input{Images/Cruise/figure5.pdf_tex}
-\caption{Perturbing accelerations acting on spacecraft during Cruise phase.}
+\caption{Perturbing accelerations acting on spacecraft during cruise phase.}
 \label{fig:Cruise-pert2}
 \end{figure}
 
-\begin{figure}
-\centering
-\def\svgwidth{\figurewidth}
-\input{Images/Cruise/figure2.pdf_tex}
-\caption{Direction of thrust vector during Cruise phase.}
-\label{fig:Cruise-thrust}
-\end{figure}
-
-% Thrust direction and magnitude
-% Mass
-% DeltaV
-% Energy
-% Phase
+% Thrust magnitude (figure3)
+% Mass (figure6)
+% DeltaV (figure8)
+% Phase (figure12)
+% LCI kep (figure13)
+% LCI 3D (figure14)
+% SEL 3D (figure15)
+% Energy (figure16)
 
 \clearpage 
 
@@ -382,15 +391,23 @@ Initial guess, simulation, optimisation
 \centering
 \def\svgwidth{\figurewidth}
 \input{Images/Propagate/figure10.pdf_tex}
-\caption{Satellite's distance from Earth and Moon during Propagate phase.}
+\caption{Satellite's distance from Earth and Moon during propagate phase.}
 \label{fig:Propagate-dist}
 \end{figure}
 
 \begin{figure}
 \centering
 \def\svgwidth{\figurewidth}
+\input{Images/Propagate/figure11.pdf_tex}
+\caption{Orbital energy of the satellite relative to Earth and Moon during propagate phase.}
+\label{fig:Propagate-orbeng}
+\end{figure}
+
+\begin{figure}
+\centering
+\def\svgwidth{\figurewidth}
 \input{Images/Propagate/figure7.pdf_tex}
-\caption{Keplerian elements of satellite within ECI frame during Propagate phase.}
+\caption{Keplerian elements of satellite within ECI frame during propagate phase.}
 \label{fig:Propagate-kep}
 \end{figure}
 
@@ -398,7 +415,7 @@ Initial guess, simulation, optimisation
 \centering
 \def\svgwidth{\figurewidth}
 \input{Images/Propagate/figure13.pdf_tex}
-\caption{Keplerian elements of satellite within LCI frame during Propagate phase.}
+\caption{Keplerian elements of satellite within LCI frame during propagate phase.}
 \label{fig:Propagate-kep-lci}
 \end{figure}
 
@@ -406,23 +423,16 @@ Initial guess, simulation, optimisation
 \centering
 \def\svgwidth{\figurewidth}
 \input{Images/Propagate/figure9.pdf_tex}
-\caption{Equinoctial elements of satellite within ECI frame during Propagate phase.}
+\caption{Equinoctial elements of satellite within ECI frame during propagate phase.}
 \label{fig:Propagate-mee}
 \end{figure}
 
-\begin{figure}
-\centering
-\def\svgwidth{\figurewidth}
-\input{Images/Propagate/figure11.pdf_tex}
-\caption{Orbital energy of the satellite relative to Earth and Moon during Propagate phase.}
-\label{fig:Propagate-orbeng}
-\end{figure}
 
 \begin{figure}
 \centering
 \def\svgwidth{\figurewidth}
 \input{Images/Propagate/figure4.pdf_tex}
-\caption{Perturbing accelerations acting on spacecraft during Propagate phase.}
+\caption{Perturbing accelerations acting on spacecraft during propagate phase.}
 \label{fig:Propagate-pert}
 \end{figure}
 
@@ -430,7 +440,7 @@ Initial guess, simulation, optimisation
 \centering
 \def\svgwidth{\figurewidth}
 \input{Images/Propagate/figure5.pdf_tex}
-\caption{Perturbing accelerations acting on spacecraft during Propagate phase.}
+\caption{Perturbing accelerations acting on spacecraft during propagate phase.}
 \label{fig:Propagate-pert2}
 \end{figure}
 
@@ -438,11 +448,15 @@ Initial guess, simulation, optimisation
 \centering
 \def\svgwidth{\figurewidth}
 \input{Images/Propagate/figure12.pdf_tex}
-\caption{Angle between spacecraft and Moon during Propagate phase.}
+\caption{Angle between spacecraft and Moon during propagate phase.}
 \label{fig:Propagate-phase}
 \end{figure}
 
-% Energy
+% Thrust direction (figure2)
+% Thrust magnitude (figure3)
+% Mass (figure6)
+% DeltaV (figure8)
+% Energy (figure16)
 
 \clearpage
 
@@ -487,15 +501,23 @@ Adjust starting date until point where difference between satellite phase and lu
 \centering
 \def\svgwidth{\figurewidth}
 \input{Images/Capture/figure10.pdf_tex}
-\caption{Satellite's distance from Earth and Moon during Capture phase.}
+\caption{Satellite's distance from Earth and Moon during capture phase.}
 \label{fig:Capture-dist}
 \end{figure}
 
 \begin{figure}
 \centering
 \def\svgwidth{\figurewidth}
+\input{Images/Capture/figure11.pdf_tex}
+\caption{Orbital energy of the satellite relative to Earth and Moon during capture phase.}
+\label{fig:Capture-orbeng}
+\end{figure}
+
+\begin{figure}
+\centering
+\def\svgwidth{\figurewidth}
 \input{Images/Capture/figure13.pdf_tex}
-\caption{Keplerian elements of satellite within LCI frame during Capture phase.}
+\caption{Keplerian elements of satellite within LCI frame during capture phase.}
 \label{fig:Capture-kep-lci}
 \end{figure}
 
@@ -503,23 +525,16 @@ Adjust starting date until point where difference between satellite phase and lu
 \centering
 \def\svgwidth{\figurewidth}
 \input{Images/Capture/figure9.pdf_tex}
-\caption{Equinoctial elements of satellite within LCI frame during Capture phase.}
+\caption{Equinoctial elements of satellite within LCI frame during capture phase.}
 \label{fig:Capture-mee}
 \end{figure}
 
-\begin{figure}
-\centering
-\def\svgwidth{\figurewidth}
-\input{Images/Capture/figure11.pdf_tex}
-\caption{Orbital energy of the satellite relative to Earth and Moon during Capture phase.}
-\label{fig:Capture-orbeng}
-\end{figure}
 
 \begin{figure}
 \centering
 \def\svgwidth{\figurewidth}
 \input{Images/Capture/figure4.pdf_tex}
-\caption{Perturbing accelerations acting on spacecraft during Capture phase.}
+\caption{Perturbing accelerations acting on spacecraft during capture phase.}
 \label{fig:Capture-pert}
 \end{figure}
 
@@ -527,7 +542,7 @@ Adjust starting date until point where difference between satellite phase and lu
 \centering
 \def\svgwidth{\figurewidth}
 \input{Images/Capture/figure5.pdf_tex}
-\caption{Perturbing accelerations acting on spacecraft during Capture phase.}
+\caption{Perturbing accelerations acting on spacecraft during capture phase.}
 \label{fig:Capture-pert2}
 \end{figure}
 
@@ -535,14 +550,17 @@ Adjust starting date until point where difference between satellite phase and lu
 \centering
 \def\svgwidth{\figurewidth}
 \input{Images/Capture/figure2.pdf_tex}
-\caption{Direction of thrust vector during Capture phase.}
+\caption{Direction of thrust vector during capture phase.}
 \label{fig:Capture-thrust}
 \end{figure}
 
-% Mass
-% DeltaV
-% Energy
-% Phase
+% Thrust direction (figure2)
+% Thrust magnitude (figure3)
+% Mass (figure6)
+% ECI kep (figure7)
+% DeltaV (figure8)
+% Phase (figure12)
+% Energy (figure16)
 
 \clearpage
 
@@ -569,15 +587,23 @@ Initial guess, simulation, optimisation
 \centering
 \def\svgwidth{\figurewidth}
 \input{Images/Descent/figure10.pdf_tex}
-\caption{Satellite's distance from Earth and Moon during Descent phase.}
+\caption{Satellite's distance from Earth and Moon during descent phase.}
 \label{fig:Descent-dist}
 \end{figure}
 
 \begin{figure}
 \centering
 \def\svgwidth{\figurewidth}
+\input{Images/Descent/figure11.pdf_tex}
+\caption{Orbital energy of the satellite relative to Earth and Moon during descent phase.}
+\label{fig:Descent-orbeng}
+\end{figure}
+
+\begin{figure}
+\centering
+\def\svgwidth{\figurewidth}
 \input{Images/Descent/figure13.pdf_tex}
-\caption{Keplerian elements of satellite within LCI frame during Descent phase.}
+\caption{Keplerian elements of satellite within LCI frame during descent phase.}
 \label{fig:Descent-kep-lci}
 \end{figure}
 
@@ -585,23 +611,15 @@ Initial guess, simulation, optimisation
 \centering
 \def\svgwidth{\figurewidth}
 \input{Images/Descent/figure9.pdf_tex}
-\caption{Equinoctial elements of satellite within ECI frame during Descent phase.}
+\caption{Equinoctial elements of satellite within ECI frame during descent phase.}
 \label{fig:Descent-mee}
 \end{figure}
 
 \begin{figure}
 \centering
 \def\svgwidth{\figurewidth}
-\input{Images/Descent/figure11.pdf_tex}
-\caption{Orbital energy of the satellite relative to Earth and Moon during Descent phase.}
-\label{fig:Descent-orbeng}
-\end{figure}
-
-\begin{figure}
-\centering
-\def\svgwidth{\figurewidth}
 \input{Images/Descent/figure4.pdf_tex}
-\caption{Perturbing accelerations acting on spacecraft during Descent phase.}
+\caption{Perturbing accelerations acting on spacecraft during descent phase.}
 \label{fig:Descent-pert}
 \end{figure}
 
@@ -609,7 +627,7 @@ Initial guess, simulation, optimisation
 \centering
 \def\svgwidth{\figurewidth}
 \input{Images/Descent/figure5.pdf_tex}
-\caption{Perturbing accelerations acting on spacecraft during Descent phase.}
+\caption{Perturbing accelerations acting on spacecraft during descent phase.}
 \label{fig:Descent-pert2}
 \end{figure}
 
@@ -617,14 +635,17 @@ Initial guess, simulation, optimisation
 \centering
 \def\svgwidth{\figurewidth}
 \input{Images/Descent/figure2.pdf_tex}
-\caption{Direction of thrust vector during Descent phase.}
+\caption{Direction of thrust vector during descent phase.}
 \label{fig:Descent-thrust}
 \end{figure}
 
-% Mass
-% DeltaV
-% Energy
-% Phase
+% ECI 3D (figure1)
+% Thrust magnitude (figure3)
+% Mass (figure6)
+% ECI kep (figure7)
+% DeltaV (figure8)
+% Phase (figure12)
+% Energy (figure16)
 
 \clearpage
 
@@ -636,7 +657,7 @@ plot of science orbit in SEL!!!!
 \begin{figure}
 \centering
 \def\svgwidth{\figurewidth}
-%\input{Images/Science/figure14.pdf_tex}
+\input{Images/Science/figure14.pdf_tex}
 \caption{Science trajectory in LCI frame.}
 \label{fig:Science-3D-lci}
 \end{figure}
@@ -644,7 +665,7 @@ plot of science orbit in SEL!!!!
 \begin{figure}
 \centering
 \def\svgwidth{\figurewidth}
-%\input{Images/Science/figure15.pdf_tex}
+\input{Images/Science/figure15.pdf_tex}
 \caption{Science trajectory in SEL frame.}
 \label{fig:Science-3D-sel}
 \end{figure}
@@ -652,37 +673,45 @@ plot of science orbit in SEL!!!!
 \begin{figure}
 \centering
 \def\svgwidth{\figurewidth}
-%\input{Images/Science/figure13.pdf_tex}
-\caption{Keplerian elements of satellite within LCI frame during Science phase.}
+\input{Images/Science/figure13.pdf_tex}
+\caption{Keplerian elements of satellite within LCI frame during science phase.}
 \label{fig:Science-kep-lci}
 \end{figure}
 
 \begin{figure}
 \centering
 \def\svgwidth{\figurewidth}
-%\input{Images/Science/figure9.pdf_tex}
-\caption{Equinoctial elements of satellite within ECI frame during Science phase.}
+\input{Images/Science/figure9.pdf_tex}
+\caption{Equinoctial elements of satellite within ECI frame during science phase.}
 \label{fig:Science-mee}
 \end{figure}
 
 \begin{figure}
 \centering
 \def\svgwidth{\figurewidth}
-%\input{Images/Science/figure4.pdf_tex}
-\caption{Perturbing accelerations acting on spacecraft during Science phase.}
+\input{Images/Science/figure4.pdf_tex}
+\caption{Perturbing accelerations acting on spacecraft during science phase.}
 \label{fig:Science-pert}
 \end{figure}
 
 \begin{figure}
 \centering
 \def\svgwidth{\figurewidth}
-%\input{Images/Science/figure5.pdf_tex}
-\caption{Perturbing accelerations acting on spacecraft during Science phase.}
+\input{Images/Science/figure5.pdf_tex}
+\caption{Perturbing accelerations acting on spacecraft during science phase.}
 \label{fig:Science-pert2}
 \end{figure}
 
-% Energy
-% Phase
+% ECI 3D (figure1)
+% Thrust direction (figure2)
+% Thrust magnitude (figure3)
+% Mass (figure6)
+% ECI kep (figure7)
+% DeltaV (figure8)
+% Distances (figure10)
+% Orbital energy (figure11)
+% Phase (figure12)
+% Energy (figure16)
 
 \section{Validation}
 For obvious reasons there have been few experimental flights to validate low-thrust trajectory theory, and no flight testing is possible to verify this particular proposed trajectory. However, the laws governing forces acting on spacecraft are known better than other theory, for example atmospheric trajectories. This trajectory was imported into STK (Satellite Tool Kit), the most widely used industry tool for modelling spacecraft trajectories, provided by AGI (Analytical Graphics, Inc.). There were minor differences as seen in \ref{fig:STK-verification} due to different orders of complexity in Earth oblateness and the algorithms used to calculate third body perturbations, but these differences were essentially negligible as seen in \ref{fig:STK-error}.

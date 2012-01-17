@@ -1,0 +1,86 @@
+%% Creator: Inkscape 0.48.2, www.inkscape.org
+%% PDF/EPS/PS + LaTeX output extension by Johan Engelen, 2010
+%% Accompanies image file 'figure8.pdf' (pdf, eps, ps)
+%%
+%% To include the image in your LaTeX document, write
+%%   \input{<filename>.pdf_tex}
+%%  instead of
+%%   \includegraphics{<filename>.pdf}
+%% To scale the image, write
+%%   \def\svgwidth{<desired width>}
+%%   \input{<filename>.pdf_tex}
+%%  instead of
+%%   \includegraphics[width=<desired width>]{<filename>.pdf}
+%%
+%% Images with a different path to the parent latex file can
+%% be accessed with the `import' package (which may need to be
+%% installed) using
+%%   \usepackage{import}
+%% in the preamble, and then including the image with
+%%   \import{<path to file>}{<filename>.pdf_tex}
+%% Alternatively, one can specify
+%%   \graphicspath{{<path to file>/}}
+%% 
+%% For more information, please see info/svg-inkscape on CTAN:
+%%   http://tug.ctan.org/tex-archive/info/svg-inkscape
+%%
+\begingroup%
+  \makeatletter%
+  \providecommand\color[2][]{%
+    \errmessage{(Inkscape) Color is used for the text in Inkscape, but the package 'color.sty' is not loaded}%
+    \renewcommand\color[2][]{}%
+  }%
+  \providecommand\transparent[1]{%
+    \errmessage{(Inkscape) Transparency is used (non-zero) for the text in Inkscape, but the package 'transparent.sty' is not loaded}%
+    \renewcommand\transparent[1]{}%
+  }%
+  \providecommand\rotatebox[2]{#2}%
+  \ifx\svgwidth\undefined%
+    \setlength{\unitlength}{576.5bp}%
+    \ifx\svgscale\undefined%
+      \relax%
+    \else%
+      \setlength{\unitlength}{\unitlength * \real{\svgscale}}%
+    \fi%
+  \else%
+    \setlength{\unitlength}{\svgwidth}%
+  \fi%
+  \global\let\svgwidth\undefined%
+  \global\let\svgscale\undefined%
+  \makeatother%
+  \begin{picture}(1,0.7496392)%
+    \put(0,0){\includegraphics[width=\unitlength]{Images/Science/figure8.pdf}}%
+    \put(0.21176583,0.05810928){\makebox(0,0)[lb]{\smash{1840}}}%
+    \put(0.28895577,0.05810928){\makebox(0,0)[lb]{\smash{1860}}}%
+    \put(0.36629141,0.05810928){\makebox(0,0)[lb]{\smash{1880}}}%
+    \put(0.44348135,0.05810928){\makebox(0,0)[lb]{\smash{1900}}}%
+    \put(0.52081526,0.05810928){\makebox(0,0)[lb]{\smash{1920}}}%
+    \put(0.5980052,0.05810928){\makebox(0,0)[lb]{\smash{1940}}}%
+    \put(0.67533912,0.05810928){\makebox(0,0)[lb]{\smash{1960}}}%
+    \put(0.75252905,0.05810928){\makebox(0,0)[lb]{\smash{1980}}}%
+    \put(0.8298647,0.05810928){\makebox(0,0)[lb]{\smash{2000}}}%
+    \put(0.15206765,0.07473374){\makebox(0,0)[lb]{\smash{−1}}}%
+    \put(0.13472125,0.13587858){\makebox(0,0)[lb]{\smash{−0.8}}}%
+    \put(0.13472125,0.19702342){\makebox(0,0)[lb]{\smash{−0.6}}}%
+    \put(0.13472125,0.25816826){\makebox(0,0)[lb]{\smash{−0.4}}}%
+    \put(0.13472125,0.31916739){\makebox(0,0)[lb]{\smash{−0.2}}}%
+    \put(0.16420989,0.38031223){\makebox(0,0)[lb]{\smash{0}}}%
+    \put(0.14686383,0.44145707){\makebox(0,0)[lb]{\smash{0.2}}}%
+    \put(0.14686383,0.50245794){\makebox(0,0)[lb]{\smash{0.4}}}%
+    \put(0.14686383,0.56360278){\makebox(0,0)[lb]{\smash{0.6}}}%
+    \put(0.14686383,0.62474761){\makebox(0,0)[lb]{\smash{0.8}}}%
+    \put(0.16420989,0.68574848){\makebox(0,0)[lb]{\smash{1}}}%
+    \put(0.11983209,0.26134779){\rotatebox{90}{\makebox(0,0)[lb]{\smash{∆}}}}%
+    \put(0.11983209,0.28346401){\rotatebox{90}{\makebox(0,0)[lb]{\smash{v}}}}%
+    \put(0.11983209,0.30659185){\rotatebox{90}{\makebox(0,0)[lb]{\smash{expended[}}}}%
+    \put(0.11983209,0.43639861){\rotatebox{90}{\makebox(0,0)[lb]{\smash{ms}}}}%
+    \put(0.10985811,0.47282533){\rotatebox{90}{\makebox(0,0)[lb]{\smash{−}}}}%
+    \put(0.10985811,0.48973773){\rotatebox{90}{\makebox(0,0)[lb]{\smash{1}}}}%
+    \put(0.11983209,0.50260227){\rotatebox{90}{\makebox(0,0)[lb]{\smash{]}}}}%
+    \put(0.41457069,0.02934432){\makebox(0,0)[lb]{\smash{Missiontime}}}%
+    \put(0.57617832,0.02934432){\makebox(0,0)[lb]{\smash{t}}}%
+    \put(0.59583695,0.02934432){\makebox(0,0)[lb]{\smash{[}}}%
+    \put(0.60364267,0.02934432){\makebox(0,0)[lb]{\smash{days}}}%
+    \put(0.65929436,0.02934432){\makebox(0,0)[lb]{\smash{]}}}%
+  \end{picture}%
+\endgroup%
