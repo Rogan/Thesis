@@ -57,18 +57,18 @@
     \put(0.60393235,0.05){\makebox(0,0)[lb]{\smash{4}}}%
     \put(0.71480139,0.05){\makebox(0,0)[lb]{\smash{5}}}%
     \put(0.82581613,0.05){\makebox(0,0)[lb]{\smash{6}}}%
-    \put(0.8965013,0.04192056){\makebox(0,0)[lb]{\smash{$\times10^8$}}}%
-    \put(0.06,0.08369471){\makebox(0,0)[lb]{\smash{-2.5}}}%
-    \put(0.06,0.13920208){\makebox(0,0)[lb]{\smash{-2.0}}}%
-    \put(0.06,0.19456548){\makebox(0,0)[lb]{\smash{-1.5}}}%
-    \put(0.06,0.25007285){\makebox(0,0)[lb]{\smash{-1.0}}}%
-    \put(0.06,0.30558023){\makebox(0,0)[lb]{\smash{-0.5}}}%
-    \put(0.07,0.36094363){\makebox(0,0)[lb]{\smash{0.0}}}%
-    \put(0.07,0.41645100){\makebox(0,0)[lb]{\smash{0.5}}}%
-    \put(0.07,0.47195837){\makebox(0,0)[lb]{\smash{1.0}}}%
-    \put(0.07,0.52732003){\makebox(0,0)[lb]{\smash{1.5}}}%
-    \put(0.07,0.58282741){\makebox(0,0)[lb]{\smash{2.0}}}%
-    \put(0.07,0.63833478){\makebox(0,0)[lb]{\smash{2.5}}}%
+    \put(0.89650130,0.04192056){\makebox(0,0)[lb]{\smash{$\times10^8$}}}%
+    \put(0.07,0.08369471){\makebox(0,0)[lb]{\smash{-2.5}}}%
+    \put(0.07,0.13920208){\makebox(0,0)[lb]{\smash{-2.0}}}%
+    \put(0.07,0.19456548){\makebox(0,0)[lb]{\smash{-1.5}}}%
+    \put(0.07,0.25007285){\makebox(0,0)[lb]{\smash{-1.0}}}%
+    \put(0.07,0.30558023){\makebox(0,0)[lb]{\smash{-0.5}}}%
+    \put(0.08,0.36094363){\makebox(0,0)[lb]{\smash{0.0}}}%
+    \put(0.08,0.41645100){\makebox(0,0)[lb]{\smash{0.5}}}%
+    \put(0.08,0.47195837){\makebox(0,0)[lb]{\smash{1.0}}}%
+    \put(0.08,0.52732003){\makebox(0,0)[lb]{\smash{1.5}}}%
+    \put(0.08,0.58282741){\makebox(0,0)[lb]{\smash{2.0}}}%
+    \put(0.08,0.63833478){\makebox(0,0)[lb]{\smash{2.5}}}%
     \put(0.17996531,0.71234484){\makebox(0,0)[lb]{\smash{$\times10^8$}}}%
   \end{picture}%
 \endgroup%

@@ -50,21 +50,21 @@
   \makeatother%
   \begin{picture}(1,0.7496392)%
     \put(0,0){\includegraphics[width=\unitlength]{Images/Propagate/figure14.pdf}}%
-    \put(0.12546956,0.05){\makebox(0,0)[lb]{\smash{-6}}}%
-    \put(0.23055854,0.05){\makebox(0,0)[lb]{\smash{-4}}}%
-    \put(0.33579011,0.05){\makebox(0,0)[lb]{\smash{-2}}}%
-    \put(0.45330963,0.05){\makebox(0,0)[lb]{\smash{0}}}%
-    \put(0.55839896,0.05){\makebox(0,0)[lb]{\smash{2}}}%
-    \put(0.66363053,0.05){\makebox(0,0)[lb]{\smash{4}}}%
-    \put(0.76871986,0.05){\makebox(0,0)[lb]{\smash{6}}}%
-    \put(0.87395143,0.05){\makebox(0,0)[lb]{\smash{8}}}%
-    \put(0.89650130,0.04192056){\makebox(0,0)[lb]{\smash{$\times10^8$}}}%
-    \put(0.09,0.151634){\makebox(0,0)[lb]{\smash{-4}}}%
-    \put(0.09,0.2567216){\makebox(0,0)[lb]{\smash{-2}}}%
-    \put(0.10,0.3619549){\makebox(0,0)[lb]{\smash{0}}}%
-    \put(0.10,0.4670425){\makebox(0,0)[lb]{\smash{2}}}%
-    \put(0.10,0.57213183){\makebox(0,0)[lb]{\smash{4}}}%
-    \put(0.10,0.6773634){\makebox(0,0)[lb]{\smash{6}}}%
-    \put(0.17996531,0.71234484){\makebox(0,0)[lb]{\smash{$\times10^8$}}}%
+    \put(0.12922810,0.05){\makebox(0,0)[lb]{\smash{-6}}}%
+    \put(0.23431570,0.05){\makebox(0,0)[lb]{\smash{-4}}}%
+    \put(0.33954900,0.05){\makebox(0,0)[lb]{\smash{-2}}}%
+    \put(0.45475629,0.05){\makebox(0,0)[lb]{\smash{0}}}%
+    \put(0.55984389,0.05){\makebox(0,0)[lb]{\smash{2}}}%
+    \put(0.66507719,0.05){\makebox(0,0)[lb]{\smash{4}}}%
+    \put(0.77016479,0.05){\makebox(0,0)[lb]{\smash{6}}}%
+    \put(0.87539809,0.05){\makebox(0,0)[lb]{\smash{8}}}%
+    \put(0.89838163,0.04293185){\makebox(0,0)[lb]{\smash{$\times10^8$}}}%
+    \put(0.08,0.15192368){\makebox(0,0)[lb]{\smash{-4}}}%
+    \put(0.08,0.25701127){\makebox(0,0)[lb]{\smash{-2}}}%
+    \put(0.09,0.36224458){\makebox(0,0)[lb]{\smash{0}}}%
+    \put(0.09,0.46733218){\makebox(0,0)[lb]{\smash{2}}}%
+    \put(0.09,0.57241977){\makebox(0,0)[lb]{\smash{4}}}%
+    \put(0.09,0.67765308){\makebox(0,0)[lb]{\smash{6}}}%
+    \put(0.16276357,0.71191154){\makebox(0,0)[lb]{\smash{$\times10^8$}}}%
   \end{picture}%
 \endgroup%

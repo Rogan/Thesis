@@ -50,20 +50,23 @@
   \makeatother%
   \begin{picture}(1,0.7496392)%
     \put(0,0){\includegraphics[width=\unitlength]{Images/Propagate/figure1.pdf}}%
-    \put(0.16536513,0.05){\makebox(0,0)[lb]{\smash{-3}}}%
-    \put(0.26915351,0.05){\makebox(0,0)[lb]{\smash{-2}}}%
-    \put(0.37308413,0.05){\makebox(0,0)[lb]{\smash{-1}}}%
-    \put(0.48944840,0.05){\makebox(0,0)[lb]{\smash{0}}}%
-    \put(0.59337901,0.05){\makebox(0,0)[lb]{\smash{1}}}%
-    \put(0.69731136,0.05){\makebox(0,0)[lb]{\smash{2}}}%
-    \put(0.80109801,0.05){\makebox(0,0)[lb]{\smash{3}}}%
-    \put(0.89650130,0.04192056){\makebox(0,0)[lb]{\smash{$\times10^8$}}}%
-    \put(0.08,0.13096271){\makebox(0,0)[lb]{\smash{-2}}}%
-    \put(0.08,0.23489506){\makebox(0,0)[lb]{\smash{-1}}}%
-    \put(0.09,0.33882741){\makebox(0,0)[lb]{\smash{0}}}%
-    \put(0.09,0.44275802){\makebox(0,0)[lb]{\smash{1}}}%
-    \put(0.09,0.54654640){\makebox(0,0)[lb]{\smash{2}}}%
-    \put(0.09,0.65047702){\makebox(0,0)[lb]{\smash{3}}}%
-    \put(0.17996531,0.71234484){\makebox(0,0)[lb]{\smash{$\times10^8$}}}%
+    \put(0.15380225,0.05){\makebox(0,0)[lb]{\smash{-4}}}%
+    \put(0.23850824,0.05){\makebox(0,0)[lb]{\smash{-3}}}%
+    \put(0.32321422,0.05){\makebox(0,0)[lb]{\smash{-2}}}%
+    \put(0.40792194,0.05){\makebox(0,0)[lb]{\smash{-1}}}%
+    \put(0.50289159,0.05){\makebox(0,0)[lb]{\smash{0}}}%
+    \put(0.58759757,0.05){\makebox(0,0)[lb]{\smash{1}}}%
+    \put(0.67230356,0.05){\makebox(0,0)[lb]{\smash{2}}}%
+    \put(0.75701127,0.05){\makebox(0,0)[lb]{\smash{3}}}%
+    \put(0.84171726,0.05){\makebox(0,0)[lb]{\smash{4}}}%
+    \put(0.89838127,0.04293185){\makebox(0,0)[lb]{\smash{$\times10^8$}}}%
+    \put(0.08,0.14310494){\makebox(0,0)[lb]{\smash{-3}}}%
+    \put(0.08,0.22781266){\makebox(0,0)[lb]{\smash{-2}}}%
+    \put(0.08,0.31266262){\makebox(0,0)[lb]{\smash{-1}}}%
+    \put(0.09,0.39737034){\makebox(0,0)[lb]{\smash{0}}}%
+    \put(0.09,0.48207632){\makebox(0,0)[lb]{\smash{1}}}%
+    \put(0.09,0.56678231){\makebox(0,0)[lb]{\smash{2}}}%
+    \put(0.09,0.65149003){\makebox(0,0)[lb]{\smash{3}}}%
+    \put(0.16276357,0.71191188){\makebox(0,0)[lb]{\smash{$\times10^8$}}}%
   \end{picture}%
 \endgroup%

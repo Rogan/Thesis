@@ -4,7 +4,14 @@
 
 Due to the low thrust of spacecraft \BW, it is expected that a substantial part of the orbit raising will be achieved by exploiting gravitational assists from the Moon. This technique has been well studied, although previous higher-thrust missions did not find it efficient to attempt more than one or two lunar resonances. \textcite{Kemble2006} explains that \enquote{It is possible to utilise lunar gravity to assist in the orbit raising prior to lunar encounter. This takes the form of a \emph{gravitational pumping} effect if the correct phase with respect to the Moon can be established}. He goes on to quantify that \enquote{A typical $\Delta V$ saving of 800~ms$^{-1}$ is obtained by use of lunar gravity assist}. Due to the extended duration of \BW's transit, more lunar resonances should be possible than in a \enquote{typical} scenario, so this should reduce the required delta-v for \BW's ascent from GTO to lunar orbit from 4.1~kms$^{-1}$ to less than 3.3~kms$^{-1}$.
 
-Because lunar gravitational assists provide delta-v without fuel expenditure, they should be implicitly accounted for during optimisation. Preliminary results have already shown this to be the case, as seen in \autoref{fig:Lunar_resonance}. From an initial orbit of 180,000~km (semi-cis-lunar, representing the later stages of the transfer to highlight the lunar assist) the spacecraft takes two orbits to align its phase with the Moon, then receives a very apparent boost purely from the Moon's gravity.
+Because lunar gravitational assists provide delta-v without fuel expenditure, they should be implicitly accounted for during optimisation. Preliminary results have already shown this to be the case, as seen in \autoref{fig:Lunar-resonance}. From an initial orbit of 180,000~km (semi-cis-lunar, representing the later stages of the transfer to highlight the lunar assist) the spacecraft takes two orbits to align its phase with the Moon, then receives a very apparent boost purely from the Moon's gravity.
+
+\begin{figure}
+\centering
+%\includegraphics{}
+\caption{Preliminary optimisation showing a lunar resonance implicitly realised by the optimiser.}
+\label{fig:Lunar-resonance}
+\end{figure}
 
 \subsection{Oberth effect}
 
@@ -57,7 +64,7 @@ To maximise the gravitational effect of the Moon on the spacecraft, it should be
  
 % quantify stochastic & deterministic inputs, robustness
 
-\section{Reduced complexity optimisation}
+\section{Reduced complexity optimisation} \label{sec:Reduced-complexity}
 
 In order to get an initial idea of the optimal thrust profile, a reduced complexity trajectory was modelled. This was simply implemented by turning off secondary and tertiary perturbations, and optimising over a coarser mesh. 
 
@@ -145,20 +152,36 @@ interesting... main objective of this study... discover an optimal thrust profil
 % 3D SEL (15)
 
 
-Following the reduced complexity ascent, optimisation was attempted for a reduced complexity cruise phase. However, due to the long duration of this phase and the limited computer resources available, the optimisation did not reach an optimal solution in the time available. This exercise did highlight other problems with the procedure, in particular determining a lunar capture. Due to the lunar orbit being very close escape energy relative to the Earth (only $5\times10^5 m^2s^{-2}$), the vast majority of simulations resulted in the spacecraft escaping the Earth's sphere of influence by gaining a gravitational assist from the Moon. This caused severe computational errors due to the anomaly ceasing to increase after escape. Another common failure scenario involved weak capture by the Moon, that is, after one or two orbits around the Moon the spacecraft would then be recaptured by the Earth. Due to the way the system was modelled, this once again caused computational errors: if the spacecraft is in orbit around the Moon in a Earth-centric frame, the anomaly is not guaranteed to be always increasing; the same applies for a spacecraft in Earth orbit during a lunar-centric frame.
+Following the reduced complexity ascent, optimisation was attempted for a reduced complexity cruise phase. However, due to the long duration of this phase and the limited computer resources available, the optimisation did not reach an optimal solution in the time available. This exercise did highlight other problems with the procedure, in particular determining a lunar capture. Due to the lunar orbit being very close to the orbital escape energy relative to the Earth (only $5\times10^5 m^2s^{-2}$), the vast majority of simulations resulted in the spacecraft escaping the Earth's sphere of influence by gaining a gravitational assist from the Moon. This caused severe computational errors as the longitude and anomaly are no longer independent parameters after escape. Another common failure scenario involved weak capture by the Moon, that is, after one or two orbits around the Moon the spacecraft would then be recaptured by the Earth. Due to the way the system was modelled, this once again caused computational errors: if the spacecraft is in orbit around the Moon in a Earth-centric frame, the anomaly becomes sinusoidal rather than always increasing; the same applies for a spacecraft in Earth orbit during a lunar-centric frame.
 
 Determining conditions for strong lunar capture proved difficult and unreliable. Consequently it was decided to simulate the transfer backwards, from lunar orbit to Earth orbit, using an industry standard tool called Satellite Tool Kit (STK) \parencite{STK}. Backwards propagation has been used by many previous authors, such as \textcite{Author}. The main advantage to this approach is that any ascent from lunar orbit must necessarily pass through Earth orbit; whereas the reverse does not apply. Furthermore, with the Moon in a 19\degrees\ inclined orbit about the Earth, any ascent from the Moon will end up in approximately the same plane as the parking orbit after launch, thus implicitly accounting for the plane changes required to achieve the target lunar orbit.
 
 \clearpage
 
-\section{STK modelling}
+\section{STK modelling} \label{sec:STK}
 
-images from STK
 continuous
 not optimised
 very limited number of optimisation parameters available; cannot even perform 2pbvp for continual thrust
 therefore cannot target specific orbit, such as correct inclination and eccentricity of GTO
 solves problem of lunar capture, but further work required (by GESOP) to complete feasible end-to-end orbit even before any optimisation takes place
+
+\begin{figure}
+\centering
+\includegraphics[width=\textwidth]{Images/STK/trajectory1b.png}
+\caption{Continuous trajectory modelled in STK.}
+\label{fig:STK}
+\end{figure}
+
+%cruise%
+regardless, it was found that increasing the thrust shortens the transfer but makes lunar capture more difficult. The higher thrust may be targeted at the Moon, and an appropriate orbital energy can be attained for lunar capture ($\approx5000m^2s^{-2}$) but due to the higher thrust, a larger proportion of the energy is made up of kinetic energy. In other words, the spacecraft is going too fast to achieve a strong lunar capture, even with a very low lunar pass. Perhaps relative velocity might be a better termination criterion?
+
+found that each small change required lengthy rework of launch date and various phase lengths to achieve lunar capture. 
+optimising cruise phase forwards to given termination condition (SOI) causes numerical errors (gets pulled into lunar orbit and so L (ECI) is no longer independent, or gets thrown into escape trajectory and so L (ECI) no longer increases, or ...).
+tried backward propagating from final orbit, but thrusting tangentially as limited by STK does not change inclination so it is difficult to achieve the GTO required.
+
+It was found that, due to the similar launch inclination coupled with the slow ascent leading to many lunar assists, almost any launch will end up near the Moon. The problem thus becomes ensuring lunar capture, rather than a lunar slingshot into an Earth-escape trajectory. This was achieved by modelling the scenario in STK, assigning arbitrary values for $\omega$ and $\Omega$, and then using STK's BVP solver to establish a feasible initial guess for the optimiser. 
+Also, very difficult to achieve polar lunar orbit with forwards propagation. Backwards propagation from lunar orbit will ascend in polar orbit, until lunar escape velocity achieved. Provided it escapes in the right direction (and doesn't achieve Earth escape velocity) it goes into high Earth orbit near lunar inclination - which is relatively near to launch inclination.
 
 \section{Ascent} 
 The ascent phase was modelled in GESOP subject to the initial boundary conditions outlined in \autoref{tab:Phase-2-constraints} and final boundary conditions outlined in \autoref{tab:Phase-2-3-constraints}. An initial guess was taken for the thrust profile perpendicular to the orbital radius at all times throughout ascent, in order to raise the periapsis as quickly as possible beyond the van Allen belts.
@@ -215,7 +238,7 @@ The thrust profile calculated by the optimisation is shown in \autoref{fig:Ascen
 \label{fig:Ascent-thrustM}
 \end{figure}
 
-\autoref{fig:Ascent-mee} shows the changing equinoctial elements of the orbit throughout the transfer, accompanied by the rather more intuitive keplerian elements in \autoref{fig:Ascent-kep}. Unsurprisingly, the semimajor axis $a$ and the semilatus rectum $p$ grow smoothly throughout the transfer, and their rate of growth increases as the spacecraft gets further from Earth's gravity well. The spacecraft's eccentricity $e$ slowly decreases as the continual tangential thrust raises the perigee faster than the apogee, but again, this is exactly as required during this phase.
+\autoref{fig:Ascent-mee} shows the changing equinoctial elements of the orbit throughout the transfer, accompanied by the rather more intuitive keplerian elements in \autoref{fig:Ascent-kep}. Unsurprisingly, the semimajor axis $a$ and the semilatus rectum $p$ grow smoothly throughout the transfer, and their rate of growth increases as the spacecraft gets further from Earth's gravity well. The anomaly $\nu$ slows its growth as the orbital radius, and consequently the orbital period, increases. The spacecraft's eccentricity $e$ slowly decreases as the continual tangential thrust raises the perigee faster than the apogee, but again, this is exactly as required during this phase.
 
 \begin{figure}
 \centering
@@ -253,6 +276,8 @@ The stronger forces acting on the spacecraft during the ascent phase are shown i
 
 The practically constant thrust results in a linear fuel consumption. Consequently this simulation suggested approximately 60~kg worth of ammonia would be required for the ascent phase. %compare to initial guess?
 
+A total $\Delta v$ of 1300$ms^{-1}$ was expended over this phase, at an almost constant rate due to the linear thrust profile. %compare to initial guess
+
 %\begin{figure}
 %\centering
 %\def\svgwidth{\figurewidth}
@@ -272,13 +297,9 @@ The practically constant thrust results in a linear fuel consumption. Consequent
 \clearpage
 
 \section{Cruise}
-The initial guess for the cruise phase was also taken from the STK simulation, and subjected to boundary conditions as outlined in \autoref{sub:BVP}.
-Multiple different initial guesses based on power - leading to lunar capture
-optimising cruise phase forwards to given termination condition (SOI) causes numerical errors (gets pulled into lunar orbit and so L (ECI) is no longer independent, or gets thrown into escape trajectory and so L (ECI) no longer increases, or ...).
-tried backward propagating from final orbit, but thrusting tangentially does not change inclination so it is difficult to achieve the nearly polar orbit required.
-found that, due to the similar launch inclination coupled with the slow ascent leading to many lunar assists, almost any launch will end up near the Moon. The problem thus becomes ensuring lunar capture, rather than a lunar slingshot into an Earth-escape trajectory. This was achieved by modelling the scenario in STK, assigning arbitrary values for $\omega$ and $\Omega$, and then using STK's BVP solver to establish a feasible initial guess for the optimiser. 
-Also, very difficult to achieve polar lunar orbit with forwards propagation. Backwards propagation from lunar orbit will ascend in polar orbit, until lunar escape velocity achieved. Provided it escapes in the right direction (and doesn't achieve Earth escape velocity) it goes into high Earth orbit near lunar inclination - which is relatively near to launch inclination. Try backwards propagation for the whole transfer?
-circular orbit - rendezvous with moon can't really be scheduled, it will happen inevitably. can schedule effect of rendezvous perhaps? change inclination/eccentricity etc?
+As mentioned in \autoref{sub:Vehicle-power}, throughout the modelling and optimisation of this phase, multiple different initial guesses were trialled. Ultimately it was decided that the initial specification for vehicle performance provided the best trajectory conditions, and consequently those same parameters were used in the STK simulation mentioned in \autoref{sec:STK}. The STK trajectory was then used as an initial guess for the cruise phase, subject to boundary conditions as outlined in \autoref{sec:BVP}. Once again, due to imperfections in the STK software this phase is not continuous with preceeding or succeeding phases, but the orbital energies are very similar allowing some design flexibility.
+
+As seen in the 3~dimensional trajectory plotted in \autoref{fig:Cruise-3D}, continual thrust leads to a circular orbit, even from a fairly elliptical starting orbit. Consequently a rendezvous with the Moon cannot really be scheduled as in previous studies involving short, higher thrust periods interspersed with coasting. Rather, lunar resonances will happen inevitably, as the spacecraft passes the Moon in its shorter, faster orbit. The purpose of optimisation therefore is to schedule the effects of these resonances, by changing the inclination or eccentricity of the spacecraft's orbit. Little work is required to achieve this, however, as all orbital changes are implicitly included in the optimisation. Of particular interest are the outermost orbits, whereupon the perigee is lowered (the eccentricity is increased) by a lunar assist.
 
 \begin{figure}
 \centering
@@ -287,6 +308,8 @@ circular orbit - rendezvous with moon can't really be scheduled, it will happen 
 \caption{Cruise trajectory in ECI frame.}
 \label{fig:Cruise-3D}
 \end{figure}
+
+\autoref{fig:Cruise-dist} shows the distance of the spacecraft from the Earth and the Moon over the course of the cruise phase. In comparison to the ascent phase, the spacecraft's greater distance from the Earth is apparent, resulting in greater oscillations in its distance from the Moon. The corresponding plot of orbital energies in \autoref{fig:Cruise-orbeng}, however, displays a decreasing oscillation in the spacecraft's orbital energy relative to the Moon, even as the minimum within the oscillation slowly approaches capture ($\epsilon_m\le0$). Meanwhile the orbital energy relative to the Earth approaches escape ($\epsilon_e\ge0$). 
 
 \begin{figure}
 \centering
@@ -304,7 +327,7 @@ circular orbit - rendezvous with moon can't really be scheduled, it will happen 
 \label{fig:Cruise-orbeng}
 \end{figure}
 
-Not optimised, so unitary thrust magnitude.
+The thrust profile shown in \autoref{fig:Cruise-thrust} resulted from the incomplete optimisation attempted on this phase. Despite the optimisation not having been allowed to reach an optimal solution, it is apparent that the thrust profile is once again displaying the characteristics outlined in \autoref{sec:Reduced-complexity}. It is interesting to note that the variations from purely tangential thrust seem to be directly proportional to the eccentricity, shown in \autoref{fig:Cruise-kep}, suggesting that the thrust profile is trying to circularise the orbit. Otherwise, the semimajor axis and anomaly are increasing similarly to the ascent phase.
 
 \begin{figure}
 \centering
@@ -330,8 +353,7 @@ Not optimised, so unitary thrust magnitude.
 \label{fig:Cruise-mee}
 \end{figure}
 
-
-Thrust slowly increasing as mass drops due to fuel use.
+The perturbations shown in \autoref{fig:Cruise-mee} show the spacecraft thrust has dropped by two orders of magnitude, since it is now using the PPTs rather than the arcjet from the ascent phase. At the start of the cruise phase, the Earth's oblateness is still the strongest secondary force acting on the spacecraft, but this rapidly drops off as the spacecraft raises its orbit. The Moon's gravity becomes more dominant towards the end of the phase, with spikes starting to occur indicating gravitational assists caused by close passes to the Moon in the last few orbits. The sun's gravity also has a more significant effect on the spacecraft as its orbit is raised, exhibiting high frequency oscillations due to the spacecraft's orbit around the Earth, and lower frequency oscillations closely following the averaged force due to solar wind, due to the Earth's elliptical orbit around the sun.
 
 \begin{figure}
 \centering
@@ -341,6 +363,8 @@ Thrust slowly increasing as mass drops due to fuel use.
 \label{fig:Cruise-pert}
 \end{figure}
 
+Similar cyclical behaviour is visible in \autoref{fig:Cruise-pert2}, showing the resonances of Earth's orbit with Jupiter, Venus and Mars' orbits.
+
 \begin{figure}
 \centering
 \def\svgwidth{\figurewidth}
@@ -348,6 +372,8 @@ Thrust slowly increasing as mass drops due to fuel use.
 \caption{Perturbing accelerations acting on spacecraft during cruise phase.}
 \label{fig:Cruise-pert2}
 \end{figure}
+
+17~kg of PTFE was consumed over the course of this phase, generating 2500$ms^{-1}$ of $\Delta v$. %compare to initial guess
 
 % Thrust magnitude (figure3)
 % Mass (figure6)
@@ -361,13 +387,16 @@ Thrust slowly increasing as mass drops due to fuel use.
 \clearpage 
 
 \section{Propagate}
-Initial guess, simulation, optimisation
+
+The initial mission architecture did not include a propagate phase, but during the STK simulation it was empirically found that the spacecraft achieves an appropriate orbit for lunar capture well before the Moon is in position for rendezvous. Consequently a coasting phase was inserted, when the spacecraft's trajectory was propagated forward in time without any thrusting. Given sufficient computational power, this phase could be shortened or removed entirely, much like the discontinuities between other phases, once the launch conditions are known. Whether this phase should be removed remains open to debate: it provides the spacecraft with an opportunity to recharge its batteries if the electrical system is not performing nominally, and allows time for critical adjustments if the spacecraft is drifting off course. The lunar approach is particularly important to ensure the final science phase orbit can be achieved without requiring too much propellant.
+
+\autoref{fig:Propagate-3D} shows the simulated coasting trajectory. This consists of 1.5 orbits around the Earth followed by an lunar rendezvous that pulls the spacecraft into the desired lunar orbit. This orbit is apparent in \autoref{fig:Propagate-3D-lci} which plots the same trajectory but from a lunar centred frame. Since the spacecraft enters a polar orbit about the Moon, it appears to intersect the Moon given the polar camera angle. \autoref{fig:Propagate-3D-sel} shows the trajectory from the selenocentric frame, fixed relative to the Moon's surface. Because the Moon is tidally locked to the Earth, the Earth appears to be in a halo orbit in this frame.
 
 \begin{figure}
 \centering
 \def\svgwidth{\figurewidth}
 \input{Images/Propagate/figure1.pdf_tex}
-\caption{Propagate trajectory in ECI frame.}
+\caption{Propagated trajectory in ECI frame. The Moon's orbit is also shown.}
 \label{fig:Propagate-3D}
 \end{figure}
 
@@ -375,7 +404,7 @@ Initial guess, simulation, optimisation
 \centering
 \def\svgwidth{\figurewidth}
 \input{Images/Propagate/figure14.pdf_tex}
-\caption{Propagate trajectory in LCI frame.}
+\caption{Propagated trajectory in LCI frame. The Earth's orbit is also shown.}
 \label{fig:Propagate-3D-lci}
 \end{figure}
 
@@ -383,9 +412,11 @@ Initial guess, simulation, optimisation
 \centering
 \def\svgwidth{\figurewidth}
 \input{Images/Propagate/figure15.pdf_tex}
-\caption{Propagate trajectory in SEL frame.}
+\caption{Propagated trajectory in SEL frame. The Earth's orbit is also shown.}
 \label{fig:Propagate-3D-sel}
 \end{figure}
+
+The spacecraft's distances from the Earth and the Moon are shown in \autoref{fig:Propagate-dist}. It starts on the opposite side of the Earth from the Moon, then gets pulled into lunar orbit as it swings around the Earth. 
 
 \begin{figure}
 \centering
@@ -395,12 +426,24 @@ Initial guess, simulation, optimisation
 \label{fig:Propagate-dist}
 \end{figure}
 
+\autoref{fig:Propagate-orbeng} shows the corresponding orbital energies. The spacecraft has a very high orbital energy relative to the Moon whilst it is on the far side of the Earth, before being captured (dropping below $\epsilon_m=0$) towards the end of the phase. Throughout the phase the orbital energy relative to the Earth is very close to the orbital energy of the Moon relative to the Earth.
+
 \begin{figure}
 \centering
 \def\svgwidth{\figurewidth}
 \input{Images/Propagate/figure11.pdf_tex}
 \caption{Orbital energy of the satellite relative to Earth and Moon during propagate phase.}
 \label{fig:Propagate-orbeng}
+\end{figure}
+
+The keplerian elements shown in \autoref{fig:Propagate-kep} show a sudden jump in semimajor axis and eccentricity as the spacecraft gets pulled towards the Moon, then another increase in semimajor axis accompanied by a drop in eccentricity as the spacecraft gets pulled into lunar orbit. The spacecraft remains at the same inclination as the Moon, but the right ascension of the ascending node ($\Omega$) is changed as the orbital plane is rotated around Earth's pole to match that of the Moon. As the spacecraft is pulled into lunar orbit, the anomaly becomes cyclical with respect to the Earth, highlighting why a lunar centric frame is necessary for the subsequent phases, and why this phase was modelled with time as the independent parameter instead of longitude, as outlined in \autoref{sec:}.
+
+\begin{figure}
+\centering
+\def\svgwidth{\figurewidth}
+\input{Images/Propagate/figure9.pdf_tex}
+\caption{Equinoctial elements of satellite within ECI frame during propagate phase.}
+\label{fig:Propagate-mee}
 \end{figure}
 
 \begin{figure}
@@ -419,14 +462,7 @@ Initial guess, simulation, optimisation
 \label{fig:Propagate-kep-lci}
 \end{figure}
 
-\begin{figure}
-\centering
-\def\svgwidth{\figurewidth}
-\input{Images/Propagate/figure9.pdf_tex}
-\caption{Equinoctial elements of satellite within ECI frame during propagate phase.}
-\label{fig:Propagate-mee}
-\end{figure}
-
+Seen relative to the lunar frame in \autoref{fig:Propagate-kep-lci}, the semimajor axis approaches negative infinity as the spacecraft approaches capture, while the eccentricity approaches 1. At the point of capture, the spacecraft is in a parabolic orbit and the semimajor axis is undefined. As the spacecraft then descends into lunar orbit, the semimajor axis drops down from positive infinity.
 
 \begin{figure}
 \centering
@@ -436,13 +472,17 @@ Initial guess, simulation, optimisation
 \label{fig:Propagate-pert}
 \end{figure}
 
-\begin{figure}
-\centering
-\def\svgwidth{\figurewidth}
-\input{Images/Propagate/figure5.pdf_tex}
-\caption{Perturbing accelerations acting on spacecraft during propagate phase.}
-\label{fig:Propagate-pert2}
-\end{figure}
+The perturbing forces in \autoref{fig:Propagate-pert} continue on from the previous phase, with solar and lunar gravity dominant, although there is no thrust present during this phase. As the spacecraft is descends into lunar orbit, unsurprisingly the lunar gravity becomes the dominant force.
+
+%\begin{figure}
+%\centering
+%\def\svgwidth{\figurewidth}
+%\input{Images/Propagate/figure5.pdf_tex}
+%\caption{Perturbing accelerations acting on spacecraft during propagate phase.}
+%\label{fig:Propagate-pert2}
+%\end{figure}
+
+A factor that becomes important as the spacecraft approaches capture is the angle subtended between the craft and the Moon, relative to the Earth. This is shown in \autoref{fig:Propagate-phase}. At the start of the phase, the Moon is very close to its periapsis, with the spacecraft leading it by about 1 radian. As the spacecraft is in a lower, faster orbit, this angle widens until 1660 days at which point the spacecraft and the Moon are on opposite sides of the Earth. The subtended angle then logically approaches zero as the spacecraft approaches lunar orbit.
 
 \begin{figure}
 \centering
@@ -529,6 +569,7 @@ Adjust starting date until point where difference between satellite phase and lu
 \label{fig:Capture-mee}
 \end{figure}
 
+The acceleration due to spacecraft thrust is observed to slowly increase, as propellant is consumed thereby lightening the spacecraft. This phenomenon is present in every powered phase, but is most apparent during the capture phase because the arcjet is in use, resulting in a higher mass flux than the descent phase, combined with the lighter load than previous phases because much of the fuel has already been used.
 
 \begin{figure}
 \centering
@@ -714,7 +755,21 @@ plot of science orbit in SEL!!!!
 % Energy (figure16)
 
 \section{Validation}
-For obvious reasons there have been few experimental flights to validate low-thrust trajectory theory, and no flight testing is possible to verify this particular proposed trajectory. However, the laws governing forces acting on spacecraft are known better than other theory, for example atmospheric trajectories. This trajectory was imported into STK (Satellite Tool Kit), the most widely used industry tool for modelling spacecraft trajectories, provided by AGI (Analytical Graphics, Inc.). There were minor differences as seen in \ref{fig:STK-verification} due to different orders of complexity in Earth oblateness and the algorithms used to calculate third body perturbations, but these differences were essentially negligible as seen in \ref{fig:STK-error}.
+For obvious reasons there have been few experimental flights to validate low-thrust trajectory theory, and no flight testing is possible to verify this particular proposed trajectory. However, the laws governing forces acting on spacecraft are known better than other theory, for example atmospheric trajectories. This trajectory was imported into STK (Satellite Tool Kit), the most widely used industry tool for modelling spacecraft trajectories, provided by AGI (Analytical Graphics, Inc.). There were minor differences as seen in \autoref{fig:STK-verification} due to different orders of complexity in Earth oblateness and the algorithms used to calculate third body perturbations, but these differences were essentially negligible as seen in \autoref{fig:STK-error}.
+
+\begin{figure}
+\centering
+%\includegraphics{}
+\caption{STK validation modelling.}
+\label{fig:STK-verification}
+\end{figure}
+
+\begin{figure}
+\centering
+%\includegraphics{}
+\caption{Difference between STK modelling and GESOP modelling.}
+\label{fig:STK-error}
+\end{figure}
 
 Compare the objective function score against a few other cases.
 Of course, the ultimate validation is the launch. Unfortunately at this stage in the design, there is still no fixed launch date scheduled.

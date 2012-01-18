@@ -86,7 +86,7 @@ F = \sigma_1m(t_f)+\sigma_2\epsilon_{LCI} \label{eq:objective2}
 %mention that Erb used lower limit on lunar energy to prevent it dropping too far into lunar orbit, and limit on eccentricity (although he was aiming for an eccentric final orbit). Then used objective function of minimising orbital energy and eccentricity, for the counter-intuitive approach of putting a limit on the parameters you are trying to optimise. This scenario becomes a delicate balancing act between the two variables, based on the arbitrary weightings given to them in the cost function.
 
 % BVP
-\section{Boundary value problem} \label{sec:Boundary-value-problem}
+\section{Boundary value problem} \label{sec:BVP}
 
 As mentioned in Section \ref{sub:Objective-function}, candidate states include any trajectory that safely gets the spacecraft from the given Earth orbit to the desired lunar orbit. This resolves into a two-point boundary value problem: given an initial state, parameters must be chosen to get to the final state subject to some path constraints (usually differential equations).
 
@@ -225,7 +225,7 @@ sometimes called parallel shooting, because each segment may be calculated in pa
 % Optimisation techniques
 \section{Optimisation techniques}\label{sec:Techniques}
 
-Any solution to the boundary value problem stated in \autoref{sec:Boundary-value-problem}, within acceptable error bounds, is a potential solution to the optimisation. These solutions may then be ranked using the Lagrangian. The remaining problem is to evaluate enough potential solutions to be confident that the highest scoring one is indeed optimal. There are several approaches to this problem.
+Any solution to the boundary value problem stated in \autoref{sec:BVP}, within acceptable error bounds, is a potential solution to the optimisation. These solutions may then be ranked using the Lagrangian. The remaining problem is to evaluate enough potential solutions to be confident that the highest scoring one is indeed optimal. There are several approaches to this problem.
 
 
 %From Wiki (paraphrased):

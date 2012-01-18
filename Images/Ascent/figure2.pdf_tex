@@ -55,11 +55,17 @@
     \put(0.08,0.64655694){\makebox(0,0)[lb]{\smash{5.0}}}%
     \put(0.15,0.70572918){\makebox(0,0)[lb]{\smash{$\times10^{-4}$}}}%
     \put(0.06,0.59548576){\rotatebox{90}{\makebox(0,0)[lb]{\smash{$T_r$}}}}%
-    \put(0.08,0.32031215){\makebox(0,0)[lb]{\smash{1.0}}}%
-    \put(0.08,0.36501701){\makebox(0,0)[lb]{\smash{1.0}}}%
-    \put(0.08,0.40972187){\makebox(0,0)[lb]{\smash{1.0}}}%
-    \put(0.08,0.45442673){\makebox(0,0)[lb]{\smash{1.0}}}%
+    \put(0.08,0.32031215){\makebox(0,0)[lb]{\smash{0.0}}}%
+    \put(0.07,0.36501701){\makebox(0,0)[lb]{\smash{-1.0}}}%
+    \put(0.07,0.40972187){\makebox(0,0)[lb]{\smash{-2.0}}}%
+    \put(0.07,0.45442673){\makebox(0,0)[lb]{\smash{-3.0}}}%
+    \put(0.15,0.48){\makebox(0,0)[lb]{\smash{$\times10^{-7}+1.0\times10^0$}}}%
     \put(0.06,0.37051527){\rotatebox{90}{\makebox(0,0)[lb]{\smash{$T_\theta$}}}}%
+    \put(0.07,0.09331597){\makebox(0,0)[lb]{\smash{-5.0}}}%
+    \put(0.08,0.15205486){\makebox(0,0)[lb]{\smash{0.0}}}%
+    \put(0.08,0.21064895){\makebox(0,0)[lb]{\smash{5.0}}}%
+    \put(0.15,0.25622187){\makebox(0,0)[lb]{\smash{$\times10^{-5}$}}}%
+    \put(0.06,0.14482083){\rotatebox{90}{\makebox(0,0)[lb]{\smash{$T_h$}}}}%
     \put(0.10546875,0.05){\makebox(0,0)[lb]{\smash{-140}}}%
     \put(0.22583854,0.05){\makebox(0,0)[lb]{\smash{-135}}}%
     \put(0.34621007,0.05){\makebox(0,0)[lb]{\smash{-130}}}%
@@ -67,11 +73,6 @@
     \put(0.58694965,0.05){\makebox(0,0)[lb]{\smash{-120}}}%
     \put(0.70732118,0.05){\makebox(0,0)[lb]{\smash{-115}}}%
     \put(0.82769097,0.05){\makebox(0,0)[lb]{\smash{-110}}}%
-    \put(0.07,0.09331597){\makebox(0,0)[lb]{\smash{-5.0}}}%
-    \put(0.08,0.15205486){\makebox(0,0)[lb]{\smash{0.0}}}%
-    \put(0.08,0.21064895){\makebox(0,0)[lb]{\smash{5.0}}}%
-    \put(0.15,0.25622187){\makebox(0,0)[lb]{\smash{$\times10^{-5}$}}}%
-    \put(0.06,0.14482083){\rotatebox{90}{\makebox(0,0)[lb]{\smash{$T_h$}}}}%
     \put(0.38975694,0.02){\makebox(0,0)[lb]{\smash{Mission time $t$ [days]}}}%
-  \end{picture}%
+    \end{picture}%
 \endgroup%

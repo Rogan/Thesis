@@ -3,7 +3,7 @@
 \section{Vehicle modelling}
 
 % Power
-\subsection{Power}
+\subsection{Power}\label{sub:Vehicle-power}
 
 modelled power as one of the states
 battery capacity from \cite{Falke2004}
@@ -52,7 +52,13 @@ modelled around periapsis for second phase (objective is to raise orbital energy
 
 optimisable fixed-body thrust vector allows trade-off between thrust angle and solar panel orientation - if the craft isn't thrusting, it can still use the thrust vector controls to point the solar panels at the sun
 
-variable thrust magnitude - arcjet model mass flow rate + power???
+
+The length of this phase frequently resulted in computational difficulty, so a number of design compromises were investigated to solve the problem (it is acknowledged by the author that changing hardware design to make the simulation easier is a poor design philosophy, but the project management was interested to know the effects of these changes regardless of any simulation difficulties). For example, a design configuration was being investigated with 6 PPTs rather than 4, thereby increasing the available thrust without losing $I_{sp}$. The trade-off with this change is the additional thrusters would increase the dry mass of the vehicle, decreasing available payload. A similar design change was investigating the pulse rate of the PPTs. A higher pulse frequency increases thrust, increases mass flow, and increases power consumption, but impulse is conserved. However, an additional unknown is introduced: the heat flux within the electrodes is increased. 
+
+can cause damage to electrodes, decrease operational lifetime - important on a 4 year mission! there is literature indicating that some designs can tolerate higher heat flux (cite Russian study) but further testing of the SIMPLEX would be required.
+
+
+variable thrust magnitude - arcjet model mass flow rate + power?
 
 PPTs is pulse frequency. Assuming we can run at 3~Hz, maximum thrust is increased.... change whole model?!?
 
