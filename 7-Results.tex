@@ -158,6 +158,8 @@ Determining conditions for strong lunar capture proved difficult and unreliable.
 
 \clearpage
 
+%--------------------------------------------------------------------------------------------------------------------------------------------%
+
 \section{STK modelling} \label{sec:STK}
 
 continuous
@@ -182,6 +184,12 @@ tried backward propagating from final orbit, but thrusting tangentially as limit
 
 It was found that, due to the similar launch inclination coupled with the slow ascent leading to many lunar assists, almost any launch will end up near the Moon. The problem thus becomes ensuring lunar capture, rather than a lunar slingshot into an Earth-escape trajectory. This was achieved by modelling the scenario in STK, assigning arbitrary values for $\omega$ and $\Omega$, and then using STK's BVP solver to establish a feasible initial guess for the optimiser. 
 Also, very difficult to achieve polar lunar orbit with forwards propagation. Backwards propagation from lunar orbit will ascend in polar orbit, until lunar escape velocity achieved. Provided it escapes in the right direction (and doesn't achieve Earth escape velocity) it goes into high Earth orbit near lunar inclination - which is relatively near to launch inclination.
+
+%capture%
+Increase phase duration until it gets close to escape.
+Adjust starting date until point where difference between satellite phase and lunar phase changes direction (i.e. satellite is near the same orbit as the moon) is close to 0\degrees.
+
+%--------------------------------------------------------------------------------------------------------------------------------------------%
 
 \section{Ascent} 
 The ascent phase was modelled in GESOP subject to the initial boundary conditions outlined in \autoref{tab:Phase-2-constraints} and final boundary conditions outlined in \autoref{tab:Phase-2-3-constraints}. An initial guess was taken for the thrust profile perpendicular to the orbital radius at all times throughout ascent, in order to raise the periapsis as quickly as possible beyond the van Allen belts.
@@ -390,7 +398,7 @@ Similar cyclical behaviour is visible in \autoref{fig:Cruise-pert2}, showing the
 
 The initial mission architecture did not include a propagate phase, but during the STK simulation it was empirically found that the spacecraft achieves an appropriate orbit for lunar capture well before the Moon is in position for rendezvous. Consequently a coasting phase was inserted, when the spacecraft's trajectory was propagated forward in time without any thrusting. Given sufficient computational power, this phase could be shortened or removed entirely, much like the discontinuities between other phases, once the launch conditions are known. Whether this phase should be removed remains open to debate: it provides the spacecraft with an opportunity to recharge its batteries if the electrical system is not performing nominally, and allows time for critical adjustments if the spacecraft is drifting off course. The lunar approach is particularly important to ensure the final science phase orbit can be achieved without requiring too much propellant.
 
-\autoref{fig:Propagate-3D} shows the simulated coasting trajectory. This consists of 1.5 orbits around the Earth followed by an lunar rendezvous that pulls the spacecraft into the desired lunar orbit. This orbit is apparent in \autoref{fig:Propagate-3D-lci} which plots the same trajectory but from a lunar centred frame. Since the spacecraft enters a polar orbit about the Moon, it appears to intersect the Moon given the polar camera angle. \autoref{fig:Propagate-3D-sel} shows the trajectory from the selenocentric frame, fixed relative to the Moon's surface. Because the Moon is tidally locked to the Earth, the Earth appears to be in a halo orbit in this frame.
+\autoref{fig:Propagate-3D} shows the simulated coasting trajectory. This consists of 1.5 orbits around the Earth followed by an lunar rendezvous that pulls the spacecraft into the desired lunar orbit. This orbit is apparent in \autoref{fig:Propagate-3D-lci} which plots the same trajectory but from a lunar centred frame. Since the spacecraft enters a polar orbit about the Moon, it appears to intersect the Moon given the camera is positioned above the Moon's pole. \autoref{fig:Propagate-3D-sel} shows the trajectory from the selenocentric frame, fixed relative to the Moon's surface. Because the Moon is tidally locked to the Earth, the Earth appears to be in a halo orbit in this frame.
 
 \begin{figure}
 \centering
@@ -472,7 +480,7 @@ Seen relative to the lunar frame in \autoref{fig:Propagate-kep-lci}, the semimaj
 \label{fig:Propagate-pert}
 \end{figure}
 
-The perturbing forces in \autoref{fig:Propagate-pert} continue on from the previous phase, with solar and lunar gravity dominant, although there is no thrust present during this phase. As the spacecraft is descends into lunar orbit, unsurprisingly the lunar gravity becomes the dominant force.
+The perturbing forces in \autoref{fig:Propagate-pert} continue on from the previous phase, with solar and lunar gravity dominant, although there is no thrust present during this phase. As the spacecraft is descends into lunar orbit, unsurprisingly the lunar gravity becomes the dominant force. Another interesting point is the cyclical nature of the force due to Earth's oblateness that is highlighted in this plot. The sudden drops are caused when the spacecraft passes the Earth's equator, and the J2 harmonic no longer has any effect on the vehicle. Furthermore, the alternating short-long-short duration between these drops is caused by the short periapsis half of the orbit, followed by the lengthy apoapsis.
 
 %\begin{figure}
 %\centering
@@ -501,9 +509,8 @@ A factor that becomes important as the spacecraft approaches capture is the angl
 \clearpage
 
 \section{Capture}
-Initial guess, simulation, optimisation
-Increase phase duration until it gets close to escape.
-Adjust starting date until point where difference between satellite phase and lunar phase changes direction (i.e. satellite is near the same orbit as the moon) is close to 0\degrees.
+
+Following the weak capture during the coasting phase propagated by the simulator, the arcjet is again used to lower the orbit as quickly as possible to avoid being recaptured by the Earth. This results in the spacecraft mapping increasingly small and fast circles around the Moon, as shown from the Earth's perspective in \autoref{fig:Capture-3D}.
 
 \begin{figure}
 \centering
@@ -513,12 +520,14 @@ Adjust starting date until point where difference between satellite phase and lu
 \label{fig:Capture-3D}
 \end{figure}
 
+The descending spiral trajectory is far more apparent from the lunar centred frame in \autoref{fig:Capture-3D-lci}. When this frame is rotated in \autoref{fig:Capture-3D-sel} the lunar surface coverage can be seen, indicating that the science payload could be activated during this phase subject to sufficient power.
+
 \begin{figure}
 \centering
 \def\svgwidth{\figurewidth}
 \input{Images/Capture/figure14.pdf_tex}
 \caption{Capture trajectory in LCI frame.}
-\label{fig:Capture-3D-eci}
+\label{fig:Capture-3D-lci}
 \end{figure}
 
 \begin{figure}
@@ -537,6 +546,8 @@ Adjust starting date until point where difference between satellite phase and lu
 %\label{fig:Capture-3D-sel-side}
 %\end{figure}
 
+The satellite's distance from the respective bodies in \autoref{fig:Capture-dist} is unsurprising: it gets closer to the Moon, while its orbit about the Moon causes oscillations in the distance to Earth that approach the Earth-Moon distance as the orbit descends. The orbital energy plot in \autoref{fig:Capture-orbeng} is more interesting, showing the spacecraft's precariously captured lunar orbit becoming more stable. Meanwhile, the orbital energy with respect to the Earth starts oscillating wildly. The spacecraft's gravitational potential with respect to the Earth is more or less constant, so the oscillations are caused by the velocity vector oscillating towards and then away from the Earth. A consequence of this is that when the spacecraft's velocity is directed away from the Earth, it exceeds escape velocity, so the orbital energy is positive. If not for the Moon repeatedly pulling the spacecraft back again, it would escape the Earth's gravity field.
+
 \begin{figure}
 \centering
 \def\svgwidth{\figurewidth}
@@ -552,6 +563,8 @@ Adjust starting date until point where difference between satellite phase and lu
 \caption{Orbital energy of the satellite relative to Earth and Moon during capture phase.}
 \label{fig:Capture-orbeng}
 \end{figure}
+
+During the capture phase, the semimajor axis steadily decreases very similar to the ascent phase in reverse. Similarly, the anomaly increases at an increasing rate, and the lower orbit results in higher orbital speed. Unlike a reversed descent phase, the eccentricity continues to decrease until it reaches a very nearly circular orbit, as required for the science phase. For the first half of the phase, the argument of periapsis is increasing while the anomaly is almost steady. This has essentially the same effect as the anomaly increasing, since the orbit is almost circular. The right ascension of the ascending node precesses steadily as a result of the Earth's gravity, a well known phenomenon of polar lunar orbits \parencite{Gupta2011}. % BULLSHIT?
 
 \begin{figure}
 \centering
@@ -569,7 +582,9 @@ Adjust starting date until point where difference between satellite phase and lu
 \label{fig:Capture-mee}
 \end{figure}
 
-The acceleration due to spacecraft thrust is observed to slowly increase, as propellant is consumed thereby lightening the spacecraft. This phenomenon is present in every powered phase, but is most apparent during the capture phase because the arcjet is in use, resulting in a higher mass flux than the descent phase, combined with the lighter load than previous phases because much of the fuel has already been used.
+In the plot of perturbations acting on the spacecraft over the capture phase, shown in \autoref{fig:Capture-pert}, the acceleration due to spacecraft thrust is observed to slowly increase. This is because propellant is expelled as the spacecraft thrusts, thereby reducing the mass being accelerated. This phenomenon is present in every powered phase, but is most apparent during the capture phase because the arcjet is in use, resulting in a higher mass flux than the descent phase, combined with the lighter load than previous phases because much of the fuel has already been used.
+
+The Earth's gravity continues to decrease in effect as the spacecraft settles to a steady distance from the Earth, but the perturbations due to the Moon's oblateness rapidly increase in magnitude. 
 
 \begin{figure}
 \centering
@@ -586,6 +601,8 @@ The acceleration due to spacecraft thrust is observed to slowly increase, as pro
 \caption{Perturbing accelerations acting on spacecraft during capture phase.}
 \label{fig:Capture-pert2}
 \end{figure}
+
+\autoref{fig:Capture-thrust} shows the thrust profile resulting from the capture phase simulation. This profile results from the initial guess, of continual thrust backwards along the velocity vector. Consequently the thrust initially has a substantial radial component due to the eccentricity of the orbit, but rapidly settles into almost purely tangential thrust. The noise in the out-of-plane component results from truncation error when evaluating the unit thrust vector constraint.
 
 \begin{figure}
 \centering

@@ -57,19 +57,19 @@
     \put(0.67461752,0.05){\makebox(0,0)[lb]{\smash{1675}}}%
     \put(0.80384562,0.05){\makebox(0,0)[lb]{\smash{1680}}}%
     \put(0.38912923,0.02){\makebox(0,0)[lb]{\smash{Mission time $t$ [days]}}}%
-    \put(0.08,0.08499566){\makebox(0,0)[lb]{\smash{-3}}}%
-    \put(0.08,0.14975542){\makebox(0,0)[lb]{\smash{-2}}}%
-    \put(0.08,0.21465742){\makebox(0,0)[lb]{\smash{-1}}}%
-    \put(0.09,0.27941717){\makebox(0,0)[lb]{\smash{0}}}%
-    \put(0.09,0.34431917){\makebox(0,0)[lb]{\smash{1}}}%
-    \put(0.09,0.40907892){\makebox(0,0)[lb]{\smash{2}}}%
-    \put(0.09,0.47398092){\makebox(0,0)[lb]{\smash{3}}}%
-    \put(0.09,0.53874068){\makebox(0,0)[lb]{\smash{4}}}%
-    \put(0.09,0.60364267){\makebox(0,0)[lb]{\smash{5}}}%
-    \put(0.09,0.66840243){\makebox(0,0)[lb]{\smash{6}}}%
-    \put(0.06,0.35891934){\rotatebox{90}{\makebox(0,0)[lb]{\smash{[rad]}}}}%
-    \put(0.68473547,0.66666782){\makebox(0,0)[lb]{\smash{\tiny{Phase of spacecraft}}}}%
-    \put(0.68473547,0.6444059){\makebox(0,0)[lb]{\smash{\tiny{Anomaly of spacecraft}}}}%
-    \put(0.68473547,0.62228968){\makebox(0,0)[lb]{\smash{\tiny{Anomaly of Moon}}}}%
+    \put(0.08,0.08528534){\makebox(0,0)[lb]{\smash{-6}}}%
+    \put(0.08,0.14989939){\makebox(0,0)[lb]{\smash{-4}}}%
+    \put(0.08,0.21451344){\makebox(0,0)[lb]{\smash{-2}}}%
+    \put(0.09,0.27912749){\makebox(0,0)[lb]{\smash{0}}}%
+    \put(0.09,0.34374154){\makebox(0,0)[lb]{\smash{2}}}%
+    \put(0.09,0.40835559){\makebox(0,0)[lb]{\smash{4}}}%
+    \put(0.09,0.47296964){\makebox(0,0)[lb]{\smash{6}}}%
+    \put(0.09,0.53772767){\makebox(0,0)[lb]{\smash{8}}}%
+    \put(0.08,0.60234172){\makebox(0,0)[lb]{\smash{10}}}%
+    \put(0.08,0.66695577){\makebox(0,0)[lb]{\smash{12}}}%
+    \put(0.06,0.35920902){\rotatebox{90}{\makebox(0,0)[lb]{\smash{[rad]}}}}%
+    \put(0.20916392,0.60190807){\makebox(0,0)[lb]{\smash{\tiny{Spacecraft angle}}}}%
+    \put(0.20916392,0.56447008){\makebox(0,0)[lb]{\smash{\tiny{Longitude of spacecraft}}}}%
+    \put(0.20916392,0.52717606){\makebox(0,0)[lb]{\smash{\tiny{Anomaly of Moon}}}}%
   \end{picture}%
 \endgroup%

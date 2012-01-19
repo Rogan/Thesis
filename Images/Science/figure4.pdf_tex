@@ -50,25 +50,26 @@
   \makeatother%
   \begin{picture}(1,0.7496392)%
     \put(0,0){\includegraphics[width=\unitlength]{Images/Science/figure4.pdf}}%
-    \put(0.20482741,0.05){\makebox(0,0)[lb]{\smash{1840}}}%
-    \put(0.28288465,0.05){\makebox(0,0)[lb]{\smash{1860}}}%
+    \put(0.20540676,0.05){\makebox(0,0)[lb]{\smash{1840}}}%
+    \put(0.28317433,0.05){\makebox(0,0)[lb]{\smash{1860}}}%
     \put(0.36094189,0.05){\makebox(0,0)[lb]{\smash{1880}}}%
-    \put(0.43899913,0.05){\makebox(0,0)[lb]{\smash{1900}}}%
-    \put(0.51705637,0.05){\makebox(0,0)[lb]{\smash{1920}}}%
-    \put(0.59511362,0.05){\makebox(0,0)[lb]{\smash{1940}}}%
-    \put(0.67317086,0.05){\makebox(0,0)[lb]{\smash{1960}}}%
-    \put(0.75122810,0.05){\makebox(0,0)[lb]{\smash{1980}}}%
-    \put(0.82928534,0.05){\makebox(0,0)[lb]{\smash{2000}}}%
-    \put(0.41066782,0.02){\makebox(0,0)[lb]{\smash{Mission time $t$ [days]}}}%
-    \put(0.08,0.10378838){\makebox(0,0)[lb]{\smash{$10^{-7}$}}}%
-    \put(0.08,0.29242671){\makebox(0,0)[lb]{\smash{$10^{-6}$}}}%
-    \put(0.08,0.48106505){\makebox(0,0)[lb]{\smash{$10^{-5}$}}}%
-    \put(0.08,0.66970338){\makebox(0,0)[lb]{\smash{$10^{-4}$}}}%
-    \put(0.06,0.26669558){\rotatebox{90}{\makebox(0,0)[lb]{\smash{Acceleration [$ms^{-2}$]}}}}%
-    \put(0.48323157,0.18126626){\makebox(0,0)[lb]{\smash{\tiny{Thrust}}}}%
-    \put(0.48323157,0.16305291){\makebox(0,0)[lb]{\smash{\tiny{Moon}}}}%
-    \put(0.48323157,0.14151605){\makebox(0,0)[lb]{\smash{\tiny{Sun}}}}%
-    \put(0.48323157,0.11983348){\makebox(0,0)[lb]{\smash{\tiny{Oblateness}}}}%
-    \put(0.48323157,0.09829488){\makebox(0,0)[lb]{\smash{\tiny{Solar wind}}}}%
+    \put(0.43885516,0.05){\makebox(0,0)[lb]{\smash{1900}}}%
+    \put(0.51662272,0.05){\makebox(0,0)[lb]{\smash{1920}}}%
+    \put(0.59439202,0.05){\makebox(0,0)[lb]{\smash{1940}}}%
+    \put(0.67215958,0.05){\makebox(0,0)[lb]{\smash{1960}}}%
+    \put(0.74992715,0.05){\makebox(0,0)[lb]{\smash{1980}}}%
+    \put(0.82769644,0.05){\makebox(0,0)[lb]{\smash{2000}}}%
+    \put(0.41211275,0.02){\makebox(0,0)[lb]{\smash{Mission time $t$ [days]}}}%
+    \put(0.09,0.09656028){\makebox(0,0)[lb]{\smash{$10^{-7}$}}}%
+    \put(0.09,0.23156982){\makebox(0,0)[lb]{\smash{$10^{-6}$}}}%
+    \put(0.09,0.36658109){\makebox(0,0)[lb]{\smash{$10^{-5}$}}}%
+    \put(0.09,0.50173461){\makebox(0,0)[lb]{\smash{$10^{-4}$}}}%
+    \put(0.09,0.63674588){\makebox(0,0)[lb]{\smash{$10^{-3}$}}}%
+    \put(0.07,0.26669558){\rotatebox{90}{\makebox(0,0)[lb]{\smash{Acceleration [$ms^{-2}$]}}}}%
+    \put(0.48453252,0.18141197){\makebox(0,0)[lb]{\smash{\tiny{Thrust}}}}%
+    \put(0.48453252,0.16334258){\makebox(0,0)[lb]{\smash{\tiny{Earth}}}}%
+    \put(0.48453252,0.14166002){\makebox(0,0)[lb]{\smash{\tiny{Sun}}}}%
+    \put(0.48453252,0.11997745){\makebox(0,0)[lb]{\smash{\tiny{Oblateness}}}}%
+    \put(0.48453252,0.09829488){\makebox(0,0)[lb]{\smash{\tiny{Solar wind}}}}%
   \end{picture}%
 \endgroup%
