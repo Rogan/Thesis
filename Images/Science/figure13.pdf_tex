@@ -50,10 +50,10 @@
   \makeatother%
   \begin{picture}(1,0.7496392)%
     \put(0,0){\includegraphics[width=\unitlength]{Images/Science/figure13.pdf}}%
-    \put(0.04,0.58282741){\makebox(0,0)[lb]{\smash{1.8374}}}%
-    \put(0.04,0.62012142){\makebox(0,0)[lb]{\smash{1.8374}}}%
-    \put(0.04,0.65727147){\makebox(0,0)[lb]{\smash{1.8374}}}%
-    \put(0.16912402,0.69702307){\makebox(0,0)[lb]{\smash{$\times10^6$}}}%
+    \put(0.06,0.58282741){\makebox(0,0)[lb]{\smash{0.0}}}%
+    \put(0.04,0.62012142){\makebox(0,0)[lb]{\smash{-20.0}}}%
+    \put(0.04,0.65727147){\makebox(0,0)[lb]{\smash{-40.0}}}%
+    \put(0.16912402,0.69702307){\makebox(0,0)[lb]{\smash{+1.8374$\times10^6$}}}%
     \put(0.02,0.60595663){\rotatebox{90}{\makebox(0,0)[lb]{\smash{[m]}}}}%
     \put(0.87438508,0.65423591){\makebox(0,0)[lb]{\smash{\tiny{$a$}}}}%
     \put(0.08,0.42541197){\makebox(0,0)[lb]{\smash{0.5}}}%

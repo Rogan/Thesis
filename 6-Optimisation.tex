@@ -161,7 +161,7 @@ Lunar altitude, $r_{LCI}$ (m) &$\le$& $1.4\times 10^6$\\\bottomrule
 \end{center}
 \end{table}
 
-The final state is lunar orbit at an altitude of 100~km above the surface of the Moon. Colleagues working on the project have identified a number of lunar inclinations that reduce station-keeping costs throughout the science phase. \textcite{Zeile2010} recommend a final inclination of 70\degrees.
+The final state is lunar orbit at an altitude of 100~km above the surface of the Moon. A polar or near-polar orbit is desired for maximum surface coverage.
 
 \begin{table}[h]
 \caption{Keplerian elements for the final orbit of \BW\ trajectory optimisation (end of descent phase)}
@@ -171,9 +171,7 @@ The final state is lunar orbit at an altitude of 100~km above the surface of the
 Parameter && Value\\\midrule
 Semimajor axis, $a$ (m) &$\le$& $1.8371\times 10^6$\\
 Eccentricity, $e$ (-) &$\le$& 0.0\\
-Inclination, $i$ (rad) &$\le$& 1.222\\
-Argument of periapsis, $\omega$ (rad) &$\le$& 0.7382 \\
-Lunar Longitude of the Ascending Node, $\Omega$ (rad) &$\le$& 4.9742 \\\bottomrule
+Inclination, $i$ (rad) &$\le$& 1.57\\\bottomrule
 \end{tabular}
 \end{center}
 \end{table}
@@ -187,7 +185,7 @@ Firstly, the control vector $\vec{u}$ must be a unit vector. This ensures that t
 
 To guide the optimiser towards an appropriate solution, some bounds are placed on the trajectory itself. At no point in the optimisation is the spacecraft allowed to escape Earth orbit (by ensuring that $e_{ECI}<0$), nor is the spacecraft allowed to come within 100km of either the Earth's surface, or the Moon's surface.
 
-Equinoctial elements are better for this optimisation than Keplerian elements, but they are still not perfect. They do exhibit singularities as the inclination approaches 90\degrees; in other words, they do not model polar orbits well. Constraining the orbit to keep away from polar orbits is not a severe limitation on this optimisation since the spacecraft is highly unlikely to approach a polar orbit prior to Earth departure (starting at 21\degrees\ while aiming for the lunar plane of 6\degrees\ from the ecliptic, 15-24\degrees\ relative to Earth). This constraint would have been more troubling when the mission was initially aiming for a polar lunar orbit, but the revised 70\degrees\ science orbit provides a sufficient safety margin.
+Equinoctial elements are better for this optimisation than Keplerian elements, but they are still not perfect. They do exhibit singularities as the inclination approaches 180\degrees; in other words, they do not model strongly retrograde orbits well. Constraining the trajectory to keep away from these orbits is not a severe limitation on this optimisation since the spacecraft is highly unlikely to approach a retrograde orbit prior to Earth departure (starting at 21\degrees\ while aiming for the lunar plane of 6\degrees\ from the ecliptic, 15-24\degrees\ relative to Earth). Even the polar lunar orbit provides a large margin of safety.
 
 Upon implementation of the power generation and consumption model, the constraint that battery charge must be greater than zero had a significant affect on the trajectory, particularly introducing coast phases in the Ascent phase. A final intuitive but hugely important numerical constraint is that the spacecraft mass must remain positive! 
 

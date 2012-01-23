@@ -18,6 +18,8 @@ does give an estimate for the transfer duration and fuel requirements
 
 \section{Additions to low thrust trajectory optimisation}
 
+high fidelity optimisation is possible using SOCS, just needs better processing - future support for multiple cores, parallel processing. SOCS is currently a direct shooting method - perhaps adapt it to multiple shooting
+
 \section{Future work}
 Further applications of low thrust trajectory optimisation using SOCS and GESOP? IAC2011 paper
 try additional thrust profiles, for initial guess sensitivity (basins of convergence), montecarlo for trajectory sensitivity, and of course optimise the whole lot linked together - cruise phase should define descent
@@ -27,6 +29,22 @@ parallel processing
 optimise whole trajectory together
 obviously implementation of real launch date, once that is known
 
+Colleagues working on the project have identified a number of lunar inclinations that reduce station-keeping costs throughout the science phase. \textcite{Zeile2010} recommend a final inclination of 70\degrees, having used an argument of periapsis of 43.3\degrees\ and a right ascension of 285\degrees. This would be easily be achievable using minor course corrections during the arcjet-powered capture phase, or even during the lengthy descent phase with the PPTs. The recent study by \textcite{Gupta2011} reinforces this conclusion, showing that the "transition altitude", that is, the altitude above which a sudden increase in orbital life time is observed, is lowest for a 70\degrees\ inclined orbit (Figure 14a) and provides a range of right ascensions that could be trialled.
+
+\begin{table}[h]
+\caption{Revised keplerian elements for the final orbit of \BW\ trajectory optimisation (end of descent phase)}
+\label{tab:Phase-5-constraints-revised}
+\begin{center}
+\begin{tabular} {ccc}\toprule
+Parameter && Value\\\midrule
+Semimajor axis, $a$ (m) &$\le$& $1.8371\times 10^6$\\
+Eccentricity, $e$ (-) &$\le$& 0.0\\
+Inclination, $i$ (rad) &$\le$& 1.222\\
+Argument of periapsis, $\omega$ (rad) &$\le$& 0.7382 \\
+Lunar Longitude of the Ascending Node, $\Omega$ (rad) &$\le$& 4.9742 \\\bottomrule
+\end{tabular}
+\end{center}
+\end{table}
 
 
 

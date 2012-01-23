@@ -50,10 +50,10 @@
   \makeatother%
   \begin{picture}(1,0.7496392)%
     \put(0,0){\includegraphics[width=\unitlength]{Images/Science/figure9.pdf}}%
-    \put(0.02,0.56432611){\makebox(0,0)[lb]{\smash{1.8374}}}%
-    \put(0.02,0.61766522){\makebox(0,0)[lb]{\smash{1.8374}}}%
-    \put(0.02,0.67100434){\makebox(0,0)[lb]{\smash{1.8374}}}%
-    \put(0.16912402,0.71422448){\makebox(0,0)[lb]{\smash{$\times10^6$}}}%
+    \put(0.05,0.56432611){\makebox(0,0)[lb]{\smash{-40.0}}}%
+    \put(0.05,0.61766522){\makebox(0,0)[lb]{\smash{-20.0}}}%
+    \put(0.08,0.67100434){\makebox(0,0)[lb]{\smash{0.0}}}%
+    \put(0.16912402,0.71422448){\makebox(0,0)[lb]{\smash{$+1.8374\times10^6$}}}%
     \put(0.01,0.59265742){\rotatebox{90}{\makebox(0,0)[lb]{\smash{[m]}}}}%
     \put(0.87337381,0.67143799){\makebox(0,0)[lb]{\smash{\tiny{$p$}}}}%
     \put(0.08,0.29979879){\makebox(0,0)[lb]{\smash{0.0}}}%
@@ -74,13 +74,10 @@
     \put(0.74342238,0.05){\makebox(0,0)[lb]{\smash{1980}}}%
     \put(0.82610581,0.05){\makebox(0,0)[lb]{\smash{2000}}}%
     \put(0.38898526,0.02){\makebox(0,0)[lb]{\smash{Mission time $t$ [days]}}}%
-    \put(0.04,0.09713790){\makebox(0,0)[lb]{\smash{2000}}}%
-    \put(0.04,0.11968777){\makebox(0,0)[lb]{\smash{4000}}}%
-    \put(0.04,0.14209367){\makebox(0,0)[lb]{\smash{6000}}}%
-    \put(0.04,0.16464354){\makebox(0,0)[lb]{\smash{8000}}}%
-    \put(0.03,0.18704944){\makebox(0,0)[lb]{\smash{10000}}}%
-    \put(0.03,0.20945360){\makebox(0,0)[lb]{\smash{12000}}}%
-    \put(0.03,0.23200347){\makebox(0,0)[lb]{\smash{14000}}}%
+    \put(0.05,0.09713790){\makebox(0,0)[lb]{\smash{2000}}}%
+    \put(0.05,0.14209367){\makebox(0,0)[lb]{\smash{6000}}}%
+    \put(0.035,0.18704944){\makebox(0,0)[lb]{\smash{10000}}}%
+    \put(0.035,0.23200347){\makebox(0,0)[lb]{\smash{14000}}}%
     \put(0.01,0.13443192){\rotatebox{90}{\makebox(0,0)[lb]{\smash{[rad]}}}}%
     \put(0.87207285,0.2166817){\makebox(0,0)[lb]{\smash{\tiny{$L$}}}}%
   \end{picture}%
