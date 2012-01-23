@@ -50,35 +50,34 @@
   \makeatother%
   \begin{picture}(1,0.7496392)%
     \put(0,0){\includegraphics[width=\unitlength]{Images/Capture/figure16.pdf}}%
-    \put(0.21133218,0.05810928){\makebox(0,0)[lb]{\smash{1684}}}%
-    \put(0.29040243,0.05810928){\makebox(0,0)[lb]{\smash{1686}}}%
-    \put(0.36947095,0.05810928){\makebox(0,0)[lb]{\smash{1688}}}%
-    \put(0.44868517,0.05810928){\makebox(0,0)[lb]{\smash{1690}}}%
-    \put(0.52775369,0.05810928){\makebox(0,0)[lb]{\smash{1692}}}%
-    \put(0.6068222,0.05810928){\makebox(0,0)[lb]{\smash{1694}}}%
-    \put(0.68589245,0.05810928){\makebox(0,0)[lb]{\smash{1696}}}%
-    \put(0.76496097,0.05810928){\makebox(0,0)[lb]{\smash{1698}}}%
-    \put(0.8441752,0.05810928){\makebox(0,0)[lb]{\smash{1700}}}%
-    \put(0.16435386,0.07473374){\makebox(0,0)[lb]{\smash{−1}}}%
-    \put(0.14700781,0.13587858){\makebox(0,0)[lb]{\smash{−0.8}}}%
-    \put(0.14700781,0.19702342){\makebox(0,0)[lb]{\smash{−0.6}}}%
-    \put(0.14700781,0.25816826){\makebox(0,0)[lb]{\smash{−0.4}}}%
-    \put(0.14700781,0.31916739){\makebox(0,0)[lb]{\smash{−0.2}}}%
-    \put(0.1764961,0.38031223){\makebox(0,0)[lb]{\smash{0}}}%
-    \put(0.15915004,0.44145707){\makebox(0,0)[lb]{\smash{0.2}}}%
-    \put(0.15915004,0.50245794){\makebox(0,0)[lb]{\smash{0.4}}}%
-    \put(0.15915004,0.56360278){\makebox(0,0)[lb]{\smash{0.6}}}%
-    \put(0.15915004,0.62474761){\makebox(0,0)[lb]{\smash{0.8}}}%
-    \put(0.1764961,0.68574848){\makebox(0,0)[lb]{\smash{1}}}%
-    \put(0.13226366,0.24906158){\rotatebox{90}{\makebox(0,0)[lb]{\smash{CumulativeEnergy[}}}}%
-    \put(0.13226366,0.4975438){\rotatebox{90}{\makebox(0,0)[lb]{\smash{J}}}}%
-    \put(0.13226366,0.51575716){\rotatebox{90}{\makebox(0,0)[lb]{\smash{]}}}}%
-    \put(0.42078578,0.02934432){\makebox(0,0)[lb]{\smash{Missiontime}}}%
-    \put(0.58239341,0.02934432){\makebox(0,0)[lb]{\smash{t}}}%
-    \put(0.60205204,0.02934432){\makebox(0,0)[lb]{\smash{[}}}%
-    \put(0.60985776,0.02934432){\makebox(0,0)[lb]{\smash{days}}}%
-    \put(0.66551015,0.02934432){\makebox(0,0)[lb]{\smash{]}}}%
-    \put(0.65235559,0.66637814){\makebox(0,0)[lb]{\smash{Usedbythrusters}}}%
-    \put(0.65235559,0.64382827){\makebox(0,0)[lb]{\smash{Generatedbysolarpanels}}}%
+    \put(0.22665568,0.0608569){\makebox(0,0)[lb]{\smash{1684}}}%
+    \put(0.30369991,0.0608569){\makebox(0,0)[lb]{\smash{1686}}}%
+    \put(0.38074588,0.0608569){\makebox(0,0)[lb]{\smash{1688}}}%
+    \put(0.45793582,0.0608569){\makebox(0,0)[lb]{\smash{1690}}}%
+    \put(0.53498179,0.0608569){\makebox(0,0)[lb]{\smash{1692}}}%
+    \put(0.61202602,0.0608569){\makebox(0,0)[lb]{\smash{1694}}}%
+    \put(0.68921596,0.0608569){\makebox(0,0)[lb]{\smash{1696}}}%
+    \put(0.76626193,0.0608569){\makebox(0,0)[lb]{\smash{1698}}}%
+    \put(0.84330789,0.0608569){\makebox(0,0)[lb]{\smash{1700}}}%
+    \put(0.19369818,0.07574501){\makebox(0,0)[lb]{\smash{0}}}%
+    \put(0.18126626,0.14006938){\makebox(0,0)[lb]{\smash{50}}}%
+    \put(0.16869037,0.20439549){\makebox(0,0)[lb]{\smash{100}}}%
+    \put(0.16869037,0.26871986){\makebox(0,0)[lb]{\smash{150}}}%
+    \put(0.16869037,0.33290026){\makebox(0,0)[lb]{\smash{200}}}%
+    \put(0.16869037,0.39722463){\makebox(0,0)[lb]{\smash{250}}}%
+    \put(0.16869037,0.46155074){\makebox(0,0)[lb]{\smash{300}}}%
+    \put(0.16869037,0.52573114){\makebox(0,0)[lb]{\smash{350}}}%
+    \put(0.16869037,0.59005551){\makebox(0,0)[lb]{\smash{400}}}%
+    \put(0.16869037,0.65437988){\makebox(0,0)[lb]{\smash{450}}}%
+    \put(0.15380225,0.22752298){\rotatebox{90}{\makebox(0,0)[lb]{\smash{CumulativeEnergy[}}}}%
+    \put(0.15380225,0.48771379){\rotatebox{90}{\makebox(0,0)[lb]{\smash{kWh}}}}%
+    \put(0.15380225,0.54842498){\rotatebox{90}{\makebox(0,0)[lb]{\smash{]}}}}%
+    \put(0.42989245,0.0320902){\makebox(0,0)[lb]{\smash{Missiontime}}}%
+    \put(0.59930581,0.0320902){\makebox(0,0)[lb]{\smash{t}}}%
+    \put(0.61896444,0.0320902){\makebox(0,0)[lb]{\smash{[}}}%
+    \put(0.62677016,0.0320902){\makebox(0,0)[lb]{\smash{days}}}%
+    \put(0.68242255,0.0320902){\makebox(0,0)[lb]{\smash{]}}}%
+    \put(0.28910147,0.61564094){\makebox(0,0)[lb]{\smash{Usedbythrusters}}}%
+    \put(0.28910147,0.57820295){\makebox(0,0)[lb]{\smash{Generatedbysolarpanels}}}%
   \end{picture}%
 \endgroup%

@@ -36,7 +36,7 @@
   }%
   \providecommand\rotatebox[2]{#2}%
   \ifx\svgwidth\undefined%
-    \setlength{\unitlength}{576bp}%
+    \setlength{\unitlength}{576.5bp}%
     \ifx\svgscale\undefined%
       \relax%
     \else%
@@ -48,34 +48,30 @@
   \global\let\svgwidth\undefined%
   \global\let\svgscale\undefined%
   \makeatother%
-  \begin{picture}(1,0.75028993)%
+  \begin{picture}(1,0.7496392)%
     \put(0,0){\includegraphics[width=\unitlength]{Images/Ascent/figure16.pdf}}%
-    \put(0.15162014,0.06148749){\makebox(0,0)[lb]{\smash{−140}}}%
-    \put(0.26475694,0.06148749){\makebox(0,0)[lb]{\smash{−135}}}%
-    \put(0.37803819,0.06148749){\makebox(0,0)[lb]{\smash{−130}}}%
-    \put(0.49117535,0.06148749){\makebox(0,0)[lb]{\smash{−125}}}%
-    \put(0.6044566,0.06148749){\makebox(0,0)[lb]{\smash{−120}}}%
-    \put(0.71759201,0.06148749){\makebox(0,0)[lb]{\smash{−115}}}%
-    \put(0.83087326,0.06148749){\makebox(0,0)[lb]{\smash{−110}}}%
-    \put(0.16160278,0.07609999){\makebox(0,0)[lb]{\smash{0}}}%
-    \put(0.14713542,0.15075277){\makebox(0,0)[lb]{\smash{0.5}}}%
-    \put(0.16160278,0.22526006){\makebox(0,0)[lb]{\smash{1}}}%
-    \put(0.14713542,0.29976874){\makebox(0,0)[lb]{\smash{1.5}}}%
-    \put(0.16160278,0.37427743){\makebox(0,0)[lb]{\smash{2}}}%
-    \put(0.14713542,0.44878437){\makebox(0,0)[lb]{\smash{2.5}}}%
-    \put(0.16160278,0.52329305){\makebox(0,0)[lb]{\smash{3}}}%
-    \put(0.14713542,0.59780173){\makebox(0,0)[lb]{\smash{3.5}}}%
-    \put(0.16160278,0.67245451){\makebox(0,0)[lb]{\smash{4x 10}}}%
-    \put(0.20891181,0.71252951){\makebox(0,0)[lb]{\smash{9}}}%
-    \put(0.13237847,0.24927743){\rotatebox{90}{\makebox(0,0)[lb]{\smash{CumulativeEnergy[}}}}%
-    \put(0.13237847,0.49797534){\rotatebox{90}{\makebox(0,0)[lb]{\smash{J}}}}%
-    \put(0.13237847,0.51620451){\rotatebox{90}{\makebox(0,0)[lb]{\smash{]}}}}%
-    \put(0.41247049,0.03269722){\makebox(0,0)[lb]{\smash{Missiontime}}}%
-    \put(0.5742184,0.03269722){\makebox(0,0)[lb]{\smash{t}}}%
-    \put(0.5938941,0.03269722){\makebox(0,0)[lb]{\smash{[}}}%
-    \put(0.6017066,0.03269722){\makebox(0,0)[lb]{\smash{days}}}%
-    \put(0.65740729,0.03269722){\makebox(0,0)[lb]{\smash{]}}}%
-    \put(0.69227431,0.66941631){\makebox(0,0)[lb]{\smash{Usedbythrusters}}}%
-    \put(0.69227431,0.64988506){\makebox(0,0)[lb]{\smash{Generatedbysolarpanels}}}%
+    \put(0.1925412,0.0608569){\makebox(0,0)[lb]{\smash{−140}}}%
+    \put(0.29820815,0.0608569){\makebox(0,0)[lb]{\smash{−135}}}%
+    \put(0.40401908,0.0608569){\makebox(0,0)[lb]{\smash{−130}}}%
+    \put(0.5096843,0.0608569){\makebox(0,0)[lb]{\smash{−125}}}%
+    \put(0.61549523,0.0608569){\makebox(0,0)[lb]{\smash{−120}}}%
+    \put(0.72116219,0.0608569){\makebox(0,0)[lb]{\smash{−115}}}%
+    \put(0.82697311,0.0608569){\makebox(0,0)[lb]{\smash{−110}}}%
+    \put(0.20612836,0.07574501){\makebox(0,0)[lb]{\smash{0}}}%
+    \put(0.18112229,0.18300087){\makebox(0,0)[lb]{\smash{200}}}%
+    \put(0.18112229,0.29025846){\makebox(0,0)[lb]{\smash{400}}}%
+    \put(0.18112229,0.39751431){\makebox(0,0)[lb]{\smash{600}}}%
+    \put(0.18112229,0.50477016){\makebox(0,0)[lb]{\smash{800}}}%
+    \put(0.16869037,0.61202775){\makebox(0,0)[lb]{\smash{1000}}}%
+    \put(0.15365655,0.22752298){\rotatebox{90}{\makebox(0,0)[lb]{\smash{CumulativeEnergy[}}}}%
+    \put(0.15365655,0.48771379){\rotatebox{90}{\makebox(0,0)[lb]{\smash{kWh}}}}%
+    \put(0.15365655,0.54842498){\rotatebox{90}{\makebox(0,0)[lb]{\smash{]}}}}%
+    \put(0.43596357,0.0320902){\makebox(0,0)[lb]{\smash{Missiontime}}}%
+    \put(0.60537693,0.0320902){\makebox(0,0)[lb]{\smash{t}}}%
+    \put(0.62503556,0.0320902){\makebox(0,0)[lb]{\smash{[}}}%
+    \put(0.63284128,0.0320902){\makebox(0,0)[lb]{\smash{days}}}%
+    \put(0.68849367,0.0320902){\makebox(0,0)[lb]{\smash{]}}}%
+    \put(0.30138768,0.61564094){\makebox(0,0)[lb]{\smash{Usedbythrusters}}}%
+    \put(0.30138768,0.57820295){\makebox(0,0)[lb]{\smash{Generatedbysolarpanels}}}%
   \end{picture}%
 \endgroup%

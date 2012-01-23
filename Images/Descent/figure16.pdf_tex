@@ -49,36 +49,31 @@
   \global\let\svgscale\undefined%
   \makeatother%
   \begin{picture}(1,0.7496392)%
-    \put(0,0){\includegraphics[width=\unitlength]{figure16.pdf}}%
-    \put(0.23966522,0.05810928){\makebox(0,0)[lb]{\smash{1710}}}%
-    \put(0.31728881,0.05810928){\makebox(0,0)[lb]{\smash{1720}}}%
-    \put(0.3947667,0.05810928){\makebox(0,0)[lb]{\smash{1730}}}%
-    \put(0.47239029,0.05810928){\makebox(0,0)[lb]{\smash{1740}}}%
-    \put(0.5498699,0.05810928){\makebox(0,0)[lb]{\smash{1750}}}%
-    \put(0.6274935,0.05810928){\makebox(0,0)[lb]{\smash{1760}}}%
-    \put(0.70497311,0.05810928){\makebox(0,0)[lb]{\smash{1770}}}%
-    \put(0.7825967,0.05810928){\makebox(0,0)[lb]{\smash{1780}}}%
-    \put(0.86007459,0.05810928){\makebox(0,0)[lb]{\smash{1790}}}%
-    \put(0.16435386,0.07473374){\makebox(0,0)[lb]{\smash{−1}}}%
-    \put(0.14700781,0.13587858){\makebox(0,0)[lb]{\smash{−0.8}}}%
-    \put(0.14700781,0.19702342){\makebox(0,0)[lb]{\smash{−0.6}}}%
-    \put(0.14700781,0.25816826){\makebox(0,0)[lb]{\smash{−0.4}}}%
-    \put(0.14700781,0.31916739){\makebox(0,0)[lb]{\smash{−0.2}}}%
-    \put(0.1764961,0.38031223){\makebox(0,0)[lb]{\smash{0}}}%
-    \put(0.15915004,0.44145707){\makebox(0,0)[lb]{\smash{0.2}}}%
-    \put(0.15915004,0.50245794){\makebox(0,0)[lb]{\smash{0.4}}}%
-    \put(0.15915004,0.56360278){\makebox(0,0)[lb]{\smash{0.6}}}%
-    \put(0.15915004,0.62474761){\makebox(0,0)[lb]{\smash{0.8}}}%
-    \put(0.1764961,0.68574848){\makebox(0,0)[lb]{\smash{1}}}%
-    \put(0.13226366,0.24906158){\rotatebox{90}{\makebox(0,0)[lb]{\smash{CumulativeEnergy[}}}}%
-    \put(0.13226366,0.4975438){\rotatebox{90}{\makebox(0,0)[lb]{\smash{J}}}}%
-    \put(0.13226366,0.51575716){\rotatebox{90}{\makebox(0,0)[lb]{\smash{]}}}}%
-    \put(0.4206418,0.02934432){\makebox(0,0)[lb]{\smash{Missiontime}}}%
-    \put(0.58224944,0.02934432){\makebox(0,0)[lb]{\smash{t}}}%
-    \put(0.60190807,0.02934432){\makebox(0,0)[lb]{\smash{[}}}%
-    \put(0.60971379,0.02934432){\makebox(0,0)[lb]{\smash{days}}}%
-    \put(0.66536548,0.02934432){\makebox(0,0)[lb]{\smash{]}}}%
-    \put(0.65235559,0.66637814){\makebox(0,0)[lb]{\smash{Usedbythrusters}}}%
-    \put(0.65235559,0.64382827){\makebox(0,0)[lb]{\smash{Generatedbysolarpanels}}}%
+    \put(0,0){\includegraphics[width=\unitlength]{Images/Descent/figure16.pdf}}%
+    \put(0.26539462,0.0608569){\makebox(0,0)[lb]{\smash{1710}}}%
+    \put(0.33969297,0.0608569){\makebox(0,0)[lb]{\smash{1720}}}%
+    \put(0.41399306,0.0608569){\makebox(0,0)[lb]{\smash{1730}}}%
+    \put(0.48814744,0.0608569){\makebox(0,0)[lb]{\smash{1740}}}%
+    \put(0.56244579,0.0608569){\makebox(0,0)[lb]{\smash{1750}}}%
+    \put(0.63660017,0.0608569){\makebox(0,0)[lb]{\smash{1760}}}%
+    \put(0.71089853,0.0608569){\makebox(0,0)[lb]{\smash{1770}}}%
+    \put(0.78505291,0.0608569){\makebox(0,0)[lb]{\smash{1780}}}%
+    \put(0.85935299,0.0608569){\makebox(0,0)[lb]{\smash{1790}}}%
+    \put(0.20612836,0.07574501){\makebox(0,0)[lb]{\smash{0}}}%
+    \put(0.18112229,0.18806071){\makebox(0,0)[lb]{\smash{500}}}%
+    \put(0.16869037,0.30037641){\makebox(0,0)[lb]{\smash{1000}}}%
+    \put(0.16869037,0.41254814){\makebox(0,0)[lb]{\smash{1500}}}%
+    \put(0.16869037,0.52486383){\makebox(0,0)[lb]{\smash{2000}}}%
+    \put(0.16869037,0.63703382){\makebox(0,0)[lb]{\smash{2500}}}%
+    \put(0.15365655,0.22752298){\rotatebox{90}{\makebox(0,0)[lb]{\smash{CumulativeEnergy[}}}}%
+    \put(0.15365655,0.48771379){\rotatebox{90}{\makebox(0,0)[lb]{\smash{kWh}}}}%
+    \put(0.15365655,0.54842498){\rotatebox{90}{\makebox(0,0)[lb]{\smash{]}}}}%
+    \put(0.43625325,0.03223591){\makebox(0,0)[lb]{\smash{Missiontime}}}%
+    \put(0.6055216,0.03223591){\makebox(0,0)[lb]{\smash{t}}}%
+    \put(0.62518092,0.03223591){\makebox(0,0)[lb]{\smash{[}}}%
+    \put(0.63298664,0.03223591){\makebox(0,0)[lb]{\smash{days}}}%
+    \put(0.68863833,0.03223591){\makebox(0,0)[lb]{\smash{]}}}%
+    \put(0.30138768,0.61564094){\makebox(0,0)[lb]{\smash{Usedbythrusters}}}%
+    \put(0.30138768,0.57820295){\makebox(0,0)[lb]{\smash{Generatedbysolarpanels}}}%
   \end{picture}%
 \endgroup%

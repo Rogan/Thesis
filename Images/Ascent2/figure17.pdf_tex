@@ -1,6 +1,6 @@
 %% Creator: Inkscape 0.48.2, www.inkscape.org
 %% PDF/EPS/PS + LaTeX output extension by Johan Engelen, 2010
-%% Accompanies image file 'figure16.pdf' (pdf, eps, ps)
+%% Accompanies image file 'figure17.pdf' (pdf, eps, ps)
 %%
 %% To include the image in your LaTeX document, write
 %%   \input{<filename>.pdf_tex}
@@ -49,28 +49,24 @@
   \global\let\svgscale\undefined%
   \makeatother%
   \begin{picture}(1,0.7496392)%
-    \put(0,0){\includegraphics[width=\unitlength]{Images/Propagate/figure16.pdf}}%
-    \put(0.24515698,0.0608569){\makebox(0,0)[lb]{\smash{1655}}}%
-    \put(0.35877363,0.0608569){\makebox(0,0)[lb]{\smash{1660}}}%
-    \put(0.47224631,0.0608569){\makebox(0,0)[lb]{\smash{1665}}}%
-    \put(0.58586297,0.0608569){\makebox(0,0)[lb]{\smash{1670}}}%
-    \put(0.69947962,0.0608569){\makebox(0,0)[lb]{\smash{1675}}}%
-    \put(0.8129523,0.0608569){\makebox(0,0)[lb]{\smash{1680}}}%
-    \put(0.20612836,0.07574501){\makebox(0,0)[lb]{\smash{0}}}%
-    \put(0.18112229,0.18227927){\makebox(0,0)[lb]{\smash{200}}}%
-    \put(0.18112229,0.28866782){\makebox(0,0)[lb]{\smash{400}}}%
-    \put(0.18112229,0.39505637){\makebox(0,0)[lb]{\smash{600}}}%
-    \put(0.18112229,0.50144666){\makebox(0,0)[lb]{\smash{800}}}%
-    \put(0.16869037,0.60783521){\makebox(0,0)[lb]{\smash{1000}}}%
-    \put(0.15365655,0.22752298){\rotatebox{90}{\makebox(0,0)[lb]{\smash{CumulativeEnergy[}}}}%
-    \put(0.15365655,0.48771379){\rotatebox{90}{\makebox(0,0)[lb]{\smash{kWh}}}}%
-    \put(0.15365655,0.54842498){\rotatebox{90}{\makebox(0,0)[lb]{\smash{]}}}}%
-    \put(0.43596357,0.0320902){\makebox(0,0)[lb]{\smash{Missiontime}}}%
-    \put(0.60537693,0.0320902){\makebox(0,0)[lb]{\smash{t}}}%
-    \put(0.62503556,0.0320902){\makebox(0,0)[lb]{\smash{[}}}%
-    \put(0.63284128,0.0320902){\makebox(0,0)[lb]{\smash{days}}}%
-    \put(0.68849367,0.0320902){\makebox(0,0)[lb]{\smash{]}}}%
-    \put(0.30138768,0.61564094){\makebox(0,0)[lb]{\smash{Usedbythrusters}}}%
-    \put(0.30138768,0.57820295){\makebox(0,0)[lb]{\smash{Generatedbysolarpanels}}}%
+    \put(0,0){\includegraphics[width=\unitlength]{Images/Ascent/figure17.pdf}}%
+    \put(0.16478751,0.05){\makebox(0,0)[lb]{\smash{0}}}%
+    \put(0.27204337,0.05){\makebox(0,0)[lb]{\smash{5}}}%
+    \put(0.37322984,0.05){\makebox(0,0)[lb]{\smash{10}}}%
+    \put(0.48062966,0.05){\makebox(0,0)[lb]{\smash{15}}}%
+    \put(0.58803122,0.05){\makebox(0,0)[lb]{\smash{20}}}%
+    \put(0.69543278,0.05){\makebox(0,0)[lb]{\smash{25}}}%
+    \put(0.80283261,0.05){\makebox(0,0)[lb]{\smash{30}}}%
+    \put(0.40980052,0.02){\makebox(0,0)[lb]{\smash{Mission time $t$ [days]}}}%
+    \put(0.10,0.13067476){\makebox(0,0)[lb]{\smash{0.8}}}%
+    \put(0.10,0.20641804){\makebox(0,0)[lb]{\smash{1.0}}}%
+    \put(0.10,0.28230703){\makebox(0,0)[lb]{\smash{1.2}}}%
+    \put(0.10,0.35805204){\makebox(0,0)[lb]{\smash{1.4}}}%
+    \put(0.10,0.43394102){\makebox(0,0)[lb]{\smash{1.6}}}%
+    \put(0.10,0.50968604){\makebox(0,0)[lb]{\smash{1.8}}}%
+    \put(0.10,0.58542931){\makebox(0,0)[lb]{\smash{2.0}}}%
+    \put(0.10,0.66131830){\makebox(0,0)[lb]{\smash{2.2}}}%
+    \put(0.22087285,0.71234484){\makebox(0,0)[lb]{\smash{$\times10^7$}}}%
+    \put(0.08,0.26770859){\rotatebox{90}{\makebox(0,0)[lb]{\smash{Periapsis radius [m]}}}}%
   \end{picture}%
 \endgroup%
