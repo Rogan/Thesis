@@ -53,37 +53,24 @@
     \put(0.23417173,0.05810928){\makebox(0,0)[lb]{\smash{1840}}}%
     \put(0.30890373,0.05810928){\makebox(0,0)[lb]{\smash{1860}}}%
     \put(0.38349176,0.05810928){\makebox(0,0)[lb]{\smash{1880}}}%
-    \put(0.4582255,0.05810928){\makebox(0,0)[lb]{\smash{1900}}}%
+    \put(0.45822550,0.05810928){\makebox(0,0)[lb]{\smash{1900}}}%
     \put(0.53281353,0.05810928){\makebox(0,0)[lb]{\smash{1920}}}%
     \put(0.60754553,0.05810928){\makebox(0,0)[lb]{\smash{1940}}}%
     \put(0.68227754,0.05810928){\makebox(0,0)[lb]{\smash{1960}}}%
     \put(0.75686557,0.05810928){\makebox(0,0)[lb]{\smash{1980}}}%
     \put(0.83159931,0.05810928){\makebox(0,0)[lb]{\smash{2000}}}%
-    \put(0.17635212,0.12633825){\makebox(0,0)[lb]{\smash{−1}}}%
-    \put(0.15900607,0.20352819){\makebox(0,0)[lb]{\smash{−0.5}}}%
-    \put(0.18849436,0.28071813){\makebox(0,0)[lb]{\smash{0}}}%
+    \put(0.42671292,0.02934432){\makebox(0,0)[lb]{\smash{Mission time $t$ [days]}}}%
+    \put(0.17635212,0.12633825){\makebox(0,0)[lb]{\smash{-1.0}}}%
+    \put(0.15900607,0.20352819){\makebox(0,0)[lb]{\smash{-0.5}}}%
+    \put(0.18849436,0.28071813){\makebox(0,0)[lb]{\smash{0.0}}}%
     \put(0.17114831,0.35790807){\makebox(0,0)[lb]{\smash{0.5}}}%
-    \put(0.18849436,0.43509801){\makebox(0,0)[lb]{\smash{1}}}%
+    \put(0.18849436,0.43509801){\makebox(0,0)[lb]{\smash{1.0}}}%
     \put(0.17114831,0.51228794){\makebox(0,0)[lb]{\smash{1.5}}}%
-    \put(0.18849436,0.58947788){\makebox(0,0)[lb]{\smash{2}}}%
-    \put(0.17114831,0.66666782){\makebox(0,0)[lb]{\smash{2.5
-x 10}}}%
-    \put(0.24429037,0.71408014){\makebox(0,0)[lb]{\smash{6}}}%
-    \put(0.14411622,0.23706331){\rotatebox{90}{\makebox(0,0)[lb]{\smash{Orbitalenergy}}}}%
-    \put(0.14411622,0.4206418){\rotatebox{90}{\makebox(0,0)[lb]{\smash{ǫ}}}}%
-    \put(0.14411622,0.44160208){\rotatebox{90}{\makebox(0,0)[lb]{\smash{[}}}}%
-    \put(0.14411622,0.44940781){\rotatebox{90}{\makebox(0,0)[lb]{\smash{m}}}}%
-    \put(0.13414224,0.47282498){\rotatebox{90}{\makebox(0,0)[lb]{\smash{2}}}}%
-    \put(0.14411622,0.48540087){\rotatebox{90}{\makebox(0,0)[lb]{\smash{s}}}}%
-    \put(0.13414224,0.49841041){\rotatebox{90}{\makebox(0,0)[lb]{\smash{−}}}}%
-    \put(0.13414224,0.51532281){\rotatebox{90}{\makebox(0,0)[lb]{\smash{2}}}}%
-    \put(0.14411622,0.52818735){\rotatebox{90}{\makebox(0,0)[lb]{\smash{]}}}}%
-    \put(0.42671292,0.02934432){\makebox(0,0)[lb]{\smash{Missiontime}}}%
-    \put(0.58817554,0.02934432){\makebox(0,0)[lb]{\smash{t}}}%
-    \put(0.60783487,0.02934432){\makebox(0,0)[lb]{\smash{[}}}%
-    \put(0.61564059,0.02934432){\makebox(0,0)[lb]{\smash{days}}}%
-    \put(0.67129228,0.02934432){\makebox(0,0)[lb]{\smash{]}}}%
-    \put(0.72911188,0.66637814){\makebox(0,0)[lb]{\smash{RelativetoEarth}}}%
-    \put(0.72911188,0.64787511){\makebox(0,0)[lb]{\smash{RelativetoMoon}}}%
+    \put(0.18849436,0.58947788){\makebox(0,0)[lb]{\smash{2.0}}}%
+    \put(0.17114831,0.66666782){\makebox(0,0)[lb]{\smash{2.5}}}%
+    \put(0.24429037,0.71408014){\makebox(0,0)[lb]{\smash{$\times10^6$}}}%
+    \put(0.14,0.23){\rotatebox{90}{\makebox(0,0)[lb]{\smash{Orbital energy $\epsilon$ [m$^2$s$^{-2}$]}}}}%
+    \put(0.72911188,0.66637814){\makebox(0,0)[lb]{\smash{\tiny{From Earth}}}}%
+    \put(0.72911188,0.64787511){\makebox(0,0)[lb]{\smash{\tiny{From Moon}}}}%
   \end{picture}%
 \endgroup%

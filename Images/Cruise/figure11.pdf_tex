@@ -69,7 +69,7 @@
     \put(0.12,0.58376701){\makebox(0,0)[lb]{\smash{12}}}%
     \put(0.12,0.63758645){\makebox(0,0)[lb]{\smash{14}}}%
     \put(0.21657986,0.71252881){\makebox(0,0)[lb]{\smash{$\times10^6$}}}%
-    \put(0.10,0.23){\rotatebox{90}{\makebox(0,0)[lb]{\smash{Orbital energy $\epsilon$ [$m^2s^{-2}$]}}}}%
+    \put(0.10,0.23){\rotatebox{90}{\makebox(0,0)[lb]{\smash{Orbital energy $\epsilon$ [m$^2$s$^{-2}$]}}}}%
     \put(0.75607639,0.66941631){\makebox(0,0)[lb]{\smash{\tiny{From Earth}}}}%
     \put(0.75607639,0.65335729){\makebox(0,0)[lb]{\smash{\tiny{From Moon}}}}%
   \end{picture}%

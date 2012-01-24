@@ -58,7 +58,7 @@
     \put(0.15,0.57638854){\makebox(0,0)[lb]{\smash{5}}}%
     \put(0.15,0.66247187){\makebox(0,0)[lb]{\smash{6}}}%
     \put(0.20,0.71){\makebox(0,0)[lb]{\smash{$\times10^7$}}}%
-    \put(0.13,0.23741284){\rotatebox{90}{\makebox(0,0)[lb]{\smash{Orbital energy $\epsilon$ [$m^2s^{-2}$]}}}}%
+    \put(0.13,0.23741284){\rotatebox{90}{\makebox(0,0)[lb]{\smash{Orbital energy $\epsilon$ [m$^2$s$^{-2}$]}}}}%
     \put(0.16898125,0.05){\makebox(0,0)[lb]{\smash{0}}}%
     \put(0.27604167,0.05){\makebox(0,0)[lb]{\smash{5}}}%
     \put(0.37832813,0.05){\makebox(0,0)[lb]{\smash{10}}}%

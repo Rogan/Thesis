@@ -61,7 +61,7 @@
     \put(0.09,0.30946145){\makebox(0,0)[lb]{\smash{$10^{-12}$}}}%
     \put(0.09,0.44314201){\makebox(0,0)[lb]{\smash{$10^{-11}$}}}%
     \put(0.09,0.57682256){\makebox(0,0)[lb]{\smash{$10^{-10}$}}}%
-    \put(0.07,0.26692673){\rotatebox{90}{\makebox(0,0)[lb]{\smash{Acceleration [$ms^{-2}$]}}}}%
+    \put(0.07,0.26692673){\rotatebox{90}{\makebox(0,0)[lb]{\smash{Acceleration [ms$^{-2}$]}}}}%
     \put(0.51128472,0.1355618){\makebox(0,0)[lb]{\smash{\tiny{Jupiter}}}}%
     \put(0.51128472,0.11660902){\makebox(0,0)[lb]{\smash{\tiny{Venus}}}}%
     \put(0.51128472,0.09780138){\makebox(0,0)[lb]{\smash{\tiny{Mars}}}}%

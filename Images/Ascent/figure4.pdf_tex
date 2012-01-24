@@ -63,7 +63,7 @@
     \put(0.08,0.48220451){\makebox(0,0)[lb]{\smash{$10^{-4}$}}}%
     \put(0.08,0.58579305){\makebox(0,0)[lb]{\smash{$10^{-3}$}}}%
     \put(0.40798611,0.02){\makebox(0,0)[lb]{\smash{Mission time $t$ [days]}}}%
-    \put(0.06,0.26707256){\rotatebox{90}{\makebox(0,0)[lb]{\smash{Acceleration [$ms^{-2}$]}}}}%
+    \put(0.06,0.26707256){\rotatebox{90}{\makebox(0,0)[lb]{\smash{Acceleration [ms$^{-2}$]}}}}%
     \put(0.49479167,0.16854791){\makebox(0,0)[lb]{\smash{\tiny{Thrust}}}}%
     \put(0.49479167,0.15306736){\makebox(0,0)[lb]{\smash{\tiny{Moon gravity}}}}%
     \put(0.49479167,0.13469374){\makebox(0,0)[lb]{\smash{\tiny{Sun gravity}}}}%

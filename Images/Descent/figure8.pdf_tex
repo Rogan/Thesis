@@ -68,6 +68,6 @@
     \put(0.11,0.46660885){\makebox(0,0)[lb]{\smash{250}}}%
     \put(0.11,0.54509974){\makebox(0,0)[lb]{\smash{300}}}%
     \put(0.11,0.62344666){\makebox(0,0)[lb]{\smash{350}}}%
-    \put(0.09,0.26134779){\rotatebox{90}{\makebox(0,0)[lb]{\smash{$\Delta v$ expended [$ms^{-1}$]}}}}%
+    \put(0.09,0.26134779){\rotatebox{90}{\makebox(0,0)[lb]{\smash{$\Delta v$ expended [ms$^{-1}$]}}}}%
   \end{picture}%
 \endgroup%

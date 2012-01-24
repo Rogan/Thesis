@@ -70,17 +70,7 @@
     \put(0.14686383,0.56360278){\makebox(0,0)[lb]{\smash{0.6}}}%
     \put(0.14686383,0.62474761){\makebox(0,0)[lb]{\smash{0.8}}}%
     \put(0.16420989,0.68574848){\makebox(0,0)[lb]{\smash{1}}}%
-    \put(0.11983209,0.26134779){\rotatebox{90}{\makebox(0,0)[lb]{\smash{∆}}}}%
-    \put(0.11983209,0.28346401){\rotatebox{90}{\makebox(0,0)[lb]{\smash{v}}}}%
-    \put(0.11983209,0.30659185){\rotatebox{90}{\makebox(0,0)[lb]{\smash{expended[}}}}%
-    \put(0.11983209,0.43639861){\rotatebox{90}{\makebox(0,0)[lb]{\smash{ms}}}}%
-    \put(0.10985811,0.47282533){\rotatebox{90}{\makebox(0,0)[lb]{\smash{−}}}}%
-    \put(0.10985811,0.48973773){\rotatebox{90}{\makebox(0,0)[lb]{\smash{1}}}}%
-    \put(0.11983209,0.50260227){\rotatebox{90}{\makebox(0,0)[lb]{\smash{]}}}}%
-    \put(0.41457069,0.02934432){\makebox(0,0)[lb]{\smash{Missiontime}}}%
-    \put(0.57617832,0.02934432){\makebox(0,0)[lb]{\smash{t}}}%
-    \put(0.59583695,0.02934432){\makebox(0,0)[lb]{\smash{[}}}%
-    \put(0.60364267,0.02934432){\makebox(0,0)[lb]{\smash{days}}}%
-    \put(0.65929436,0.02934432){\makebox(0,0)[lb]{\smash{]}}}%
+    \put(0.11983209,0.26134779){\rotatebox{90}{\makebox(0,0)[lb]{\smash{$\Delta v$ expended [ms$^{-1}$]}}}}%
+    \put(0.41457069,0.02934432){\makebox(0,0)[lb]{\smash{Mission time $t$ [days]}}}%
   \end{picture}%
 \endgroup%

@@ -68,7 +68,7 @@ To maximise the gravitational effect of the Moon on the spacecraft, it should be
 
 In order to get an initial idea of the optimal thrust profile, a reduced complexity trajectory was modelled. This was simply implemented by turning off secondary and tertiary perturbations, and optimising over a coarser mesh. As a result, this phase was actually able to reach an optimal solution, giving an idea of the optimal results that would have resulted in the other phases given adequate computing power.
 
-Most importantly, the thrust profile shown in \autoref{fig:Ascent2-thrust} demonstrates oscillations in the thrust direction between radial and tangential thrust components. This is similar to a result discovered by \textcite{Betts2003}. Unlike \textcite{Betts2003}, this is accompanied by a varying thrust magnitude, as shown in \autoref{fig:Ascent2-thrustM}. It is interesting to note that the variations in thrust magnitude are synchronous with the orbit; during the apoapsis, when thrusting is most effective in raising the periapsis, the thrust magnitude is very near to 100\%. Towards the end of the phase however, near periapsis the spacecraft often ceases thrusting altogether. The fact that thrust is continuous at the start of the phase is a result of the Oberth effect: it is most efficient to thrust when close to the central body. However, once sufficient orbital energy is attained for the periapsis to be raised beyond the van Allen belts, thrusting near periapsis contributes nothing more to achieve the objective. Thus a main objective of this study is achieved: to discover an optimal thrust profile given the power constraints.
+Most importantly, the thrust profile shown in \autoref{fig:Ascent2-thrust} demonstrates oscillations in the thrust direction between radial and tangential thrust components. This is similar to a result discovered by \textcite{Betts2003}. Unlike \textcite{Betts2003}, this is accompanied by a varying thrust magnitude, as shown in \autoref{fig:Ascent2-thrustM}. It is interesting to note that the variations in thrust magnitude are synchronous with the orbit; during the apoapsis, when thrusting is most effective in raising the periapsis, the thrust magnitude is very near to 100\%. Towards the end of the phase however, near periapsis the spacecraft often ceases thrusting altogether. The fact that thrust is continuous at the start of the phase is a result of the Oberth effect: it is most efficient to thrust when close to the central body. However, once sufficient orbital energy is attained for the periapsis to be raised beyond the van Allen belts, thrusting near periapsis contributes nothing more to achieve the objective. Thus a major objective of this study is achieved: to discover an optimal thrust profile given the power constraints.
 
 \begin{figure}
 \centering
@@ -86,7 +86,7 @@ Most importantly, the thrust profile shown in \autoref{fig:Ascent2-thrust} demon
 \label{fig:Ascent2-thrustM}
 \end{figure}
 
-The resulting trajectory presents some interesting artefacts in the 3D plot. 
+The resulting trajectory presents some interesting artefacts in the 3D plot. Once thrusting at periapsis ceases, the apoapsis stops increasing significantly. Thus the orbits are much closer together in the plot, appearing as though an inclination change has occurred.
 
 \begin{figure}
 \centering
@@ -96,54 +96,55 @@ The resulting trajectory presents some interesting artefacts in the 3D plot.
 \label{fig:Ascent2-3D}
 \end{figure}
 
-\begin{figure}
-\centering
-\def\svgwidth{\figurewidth}
-\input{Images/Ascent2/figure10.pdf_tex}
-\caption{Satellite's distance from Earth and Moon during reduced complexity ascent.}
-\label{fig:Ascent2-dist}
-\end{figure}
+%\begin{figure}
+%\centering
+%\def\svgwidth{\figurewidth}
+%\input{Images/Ascent2/figure10.pdf_tex}
+%\caption{Satellite's distance from Earth and Moon during reduced complexity ascent.}
+%\label{fig:Ascent2-dist}
+%\end{figure}
+%
+%\begin{figure}
+%\centering
+%\def\svgwidth{\figurewidth}
+%\input{Images/Ascent2/figure7.pdf_tex}
+%\caption{Keplerian elements of satellite within ECI frame during reduced complexity ascent phase.}
+%\label{fig:Ascent2-kep}
+%\end{figure}
+%
+%\begin{figure}
+%\centering
+%\def\svgwidth{\figurewidth}
+%\input{Images/Ascent2/figure9.pdf_tex}
+%\caption{Equinoctial elements of satellite within ECI frame during reduced complexity ascent phase.}
+%\label{fig:Ascent2-mee}
+%\end{figure}
+%
+%\begin{figure}
+%\centering
+%\def\svgwidth{\figurewidth}
+%\input{Images/Ascent2/figure11.pdf_tex}
+%\caption{Orbital energy of the satellite relative to Earth and Moon during reduced complexity ascent phase.}
+%\label{fig:Ascent2-orbeng}
+%\end{figure}
+%
+%\begin{figure}
+%\centering
+%\def\svgwidth{\figurewidth}
+%\input{Images/Ascent2/figure4.pdf_tex}
+%\caption{Perturbing accelerations acting on spacecraft during reduced complexity ascent phase.}
+%\label{fig:Ascent2-pert}
+%\end{figure}
+%
+%\begin{figure}
+%\centering
+%\def\svgwidth{\figurewidth}
+%\input{Images/Ascent2/figure5.pdf_tex}
+%\caption{Perturbing accelerations acting on spacecraft during reduced complexity ascent phase.}
+%\label{fig:Ascent2-pert2}
+%\end{figure}
 
-\begin{figure}
-\centering
-\def\svgwidth{\figurewidth}
-\input{Images/Ascent2/figure7.pdf_tex}
-\caption{Keplerian elements of satellite within ECI frame during reduced complexity ascent phase.}
-\label{fig:Ascent2-kep}
-\end{figure}
-
-\begin{figure}
-\centering
-\def\svgwidth{\figurewidth}
-\input{Images/Ascent2/figure9.pdf_tex}
-\caption{Equinoctial elements of satellite within ECI frame during reduced complexity ascent phase.}
-\label{fig:Ascent2-mee}
-\end{figure}
-
-\begin{figure}
-\centering
-\def\svgwidth{\figurewidth}
-\input{Images/Ascent2/figure11.pdf_tex}
-\caption{Orbital energy of the satellite relative to Earth and Moon during reduced complexity ascent phase.}
-\label{fig:Ascent2-orbeng}
-\end{figure}
-
-\begin{figure}
-\centering
-\def\svgwidth{\figurewidth}
-\input{Images/Ascent2/figure4.pdf_tex}
-\caption{Perturbing accelerations acting on spacecraft during reduced complexity ascent phase.}
-\label{fig:Ascent2-pert}
-\end{figure}
-
-\begin{figure}
-\centering
-\def\svgwidth{\figurewidth}
-\input{Images/Ascent2/figure5.pdf_tex}
-\caption{Perturbing accelerations acting on spacecraft during reduced complexity ascent phase.}
-\label{fig:Ascent2-pert2}
-\end{figure}
-
+The terminal condition of this phase optimisation, raising the periapsis above the van Allen belts, is shown in \autoref{fig:Ascent2-peri}. The cyclical nature is due to the Oberth effect again, as thrusting at periapsis doesn't raise it. Each of the sharp increases in periapsis corresponds to an apoapsis pass. The spacecraft's mass, seen in \autoref{fig:Ascent2-mass}, shows a steady decrease during the period of constant thrust. Then the latter half of the phase shows the results of the variable thrusting magnitude, as fuel mass is conserved at the expense of time. Consequently, this simulation used a total of approximately 54~kg of ammonia, over about 35 days. This is very close to the mission architecture's estimation of time spent in the van Allen belts, and thus corresponds to acceptable levels of radiation damage.
 
 \begin{figure}
 \centering
@@ -161,6 +162,8 @@ The resulting trajectory presents some interesting artefacts in the 3D plot.
 \label{fig:Ascent2-mass}
 \end{figure}
 
+Finally, \autoref{fig:Ascent2-energy} shows the power levels throughout this phase. 
+
 \begin{figure}
 \centering
 \def\svgwidth{\figurewidth}
@@ -168,6 +171,7 @@ The resulting trajectory presents some interesting artefacts in the 3D plot.
 \caption{Energy levels of spacecraft during reduced complexity ascent phase.}
 \label{fig:Ascent2-energy}
 \end{figure}
+
 
 % Mass (6) 
 % Delta-v (8)
@@ -177,7 +181,7 @@ The resulting trajectory presents some interesting artefacts in the 3D plot.
 % 3D SEL (15)
 
 
-Following the reduced complexity ascent, optimisation was attempted for a reduced complexity cruise phase. However, due to the long duration of this phase and the limited computer resources available, the optimisation did not reach an optimal solution in the time available. This exercise did highlight other problems with the procedure, in particular determining a lunar capture. Due to the lunar orbit being very close to the orbital escape energy relative to the Earth (only $5\times10^5 m^2s^{-2}$), the vast majority of simulations resulted in the spacecraft escaping the Earth's sphere of influence by gaining a gravitational assist from the Moon. This caused severe computational errors as the longitude and anomaly are no longer independent parameters after escape. Another common failure scenario involved weak capture by the Moon, that is, after one or two orbits around the Moon the spacecraft would then be recaptured by the Earth. Due to the way the system was modelled, this once again caused computational errors: if the spacecraft is in orbit around the Moon in a Earth-centric frame, the anomaly becomes sinusoidal rather than always increasing; the same applies for a spacecraft in Earth orbit during a lunar-centric frame.
+Following the reduced complexity ascent, optimisation was attempted for a reduced complexity cruise phase. However, due to the long duration of this phase and the limited computer resources available, the optimisation did not reach an optimal solution in the time available. This exercise did highlight other problems with the procedure, in particular determining a lunar capture. Due to the lunar orbit being very close to the orbital escape energy relative to the Earth (only $5\times10^5$~m$^2$s$^{-2}$), the vast majority of simulations resulted in the spacecraft escaping the Earth's sphere of influence by gaining a gravitational assist from the Moon. This caused severe computational errors as the longitude and anomaly are no longer independent parameters after escape. Another common failure scenario involved weak capture by the Moon, that is, after one or two orbits around the Moon the spacecraft would then be recaptured by the Earth. Due to the way the system was modelled, this once again caused computational errors: if the spacecraft is in orbit around the Moon in a Earth-centric frame, the anomaly becomes sinusoidal rather than always increasing; the same applies for a spacecraft in Earth orbit during a lunar-centric frame.
 
 Determining conditions for strong lunar capture proved difficult and unreliable. Consequently it was decided to simulate the transfer backwards, from lunar orbit to Earth orbit, using an industry standard tool called Satellite Tool Kit (STK) \parencite{STK}. Backwards propagation has been used by many previous authors, such as \textcite{Author}. The main advantage to this approach is that any ascent from lunar orbit must necessarily pass through Earth orbit; whereas the reverse does not apply. Furthermore, with the Moon in a 19\degrees\ inclined orbit about the Earth, any ascent from the Moon will end up in approximately the same plane as the parking orbit after launch, thus implicitly accounting for the plane changes required to achieve the target lunar orbit.
 
@@ -203,7 +207,7 @@ solves problem of lunar capture, but further work required (by GESOP) to complet
 \end{figure}
 
 %cruise%
-regardless, it was found that increasing the thrust shortens the transfer but makes lunar capture more difficult. The higher thrust may be targeted at the Moon, and an appropriate orbital energy can be attained for lunar capture ($\approx5000m^2s^{-2}$) but due to the higher thrust, a larger proportion of the energy is made up of kinetic energy. In other words, the spacecraft is going too fast to achieve a strong lunar capture, even with a very low lunar pass. Perhaps relative velocity might be a better termination criterion?
+regardless, it was found that increasing the thrust shortens the transfer but makes lunar capture more difficult. The higher thrust may be targeted at the Moon, and an appropriate orbital energy can be attained for lunar capture (about 5000~m$^2$s$^{-2}$) but due to the higher thrust, a larger proportion of the energy is made up of kinetic energy. In other words, the spacecraft is going too fast to achieve a strong lunar capture, even with a very low lunar pass. Perhaps relative velocity might be a better termination criterion?
 
 found that each small change required lengthy rework of launch date and various phase lengths to achieve lunar capture. 
 optimising cruise phase forwards to given termination condition (SOI) causes numerical errors (gets pulled into lunar orbit and so L (ECI) is no longer independent, or gets thrown into escape trajectory and so L (ECI) no longer increases, or ...).
@@ -321,7 +325,10 @@ The objective of this phase, raising the spacecraft periapsis, is shown in \auto
 
 The nearly constant thrust results in fuel consumption being almost linear with time. This can be seen in \cite{fig:Ascent-mass}, which plots the wet mass of the spacecraft over the phase. From the plot, this simulation suggested approximately 60~kg worth of ammonia would be required for the ascent phase. %compare to initial guess?
 
-A total $\Delta v$ of 1300$ms^{-1}$ was expended over this phase, at an almost constant rate due to the linear thrust profile. %compare to initial guess
+fully optimised trajectory takes a couple of days longer, saves 6kg
+32 days in van Allen belts? acceptable radiation damage
+
+A total $\Delta v$ of 1300~ms$^{-1}$ was expended over this phase, at an almost constant rate due to the linear thrust profile. %compare to initial guess
 
 \begin{figure}
 \centering
@@ -417,7 +424,7 @@ Similar cyclical behaviour is visible in \autoref{fig:Cruise-pert2}, showing the
 \label{fig:Cruise-pert2}
 \end{figure}
 
-17~kg of PTFE was consumed over the course of this phase, generating 2500$ms^{-1}$ of $\Delta v$. %compare to initial guess
+17~kg of PTFE was consumed over the course of this phase, generating 2500~ms$^{-1}$ of $\Delta v$. %compare to initial guess
 This demonstrates the efficacy of the PPTs as compared to the arcjet in the previous phase.
 
 % Thrust magnitude (figure3)
@@ -655,7 +662,7 @@ The Earth's gravity continues to decrease in effect as the spacecraft settles to
 35~kg ammonia used
 % ECI kep (figure7)
 % DeltaV (figure8)
-almost 1000~$ms^{-1}$ expended
+almost 1000~ms$^{-1}$ expended
 % Phase (figure12)
 % Energy (figure16)
 
@@ -755,7 +762,7 @@ The thrust throughout the descent phase is directed backwards along the velocity
 1.4~kg PTFE used
 % ECI kep (figure7)
 % DeltaV (figure8)
-almost 400~$ms^{-1}$
+almost 400~ms$^{-1}$
 % Phase (figure12)
 % Energy (figure16)
 

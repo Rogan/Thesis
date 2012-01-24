@@ -62,7 +62,7 @@
     \put(0.13483819,0.44039374){\makebox(0,0)[lb]{\smash{1500}}}%
     \put(0.13483819,0.56177743){\makebox(0,0)[lb]{\smash{2000}}}%
     \put(0.13483819,0.68315937){\makebox(0,0)[lb]{\smash{2500}}}%
-    \put(0.12022569,0.2615743){\rotatebox{90}{\makebox(0,0)[lb]{\smash{$\Delta v$ expended [$ms^{-1}$]}}}}%
+    \put(0.12022569,0.2615743){\rotatebox{90}{\makebox(0,0)[lb]{\smash{$\Delta v$ expended [ms$^{-1}$]}}}}%
     \put(0.41377257,0.02){\makebox(0,0)[lb]{\smash{Mission time $t$ [days]}}}%
   \end{picture}%
 \endgroup%

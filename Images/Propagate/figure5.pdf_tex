@@ -58,7 +58,7 @@
     \put(0.80919341,0.05){\makebox(0,0)[lb]{\smash{1680}}}%
     \put(0.41630529,0.02){\makebox(0,0)[lb]{\smash{Mission time $t$ [days]}}}%
     \put(0.09,0.50303556){\makebox(0,0)[lb]{\smash{$10^{-10}$}}}%
-    \put(0.07,0.26669558){\rotatebox{90}{\makebox(0,0)[lb]{\smash{Acceleration [$ms^{-2}$]}}}}%
+    \put(0.07,0.26669558){\rotatebox{90}{\makebox(0,0)[lb]{\smash{Acceleration [ms$^{-2}$]}}}}%
     \put(0.50534779,0.14252732){\makebox(0,0)[lb]{\smash{\tiny{Jupiter}}}}%
     \put(0.50534779,0.1204111){\makebox(0,0)[lb]{\smash{\tiny{Venus}}}}%
     \put(0.50534779,0.09843886){\makebox(0,0)[lb]{\smash{\tiny{Mars}}}}%

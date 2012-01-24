@@ -62,7 +62,7 @@
     \put(0.09,0.35834172){\makebox(0,0)[lb]{\smash{$10^{-8}$}}}%
     \put(0.09,0.47643886){\makebox(0,0)[lb]{\smash{$10^{-6}$}}}%
     \put(0.09,0.59453599){\makebox(0,0)[lb]{\smash{$10^{-4}$}}}%
-    \put(0.07,0.26684128){\rotatebox{90}{\makebox(0,0)[lb]{\smash{Acceleration [$ms^{-2}$]}}}}%
+    \put(0.07,0.26684128){\rotatebox{90}{\makebox(0,0)[lb]{\smash{Acceleration [ms$^{-2}$]}}}}%
     \put(0.48886904,0.18126626){\makebox(0,0)[lb]{\smash{\tiny{Thrust}}}}%
     \put(0.48886904,0.16305291){\makebox(0,0)[lb]{\smash{\tiny{Moon}}}}%
     \put(0.48886904,0.14151605){\makebox(0,0)[lb]{\smash{\tiny{Sun}}}}%
