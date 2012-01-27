@@ -4,7 +4,7 @@
 Optimisation is, intuitively, the process of finding an optimum value (minimum or maximum) for a given function. This is achieved by defining an \emph{objective function} or \emph{cost function} to rank results based on perceived value, allowing the result with the highest value to be chosen. The difficulty of performing optimisation arises from the potentially large number of results, and the difficulty of mathematically defining what is \enquote{good} or \enquote{bad}. This chapter describes the mathematical process of optimisation, and how it applies to spacecraft trajectories.
 
 % Generic definition
-\section{Problem formulation}
+\section{Problem formulation} \label{sec:Formulation}
 
 As a typical optimal control problem, the trajectory optimisation was formulated to find the required control history $\vec{u}(t)$ to deliver the vehicle from the initial state $\vec{x}(t_0)$ to the final state $\vec{x}(t_f)$ while minimising the cost function $F$, where $t$ is some smoothly increasing or decreasing parameter. 
 
@@ -57,7 +57,7 @@ where $T$ is the instantaneous thrust level and $v_{ex}$ is the instantaneous ex
 Consequently, the differential \autoref{eq:generic-DE} becomes the equations of motion described in \autoref{sec:Orbital-equations-of-motion}, appended with \autoref{eq:mdot} and \autoref{eq:Edot}. However, these differential equations assume time as the independent parameter.
 
 %Independent parameter
-\section{Independent parameter} \label{sub:Independent-parameter}
+\section{Independent parameter} \label{sec:Independent-parameter}
 
 Traditionally the independent parameter in this sort of optimisation is time. However, due to the high velocity of the space vehicle near periapsis, time is not the best suited independent parameter because very few gridpoints would occur in this important area. Ideally, gridpoints would concentrate near periapsis, but the easiest alternative to model is equiangular steps, a technique previously used by \textcite{Betts2003}. 
 
@@ -70,7 +70,7 @@ where $L(t_0)$ is the (constant but optimisable) starting position for the given
 Consequently a substitution of parameters is required in the state differential \autoref{eq:state-updates} to reflect this change. The equations required to convert the time domain differential \autoref{eq:state-updates} to normalised longitude are presented in \autoref{sub:subst-param}.
 
 % Objective function
-\section{Objective function} \label{sub:Objective-function}
+\section{Objective function} \label{sec:Objective-function}
 
 Fundamentally, any trajectory that safely gets the spacecraft from Earth orbit to lunar orbit is a candidate solution. The only further considerations are the amount of fuel it takes to get there, and the amount of time it takes. Consequently, the simplest objective function for \BW\ is the total fuel used.
 \begin{gather}
@@ -191,7 +191,7 @@ Upon implementation of the power generation and consumption model, the constrain
 
 
 % Trajectory propagation
-\section{Trajectory propagation}
+\section{Trajectory propagation} \label{sec:Propagation}
 The path between initial and final states is defined by the differential equations of motion outlined in \autoref{sec:state-vector}. A number of numerical methods are available for approximating the solution to differential equations such as these. In general, the gradient at some starting point is used to estimate another point a small distance away. The most common methods are the Runge-Kutta methods, which use an iterative estimate of the gradient at the midpoint to get a more accurate estimate for the endpoint. Adaptive Runge-Kutta methods use the difference between two fixed-step Runge-Kutta methods to place bounds on the accuracy of the estimated endpoint. If the accuracy is not within some predefined tolerance, the interval size is revised. Particular care must be taken when integrating a non-linear differential equation over an extended duration such as the \BW, due to the accumulation of numerical errors.
 
 For this project, a Runge-Kutta 4/5 integrator was used to propagate the trajectory from the initial state, using the initial guesses for optimisable parameters and control profile. This trajectory is then assigned a score using the Lagrangian matrix. An optimisation technique adjusts the optimisable parameters to satisfy the constraints and achieve a better score. %Lagrangian matrix?!
@@ -207,7 +207,7 @@ Explicit differential equations allow the derivative to be defined explicitly in
 
 The key difference between direct and indirect optimisation methods is that indirect methods require the adjoint matrix to be calculated by inverting the relevant differential equations. This process becomes increasingly difficult with more complex differential equations, so indirect methods often make simplifications and assumptions (for example by neglecting many of the perturbing forces listed in \autoref{sec:Perturbations}). Since the first order differential equations in this scenario (\autoref{eq:state-updates}) are explicit, direct methods may be used.
 
-\subsection{Integration methods}
+\subsection{Integration methods} \label{sub:Integration}
 
 Regardless of the numerical method used, trajectory optimisation requires solving the differential equations over a span of time; low-thrust trajectory optimisation requires very long timespans. Every integration step is associated with a potential error, which accumulates over the timespan. Methods that integrate from the start to the finish, termed \emph{direct shooting} or \emph{single shooting} methods, become increasingly error-prone as the timespan increases. If some intermediate states can be reliably guessed, the integration may be started anew from that \enquote{node}. Any discontinuity at the node is added to the set of constraints. Methods that perform multiple independent integrations like this, termed \emph{multiple shooting} methods, are less prone to integration error, but convergence is heavily dependent on the accuracy of the intermediate state guesses \parencite{Betts, ASTOS_guide}.
 
