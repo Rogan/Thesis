@@ -16,7 +16,7 @@ Due to the discontinuous timescales traditionally used for time (seconds, minute
 In order to model a dynamic rigid body system, it is important to first define the appropriate reference frames. The International Astronomical Union (IAU) defined the International Celestial Reference Frame (ICRF) as a quasi-inertial frame centred on the barycentre of the solarsystem \parencite{Montenbruck2000}. %{shown in Figure XX}
 Relativity requires that no truly inertial frames can exist, but by defining the ICRF relative to extragalactic radio sources the angular rotation of the frame is so slow it can be assumed to be negligible.
 
-The fundamental $XY$ plane coincides the Earth's equatorial plane at Julian epoch J2000. The $x$-axis is defined as the intersection of the equatorial and ecliptic planes (the ecliptic plane is the plane within which the Earth orbits the Sun), with positive being towards the Earth during the March (vernal) equinox at Julian epoch J2000. Because this direction points roughly towards the constellation Ares, it is if often denoted $\gamma$, as shown in \autoref{fig:Ecliptic-plane}. This coordinate system is useful as an absolute reference within the solar system. However, since the majority of \BW's trajectory will be an Earth escape spiral, an Earth-centred inertial (ECI) reference frame will be used.
+The fundamental $XY$ plane coincides the Earth's equatorial plane at Julian epoch J2000. The $x$-axis is defined as the intersection of the equatorial and ecliptic planes (the ecliptic plane is the plane within which the Earth orbits the Sun), with positive being towards the Earth during the March (vernal) equinox at Julian epoch J2000. Because this direction points roughly towards the constellation Aries, it is often denoted $\Aries$, as shown in \autoref{fig:Ecliptic-plane}. This coordinate system is useful as an absolute reference within the solar system. However, since the majority of \BW's trajectory will be an Earth escape spiral, an Earth-centred inertial (ECI) reference frame will be used.
 
 \begin{figure} [htp]
 \begin{center}
@@ -93,7 +93,7 @@ As described by \textcite{Letterio_thesis}, Cartesian positions and velocities a
 \label{fig:Keplerian-Orbital-Elements}
 \end{figure}
 
-This severely limits the step size that can be used during optimisation without accumulating large errors in the calculations. Therefore the recent trend is to use equinoctial elements for optimising orbital trajectories. A review of orbital element sets by \textcite{Hintz2008} came to the same conclusion as \citeauthor{Letterio_thesis} and \citeauthor{Keppeler_thesis}; the elements resulting in the smoothest trajectories are the \enquote{modified equinoctial element set} proposed by \textcite{Walker1985}, defined by:
+This severely limits the step size that can be used during optimisation without accumulating large errors in the calculations. Therefore the recent trend is to use equinoctial elements for optimising orbital trajectories. A review of orbital element sets by \textcite{Hintz2008} came to the same conclusion as \citeauthor{Letterio_thesis} and \citeauthor{Keppeler_thesis}; the elements resulting in the smoothest trajectories are the \enquote{modified equinoctial element set} proposed by \textcite{Walker1985}, defined in \eqref{eq:states}.
 \begin{subequations}\label{eq:states}
 \begin{eqnarray}
 p & = & a(1-e^{2}) \label{eq:p}\\
@@ -138,7 +138,7 @@ where $m_{p}$ and $m_{s}$ are the mass of the primary and secondary bodies, resp
 % Orbital equations of motion
 \section{Orbital equations of motion} \label{sec:Orbital-equations-of-motion}
 
-Differentiating \autoref{eq:states} defining the equinoctial elements and then substituting through by those same equations to remove the Keplerian terms, gives the Gaussian equations of motion as presented by \cite{Walker1985,Walker1986,Keppeler_thesis,Erb_thesis,Letterio_thesis,Hintz2008} \footnote{Note the equation for $\dot{g}$ was corrected in \textcite{Walker1986}. This correction is sometimes missed in later publications, such as \textcite{Hintz2008}.}.
+Differentiating equation \eqref{eq:states} defining the equinoctial elements and then substituting through by those same equations to remove the Keplerian terms, gives the Gaussian equations of motion as presented by \cite{Walker1985,Walker1986,Keppeler_thesis,Erb_thesis,Letterio_thesis,Hintz2008} \footnote{Note the equation for $\dot{g}$ was corrected in \textcite{Walker1986}. This correction is sometimes missed in later publications, such as \textcite{Hintz2008}.}.
 \begin{subequations}\label{eq:state-updates}
 \begin{eqnarray}
 \dot{p} = & \sqrt{\frac{p}{\mu}}\frac{2p}{w}\Delta_\theta \label{eq:pdot}\\
@@ -163,7 +163,7 @@ where $\mu$ represents the gravitational constant of the primary body \linebreak
 % Perturbations
 \section{Perturbations} \label{sec:Perturbations}
 
-The perturbations $\Delta_r$, $\Delta_\theta$ and $\Delta_h$ outlined in \autoref{sec:Orbital-equations-of-motion} are resolved from the oblateness of the primary body $\vec{\Delta_g}$, the influence of secondary bodies $\vec{\Delta_q}$ and the applied thrust of the spacecraft $\vec{\Delta_T}$. \textcite{Erb_thesis} states that, \enquote{The acceleration $\vec{\Delta_q}$ can, depending upon the overall situation, either be something to take advantage of, or something that needs to be compensated}. This sentence summarises one of the key objectives of this study: to plan the spacecraft's trajectory such that the gravitational assists $\vec{\Delta_q}$ increase the velocity of the spacecraft relative to the Earth as much as possible, thereby reducing the thrust requirements on the propulsion system.
+The total perturbing force [$\Delta_r$ $\Delta_\theta$ $\Delta_h$] outlined in \autoref{sec:Orbital-equations-of-motion} is resolved from the oblateness of the primary body $\vec{\Delta_g}$, the influence of secondary bodies $\vec{\Delta_q}$ and the applied thrust of the spacecraft $\vec{\Delta_T}$. \textcite{Erb_thesis} states that, \enquote{The acceleration $\vec{\Delta_q}$ can, depending upon the overall situation, either be something to take advantage of, or something that needs to be compensated}. This sentence summarises one of the key objectives of this study: to plan the spacecraft's trajectory such that the gravitational assists $\vec{\Delta_q}$ increase the velocity of the spacecraft relative to the Earth as much as possible, thereby reducing the thrust requirements on the propulsion system.
 
 
 
@@ -172,7 +172,7 @@ The perturbations $\Delta_r$, $\Delta_\theta$ and $\Delta_h$ outlined in \autore
 
 Reviewed literature unanimously agrees that the most accurate model available for relative positions of bodies within the solar system is the NASA JPL Planetary and Lunar Ephemerides. This data is accessible from \textcite{web_JetPropulsionLaboratory2004}, in the form of Cartesian coordinates for celestial bodies at any given Julian Date.
 
-To calculate the distance between the respective bodies, it is necessary to translate the spacecraft's position into Cartesian coordinates. \textcite{Betts1994} derives the following set of equations for this purpose, although more recent literature often makes typographical mistakes when reproducing them, particularly with regard to the signs of some terms (for example \cite{Keppeler_thesis,Erb_thesis,Letterio_thesis}):
+To calculate the distance between the respective bodies, it is necessary to translate the spacecraft's position into Cartesian coordinates. \textcite{Betts1994} derives the set of equations shown in \eqref{eq:cartesian} for this purpose, although more recent literature often makes typographical mistakes when reproducing them, particularly with regard to the signs of some terms (for example \cite{Keppeler_thesis,Erb_thesis,Letterio_thesis}).
 \begin{subequations}\label{eq:cartesian}
 \begin{eqnarray}
 r_{x} = & \frac{r}{s^{2}}\left(\cos(L)+\alpha^{2}\cos(L)+2hk\sin(L)\right)\label{eq:r_x}\\
@@ -185,16 +185,16 @@ v_{y} = & -\frac{1}{s^{2}}\sqrt{\frac{\mu}{p}}\left(-\cos(L)+\alpha^{2}\cos(L)+2
 v_{z} = & \frac{2}{s^{2}}\sqrt{\frac{\mu}{p}}\left(h\cos(L)+k\sin(L)+fh+gk\right)\label{eq:v_z}
 \end{eqnarray}
 \end{subequations}
-where $r_{x,y,z}$ and $v_{x,y,z}$ are the position and velocity respectively of the spacecraft in Cartesian axes, $p$, $f$, $g$, $h$, $k$ and $L$ are the modified equinoctial elements of the spacecraft as per \autoref{eq:states}, $w$ and $s^{2}$ are the helper functions as per \autoref{eq:w_helper} and \autoref{eq:s2_helper} respectively, $\alpha^{2}=h^{2}-k^{2}$ and $r=\frac{p}{w}$ are two additional helper functions, and $\mu$ once again is the gravitational constant of the primary body the spacecraft is orbiting.
+where $r_{x,y,z}$ and $v_{x,y,z}$ are the position and velocity respectively of the spacecraft in Cartesian axes, $p$, $f$, $g$, $h$, $k$ and $L$ are the modified equinoctial elements of the spacecraft as per equation \eqref{eq:states}, $w$ and $s^{2}$ are the helper functions as per equations \eqref{eq:w_helper} and \eqref{eq:s2_helper} respectively, $\alpha^{2}=h^{2}-k^{2}$ and $r=\frac{p}{w}$ are two additional helper functions, and $\mu$ once again is the gravitational constant of the primary body the spacecraft is orbiting.
 
-\textcite{Betts1994} demonstrates that the gravitational acceleration $\vec{\Delta_q}$ on a spacecraft due to $n$ multiple bodies within a frame centred on the primary body is:
+\textcite{Betts1994} demonstrates that the gravitational acceleration $\vec{\Delta_q}$ on a spacecraft due to $n$ multiple bodies within a frame centred on the primary body is described by equation \eqref{eq:third-body-acc}.
 \begin{equation} \label{eq:third-body-acc}
 \vec{\Delta_q}=-\sum_{j=1}^{n}\mu_{j}
 \left[\frac{\vec{d}_{j}}{d_{j}^{3}}+\frac{\vec{s}_{j}}{s_{j}^{3}}\right]
 \end{equation}
 where $\vec{d}$ is the distance of the third body (from the satellite) and $\vec{s}$ is the distance of the third body from the primary body. This is required to remove the bias from the third body attracting the primary body (and thereby, the origin of our reference frame). As explained by \textcite[p. 357]{Kaplan1976}, \enquote{The \emph{effective attraction} of the Moon on a unit mass near Earth is just the Moon's attraction at the mass minus the Moon's attraction at the Earth's center}.
 
-While \autoref{eq:third-body-acc} can provide the third body perturbing forces directly, \textcite{Battin1999} shows that the equation is prone to truncation error due to the potentially large difference in distances involved. The following algorithm is recommended:
+While equation \eqref{eq:third-body-acc} can provide the third body perturbing forces directly, \textcite{Battin1999} shows that the equation is prone to truncation error due to the potentially large difference in distances involved. The algorithm shown in \eqref{eq:Fqk} is recommended.
 \begin{equation} \label{eq:Fqk}
 F(q_{k}) = q_{k}\left[ \frac{3+3q_{k}+q_{k}^{2}}{1+(\sqrt{1+q_{k}})^{3}} \right] 
 \end{equation} 
@@ -203,8 +203,8 @@ where
 q_{k} = \frac{\vec{r}^{T}(\vec{r}-2\vec{s_{k}})}{\vec{s_{k}}^{T}\vec{s_{k}}}
 \end{equation}
 
-The acceleration vector is then resolved as:
-\begin{equation}
+The acceleration vector is then resolved as per equation \eqref{eq:delta-v}.
+\begin{equation}\label{eq:delta-v}
 \vec{\Delta_q} = -\sum_{k=1}^{n}\frac{\mu_{k}}{d_{k}^{3}}(\vec{r}+F(q_{k})\vec{s_{k}})
 \end{equation}
 
@@ -229,23 +229,22 @@ The centrifugal force of the Earth spinning causes it to bulge outwards at the e
 
 However, modelling the central body as an ellipsoid does not allow for inconsistent density of the body's crust. The Moon in particular has very inconsistent density due to the presence of mass concentrations or \emph{mascons}, so severe that most low lunar orbits (LLOs) will decay and impact the surface within 6 months \parencite{Zeile2010}. To include variations in density, recent satellite missions have developed very accurate models of the gravitational potential around the Earth (such as the Gravity Recovery and Climate Experiment mission, GRACE), and the Moon (such as the Gravity Recovery and Interior Laboratory, GRAIL).
 
-Potential energy ($W$) is defined in the Global Geodetic Survey \parencite{WGS84} as:
-\begin{equation}
-W=V+\Phi\label{eq:Total-Grav-Potential}
+Potential energy ($W$) is defined in the Global Geodetic Survey \parencite{WGS84} as per equation \eqref{eq:Total-Grav-Potential}.
+\begin{equation}\label{eq:Total-Grav-Potential}
+W=V+\Phi
 \end{equation}
-where $\Phi$ is the potential due to the body's angular momentum, when rotating at angular velocity $\omega$ about an axis $r$ metres away, given by:
-\begin{equation}
-\Phi=\frac{1}{2}\omega^{2}r^{2}\label{eq:Angular-Momentum}
+where $\Phi$ is the potential due to the body's angular momentum, when rotating at angular velocity $\omega$ about an axis $r$ metres away, given by equation \eqref{eq:Angular-Momentum}.
+\begin{equation}\label{eq:Angular-Momentum}
+\Phi=\frac{1}{2}\omega^{2}r^{2}
 \end{equation}
 
 
-The gravitational potential function ($V$, units~m$^{2}$s$^{-2}$) for polar coordinates $r$, $\lambda$, $\phi'$ is defined as:
-\begin{equation}
+The gravitational potential function ($V$, units~m$^{2}$s$^{-2}$) for polar coordinates $r$, $\lambda$, $\phi'$ is defined as per equation \eqref{eq:Grav-Potential}.
+\begin{equation} \label{eq:Grav-Potential}
 V=\frac{\mu}{r}\left[1+\sum_{n=2}^{n_{max}}\sum_{m=0}^{n}\left(\frac{a}{r}\right)^{n}\bar{P}_{nm}\left(\sin\phi'\right)\left(\bar{C}_{nm}\cos m\lambda+\bar{S}_{nm}\sin m\lambda\right)\right]
-\label{eq:Grav-Potential}
 \end{equation}
-where $\mu$ is the body's gravitational constant (defined in \autoref{sec:Orbital-equations-of-motion}), $a$ is the semi-major axis of the ellipsoid body (defined by \citeauthor{WGS84} as 6378137.0~m for the Earth). $\bar{P}_{nm}\left(\sin\phi'\right)$ represents the series of normalised associated Legendre polynomials, further defined by \textcite{WGS84}  as:
-\begin{eqnarray}\notag
+where $\mu$ is the body's gravitational constant (defined in \autoref{sec:Orbital-equations-of-motion}), $a$ is the semi-major axis of the ellipsoid body (defined by \citeauthor{WGS84} as 6378137.0~m for the Earth). $\bar{P}_{nm}\left(\sin\phi'\right)$ represents the series of normalised associated Legendre polynomials, further defined by \textcite{WGS84} as per equation \eqref{eq:Legendre-polys}.
+\begin{eqnarray}\label{eq:Legendre-polys}
 \bar{P}_{nm}\left(\sin\phi'\right) & = & \text{Normalized associated Legendre polynomial}\\
  & = & \left[\frac{\left(n-m\right)!\left(2n+1\right)k}{\left(n+m\right)!}\right]^{\frac{1}{2}}P_{nm}\left(\sin\phi'\right)\\\notag
 P_{nm}\left(\sin\phi'\right) & = & \text{Associated Legendre polynomial}\\
@@ -260,8 +259,8 @@ According to the \textcite{WGS84} the series is theoretically valid for $r\geq a
 The normalised gravitational coefficients $\bar{C}_{nm}$ and $\bar{S}_{nm}$ for the Earth were taken from the Joint Gravity Model 3 \parencite[JGM3,][]{Tapley1996} due to availability of data. Several newer models have been released such as the GRACE models mentioned earlier, but the JGM3 accuracy was sufficient for this project. The lunar gravitational model was used from the Lunar Prospector mission \parencite{Konopliv2001}.
 
 The perturbing force acting on the spacecraft is then
-\begin{equation}
-\vec{\Delta_g}=\nabla W\label{eq:Oblateness-perturbation}
+\begin{equation}\label{eq:Oblateness-perturbation}
+\vec{\Delta_g}=\nabla W
 \end{equation}
 
 Obviously the factorials and summations make this equation inappropriate for repetitive computer evaluation. A recursive algorithm developed by \textcite{Montenbruck2000} was used to simplify the calculation, while still retaining the higher order accuracy. 
@@ -280,16 +279,16 @@ The impact of gravitational harmonics is obviously going to be greater at lower 
 
 The solar wind consists of particles emitted by the Sun, mainly ionised nuclei and electrons. Because of the charged particles in the solar wind, it does not penetrate the magnetosphere around the Earth, except at the magnetic poles. The magnetosphere starts at about 10 Earth radii from the centre of the Earth.
  
-\textcite[p. 223]{Chobotov2002} provides a widely accepted equation to approximate the acceleration
- of a body due to solar wind near the Earth-Moon system, which is given by 
-\begin{equation}
-a_{p}=4.65\times10^{-6}(1+\beta)\left(\frac{A_{\text{craft}}}{m_{\text{craft}}}\right)\left(\frac{a_{\odot}}{r_{\odot}}\right)^{2}\label{eq:solar-wind}
+\textcite[p. 223]{Chobotov2002} provides a widely accepted equation to average the acceleration
+ of a body due to solar wind near the Earth-Moon system, reproduced in equation \eqref{eq:solar-wind}.
+\begin{equation}\label{eq:solar-wind}
+a_{p}=4.65\times10^{-6}(1+\beta)\left(\frac{A_{\text{craft}}}{m_{\text{craft}}}\right)\left(\frac{a_\Sun}{r_\Sun}\right)^{2}
 \end{equation}
-where $a_{p}$ is the acceleration due to the solar radiation pressure, in $\text{ms}^{-2}$, $\beta$ is the optical reflection constant (1 for total mirror reflection, 0 for total black body absorption, -1 for total transparent transmission), $A_{\text{craft}}$ is the effective satellite projected area, and $m_{\text{craft}}$ is the total spacecraft mass. The ratio of Earth's orbital semi-major axis $a_{\odot}$ to orbital radius $r_{\odot}$ varies with time according to the equation 
-\begin{equation}
-\frac{a_{\odot}}{r_{\odot}}=\frac{[1+0.01672\cos(M_{\odot}+1º92\sin M_{\odot})]}{0.99972}\label{eq:a_sun/r_sun}
+where $a_{p}$ is the magnitude of the acceleration due to solar wind, in $\text{ms}^{-2}$, $\beta$ is the optical reflection constant (+1 for total mirror reflection, 0 for total black body absorption, -1 for total transparent transmission), $A_{\text{craft}}$ is the effective satellite projected area, and $m_{\text{craft}}$ is the total spacecraft mass. The ratio of Earth's orbital semi-major axis $a_\Sun$ to orbital radius $r_\Sun$ varies with time according to equation \eqref{eq:a_sun/r_sun}.
+\begin{equation}\label{eq:a_sun/r_sun}
+\frac{a_\Sun}{r_\Sun}=\frac{[1+0.01672\cos(M_\Sun+1º92\sin M_\Sun)]}{0.99972}
 \end{equation}
-where the mean anomaly of the Earth's orbit about the Sun, $M_{\odot}=358.48^{o}+0.98560027^{o}d$, for $d$ representing the number of days since noon Universal Time~(UT) 31~December~1899 (J1900 epoch).
+where the mean anomaly of the Earth's orbit about the Sun, $M_\Sun=358.48\degrees+0.98560027\degrees d$, for $d$ representing the number of days since noon Universal Time~(UT) 31~December~1899 (J1900 epoch).
 
 For a satellite of 200~kg and 6~m$^2$ projected surface area, this gives an acceleration due to solar wind varying from $1.3494\times10^{-7}$~ms$^{-2}$ to $1.4428\times10^{-7}$~ms$^{-2}$ over the course of the year. This force is two orders of magnitude less than the maximum thrust available to \BW.
 
@@ -300,13 +299,12 @@ For a satellite of 200~kg and 6~m$^2$ projected surface area, this gives an acce
 \subsection{Applied thrust} \label{sub:Applied-Thrust}
 
 The \BW\ craft has four PPT thrusters at 1.5~mN each, providing a total thrust of 6~mN. This accelerates the 200~kg craft at $3\times10^{-5}$~ms$^{-2}$. Since the direction of thrust is a design parameter (adjustable by rotating the spacecraft to point the thruster in the desired direction) a unit vector providing this direction is defined as
-\begin{equation}
+\begin{equation} \label{eq:thrust-vector}
 \vec{\hat{u}}=\left[\begin{array}{c}
 u_{r}\\
 u_{\theta}\\
 u_{h}
 \end{array}\right]
-\label{eq:thrust-vector}
 \end{equation}
 such that the thrust vector is given by 
 \begin{equation}
@@ -335,8 +333,8 @@ Since these perturbing forces vary over the course of the trajectory, and are of
 
 A key figure in measuring the performance of a thruster is the specific impulse, $I_{sp}$. As mentioned in \autoref{sec:Past-missions}, specific impulse is the momentum added by the thrusters per unit of propellant expended.
 
-Impulse is defined as the total force applied over a given time:
-\begin{gather}
+Impulse is defined as the total force applied over a given time, as shown in equation \eqref{eq:Impulse}.
+\begin{gather} \label{eq:Impulse}
 \vec{I} = \int_{t_0}^{t_f}\vec{F}\quad dt
 \end{gather}
 and by \textcite{Newton1687}'s second law $\vec{F} = \frac{d\vec{p}}{dt}$
@@ -364,19 +362,21 @@ so the specific impulse of the spacecraft should be equal to the exhaust velocit
 \subsection{Delta-v} \label{sub:Delta-v}
 
 Since every orbit has a unique orbital speed associated with it, a common measure of rocket capability is the change in velocity the rocket can provide. Mathematically, this \enquote{delta-v} is calculated as the integral of the acceleration the rocket provides, or more intuitively, the total thrust the rocket provides over time, given by
-\begin{equation}
-\Delta v=\int_{t_{0}}^{t_{1}}\frac{\left\Vert T\left(t\right)\right\Vert }{m\left(t\right)}\quad dt\label{eq:Delta-V}
+\begin{equation}\label{eq:Delta-V}
+\Delta v=\int_{t_{0}}^{t_{1}}\frac{\left\Vert T\left(t\right)\right\Vert }{m\left(t\right)}\quad dt
 \end{equation}
 where $T\left(t\right)$ is the instantaneous thrust, and $m\left(t\right)$ is the instantaneous mass.
 
 Conversely, orbital transfers may be described by the typical change in velocity required. This is known as a delta-v budget. Launching to LEO requires a change of 7.8~kms$^{-1}$ and ascent to lunar orbit requires an additional 4.1~kms$^{-1}$ (this mission profile was used by Apollo), but typically an additional 1.5 to 2~kms$^{-1}$ is lost to atmospheric drag and gravity drag. Thrust vectoring adds further losses depending upon the angle of thrust. 
 
 These gravitational, atmospheric and thrust vectoring losses can be calculated with similar integrals over the flight. 
+\begin{subequations}
 \begin{gather}
 \Delta v_{drag}=\int_{t_0}^{t_1}\frac{\left\Vert D\left(t\right)\right\Vert }{m\left(t\right)}\quad dt\label{eq:drag-penalty} \\
 \Delta v_{gravity}=\int_{t_0}^{t_1}g\cdot\sin\gamma\quad dt\label{eq:gravity-penalty} \\
 \Delta v_\epsilon=\int_{t_0}^{t_1}\frac{\left\Vert T\left(t\right)\right\Vert }{m\left(t\right)}(1-\cos(\alpha-\epsilon))\quad dt\label{eq:thrust-vectoring-penalty}
 \end{gather}
+\end{subequations}
 where $D(t)$ is the instantaneous aerodynamic drag, $g$ is the local gravitational acceleration, $\gamma$ is the angle from the velocity vector to the horizontal, $\alpha$ is the body axis line (above the velocity vector) and $\epsilon$ is the thrust vector (above the body axis line), as shown in \autoref{fig:path-angles} \parencite{Tetlow2003}. 
 
 \begin{figure}
@@ -393,15 +393,15 @@ Delta-v forms a very important performance criterion. It is particularly importa
 
 \subsection{Tsiolkovsky's rocket equation} \label{sec:Tsiolkovsky}
 
-A well established equation, derived in the 19th century by Konstantin Tsiolkovsky, describes the delta-v available from expending a given mass of fuel from the vehicle at a given exhaust velocity:
-\begin{equation}
-\Delta v=v_{e}\ln\frac{m_{0}}{m_{1}}\label{eq:Tsiolkovsky}
+A well established equation, derived in the 19th century by Konstantin Tsiolkovsky, describes the delta-v available from expending a given mass of fuel from the vehicle at a given exhaust velocity.
+\begin{equation}\label{eq:Tsiolkovsky}
+\Delta v=v_{e}\ln\frac{m_{0}}{m_{1}}
 \end{equation}
 where $m_{0}$ represents the initial wet mass of the rocket (structural mass plus fuel), $m_{1}$ represents the final mass, $v_{e}$ is the effective exhaust velocity \parencite{Tsiolkovsky1903,Chobotov2002}. Tsiolkovsky's rocket equation \eqref{eq:Tsiolkovsky} is particularly relevant to low thrust missions because it shows that the most efficient way to achieve a fixed delta-v requirement such as an Earth escape orbit or lunar transfer orbit, is to increase the propellant exhaust velocity. Missions such as \BW\ maximise their delta-v by increasing propellant exhaust velocity at the expense of other design parameters, such as thrust.
 
-The exhaust velocity is directly proportional to the specific impulse, as shown by:
-\begin{equation}
-v_{e}=I_{sp}g_{o}\label{eq:Exhaust_velocity}
+The exhaust velocity is directly proportional to the specific impulse, as shown by equation \eqref{eq:Exhaust_velocity}.
+\begin{equation}\label{eq:Exhaust_velocity}
+v_{e}=I_{sp}g_{o}
 \end{equation}
 where $I_{sp}$ is the specific impulse (impulse, or change in momentum, gained per unit fuel). The SIMPLEX pulsed plasma thrusters developed at the Institut f\"{u}r Raumfahrtsysteme \parencite{Nawaz2008} provide an exhaust velocity of about 19000~ms$^{-1}$, resulting in the specific impulse of 1950~s stated in \autoref{tab:BW1-performance}. Assuming a dry mass of 150~kg, 75~kg of fuel should allow for a delta-v of 7.7~kms$^{-1}$, far more than is theoretically required for ascent from GTO to lunar orbit.
 

@@ -8,30 +8,34 @@ Optimisation is, intuitively, the process of finding an optimum value (minimum o
 
 As a typical optimal control problem, the trajectory optimisation was formulated to find the required control history $\vec{u}(t)$ to deliver the vehicle from the initial state $\vec{x}(t_0)$ to the final state $\vec{x}(t_f)$ while minimising the cost function $F$, where $t$ is some smoothly increasing or decreasing parameter. 
 
-Along with the control history there are several other parameters such as launch date, slackness within the initial and final conditions, and phase lengths, that make up the optimisable parameter set $\vec{p}$. The generic optimisation problem becomes:
-\begin{equation}
+Along with the control history there are several other parameters such as launch date, slackness within the initial and final conditions, and phase lengths, that make up the optimisable parameter set $\vec{p}$. The generic optimisation problem is shown in equation \eqref{eq:Optimisation}.
+\begin{equation} \label{eq:Optimisation}
 \min F(\vec{u}(t),\vec{p})
 \end{equation}
 
-This is, of course, subject to certain equality and inequality constraints which depend on the state $\vec{x}$, control parameters $\vec{u}$, optimisable parameters $\vec{p}$ and independent parameter $t$:
+This is, of course, subject to certain equality and inequality constraints which depend on the state $\vec{x}$, control parameters $\vec{u}$, optimisable parameters $\vec{p}$ and independent parameter $t$, as outlined in equation \eqref{eq:Constraints}.
+\begin{subequations} \label{eq:Constraints}
 \begin{align}
 g_{eq}(\vec{x}(t),\vec{u}(t),\vec{p},t) &= 0 \\
 g_{ineq}(\vec{x}(t),\vec{u}(t),\vec{p},t) &\ge 0 
 \end{align}
+\end{subequations}
 
-A differential equation describes how the state evolves over the trajectory:
+A differential equation \eqref{eq:generic-DE} then describes how the state evolves over the trajectory.
 \begin{equation}\label{eq:generic-DE}
 \frac{d\vec{x}}{dt} = f(\vec{x}(t),\vec{u}(t),\vec{p},t)
 \end{equation}
 
-For computational reasons (see \autoref{sub:Scaling}), upper and lower bounds are supplied for the states, controls and optimisation parameters such that:
+For computational reasons (see \autoref{sub:Scaling}), upper and lower bounds are supplied for the states, controls and optimisation parameters as per equation \eqref{eq:Bounds}.
+\begin{subequations} \label{eq:Bounds}
 \begin{gather}
 \vec{x}_l\le\vec{x}(t)\le\vec{x}_u \label{eq:state-bounds}\\
 \vec{u}_l\le\vec{u}(t)\le\vec{u}_u \label{eq:control-bounds}\\
 \vec{p}_l\le\vec{p}\le\vec{p}_u \label{eq:parameter-bounds}
 \end{gather}
+\end{subequations}
 
-The cost function $F$ must be defined with the same parameters, but may include components evaluated at the start of the trajectory, end of the trajectory, and integrated over the trajectory, added together with appropriate weighting factors $\sigma$:
+The cost function $F$ must be defined with the same parameters, but may include components evaluated at the start of the trajectory, end of the trajectory, and integrated over the trajectory, added together with appropriate weighting factors $\sigma$.
 \begin{gather}
 F_0=f(\vec{x}(t_0),\vec{u}(t_0),\vec{p},t_0) \label{eq:init-cost}\\
 F_f=f(\vec{x}(t_f),\vec{u}(t_f),\vec{p},t_f) \label{eq:final-cost}\\
@@ -54,20 +58,20 @@ where $T$ is the instantaneous thrust level and $v_{ex}$ is the instantaneous ex
 \end{align} 
 \end{subequations} where $P(t)$ is the instantaneous net power consumption (or generation).
 
-Consequently, the differential \autoref{eq:generic-DE} becomes the equations of motion described in \autoref{sec:Orbital-equations-of-motion}, appended with \autoref{eq:mdot} and \autoref{eq:Edot}. However, these differential equations assume time as the independent parameter.
+Consequently, the differential equation \eqref{eq:generic-DE} becomes the equations of motion described in \autoref{sec:Orbital-equations-of-motion}, appended with equations \eqref{eq:mdot} and \eqref{eq:Edot}. However, these differential equations assume time as the independent parameter.
 
 %Independent parameter
 \section{Independent parameter} \label{sec:Independent-parameter}
 
 Traditionally the independent parameter in this sort of optimisation is time. However, due to the high velocity of the space vehicle near periapsis, time is not the best suited independent parameter because very few gridpoints would occur in this important area. Ideally, gridpoints would concentrate near periapsis, but the easiest alternative to model is equiangular steps, a technique previously used by \textcite{Betts2003}. 
 
-Equiangular stepping is implemented by using the true longitude (angle of the spacecraft relative to its starting position) as the independent parameter. However, using the longitude as the independent parameter causes a large discontinuity at the transition from the Earth-centred to the lunar-centred frame, so a normalised phase longitude is defined, 
+Equiangular stepping is implemented by using the true longitude (angle of the spacecraft relative to its starting position) as the independent parameter. However, using the longitude as the independent parameter causes a large discontinuity at the transition from the Earth-centred to the lunar-centred frame, so a normalised phase longitude is defined as shown in equation \eqref{eq:Ln}.
 \begin{equation}
 Ln(t) = \frac{L(t)-L(t_0)}{\Delta L}+\Phi \label{eq:Ln}
 \end{equation}
-where $L(t_0)$ is the (constant but optimisable) starting position for the given phase, $\Delta L$ is the (constant but optimisable) phase length, and $\Phi$ is the phase number. 
+$L(t_0)$ is the (constant but optimisable) starting position for the given phase, $\Delta L$ is the (constant but optimisable) phase length, and $\Phi$ is the phase number. 
 
-Consequently a substitution of parameters is required in the state differential \autoref{eq:state-updates} to reflect this change. The equations required to convert the time domain differential \autoref{eq:state-updates} to normalised longitude are presented in \autoref{sub:subst-param}.
+Consequently a substitution of parameters is required in the state differential equation \eqref{eq:state-updates} to reflect this change. The equations required to convert the time domain differential equation \eqref{eq:state-updates} to normalised longitude are presented in \autoref{sub:subst-param}.
 
 % Objective function
 \section{Objective function} \label{sec:Objective-function}
@@ -88,7 +92,7 @@ F = \sigma_1m(t_f)+\sigma_2\epsilon_{LCI} \label{eq:objective2}
 % BVP
 \section{Boundary value problem} \label{sec:BVP}
 
-As mentioned in Section \ref{sub:Objective-function}, candidate states include any trajectory that safely gets the spacecraft from the given Earth orbit to the desired lunar orbit. This resolves into a two-point boundary value problem: given an initial state, parameters must be chosen to get to the final state subject to some path constraints (usually differential equations).
+As mentioned in Section \ref{sec:Objective-function}, candidate states include any trajectory that safely gets the spacecraft from the given Earth orbit to the desired lunar orbit. This resolves into a two-point boundary value problem: given an initial state, parameters must be chosen to get to the final state subject to some path constraints (usually differential equations).
 
 %initial arg of periapsis and RAAN depend on time of launch
 
@@ -205,7 +209,7 @@ For this project, a Runge-Kutta 4/5 integrator was used to propagate the traject
 The first classification is based on whether the differential equations that they solve are explicit or implicit.
 Explicit differential equations allow the derivative to be defined explicitly in terms of independent variables and parameters, $\frac{d^ny}{dx^n}=f(x,y,\frac{dy}{dx},\frac{d^2y}{dx^2},\dots,\frac{d^{n-1}y}{dx^{n-1}})$. Optimisation techniques based on explicit differential equations are called \emph{direct methods}. Implicit differential equations either cannot or should not be reduced to their explicit form, so $f(x,y,\frac{dy}{dx},\frac{d^2y}{dx^2},\dots,\frac{d^{n}y}{dx^{n}})=0$. Optimisation techniques based on implicit differential equations are called \emph{indirect methods}.
 
-The key difference between direct and indirect optimisation methods is that indirect methods require the adjoint matrix to be calculated by inverting the relevant differential equations. This process becomes increasingly difficult with more complex differential equations, so indirect methods often make simplifications and assumptions (for example by neglecting many of the perturbing forces listed in \autoref{sec:Perturbations}). Since the first order differential equations in this scenario (\autoref{eq:state-updates}) are explicit, direct methods may be used.
+The key difference between direct and indirect optimisation methods is that indirect methods require the adjoint matrix to be calculated by inverting the relevant differential equations. This process becomes increasingly difficult with more complex differential equations, so indirect methods often make simplifications and assumptions (for example by neglecting many of the perturbing forces listed in \autoref{sec:Perturbations}). Since the first order differential equations \eqref{eq:state-updates} in this scenario are explicit, direct methods may be used.
 
 \subsection{Integration methods} \label{sub:Integration}
 
@@ -291,7 +295,7 @@ calculus of variations
 
 narrower basin of convergence
 
-%Gradient-based methods for optimising spacecraft trajectories have traditionally utilised optimal control laws based on Pontryagin's Minimum Principle. This states that optimising the Hamiltonian of a system is a necessary condition for the optimal control of that system. As shown by \citet{Ren2007}, generating the Hamiltonian for the modified equinoctial elements is simple, by placing \autoref{eq:state-updates} in the form $\vec{\dot{x}}=\mathbf{B}\Delta+\vec{d}$
+%Gradient-based methods for optimising spacecraft trajectories have traditionally utilised optimal control laws based on Pontryagin's Minimum Principle. This states that optimising the Hamiltonian of a system is a necessary condition for the optimal control of that system. As shown by \citet{Ren2007}, generating the Hamiltonian for the modified equinoctial elements is simple, by placing equation \eqref{eq:state-updates} in the form $\vec{\dot{x}}=\mathbf{B}\Delta+\vec{d}$
 % Matrix equation should be $\dot{x}=\mathbf{A}\vec{x}+\mathbf{B}\vec{u}$
 %where the state variable $\vec{x}=\left[\begin{array}{cccccc} p & f & g & h & k & L\end{array}\right]^{T}$
 %consists of the equinoctial element set defined in Section \ref{sec:Orbital-Elements}, $\mathbf{B}$ is a $3\times6$ matrix that represents the thrust coefficients, and $\vec{d}=\left[\begin{array}{cccccc}
@@ -391,7 +395,7 @@ named after a technique in blacksmithing whereby the metal is cooled slowly to a
 % Integration error
 \subsection{Integration error} \label{sub:Integration-error}
 
-The differential equations presented in \autoref{eq:state-updates} were integrated in MATLAB over a sufficient timespan to allow the craft to reach the Moon. An absolute error of $10^{-6}$ was allowed within each orbital element ($p$ metres, $f$, $g$, $h$, $k$ and $L$ dimensionless), and a relative error of $10^{-9}$ ($10^{-7}$\%). Since the longitude is continually growing (not bound within 0º to 360º) yet the useful information within this parameter (the position of the spacecraft within 0º to 360º) is not increasing, relative error must be severely limited. Continual thrust allows \BW\ to obtain lunar orbit in about 100 rotations, corresponding to a longitude of 36000\degrees. The relative error in the spacecraft's position at a radius of 360000~km is therefore 12.96~km, which should be sufficiently small to allow lunar insertion (for initial simulation, at least). MATLAB uses the larger of the two tolerances, so at small longitudes (the start of the simulation) absolute tolerance is dominant, minimising unnecessary computational effort.
+The differential equations presented in equation \eqref{eq:state-updates} were integrated in MATLAB over a sufficient timespan to allow the craft to reach the Moon. An absolute error of $10^{-6}$ was allowed within each orbital element ($p$ metres, $f$, $g$, $h$, $k$ and $L$ dimensionless), and a relative error of $10^{-9}$ ($10^{-7}$\%). Since the longitude is continually growing (not bound within 0º to 360º) yet the useful information within this parameter (the position of the spacecraft within 0º to 360º) is not increasing, relative error must be severely limited. Continual thrust allows \BW\ to obtain lunar orbit in about 100 rotations, corresponding to a longitude of 36000\degrees. The relative error in the spacecraft's position at a radius of 360000~km is therefore 12.96~km, which should be sufficiently small to allow lunar insertion (for initial simulation, at least). MATLAB uses the larger of the two tolerances, so at small longitudes (the start of the simulation) absolute tolerance is dominant, minimising unnecessary computational effort.
 
 As outlined in \textcite{Milani1987}, using a simple rule of thumb a limit on the ratio of simulation timespan to stepsize based on error accumulation can be determined. If the error at each step is $\epsilon$ and the number of steps is $N$, then $N^{2}\epsilon$ should remain less than 1. With a relative error of $10^{-9}$ the number of steps should be limited to 31,500. If more timesteps are needed the relative error may be reduced further, limited only by machine accuracy (in fact, many previous simulations including \citeauthor{Milani1987} appear to have assumed machine accuracy). Using double precision floating point variables according to IEEE standard 754 has a mantissa of 52 bits. This corresponds to a relative machine accuracy $\epsilon=2^{-52}\approx2.2\times10^{-16}$.
 
