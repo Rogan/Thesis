@@ -195,13 +195,15 @@ where $r_{x,y,z}$ and $v_{x,y,z}$ are the position and velocity respectively of 
 where $\vec{d}$ is the distance of the third body (from the satellite) and $\vec{s}$ is the distance of the third body from the primary body. This is required to remove the bias from the third body attracting the primary body (and thereby, the origin of our reference frame). As explained by \textcite[p. 357]{Kaplan1976}, \enquote{The \emph{effective attraction} of the Moon on a unit mass near Earth is just the Moon's attraction at the mass minus the Moon's attraction at the Earth's center}.
 
 While equation \eqref{eq:third-body-acc} can provide the third body perturbing forces directly, \textcite{Battin1999} shows that the equation is prone to truncation error due to the potentially large difference in distances involved. The algorithm shown in \eqref{eq:Fqk} is recommended.
+\begin{subequations}
 \begin{equation} \label{eq:Fqk}
-F(q_{k}) = q_{k}\left[ \frac{3+3q_{k}+q_{k}^{2}}{1+(\sqrt{1+q_{k}})^{3}} \right] 
+F(q_k) = q_k\left[ \frac{3+3q_{k}+q_{k}^{2}}{1+(\sqrt{1+q_{k}})^{3}} \right] 
 \end{equation} 
 where
 \begin{equation}
-q_{k} = \frac{\vec{r}^{T}(\vec{r}-2\vec{s_{k}})}{\vec{s_{k}}^{T}\vec{s_{k}}}
+q_k = \frac{\vec{r}^{T}(\vec{r}-2\vec{s_{k}})}{\vec{s_k}^{T}\vec{s_k}}
 \end{equation}
+\end{subequations}
 
 The acceleration vector is then resolved as per equation \eqref{eq:delta-v}.
 \begin{equation}\label{eq:delta-v}
@@ -244,7 +246,8 @@ The gravitational potential function ($V$, units~m$^{2}$s$^{-2}$) for polar coor
 V=\frac{\mu}{r}\left[1+\sum_{n=2}^{n_{max}}\sum_{m=0}^{n}\left(\frac{a}{r}\right)^{n}\bar{P}_{nm}\left(\sin\phi'\right)\left(\bar{C}_{nm}\cos m\lambda+\bar{S}_{nm}\sin m\lambda\right)\right]
 \end{equation}
 where $\mu$ is the body's gravitational constant (defined in \autoref{sec:Orbital-equations-of-motion}), $a$ is the semi-major axis of the ellipsoid body (defined by \citeauthor{WGS84} as 6378137.0~m for the Earth). $\bar{P}_{nm}\left(\sin\phi'\right)$ represents the series of normalised associated Legendre polynomials, further defined by \textcite{WGS84} as per equation \eqref{eq:Legendre-polys}.
-\begin{eqnarray}\label{eq:Legendre-polys}
+\begin{subequations}\label{eq:Legendre-polys}
+\begin{eqnarray}
 \bar{P}_{nm}\left(\sin\phi'\right) & = & \text{Normalized associated Legendre polynomial}\\
  & = & \left[\frac{\left(n-m\right)!\left(2n+1\right)k}{\left(n+m\right)!}\right]^{\frac{1}{2}}P_{nm}\left(\sin\phi'\right)\\\notag
 P_{nm}\left(\sin\phi'\right) & = & \text{Associated Legendre polynomial}\\
@@ -252,6 +255,7 @@ P_{nm}\left(\sin\phi'\right) & = & \text{Associated Legendre polynomial}\\
 P_{n}\left(\sin\phi'\right) & = & \text{Legendre polynomial}\\
  & = & \frac{d^{n}}{2^{n}n!d\left(\sin\phi'\right)^{n}}\left(\sin^{2}\phi'-1\right)^{n}
 \end{eqnarray}
+\end{subequations}
 where $r$ is the distance from the body's centre of mass and $\phi'$ is the geocentric latitude. Parameters $n$ and $m$ represent the degree and order of the normalised gravitational coefficients $C_{nm}$ and $S_{nm}$. It is these normalised coefficients that are calculated, recorded and published. The most detailed measurements of gravitational coefficients for the Earth to date are available from \textcite{EIGEN-5C}.  For $m = 0$, $k = 1$ and for $m \neq 0$, $k = 2$. 
 
 According to the \textcite{WGS84} the series is theoretically valid for $r\geq a$, though it can be used with probably negligible error near or on the body's surface, that is, $r\geq\text{body's surface}$. The series should not be used for $r<\text{body's surface}$.
@@ -333,26 +337,29 @@ Since these perturbing forces vary over the course of the trajectory, and are of
 
 A key figure in measuring the performance of a thruster is the specific impulse, $I_{sp}$. As mentioned in \autoref{sec:Past-missions}, specific impulse is the momentum added by the thrusters per unit of propellant expended.
 
-Impulse is defined as the total force applied over a given time, as shown in equation \eqref{eq:Impulse}.
+Impulse is the scalar sum of force applied over a given time, as shown in equation \eqref{eq:Impulse}.
+\begin{subequations}
 \begin{gather} \label{eq:Impulse}
-\vec{I} = \int_{t_0}^{t_f}\vec{F}\quad dt
+I = \int_{t_0}^{t_f}\vec{F}\quad dt
 \end{gather}
 and by \textcite{Newton1687}'s second law $\vec{F} = \frac{d\vec{p}}{dt}$
 \begin{align}
-\vec{I} &= \int_{t_0}^{t_f}\frac{d\vec{p}}{dt}\quad dt \\
-&= \int_{t_0}^{t_f}d\vec{p} \\
-&= \Delta\vec{p}
+I &= \int_{t_0}^{t_f}\frac{d\vec{p}}{dt}\quad dt \\
+&= \int_{t_0}^{t_f}d\vec{p} 
 \end{align}
-and has units of kgms$^{-1}$. 
+\end{subequations}
+which is equal to the change in momentum $\Delta\vec{p}$ and has units of kgms$^{-1}$. 
 
 By the conservation of momentum in the satellite's moving frame, the increase in momentum of the spacecraft is equal and opposite to the momentum imparted to the exhaust.
 
+\begin{subequations}
 \begin{gather}
 \Delta\vec{p}_{craft} - \Delta\vec{p}_{exhaust} = 0 \\
 \Delta\vec{p}_{craft} = m_{exhaust}\vec{v}_{exhaust} \\
 \vec{I} = m_{exhaust}\vec{v}_{exhaust} \\
 \vec{I}_{sp} = \vec{v}_{exhaust}
 \end{gather}
+\end{subequations}
 so the specific impulse of the spacecraft should be equal to the exhaust velocity, and its units should be ms$^{-1}$. However, the use of imperial units meant that specific impulse was traditionally reported as momentum change per unit {\em weight} of propellant, so the final value is divided by standard gravity on Earth, $g_0$. Consequently specific impulse is reported in seconds.
 
 \begin{equation}

@@ -36,12 +36,14 @@ For computational reasons (see \autoref{sub:Scaling}), upper and lower bounds ar
 \end{subequations}
 
 The cost function $F$ must be defined with the same parameters, but may include components evaluated at the start of the trajectory, end of the trajectory, and integrated over the trajectory, added together with appropriate weighting factors $\sigma$.
+\begin{subequations}
 \begin{gather}
 F_0=f(\vec{x}(t_0),\vec{u}(t_0),\vec{p},t_0) \label{eq:init-cost}\\
 F_f=f(\vec{x}(t_f),\vec{u}(t_f),\vec{p},t_f) \label{eq:final-cost}\\
 F_i=\int^{t_f}_{t_0}f(\vec{x}(t),\vec{u}(t),\vec{p},t)\,dt \label{eq:integral-cost} \\
 F = \vec\sigma_0 F_0+\vec\sigma_f F_f+\vec\sigma_i F_i \label{eq:total-cost}
 \end{gather}
+\end{subequations}
 
 % State vector
 \section{State vector} \label{sec:state-vector}

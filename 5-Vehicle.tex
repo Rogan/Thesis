@@ -1,133 +1,11 @@
 \chapter{Vehicle modelling and parameterisation}\label{cha:Vehicle}
 
-% Power
-\section{Power}\label{sec:Vehicle-power}
-
-\subsection{Power generation} \label{sub:Power-generation}
-
-At the commencement of this project, it was anticipated that power would be one of the defining factors in determining an optimal trajectory. Consequently power was implemented as one of the states to be tracked during optimisation. The power generation was calculated using equation \eqref{eq:Power-generation},
-\begin{gather} \label{eq:Power-generation}
-P = Q\times A_{eff}\times\eta_a\times\eta_c\times\eta_{DC}\times\cos\Psi_\Sun\times\mathfrak{R}
-\end{gather}
-where $Q$ represents the solar intensity near the Earth-Moon system, $\eta_a$ represents the area efficiency of the solar cells arranged within the panel, $\eta_c$ represents the solar cell efficiency, and $\eta_{DC}$ represents the efficiency of the voltage regulator. The angle subtended by the sun on the solar panels is $\Psi_\Sun$, and the power degradation is $\mathfrak{R}$.
-
-The solar intensity is calculated by dividing the average solar luminosity \parencite[$3.846\times10^{26}$ W,][]{Montenbruck2000} by the surface area of a sphere with radius equal to the Earth's distance from the Sun ($4\pi r_\Sun^2$). This is important because the Earth's distance from the Sun varies by 6\% over the year \parencite{Montenbruck2000}. The solar intensity is then multiplied by the effective area of the solar panels, $A_{eff}$. Although the spacecraft has 6~m$^2$ of panels, because the central two panels are positioned at 45\degrees\ the effective area is only 5.4~m$^2$.
-
-Based on the latest design work by my colleague Alexander Uryu, the area efficiency is about 0.8, that is, only 80\% of the effective solar panel area will actually be covered in solar cells, due to the geometric arrangement of the cells and the additional surface area required for circuitry. The solar cells will be state-of-the-art TEC-STAR GaAs/InP 34 series solar arrays with 200~$\mu$m front cover glass and 500~$\mu$m back cover glass. Consequently it is estimated that the cell efficiency will be about 27\% at launch. The exact power control circuitry is not yet known, but based on modern power conversion ciruits it is expected that the DC voltage regulator will be approximately 85\% efficient. 
-
-It is assumed that while one axis of the solar panels is constrained to the thrust vector, the other is free to rotate about the thrust vector to obtain the best sun angle possible. Consequently the sun angle can be calculated using equation \eqref{eq:sun-angle}.
-\begin{gather} \label{eq:sun-angle}
-\vec{u}\cdot\vec{r}_\Sun = |\vec{u}|.|\vec{r}_\Sun|\cos\Psi \\
-\Psi = \arccos\frac{\vec{u}\cdot\vec{r}_\Sun}{|\vec{u}|.|\vec{r}_\Sun|}
-\end{gather}
-
-The greatest unknown in the power model is how much the solar cells will degrade over time. As \textcite{Erb_thesis} points out, the solar panel degradation is directly related to total equivalent \enquote{fluence}, $\mathfrak{F}$ (that is, the radiation dose received), which must be integrated over the transfer, where the derivative with respect to time $\frac{d\mathfrak{F}}{dt}$ is approximated as a function of the distance from Earth, as shown in \autoref{fig:Fluence}. 
-
-\begin{figure}
-\centering
-\def\svgwidth{\figurewidth}
-\input{Images/fluence.pdf_tex}
-\caption{Radiation fluence during a 24 hour orbit as a function of distance from Earth.}
-\label{fig:Fluence}
-\end{figure}
-  
-At each time step the equivalent radiation dose of a 24~hour orbit at that distance from the Earth may be taken from the graph, and scaled to the time interval. This effective radiation dose is added to the accumulated radiation dose. The total accumulated radiation dose may be translated to a power degradation factor using \autoref{fig:Fluence2}.
-
-\begin{figure}
-\centering
-\def\svgwidth{\figurewidth}
-\input{Images/fluence2.pdf_tex}
-\caption{Power degradation as a consequence of radiation fluence.}
-\label{fig:Fluence2}
-\end{figure}
-
-Data for the panel degradation model was based on the work done by \textcite{Hechler2002} during planning for the SMART-1 mission. During the SMART-1 mission, it was found that their solar cells degraded by approximately 0.12\% per day, or about 2~W \parencite{Racca5}. It was also found that during the solar storm that occurred during the transfer, an additional 1\% panel degradation occurred \parencite{Racca8}. However, soon after the solar storm, the spacecraft reached a periapsis of 11790~km whereupon no further radiation damage occurred. Thus it can be assumed that the phase boundary defined in the mission architecture may be quite conservative, which should be factored into further power degredation modelling if not simply changing the mission architecture.
-
-\subsection{Power consumption} \label{sub:Power-consumption}
-
-At each timestep the power required for communications and the power required by the payload would be subtracted from the power generated. At this stage in the mission planning, the payload is not confirmed and the satellite communications have not been determined due to pending agreements with ground station providers in Australia, Japan and the USA. However, it is expected that most of the payload will be in standby until the spacecraft is confirmed in the science orbit, so power requirements during the transfer will be minimal. Thruster power is also subtracted from generated power (see \autoref{sec:Propulsion}).
-
-Any surplus power generated by the solar panels is added to the battery level, or any remaining deficit is subtracted from them. According to the initial design stated by \textcite{Falke2004}, the lithium ion batteries were designed to hold 100~Ah supplying a common bus of 28~V. It is assumed the batteries will be fully charged at launch. At any stage during the transfer, if the batteries become fully charged the spacecraft will roll around its thrust vector to point the solar panels away from the Sun, to prevent overcharge.
-
-
-
-% Ground station
-\section{Ground station access}
-ground stations in stuttgart, USA, japan and australia give continual access during earth orbit
-
-only downtime is when it's behind the moon
-
-needs to rotate to communicate with ground station!!!
-
-approx 250~W for Ka-band, 10~W for S-band. S-band only works in LEO.
-
-
-% Propulsion
-\section{Propulsion} \label{sec:Propulsion}
-Arcjet power consumption \& operational Isp, efficiency, thrust based on Birk's work. \autoref{sec:PPT-characteristics}
-PPTs similar from Matthias. \autoref{sec:Arcjet-characteristics}
-science payload during science phase approx 300~W \parencite{web_BW-1}
-\begin{gather}
-I_{sp} = \frac{v_e}{g_0} \\
-T = I_{sp}.g_0.\dot{m} = v_e.\dot{m} \\
-\eta = \frac{T^2}{2\dot{m}P} \\
-P = \frac{T^2}{2\dot{m}\eta} 
-\end{gather}
-modelled around apoapsis for first phase (objective is to raise periapsis outside VABs - apoapsis is already outside)
-
-modelled around periapsis for second phase (objective is to raise orbital energy - Oberth effect means more delta V is gained by burning at low altitude).
-
-optimisable fixed-body thrust vector allows trade-off between thrust angle and solar panel orientation - if the craft isn't thrusting, it can still use the thrust vector controls to point the solar panels at the sun
-
-
-The length of this phase frequently resulted in computational difficulty, so a number of design compromises were investigated to solve the problem (it is acknowledged by the author that changing hardware design to make the simulation easier is a poor design philosophy, but the project management was interested to know the effects of these changes regardless of any simulation difficulties). For example, a design configuration was being investigated with 6 PPTs rather than 4, thereby increasing the available thrust without losing $I_{sp}$. The trade-off with this change is the additional thrusters would increase the dry mass of the vehicle, decreasing available payload. A similar design change was investigating the pulse rate of the PPTs. A higher pulse frequency increases thrust, increases mass flow, and increases power consumption, but impulse is conserved. However, an additional unknown is introduced: the heat flux within the electrodes is increased. 
-
-can cause damage to electrodes, decrease operational lifetime - important on a 4 year mission! there is literature indicating that some designs can tolerate higher heat flux (cite Russian study) but further testing of the SIMPLEX would be required.
-
-
-variable thrust magnitude - arcjet model mass flow rate + power?
-
-PPTs is pulse frequency. Assuming we can run at 3~Hz, maximum thrust is increased.... change whole model?!?
-
-Modelling with initial values of PPT frequency = 1~Hz, computational issues due to transfer being too long. Noticed that the power was a huge surplus, so spoke to the PPT experts (Matthias) who indicated that extra power could be pushed into higher pulse rate on the PPTs, up to 3~Hz. Remodelled based on this (effectively higher thrust and power consumption, but same Isp - this is the principle on which advocates of EP see it as the most efficient feasible propulsion for interplanetary missions).
-
-Due to the particularly non-linear variations with launch date (periodic over 27.5~days based on the Moon's orbit) a good parameterisation of the launch date would be to use two variables, one to increment an integer number of months forwards or backwards, the other a floating point to indicate the number of days either side of the month.
-
-Initially modelled Cruise with 4xPPTs at 1~Hz, took 2298~radians $\Delta$L and about 950~days. Optimisation not possible due to numerical limitations. Modified to 2Hz due to surplus power, simulation took 1347~radians and about 500~days.
-\begin{figure}
-\includegraphics[width=\textwidth]{Images/PPT_test.JPG}
-\caption{SIMPLEX PPT during a laboratory test. The spark plug (centre left) ignites an arc between the two electrodes (pointing towards the camera) which vapourises the surface of the block of white PTFE between them. The electric field between the two electrodes then accelerates the plasma towards the camera.}\label{fig:PPT}
-\end{figure}
-\begin{figure}
-\includegraphics[width=\textwidth]{Images/hiparc_betrieb.png}
-\caption{TALOS arcjet during a laboratory test. An arc is generated between the axial cathode and the nozzle anode, which heats up the ammonia, accelerating it outwards.}\label{fig:arcjet}
-\end{figure}
-Show graphs for low power Cruise phases? 
-
-From the power output, realised that the design could use more power to transfer faster - take many forms. Higher pulse frequency most promising, this linearly increases thrust at exactly the same Isp, at the cost of linearly increasing power consumption. The only limitation is wear and tear to the service life of the thruster; should be proportional to the number of pulses and since each pulse provides a certain Impulse bit, the number of pulses required to perform the lunar transfer should be constant. Thrusters have not been endurance tested yet meaning we don't know how many cycles they can perform. Other constraint is cooling - over about 3~Hz the PTFE is not able to cool properly between cycles and can interfere in the thruster performance. However, some tests performed in Russia (cite Matthias and/or Pedro here?) have successfully used a design similar to SIMPLEX at 20~Hz.
-
-Thrust and power can also be linearly scaled by simply introducing more PPTs to the structure. This has been championed by the PPT designer, Matthias Lau. This option increases the redundancy of the system (and therefore reliability). However, it also carries the associated cost of extra weight.
-
-Finally, extra power can be discharged into each pulse. This increases the Isp and thrust because the plasma is accelerated faster, but the increase is not proportional to the extra power put into each pulse. Therefore the power efficiency drops. Currently the development of the PPTs is focussed on improving the power efficiency, so the performance at this opposite end of the scale is not well characterised/not well known.
-
-\parencite{Cabrera2011}
-
-regardless, it was found that increasing the thrust shortens the transfer but makes lunar capture more difficult. The higher thrust may be targeted at the Moon, and an appropriate orbital energy can be attained for lunar capture (about 5000~m$^2$s$^{-2}$) but due to the higher thrust, a larger proportion of the energy is made up of kinetic energy. In other words, the spacecraft is going too fast to achieve a strong lunar capture, even with a very low lunar pass. Perhaps relative velocity might be a better termination criterion?
-
-
-
-% Earth shadow
-\section{Earth shadow}
-
-% Reaction wheel
-\section{Reaction wheel desaturation}
-
 % Parameterisation
-\section{Parameterisation}
+\section{Parameterisation} \label{sec:Parameterisation}
+
+\subsection{Discretisation} \label{sub:Discretisation}
 
 How everything is split up and discretised. Time, phases, gridpoints within phases. 
-
-\subsection{Discretisation}
 
 \subsection{Substitution of parameters}\label{sub:subst-param}
 
@@ -189,6 +67,144 @@ The universal definition for delta-v was provided in \autoref{sub:Delta-v}. Unfo
 &= \int^{1}_{0}\frac{|T|}{m}\frac{\Delta L}{\dot L}\text{dLn}
 \end{align}
 \end{subequations}
+
+%-----------------------------------------------------------------------------------------------------------------------------------------------
+
+% Propulsion
+\section{Propulsion} \label{sec:Propulsion}
+
+The biggest impact of vehicle design on the trajectory is the thruster selection. As briefly outlined in \autoref{sec:Spacecraft}, the preliminary design specified a thermal arcjet and four pulsed plasma thrusters, all of which were developed within the IRS. 
+
+A number of laboratory test results for the PPTs are reproduced in \autoref{sec:PPT-characteristics}. The test apparatus is shown in \autoref{fig:PPT}. By varying the power supplied to the PPTs, different levels of thrust were achieved for a small sacrifice in $I_{sp}$. As can be seen in \autoref{tab:PPT-performance}, increasing the power supplied to the thruster increases the mass of propellant that is vapourised and then accelerated. This increases the thrust, but the greater mass is not accelerated as efficiently resulting in a lower exhaust velocity, and consequently a lower specific impulse. 
+
+\begin{figure}
+\centering
+\includegraphics[width=0.7\textwidth]{Images/PPT_test.JPG}
+\caption{SIMPLEX PPT during a laboratory test. The spark plug (centre left) ignites an arc between the two electrodes (pointing towards the camera) which vapourises the surface of the block of white PTFE between them. The electric field between the two electrodes then accelerates the plasma towards the camera.}\label{fig:PPT}
+\end{figure}
+
+The thermal arcjet, shown in \autoref{fig:Arcjet}, underwent similar testing. The results provided to the author are reproduced in \autoref{sec:Arcjet-characteristics}. There are many more variables affecting the arcjet performance, mostly not listed in the table, but the biggest difference to the PPTs is that the rate at which propellant is provided to the arcjet can be varied independently of the power. 
+
+\begin{figure}
+\centering
+\includegraphics[width=0.7\textwidth]{Images/hiparc_betrieb.png}
+\caption{TALOS arcjet during a laboratory test. An arc is generated between the axial cathode and the nozzle anode, which heats up the ammonia, accelerating it outwards.}\label{fig:Arcjet}
+\end{figure}
+
+The thruster development at the time of writing  is focussed on improving power efficiency. The power efficiency, defined in equation \eqref{eq:thruster-efficiency}, is proportional to the thrust squared, and inversely proportional to the mass flow. Since the thrust, defined in equation \eqref{eq:thrust}, is directly proportional to mass flow, reducing mass flow will not improve power efficiency. Indeed, based on this criterion some of the arcjet tests found that the power efficiency is highest when the arc is not operated, and the thruster functions purely as a cold gas jet! 
+
+\begin{subequations}
+\begin{gather}
+\eta = \frac{T^2}{2\dot{m}P} \label{eq:thruster-efficiency}\\
+T = v_e\dot{m} \label{eq:thrust} 
+\end{gather}
+\end{subequations}
+
+Counter-intuitively given the above definition, during testing the power efficiency often improves at the expense of thrust. This is a cause for concern, as the low thrust has already required a much longer transfer than any used in the past, and the longer the mission the greater the chance of impact with space debris or micrometeorites, damage from radiation, or computer failure due to solar proton events (SPEs) or galactic cosmic rays (GCRs).
+
+Furthermore, the length of the cruise phase frequently resulted in computational difficulty, so a number of design compromises were investigated to solve the problem (it is acknowledged by the author that changing hardware design to make the simulation easier is a poor design philosophy, but the project management was interested to know the effects of these changes regardless of any simulation difficulties). For example, a design configuration was being investigated with 6 PPTs rather than 4, thereby increasing the available thrust without losing $I_{sp}$. The trade-off with this change is the additional thrusters would increase the dry mass of the vehicle, decreasing available payload space. The same effect could be achieved by changing the pulse rate of the PPTs. A higher pulse frequency increases thrust, increases mass flow, and increases power consumption, but impulse is conserved. However, an additional unknown is introduced: the heat flux within the electrodes is increased. 
+
+% Thrust and power can also be linearly scaled by simply introducing more PPTs to the structure. This has been championed by the PPT designer, Matthias Lau. This option increases the redundancy of the system (and therefore reliability). However, it also carries the associated cost of extra weight.
+
+Increasing the heat generated by the PPTs causes a corresponding increase in the electrodes operating temperature, until a new equilibrium is reached with the heat radiated into space. This higher temperature can cause damage to the electrodes, structural failure in the surrounding satellite components, or even melt the propellant! There is literature indicating that some designs can tolerate higher pulse frequencies \cite{Mueller2000} but the majority of studies use 1~Hz. Consequently, thorough lifecycle testing will be required on the thrusters to determine operational lifetime variability with pulse frequency before a 4 year mission such as \BW\ may be undertaken. 
+
+% From the power output, realised that the design could use more power to transfer faster - take many forms. Higher pulse frequency most promising, this linearly increases thrust at exactly the same Isp, at the cost of linearly increasing power consumption. The only limitation is wear and tear to the service life of the thruster; should be proportional to the number of pulses and since each pulse provides a certain Impulse bit, the number of pulses required to perform the lunar transfer should be constant. Thrusters have not been endurance tested yet meaning we don't know how many cycles they can perform. Other constraint is cooling - over about 3~Hz the PTFE is not able to cool properly between cycles and can interfere in the thruster performance. However, some tests performed in Russia (cite Matthias and/or Pedro here?) have successfully used a design similar to SIMPLEX at 20~Hz.
+
+% Finally, extra power can be discharged into each pulse. This increases the Isp and thrust because the plasma is accelerated faster, but the increase is not proportional to the extra power put into each pulse. Therefore the power efficiency drops. Currently the development of the PPTs is focussed on improving the power efficiency, so the performance at this opposite end of the scale is not well characterised/not well known.
+
+Nonetheless, when modelling the PPTs an additional variable was implemented representing maximum pulse frequency. Operationally, the variable thrust magnitude would be implemented by reducing the pulse frequency from the maximum available. After consultation with the PPT expert at IRS, it was conservatively estimated that the SIMPLEX PPT should be able to operate up to 3~Hz with minimal side effects. 
+
+The first simulation implemented 4 PPTs operating at 1~Hz for the cruise phase. This implementation took 2298~radians $\Delta$L and about 950~days to ascend to the phase boundary. Optimisation was not possible due to numerical limitations. Given the surplus power available at all stages of this ascent, it was run again at 2~Hz. This second simulation took 1347~radians and about 500~days to ascend to the phase boundary. Based on the discretisation philosophy outlined in \autoref{sec:Parameterisation}, this almost halved the number of optimisable parameters. 
+
+% Arcjet
+variable thrust magnitude - arcjet model mass flow rate + power?
+
+% Launch date
+Due to the particularly non-linear variations with launch date (periodic over 27.5~days based on the Moon's orbit) a good parameterisation of the launch date would be to use two variables, one to increment an integer number of months forwards or backwards, the other a floating point to indicate the number of days either side of the month.
+
+
+
+
+\parencite{Cabrera2011}
+
+regardless, it was found that increasing the thrust shortens the transfer but makes lunar capture more difficult. The higher thrust may be targeted at the Moon, and an appropriate orbital energy can be attained for lunar capture (about 5000~m$^2$s$^{-2}$) but due to the higher thrust, a larger proportion of the energy is made up of kinetic energy. In other words, the spacecraft is going too fast to achieve a strong lunar capture, even with a very low lunar pass. Perhaps relative velocity might be a better termination criterion?
+
+
+modelled around apoapsis for first phase (objective is to raise periapsis outside VABs - apoapsis is already outside)
+
+modelled around periapsis for second phase (objective is to raise orbital energy - Oberth effect means more delta V is gained by burning at low altitude).
+
+%-----------------------------------------------------------------------------------------------------------------------------------------------
+
+% Earth shadow
+\section{Earth shadow}
+
+
+% Power
+\section{Power}\label{sec:Vehicle-power}
+
+\subsection{Power generation} \label{sub:Power-generation}
+
+At the commencement of this project, it was anticipated that power would be one of the defining factors in determining an optimal trajectory. Consequently power was implemented as one of the states to be tracked during optimisation. The power generation was calculated using equation \eqref{eq:Power-generation},
+\begin{gather} \label{eq:Power-generation}
+P = Q\times A_{eff}\times\eta_a\times\eta_c\times\eta_{DC}\times\cos\Psi_\Sun\times\mathfrak{R}
+\end{gather}
+where $Q$ represents the solar intensity near the Earth-Moon system, $\eta_a$ represents the area efficiency of the solar cells arranged within the panel, $\eta_c$ represents the solar cell efficiency, and $\eta_{DC}$ represents the efficiency of the voltage regulator. The angle subtended by the sun on the solar panels is $\Psi_\Sun$, and the power degradation is $\mathfrak{R}$.
+
+The solar intensity is calculated by dividing the average solar luminosity \parencite[$3.846\times10^{26}$ W,][]{Montenbruck2000} by the surface area of a sphere with radius equal to the Earth's distance from the Sun ($4\pi r_\Sun^2$). This is important because the Earth's distance from the Sun varies by 6\% over the year \parencite{Montenbruck2000}. The solar intensity is then multiplied by the effective area of the solar panels, $A_{eff}$. Although the spacecraft has 6~m$^2$ of panels, because the central two panels are positioned at 45\degrees\ the effective area is only 5.4~m$^2$.
+
+Based on the latest design work by my colleague Alexander Uryu, the area efficiency is about 0.8, that is, only 80\% of the effective solar panel area will actually be covered in solar cells, due to the geometric arrangement of the cells and the additional surface area required for circuitry. The solar cells will be state-of-the-art TEC-STAR GaAs/InP 34 series solar arrays with 200~$\mu$m front cover glass and 500~$\mu$m back cover glass. Consequently it is estimated that the cell efficiency will be about 27\% at launch. The exact power control circuitry is not yet known, but based on modern power conversion ciruits it is expected that the DC voltage regulator will be approximately 85\% efficient. 
+
+It is assumed that while one axis of the solar panels is constrained to the thrust vector, the other is free to rotate about the thrust vector to obtain the best sun angle possible. Consequently the sun angle can be calculated using equation \eqref{eq:sun-angle}.
+\begin{subequations}
+\begin{gather} \label{eq:sun-angle}
+\vec{u}\cdot\vec{r}_\Sun = |\vec{u}|.|\vec{r}_\Sun|\cos\Psi \\
+\Psi = \arccos\frac{\vec{u}\cdot\vec{r}_\Sun}{|\vec{u}|.|\vec{r}_\Sun|}
+\end{gather}
+\end{subequations}
+
+The greatest unknown in the power model is how much the solar cells will degrade over time. As \textcite{Erb_thesis} points out, the solar panel degradation, $\mathfrak{R}$, is directly related to total equivalent \enquote{fluence}, $\mathfrak{F}$ (that is, the radiation dose received), which must be integrated over the transfer, where the derivative with respect to time $\frac{d\mathfrak{F}}{dt}$ is approximated as a function of the distance from Earth, as shown in \autoref{fig:Fluence}. 
+
+\begin{figure}
+\centering
+\def\svgwidth{\figurewidth}
+\input{Images/fluence.pdf_tex}
+\caption{Radiation fluence during a 24 hour orbit as a function of distance from Earth.}
+\label{fig:Fluence}
+\end{figure}
+  
+At each time step the equivalent radiation dose of a 24~hour orbit may be taken from the graph, and scaled to the appropriate time interval. This effective radiation dose is added to the accumulated radiation dose. The total accumulated radiation dose may be translated to a power degradation factor using \autoref{fig:Fluence2}.
+
+\begin{figure}
+\centering
+\def\svgwidth{\figurewidth}
+\input{Images/fluence2.pdf_tex}
+\caption{Power degradation as a consequence of radiation fluence.}
+\label{fig:Fluence2}
+\end{figure}
+
+Data for the panel degradation model was based on the work done by \textcite{Hechler2002} during planning for the SMART-1 mission. During the SMART-1 mission, it was found that their solar cells degraded by approximately 0.12\% per day, or about 2~W \parencite{Racca5}. It was also found that during the solar storm that occurred during the transfer, an additional 1\% panel degradation occurred \parencite{Racca8}. However, soon after the solar storm, the spacecraft reached a periapsis of 11790~km whereupon no further radiation damage occurred. Thus it can be assumed that the phase boundary defined in the mission architecture may be quite conservative, which should be factored into further power degredation modelling if not simply changing the mission architecture.
+
+% optimisable fixed-body thrust vector allows trade-off between thrust angle and solar panel orientation - if the craft isn't thrusting, it can still use the thrust vector controls to point the solar panels at the sun
+
+\subsection{Power consumption} \label{sub:Power-consumption}
+
+At each timestep the power required for communications, payload and thrust would be subtracted from the power generated. 
+
+The payload has not yet been confirmed, but it is expected that most of the payload will be in standby until the spacecraft is confirmed in the science orbit, so power requirements during the transfer will be minimal. During the science phase the payload is expected to require approximately 300~W \parencite{web_BW-1}, which should be well within the solar panels' remaining capacity.
+
+Agreements are being negotiated with ground station providers in Stuttgart, USA, Japan and Australia to give continual access to the satellite during Earth orbit. The only downtime will occur in the later stages of the transfer, when the satellite transits through the Moon's shadow. Ground access time notwithstanding, the satellite will have to rotate to point its antennae towards the Earth. Therefore it is expected that communications will only operate a fraction of the transfer time. These communications intervals will be scheduled based on availability of both power and coasting phases, and as such should not impact the trajectory design. During communications intervals approximately 250~W will be required for the Ka-band transmission, and 10~W for the S-band.
+
+After thruster power is also subtracted from generated power (see \autoref{sec:Propulsion}), any surplus power generated by the solar panels is added to the battery levels, or any deficit is subtracted from them. According to the initial design stated by \textcite{Falke2004}, the lithium ion batteries were designed to hold 100~Ah supplying a common bus of 28~V. It is assumed the batteries will be fully charged at launch. At any stage during the transfer, if the batteries become fully charged the spacecraft will roll around its thrust vector to point the solar panels away from the Sun, to prevent overcharge.
+
+%-----------------------------------------------------------------------------------------------------------------------------------------------
+
+
+% Reaction wheel
+\section{Reaction wheel desaturation}
+
+%-----------------------------------------------------------------------------------------------------------------------------------------------
+
 
 %\section{Oberth effect}
 %Thrust more at periapsis, less at apoapsis. Should become more apparent when thrust is not held to $T_{max}$.
