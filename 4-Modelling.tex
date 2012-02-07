@@ -19,11 +19,10 @@ Relativity requires that no truly inertial frames can exist, but by defining the
 The fundamental $XY$ plane coincides the Earth's equatorial plane at Julian epoch J2000. The $x$-axis is defined as the intersection of the equatorial and ecliptic planes (the ecliptic plane is the plane within which the Earth orbits the Sun), with positive being towards the Earth during the March (vernal) equinox at Julian epoch J2000. Because this direction points roughly towards the constellation Aries, it is often denoted $\Aries$, as shown in \autoref{fig:Ecliptic-plane}. This coordinate system is useful as an absolute reference within the solar system. However, since the majority of \BW's trajectory will be an Earth escape spiral, an Earth-centred inertial (ECI) reference frame will be used.
 
 \begin{figure} [htp]
-\begin{center}
-\includegraphics [scale=0.75]{Images/cel-sphere-2.png}
-\end{center}
 \caption{Ecliptic and equatorial planes. From an Earth-centred frame, the Sun appears to orbit the Earth. The plane of its orbit is the ecliptic plane. Image used courtesy of Dr. Guy Worthey, \url{http://astro.wsu.edu/worthey/astro/html/lec-celestial-sph.html}.}
 \label{fig:Ecliptic-plane}
+\centering
+\includegraphics [scale=0.75]{Images/cel-sphere-2.png}
 \end{figure}
 
 The ECI frame is also quasi-inertial, because there are still coriolis forces on objects within the frame as the origin (the Earth) orbits around the Sun and the Sun orbits around the galactic centre. The galactic rotation is neglected as mentioned above. The forces due to the Earth's orbit around the Sun are compensated for by including the Sun as a gravitational perturbation (as outlined in \autoref{sub:Ephemerides}).
@@ -32,39 +31,37 @@ During the lunar descent the spacecraft is orbiting the Moon. Since most coordin
 
 Finally, to model the forces acting on the spacecraft it is necessary to define a local frame. Within the ECI frame, $\vec{r}$ represents the position vector of the spacecraft from the origin (defined as the centre of the primary body), as shown in \autoref{fig:Earth-Centred-Inertial-frame}, while $\vec{v}$ is the velocity vector of the spacecraft.
 \begin{figure}[h]
-\begin{center}
-\includegraphics[scale=0.75]{Images/ECI-frame.JPG}
-\end{center}
 \caption{Earth-Centred Inertial frame. Image used couresty of \textcite{Keppeler_thesis}.}
 \label{fig:Earth-Centred-Inertial-frame}
+\centering
+\includegraphics[scale=0.75]{Images/ECI-frame.JPG}
 \end{figure}
 Designating the position vector as the local vertical, and the tangent relative to the central body as the local horizontal, this defines a local frame known as the Gauss frame, or the Local Vertical-Local Horizontal (LVLH) frame \parencite{STK}. It is important to note that the local horizontal is not necessarily parallel to the velocity.
  
 For compatability with the majority of cited literature, including \textcite{Keppeler_thesis}'s comprehensive study of various coordinate systems applicable to orbital dynamics, the following notation shall be used throughout this paper.
  
-The radial direction (from the centre of the primary body to the orbiting spacecraft) is a unit vector based on the spacecraft's position $\vec{r}$, and may be derived using 
+The radial direction (from the centre of the primary body to the orbiting spacecraft) is a unit vector based on the spacecraft's position $\vec{r}$, and may be derived using equation\eqref{eq:ir}.
 \begin{subequations}\label{eq:i}
 \begin{equation}
 \vec{\hat{i}}_{r}=\frac{\vec{r}}{\left\Vert \vec{r}\right\Vert} \label{eq:ir}
 \end{equation}
 
-The normal direction, $\vec{\hat{i}}_{h}$, is perpendicular to the orbital plane. The subscript $h$ is used because this vector is in the direction of specific angular momentum, $\vec{h=r\times v}$. Since $\vec{r}$ and $\vec{v}$ are both within the orbital plane, this vector may be derived using 
+The normal direction, $\vec{\hat{i}}_{h}$, is perpendicular to the orbital plane. The subscript $h$ is used because this vector is in the direction of specific angular momentum, $\vec{h=r\times v}$. Since $\vec{r}$ and $\vec{v}$ are both within the orbital plane, this vector may be derived using equation \eqref{eq:ih}.
 \begin{equation}
 \vec{\hat{i}}_{h}=\frac{\vec{r\times v}}{\left\Vert \vec{r\times v}\right\Vert} \label{eq:ih}
 \end{equation}
 
-The tangential direction, $\vec{\hat{i}}_{\theta}$, is perpendicular to radial direction, but still within the orbital plane. It is important to note that this direction is not necessarily parallel to velocity, and so should be derived using
+The tangential direction, $\vec{\hat{i}}_{\theta}$, is perpendicular to radial direction, but still within the orbital plane. It is important to note that this direction is not necessarily parallel to velocity, and so should be derived using equation \eqref{eq:it}.
 \begin{equation}
 \vec{\hat{i}}_{\theta}=\vec{\hat{i}}_{h}\times\vec{\hat{i}}_{r} \label{eq:it}
 \end{equation}
 \end{subequations}
 
 \begin{figure}
-\begin{center}
-\includegraphics[scale=0.50]{Images/local-orbit.JPG}
-\end{center}
 \caption{Local Gauss frame. Image used courtesy of \textcite{Keppeler_thesis}. Vector $\vec{r}$ represents the spacecraft's position relative to the primary body. True anomaly $\nu$ represents the angle of this position relative to the periapsis. Vector $\vec{v}$ represents the spacecraft's velocity. Angle $\Psi$ represents the deviation of this velocity from the tangent to the circle described by $\vec{r}$.}
 \label{fig:LVLH-frame}
+\centering
+\includegraphics[scale=0.50]{Images/local-orbit.JPG}
 \end{figure}
 
 
@@ -86,14 +83,13 @@ As described by \textcite{Letterio_thesis}, Cartesian positions and velocities a
 %model keplerian coordinates diagram on \cite{Pollard2000}
 
 \begin{figure} [h]
-\begin{center}
-\includegraphics[scale=0.75]{Images/Keplerian-elements.JPG}
-\end{center}
 \caption{Keplerian orbital elements. Image used courtesy of \textcite{Keppeler_thesis}.}
 \label{fig:Keplerian-Orbital-Elements}
+\centering
+\includegraphics[scale=0.75]{Images/Keplerian-elements.JPG}
 \end{figure}
 
-This severely limits the step size that can be used during optimisation without accumulating large errors in the calculations. Therefore the recent trend is to use equinoctial elements for optimising orbital trajectories. A review of orbital element sets by \textcite{Hintz2008} came to the same conclusion as \citeauthor{Letterio_thesis} and \citeauthor{Keppeler_thesis}; the elements resulting in the smoothest trajectories are the \enquote{modified equinoctial element set} proposed by \textcite{Walker1985}, defined in \eqref{eq:states}.
+This severely limits the step size that can be used during optimisation without accumulating large errors in the calculations. Therefore the recent trend is to use equinoctial elements for optimising orbital trajectories. A review of orbital element sets by \textcite{Hintz2008} came to the same conclusion as \citeauthor{Letterio_thesis} and \citeauthor{Keppeler_thesis}: the elements resulting in the smoothest trajectories are the \enquote{modified equinoctial element set} proposed by \textcite{Walker1985}, defined in \eqref{eq:states},
 \begin{subequations}\label{eq:states}
 \begin{eqnarray}
 p & = & a(1-e^{2}) \label{eq:p}\\
@@ -107,17 +103,16 @@ L & = & \omega+\Omega+\nu \label{eq:L}
 where $p$ represents the semi-latus rectum, as shown in \autoref{fig:Elliptical-Conic-Section}, $L$ represents the true longitude and $f$, $g$, $h$ and $k$ are convenient non-singular transformations of the Keplerian elements, with no physical meaning.
 
 \begin{figure}[h]
-\begin{center}
-\includegraphics[scale=0.35]{Images/ellipse_parameters.pdf}
-\end{center}
 \caption{Elliptical conic section parameters.}
 \label{fig:Elliptical-Conic-Section}
+\centering
+\includegraphics[scale=0.35]{Images/ellipse_parameters.pdf}
 \end{figure}
 
 This lack of physical meaning has hindered the uptake of the modified equinoctial element set. Many published studies still use Keplerian or even Cartesian coordinates, and many widely used textbooks do not even mention the element set. For example \textcite[][p. 194]{Chobotov2002} outlines the original set of equinoctial elements proposed by \textcite{Broucke1972}, but neglects the modified set.
 
 \subsection{Sphere of influence}\label{sub:SOI}
-A sphere of influence defines the region of space in which a primary body dominates the gravitational forces on any small object such as a spacecraft. This is traditionally used to determine coasting trajectories of chemically propelled spacecraft, thus ignoring third-body gravitational forces. Due to the longer transfer times of low-thrust spacecraft it is necessary to include these additional gravitational forces. However, the sphere of influence provides a convenient point to switch the origin of our orbital elements, and is defined as
+A sphere of influence defines the region of space in which a primary body dominates the gravitational forces on any small object such as a spacecraft. This is traditionally used to determine coasting trajectories of chemically propelled spacecraft, thus ignoring third-body gravitational forces. Due to the longer transfer times of low-thrust spacecraft it is necessary to include these additional gravitational forces. However, the sphere of influence provides a convenient point to switch the origin of our orbital elements, and is defined in equation \eqref{eq:SOI},
 \begin{equation}
 r_{SOI}=a_{p}\left(\frac{m_{p}}{m_{s}}\right)^{\frac{2}{5}} \label{eq:SOI}
 \end{equation}
@@ -125,11 +120,10 @@ where $m_{p}$ and $m_{s}$ are the mass of the primary and secondary bodies, resp
  Note that the Moon's sphere of influence (with respect to the Earth)\footnote{calculated as just over 66,000~km from the Moon's centre, just under 5/6 of the distance from the Earth to the Moon.} lies entirely within the Earth's (with respect to the Sun)\footnote{calculated as almost 925,000~km from the Earth's centre.}.
 
 \begin{figure} [h]
-\begin{center}
-\includegraphics[scale=0.4]{Images/Spheres-of-Influence.png}
-\end{center}
-\caption{Earth and Moon Spheres of Influence}
+\caption{Earth and Moon Spheres of Influence.}
 \label{fig:Spheres-of-Influence}
+\centering
+\includegraphics[scale=0.4]{Images/Spheres-of-Influence.png}
 \end{figure}
 
 
@@ -138,7 +132,7 @@ where $m_{p}$ and $m_{s}$ are the mass of the primary and secondary bodies, resp
 % Orbital equations of motion
 \section{Orbital equations of motion} \label{sec:Orbital-equations-of-motion}
 
-Differentiating equation \eqref{eq:states} defining the equinoctial elements and then substituting through by those same equations to remove the Keplerian terms, gives the Gaussian equations of motion as presented by \cite{Walker1985,Walker1986,Keppeler_thesis,Erb_thesis,Letterio_thesis,Hintz2008} \footnote{Note the equation for $\dot{g}$ was corrected in \textcite{Walker1986}. This correction is sometimes missed in later publications, such as \textcite{Hintz2008}.}.
+Differentiating equation \eqref{eq:states} defining the equinoctial elements and then substituting through by those same equations to remove the Keplerian terms, gives the Gaussian equations of motion as presented by \textcite{Walker1985,Walker1986,Keppeler_thesis,Erb_thesis,Letterio_thesis,Hintz2008} \footnote{Note the equation for $\dot{g}$ was corrected in \textcite{Walker1986}. This correction is sometimes missed in later publications, such as \textcite{Hintz2008}.},
 \begin{subequations}\label{eq:state-updates}
 \begin{eqnarray}
 \dot{p} = & \sqrt{\frac{p}{\mu}}\frac{2p}{w}\Delta_\theta \label{eq:pdot}\\
@@ -154,7 +148,7 @@ w & = & 1+f\cos L+g\sin L\label{eq:w_helper}\\
 s^{2} & = & 1+h^{2}+k^{2}\label{eq:s2_helper}
 \end{eqnarray}
 \end{subequations}
-where $\mu$ represents the gravitational constant of the primary body \linebreak (3986004.418$\times$10$^8$~m$^3$s$^{-2}$ for the Earth as per \cite{WGS84}; $4902.7989\times10^9$~m$^3$s$^{-2}$ for the Moon as per \cite{Zhang1994}). The perturbations $\Delta_r$, $\Delta_\theta$ and $\Delta_h$ represent the total acceleration due to forces other than the primary body's classical gravity, split into vector components using the LVLH frame outlined in \autoref{sec:Reference-frames}. Note that $\Delta_\theta$ is not necessarily parallel to the velocity vector. Also note that in the absence of perturbations, the only time-varying element is $L$, the true longitude. This is because the other elements specify an orbit, whereas the true longitude represents the position of the orbiting body within that orbit. In the absence of perturbing forces the orbit remains constant.
+where $\mu$ represents the gravitational constant of the primary body \linebreak (3986004.418$\times$10$^8$~m$^3$s$^{-2}$ for the Earth as per \cite{WGS84} and  $4902.7989\times10^9$~m$^3$s$^{-2}$ for the Moon as per \cite{Zhang1994}). The perturbations $\Delta_r$, $\Delta_\theta$ and $\Delta_h$ represent the total acceleration due to forces other than the primary body's classical gravity, split into vector components using the LVLH frame outlined in \autoref{sec:Reference-frames}. Note that $\Delta_\theta$ is not necessarily parallel to the velocity vector. Also note that in the absence of perturbations, the only time-varying element is $L$, the true longitude. This is because the other elements specify an orbit, whereas the true longitude represents the position of the orbiting body within that orbit. In the absence of perturbing forces the orbit remains constant.
 
 
 
@@ -172,7 +166,7 @@ The total perturbing force [$\Delta_r$ $\Delta_\theta$ $\Delta_h$] outlined in \
 
 Reviewed literature unanimously agrees that the most accurate model available for relative positions of bodies within the solar system is the NASA JPL Planetary and Lunar Ephemerides. This data is accessible from \textcite{web_JetPropulsionLaboratory2004}, in the form of Cartesian coordinates for celestial bodies at any given Julian Date.
 
-To calculate the distance between the respective bodies, it is necessary to translate the spacecraft's position into Cartesian coordinates. \textcite{Betts1994} derives the set of equations shown in \eqref{eq:cartesian} for this purpose, although more recent literature often makes typographical mistakes when reproducing them, particularly with regard to the signs of some terms (for example \cite{Keppeler_thesis,Erb_thesis,Letterio_thesis}).
+To calculate the distance between the respective bodies, it is necessary to translate the spacecraft's position into Cartesian coordinates. \textcite{Betts1994} derives the set of equations shown in \eqref{eq:cartesian} for this purpose, although more recent literature often makes typographical mistakes when reproducing them, particularly with regard to the signs of some terms (for example \cite{Keppeler_thesis,Erb_thesis,Letterio_thesis}),
 \begin{subequations}\label{eq:cartesian}
 \begin{eqnarray}
 r_{x} = & \frac{r}{s^{2}}\left(\cos(L)+\alpha^{2}\cos(L)+2hk\sin(L)\right)\label{eq:r_x}\\
@@ -187,14 +181,14 @@ v_{z} = & \frac{2}{s^{2}}\sqrt{\frac{\mu}{p}}\left(h\cos(L)+k\sin(L)+fh+gk\right
 \end{subequations}
 where $r_{x,y,z}$ and $v_{x,y,z}$ are the position and velocity respectively of the spacecraft in Cartesian axes, $p$, $f$, $g$, $h$, $k$ and $L$ are the modified equinoctial elements of the spacecraft as per equation \eqref{eq:states}, $w$ and $s^{2}$ are the helper functions as per equations \eqref{eq:w_helper} and \eqref{eq:s2_helper} respectively, $\alpha^{2}=h^{2}-k^{2}$ and $r=\frac{p}{w}$ are two additional helper functions, and $\mu$ once again is the gravitational constant of the primary body the spacecraft is orbiting.
 
-\textcite{Betts1994} demonstrates that the gravitational acceleration $\vec{\Delta_q}$ on a spacecraft due to $n$ multiple bodies within a frame centred on the primary body is described by equation \eqref{eq:third-body-acc}.
+\textcite{Betts1994} demonstrates that the gravitational acceleration $\vec{\Delta_q}$ on a spacecraft due to $n$ multiple bodies within a frame centred on the primary body is described by equation \eqref{eq:third-body-acc},
 \begin{equation} \label{eq:third-body-acc}
 \vec{\Delta_q}=-\sum_{j=1}^{n}\mu_{j}
 \left[\frac{\vec{d}_{j}}{d_{j}^{3}}+\frac{\vec{s}_{j}}{s_{j}^{3}}\right]
 \end{equation}
 where $\vec{d}$ is the distance of the third body (from the satellite) and $\vec{s}$ is the distance of the third body from the primary body. This is required to remove the bias from the third body attracting the primary body (and thereby, the origin of our reference frame). As explained by \textcite[p. 357]{Kaplan1976}, \enquote{The \emph{effective attraction} of the Moon on a unit mass near Earth is just the Moon's attraction at the mass minus the Moon's attraction at the Earth's center}.
 
-While equation \eqref{eq:third-body-acc} can provide the third body perturbing forces directly, \textcite{Battin1999} shows that the equation is prone to truncation error due to the potentially large difference in distances involved. The algorithm shown in \eqref{eq:Fqk} is recommended.
+While equation \eqref{eq:third-body-acc} can provide the third body perturbing forces directly, \textcite{Battin1999} shows that the equation is prone to truncation error due to the potentially large difference in distances involved. The algorithm shown in \eqref{eq:Fqk} is recommended,
 \begin{subequations}
 \begin{equation} \label{eq:Fqk}
 F(q_k) = q_k\left[ \frac{3+3q_{k}+q_{k}^{2}}{1+(\sqrt{1+q_{k}})^{3}} \right] 
@@ -204,7 +198,6 @@ where
 q_k = \frac{\vec{r}^{T}(\vec{r}-2\vec{s_{k}})}{\vec{s_k}^{T}\vec{s_k}}
 \end{equation}
 \end{subequations}
-
 The acceleration vector is then resolved as per equation \eqref{eq:delta-v}.
 \begin{equation}\label{eq:delta-v}
 \vec{\Delta_q} = -\sum_{k=1}^{n}\frac{\mu_{k}}{d_{k}^{3}}(\vec{r}+F(q_{k})\vec{s_{k}})
@@ -220,18 +213,17 @@ These equations are used repeatedly in every phase; to calculate the perturbing 
 The Earth is not a perfect sphere. These imperfections are most commonly approximated with spherical harmonics, which models a uniform density ellipsoid. Whilst the differences between a sphere and an ellipsoid of identical mass are only noticable in low altitude orbits, since this is where the spacecraft trajectory is most susceptible to parameter variations it can have a substantial effect on the final state. Consequently it is important to include these variations in the model. Latitudinal harmonics are known as \emph{zonal harmonics}, longitudinal harmonics are known as \emph{sectorial harmonics}, and any combination of the two is known as a \emph{tesseral harmonic}. Some examples of spherical harmonics are shown in \autoref{fig:Spherical-Harmonics}.
 
 \begin{figure}
-\begin{center}
-\includegraphics[scale=0.5]{Images/515px-Harmoniques_spheriques_positif_negatif.png}
-\end{center}
 \caption{Spherical Harmonics. $l$ is the order of the zonal harmonic, $m$ is the order of the sectorial harmonic. Image used courtesy of \cite{web_wiki_SphericalHarmonics}.}
 \label{fig:Spherical-Harmonics}
+\centering
+\includegraphics[scale=0.5]{Images/515px-Harmoniques_spheriques_positif_negatif.png}
 \end{figure}
 
 The centrifugal force of the Earth spinning causes it to bulge outwards at the equator. This causes the equatorial radius of the Earth to be over 30~km greater than the polar radius, resulting in a significant first zonal harmonic coefficient, $J_{2}$. Since $J_{2}$ is three orders of magnitude greater than $J_{3}$ and $J_{4}$ these higher order terms have often been neglected in simulations, such as those performed by \textcite{Yang2007}. Similar coefficients are available to approximate the shape of the Moon.
 
 However, modelling the central body as an ellipsoid does not allow for inconsistent density of the body's crust. The Moon in particular has very inconsistent density due to the presence of mass concentrations or \emph{mascons}, so severe that most low lunar orbits (LLOs) will decay and impact the surface within 6 months \parencite{Zeile2010}. To include variations in density, recent satellite missions have developed very accurate models of the gravitational potential around the Earth (such as the Gravity Recovery and Climate Experiment mission, GRACE), and the Moon (such as the Gravity Recovery and Interior Laboratory, GRAIL).
 
-Potential energy ($W$) is defined in the Global Geodetic Survey \parencite{WGS84} as per equation \eqref{eq:Total-Grav-Potential}.
+Potential energy ($W$) is defined in the Global Geodetic Survey \parencite{WGS84} as per equation \eqref{eq:Total-Grav-Potential},
 \begin{equation}\label{eq:Total-Grav-Potential}
 W=V+\Phi
 \end{equation}
@@ -240,12 +232,11 @@ where $\Phi$ is the potential due to the body's angular momentum, when rotating 
 \Phi=\frac{1}{2}\omega^{2}r^{2}
 \end{equation}
 
-
 The gravitational potential function ($V$, units~m$^{2}$s$^{-2}$) for polar coordinates $r$, $\lambda$, $\phi'$ is defined as per equation \eqref{eq:Grav-Potential}.
 \begin{equation} \label{eq:Grav-Potential}
 V=\frac{\mu}{r}\left[1+\sum_{n=2}^{n_{max}}\sum_{m=0}^{n}\left(\frac{a}{r}\right)^{n}\bar{P}_{nm}\left(\sin\phi'\right)\left(\bar{C}_{nm}\cos m\lambda+\bar{S}_{nm}\sin m\lambda\right)\right]
 \end{equation}
-where $\mu$ is the body's gravitational constant (defined in \autoref{sec:Orbital-equations-of-motion}), $a$ is the semi-major axis of the ellipsoid body (defined by \citeauthor{WGS84} as 6378137.0~m for the Earth). $\bar{P}_{nm}\left(\sin\phi'\right)$ represents the series of normalised associated Legendre polynomials, further defined by \textcite{WGS84} as per equation \eqref{eq:Legendre-polys}.
+where $\mu$ is the body's gravitational constant (defined in \autoref{sec:Orbital-equations-of-motion}), $a$ is the semi-major axis of the ellipsoid body (defined by \citeauthor{WGS84} as 6378137.0~m for the Earth). $\bar{P}_{nm}\left(\sin\phi'\right)$ represents the series of normalised associated Legendre polynomials, further defined by \textcite{WGS84} as per equation \eqref{eq:Legendre-polys},
 \begin{subequations}\label{eq:Legendre-polys}
 \begin{eqnarray}
 \bar{P}_{nm}\left(\sin\phi'\right) & = & \text{Normalized associated Legendre polynomial}\\
@@ -262,7 +253,7 @@ According to the \textcite{WGS84} the series is theoretically valid for $r\geq a
 
 The normalised gravitational coefficients $\bar{C}_{nm}$ and $\bar{S}_{nm}$ for the Earth were taken from the Joint Gravity Model 3 \parencite[JGM3,][]{Tapley1996} due to availability of data. Several newer models have been released such as the GRACE models mentioned earlier, but the JGM3 accuracy was sufficient for this project. The lunar gravitational model was used from the Lunar Prospector mission \parencite{Konopliv2001}.
 
-The perturbing force acting on the spacecraft is then
+The perturbing force acting on the spacecraft is then determined using equation \eqref{eq:Oblateness-perturbation}.
 \begin{equation}\label{eq:Oblateness-perturbation}
 \vec{\Delta_g}=\nabla W
 \end{equation}
@@ -284,11 +275,11 @@ The impact of gravitational harmonics is obviously going to be greater at lower 
 The solar wind consists of particles emitted by the Sun, mainly ionised nuclei and electrons. Because of the charged particles in the solar wind, it does not penetrate the magnetosphere around the Earth, except at the magnetic poles. The magnetosphere starts at about 10 Earth radii from the centre of the Earth.
  
 \textcite[p. 223]{Chobotov2002} provides a widely accepted equation to average the acceleration
- of a body due to solar wind near the Earth-Moon system, reproduced in equation \eqref{eq:solar-wind}.
+ of a body due to solar wind near the Earth-Moon system, reproduced in equation \eqref{eq:solar-wind},
 \begin{equation}\label{eq:solar-wind}
 a_{p}=4.65\times10^{-6}(1+\beta)\left(\frac{A_{\text{craft}}}{m_{\text{craft}}}\right)\left(\frac{a_\Sun}{r_\Sun}\right)^{2}
 \end{equation}
-where $a_{p}$ is the magnitude of the acceleration due to solar wind, in $\text{ms}^{-2}$, $\beta$ is the optical reflection constant (+1 for total mirror reflection, 0 for total black body absorption, -1 for total transparent transmission), $A_{\text{craft}}$ is the effective satellite projected area, and $m_{\text{craft}}$ is the total spacecraft mass. The ratio of Earth's orbital semi-major axis $a_\Sun$ to orbital radius $r_\Sun$ varies with time according to equation \eqref{eq:a_sun/r_sun}.
+where $a_{p}$ is the magnitude of the acceleration due to solar wind, in $\text{ms}^{-2}$, $\beta$ is the optical reflection constant (+1 for total mirror reflection, 0 for total black body absorption, -1 for total transparent transmission), $A_{\text{craft}}$ is the effective satellite projected area, and $m_{\text{craft}}$ is the total spacecraft mass. The ratio of Earth's orbital semi-major axis $a_\Sun$ to orbital radius $r_\Sun$ varies with time according to equation \eqref{eq:a_sun/r_sun},
 \begin{equation}\label{eq:a_sun/r_sun}
 \frac{a_\Sun}{r_\Sun}=\frac{[1+0.01672\cos(M_\Sun+1º92\sin M_\Sun)]}{0.99972}
 \end{equation}
@@ -302,7 +293,7 @@ For a satellite of 200~kg and 6~m$^2$ projected surface area, this gives an acce
 % Applied thrust
 \subsection{Applied thrust} \label{sub:Applied-Thrust}
 
-The \BW\ craft has four PPT thrusters at 1.5~mN each, providing a total thrust of 6~mN. This accelerates the 200~kg craft at $3\times10^{-5}$~ms$^{-2}$. Since the direction of thrust is a design parameter (adjustable by rotating the spacecraft to point the thruster in the desired direction) a unit vector providing this direction is defined as
+The \BW\ craft has four PPT thrusters at 1.5~mN each, providing a total thrust of 6~mN. This accelerates the 200~kg craft at $3\times10^{-5}$~ms$^{-2}$. Since the direction of thrust is a design parameter (adjustable by rotating the spacecraft to point the thruster in the desired direction) a unit vector providing this direction is defined in equation \eqref{eq:thrust-vector},
 \begin{equation} \label{eq:thrust-vector}
 \vec{\hat{u}}=\left[\begin{array}{c}
 u_{r}\\
@@ -310,7 +301,7 @@ u_{\theta}\\
 u_{h}
 \end{array}\right]
 \end{equation}
-such that the thrust vector is given by 
+such that the thrust vector is given by equation \eqref{eq:thrust-perturbation},
 \begin{equation}
 \vec{\Delta_{T}}=\frac{T}{m}\vec{\hat{u}} \label{eq:thrust-perturbation}
 \end{equation}
@@ -323,11 +314,10 @@ In an elliptical orbit, thrust (approximately) tangential to orbital radius is t
 Since these perturbing forces vary over the course of the trajectory, and are often quite computationally intensive to calculate, a plot of them all clearly demonstrates which forces need be included in the optimisation. Since many of these forces vary with a cyclical nature depending on the orbits of the satellite, the Moon and other bodies, the plot in \autoref{fig:Perturbing-forces} shows the upper limit of these forces. Jupiter's gravitational pull is almost negligible compared with the spacecraft's thrust, and the acceleration due to the Earth's $J_{2}$ spherical harmonic (representative of the total force due to Earth oblateness) is only significant for the first $10^{8}$ metres.
 
 \begin{figure}[h]
-\begin{center}
-\includegraphics[scale=0.4]{Images/relative_forces.png}
-\end{center}
-\caption{Upper limit on perturbing forces over the lunar transfer}
+\caption{Upper limit on perturbing forces over the lunar transfer.}
 \label{fig:Perturbing-forces}
+\centering
+\includegraphics[scale=0.4]{Images/relative_forces.png}
 \end{figure}
 
 %-----------------------------------------------------------------------------------------------------------------------------------------------
@@ -337,27 +327,26 @@ Since these perturbing forces vary over the course of the trajectory, and are of
 
 A key figure in measuring the performance of a thruster is the specific impulse, $I_{sp}$. As mentioned in \autoref{sec:Past-missions}, specific impulse is the momentum added by the thrusters per unit of propellant expended.
 
-Impulse is the scalar sum of force applied over a given time, as shown in equation \eqref{eq:Impulse}.
+Impulse is the scalar sum of force applied over a given time, as shown in equation \eqref{eq:Impulse},
 \begin{subequations}
 \begin{gather} \label{eq:Impulse}
 I = \int_{t_0}^{t_f}\vec{F}\quad dt
 \end{gather}
-and by \textcite{Newton1687}'s second law $\vec{F} = \frac{d\vec{p}}{dt}$
-\begin{align}
+so by \textcite{Newton1687}'s second law $\vec{F} = \frac{d\vec{p}}{dt}$ we get the result in equation \eqref{eq:Impulse2},
+\begin{align}\label{eq:Impulse2}
 I &= \int_{t_0}^{t_f}\frac{d\vec{p}}{dt}\quad dt \\
 &= \int_{t_0}^{t_f}d\vec{p} 
 \end{align}
 \end{subequations}
-which is equal to the change in momentum $\Delta\vec{p}$ and has units of kgms$^{-1}$. 
+which is equal to the change in momentum $|\Delta\vec{p}|$ and has units of kgms$^{-1}$. 
 
-By the conservation of momentum in the satellite's moving frame, the increase in momentum of the spacecraft is equal and opposite to the momentum imparted to the exhaust.
-
-\begin{subequations}
+By the conservation of momentum in the satellite's moving frame, the increase in momentum of the spacecraft is equal and opposite to the momentum imparted to the exhaust, as in equation \eqref{eq:Isp},
+\begin{subequations}\label{eq:Isp}
 \begin{gather}
-\Delta\vec{p}_{craft} - \Delta\vec{p}_{exhaust} = 0 \\
-\Delta\vec{p}_{craft} = m_{exhaust}\vec{v}_{exhaust} \\
-\vec{I} = m_{exhaust}\vec{v}_{exhaust} \\
-\vec{I}_{sp} = \vec{v}_{exhaust}
+|\Delta\vec{p}_{craft}| - |\Delta\vec{p}_{exhaust}| = 0 \\
+|\Delta\vec{p}_{craft}| = m_{exhaust}|\vec{v}_{exhaust}| \\
+I = m_{exhaust}|\vec{v}_{exhaust}| \\
+I_{sp} = |\vec{v}_{exhaust}|
 \end{gather}
 \end{subequations}
 so the specific impulse of the spacecraft should be equal to the exhaust velocity, and its units should be ms$^{-1}$. However, the use of imperial units meant that specific impulse was traditionally reported as momentum change per unit {\em weight} of propellant, so the final value is divided by standard gravity on Earth, $g_0$. Consequently specific impulse is reported in seconds.
@@ -368,7 +357,7 @@ so the specific impulse of the spacecraft should be equal to the exhaust velocit
 
 \subsection{Delta-v} \label{sub:Delta-v}
 
-Since every orbit has a unique orbital speed associated with it, a common measure of rocket capability is the change in velocity the rocket can provide. Mathematically, this \enquote{delta-v} is calculated as the integral of the acceleration the rocket provides, or more intuitively, the total thrust the rocket provides over time, given by
+Since every orbit has a unique orbital speed associated with it, a common measure of rocket capability is the change in velocity the rocket can provide. Mathematically, this \enquote{delta-v} is calculated as the integral of the acceleration the rocket provides, or more intuitively, the total thrust the rocket provides over time, given by equation \eqref{eq:Delta-V},
 \begin{equation}\label{eq:Delta-V}
 \Delta v=\int_{t_{0}}^{t_{1}}\frac{\left\Vert T\left(t\right)\right\Vert }{m\left(t\right)}\quad dt
 \end{equation}
@@ -376,8 +365,8 @@ where $T\left(t\right)$ is the instantaneous thrust, and $m\left(t\right)$ is th
 
 Conversely, orbital transfers may be described by the typical change in velocity required. This is known as a delta-v budget. Launching to LEO requires a change of 7.8~kms$^{-1}$ and ascent to lunar orbit requires an additional 4.1~kms$^{-1}$ (this mission profile was used by Apollo), but typically an additional 1.5 to 2~kms$^{-1}$ is lost to atmospheric drag and gravity drag. Thrust vectoring adds further losses depending upon the angle of thrust. 
 
-These gravitational, atmospheric and thrust vectoring losses can be calculated with similar integrals over the flight. 
-\begin{subequations}
+These gravitational, atmospheric and thrust vectoring losses can be calculated with similar integrals over the flight, shown in equation \eqref{eq:Delta-Vs},
+\begin{subequations} \label{eq:Delta-Vs}
 \begin{gather}
 \Delta v_{drag}=\int_{t_0}^{t_1}\frac{\left\Vert D\left(t\right)\right\Vert }{m\left(t\right)}\quad dt\label{eq:drag-penalty} \\
 \Delta v_{gravity}=\int_{t_0}^{t_1}g\cdot\sin\gamma\quad dt\label{eq:gravity-penalty} \\
@@ -387,10 +376,10 @@ These gravitational, atmospheric and thrust vectoring losses can be calculated w
 where $D(t)$ is the instantaneous aerodynamic drag, $g$ is the local gravitational acceleration, $\gamma$ is the angle from the velocity vector to the horizontal, $\alpha$ is the body axis line (above the velocity vector) and $\epsilon$ is the thrust vector (above the body axis line), as shown in \autoref{fig:path-angles} \parencite{Tetlow2003}. 
 
 \begin{figure}
-\begin{center}
-%\includegraphics{\Images\path-angles}
+\caption{Flight angle and thrust vector of the spacecraft relative to LVLH frame.}
 \label{fig:path-angles}
-\end{center}
+\centering
+\includegraphics[width=30mm]{Images/homer_simpson.pdf}
 \end{figure}
 
 Little can be done within the scope of this project to reduce atmospheric drag and gravity drag, since these effects are strongest during launch. However, gravity drag is still present during orbit raising if the thrust line has any component parallel to the gravitational force; when this occurs, the thrust is fighting against gravity rather than increasing the velocity of the spacecraft (and providing delta-v). Similarly, thrust vectoring decreases effective delta-v because the thrust is changing the direction of the spacecraft, rather than increasing its speed. 
@@ -400,13 +389,13 @@ Delta-v forms a very important performance criterion. It is particularly importa
 
 \subsection{Tsiolkovsky's rocket equation} \label{sec:Tsiolkovsky}
 
-A well established equation, derived in the 19th century by Konstantin Tsiolkovsky, describes the delta-v available from expending a given mass of fuel from the vehicle at a given exhaust velocity.
+A well established equation, shown in \eqref{eq:Tsiolkovsky} and derived in the 19th century by Konstantin Tsiolkovsky, describes the delta-v available from expending a given mass of fuel from the vehicle at a given exhaust velocity,
 \begin{equation}\label{eq:Tsiolkovsky}
 \Delta v=v_{e}\ln\frac{m_{0}}{m_{1}}
 \end{equation}
 where $m_{0}$ represents the initial wet mass of the rocket (structural mass plus fuel), $m_{1}$ represents the final mass, $v_{e}$ is the effective exhaust velocity \parencite{Tsiolkovsky1903,Chobotov2002}. Tsiolkovsky's rocket equation \eqref{eq:Tsiolkovsky} is particularly relevant to low thrust missions because it shows that the most efficient way to achieve a fixed delta-v requirement such as an Earth escape orbit or lunar transfer orbit, is to increase the propellant exhaust velocity. Missions such as \BW\ maximise their delta-v by increasing propellant exhaust velocity at the expense of other design parameters, such as thrust.
 
-The exhaust velocity is directly proportional to the specific impulse, as shown by equation \eqref{eq:Exhaust_velocity}.
+The exhaust velocity is directly proportional to the specific impulse, as shown by equation \eqref{eq:Exhaust_velocity},
 \begin{equation}\label{eq:Exhaust_velocity}
 v_{e}=I_{sp}g_{o}
 \end{equation}

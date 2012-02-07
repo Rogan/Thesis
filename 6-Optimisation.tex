@@ -48,17 +48,17 @@ F = \vec\sigma_0 F_0+\vec\sigma_f F_f+\vec\sigma_i F_i \label{eq:total-cost}
 % State vector
 \section{State vector} \label{sec:state-vector}
 
-Since we are concerned with the state of the spacecraft, in this particular scenario the state vector $\vec{x}$ represents the position, velocity and mass of the spacecraft. The osculating orbit is stored in modified equinoctial elements $p$, $f$, $g$, $h$, $k$ and $L$ as outlined in \autoref{sec:Orbital-Elements}. Mass is added to the state vector, and is reduced by thrusting the propellant (reaction mass) out the back of the spacecraft.
+Since we are concerned with the state of the spacecraft, in this particular scenario the state vector $\vec{x}$ represents the position, velocity and mass of the spacecraft. The osculating orbit is stored in modified equinoctial elements $p$, $f$, $g$, $h$, $k$ and $L$ as outlined in \autoref{sec:Orbital-Elements}. Mass is added to the state vector, and is reduced by thrusting the propellant (reaction mass) out the back of the spacecraft, defined in equation \eqref{eq:mdot},
 \begin{equation}
 \dot{m}=-\frac{T}{v_{ex}} \label{eq:mdot}
 \end{equation}
-where $T$ is the instantaneous thrust level and $v_{ex}$ is the instantaneous exhaust velocity. \enquote{Real time} is added as another (albeit independent) state to allow ephemeris calculation. Finally the energy stored in the batteries is also critical to the state of the spacecraft, and similarly to mass it is reduced by using the thrusters (dependent on the power level required by the thrusters over the given phase). Unlike the mass, it may be increased by the solar panels.
-\begin{subequations}
+where $T$ is the instantaneous thrust level and $v_{ex}$ is the instantaneous exhaust velocity. \enquote{Real time} is added as another (albeit independent) state to allow ephemeris calculation. Finally the energy stored in the batteries is also critical to the state of the spacecraft, and similarly to mass it is reduced by using the thrusters (dependent on the power level required by the thrusters over the given phase), as defined in equation \eqref{eq:edot}, 
+\begin{subequations}\label{eq:edot}
 \begin{align}
-\Delta E &= \int P\,\text{dt} \label{eq:delta-E}\\
+\Delta E &= \int_{t_0}^{t_f} P\,\text{dt} \label{eq:delta-E}\\
 \dot{E} &= P(t) \label{eq:Edot}
 \end{align} 
-\end{subequations} where $P(t)$ is the instantaneous net power consumption (or generation).
+\end{subequations} where $P(t)$ is the instantaneous net power consumption (or generation). Unlike the mass, the energy level may be increased, as the solar panels may cause $P$ to become positive.
 
 Consequently, the differential equation \eqref{eq:generic-DE} becomes the equations of motion described in \autoref{sec:Orbital-equations-of-motion}, appended with equations \eqref{eq:mdot} and \eqref{eq:Edot}. However, these differential equations assume time as the independent parameter.
 
@@ -67,22 +67,22 @@ Consequently, the differential equation \eqref{eq:generic-DE} becomes the equati
 
 Traditionally the independent parameter in this sort of optimisation is time. However, due to the high velocity of the space vehicle near periapsis, time is not the best suited independent parameter because very few gridpoints would occur in this important area. Ideally, gridpoints would concentrate near periapsis, but the easiest alternative to model is equiangular steps, a technique previously used by \textcite{Betts2003}. 
 
-Equiangular stepping is implemented by using the true longitude (angle of the spacecraft relative to its starting position) as the independent parameter. However, using the longitude as the independent parameter causes a large discontinuity at the transition from the Earth-centred to the lunar-centred frame, so a normalised phase longitude is defined as shown in equation \eqref{eq:Ln}.
+Equiangular stepping is implemented by using the true longitude (angle of the spacecraft relative to its starting position) as the independent parameter. However, using the longitude as the independent parameter causes a large discontinuity at the transition from the Earth-centred to the lunar-centred frame, so a normalised phase longitude is defined as shown in equation \eqref{eq:Ln},
 \begin{equation}
 Ln(t) = \frac{L(t)-L(t_0)}{\Delta L}+\Phi \label{eq:Ln}
 \end{equation}
-$L(t_0)$ is the (constant but optimisable) starting position for the given phase, $\Delta L$ is the (constant but optimisable) phase length, and $\Phi$ is the phase number. 
+where $L(t_0)$ is the (constant but optimisable) starting position for the given phase, $\Delta L$ is the (constant but optimisable) phase length, and $\Phi$ is the phase number. 
 
 Consequently a substitution of parameters is required in the state differential equation \eqref{eq:state-updates} to reflect this change. The equations required to convert the time domain differential equation \eqref{eq:state-updates} to normalised longitude are presented in \autoref{sub:subst-param}.
 
 % Objective function
 \section{Objective function} \label{sec:Objective-function}
 
-Fundamentally, any trajectory that safely gets the spacecraft from Earth orbit to lunar orbit is a candidate solution. The only further considerations are the amount of fuel it takes to get there, and the amount of time it takes. Consequently, the simplest objective function for \BW\ is the total fuel used.
+Fundamentally, any trajectory that safely gets the spacecraft from Earth orbit to lunar orbit is a candidate solution. The only further considerations are the amount of fuel it takes to get there, and the amount of time it takes. Consequently, the simplest objective function for \BW\ is the total fuel used, simply defined in equation \eqref{eq:objective},
 \begin{gather}
 F = -m(t_f) \label{eq:objective}
 \end{gather}
- This objective function is commonly used throughout entire low-thrust trajectory analyses in literature (for example, \cite{Ichimura2008}). Since the dry mass of the spacecraft was unknown, a starting wet mass was assumed; therefore to minimise the fuel used one must simply minimise the final mass. Modifications were considered, for example adding a time penalty to discourage unreasonably long transfer times, but found to be unnecessary. Preliminary, simplified optimisations for the Cruise phase used an additional term to minimise the orbital energy with respect to the Moon, $\epsilon_{LCI}$, to encourage a stronger capture. This helped develop the initial guess, but was found to be very sensitive to the weighting factors, $\sigma_1$ and $\sigma_2$.
+ This objective function is commonly used throughout entire low-thrust trajectory analyses in literature (for example, \cite{Ichimura2008}). Since the dry mass of the spacecraft was unknown, a starting wet mass was assumed; therefore to minimise the fuel used one must simply minimise the final mass. Modifications were considered, for example adding a time penalty to discourage unreasonably long transfer times, but found to be unnecessary. Preliminary, simplified optimisations for the Cruise phase used an additional term to minimise the orbital energy with respect to the Moon, $\epsilon_{LCI}$, to encourage a stronger capture. This helped develop the initial guess, but was found to be very sensitive to the weighting factors, $\sigma_1$ and $\sigma_2$, as shown in equation \eqref{eq:objective2},
 \begin{gather}
 F = \sigma_1m(t_f)+\sigma_2\epsilon_{LCI} \label{eq:objective2}
 \end{gather}
@@ -104,29 +104,27 @@ As mentioned in Section \ref{sec:Objective-function}, candidate states include a
 In the case of orbital trajectories, the initial and final states are orbits. For preliminary simulations, a GTO with periapsis 175~km, apoapsis 35975~km, and inclination 21.7\degrees\ was used, as the approximate \BW\ parking orbit after launch via GSLV \parencite{GSLV}. This corresponds to Keplerian elements as shown in \autoref{tab:Phase-2-constraints}. The argument of periapsis, $\omega$, and right ascension of the ascending node, $\Omega$, are dependent on the launch date and time, which as previously stated remains unknown. For the purposes of optimisation these were initialised at 180\degrees\ and 0\degrees\ respectively, but optimisations were performed with other values proved to have very little effect on the results. True anomaly, $\nu$, is an arbitrary starting point within the defined orbit, and so was initialised to 0\degrees\ (periapsis).
 
 \begin{table}[h]
-\caption{Keplerian elements for the initial orbit of \BW\ trajectory optimisation (start of ascent phase)}
+\caption{Keplerian elements for the initial orbit of \BW\ trajectory optimisation (start of ascent phase).}
 \label{tab:Phase-2-constraints}
-\begin{center}
+\centering
 \begin{tabular} {ccc}\toprule
 Parameter & & Value\\\midrule
 Semimajor axis, $a$ (m) &=& $2.45\times 10^7$\\
 Eccentricity, $e$ (-) &=& 0.732\\
 Inclination, $i$ (rad) &=& 0.379\\\bottomrule
 \end{tabular}
-\end{center}
 \end{table}
 
 Since the purpose of this phase is to escape the van Allen Belts, the final boundary condition is defined as the lowest point in the orbit (the periapsis) exceeding the outer limits of the van Allen Belts. \textcite{Letterio_thesis} used an orbital radius of 22,668~km from the centre of the Earth as a good estimate for this point. This termination condition forms the initial condition of the next phase. A very important additional constraint is that all states must be smooth and continuous over the phase transition.
 
 \begin{table}[h]
-\caption{Phase 2 to 3 transition constraints}
+\caption{Phase 2 to 3 transition constraints.}
 \label{tab:Phase-2-3-constraints}
-\begin{center}
+\centering
 \begin{tabular} {ccc}\toprule
 Parameter & & Value\\\midrule
 Periapsis, $r_{peri}$ (m) &$\ge$& $2.2668\times 10^7$\\\bottomrule
 \end{tabular}
-\end{center}
 \end{table}
 
 The original proposal \parencite{Roeser2006} suggested that the subsequent cruise phase would terminate on reaching the sphere of influence of the Moon, as defined in \autoref{sub:SOI}. There are two possibilities to determine this transition: either a distance from the lunar centre, or alternately if the forward propagation is required to make no reference to the Moon the SOI can be assumed to be an equivalent distance from the Earth, in which case establishing lunar SOI requires an additional constraint that the phase difference between the Moon and the spacecraft is close to zero (lunar phase difference is primarily a function of when the transfer starts). 
@@ -141,9 +139,9 @@ p = a(1-e^2)\\
 However, the eccentricity can undergo rapid changes during lunar assists. Consequently, the periapsis and semilatus rectum both reveal sudden jumps. Furthermore, the semimajor axis changes exhibits a discontinuity when an orbit transitions from elliptical to hyperbolic (that is, if the spacecraft achieves escape velocity). Therefore the orbital energy, $\epsilon$, was chosen as the phase constraint.
 
 \begin{table}[h]
-\caption{Phase 3 to 4 transition constraints}
+\caption{Phase 3 to 4 transition constraints.}
 \label{tab:Phase-3-4-constraints}
-\begin{center}
+\centering
 \begin{tabular} {ccc}\toprule
 Parameter & & Value\\\midrule
 Lunar distance, $r_{LCI}$ (m) &$\le$& $6.6183\times 10^7$\\\midrule
@@ -151,35 +149,32 @@ Distance from Earth, $r_{ECI}$ (m) &$\ge$& $31.8216\times 10^7$\\\midrule
 Lunar orbital energy, $\epsilon_{LCI}$ (m$^2$s$^{-2}$) &$\le$& 0.0 \\\midrule
 Earth orbital energy, $\epsilon_{ECI}$ (m$^2$s$^{-2}$) &$\le$& 0.0 \\\bottomrule
 \end{tabular}
-\end{center}
 \end{table}
 
 Once again defined by \citeauthor{Roeser2006}, the subsequent capture phase would then terminate when the spacecraft is less than 1400 km above the lunar surface.
 
 \begin{table}[h]
-\caption{Phase 4 to 5 transition constraints}
+\caption{Phase 4 to 5 transition constraints.}
 \label{tab:Phase-4-5-constraints}
-\begin{center}
+\centering
 \begin{tabular} {ccc}\toprule
 Parameter && Value\\\midrule
 Lunar altitude, $r_{LCI}$ (m) &$\le$& $1.4\times 10^6$\\\bottomrule
 \end{tabular}
-\end{center}
 \end{table}
 
 The final state is lunar orbit at an altitude of 100~km above the surface of the Moon. A polar or near-polar orbit is desired for maximum surface coverage.
 
 \begin{table}[h]
-\caption{Keplerian elements for the final orbit of \BW\ trajectory optimisation (end of descent phase)}
+\caption{Keplerian elements for the final orbit of \BW\ trajectory optimisation (end of descent phase).}
 \label{tab:Phase-5-constraints}
-\begin{center}
+\centering
 \begin{tabular} {ccc}\toprule
 Parameter && Value\\\midrule
 Semimajor axis, $a$ (m) &$\le$& $1.8371\times 10^6$\\
 Eccentricity, $e$ (-) &$\le$& 0.0\\
 Inclination, $i$ (rad) &$\le$& 1.57\\\bottomrule
 \end{tabular}
-\end{center}
 \end{table}
 
 % Path constraints
@@ -206,16 +201,9 @@ For this project, a Runge-Kutta 4/5 integrator was used to propagate the traject
 
 %-------------------------------
 
- The following classifications are consistently applied across literature such as \textcite{Betts1998} and \textcite{ASTOS_guide}.
-
-The first classification is based on whether the differential equations that they solve are explicit or implicit.
-Explicit differential equations allow the derivative to be defined explicitly in terms of independent variables and parameters, $\frac{d^ny}{dx^n}=f(x,y,\frac{dy}{dx},\frac{d^2y}{dx^2},\dots,\frac{d^{n-1}y}{dx^{n-1}})$. Optimisation techniques based on explicit differential equations are called \emph{direct methods}. Implicit differential equations either cannot or should not be reduced to their explicit form, so $f(x,y,\frac{dy}{dx},\frac{d^2y}{dx^2},\dots,\frac{d^{n}y}{dx^{n}})=0$. Optimisation techniques based on implicit differential equations are called \emph{indirect methods}.
-
-The key difference between direct and indirect optimisation methods is that indirect methods require the adjoint matrix to be calculated by inverting the relevant differential equations. This process becomes increasingly difficult with more complex differential equations, so indirect methods often make simplifications and assumptions (for example by neglecting many of the perturbing forces listed in \autoref{sec:Perturbations}). Since the first order differential equations \eqref{eq:state-updates} in this scenario are explicit, direct methods may be used.
-
 \subsection{Integration methods} \label{sub:Integration}
 
-Regardless of the numerical method used, trajectory optimisation requires solving the differential equations over a span of time; low-thrust trajectory optimisation requires very long timespans. Every integration step is associated with a potential error, which accumulates over the timespan. Methods that integrate from the start to the finish, termed \emph{direct shooting} or \emph{single shooting} methods, become increasingly error-prone as the timespan increases. If some intermediate states can be reliably guessed, the integration may be started anew from that \enquote{node}. Any discontinuity at the node is added to the set of constraints. Methods that perform multiple independent integrations like this, termed \emph{multiple shooting} methods, are less prone to integration error, but convergence is heavily dependent on the accuracy of the intermediate state guesses \parencite{Betts, ASTOS_guide}.
+Regardless of the numerical method used, trajectory optimisation requires solving the differential equations over a span of time; low-thrust trajectory optimisation requires very long timespans. Every integration step is associated with a potential error, which accumulates over the timespan. Methods that integrate from the start to the finish, termed \emph{direct shooting} or \emph{single shooting} methods, become increasingly error-prone as the timespan increases. If some intermediate states can be reliably guessed, the integration may be started anew from that \enquote{node}. Any discontinuity at the node is added to the set of constraints. Methods that perform multiple independent integrations like this, termed \emph{multiple shooting} methods, are less prone to integration error, but convergence is heavily dependent on the accuracy of the intermediate state guesses \parencite{Betts1998, ASTOS_guide}.
 
 Finally, to save on computational complexity the changes in control and/or state over time may be approximated by a piecewise linear or polynomial function. Any algorithm that uses a simplification like this is said to solve the \emph{parameterised optimal control problem}. If the algorithm approximates control and state nodes at the same points, it is a \emph{collocation} method. Since this reduces the number of nodes required, collocation is generally faster than multiple shooting, but not as accurate.%cite
 
@@ -253,6 +241,14 @@ Any solution to the boundary value problem stated in \autoref{sec:BVP}, within a
 %\textcite{Enright1992} outline of calculus of variations (indirect) vs. NLP (direct)
 %the optimal control problem is replaced with an approximate non-linear programming problem with the continuous control history replaced with a finite number of parameters.
 
+
+ The following classifications are consistently applied across literature such as \textcite{Betts1998} and \textcite{ASTOS_guide}.
+
+The first classification is based on whether the differential equations that they solve are explicit or implicit.
+Explicit differential equations allow the derivative to be defined explicitly in terms of independent variables and parameters, $\frac{d^ny}{dx^n}=f(x,y,\frac{dy}{dx},\frac{d^2y}{dx^2},\dots,\frac{d^{n-1}y}{dx^{n-1}})$. Optimisation techniques based on explicit differential equations are called \emph{direct methods}. Implicit differential equations either cannot or should not be reduced to their explicit form, so $f(x,y,\frac{dy}{dx},\frac{d^2y}{dx^2},\dots,\frac{d^{n}y}{dx^{n}})=0$. Optimisation techniques based on implicit differential equations are called \emph{indirect methods}.
+
+The key difference between direct and indirect optimisation methods is that indirect methods require the adjoint matrix to be calculated by inverting the relevant differential equations. This process becomes increasingly difficult with more complex differential equations, so indirect methods often make simplifications and assumptions (for example by neglecting many of the perturbing forces listed in \autoref{sec:Perturbations}). Since the first order differential equations \eqref{eq:state-updates} in this scenario are explicit, direct methods may be used.
+
 \subsection{Necessary and sufficient conditions}
 
 Pierre Fermat first outlined that optima of unconstrained problems are found at stationary points in the objective function. The addition of inequality constraints adds some complexity in that the global optimum may be located on the edge of the acceptable set; that is, where an active constraint disallows any points deeper along the gradient. These constraints may be included in the objective function using Lagrange multipliers, to model the overall problem as an unconstrained set. Because this test requires the gradient be calculated, it is called a \enquote{first order condition}.
@@ -263,7 +259,7 @@ While the first derivative test identifies points that might be optima, this tes
 % Lagrangian
 \subsection{Lagrangian} \label{sub:Lagrangian}
 
-For the purposes of numerical optimisation, the constraints are appended to the objective function(s). This is known as the Lagrangian, $\mathcal{L}$.
+For the purposes of numerical optimisation, the constraints are appended to the objective function(s). This is known as the Lagrangian, $\mathcal{L}$, and defined in equation \eqref{eq:Lagrangian},
 \begin{equation} \label{eq:Lagrangian}
 \mathcal{L}(\vec{x},\lambda) = F(\vec{x}) - \sum\lambda g_{eq}(\vec{x}) - \sum\mu g_{ineq}(\vec{x})
 \end{equation}
@@ -324,13 +320,13 @@ narrower basin of convergence
 
 \subsection{Nonlinear programming} \label{sub:NLP}
 
-The process of optimising an objective function subject to a number of constraints over a set of unknown real variables where some of the constraints and/or the objective function are non-linear is called nonlinear programming. The general approach is take candidate solution, $\vec{x}_0$. An iterative procedure is then used to improve this solution by varying the state a certain amount, $\alpha$, in a certain direction, $\vec{k}$ \parencite{Betts1998}. The sign of the step direction, $\alpha$, determines whether the algorithm finds a minimum or a maximum.
+The process of optimising an objective function subject to a number of constraints over a set of unknown real variables where some of the constraints and/or the objective function are non-linear is called nonlinear programming. The general approach is take candidate solution, $\vec{x}_0$. An iterative procedure is then used to improve this solution by varying the state a certain amount, $\alpha$, in a certain direction, $\vec{k}$ \parencite{Betts1998}, as defined in equation \eqref{eq:NLP}. The sign of the step direction, $\alpha$, determines whether the algorithm finds a minimum or a maximum.
 
 \begin{equation} \label{eq:NLP}
 \vec{x}_{n+1}=\vec{x}_n+\alpha\vec{k}
 \end{equation}
 
-\textcite{Gauss1827} pioneered gradient-based methods in the early 19th century, by using the Jacobian of the Lagrangian with respect to the state vector, $\nabla\mathcal{L}$, as the search direction. This technique is also known as the method of steepest descent, because the Jacobian matrix functions as a multi-dimensional gradient. When a candidate solution is found with no gradient that leads to a better solution, the candidate solution must be a local optimum.
+\textcite{Gauss1827} pioneered gradient-based methods in the early 19th century, by using the Jacobian of the Lagrangian with respect to the state vector, $\nabla\mathcal{L}$, as the search direction, as shown in equation \eqref{eq:gradient-method}. This technique is also known as the method of steepest descent, because the Jacobian matrix functions as a multi-dimensional gradient. When a candidate solution is found with no gradient that leads to a better solution, the candidate solution must be a local optimum.
 
 \begin{equation} \label{eq:gradient-method}
 \vec{x}_{n+1}=\vec{x}_n + \alpha\nabla\mathcal{L}(\vec{x}_n)
@@ -338,7 +334,7 @@ The process of optimising an objective function subject to a number of constrain
 
 Various schemes exist to calculate the step size, $\alpha$. These algorithms, collectively called a line search, can often be very computationally inefficient and time consuming. Furthermore, pure gradient methods are prone to slow optimisation, particularly with stiff problems. %define stiff problems, cite
 
-A second-order variant on this scheme is often referred to as \emph{Newton's method} because it uses the iterative root-finding scheme devised by \textcite{Newton1711, Newton1736} to determine the zeroes of the gradient. Since the gradient is itself a derivative of the Lagrangian, this technique requires computation of a second derivative. The curvature information held within the second derivative matrix (called the Hessian matrix, $\nabla^2\mathcal{L}$) allows this technique to converge faster, but each iteration takes more computational effort.
+A second-order variant on this scheme is often referred to as \emph{Newton's method} because it uses the iterative root-finding scheme devised by \textcite{Newton1711, Newton1736} to determine the zeroes of the gradient. Since the gradient is itself a derivative of the Lagrangian, this technique requires computation of a second derivative, as seen in equation \eqref{eq:newtons-method}. The curvature information held within the second derivative matrix (called the Hessian matrix, $\nabla^2\mathcal{L}$) allows this technique to converge faster, but each iteration takes more computational effort.
 
 \begin{equation} \label{eq:newtons-method}
 \vec{x}_{n+1}=\vec{x}_n + \alpha\frac{\nabla\mathcal{L}(\vec{x}_n)}{\nabla^2\mathcal{L}(\vec{x}_n)}
@@ -423,11 +419,10 @@ As the name of GESOP suggests, there are two main components to this software: s
 Missions are typically defined as having several phases, where each phase defines the system behaviour between major events, such as rocket stage separation. State discontinuities are allowed between phases, such as the mass dropping suddenly when a stage is jettisoned. These phases then have a user-defined number of evenly-spaced multiple shooting nodes inserted, as shown in \autoref{fig:Optimisation-grids}. The state is approximated at each node, and serves as an initial guess during the optimisation process, when the trajectory is only integrated as far as the next guessed state. Each node-state is then added to the set of optimisable parameters so that the optimiser will remove discontinuities (excluding the first and last of each phase). Single shooting may be modelled by not adding any additional nodes.
 
 \begin{figure}
-\begin{center}
-\includegraphics[width=\textwidth]{Images/control_nodes.pdf}
-\end{center}
 \caption{Optimisation grids. Image used courtesy of \textcite{ASTOS_guide}.}
 \label{fig:Optimisation-grids}
+\centering
+\includegraphics[width=\textwidth]{Images/control_nodes.pdf}
 \end{figure}
 
 Between multiple shooting nodes a control grid allows addition of control discretisation points. Collocation requires that the multiple shooting nodes and control points match. Preliminary calculations for the \BW\ have been simulated with 80 major grid points in each phase (a second phase was added when the spacecraft is close to Earth-Moon Lagrange point 1 for better plotting). Since collocation methods have been used for \BW\ so far, no additional control points were added. Adding initial guesses for each of the optimisable parameters and states at each of the 80 major grid points results in about 40,000 parameters so far.

@@ -12,42 +12,39 @@ There are two major fields of literature relevant to this project: firstly, stud
 While \textcite{LePage1991} shows that there have been numerous Earth-orbiting satellites using electric thrusters for attitude control or station keeping, only a small number of spacecraft have ever escaped the Earth's sphere of influence using electric propulsion as the primary thrust. These are listed in \autoref{tab:Past-low-thrust-missions}, along with key specifications of their respective propulsion systems. Thrust is the maximum force that the primary propulsion system can exert on the craft. Power consumption is the amount of electrical power used to operate at this maximum thrust. Specific impulse, $I_{sp}$, is the momentum added by the thrusters per unit weight-on-Earth of propellant, and consequently represents the fuel efficiency of the thrusters. Electric propulsion is characterised by relatively high $I_{sp}$.
 
 \begin{table}[ht]
-  \caption{Past low-thrust missions to escape Earth's sphere of influence}
-  \label{tab:Past-low-thrust-missions}
-    \begin{center}
-    \begin{minipage}{\textwidth}
-    \begin{tabular}{C{0.2\textwidth} C{0.25\textwidth} C{0.2\textwidth} C{0.1\textwidth} c}\toprule
-      Spacecraft & Propulsion type & Total Power \linebreak Consumption \linebreak (W) & Total Thrust \linebreak (mN) & $I_{sp}$ (s)\\\midrule
-      DS-1\footnote{\textcite{web_DS-1}} & Electrostatic Ion Thruster & 2100 & 92 & 3300\\
-      Hayabusa\footnote{\textcite{web_Hayabusa}} & $4\times$ Microwave ECR Thrusters & 1400 & 32 & 3200\\
-      SMART-1\footnote{\textcite{web_SMART-1}} & Hall Effect Thruster & 1200 & 73 & 1640\\
-      Dawn\footnote{\textcite{web_Dawn}} & Electrostatic Ion Thruster & 2100 & 90 & 3100\\\midrule
-      Lunar Mission BW-1\footnote{\textcite{web_BW-1}} & $4\times$ Pulsed Plasma Thrusters & 220 & 4.9 & 2753\\
-      & Thermal Arcjet & 801 & 103 & 486 \\\bottomrule
-    \end{tabular}
-    \end{minipage}
-    \end{center}
+\caption{Past low-thrust missions to escape Earth's sphere of influence}
+\label{tab:Past-low-thrust-missions}
+\centering
+\begin{minipage}{\textwidth}
+\begin{tabular}{C{0.2\textwidth} C{0.25\textwidth} C{0.2\textwidth} C{0.1\textwidth} c}\toprule
+  Spacecraft & Propulsion type & Total Power \linebreak Consumption \linebreak (W) & Total Thrust \linebreak (mN) & $I_{sp}$ (s)\\\midrule
+  DS-1\footnote{\textcite{web_DS-1}} & Electrostatic Ion Thruster & 2100 & 92 & 3300\\
+  Hayabusa\footnote{\textcite{web_Hayabusa}} & $4\times$ Microwave ECR Thrusters & 1400 & 32 & 3200\\
+  SMART-1\footnote{\textcite{web_SMART-1}} & Hall Effect Thruster & 1200 & 73 & 1640\\
+  Dawn\footnote{\textcite{web_Dawn}} & Electrostatic Ion Thruster & 2100 & 90 & 3100\\\midrule
+  Lunar Mission BW-1\footnote{\textcite{web_BW-1}} & $4\times$ Pulsed Plasma Thrusters & 220 & 4.9 & 2753\\
+  & Thermal Arcjet & 801 & 103 & 486 \\\bottomrule
+\end{tabular}
+\end{minipage}
 \end{table}
 
 For the purposes of comparison, the Apollo program trans-lunar injection (TLI) was performed using a chemical propulsion system providing a thrust of approximately 1~MN (9 orders of magnitude greater than \BW) on a mass of 119,900~kg (only 3 orders of magnitude greater than \BW) at a specific impulse of 421~s. The Saturn V third stage that performed the TLI is shown at launch in \autoref{fig:SaturnV}.
 
 \begin{figure}[ht]
-  \begin{center}
-  \includegraphics  [width=0.7\textwidth] {Images/Apollo_11_Launch2.jpg}
-  \end{center}
   \caption{Saturn V from the Apollo program. Image used courtesy of NASA.}
   \label{fig:SaturnV}
+  \centering
+  \includegraphics  [width=0.7\textwidth] {Images/Apollo_11_Launch2.jpg}
 \end{figure}
 
 \subsection{Deep Space One}
 Deep Space One (DS-1), shown conceptually in \autoref{fig:DS-1}, was launched on 24 October 1998 with a mass of 374~kg \parencite{web_DS-1}. After launch, an electrostatic ion thruster took over propulsion on its one-way mission to the asteroid 9969~Braille and the comet 19P/Borrelly. This thruster generated 92~mN of thrust at a maximum input power of 2100~W. DS-1 had several similarities to the intended mission of \BW.
 
 \begin{figure}[ht]
-  \begin{center}
-  \includegraphics [width=0.7\textwidth] {Images/765px-Deep_Space_1_using_its_ion_engine.jpg}
-  \end{center}
-  \caption{Deep Space One. Image used courtesy of NASA.}
-  \label{fig:DS-1}
+\caption{Deep Space One. Image used courtesy of NASA.}
+\label{fig:DS-1}
+\centering
+\includegraphics [width=0.7\textwidth] {Images/765px-Deep_Space_1_using_its_ion_engine.jpg}
 \end{figure}
  
 \textcite{Rayman1997} state that once or twice each week the spacecraft had to rotate away from its thrust vector in order to collect optical navigation pictures and communicate with the Deep Space Network (DSN) on Earth, which required shutting down the propulsion system. Key differences from \BW\ however, include the frequency and duration of these thrusting and coasting phases, and the nature of the trajectory. The interplanetary trajectory of DS-1 was dominated by a heliocentric orbit, with perturbations from the Earth, Mars and a number of asteroids. This means that the thrust vector was almost tangential to the orbital velocity around the Sun, and therefore the optimal orientation of solar panels (towards the Sun) was always perpendicular to the desired thrust vector (around the Sun). In contrast to this, \BW\ will occupy a cis-lunar orbit. This poses two difficulties: not only will the trajectory optimisation have to switch its reference frame from Earth-centric to lunar-centric in mid-flight, but optimal orientation of the solar panels relative to the direction of thrust is constantly changing. To overcome this the thrusting profile of \BW\ must shut down much more frequently than DS-1 did: hourly, rather than weekly, so that it can point its solar panels towards the Sun to recharge.
@@ -56,33 +53,30 @@ Deep Space One (DS-1), shown conceptually in \autoref{fig:DS-1}, was launched on
 Hayabusa (launched 9 May 2003), shown conceptually in \autoref{fig:Hayabusa}, was designed by the Japanese Aerospace Exploration Agency (JAXA) to perform a rendesvouz with asteroid 25143~Itokawa \parencite{web_Hayabusa}. It had a launch mass of 510~kg, including 130~kg of xenon gas used by the four microwave ECR (Electron Cyclotron Resonance) thrusters, providing 4$\times$8~mN = 32~mN thrust at maximum input power of 4$\times$350~W = 1400~W. Hayabusa had a similarly weak thrust to \BW, but was once again in a heliocentric orbit. Hayabusa successfully re-entered Earth's atmosphere and was recovered near Woomera, South Australia in June 2010, despite numerous failures including almost complete failure of all four ECR thrusters.
 
 \begin{figure}[ht]
-  \begin{center}
-  \includegraphics [width=0.7\textwidth] {Images/800px-Hayabusa_hover.jpg}
-  \end{center}
-  \caption{Japanese Hayabusa probe. Image used courtesy of J. Garry.}
-  \label{fig:Hayabusa}
+\caption{Japanese Hayabusa probe. Image used courtesy of J. Garry.}
+\label{fig:Hayabusa}
+\centering
+\includegraphics [width=0.7\textwidth] {Images/800px-Hayabusa_hover.jpg}
 \end{figure}
 
 \subsection{SMART-1}
 Small Missions for Advanced Research in Technology One (SMART-1) (launched 27 September 2003) had a Hall effect plasma thruster providing 73~mN thrust at 1200~W power consumption \parencite{web_SMART-1}. The craft, shown conceptually in \autoref{fig:SMART-1}, was a comparable size to \BW, but twice as heavy: 367~kg including 80~kg of xenon propellant. On September 3, 2006 SMART-1 was deliberately crashed into the Moon's surface. This mission profile is closest to that intended for \BW, but had an order of magnitude higher thrust.
 
 \begin{figure}[ht]
-  \begin{center}
-  \includegraphics [angle=90,width=0.7\textwidth] {Images/SMART-1.jpg}
-  \end{center}
-  \caption{SMART-1. Image used courtesy of USGS.}
   \label{fig:SMART-1}
+  \caption{SMART-1. Image used courtesy of USGS.}
+  \centering
+  \includegraphics [angle=90,width=0.7\textwidth] {Images/SMART-1.jpg}
 \end{figure}
 
 \subsection{Dawn}
 Dawn (launched 27 September 2007) is using the same thrusters developed for DS-1 to propel it towards the dwarf planet 1~Ceres by 2015 \parencite{web_Dawn}, following a successful rendezvous with the main-belt asteroid 4~Vesta in June 2011. Getting to Vesta it consumed 275~kg xenon, and will use another estimated 110~kg to get to Ceres, out of a total of 425~kg of on-board propellant. Dawn, shown conceptually in \autoref{fig:Dawn}, had a total launch mass of 1250~kg.
 
 \begin{figure}[ht]
-  \begin{center}
-  \includegraphics  [width=0.7\textwidth] {Images/mars-browse.jpg}
-  \end{center}
-  \caption{Dawn. Image used courtesy of NASA.}
   \label{fig:Dawn}
+  \caption{Dawn. Image used courtesy of NASA.}
+  \centering
+  \includegraphics  [width=0.7\textwidth] {Images/mars-browse.jpg}
 \end{figure}
 
 \subsection{Planned missions}

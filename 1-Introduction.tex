@@ -15,36 +15,33 @@ The aim of this project was to design a fuel-optimal lunar trajectory for a spec
 The inspiration for this project came from the Small Satellites Program (\emph{Kleinsatellitenprogramm}) being run at the Institut f\"{u}r Raumfahrtsystem (IRS) of Universit\"{a}t Stuttgart. The ultimate objective of this program is to launch the craft \BW\ to the Moon, as proposed by \textcite{Roeser2006}. The latest CAD model of the vehicle is shown in \autoref{fig:Spacecraft-BW-1}. Immediately apparent are the 6 square metres of triple junction gallium arsenide solar panels, which fold up against the cubic metre body for launch. The communications dishes are fixed with respect to the frame, and consist of a large S-band antenna for good atmosphere penetration, and a smaller Ka-band antenna that provides higher bandwidth (and therefore data rate) but is more susceptible to weather conditions.
 
 \begin{figure} [h]
-  \begin{center}
-    \includegraphics[angle=-90,width=\textwidth]{Images/bw1_bild2.png}
-  \end{center}
-  \caption{\BW}
-  \label{fig:Spacecraft-BW-1}
+\caption{\BW}
+\label{fig:Spacecraft-BW-1}
+\centering
+\includegraphics[angle=-90,width=\textwidth]{Images/bw1_bild2.png}
 \end{figure}
 
 \BW\ will be propelled by a combination of Pulsed Plasma Thrusters (PPTs), developed at IRS by \textcite{Nawaz2008} and a thermal arcjet similarly developed at IRS by \textcite{Bock2007}. Performance parameters for these thrusters based on laboratory tests are listed in \autoref{tab:BW1-performance}. The thrusters will be arranged as seen in \autoref{fig:Thrust-vectoring}, with an arcjet surrounded by four PPTs. This arrangement was recommended to allow reaction wheel desaturation in pitch and yaw; the deflector plate was a conceptual idea to allow roll desaturation. The author declines to comment on the efficacy of this mechanism, as it is well outside the scope of this project.
 
 \begin{table} [h]
-  \caption{Performance parameters of \BW\ thrusters}
-  \label{tab:BW1-performance}
-  \begin{center}
-    \begin{tabular} {cccc}\toprule
-      Propulsion system & Arcjet & PPT \\\midrule
-      Number of active units & 1 & 4 \\
-      Power required per unit (W) & 801 & 52\\
-      Thrust produced per unit (mN) & 102.5 & 1.22\\
-      Exhaust velocity (ms$^{-1}$) & 4768 & 27000\\\bottomrule
-%      Specific impulse (s) & 486 & 2753\\\bottomrule
-    \end{tabular}
-  \end{center}
+\caption{Performance parameters of \BW\ thrusters}
+\label{tab:BW1-performance}
+\centering
+\begin{tabular} {cccc}\toprule
+  Propulsion system & Arcjet & PPT \\\midrule
+  Number of active units & 1 & 4 \\
+  Power required per unit (W) & 801 & 52\\
+  Thrust produced per unit (mN) & 102.5 & 1.22\\
+  Exhaust velocity (ms$^{-1}$) & 4768 & 27000\\\bottomrule
+%  Specific impulse (s) & 486 & 2753\\\bottomrule
+\end{tabular}
 \end{table}
 
-\begin{figure} [h]
-  \begin{center}
-    \includegraphics[scale=0.25]{Images/thrust-vectoring.JPG}
-  \end{center}
-  \caption{Arrangement of arcjet (centre) and 4 PPTs on \BW, with a conceptual mechanism allowing for thrust vectoring. Image used courtesy of \textcite{Roeser2006}.}
-  \label{fig:Thrust-vectoring}
+\begin{figure} [h] 
+\caption{Arrangement of arcjet (centre) and 4 PPTs on \BW, with a conceptual mechanism allowing for thrust vectoring. Image used courtesy of \textcite{Roeser2006}.} 
+\label{fig:Thrust-vectoring}
+\centering
+\includegraphics[scale=0.25]{Images/thrust-vectoring.JPG}
 \end{figure}
 
 Due to the design decision to fix both the solar panels and the thrusters with respect to the body, the spacecraft will have to alternate between thrusting along the desired vector with reduced power generation, and coasting in order to orient the solar panels towards the sun. Consequently on-board power storage is required.
@@ -62,9 +59,8 @@ The \BW\ mission architecture has been broken down into the following seven phas
 Phase one is expected to be provided by a commercial launch vehicle such as the Indian Space Research Organisation (ISRO)'s Geosynchronous Satellite Launch Vehicle (GSLV), seen in \autoref{fig:GSLV}, which launches from Sriharikota. Phase two, concerning ascent from GTO to an orbit above the van Allen belts, has undergone preliminary analysis by \textcite{Letterio_thesis}. Phase four has undergone preliminary study by \textcite{Moellman2005}, while the specifications for the lunar orbit (phase six) have been developed by \textcite{Zeile2010}. Various impact scenarios have been developed by \textcite{Trawny2004}. The research presented in this thesis brings these preliminary studies together, including more detailed and accurate constraints, and examines the interdependencies between phases 2 to 5.
 
 \begin{figure} [h]
-  \begin{center}
-    \includegraphics[scale=0.50]{Images/GSLV2.jpg}
-  \end{center}
-  \caption{Indian Geosynchronous Satellite Launch Vehicle. Image used courtesy of ISRO.}
-  \label{fig:GSLV}
+\caption{Indian Geosynchronous Satellite Launch Vehicle. Image used courtesy of ISRO.}
+\label{fig:GSLV}
+\centering
+\includegraphics[scale=0.50]{Images/GSLV2.jpg}
 \end{figure}
