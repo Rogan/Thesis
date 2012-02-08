@@ -197,11 +197,11 @@ Upon implementation of the power generation and consumption model, the constrain
 The path between initial and final states is defined by the differential equations of motion outlined in \autoref{sec:state-vector}. A number of numerical methods are available for approximating the solution to differential equations such as these. In general, the gradient at some starting point is used to estimate another point a small distance away. Most common are the Runge-Kutta methods, which use an iterative estimate of the gradient at the midpoint to get a more accurate estimate for the endpoint. The fourth order Runge-Kutta method for $y'=f(t,y)$ is shown in equation \eqref{eq:RK4},
 \begin{subequations}
 \begin{gather} \label{eq:RK4}
-y_{n+1}=y_n+\frac{1}{6}(k_1+2k_2+2k_3+k_4) \\
-k_1=hf(t_n,y_n) \\
-k_2=hf(t_n+\frac{h}{2},y_n+\frac{k_1}{2}) \\
-k_3=hf(t_n+\frac{h}{2},y_n+\frac{k_2}{2}) \\
-k_4=hf(t_n+h,y_n+k_3)
+y_{n+1}=y_n+\frac{1}{6}\left(k_1+2k_2+2k_3+k_4\right) \\
+k_1=hf\left(t_n,y_n\right) \\
+k_2=hf\left(t_n+\frac{h}{2},y_n+\frac{k_1}{2}\right) \\
+k_3=hf\left(t_n+\frac{h}{2},y_n+\frac{k_2}{2}\right) \\
+k_4=hf\left(t_n+h,y_n+k_3\right)
 \end{gather}
 \end{subequations}
 where $h$ is the step size.
@@ -260,32 +260,6 @@ Pierre de Fermat first proved that optima of unconstrained problems are found at
 
 While the first derivative test identifies points that might be optima, it does not disinguish a point which is a minimum from one that is a maximum or an inflection point. When the objective function is twice differentiable, these cases can be distinguished by checking the second derivative (called the \emph{Hessian} matrix). The conditions that distinguish maxima, or minima, from other stationary points are called \emph{second order conditions}. If a candidate solution satisfies the first order conditions, then satisfaction of the second order conditions is sufficient to establish at least local optimality.
 
-\subsection{Indirect methods}
-
-%Can be solved by a number of analytical methods, but these often require extensive approximations and assumptions.
-%\enquote{An example is given in \textcite{Ohlmeyer2006}. In this example, linear assumptions are made and yet the algorithm can produce near optimal trajectories. Another example of an analytic solution is the \emph{Iterative Guidance Mode (IGM)}, the guidance algorithm used by the two exo-atmospheric stages of the Saturn V rocket. The IGM algorithm is an analytical calculus-of-variations solution of the two-point boundary value problem posed by the ascent of the rocket to prescribed orbit-injection conditions.}
-%The dimensional complexity can be reduced by discretising it into a high-order numerical problem (typically with hundreds or thousands of degrees of freedom). Numerical algorithms are then used to estimate the gradient (the Jacobian matrix) of the objective function for a given solution, to find the direction to adjust optimisable parameters to improve the value of the objective function.
-%Second-order methods are also available to improve the rate of convergence, for example, the Newton–Raphson iteration, which requires the evaluation of the Hessian matrix (the second order gradient matrix). 
-%These techniques are collectively known as \emph{numerical optimal control}. The disadvantage of numerical optimal control is that the Jacobian and Hessian matrices can be very difficult (sometimes impossible) to determine.
-
-\subsection{Direct methods}
-
-%Collectively known as \emph{non-linear programming}, these techniques approximate the problem by a finite dimensional problem.
-%NLP techniques, such as the Broyden-Fletcher-Goldfarb-Shanno (BFGS) method and Sequential Quadratic Programming (SQP)
-
-
-
-%From Wiki?:\enquote{As computation time has become cheap compared to manpower, direct sample methods have evolved as the optimization algorithms of choice. These algorithms may require orders of magnitude increases in the number of functional samples but exhibit robustness to non-smoothness in the trajectory code. Examples include: genetic algorithms\parencite{Hughes2004,Vasile2009}, stochastic sampling methods, and hill climbing algorithms. An overview of the state of the art in numerical methods is given in \textcite{Betts1998}.}
-%\cite{Betts2002}
-%\textcite{SOCS_guide}
-%\textcite{ASTOS_guide}
-%Hill-climbing... generic name for methods that get a solution, cast around for better objective function, then move on. But is SOCS truly this direct? Seems to compute Hessian and Lagrangian, albeit locally.
-%can perhaps use \cite{Well2001} for reference about GESOP, SQP, collocation, direct shooting
-%\cite{Hargraves1987} for a simple run-down on what direct optimisation is, with NLP and collocation
-%\textcite{Enright1992} outline of calculus of variations (indirect) vs. NLP (direct)
-
-
-The key functional difference between direct and indirect optimisation methods is that indirect methods require the adjoint matrix to be calculated by inverting the differential equations. This process becomes increasingly difficult with more complex differential equations, so indirect methods often make simplifications and assumptions (for example by neglecting many of the perturbing forces listed in \autoref{sec:Perturbations}). Since the first order differential equations \eqref{eq:state-updates} in this scenario are explicit, direct methods may be used.
 
 % Lagrangian
 \subsection{Lagrangian} \label{sub:Lagrangian}
@@ -314,22 +288,22 @@ The Karush-Kuhn-Tucker multipliers, $\lambda$ and $\mu$, are added to the set of
 
 NLP necessary conditions (Karush-Kuhn-Tucker conditions) approach the optimal control necessary conditions as the number of variables grow \parencite{Betts1998}. The NLP Lagrange multipliers can be interpreted as discrete approximations to the optimal control adjoint variables.
 
-\subsection{Optimal control}
 
-A common classification of optimisation techniques is based upon the differential equations that they optimise. 
+% Indirect methods
+\subsection{Indirect methods}
 
-Pontryagin's minimum principle \textcite{Pontryagin1962}.
+As mentioned above, indirect methods attempt to solve the optimal control problem by determining a stationary point in the solution space that satisfies the second order condition of being an optimum. Analytically this is traditionally achieved using Pontryagin's minimum principle \textcite{Pontryagin1962}.
 
 calculus of variations
 
 narrower basin of convergence
 
-%Gradient-based methods for optimising spacecraft trajectories have traditionally utilised optimal control laws based on Pontryagin's Minimum Principle. This states that optimising the Hamiltonian of a system is a necessary condition for the optimal control of that system. As shown by \citet{Ren2007}, generating the Hamiltonian for the modified equinoctial elements is simple, by placing equation \eqref{eq:state-updates} in the form $\vec{\dot{x}}=\mathbf{B}\Delta+\vec{d}$
-% Matrix equation should be $\dot{x}=\mathbf{A}\vec{x}+\mathbf{B}\vec{u}$
-%where the state variable $\vec{x}=\left[\begin{array}{cccccc} p & f & g & h & k & L\end{array}\right]^{T}$
-%consists of the equinoctial element set defined in Section \ref{sec:Orbital-Elements}, $\mathbf{B}$ is a $3\times6$ matrix that represents the thrust coefficients, and $\vec{d}=\left[\begin{array}{cccccc}
-%0 & 0 & 0 & 0 & 0 & D\end{array}\right]^{T}$
-%where $D=\sqrt{\mu p}\left(\frac{w}{p}\right)^{2}$ and represents the natural circular motion (zero thrust trajectory).
+This states that optimising the Hamiltonian of a system is a necessary condition for the optimal control of that system. As shown by \textcite{Ren2007}, generating the Hamiltonian for the modified equinoctial elements is simple, by placing equation \eqref{eq:state-updates} in the form $\dot{\vec{x}}=\mathbf{B}\Delta+\vec{d}$
+Matrix equation should be $\dot{x}=\mathbf{A}\vec{x}+\mathbf{B}\vec{u}$
+here the state variable $\vec{x}=\left[\begin{array}{cccccc} p & f & g & h & k & L\end{array}\right]^{T}$
+consists of the equinoctial element set defined in Section \ref{sec:Orbital-Elements}, $\mathbf{B}$ is a $3\times6$ matrix that represents the thrust coefficients, and $\vec{d}=\left[\begin{array}{cccccc}
+0 & 0 & 0 & 0 & 0 & D\end{array}\right]^{T}$
+where $D=\sqrt{\mu p}\left(\frac{w}{p}\right)^{2}$ and represents the natural circular motion (zero thrust trajectory).
 
 %The Hamiltonian is then %need to define terms here too, 
 %$\lambda,\lambda_{L},\lambda_{m},m$
@@ -347,6 +321,32 @@ narrower basin of convergence
 % check http://en.wikipedia.org/wiki/Optimal_control 
 
 % explain what is done once the Hamiltonian is optimised
+
+%---
+
+%Can be solved by a number of analytical methods, but these often require extensive approximations and assumptions.
+%\enquote{An example is given in \textcite{Ohlmeyer2006}. In this example, linear assumptions are made and yet the algorithm can produce near optimal trajectories. Another example of an analytic solution is the \emph{Iterative Guidance Mode (IGM)}, the guidance algorithm used by the two exo-atmospheric stages of the Saturn V rocket. The IGM algorithm is an analytical calculus-of-variations solution of the two-point boundary value problem posed by the ascent of the rocket to prescribed orbit-injection conditions.}
+%The dimensional complexity can be reduced by discretising it into a high-order numerical problem (typically with hundreds or thousands of degrees of freedom). Numerical algorithms are then used to estimate the gradient (the Jacobian matrix) of the objective function for a given solution, to find the direction to adjust optimisable parameters to improve the value of the objective function.
+%Second-order methods are also available to improve the rate of convergence, for example, the Newton–Raphson iteration, which requires the evaluation of the Hessian matrix (the second order gradient matrix). 
+%These techniques are collectively known as \emph{numerical optimal control}. The disadvantage of numerical optimal control is that the Jacobian and Hessian matrices can be very difficult (sometimes impossible) to determine.
+
+
+% Direct methods
+\subsection{Direct methods}
+
+%Collectively known as \emph{non-linear programming}, these techniques approximate the problem by a finite dimensional problem.
+%NLP techniques, such as the Broyden-Fletcher-Goldfarb-Shanno (BFGS) method and Sequential Quadratic Programming (SQP)
+%From Wiki?:\enquote{As computation time has become cheap compared to manpower, direct sample methods have evolved as the optimization algorithms of choice. These algorithms may require orders of magnitude increases in the number of functional samples but exhibit robustness to non-smoothness in the trajectory code. Examples include: genetic algorithms\parencite{Hughes2004,Vasile2009}, stochastic sampling methods, and hill climbing algorithms. An overview of the state of the art in numerical methods is given in \textcite{Betts1998}.}
+%\cite{Betts2002}
+%\textcite{SOCS_guide}
+%\textcite{ASTOS_guide}
+%Hill-climbing... generic name for methods that get a solution, cast around for better objective function, then move on. But is SOCS truly this direct? Seems to compute Hessian and Lagrangian, albeit locally.
+%can perhaps use \cite{Well2001} for reference about GESOP, SQP, collocation, direct shooting
+%\cite{Hargraves1987} for a simple run-down on what direct optimisation is, with NLP and collocation
+%\textcite{Enright1992} outline of calculus of variations (indirect) vs. NLP (direct)
+%the optimal control problem is replaced with an approximate non-linear programming problem with the continuous control history replaced with a finite number of parameters.
+
+The key functional difference between direct and indirect optimisation methods is that indirect methods require the adjoint matrix to be calculated by inverting the differential equations. This process becomes increasingly difficult with more complex differential equations, so indirect methods often make simplifications and assumptions (for example by neglecting many of the perturbing forces listed in \autoref{sec:Perturbations}). Since the first order differential equations \eqref{eq:state-updates} in this scenario are explicit, direct methods may be used.
 
 
 \subsection{Nonlinear programming} \label{sub:NLP}
@@ -378,33 +378,22 @@ When the step size, $\alpha$ is equal to one, gradient methods assume a linear b
 To aid in describing the differences between SQP methods, certain classifications must be used.
 
 
-% PARAMETERISATION
-
-% Transcription
-\subsubsection{Transcription}
-
-Each phase is divided into a number of intervals based on the placement of nodes, either manually or automatically.
-Over each of these intervals, multiple shooting methods integrate the state independently based on an initial guesses at each node. Discontinuities between intervals get added to the list of constraints, and the initial guesses get added to the list of optimisable parameters, so that the final trajectory is continuous. However, with long phases requiring many thousands of control nodes, the size of the problem becomes huge (typically hundreds of thousands of parameters). Within each of these shooting intervals, a finer mesh of control nodes may be specified. The state and control profile are approximated over each of these sub-intervals as a piecewise polynomial function. Thus, with enough control nodes, the state and control profiles appear almost continuously variable.
-
-Single shooting methods only use the major nodes (ignore control refinement mesh). SOCS is a single shooting method.
-
-Constraint violations are evaluated at each shooting node, although a finer mesh may be specified by the user. SOCS does not support additional constraint evaluations.
-
-So each interval becomes a non-linear problem (NLP).
-
-HDSNLP within SOCS
-
+% Other methods
 \subsection{Other methods}
 
 \subsubsection{Dynamic programming}
 
-Dynamic programming is a technique particularly used in mathematical programming and management science, with the aim of finding the path of least cost in a discrete system by evaluating each step backwards from the goal using the recursive Bellman equations. and the cost required using Bellman-Hamilton-Jacobi theory. Needs heavily discretised states and paths between states (controls). As Stated by Bellman
+Dynamic programming is a technique particularly used in mathematical programming and management science, with the aim of finding the path of least cost in a discrete system by evaluating each step backwards from the goal using the recursive Bellman equations. 
+
+and the cost required using Bellman-Hamilton-Jacobi theory. 
+
+As such it is best suited to heavily discretised states and paths between states, and consequently a very limited number of controls.
 
 \subsubsection{Genetic algorithms}
 
 Avoids local minima by performing random mutations. In theory this will find the global optimum as the number of mutations increases; in other words, as this technique approaches a brute force search.
 
-\textcite{Nocedal2006} baisc intro to optimisation
+\textcite{Nocedal2006} basic intro to optimisation
 
 \subsubsection{Simulated annealing}
 
@@ -413,9 +402,7 @@ First proposed by \textcite{Kirkpatrick1983}, simulated annealing once again avo
 
 named after a technique in blacksmithing whereby the metal is cooled slowly to allow the particles to align into an optimised (crystallised) low energy state.
 
-% Hermite-Simpson
-% 0 = v_{j+1}-v_j-h{j+1}/6\[f_{j+1}+4\bar{f}_j+f_j\] is the Simpson defect
-% \bar{v}_{j+1}=1/2\[v_j+v_{j+1}\]+(h_{j+1}/8)\[f_j-f_{j+1}\] is the Hermite interpolant
+%------------------------------------------------------------------------------------------------------------------------------------------------
 
 % Numerical considerations
 \section{Numerical considerations} \label{sec:Numerical-considerations}
@@ -483,6 +470,21 @@ Two SQP methods are available. SLLSQP is a fairly generic SQP solver, and comput
 
 \item The most recent version of ASTOS includes support for SOCS (Sparse Optimal Control Software), a combined transcription and SQP algorithm developed by The Boeing Company. SOCS is a direct collocation method that further exploits sparsity, resulting in a computational time that increases with order $n$. SOCS has successfully solved problems with over 500,000 parameters. Due to the long duration of \BW\ and the multitudinous optimisable parameters, SOCS is the preferred algorithm.
 \end{itemize}
+
+
+% PARAMETERISATION
+
+% Transcription
+\subsubsection{Transcription}
+
+Each phase is divided into a number of intervals based on the placement of nodes, either manually or automatically.
+Over each of these intervals, multiple shooting methods integrate the state independently based on an initial guesses at each node. Discontinuities between intervals get added to the list of constraints, and the initial guesses get added to the list of optimisable parameters, so that the final trajectory is continuous. However, with long phases requiring many thousands of control nodes, the size of the problem becomes huge (typically hundreds of thousands of parameters). Within each of these shooting intervals, a finer mesh of control nodes may be specified. The state and control profile are approximated over each of these sub-intervals as a piecewise polynomial function. Thus, with enough control nodes, the state and control profiles appear almost continuously variable.
+
+Single shooting methods only use the major nodes (ignore control refinement mesh). SOCS is a single shooting method.
+
+Constraint violations are evaluated at each shooting node, although a finer mesh may be specified by the user. SOCS does not support additional constraint evaluations.
+
+HDSNLP within SOCS
 
 % Verification
 \subsection{Verification} \label{sub:ASTOS-Verification}
