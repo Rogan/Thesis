@@ -186,51 +186,61 @@ Firstly, the control vector $\vec{u}$ must be a unit vector. This ensures that t
 
 To guide the optimiser towards an appropriate solution, some bounds are placed on the trajectory itself. At no point in the optimisation is the spacecraft allowed to escape Earth orbit (by ensuring that $e_{ECI}<0$), nor is the spacecraft allowed to come within 100km of either the Earth's surface, or the Moon's surface.
 
-Equinoctial elements are better for this optimisation than Keplerian elements, but they are still not perfect. They do exhibit singularities as the inclination approaches 180\degrees; in other words, they do not model strongly retrograde orbits well. Constraining the trajectory to keep away from these orbits is not a severe limitation on this optimisation since the spacecraft is highly unlikely to approach a retrograde orbit prior to Earth departure (starting at 21\degrees\ while aiming for the lunar plane of 6\degrees\ from the ecliptic, 15-24\degrees\ relative to Earth). Even the polar lunar orbit provides a large margin of safety.
+Equinoctial elements are better for this optimisation than Keplerian elements, but they are still not perfect. They do exhibit singularities as the inclination approaches 180\degrees; in other words, they do not model strongly retrograde orbits well. Constraining the trajectory to keep away from these orbits is not a severe limitation on this optimisation since the spacecraft is highly unlikely to approach a retrograde orbit prior to Earth departure (starting at 21\degrees\ while aiming for the lunar plane of 6\degrees\ from the ecliptic, that is 15-24\degrees\ relative to Earth). Even the polar lunar orbit provides a large margin of safety.
 
-Upon implementation of the power generation and consumption model, the constraint that battery charge must be greater than zero had a significant affect on the trajectory, particularly introducing coast phases in the Ascent phase. A final intuitive but hugely important numerical constraint is that the spacecraft mass must remain positive! 
+Upon implementation of the power generation and consumption model, the constraint that battery charge must be greater than zero had a significant affect on the trajectory, particularly introducing coast phases in the ascent phase. A final intuitive but hugely important numerical constraint is that the spacecraft mass must remain positive! Practically, the wet mass should remain greater than the dry mass, but as the dry mass was unknown this constraint was initially neglected. One Earth-escape trajectory was propagated until the mass became negative, and the spacecraft started accelerating backwards.
 
+%-----------------------------------------------------------------------------------------------------------------------------------------------
 
 % Trajectory propagation
 \section{Trajectory propagation} \label{sec:Propagation}
-The path between initial and final states is defined by the differential equations of motion outlined in \autoref{sec:state-vector}. A number of numerical methods are available for approximating the solution to differential equations such as these. In general, the gradient at some starting point is used to estimate another point a small distance away. The most common methods are the Runge-Kutta methods, which use an iterative estimate of the gradient at the midpoint to get a more accurate estimate for the endpoint. Adaptive Runge-Kutta methods use the difference between two fixed-step Runge-Kutta methods to place bounds on the accuracy of the estimated endpoint. If the accuracy is not within some predefined tolerance, the interval size is revised. Particular care must be taken when integrating a non-linear differential equation over an extended duration such as the \BW, due to the accumulation of numerical errors.
+The path between initial and final states is defined by the differential equations of motion outlined in \autoref{sec:state-vector}. A number of numerical methods are available for approximating the solution to differential equations such as these. In general, the gradient at some starting point is used to estimate another point a small distance away. Most common are the Runge-Kutta methods, which use an iterative estimate of the gradient at the midpoint to get a more accurate estimate for the endpoint. The fourth order Runge-Kutta method for $y'=f(t,y)$ is shown in equation \eqref{eq:RK4},
+\begin{subequations}
+\begin{gather} \label{eq:RK4}
+y_{n+1}=y_n+\frac{1}{6}(k_1+2k_2+2k_3+k_4) \\
+k_1=hf(t_n,y_n) \\
+k_2=hf(t_n+\frac{h}{2},y_n+\frac{k_1}{2}) \\
+k_3=hf(t_n+\frac{h}{2},y_n+\frac{k_2}{2}) \\
+k_4=hf(t_n+h,y_n+k_3)
+\end{gather}
+\end{subequations}
+where $h$ is the step size.
 
-For this project, a Runge-Kutta 4/5 integrator was used to propagate the trajectory from the initial state, using the initial guesses for optimisable parameters and control profile. This trajectory is then assigned a score using the Lagrangian matrix. An optimisation technique adjusts the optimisable parameters to satisfy the constraints and achieve a better score. %Lagrangian matrix?!
+Adaptive Runge-Kutta methods use the difference between two fixed-step Runge-Kutta methods to place bounds on the accuracy of the estimated endpoint. If the accuracy is not within some predefined tolerance, the interval size is revised. Particular care must be taken when integrating a non-linear differential equation over an extended duration such as the \BW, due to the accumulation of numerical errors.
 
-%propagatephase with tangential thrust profile to get approximate $\Delta L$ required, use that as initial guess in optimisation.
+%\subsection{Integration techniques} \label{sub:Integration}
 
-%-------------------------------
+Regardless of the numerical method used, trajectory optimisation requires solving the differential equations over a span of time; low-thrust trajectory optimisation requires very long timespans. Every integration step is associated with a potential error, which accumulates over the timespan. Methods that integrate from the start to the finish, termed \emph{direct shooting} or \emph{single shooting} methods, become increasingly error-prone as the timespan increases. Small changes early in the trajectory create large changes later on, which can make the constraints behave very non-linearly \parencite{Betts1998}. 
 
-\subsection{Integration methods} \label{sub:Integration}
-
-Regardless of the numerical method used, trajectory optimisation requires solving the differential equations over a span of time; low-thrust trajectory optimisation requires very long timespans. Every integration step is associated with a potential error, which accumulates over the timespan. Methods that integrate from the start to the finish, termed \emph{direct shooting} or \emph{single shooting} methods, become increasingly error-prone as the timespan increases. If some intermediate states can be reliably guessed, the integration may be started anew from that \enquote{node}. Any discontinuity at the node is added to the set of constraints. Methods that perform multiple independent integrations like this, termed \emph{multiple shooting} methods, are less prone to integration error, but convergence is heavily dependent on the accuracy of the intermediate state guesses \parencite{Betts1998, ASTOS_guide}.
+If some intermediate states can be reliably guessed, the integration may be started anew from that \enquote{node}. Any discontinuity at the node is added to the set of constraints, resulting in a relatively larger number of optimisation variables. Methods that perform multiple independent integrations like this, termed \emph{multiple shooting} methods, are less prone to integration error, but convergence is heavily dependent on the accuracy of the intermediate state guesses \parencite{Betts1998, ASTOS_guide}. Multiple shooting is sometimes called \emph{parallel shooting}, because each segment may be calculated in parallel. This method therefore lends itself well to parallel processing, across multiple core processors or even clusters of networked computers. 
 
 Finally, to save on computational complexity the changes in control and/or state over time may be approximated by a piecewise linear or polynomial function. Any algorithm that uses a simplification like this is said to solve the \emph{parameterised optimal control problem}. If the algorithm approximates control and state nodes at the same points, it is a \emph{collocation} method. Since this reduces the number of nodes required, collocation is generally faster than multiple shooting, but not as accurate.%cite
 
-\subsubsection{Single shooting}
-generally needs a relatively small number of optimization variables
-can model trajectory as a function, but small changes early on create large changes later in the trajectory, which can make the constraints behave very non-linearly \cite{Betts1998}
-\subsubsection{Multiple shooting}
-sometimes called parallel shooting, because each segment may be calculated in parallel. this method therefore lends itself well to parallel processing.
+For this project, a multiple shooting Runge-Kutta 4/5 integrator was used to simulate the trajectory from the initial guess, and then again using the optimised parameters and control profile determined by the optimiser. The optimisation algorithm used its inbuilt single shooting collocation separated Hermite-Simpson integrator \parencite{Betts2010}.
 
+% Optimisation 
+\section{Optimisation methods} \label{sec:Optimisation}
 
 % Optimisation techniques
-\section{Optimisation techniques}\label{sec:Techniques}
+%\subsection{Optimisation techniques}\label{sub:Techniques}
 
-Any solution to the boundary value problem stated in \autoref{sec:BVP}, within acceptable error bounds, is a potential solution to the optimisation. These solutions may then be ranked using the Lagrangian. The remaining problem is to evaluate enough potential solutions to be confident that the highest scoring one is indeed optimal. There are several approaches to this problem.
+Any trajectory propagated as in \autoref{sec:Propagation} that satisfies the boundary value problem stated in \autoref{sec:BVP}, within acceptable error bounds, is a potential solution to the optimal control problem. These solutions may then be ranked using the objective function presented in \autoref{sec:Objective-function}. The remaining task is to evaluate enough potential solutions to be confident that the highest scoring one is indeed optimal. % There are several approaches to this problem, classified consistently across literature such as \textcite{Betts1998} and \textcite{ASTOS_guide}.
 
+% The first classification is based on whether the differential equations that they solve are explicit or implicit. Explicit differential equations allow the derivative to be defined explicitly in terms of independent variables and parameters, $\frac{d^ny}{dx^n}=f(x,y,\frac{dy}{dx},\frac{d^2y}{dx^2},\dots,\frac{d^{n-1}y}{dx^{n-1}})$. Optimisation techniques based on explicit differential equations are called \emph{direct methods}. Implicit differential equations either cannot or should not be reduced to their explicit form, so $f(x,y,\frac{dy}{dx},\frac{d^2y}{dx^2},\dots,\frac{d^{n}y}{dx^{n}})=0$. Optimisation techniques based on implicit differential equations are called \emph{indirect methods}.
+
+There are two general approaches to this problem, classified consistently across literature such as \textcite{Betts1998} and \textcite{ASTOS_guide}. \emph{Indirect methods} attempt to solve the derivative of the cost function and thus determine a stationary point in the function space. \emph{Direct methods} simply calculate the cost function at a number of nearby points in the function space, and adjust the optimisable parameters towards the optimal cost. Once no adjacent points in the function space possess better costs, an optimum has been attained. Both of these methods find points that must satisfy the neccessary and sufficient conditions of an optimum. 
 
 %From Wiki (paraphrased):
 %there are two categories of techniques used to solve trajectory optimisation problems: indirect methods, that rely on the inverse equations of motion to determine the gradient at a given point (and determine a local optimum to exist where the gradient is zero) and direct methods that simply find a point with a better objective function than any adjacent points.
 %The optimal control problem is an infinite dimensional problem (since a continuous control profile provides an infinite amount of variability). 
 %Can be solved by a number of analytical methods, but these often require extensive approximations and assumptions.
-%\enquote{An example is given in \textcite{Ohlmeyer2006}. In this example, linear assumptions are made and yet the algorithm can produce near optimal trajectories. Another example of an analytic solution is the \enquote{Iterative Guidance Mode (IGM)}, the guidance algorithm used by the two exo-atmospheric stages of the Saturn V rocket. The IGM algorithm is an analytical calculus-of-variations solution of the two-point boundary value problem posed by the ascent of the rocket to prescribed orbit-injection conditions.}
+%\enquote{An example is given in \textcite{Ohlmeyer2006}. In this example, linear assumptions are made and yet the algorithm can produce near optimal trajectories. Another example of an analytic solution is the \emph{Iterative Guidance Mode (IGM)}, the guidance algorithm used by the two exo-atmospheric stages of the Saturn V rocket. The IGM algorithm is an analytical calculus-of-variations solution of the two-point boundary value problem posed by the ascent of the rocket to prescribed orbit-injection conditions.}
 %The dimensional complexity can be reduced by discretising it into a high-order numerical problem (typically with hundreds or thousands of degrees of freedom). Numerical algorithms are then used to estimate the gradient (the Jacobian matrix) of the objective function for a given solution, to find the direction to adjust optimisable parameters to improve the value of the objective function.
 %Second-order methods are also available to improve the rate of convergence, for example, the Newton–Raphson iteration, which requires the evaluation of the Hessian matrix (the second order gradient matrix). 
-%These techniques are collectively known as \enquote{numerical optimal control}. The disadvantage of numerical optimal control is that the Jacobian and Hessian matrices can be very difficult (sometimes impossible) to determine.
+%These techniques are collectively known as \emph{numerical optimal control}. The disadvantage of numerical optimal control is that the Jacobian and Hessian matrices can be very difficult (sometimes impossible) to determine.
 %Consequently an alternative method was developed, relying on direct optimisation methods to circumvent these difficult calculations. 
-%Collectively known as \enquote{non-linear programming}, these techniques approximate the problem by a finite dimensional problem.
-%NLP techniques, such as the Broyden–Fletcher–Goldfarb–Shanno (BFGS) method and Sequential Quadratic Programming (SQP)
+%Collectively known as \emph{non-linear programming}, these techniques approximate the problem by a finite dimensional problem.
+%NLP techniques, such as the Broyden-Fletcher-Goldfarb-Shanno (BFGS) method and Sequential Quadratic Programming (SQP)
 %From Wiki?:\enquote{As computation time has become cheap compared to manpower, direct sample methods have evolved as the optimization algorithms of choice. These algorithms may require orders of magnitude increases in the number of functional samples but exhibit robustness to non-smoothness in the trajectory code. Examples include: genetic algorithms\parencite{Hughes2004,Vasile2009}, stochastic sampling methods, and hill climbing algorithms. An overview of the state of the art in numerical methods is given in \textcite{Betts1998}.}
 %\cite{Betts2002}
 %\textcite{SOCS_guide}
@@ -241,20 +251,41 @@ Any solution to the boundary value problem stated in \autoref{sec:BVP}, within a
 %\textcite{Enright1992} outline of calculus of variations (indirect) vs. NLP (direct)
 %the optimal control problem is replaced with an approximate non-linear programming problem with the continuous control history replaced with a finite number of parameters.
 
+%-------
 
- The following classifications are consistently applied across literature such as \textcite{Betts1998} and \textcite{ASTOS_guide}.
 
-The first classification is based on whether the differential equations that they solve are explicit or implicit.
-Explicit differential equations allow the derivative to be defined explicitly in terms of independent variables and parameters, $\frac{d^ny}{dx^n}=f(x,y,\frac{dy}{dx},\frac{d^2y}{dx^2},\dots,\frac{d^{n-1}y}{dx^{n-1}})$. Optimisation techniques based on explicit differential equations are called \emph{direct methods}. Implicit differential equations either cannot or should not be reduced to their explicit form, so $f(x,y,\frac{dy}{dx},\frac{d^2y}{dx^2},\dots,\frac{d^{n}y}{dx^{n}})=0$. Optimisation techniques based on implicit differential equations are called \emph{indirect methods}.
+\subsection{Necessary and sufficient conditions} \label{sub:Neccessary-and-sufficient}
 
-The key difference between direct and indirect optimisation methods is that indirect methods require the adjoint matrix to be calculated by inverting the relevant differential equations. This process becomes increasingly difficult with more complex differential equations, so indirect methods often make simplifications and assumptions (for example by neglecting many of the perturbing forces listed in \autoref{sec:Perturbations}). Since the first order differential equations \eqref{eq:state-updates} in this scenario are explicit, direct methods may be used.
+Pierre de Fermat first proved that optima of unconstrained problems are found at stationary points in the objective function. The addition of inequality constraints adds some complexity in that the global optimum may be located on the edge of the acceptable set; that is, where an active constraint disallows any points deeper along the gradient. These constraints may be appended to the objective function to form a \emph{Lagrangian}, which models the overall problem as an unconstrained set. Because this test requires the multi-dimensional gradient (called the \emph{Jacobian}) to be calculated, it is called a \emph{first order condition}. Satisfying the first order condition is necessary for the point to be a local optimum.
 
-\subsection{Necessary and sufficient conditions}
+While the first derivative test identifies points that might be optima, it does not disinguish a point which is a minimum from one that is a maximum or an inflection point. When the objective function is twice differentiable, these cases can be distinguished by checking the second derivative (called the \emph{Hessian} matrix). The conditions that distinguish maxima, or minima, from other stationary points are called \emph{second order conditions}. If a candidate solution satisfies the first order conditions, then satisfaction of the second order conditions is sufficient to establish at least local optimality.
 
-Pierre Fermat first outlined that optima of unconstrained problems are found at stationary points in the objective function. The addition of inequality constraints adds some complexity in that the global optimum may be located on the edge of the acceptable set; that is, where an active constraint disallows any points deeper along the gradient. These constraints may be included in the objective function using Lagrange multipliers, to model the overall problem as an unconstrained set. Because this test requires the gradient be calculated, it is called a \enquote{first order condition}.
+\subsection{Indirect methods}
 
-While the first derivative test identifies points that might be optima, this test does not disinguish a point which is a minimum from one that is a maximum or one that is neither. When the objective function is twice differentiable, these cases can be distinguished by checking the second derivative or the matrix of second derivatives (called the Hessian matrix) in unconstrained problems, or the matrix of second derivatives of the objective function and the constraints called the bordered Hessian in constrained problems. The conditions that distinguish maxima, or minima, from other stationary points are called \enquote{second order conditions}. If a candidate solution satisfies the first order conditions, then satisfaction of the second order conditions as well is sufficient to establish at least local optimality.
+%Can be solved by a number of analytical methods, but these often require extensive approximations and assumptions.
+%\enquote{An example is given in \textcite{Ohlmeyer2006}. In this example, linear assumptions are made and yet the algorithm can produce near optimal trajectories. Another example of an analytic solution is the \emph{Iterative Guidance Mode (IGM)}, the guidance algorithm used by the two exo-atmospheric stages of the Saturn V rocket. The IGM algorithm is an analytical calculus-of-variations solution of the two-point boundary value problem posed by the ascent of the rocket to prescribed orbit-injection conditions.}
+%The dimensional complexity can be reduced by discretising it into a high-order numerical problem (typically with hundreds or thousands of degrees of freedom). Numerical algorithms are then used to estimate the gradient (the Jacobian matrix) of the objective function for a given solution, to find the direction to adjust optimisable parameters to improve the value of the objective function.
+%Second-order methods are also available to improve the rate of convergence, for example, the Newton–Raphson iteration, which requires the evaluation of the Hessian matrix (the second order gradient matrix). 
+%These techniques are collectively known as \emph{numerical optimal control}. The disadvantage of numerical optimal control is that the Jacobian and Hessian matrices can be very difficult (sometimes impossible) to determine.
 
+\subsection{Direct methods}
+
+%Collectively known as \emph{non-linear programming}, these techniques approximate the problem by a finite dimensional problem.
+%NLP techniques, such as the Broyden-Fletcher-Goldfarb-Shanno (BFGS) method and Sequential Quadratic Programming (SQP)
+
+
+
+%From Wiki?:\enquote{As computation time has become cheap compared to manpower, direct sample methods have evolved as the optimization algorithms of choice. These algorithms may require orders of magnitude increases in the number of functional samples but exhibit robustness to non-smoothness in the trajectory code. Examples include: genetic algorithms\parencite{Hughes2004,Vasile2009}, stochastic sampling methods, and hill climbing algorithms. An overview of the state of the art in numerical methods is given in \textcite{Betts1998}.}
+%\cite{Betts2002}
+%\textcite{SOCS_guide}
+%\textcite{ASTOS_guide}
+%Hill-climbing... generic name for methods that get a solution, cast around for better objective function, then move on. But is SOCS truly this direct? Seems to compute Hessian and Lagrangian, albeit locally.
+%can perhaps use \cite{Well2001} for reference about GESOP, SQP, collocation, direct shooting
+%\cite{Hargraves1987} for a simple run-down on what direct optimisation is, with NLP and collocation
+%\textcite{Enright1992} outline of calculus of variations (indirect) vs. NLP (direct)
+
+
+The key functional difference between direct and indirect optimisation methods is that indirect methods require the adjoint matrix to be calculated by inverting the differential equations. This process becomes increasingly difficult with more complex differential equations, so indirect methods often make simplifications and assumptions (for example by neglecting many of the perturbing forces listed in \autoref{sec:Perturbations}). Since the first order differential equations \eqref{eq:state-updates} in this scenario are explicit, direct methods may be used.
 
 % Lagrangian
 \subsection{Lagrangian} \label{sub:Lagrangian}
@@ -382,7 +413,9 @@ First proposed by \textcite{Kirkpatrick1983}, simulated annealing once again avo
 
 named after a technique in blacksmithing whereby the metal is cooled slowly to allow the particles to align into an optimised (crystallised) low energy state.
 
-
+% Hermite-Simpson
+% 0 = v_{j+1}-v_j-h{j+1}/6\[f_{j+1}+4\bar{f}_j+f_j\] is the Simpson defect
+% \bar{v}_{j+1}=1/2\[v_j+v_{j+1}\]+(h_{j+1}/8)\[f_j-f_{j+1}\] is the Hermite interpolant
 
 % Numerical considerations
 \section{Numerical considerations} \label{sec:Numerical-considerations}

@@ -92,11 +92,10 @@ During optimisation, this mesh undergoes repeated refinement until the optimisat
 \subsection{Thrust profile parameterisation} \label{sub:Thrust-parameterisation}
 
 % Launch date
-Due to the particularly non-linear variations with launch date (periodic over 27.5~days based on the Moon's orbit) a good parameterisation of the launch date would be to use two variables, one to increment an integer number of months forwards or backwards, the other a floating point to indicate the number of days either side of the month.
+Due to the particularly non-linear variations with launch date (periodic over 27.5~days based on the Moon's orbit) a good parameterisation of the launch date would be to use two variables, one to increment an integer number of lunar months forwards or backwards, the other a floating point capped at $\pm 0.5$ to indicate the fraction of a month either side. This allows the optimiser to find the optimal time of month for a launch, and therefore the optimal position of the Moon, to achieve lunar capture. Then the optimiser can adjust the month forwards or backwards based on other variations in the search space. While this parameterisation would assist in developing a truly optimal solution, since the launch date is not negotiable beyond the time spent in the GTO parking orbit it was not implemented at this time.
 
-modelled around apoapsis for first phase (objective is to raise periapsis outside VABs - apoapsis is already outside)
-
-modelled around periapsis for second phase (objective is to raise orbital energy - Oberth effect means more delta V is gained by burning at low altitude).
+% Thrust duty cycle
+An additional parameterisation considered to decrease the numerical complexity of the optimisation is to model the thrust duty cycle as a percentage of the orbit. Depending on the phase objective, a thrust segment was centred around the periapsis or apoapsis, with a parameter controlling for which percentage of the orbit the thrusters were active. However, when implemented as a constant throughout the phase replacing the continuous thrust magnitude, the optimiser's flexibility is severely compromised. When implemented as a constant throughout the phase in addition to the thrust magnitude parameter, there is no improvement in computational load. An alternative would be to implement duty cycle as a continuous variable. The computational load is just as great, but the author suspects that this modification would significantly smooth the search space. Unfortunately, due to the complications experienced when optimising the system with a continuous thrust magnitude parameter this modification was not trialled.
 
 %-----------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -187,7 +186,7 @@ It is assumed that while one axis of the solar panels is constrained to the thru
 \end{gather}
 \end{subequations}
 
-The greatest unknown in the power model is how much the solar cells will degrade over time. As \textcite{Erb_thesis} points out, the solar panel degradation, $\mathfrak{R}$, is directly related to total equivalent \enquote{fluence}, $\mathfrak{F}$ (that is, the radiation dose received), which must be integrated over the transfer, where the derivative with respect to time $\frac{d\mathfrak{F}}{dt}$ is approximated as a function of the distance from Earth, as shown in \autoref{fig:Fluence}. 
+The greatest unknown in the power model is how much the solar cells will degrade over time. As \textcite{Erb_thesis} points out, the solar panel degradation, $\mathfrak{R}$, is directly related to total equivalent \emph{fluence}, $\mathfrak{F}$ (that is, the radiation dose received), which must be integrated over the transfer, where the derivative with respect to time $\frac{d\mathfrak{F}}{dt}$ is approximated as a function of the distance from Earth, as shown in \autoref{fig:Fluence}. 
 
 \begin{figure}
 \caption{Radiation fluence during a 24 hour orbit as a function of distance from Earth.}
@@ -217,9 +216,9 @@ At each timestep the power required for communications, payload and thrust would
 
 The payload has not yet been confirmed, but it is expected that most of the payload will be in standby until the spacecraft is confirmed in the science orbit, so power requirements during the transfer will be minimal. During the science phase the payload is expected to require approximately 300~W \parencite{web_BW-1}, which should be well within the solar panels' remaining capacity.
 
-Agreements are being negotiated with ground station providers in Stuttgart, USA, Japan and Australia to give continual access to the satellite during Earth orbit. The only downtime will occur in the later stages of the transfer, when the satellite transits through the Moon's shadow. Ground access time notwithstanding, the satellite will have to rotate to point its antennae towards the Earth. Therefore it is expected that communications will only operate a fraction of the transfer time. These communications intervals will be scheduled based on availability of both power and coasting phases, and as such should not impact the trajectory design. During communications intervals approximately 250~W will be required for the Ka-band transmission, and 10~W for the S-band.
+Agreements are being negotiated with ground stations in Stuttgart, USA, Japan and Australia to give continual access to the satellite during Earth orbit. The only downtime will occur in the later stages of the transfer, when the satellite transits through the Moon's shadow. Access time notwithstanding, the satellite will have to rotate to point its antennae towards the Earth during transmission. Therefore it is expected that communications will only operate a fraction of the transfer time. These communications intervals will be scheduled based on availability of both power and coasting phases, and as such should not impact the trajectory design. During communications intervals approximately 250~W will be required for the Ka-band transmission, and 10~W for the S-band.
 
-After thruster power is also subtracted from generated power (see \autoref{sec:Propulsion}), any surplus power generated by the solar panels is added to the battery levels, or any deficit is subtracted from them. According to the initial design stated by \textcite{Falke2004}, the lithium ion batteries were designed to hold 100~Ah supplying a common bus of 28~V. It is assumed the batteries will be fully charged at launch. At any stage during the transfer, if the batteries become fully charged the spacecraft will roll around its thrust vector to point the solar panels away from the Sun, to prevent overcharge.
+After thruster power is also subtracted from generated power (see \autoref{sec:Propulsion}), any surplus power generated by the solar panels is added to the battery levels, or any deficit is subtracted from them. According to the initial design stated by \textcite{Falke2004}, the lithium ion batteries were designed to hold 100~Ah supplying a common bus of 28~V. It is assumed the batteries will be fully charged at launch. At any stage during the transfer, if the batteries become fully charged the spacecraft will roll around its thrust vector to point the solar panels away from the Sun, thus preventing overcharge.
 
 %-----------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -274,7 +273,7 @@ The resultant effect on the trajectory is that when variable thrust is implement
 \caption{Thrust profile during orbit raising.}
 \label{fig:Thrust_profile}
 \centering
-%\input{Images/thrust-vs-time.jpg}
+%\includegraphics{Images/thrust-vs-time.jpg}
 \end{figure}
 
 Continuous thrust (tangential to the orbital radius) leads to circular trajectories because an eccentric starting trajectory spends more time at apoapsis than periapsis; hence more thrusting occurs at apoapsis than periapsis. As demonstrated by a Hohmann transfer, thrusting at apoapsis circularises the orbit.
@@ -285,7 +284,7 @@ The cycling observed in the figure is due to the elliptical orbit; at apogee and
 \caption{Pitch angle during the orbit raising.}
 \label{fig:BW1-Pitch}
 \centering
-%\input{Images/pitch-vs-time.jpg}
+%\includegraphics{Images/pitch-vs-time.jpg}
 \end{figure}
 
 As observed in \autoref{fig:Thrust_profile} the thrust of \BW\ is almost constant throughout this simplified scenario. Consequently the traditional parameter for aircraft performance, thrust-to-weight ratio, seen in \autoref{fig:BW1-T/W-ratio}, is dominated by the changing effective weight, as the spacecraft moves closer to the Earth and then away again.
@@ -293,7 +292,7 @@ As observed in \autoref{fig:Thrust_profile} the thrust of \BW\ is almost constan
 \begin{figure}
 \caption{\BW\ T/W ratio compared to radial position during the orbit raising. Plot exported from ASTOS.}
 \label{fig:BW1-T/W-ratio}\centering
-%\input{Images/thrust-to-weight-and-radius-vs-time.jpg}
+%\includegraphics{Images/thrust-to-weight-and-radius-vs-time.jpg}
 \end{figure}
 
 A spacecraft orbiting the Moon (in the same direction as the Moon orbits the Earth) undergoes a period of low velocity relative to the Earth every time it is on the Earthward side of the Moon. A spacecraft orbiting the Earth in a highly elliptical orbit undergoes a period of low velocity relative to the Earth when it reaches apoapsis, which is conveniently also the furthest point from the Earth, as shown in \autoref{fig:Apoapsis-and-periapsis}. Therefore the trajectory is expected to deliver the spacecraft at apoapsis to a \enquote{stationary point} in the intended lunar orbit, such that the Moon's gravity will then pull it into a steady lunar orbit, avoiding the need for a high-thrust capture maneuvre.

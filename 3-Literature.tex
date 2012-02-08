@@ -31,10 +31,10 @@ While \textcite{LePage1991} shows that there have been numerous Earth-orbiting s
 For the purposes of comparison, the Apollo program trans-lunar injection (TLI) was performed using a chemical propulsion system providing a thrust of approximately 1~MN (9 orders of magnitude greater than \BW) on a mass of 119,900~kg (only 3 orders of magnitude greater than \BW) at a specific impulse of 421~s. The Saturn V third stage that performed the TLI is shown at launch in \autoref{fig:SaturnV}.
 
 \begin{figure}[ht]
-  \caption{Saturn V from the Apollo program. Image used courtesy of NASA.}
-  \label{fig:SaturnV}
-  \centering
-  \includegraphics  [width=0.7\textwidth] {Images/Apollo_11_Launch2.jpg}
+\caption{Saturn V from the Apollo program. Image used courtesy of NASA.}
+\label{fig:SaturnV}
+\centering
+\includegraphics  [width=0.7\textwidth] {Images/Apollo_11_Launch2.jpg}
 \end{figure}
 
 \subsection{Deep Space One}
@@ -63,20 +63,20 @@ Hayabusa (launched 9 May 2003), shown conceptually in \autoref{fig:Hayabusa}, wa
 Small Missions for Advanced Research in Technology One (SMART-1) (launched 27 September 2003) had a Hall effect plasma thruster providing 73~mN thrust at 1200~W power consumption \parencite{web_SMART-1}. The craft, shown conceptually in \autoref{fig:SMART-1}, was a comparable size to \BW, but twice as heavy: 367~kg including 80~kg of xenon propellant. On September 3, 2006 SMART-1 was deliberately crashed into the Moon's surface. This mission profile is closest to that intended for \BW, but had an order of magnitude higher thrust.
 
 \begin{figure}[ht]
-  \label{fig:SMART-1}
-  \caption{SMART-1. Image used courtesy of USGS.}
-  \centering
-  \includegraphics [angle=90,width=0.7\textwidth] {Images/SMART-1.jpg}
+\caption{SMART-1. Image used courtesy of USGS.}
+\label{fig:SMART-1}
+\centering
+\includegraphics [angle=90,width=0.7\textwidth] {Images/SMART-1.jpg}
 \end{figure}
 
 \subsection{Dawn}
 Dawn (launched 27 September 2007) is using the same thrusters developed for DS-1 to propel it towards the dwarf planet 1~Ceres by 2015 \parencite{web_Dawn}, following a successful rendezvous with the main-belt asteroid 4~Vesta in June 2011. Getting to Vesta it consumed 275~kg xenon, and will use another estimated 110~kg to get to Ceres, out of a total of 425~kg of on-board propellant. Dawn, shown conceptually in \autoref{fig:Dawn}, had a total launch mass of 1250~kg.
 
 \begin{figure}[ht]
-  \label{fig:Dawn}
-  \caption{Dawn. Image used courtesy of NASA.}
-  \centering
-  \includegraphics  [width=0.7\textwidth] {Images/mars-browse.jpg}
+\caption{Dawn. Image used courtesy of NASA.}
+\label{fig:Dawn}
+\centering
+\includegraphics  [width=0.7\textwidth] {Images/mars-browse.jpg}
 \end{figure}
 
 \subsection{Planned missions}
@@ -92,16 +92,16 @@ Planned electrically propelled missions include SMART-2, also known as LISA Path
 %evolutionary algorithms often need distributed computing environments due to the number of computations involved \textcite{Lee2005}
 %genetic algorithms and simulated annealing \textcite{Lee2005}
 %Pareto-optimality based on the economic theory by Italian Vilfredo Pareto, implying that it is the best solution that can be found without compromising other objectives, in this case the best fuel efficiency that can be found without taking an unreasonable amount of time. \parencite{Lee2005, Coverstone2000}
-%\textcite{Enright1992} hermite simpson/RK integration, direct shooting/multiple shooting/collocation, concludes -- direct transcription, NLP, \enquote{parallel shooting} RK
+%\textcite{Enright1992} hermite simpson/RK integration, direct shooting/multiple shooting/collocation, concludes -- direct transcription, NLP, \emph{parallel shooting} RK
 %\begin{enumerate}
 %\item future work - lower thrust levels, lower initial and final orbits, non-coplanar transfers
 %\item size of problem - much better mesh distribution, exploit sparsity
 %\item lunar eccentricity and better geopotential do not affect problem size (just time to solve; longer computation each step, but doesn't increase the number of steps).
 %\end{enumerate}
-%Pierson \& Kluever optimised Earth escape, backwards propagation for Moon \enquote{capture} to maximise lunar energy after a given time, with a cruise phase in between.
+%Pierson \& Kluever optimised Earth escape, backwards propagation for Moon \emph{capture} to maximise lunar energy after a given time, with a cruise phase in between.
 %Comparison of retrograde and posigrade terminal orbits. Posigrade gives better performance.
 %Very minimal improvement on initial guess suggests optimisation method ineffective.
-%\enquote{Hybrid} direct/indirect approach.
+%\emph{Hybrid} direct/indirect approach.
 %100,000~kg and 2942~N. What kind of electric propulsion?! And are they suggesting sending the ISS to lunar orbit?!
 %Uses SQP to solve 2PBVP
 %Melbourne and Sauer - Mars trajectories under solar gravity only
@@ -122,10 +122,10 @@ Planned electrically propelled missions include SMART-2, also known as LISA Path
 \section{Optimisation methods} \label{sec:Optimisation-methods}
 Traditional high-thrust chemical rocket trajectories do not need optimisation for lunar missions, since the duration is sufficiently small that perturbing forces are negligible. In the resulting restricted three-body scenario (the Earth and Moon are static, with a spacecraft of negligible mass orbiting them) there are simple analytical solutions for the trajectory.
 
-As outlined in \autoref{cha:Objectives} the task of optimising a low-thrust trajectory is somewhat more complex due to the long duration of forces acting on the orbit requiring lengthy integrations. For the reader unfamiliar with optimisation, an outline is provided in \autoref{cha:Optimisation}. Specific trajectory optimisation techniques available to accomplish this task are described in \autoref{sec:Techniques}. This section addresses how effective previous studies have found those methods to be.
+As outlined in \autoref{cha:Objectives} the task of optimising a low-thrust trajectory is somewhat more complex due to the long duration of forces acting on the orbit requiring lengthy integrations. For the reader unfamiliar with optimisation, an outline is provided in \autoref{cha:Optimisation}. Specific trajectory optimisation techniques available to accomplish this task are described in \autoref{sec:Optimisation}. This section addresses how effective previous studies have found those methods to be.
 
 % Optimal control
-\subsection{Optimal control} \label{sub:Optimal-control-lit}
+\subsection{Optimal control and gradient projection methods} \label{sub:Optimal-control-lit}
 
 \textcite{Golan1994} performed some of the earliest trajectory optimisation for low-thrust spacecraft, based on optimal control laws. Their study assumed a specific thrust of $9.81\times10^{-3}\text{ ms}^{-2}$, over 200 times more thrust per kilogram than \BW\ will have. While their trajectory analysis does allow for a variable thrust engine, it does not consider practical issues such as coasting phases to recharge the batteries, or transitions through the Earth's shadow. The larger thrust allows a much shorter transfer time than anticipated for \BW, so weaker perturbations such as the Earth's oblateness and the gravitational pull of the Sun and Jupiter were neglected.
 
@@ -137,7 +137,7 @@ As outlined in \autoref{cha:Objectives} the task of optimising a low-thrust traj
 
 \textcite{Pierson1994} developed a three stage approach to solving optimal planar Earth-Moon trajectories. The three stages consisted of a constant thrust Earth-escape, a cis-lunar coast, and a constant thrust lunar capture. This method was extended to a full three-dimensional problem by \textcite{Kluever1995,Kluever1996,Kluever1997}. However, all of these papers assume a continuous thrust profile which is incompatible with both \BW's thrust constraints, and the inherent restrictions placed on thrusting by passing through the Earth's shadow. Furthermore, the optimisation method developed in these papers is adapted from \textcite{Edelbaum1964}, using curve fitting to develop an approximate solution with much less computational effort than the analytical methods utilised previously.
 
-\subsection{Nonlinear programming} \label{sub:NLP-lit}
+\subsection{Nonlinear programming and sequential quadratic programming methods} \label{sub:NLP-lit}
 
 % This is indicative of increasing levels of non-linearity leading to numerical techniques.
 % \cite{Herman1998} parallel Runge-Kutta method optimal Earth-Moon transfers (with continuous thrust? without shadowing?)
@@ -160,8 +160,6 @@ An interesting series of articles in \emph{Acta Astronautica} describe a competi
 
 The 2007 competition was dominated by gravity assists to maximise a spacecraft's velocity, and as such is most relevant to inter-planetary low-thrust trajectories. Several entries attempted to optimise direct transfers from Earth to the target orbit, a scenario with similarities to the planned lunar transfer of \BW. In particular, \textcite{Dachwald2007} developed a program that combines evolutionary algorithms and neural networks to search for an optimal thrust profile. Despite the apparent failure of this method in the competition, their diagnosis of the resulting trajectory demonstrates key aspects of exploiting gravitational perturbations. Due to the short timescale of the competition this research was not continued.
 
-\subsection{Gradient projection methods}\label{sub:Gradient-methods-lit}
-\subsection{Sequential quadratic programming} \label{sub:SQP-lit}
 \subsection{Other methods} \label{sub:Other-lit}
 
 There are of course many alternatives to gradient based methods of optimisation. Techniques such as genetic algorithms and simulated annealing have attracted an increasing amount of interest in recent decades, as outlined by \textcite{Ren2007}. The primary advantage of these methods is that they provide a better global search before descending into a basin of convergence. Unfortunately there is still no way to be certain that the basin selected will have a better optimum than others, however an implicit assumption that the gradient is generally fairly uniform across the search area (that is, the problem is not very stiff) suggests that the basin with a better objective function at the top will have a better objective function at the bottom also. The assumption of a non-stiff search area also implies that the optimal solution will be located at the bottom of the widest basin of convergence, which is additionally the most likely to be found by the search algorithm.
