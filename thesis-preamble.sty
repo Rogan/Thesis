@@ -27,6 +27,9 @@
 \def\multicitedelim{, }
 \bibliography{Bibliography/Thesis,Bibliography/Launcher-manuals,Bibliography/BW1-papers}
 
+% allows user-defined date formats
+\usepackage[nodayofweek]{datetime}
+
 % allows editing of caption style
 \usepackage[indention=.5cm, labelfont=bf, textfont=it, singlelinecheck=off]{caption}
 
@@ -78,6 +81,8 @@
 % set up columns for array package
 \newcolumntype{L}[1]{>{\raggedright\hspace{0pt}}p{#1}}%
 \newcolumntype{C}[1]{>{\centering\hspace{0pt}}p{#1}}%
+
+\newdateformat{mydate}{the \ordinaldate\THEDAY\ day of \monthname\ in the year \THEYEAR}
 
 % FROM ONLINE FORUM - puts letters outside brackets 
 % set up equation display

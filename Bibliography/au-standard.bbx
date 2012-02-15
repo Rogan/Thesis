@@ -39,6 +39,34 @@
 \DeclareBibliographyOption{note}[false]{%
   \settoggle{bbx:note}{#1}}
 
+%% -------
+%% snippet from package author, http://www.latex-community.org/forum/viewtopic.php?f=50&t=11447
+%\DeclareBibliographyOption{tersedate}[true]{%
+%  \ifstrequal{#1}{true}
+%    {\ExecuteBibliographyOptions{mergedate}%
+%     \booltrue{bbx:tersedate}}
+%    {\boolfalse{bbx:tersedate}}}
+%\newbool{bbx:tersedate}
+%\newbibmacro*{date+extrayear}{%
+%  \iffieldundef{year}
+%    {}
+%    {\printtext[parens]{%
+%       \ifboolexpr{
+%         bool {bbx:mergedate} and
+%         not bool {bbx:tersedate}
+%       }
+%         {\printdateextra}
+%         {\printfield{labelyear}%
+%          \printfield{extrayear}}}}}
+%% -------
+\AtEveryBibitem{%
+  \clearfield{day}%
+  \clearfield{month}%
+  \clearfield{endday}%
+  \clearfield{endmonth}%
+}
+% --------
+
 \ExecuteBibliographyOptions{isbn,url,doi,eprint,displanguage,note}
 \ExecuteBibliographyOptions{
 		firstinits,				% initials instead of names
@@ -48,7 +76,9 @@
 		labelyear,				% inherited from authoryear.bbx
 		sorting = nyt,				% inherited from authoryear.bbx
 %		maxnames = 99,			% upper limit on lists of names
+%		tersedate,				% suppress day and month from author-year listing
 }
+
 
 \newbibmacro*{begentry}{}
 \newbibmacro*{finentry}{\finentry}

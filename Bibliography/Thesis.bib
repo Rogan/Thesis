@@ -74,6 +74,37 @@
   url = {http://adsabs.harvard.edu/abs/1987ESAJ...11...61B}
 }
 
+@ARTICLE{Bartholomew-Biggs1988,
+  author = {Bartholomew-Biggs, M. C. and Dixon, L. C. W. and Hersom, S. E. and
+	Maany, Z. A.},
+  title = {The solution of some difficult problems in low-thrust interplanetary
+	trajectory optimization},
+  journal = {Optimal Control Applications and Methods},
+  year = {1988},
+  volume = {9},
+  pages = {229--251},
+  number = {3},
+  abstract = {This paper deals with an approach to the problem of spacecraft trajectory
+	optimization that has been successful on a wide range of practical
+	examples. A particular group of missions involving low-thrust solar-powered
+	vehicles has presented difficulties for the method, however, and
+	these are described and discussed. In particular the problems seem
+	to reveal weaknesses in some current algorithms for constrained minimization,
+	and we therefore consider some new optimization routines. We also
+	derive a new formulation of the problem using eccentricity and momentum
+	vectors as state variables rather than the more usual Cartesian co-ordinates.
+	This reformulation allows us to make some simplifying assumptions
+	which make the problem easier to solve while still furnishing good
+	estimates of the true optimum.},
+  doi = {10.1002/oca.4660090303},
+  issn = {1099-1514},
+  keywords = {Spacecraft trajectories, Non-linear programming applications, Constrained
+	optimization algorithms},
+  owner = {rshimmin},
+  publisher = {Wiley Subscription Services, Inc., A Wiley Company},
+  timestamp = {2012.02.14}
+}
+
 @BOOK{Battin1999,
   title = {An Introduction to the Mathematics and Methods of Astrodynamics},
   publisher = {AIAA Education Series},
@@ -510,11 +541,13 @@
   author = {Bock, H. G. and Plitt, K. J.},
   title = {A multiple shooting algorithm for direct solution of optimal control
 	problems},
-  booktitle = {International Federation of Automatic Control 9th World Congress},
+  booktitle = {9th World Congress},
   year = {1984},
   pages = {1603-1608},
+  address = {San Diego, California},
   month = {July},
-  organization = {Universit\"{a}t Bonn Institut f\"{u}r Angewandte Mathematik},
+  organization = {International Federation of Automatic Control},
+  note = {Universit\"{a}t Bonn Institut f\"{u}r Angewandte Mathematik},
   abstract = {An algorithm for the numerical solution of parametrized optimal control
 	problems which is based on multiple shooting in connection with a
 	recursive quadratic programming technique is presented. A condensing
@@ -530,7 +563,7 @@
 }
 
 @TECHREPORT{Brauer1977,
-  author = {Brauer, G. L. and Cormick D. E. and Stevenson R.},
+  author = {Brauer, G. L. and Cormick, D. E. and Stevenson, R.},
   title = {Capabilities and Applications of the Program to Optimize Simulated
 	Trajectories},
   institution = {NASA},
@@ -837,6 +870,33 @@
   review = {Reference data.},
   timestamp = {2009.02.26},
   year = {2009}
+}
+
+@ARTICLE{Dixon1981,
+  author = {Dixon, L. C. W. and Bartholomew-Biggs, M. C.},
+  title = {Adjoint-control transformations for solving practical optimal control
+	problems},
+  journal = {Optimal Control Applications and Methods},
+  year = {1981},
+  volume = {2},
+  pages = {365--381},
+  number = {4},
+  abstract = {This paper is concerned with some reformulations of the classical
+	computational scheme for solving optimal control problems via Pontryagin's
+	maximum principle. The purpose is to alleviate some well known difficulties
+	involved in solving a two-point boundary value problem in terms of
+	adjoint variables. To this end there is discussion of the avoidance
+	of explicit use of transversality conditions and the use of initial
+	control rather than adjoint variables as the basis of the iterative
+	procedure. The application of these ideas to some practical problems
+	of spacecraft trajectory optimization is considered.},
+  doi = {10.1002/oca.4660020405},
+  issn = {1099-1514},
+  keywords = {Adjoint-control transformations, Indirect methods, Trajectory optimization,
+	Transversality conditions},
+  owner = {rshimmin},
+  publisher = {Wiley Subscription Services, Inc., A Wiley Company},
+  timestamp = {2012.02.14}
 }
 
 @BOOK{Dreo2006,
@@ -1365,7 +1425,10 @@
   language = {English},
   owner = {shimmin},
   review = {Good summary of optimisation method, from initial definitions through
-	to Jacobian.},
+	to Jacobian.
+	
+	
+	See http://otis.grc.nasa.gov/ for development history.},
   timestamp = {2011.08.02}
 }
 
@@ -1617,6 +1680,35 @@
   timestamp = {2008.05.19}
 }
 
+@INPROCEEDINGS{Jansch1990,
+  author = {J\"{a}nsch, C. and Paus, M.},
+  title = {Aircraft trajectory optimization with direct collocation using movable
+	gridpoints},
+  booktitle = {American Control Conference},
+  year = {1990},
+  pages = {262-267},
+  address = {San Diego, California},
+  month = {5},
+  organization = {German Aerospace Research Establishment, Institute for Flight Systems
+	Dynamics},
+  abstract = {One of the shortcomings of the direct collocation method, as presented
+	in the recent literature, will be addressed in this paper. The major
+	problem area concerns the node placement, i.e. the discretization.
+	A practical approach to improve the quality of the optimal solution
+	with only a slight increase in computing time is to introduce movable
+	nodes that are optimally placed by the algorithm. The principle capabilities
+	of this method will be demonstrated on some general aircraft trajectory
+	optimization problems. In addition, solutions to some undesirable
+	side effects that occur with a pointwise evaluation of path constraints
+	will be presented.},
+  keywords = {Aircraft , Boundary conditions , Boundary value problems , Constraint
+	optimization , Design engineering , Differential equations , Functional
+	programming , Optimal control , Optimization methods , Polynomials},
+  owner = {rshimmin},
+  timestamp = {2012.02.13},
+  url = {http://elib.dlr.de/27741/}
+}
+
 @ARTICLE{Jackson2008,
   author = {Jackson, K. and Coverstone, V.},
   title = {Optimal Lunar Launch Trajectories to the {Sun-Earth L1} Vicinity},
@@ -1705,34 +1797,6 @@
 	Uses calculus of variations to optimise (performance index = objective
 	function, Hamiltonian)},
   timestamp = {2008.05.27}
-}
-
-@INPROCEEDINGS{Jansch1990,
-  author = {Jansch, C. and Paus, M.},
-  title = {Aircraft trajectory optimization with direct collocation using movable
-	gridpoints},
-  booktitle = {American Control Conference},
-  year = {1990},
-  pages = {262-267},
-  address = {San Diego, California},
-  month = {5},
-  organization = {German Aerospace Research Establishment, Institute for Flight Systems
-	Dynamics},
-  abstract = {One of the shortcomings of the direct collocation method, as presented
-	in the recent literature, will be addressed in this paper. The major
-	problem area concerns the node placement, i.e. the discretization.
-	A practical approach to improve the quality of the optimal solution
-	with only a slight increase in computing time is to introduce movable
-	nodes that are optimally placed by the algorithm. The principle capabilities
-	of this method will be demonstrated on some general aircraft trajectory
-	optimization problems. In addition, solutions to some undesirable
-	side effects that occur with a pointwise evaluation of path constraints
-	will be presented.},
-  keywords = {Aircraft , Boundary conditions , Boundary value problems , Constraint
-	optimization , Design engineering , Differential equations , Functional
-	programming , Optimal control , Optimization methods , Polynomials},
-  owner = {rshimmin},
-  timestamp = {2012.02.13}
 }
 
 @ONLINE{web_Hayabusa,
@@ -2157,6 +2221,26 @@
   review = {Impulsive transfer, assumes moon is in same plane as sun. (planar
 	circular restricted 3 body problem, PCR3BP).},
   timestamp = {2009.03.25}
+}
+
+@ARTICLE{Kraft1994,
+  author = {Kraft, Dieter},
+  title = {Algorithm 733: TOMP\&\#8211;Fortran modules for optimal control calculations},
+  journal = {ACM Transactions on Mathematical Software},
+  year = {1994},
+  volume = {20},
+  pages = {262--281},
+  month = {9},
+  acmid = {192124},
+  address = {New York, NY, USA},
+  doi = {10.1145/192115.192124},
+  issn = {0098-3500},
+  issue = {3},
+  issue_date = {Sept. 1994},
+  keywords = {boundary value problems, manipulators, optimal control, robotics,
+	shooting method},
+  numpages = {20},
+  publisher = {ACM}
 }
 
 @TECHREPORT{Kraft1980,
@@ -2864,7 +2948,8 @@
 	and Mishchenko, E. F.},
   address = {New York},
   owner = {shimmin},
-  timestamp = {2011.09.06}
+  timestamp = {2011.09.06},
+  translator = {L.W. Neustadt}
 }
 
 @TECHREPORT{Racca14,
@@ -3220,6 +3305,16 @@
   timestamp = {2009.01.21}
 }
 
+@BOOK{Stoer1979,
+  title = {Introduction to Numerical Analysis},
+  publisher = {Springer Verlag},
+  year = {1979},
+  author = {Stoer, J. and Bulirsch, R.},
+  address = {Berlin, Germany},
+  owner = {rshimmin},
+  timestamp = {2012.02.14}
+}
+
 @ARTICLE{Stryck1992,
   author = {van Stryck, O. and Bulirsch, R.},
   title = {Direct and Indirect Methods for Trajectory Optimization},
@@ -3377,7 +3472,7 @@
 	The method is applied to two space trajectory design problems and
 	compared with existing deterministic and stochastic global optimization
 	methods. &copy; 2008 Springer Science+Business Media, LLC.},
-  address = {Van Godewijckstraat 30, Dordrecht, 3311 GZ, Netherlands},
+  address = {Dordrecht, Netherlands},
   copyright = {Compilation and indexing terms, Copyright 2011 Elsevier Inc.},
   doi = {10.1007/s10898-008-9329-3},
   issn = {09255001},
@@ -3493,7 +3588,7 @@
   author = {Birk Wollenhaupt and Georg Herdrich and Stefanos Fasoulas and Hans-Peter
 	R\"{o}ser},
   title = {Overview of Thermal Arcjet Thruster Development},
-  booktitle = {International Symposium on Space Technology and Science},
+  booktitle = {28th International Symposium on Space Technology and Science},
   year = {2011},
   number = {B-51},
   address = {Okinawa, Japan},

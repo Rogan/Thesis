@@ -291,24 +291,18 @@ A second-order variant on this scheme is often referred to as \emph{Newton's met
 \vec{x}_{n+1}=\vec{x}_n + \alpha\frac{\nabla\mathcal{L}(\vec{x}_n)}{\nabla^2\mathcal{L}(\vec{x}_n)}
 \end{equation}
 
-Quasi-Newton methods such as the Broyden-Fletcher-Goldfarb-Shanno (BFGS) method use an approximation of the Hessian to speed up computation while retaining the benefits of second-order gradient information. The sequential gradient restoration algorithm \parencite[SGRA, ][]{Miele1975} is an indirect method as are the codes ASTROP developed by \textcite{Bartholomew-Biggs1987} and BNDSCO by \textcite{Bulirsch1971}. ASTROP has been used at the European Space Operations Center (ESOC) extensively for exo-atmospheric trajectory optimization. 
+When the step size, $\alpha$ is equal to one, gradient methods assume a linear behaviour in the vicinity of the candidate solution, and select the next iteration accordingly. Newton's method assumes a quadratic behaviour in the vicinity. Variations on Newton's method have been used to great success in many optimisation applications, not least trajectory optimisation, leading to the techniques being collectively named \emph{sequential quadratic programming} (SQP). 
 
-\subsection{Sequential quadratic programming} \label{sub:SQP}
-
-When the step size, $\alpha$ is equal to one, gradient methods assume a linear behaviour in the vicinity of the candidate solution, and select the next iteration accordingly. Newton's method assumes a quadratic behaviour in the vicinity. Variations on Newton's method have been used to great success in many optimisation applications, not least trajectory optimisation, leading to the techniques being collectively named sequential quadratic programming (SQP). 
+Quasi-Newton methods such as the Broyden-Fletcher-Goldfarb-Shanno (BFGS) method use an approximation of the Hessian to speed up computation while retaining the benefits of second-order gradient information. The sequential gradient restoration algorithm \parencite[SGRA, ][]{Miele1975} is an indirect method as are the codes ASTROP developed by \textcite{Bartholomew-Biggs1988} and BNDSCO by \textcite{Bulirsch1971}. ASTROP has been used at the European Space Operations Center (ESOC) extensively for exo-atmospheric trajectory optimization. 
 
 % Direct methods
 \subsection{Direct methods}
 
 Direct methods do not require differentiation of the objective function to determine gradient information. Rather, they simply evaluate the objective function for nearby candidate solutions, and adjust the search space towards the best solution found.
 
-Examples include the direct collocation method OTIS \parencite{Hargraves1987}, and the single shooting control parameterised method POST \parencite{Brauer1977}, both developed by US industry. These codes are both in widespread use at NASA and at various US government laboratories and universities, but are not generally available to European organisations. TOMP \parencite{Kraft1980} is very similar to POST. MUSCOD \parencite{Bock1984} combines control parameterisation with multiple shooting. TROPIC and PROMIS are codes developed by DLR \parencite{Jansch1990}. TROPIC is a direct collocation code similar to OTIS, but with additional features such as automatic function and parameter scaling. PROMIS is similar MUSCOD, but once again implements parameter and function scaling and a more flexible problem interface.
+Examples include the direct collocation method OTIS \parencite[Optimal Trajectories by Implicit Simulation, ][]{Hargraves1987}, and the single shooting control parameterised method POST \parencite[Program to Optimize Simulated Trajectories, ][]{Brauer1977}, both developed by US industry. These codes are both in widespread use at NASA and at various US government laboratories and universities, but are not generally available to European organisations. TOMP \parencite[Trajectory Optimization by Mathematical Programming, ][]{Kraft1994} is very similar to POST. MUSCOD \parencite[Multiple Shooting Code for optimization, ][]{Bock1984}, developed at the University of Heidelberg, combines control parameterisation with multiple shooting. TROPIC and PROMIS are codes developed by DLR \parencite{Jansch1990}. TROPIC is a direct collocation code similar to OTIS, but with additional features such as automatic function and parameter scaling. PROMIS is similar MUSCOD, but once again implements parameter and function scaling and a more flexible problem interface.
 
 \cite{Betts2002}
-
-\textcite{SOCS_guide}
-
-\textcite{ASTOS_guide}
 
 can perhaps use \cite{Well2001} for reference about GESOP, SQP, collocation, direct shooting
 \cite{Hargraves1987} for a simple run-down on what direct optimisation is, with NLP and collocation
