@@ -266,11 +266,14 @@ The perturbing force acting on the spacecraft is then determined using equation 
 
 Obviously the factorials and summations make this equation inappropriate for repetitive computer evaluation. A recursive algorithm developed by \textcite{Montenbruck2000} was used to simplify the calculation, while still retaining the higher order accuracy. 
 
-The impact of gravitational harmonics is obviously going to be greater at lower altitudes. The Earth harmonics, dominated by the J2 bulge, affect mostly $\omega$ and $\Omega$ \parencite{Eshagh2007, Montenbruck2000}; for example, a sun-synchronous orbit (SSO) precesses around the Earth by 360\degrees\ per year, but suffers minimal inclination change.
+The impact of gravitational harmonics is obviously going to be greater at lower altitudes. The Earth harmonics, dominated by the J2 bulge, affect mostly $\omega$ and $\Omega$ \parencite{Eshagh2007, Montenbruck2000}; for example, a sun-synchronous orbit (SSO) precesses around the Earth by 360\degrees\ per year, but suffers minimal inclination change. The equations that approximate this behaviour are reproduced in equation \eqref{eq:Precession}, where $p$ is the periapsis of the orbit.
 
-\begin{equation}
-\dot\Omega = -2\pi\frac{J_2}{p^2\mu}\frac{3}{2}\cos i
-\end{equation}
+\begin{subequations}\label{eq:Precession}
+\begin{gather}
+\dot\Omega = -\pi\frac{3J_2}{p^2\mu}\cos i \\
+\dot\omega = \pi\frac{3J_2}{2p^2\mu}(5\cos^2i-1)
+\end{gather}
+\end{subequations}
 
 
 

@@ -219,17 +219,19 @@ Finally, to save on computational complexity the changes in control and/or state
 For this project, a multiple shooting Runge-Kutta 4/5 integrator was used to simulate the trajectory from the initial guess, and then again using the optimised parameters and control profile determined by the optimiser. The optimisation algorithm used its inbuilt single shooting collocation separated Hermite-Simpson integrator \parencite{Betts2010}.
 
 % Optimisation 
-\section{Optimisation methods} \label{sec:Optimisation}
+\section{The process of optimisation} \label{sec:Process}
 
 Any trajectory propagated as in \autoref{sec:Propagation} that satisfies the boundary value problem stated in \autoref{sec:BVP}, within acceptable error bounds, is a potential solution to the optimal control problem. These solutions may then be ranked using the objective function presented in \autoref{sec:Objective-function}. The remaining task is to evaluate enough potential solutions to be confident that the highest scoring one is indeed optimal. 
 
-There are two general approaches to this problem, classified consistently across literature such as \textcite{Betts1998} and \textcite{ASTOS_guide}. \emph{Indirect methods} attempt to solve the derivative of the cost function and thus determine a stationary point in the function space. \emph{Direct methods} simply calculate the cost function at a number of nearby points in the function space, and adjust the optimisable parameters towards the best cost. Once no adjacent points in the function space possess better costs, an optimum has been attained. Both of these methods satisfy the neccessary and sufficient conditions of an optimum. 
+There are two general approaches to this problem, classified consistently across literature such as \textcite{Betts1998} and \textcite{ASTOS_guide}. \emph{Indirect methods} attempt to solve the derivative of the cost function and thus determine a stationary point in the function space. \emph{Direct methods} simply evaluate the cost function at a number of nearby points in the function space, and repeat the process from the best solution found. Once no adjacent points in the function space possess better costs, an optimum has been attained. Both of these methods satisfy the neccessary and sufficient conditions of an optimum. 
 
 \subsection{Necessary and sufficient conditions} \label{sub:Neccessary-and-sufficient}
 
 Pierre de Fermat first proved that optima of unconstrained problems are found at stationary points in the objective function. The addition of inequality constraints adds some complexity in that the global optimum may be located on the edge of the acceptable set; that is, where an active constraint disallows any points deeper along the gradient. These constraints may be appended to the objective function to form a \emph{Lagrangian}, which models the overall problem as an unconstrained set. Because this test requires the multi-dimensional gradient (called the \emph{Jacobian}) to be calculated, it is called a \emph{first order condition}. Satisfying the first order condition is necessary for the point to be a local optimum.
 
 While the first derivative test identifies points that might be optima, it does not disinguish a point which is a minimum from one that is a maximum or an inflection point. When the objective function is twice differentiable, these cases can be distinguished by checking the second derivative (the gradient of the gradient, called the \emph{Hessian}). The conditions that distinguish maxima, or minima, from other stationary points are called \emph{second order conditions}. If a candidate solution satisfies the first order conditions, then satisfaction of the second order conditions is sufficient to establish at least local optimality.
+
+Indirect methods rely on these tests to determine search direction. Direct methods include these tests implicitly by adjusting the search space towards the most favourable solution (consequently along the steepest gradient) until there is no more favourable solution (the gradient is zero). If the second order test were not satisfied, better solutions would be found adjacent to the candidate solution. Both types of methods do require evaluation of the Lagrangian.
 
 % Lagrangian
 \subsection{Lagrangian} \label{sub:Lagrangian}
@@ -267,11 +269,9 @@ As introduced in \autoref{sub:Neccessary-and-sufficient}, indirect methods attem
 Pontryagin's minimum principle usually requires solution of the adjoint equations. % define adjoint equations?
 The existence of an analytical solution consequently becomes highly dependent on the linearity of the adjoint equations, but assumptions and simplifications can sometimes be made in order to determine a general solution to the equations. These assumptions are usually only valid for short duration scenarios such as the missile trajectory described by \textcite{Ohlmeyer2006} and the re-entry of the two exo-atmospheric stages of the Saturn~V rocket presented by \textcite{Haeussermann1965}. Given the long durations and non-linearities present in low-thrust trajectories, an analytical solution usually cannot be found.
 
-An alternative to solving the infinite-dimensional optimal control problem is to discretise the problem and solve it using indirect numerical methods. Forgoing a general solution to the objective function, these methods break the problem down into many sub-problems, each of which may be solved locally. This is collectively known as nonlinear programming (NLP).
+An alternative to solving the infinite-dimensional optimal control problem is to discretise the problem and solve it using indirect numerical methods. Forgoing a general solution to the objective function, these methods break the problem down into many sub-problems, each of which may be solved locally. This is collectively known as nonlinear programming (NLP) \parencite{Betts1998}. 
 
-\subsection{Nonlinear programming}
-
-The process of numerically optimising an objective function over a non-linear function space is called nonlinear programming \parencite{Betts1998}. The general approach is take a candidate solution, $\vec{x}_0$. An iterative procedure is then used to improve this solution by varying the state a certain amount, $\alpha$, in a certain direction, $\vec{k}$, as defined in equation \eqref{eq:NLP}. The sign of the step direction, $\alpha$, determines whether the algorithm finds a minimum or a maximum.
+The general approach to nonlinear programming is take a candidate solution, $\vec{x}_0$. An iterative procedure is then used to improve this solution by varying the state a certain amount, $\alpha$, in a certain direction, $\vec{k}$, as defined in equation \eqref{eq:NLP}. The sign of the step direction, $\alpha$, determines whether the algorithm finds a minimum or a maximum.
 
 \begin{equation} \label{eq:NLP}
 \vec{x}_{n+1}=\vec{x}_n+\alpha\vec{k}
@@ -283,66 +283,77 @@ The process of numerically optimising an objective function over a non-linear fu
 \vec{x}_{n+1}=\vec{x}_n + \alpha\nabla\mathcal{L}(\vec{x}_n)
 \end{equation}
 
-Various schemes exist to calculate the step size, $\alpha$. These algorithms, collectively called a \emph{line search}, can often be very computationally inefficient and time consuming. Furthermore, pure gradient methods are prone to slow optimisation, particularly with stiff problems. %define stiff problems, cite
-
+Pure gradient methods are prone to slow optimisation, particularly with stiff problems. %define stiff problems, cite
 A second-order variant on this scheme is often referred to as \emph{Newton's method} because it uses the iterative root-finding scheme devised by \textcite{Newton1711, Newton1736} to determine the zeroes of the gradient. Since the gradient is itself a derivative of the Lagrangian, this technique requires computation of a second derivative, as seen in equation \eqref{eq:newtons-method}. The curvature information held within the second derivative matrix (called the Hessian matrix, $\nabla^2\mathcal{L}$) allows this technique to converge faster, but each iteration takes more computational effort.
 
 \begin{equation} \label{eq:newtons-method}
 \vec{x}_{n+1}=\vec{x}_n + \alpha\frac{\nabla\mathcal{L}(\vec{x}_n)}{\nabla^2\mathcal{L}(\vec{x}_n)}
 \end{equation}
 
-When the step size, $\alpha$ is equal to one, gradient methods assume a linear behaviour in the vicinity of the candidate solution, and select the next iteration accordingly. Newton's method assumes a quadratic behaviour in the vicinity. Variations on Newton's method have been used to great success in many optimisation applications, not least trajectory optimisation, leading to the techniques being collectively named \emph{sequential quadratic programming} (SQP). 
+Various schemes exist to calculate the step size, $\alpha$. These algorithms, collectively called a \emph{line search}, can often be very computationally inefficient and time consuming. When the step size, $\alpha$ is equal to one, gradient methods assume a linear behaviour in the vicinity of the candidate solution, and select the next iteration accordingly. Newton's method assumes a quadratic behaviour in the vicinity. Variations on Newton's method have been used to great success in many optimisation applications, not least trajectory optimisation, leading to the techniques being collectively named \emph{sequential quadratic programming} (SQP). Quasi-Newton methods such as the Broyden-Fletcher-Goldfarb-Shanno (BFGS) method use an approximation of the Hessian to speed up computation while retaining the benefits of second-order gradient information. 
 
-Quasi-Newton methods such as the Broyden-Fletcher-Goldfarb-Shanno (BFGS) method use an approximation of the Hessian to speed up computation while retaining the benefits of second-order gradient information. The sequential gradient restoration algorithm \parencite[SGRA, ][]{Miele1975} is an indirect method as are the codes ASTROP developed by \textcite{Bartholomew-Biggs1988} and BNDSCO by \textcite{Bulirsch1971}. ASTROP has been used at the European Space Operations Center (ESOC) extensively for exo-atmospheric trajectory optimization. 
+% John von Neumann developed an alternative to gradient methods, known as the \emph{interior point method}...
+
+% Need comment on sparsity 
 
 % Direct methods
 \subsection{Direct methods}
 
-Direct methods do not require differentiation of the objective function to determine gradient information. Rather, they simply evaluate the objective function for nearby candidate solutions, and adjust the search space towards the best solution found.
+Direct methods, in comparison to indirect methods, do not try to determine additional information from the objective function. They simply evaluate the objective function at a number of points, and then adjust the search space towards the best solution found. Consequently direct methods cannot be analytical. %However, the resulting direct numerical methods rely on the same principles as indirect numerical methods, so the general optimisation scheme presented in equation \eqref{eq:NLP} is still valid. 
 
-Examples include the direct collocation method OTIS \parencite[Optimal Trajectories by Implicit Simulation, ][]{Hargraves1987}, and the single shooting control parameterised method POST \parencite[Program to Optimize Simulated Trajectories, ][]{Brauer1977}, both developed by US industry. These codes are both in widespread use at NASA and at various US government laboratories and universities, but are not generally available to European organisations. TOMP \parencite[Trajectory Optimization by Mathematical Programming, ][]{Kraft1994} is very similar to POST. MUSCOD \parencite[Multiple Shooting Code for optimization, ][]{Bock1984}, developed at the University of Heidelberg, combines control parameterisation with multiple shooting. TROPIC and PROMIS are codes developed by DLR \parencite{Jansch1990}. TROPIC is a direct collocation code similar to OTIS, but with additional features such as automatic function and parameter scaling. PROMIS is similar MUSCOD, but once again implements parameter and function scaling and a more flexible problem interface.
+There are many different techniques to determine which solutions to evaluate.
 
-\cite{Betts2002}
+Dynamic programming is a technique particularly used in financial programming and management science, with the aim of finding the path of least cost in a discrete system by evaluating each step backwards from the goal using the recursive Bellman equations. As such it is best suited to heavily discretised states and paths between states, and consequently a very limited number of controls.
+This technique has been expanded to continuous time problems using the Hamilton-Jacobi-Bellman equations. 
 
-can perhaps use \cite{Well2001} for reference about GESOP, SQP, collocation, direct shooting
-\cite{Hargraves1987} for a simple run-down on what direct optimisation is, with NLP and collocation
-\textcite{Enright1992} outline of calculus of variations (indirect) vs. NLP (direct)
+Genetic algorithms avoid local minima by performing random mutations. In theory this will find the global optimum as the number of mutations increases; in other words, as this technique approaches a brute force search.
+
+First proposed by \textcite{Kirkpatrick1983}, simulated annealing once again avoids local minima by performing random mutations and checking whether the change improves the heuristic score.
+\textcite{Dreo2006} more detailed intro to metaheuristics
+named after a technique in blacksmithing whereby the metal is cooled slowly to allow the particles to align into an optimised (crystallised) low energy state.
 
 Memetic algorithm
 Differential evolution
 Dynamic relaxation
-Genetic algorithms
 Hill climbing
 Nelder-Mead simplicial heuristic: A popular heuristic for approximate minimization (without calling gradients)
 Particle swarm optimization
-Simulated annealing
 Tabu search
 \url{http://en.wikipedia.org/wiki/Mathematical_optimization}
 
+More robust, tolerates stiffness and caverns better than indirect. Often described as a better global search - not neccessarily true.
+
+\section{Survey of commercial optimisation algorithms} \label{sec:Algorithms}
+
+The sequential gradient restoration algorithm \parencite[SGRA, ][]{Miele1975} is an indirect method as are the codes ASTROP developed by \textcite{Bartholomew-Biggs1988} and BNDSCO by \textcite{Bulirsch1971}. ASTROP has been used at the European Space Operations Center (ESOC) extensively for exo-atmospheric trajectory optimization. 
+
+% Within ASTOS...
+
+TROPIC (Trajectory OPtimisation by dIrect Collocation) and PROMIS (Parameterised tRajectory Optimisation by direct MultIple Shooting) are two transcription methods developed at DLR. CAMTOS (Collocation And Multiple shooting Trajectory Optimisation Software) was developed internally by ASTOS Solutions GmbH. All three methods use Sequential Quadratic Programming (SQP) to solve the NLP. Each of these algorithms breaks the optimal control problem up into smaller quadratic problems. 
+
+Two SQP methods are available to solve these sub-problems. SLLSQP is a fairly generic SQP solver, and computes local optima in order $n^{3}$ time, where $n$ is the number of optimisable parameters. Consequently it is useful for scenarios with up to about 100 parameters. SNOPT \parencite[Sparse Nonlinear Optimizer, ][]{Gill1997} was developed at Stanford University and is a widely used BFGS implementation with a dense quasi-Newton Hessian approximation. It improves upon SLLSQP with a few modifications that exploit sparsity within the Jacobian matrix (non-linear parameters that may be treated as linear within the constrained region) allowing it to compute local optima in order $n^{2}$ time. However it cannot exploit sparsity of the Hessian, and consequently is ill suited for large sparse optimisations such as low-thrust trajectories \parencite{Betts2002}. SNOPT is useful for up to about 1000 parameters \parencite{ASTOS_guide}.
+
+SOCS \parencite[Sparse Optimal Control Software, ][]{SOCS_guide} is a combined transcription and SQP algorithm developed by The Boeing Company. Its direct collocation method further exploits sparsity, resulting in a computational time that increases with order $n$. SOCS has documented solutions for problems with over 500,000 parameters.
+
+% Direct methods
+
+Examples include the direct collocation method OTIS \parencite[Optimal Trajectories by Implicit Simulation, ][]{Hargraves1987}, and the single shooting control parameterised method POST \parencite[Program to Optimize Simulated Trajectories, ][]{Brauer1977}, both developed by US industry. These codes are both in widespread use at NASA and at various US government laboratories and universities, but are not generally available to European organisations. TOMP \parencite[Trajectory Optimization by Mathematical Programming, ][]{Kraft1994} is very similar to POST. MUSCOD \parencite[Multiple Shooting Code for optimization, ][]{Bock1984}, developed at the University of Heidelberg, combines control parameterisation with multiple shooting. TROPIC and PROMIS are codes developed by DLR \parencite{Jansch1990}. TROPIC is a direct collocation code similar to OTIS, but with additional features such as automatic function and parameter scaling. PROMIS is similar MUSCOD, but once again implements parameter and function scaling and a more flexible problem interface.
+
+CGA \parencite[Constrained Genetic Algorithm, ][]{ASTOS_guide} is an early implementation of a genetic algorithm developed by ASTOS Solutions GmbH, currently limited to integer parameters. It gives a better global search than the other implemented methods (all gradient based methods) but is not very computationally efficient, and was empirically shown to be ineffective for more than about 20 parameters, compared to the 40,000 already required for the simplified \BW\ scenario.
+
+
+%-------
+
+can perhaps use \cite{Well2001} for reference about GESOP, SQP, collocation, direct shooting
+\textcite{Enright1992} outline of calculus of variations (indirect) vs. NLP (direct)
 \cite{Hughes2004}
 \cite{Vasile2009}
 %From Wiki?:\enquote{As computation time has become cheap compared to manpower, direct sample methods have evolved as the optimization algorithms of choice. These algorithms may require orders of magnitude increases in the number of functional samples but exhibit robustness to non-smoothness in the trajectory code. Examples include: genetic algorithms\parencite{Hughes2004,Vasile2009}, stochastic sampling methods, and hill climbing algorithms. An overview of the state of the art in numerical methods is given in \textcite{Betts1998}.}
-
-\subsubsection{Dynamic programming}
-
-Dynamic programming is a technique particularly used in mathematical programming and management science, with the aim of finding the path of least cost in a discrete system by evaluating each step backwards from the goal using the recursive Bellman equations. 
-
-and the cost required using Bellman-Hamilton-Jacobi theory. 
-
-As such it is best suited to heavily discretised states and paths between states, and consequently a very limited number of controls.
-
-\subsubsection{Genetic algorithms}
-
-Avoids local minima by performing random mutations. In theory this will find the global optimum as the number of mutations increases; in other words, as this technique approaches a brute force search.
-
 \textcite{Nocedal2006} basic intro to optimisation
 
-\subsubsection{Simulated annealing}
 
-First proposed by \textcite{Kirkpatrick1983}, simulated annealing once again avoids local minima by performing random mutations and checking whether the change improves the heuristic score.
-\textcite{Dreo2006} more detailed intro to metaheuristics
 
-named after a technique in blacksmithing whereby the metal is cooled slowly to allow the particles to align into an optimised (crystallised) low energy state.
+
 
 %------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -367,60 +378,17 @@ In any optimisation the parameters should be scaled so that the optimisation alg
 Linear scaling is often sufficient, however if changes in a variable are very small relative to the average value of that variable the process of linear scaling on a computer will result in loss of precision due to truncation. The affine transformation \parencite{ASTOS_guide} uses expected upper and lower bounds for each optimisable parameter to scale it to within 1 and -1.
 
 % ------------------------------------------------ GESOP ------------------------------------------------
-\section{GESOP} \label{sec:GESOP}
-
-Trajectory optimisation has been studied for many years at Universit\"{a}t Stuttgart. In 1989 a number of optimisation algorithms were coded for specific application to trajectory optimisation at Deutsches Zentrum f\"{u}r Luft- und Raumfahrt (German Centre for Aeronautics and Astronautics, DLR) in Oberpfaffenhofen. This project was continued at the Institut f\"{u}r Flugmekanik und Flugregelung (Institute of Flight Mechanics and Flight Control, IFR) in Stuttgart from 1994 and designated GESOP (Graphical Environment for Simulation and OPtimisation).
  
-As the name of GESOP suggests, there are two main components to this software: simulation and optimisation. After initialisation, the mission can be simulated based on the initial guess provided by the user (see Section \ref{sub:Initial-guesses}). This ensures that there are no mistakes in the input data, and gives the user an initial idea of what the trajectory will look like. Then the optimisation can be run subject to the defined constraints and evaluation grids. Some simplifications (such as reducing the number of third body gravitational perturbations) can drastically reduce optimisation time. Once an optimal solution is found, the simplifications may be removed and the entire complex scenario simulated.
-
-
-
-% Initialisation
-\subsection{Initialisation} \label{sub:GESOP-Initialisation}
-
-Missions are typically defined as having several phases, where each phase defines the system behaviour between major events, such as rocket stage separation. State discontinuities are allowed between phases, such as the mass dropping suddenly when a stage is jettisoned. These phases then have a user-defined number of evenly-spaced multiple shooting nodes inserted, as shown in \autoref{fig:Optimisation-grids}. The state is approximated at each node, and serves as an initial guess during the optimisation process, when the trajectory is only integrated as far as the next guessed state. Each node-state is then added to the set of optimisable parameters so that the optimiser will remove discontinuities (excluding the first and last of each phase). Single shooting may be modelled by not adding any additional nodes.
-
-\begin{figure}
-\caption{Optimisation grids. Image used courtesy of \textcite{ASTOS_guide}.}
-\label{fig:Optimisation-grids}
-\centering
-\includegraphics[width=\textwidth]{Images/control_nodes.pdf}
-\end{figure}
-
-Between multiple shooting nodes a control grid allows addition of control discretisation points. Collocation requires that the multiple shooting nodes and control points match. Preliminary calculations for the \BW\ have been simulated with 80 major grid points in each phase (a second phase was added when the spacecraft is close to Earth-Moon Lagrange point 1 for better plotting). Since collocation methods have been used for \BW\ so far, no additional control points were added. Adding initial guesses for each of the optimisable parameters and states at each of the 80 major grid points results in about 40,000 parameters so far.
-
-%Simulation
-\subsection{Simulation} \label{sub:ASTOS-Simulation}
-
-Following the initialisation, the mission scenario is then simulated based on the design parameters and initial guesses for all optimisable parameters. The integration method, integration error tolerances and number of output points are user-defined. For \BW\ a Runge-Kutta 4/5 method has been used as the most generic, robust variable-step integrator, with an error tolerance set to $1.0\times10^{-8}$. For the plotted trajectory to appear smooth requires about 1000 output
- points.
-
-After integration, the results can be reviewed to ensure the initial guess is realistic (and should lead to a feasible optimum during the optimisation). Constrained parameters may also be reviewed throughout the simulation, to highlight any points where the contraint is violated (by default, during optimisation constraints are only evaluated at nodes to reduce the number of calculations required). Additional constraint evaluations may then be forced, to encourage the optimiser to remove the violation.
-
-No additional constraint evaluations have been added for the \BW\ trajectory yet, since the only path constraints added were to prevent the spacecraft leaving the Earth-Moon system, an event that will not occur if the optimisation is behaving as expected.
-
-% Optimisation
-\subsection{Optimisation} \label{sub:ASTOS-Optimisation}
-
-\textcite{ASTOS_guide} presents the case for the selection of optimisation algorithms CGA, TROPIC, PROMIS, CAMTOS and SOCS in ASTOS/GESOP. A brief summary of each of these methods is presented below.
-
-\begin{itemize}
-\item CGA (Constrained Genetic Algorithm) is an early implementation of a genetic algorithm, currently limited to integer parameters. It gives a better global search than the other implemented methods (all gradient based methods) but is not very computationally efficient, and was empirically shown to be ineffective for more than about 20 parameters, compared to the 40,000 already required for the simplified \BW\ scenario.
-\item TROPIC (Trajectory OPtimisation by dIrect Collocation) and PROMIS (Parameterised tRajectory Optimisation by direct MultIple Shooting) are transcription methods developed at DLR. This means they transcribe the optimal control problem into a general Non-Linear Program (NLP). CAMTOS (Collocation And Multiple shooting Trajectory Optimisation Software) was developed internally by ASTOS Solutions. All three methods use Sequential Quadratic Programming (SQP) to solve the NLP. SQP attempts to solve the NLP by formulating and solving a series of quadratic sub-problems.
-
-Two SQP methods are available. SLLSQP is a fairly generic SQP solver, and computes local optima in order $n^{3}$ time, where $n$ is the number of optimisable parameters. Consequently it is useful for scenarios with up to about 100 parameters. SNOPT (Sparse Nonlinear OPTimiser) was developed at Stanford University and incorporates a few modifications that exploit sparsity within the Jacobian matrix (non-linear parameters that may be treated as linear within the constrained region) allowing it to compute local optima in order $n^{2}$ time. Consequently it is more widely useful for up to about 1000 parameters.
-
-\item The most recent version of ASTOS includes support for SOCS (Sparse Optimal Control Software), a combined transcription and SQP algorithm developed by The Boeing Company. SOCS is a direct collocation method that further exploits sparsity, resulting in a computational time that increases with order $n$. SOCS has successfully solved problems with over 500,000 parameters. Due to the long duration of \BW\ and the multitudinous optimisable parameters, SOCS is the preferred algorithm.
-\end{itemize}
-
-
 % PARAMETERISATION
 
 % Transcription
 \subsubsection{Transcription}
 
-Each phase is divided into a number of intervals based on the placement of nodes, either manually or automatically.
-Over each of these intervals, multiple shooting methods integrate the state independently based on an initial guesses at each node. Discontinuities between intervals get added to the list of constraints, and the initial guesses get added to the list of optimisable parameters, so that the final trajectory is continuous. However, with long phases requiring many thousands of control nodes, the size of the problem becomes huge (typically hundreds of thousands of parameters). Within each of these shooting intervals, a finer mesh of control nodes may be specified. The state and control profile are approximated over each of these sub-intervals as a piecewise polynomial function. Thus, with enough control nodes, the state and control profiles appear almost continuously variable.
+GESOP transcribes each problem into sub-problems
+
+However, with long phases requiring many thousands of control nodes, the size of the problem becomes huge (typically hundreds of thousands of parameters). 
+
+Within each of these shooting intervals, a finer mesh of control nodes may be specified. The state and control profile are approximated over each of these sub-intervals as a piecewise polynomial function. Thus, with enough control nodes, the state and control profiles appear almost continuously variable.
 
 Single shooting methods only use the major nodes (ignore control refinement mesh). SOCS is a single shooting method.
 
