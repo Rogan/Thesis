@@ -59,25 +59,19 @@
     \put(0.66074068,0.05810928){\makebox(0,0)[lb]{\smash{1960}}}%
     \put(0.74342238,0.05810928){\makebox(0,0)[lb]{\smash{1980}}}%
     \put(0.82610581,0.05810928){\makebox(0,0)[lb]{\smash{2000}}}%
+    \put(0.38898526,0.02948829){\makebox(0,0)[lb]{\smash{Mission time $t$ [days]}}}%
     \put(0.09598127,0.14744146){\makebox(0,0)[lb]{\smash{0.5}}}%
-    \put(0.11332732,0.22289679){\makebox(0,0)[lb]{\smash{1}}}%
+    \put(0.11332732,0.22289679){\makebox(0,0)[lb]{\smash{1.0}}}%
     \put(0.09598127,0.29835212){\makebox(0,0)[lb]{\smash{1.5}}}%
-    \put(0.11332732,0.37380746){\makebox(0,0)[lb]{\smash{2}}}%
+    \put(0.11332732,0.37380746){\makebox(0,0)[lb]{\smash{2.0}}}%
     \put(0.09598127,0.44926279){\makebox(0,0)[lb]{\smash{2.5}}}%
-    \put(0.11332732,0.52471813){\makebox(0,0)[lb]{\smash{3}}}%
+    \put(0.11332732,0.52471813){\makebox(0,0)[lb]{\smash{3.0}}}%
     \put(0.09598127,0.60017346){\makebox(0,0)[lb]{\smash{3.5}}}%
-    \put(0.11332732,0.67562879){\makebox(0,0)[lb]{\smash{4x 10}}}%
-    \put(0.16912402,0.71407944){\makebox(0,0)[lb]{\smash{8}}}%
-    \put(0.0810928,0.36802602){\rotatebox{90}{\makebox(0,0)[lb]{\smash{[}}}}%
-    \put(0.0810928,0.37583174){\rotatebox{90}{\makebox(0,0)[lb]{\smash{m}}}}%
-    \put(0.0810928,0.39924892){\rotatebox{90}{\makebox(0,0)[lb]{\smash{]}}}}%
-    \put(0.38898526,0.02948829){\makebox(0,0)[lb]{\smash{Missiontime}}}%
-    \put(0.55059289,0.02948829){\makebox(0,0)[lb]{\smash{t}}}%
-    \put(0.57025152,0.02948829){\makebox(0,0)[lb]{\smash{[}}}%
-    \put(0.57805724,0.02948829){\makebox(0,0)[lb]{\smash{days}}}%
-    \put(0.63370893,0.02948829){\makebox(0,0)[lb]{\smash{]}}}%
-    \put(0.34301821,0.39390113){\makebox(0,0)[lb]{\smash{DistancefromMoon}}}%
-    \put(0.34301821,0.36166522){\makebox(0,0)[lb]{\smash{DistancefromEarth}}}%
-    \put(0.34301821,0.32957502){\makebox(0,0)[lb]{\smash{DistancefromEarthtoMoon}}}%
+    \put(0.11332732,0.67562879){\makebox(0,0)[lb]{\smash{4.0}}}%
+    \put(0.16912402,0.71407944){\makebox(0,0)[lb]{\smash{$\times10^8$}}}%
+    \put(0.06,0.3){\rotatebox{90}{\makebox(0,0)[lb]{\smash{Distance [m]}}}}%
+    \put(0.34301821,0.39390113){\makebox(0,0)[lb]{\smash{of satellite from $\Moon$}}}%
+    \put(0.34301821,0.36166522){\makebox(0,0)[lb]{\smash{of satellite from $\Earth$}}}%
+    \put(0.34301821,0.32957502){\makebox(0,0)[lb]{\smash{between $\Moon$ and $\Earth$}}}%
   \end{picture}%
 \endgroup%

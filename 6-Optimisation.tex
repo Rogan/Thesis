@@ -304,13 +304,13 @@ Direct methods, in comparison to indirect methods, do not try to determine addit
 There are many different techniques to determine which solutions to evaluate.
 
 Dynamic programming is a technique particularly used in financial programming and management science, with the aim of finding the path of least cost in a discrete system by evaluating each step backwards from the goal using the recursive Bellman equations. As such it is best suited to heavily discretised states and paths between states, and consequently a very limited number of controls.
-This technique has been expanded to continuous time problems using the Hamilton-Jacobi-Bellman equations. 
+% This technique has been expanded to continuous time problems using the Hamilton-Jacobi-Bellman equations. 
 
 Genetic algorithms avoid local minima by performing random mutations. In theory this will find the global optimum as the number of mutations increases; in other words, as this technique approaches a brute force search.
 
-First proposed by \textcite{Kirkpatrick1983}, simulated annealing once again avoids local minima by performing random mutations and checking whether the change improves the heuristic score.
+First proposed by \textcite{Kirkpatrick1983}, simulated annealing once again avoids local minima by performing random mutations and checking whether the change improves the heuristic score. Named after a technique in blacksmithing whereby the metal is cooled slowly to allow the particles to align into an optimised (crystallised) low energy state, it differs from genetic algorithms in that ...
+
 \textcite{Dreo2006} more detailed intro to metaheuristics
-named after a technique in blacksmithing whereby the metal is cooled slowly to allow the particles to align into an optimised (crystallised) low energy state.
 
 Memetic algorithm
 Differential evolution
@@ -323,23 +323,23 @@ Tabu search
 
 More robust, tolerates stiffness and caverns better than indirect. Often described as a better global search - not neccessarily true.
 
+%-----------------------------------------------------------------------------------------------------------------------------------------------
+
+% Survey of methods
 \section{Survey of commercial optimisation algorithms} \label{sec:Algorithms}
+
+There have been many implementations of the optimisation methods described above. Examples of direct methods include the collocation method OTIS \parencite[Optimal Trajectories by Implicit Simulation, ][]{Hargraves1987}, and the single shooting control parameterised method POST \parencite[Program to Optimize Simulated Trajectories, ][]{Brauer1977}, both developed by US industry. These codes are both in widespread use at NASA and at various US government laboratories and universities, but are not generally available to European organisations. TOMP \parencite[Trajectory Optimization by Mathematical Programming, ][]{Kraft1994} is very similar to POST. MUSCOD \parencite[Multiple Shooting Code for optimization, ][]{Bock1984}, developed at the University of Heidelberg, combines control parameterisation with multiple shooting. 
 
 The sequential gradient restoration algorithm \parencite[SGRA, ][]{Miele1975} is an indirect method as are the codes ASTROP developed by \textcite{Bartholomew-Biggs1988} and BNDSCO by \textcite{Bulirsch1971}. ASTROP has been used at the European Space Operations Center (ESOC) extensively for exo-atmospheric trajectory optimization. 
 
-% Within ASTOS...
+However, these methods are mostly superseded by newer methods with additional features, and so were not selected for inclusion in GESOP. Instead, TROPIC (Trajectory Optimisation by Direct Collocation) and PROMIS (Parameterised Trajectory Optimisation by Direct Multiple Shooting) are two transcription algorithms developed at DLR \parencite{Jansch1990}. % TROPIC is a collocation code similar to OTIS, but with additional features such as automatic function and parameter scaling. PROMIS is similar MUSCOD, but once again implements parameter and function scaling and a more flexible problem interface.
+CAMTOS (Collocation And Multiple Shooting Trajectory Optimisation Software) was developed internally by ASTOS Solutions GmbH. Each of these algorithms transcribes the optimal control problem into smaller NLPs. 
 
-TROPIC (Trajectory OPtimisation by dIrect Collocation) and PROMIS (Parameterised tRajectory Optimisation by direct MultIple Shooting) are two transcription methods developed at DLR. CAMTOS (Collocation And Multiple shooting Trajectory Optimisation Software) was developed internally by ASTOS Solutions GmbH. All three methods use Sequential Quadratic Programming (SQP) to solve the NLP. Each of these algorithms breaks the optimal control problem up into smaller quadratic problems. 
+Two SQP methods are then available within GESOP to solve the sub-problems. SLLSQP is a fairly generic SQP solver, and computes local optima in order $n^{3}$ time, where $n$ is the number of optimisable parameters. Consequently it is useful for scenarios with up to about 100 parameters. SNOPT \parencite[Sparse Nonlinear Optimizer, ][]{Gill1997} was developed at Stanford University and is a widely used BFGS implementation with a dense quasi-Newton Hessian approximation. It improves upon SLLSQP with a few modifications that exploit sparsity within the Jacobian matrix (by treating non-linear parameters as linear within a constrained region) thus allowing it to compute local optima in order $n^{2}$ time. However it cannot exploit sparsity of the Hessian matrix, and consequently is ill suited for large sparse optimisations such as low-thrust trajectories \parencite{Betts2002}. SNOPT is useful for problems of about 1000 parameters \parencite{ASTOS_guide}.
 
-Two SQP methods are available to solve these sub-problems. SLLSQP is a fairly generic SQP solver, and computes local optima in order $n^{3}$ time, where $n$ is the number of optimisable parameters. Consequently it is useful for scenarios with up to about 100 parameters. SNOPT \parencite[Sparse Nonlinear Optimizer, ][]{Gill1997} was developed at Stanford University and is a widely used BFGS implementation with a dense quasi-Newton Hessian approximation. It improves upon SLLSQP with a few modifications that exploit sparsity within the Jacobian matrix (non-linear parameters that may be treated as linear within the constrained region) allowing it to compute local optima in order $n^{2}$ time. However it cannot exploit sparsity of the Hessian, and consequently is ill suited for large sparse optimisations such as low-thrust trajectories \parencite{Betts2002}. SNOPT is useful for up to about 1000 parameters \parencite{ASTOS_guide}.
+For larger problems, ASTOS Solutions GmbH has licensed SOCS \parencite[Sparse Optimal Control Software, ][]{SOCS_guide}. SOCS is a combined transcription and SQP algorithm developed by The Boeing Company. Its direct collocation method further exploits sparsity, resulting in a computational time that increases with order $n$. SOCS has documented solutions for problems with over 500,000 parameters.
 
-SOCS \parencite[Sparse Optimal Control Software, ][]{SOCS_guide} is a combined transcription and SQP algorithm developed by The Boeing Company. Its direct collocation method further exploits sparsity, resulting in a computational time that increases with order $n$. SOCS has documented solutions for problems with over 500,000 parameters.
-
-% Direct methods
-
-Examples include the direct collocation method OTIS \parencite[Optimal Trajectories by Implicit Simulation, ][]{Hargraves1987}, and the single shooting control parameterised method POST \parencite[Program to Optimize Simulated Trajectories, ][]{Brauer1977}, both developed by US industry. These codes are both in widespread use at NASA and at various US government laboratories and universities, but are not generally available to European organisations. TOMP \parencite[Trajectory Optimization by Mathematical Programming, ][]{Kraft1994} is very similar to POST. MUSCOD \parencite[Multiple Shooting Code for optimization, ][]{Bock1984}, developed at the University of Heidelberg, combines control parameterisation with multiple shooting. TROPIC and PROMIS are codes developed by DLR \parencite{Jansch1990}. TROPIC is a direct collocation code similar to OTIS, but with additional features such as automatic function and parameter scaling. PROMIS is similar MUSCOD, but once again implements parameter and function scaling and a more flexible problem interface.
-
-CGA \parencite[Constrained Genetic Algorithm, ][]{ASTOS_guide} is an early implementation of a genetic algorithm developed by ASTOS Solutions GmbH, currently limited to integer parameters. It gives a better global search than the other implemented methods (all gradient based methods) but is not very computationally efficient, and was empirically shown to be ineffective for more than about 20 parameters, compared to the 40,000 already required for the simplified \BW\ scenario.
+CGA \parencite[Constrained Genetic Algorithm, ][]{ASTOS_guide} is an early implementation of a genetic algorithm developed by ASTOS Solutions GmbH, currently limited to integer parameters. It gives a better global search than the other implemented methods (all gradient based methods) but is not very computationally efficient, and was empirically shown to be ineffective for more than about 20 parameters, compared to the 40,000 required for the simplified \BW\ scenario.
 
 
 %-------
@@ -352,10 +352,25 @@ can perhaps use \cite{Well2001} for reference about GESOP, SQP, collocation, dir
 \textcite{Nocedal2006} basic intro to optimisation
 
 
+% PARAMETERISATION
+
+% Transcription
+\subsubsection{Transcription}
+
+GESOP transcribes each problem into sub-problems
+
+However, with long phases requiring many thousands of control nodes, the size of the problem becomes huge (typically hundreds of thousands of parameters). 
+
+Within each of these shooting intervals, a finer mesh of control nodes may be specified. The state and control profile are approximated over each of these sub-intervals as a piecewise polynomial function. Thus, with enough control nodes, the state and control profiles appear almost continuously variable.
+
+Single shooting methods only use the major nodes (ignore control refinement mesh). SOCS is a single shooting method.
+
+Constraint violations are evaluated at each shooting node, although a finer mesh may be specified by the user. SOCS does not support additional constraint evaluations.
+
+HDSNLP within SOCS
 
 
-
-%------------------------------------------------------------------------------------------------------------------------------------------------
+%-----------------------------------------------------------------------------------------------------------------------------------------------
 
 % Numerical considerations
 \section{Numerical considerations} \label{sec:Numerical-considerations}
@@ -376,32 +391,6 @@ As outlined in \textcite{Milani1987}, using a simple rule of thumb a limit on th
 In any optimisation the parameters should be scaled so that the optimisation algorithm is not biased towards optimising any one variable at the expense of the others. This is particularly important in low thrust trajectory optimisation using equinoctial elements because variables $f$, $g$, $h$ and $k$ are typically between one and minus one, while $L$ grows continually throughout the trajectory and $p$ as the orbital semi-latus rectum can exceed many millions of metres. Consequently, without very specifically chosen weightings in the objective function the optimisation might try to correct $p$ by 10 metres rather than $f$ by 0.1, although the latter change might have a much greater effect on the result.
 
 Linear scaling is often sufficient, however if changes in a variable are very small relative to the average value of that variable the process of linear scaling on a computer will result in loss of precision due to truncation. The affine transformation \parencite{ASTOS_guide} uses expected upper and lower bounds for each optimisable parameter to scale it to within 1 and -1.
-
-% ------------------------------------------------ GESOP ------------------------------------------------
- 
-% PARAMETERISATION
-
-% Transcription
-\subsubsection{Transcription}
-
-GESOP transcribes each problem into sub-problems
-
-However, with long phases requiring many thousands of control nodes, the size of the problem becomes huge (typically hundreds of thousands of parameters). 
-
-Within each of these shooting intervals, a finer mesh of control nodes may be specified. The state and control profile are approximated over each of these sub-intervals as a piecewise polynomial function. Thus, with enough control nodes, the state and control profiles appear almost continuously variable.
-
-Single shooting methods only use the major nodes (ignore control refinement mesh). SOCS is a single shooting method.
-
-Constraint violations are evaluated at each shooting node, although a finer mesh may be specified by the user. SOCS does not support additional constraint evaluations.
-
-HDSNLP within SOCS
-
-% Verification
-\subsection{Verification} \label{sub:ASTOS-Verification}
-
-The mathematics behind ASTOS has been well established for many decades \parencite{Kaplan1976}. The implementation within ASTOS itself has been numerically verified by ESTEC, Dassault, ASTRIUM, CNES, EADS and JAXA, among other industrial partners. It is practically validated by ongoing use on real missions launched by ESA and DLR, including Ariane 5 and Vega rocket launches, the ExoMars and Beagle 2 missions, and X38 re-entry scenarios.
- 
-Final results for the \BW\ optimisation will be further verified by simulating the trajectory in both Matlab and STK. While these packages will not verify that the solution is optimal, they will confirm that the solution is feasible, and can be used to compare trajectories on a case-by-case basis. The trajectory will receive final, practical verification when satellite is launched.
 
 \section{Summary} \label{sec:Optimisation-Summary}
 

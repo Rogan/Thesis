@@ -103,3 +103,24 @@ thrust in velocity vector to increase semimajor axis
 
 
 \cite{Cabrera2011} for info about russian PPTs running at 10+~Hz
+
+
+
+
+
+% Lunar capture
+Even with capture phases provided by arcjet, there is very little thrust available to perform lunar insertion. When simulating the transfer this problem is compounded by the fact that lunar insertion must be predicted very accurately, as simulating a lunar orbit in an Earth-centred frame, or vice-versa, causes the trajectory to periodically appear to move backwards relative to the central body. In other words, the anomaly decreases, which causes computational errors.
+
+review this: Low Energy Motions in the Earth-Moon System, Chaos, and Weak Capture \parencite{Belbruno2007}
+
+aim for a \emph{weak capture} at the Moon. This is a capture where the Kepler energy with respect to the Moon is non-positive and the motion of the particle with respect to the Moon is unstable. Such captures are generally temporary. Weak capture occurs in a special region in phase space about the Moon called the \emph{weak stability boundary}, WSB, rigorously defined by \textcite{Belbruno2004}
+
+all Belbruno stuff is for impulsive transfers; WSB trajectory to the Moon through deep space.
+
+Hiten probe tested aerobraking and WSB transfers. Also Kordylewski clouds.
+Put all of this in section 7.1/7.2
+
+% Discretisation
+\cite{ASTOS_guide} \enquote{all major grid nodes are also control nodes by definition. When the major grid is too coarse for the controls, pure control nodes can be added.} \enquote{Collocation methods ignore any control refinement points.} \enquote{The constraint grid will be ignored [by] SOCS, since SOCS computes constraint evaluation only at each collocation grid point.}
+% Parameterisation
+% Vehicle

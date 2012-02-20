@@ -69,9 +69,9 @@
     \put(0.08,0.60104076){\makebox(0,0)[lb]{\smash{3.5}}}%
     \put(0.08,0.6764961){\makebox(0,0)[lb]{\smash{4.0}}}%
     \put(0.16926833,0.71407944){\makebox(0,0)[lb]{\smash{$\times10^8$}}}%
-    \put(0.06,0.36802602){\rotatebox{90}{\makebox(0,0)[lb]{\smash{[m]}}}}%
-    \put(0.34301821,0.39390113){\makebox(0,0)[lb]{\smash{\tiny{From Moon}}}}%
-    \put(0.34301821,0.36166522){\makebox(0,0)[lb]{\smash{\tiny{From Earth}}}}%
-    \put(0.34301821,0.32957502){\makebox(0,0)[lb]{\smash{\tiny{Between bodies}}}}%
+    \put(0.06,0.3){\rotatebox{90}{\makebox(0,0)[lb]{\smash{Distance [m]}}}}%
+    \put(0.34301821,0.39390113){\makebox(0,0)[lb]{\smash{\tiny{of satellite from $\Moon$}}}}%
+    \put(0.34301821,0.36166522){\makebox(0,0)[lb]{\smash{\tiny{of satellite from $\Earth$}}}}%
+    \put(0.34301821,0.32957502){\makebox(0,0)[lb]{\smash{\tiny{between $\Moon$ and $\Earth$}}}}%
   \end{picture}%
 \endgroup%

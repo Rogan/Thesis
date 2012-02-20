@@ -477,10 +477,10 @@ The perturbing forces in \autoref{fig:Propagate-pert} continue on from the previ
 %\input{Images/Propagate/figure5.pdf_tex}
 %\end{figure}
 
-A factor that becomes important as the spacecraft approaches capture is the angle subtended between the craft and the Moon, relative to the Earth. This is shown in \autoref{fig:Propagate-phase}. At the start of the phase, the Moon is very close to its periapsis, with the spacecraft leading it by about 1 radian. As the spacecraft is in a lower, faster orbit, this angle widens until 1660 days at which point the spacecraft and the Moon are on opposite sides of the Earth. The subtended angle then logically approaches zero as the spacecraft approaches lunar orbit.
+A factor that becomes important as the spacecraft approaches capture is the angle subtended between the craft and the Moon, relative to the Earth. This is shown in \autoref{fig:Propagate-phase}. At the start of the phase, the Moon is close to its ascending node, with the spacecraft leading it by about 2 radians. As the spacecraft is in a lower, faster orbit, this angle widens until 1660 days at which point the spacecraft and the Moon are on opposite sides of the Earth. The subtended angle then approaches zero as the spacecraft approaches lunar orbit.
 
 \begin{figure}
-\caption{Angle between spacecraft and Moon during propagate phase.}
+\caption{Longitude of spacecraft and Moon during propagate phase. The approach angle is the difference between spacecraft longitude and the Moon's longitude.}
 \label{fig:Propagate-phase}
 \centering
 \def\svgwidth{\figurewidth}
@@ -811,6 +811,15 @@ For obvious reasons there have been few experimental flights to validate low-thr
 \caption{Difference between STK modelling and GESOP modelling.}
 \label{fig:STK-error}
 \end{figure}
+
+
+
+% Verification
+\subsection{Verification} \label{sub:ASTOS-Verification}
+
+The mathematics behind ASTOS has been well established for many decades \parencite{Kaplan1976}. The implementation within ASTOS itself has been numerically verified by ESTEC, Dassault, ASTRIUM, CNES, EADS and JAXA, among other industrial partners. It is practically validated by ongoing use on real missions launched by ESA and DLR, including Ariane 5 and Vega rocket launches, the ExoMars and Beagle 2 missions, and X38 re-entry scenarios.
+ 
+Final results for the \BW\ optimisation will be further verified by simulating the trajectory in both Matlab and STK. While these packages will not verify that the solution is optimal, they will confirm that the solution is feasible, and can be used to compare trajectories on a case-by-case basis. The trajectory will receive final, practical verification when satellite is launched.
 
 Compare the objective function score against a few other cases.
 

@@ -64,9 +64,9 @@
     \put(0.09,0.59453599){\makebox(0,0)[lb]{\smash{$10^{-4}$}}}%
     \put(0.07,0.26684128){\rotatebox{90}{\makebox(0,0)[lb]{\smash{Acceleration [ms$^{-2}$]}}}}%
     \put(0.48886904,0.18126626){\makebox(0,0)[lb]{\smash{\tiny{Thrust}}}}%
-    \put(0.48886904,0.16305291){\makebox(0,0)[lb]{\smash{\tiny{Moon}}}}%
-    \put(0.48886904,0.14151605){\makebox(0,0)[lb]{\smash{\tiny{Sun}}}}%
-    \put(0.48886904,0.11983348){\makebox(0,0)[lb]{\smash{\tiny{Oblateness}}}}%
+    \put(0.48886904,0.16305291){\makebox(0,0)[lb]{\smash{\tiny{$\Moon$ gravity}}}}%
+    \put(0.48886904,0.14151605){\makebox(0,0)[lb]{\smash{\tiny{$\Sun$ gravity}}}}%
+    \put(0.48886904,0.11983348){\makebox(0,0)[lb]{\smash{\tiny{$\Earth$ oblateness}}}}%
     \put(0.48886904,0.09829488){\makebox(0,0)[lb]{\smash{\tiny{Solar wind}}}}%
   \end{picture}%
 \endgroup%

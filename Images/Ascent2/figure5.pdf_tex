@@ -63,8 +63,8 @@
     \put(0.08,0.44){\makebox(0,0)[lb]{\smash{$10^{-11}$}}}%
     \put(0.08,0.58){\makebox(0,0)[lb]{\smash{$10^{-10}$}}}%
     \put(0.06,0.26){\rotatebox{90}{\makebox(0,0)[lb]{\smash{Acceleration [ms$^{-2}$]}}}}%
-    \put(0.51,0.135){\makebox(0,0)[lb]{\smash{\tiny{Jupiter}}}}%
-    \put(0.51,0.115){\makebox(0,0)[lb]{\smash{\tiny{Venus}}}}%
-    \put(0.51,0.095){\makebox(0,0)[lb]{\smash{\tiny{Mars}}}}%
+    \put(0.51,0.135){\makebox(0,0)[lb]{\smash{\tiny{$\Jupiter$ gravity}}}}%
+    \put(0.51,0.115){\makebox(0,0)[lb]{\smash{\tiny{$\Venus$ gravity}}}}%
+    \put(0.51,0.095){\makebox(0,0)[lb]{\smash{\tiny{$\Mars$ gravity}}}}%
   \end{picture}%
 \endgroup%

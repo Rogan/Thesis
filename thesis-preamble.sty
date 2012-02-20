@@ -16,9 +16,16 @@
 	csquotes,		% for automating left and right quote marks
 	eufrak,		% mathematical alphabets
 	colortbl,		% duh
-	mathabx,		% for astronomical symbols
 	multirow,		% duh
 }%
+
+% for astronomical symbols (mathb) but don't want to change infinity symbol or integrals (matha)
+% need matha for not equals symbol?
+\usepackage[
+matha,
+mathb,
+% mathx,
+]{mathabx}
 
 % citation and bibliography style control
 % backref 			adds bibliography references to where work is cited
