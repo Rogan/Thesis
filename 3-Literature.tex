@@ -88,59 +88,73 @@ Planned electrically propelled missions include SMART-2, also known as LISA Path
 
 % -------------------------------------------------------- Optimisation methods --------------------------------------------------------
 
-% \cite{McKay2011} provide a survey of non-keplerian orbits, which they define as any orbit with forces additional to the primary point-mass gravitational force. Their study was focussed towards using low thrust propulsion to maintain a stable orbit in the presence of these secondary forces, and while \BW1 requires a transfer trajectory rather than a stable orbit their paper does conclude that there are some serious deficiencies with established research in the area: \enquote{It is clear, however, that work still has to be done to transform the steadily growing body of literature on highly-non-Keplerian orbits from interesting theory into actual, practical missions.}
-%evolutionary algorithms often need distributed computing environments due to the number of computations involved \textcite{Lee2005}
-%genetic algorithms and simulated annealing \textcite{Lee2005}
-%Pareto-optimality based on the economic theory by Italian Vilfredo Pareto, implying that it is the best solution that can be found without compromising other objectives, in this case the best fuel efficiency that can be found without taking an unreasonable amount of time. \parencite{Lee2005, Coverstone2000}
-%\textcite{Enright1992} hermite simpson/RK integration, direct shooting/multiple shooting/collocation, concludes -- direct transcription, NLP, \emph{parallel shooting} RK
-%\begin{enumerate}
-%\item future work - lower thrust levels, lower initial and final orbits, non-coplanar transfers
-%\item size of problem - much better mesh distribution, exploit sparsity
-%\item lunar eccentricity and better geopotential do not affect problem size (just time to solve; longer computation each step, but doesn't increase the number of steps).
-%\end{enumerate}
-%Pierson \& Kluever optimised Earth escape, backwards propagation for Moon \emph{capture} to maximise lunar energy after a given time, with a cruise phase in between.
-%Comparison of retrograde and posigrade terminal orbits. Posigrade gives better performance.
-%Very minimal improvement on initial guess suggests optimisation method ineffective.
-%\emph{Hybrid} direct/indirect approach.
-%100,000~kg and 2942~N. What kind of electric propulsion?! And are they suggesting sending the ISS to lunar orbit?!
-%Uses SQP to solve 2PBVP
-%Melbourne and Sauer - Mars trajectories under solar gravity only
-%Breakwell and Rauch - patched two-body trajectories
-%Not much work on reduced three-body problem
-%London and Stuhlinger - patched two-body segments
-%Golan and Breakwell - variable thrust magnitude trajectories with no coasting arcs
-%Enright and conway - collocation, determining a single minimum fuel, low thrust, earth-moon transfer.
-%\textcite{Kluever1996} outlines his experimental procedure to find an initial guess: simulate under thrust, modifying phase time until near SOI. Then simulate for 7-8 days to observe the lunar fly-by, adjusting initial angle (in a 2D moon-fixed frame) until coasting trajectory enters SOI with negative moon-relative radial velocity component. Backwards propagate the lunar descent, adjusting phase length until the orbital energy is about the same as the end of the coasting arc.
-%Citing other peoples' graphs in Lit Review: .... Reproduced from \cite{}
-%\textcite{Kluever1997} extends the work to 3D, even includes a polar lunar orbit. Still starting from very high earth orbit, still much higher thrust. Uses direct optimisation but pontryagin necessary conditions to parameterise the intial guess control profile.
-%Initial guess based on 2D optimisations for GEO-HLO. Optimisation slowly converts plane change from HLO-LLO phase  until it is almost entirely included in GEO-HLO phase.
-%T/W ratio of 1.3e-4
-%\textcite{Kluever1995} assumes initial LEO in lunar plane.
-% All constant thrust, constant mass flow, giant spacecraft, does not address initial launch (inclination, capability to launch that mass). Due to simplifications like no external forces and constant thrust, the inverse costate equations were found allowing the Pontryagin principle to be exploited in order to get a very accurate initial guess for the thrust profiles in ascent and descent phases. SQP is then used to blend the phases together.
-% \cite{Herman1998}
-
 \section{Optimisation methods} \label{sec:Optimisation-methods}
+
+%\cite{Melbourne1962,Melbourne1965} Mars trajectories under solar gravity only
+%Not much work on reduced three-body problem
+
+%London and Stuhlinger - patched two-body segments
+% \cite{Stuhlinger1964} cited by Herman1998
+
+%Citing other peoples' graphs in Lit Review: .... Reproduced from \cite{}
+
 Traditional high-thrust chemical rocket trajectories do not need optimisation for lunar missions, since the duration is sufficiently small that perturbing forces are negligible. In the resulting restricted three-body scenario (the Earth and Moon are static, with a spacecraft of negligible mass orbiting them) there are simple analytical solutions for the trajectory.
 
-As outlined in \autoref{cha:Objectives} the task of optimising a low-thrust trajectory is somewhat more complex due to the long duration of forces acting on the orbit requiring lengthy integrations. For the reader unfamiliar with optimisation, an outline is provided in \autoref{cha:Optimisation}. Specific trajectory optimisation techniques available to accomplish this task are described in \autoref{sec:Process}. This section addresses how effective previous studies have found those methods to be.
+As outlined in \autoref{cha:Objectives} the task of optimising a low-thrust trajectory is somewhat more complex due to the long duration of forces acting on the spacecraft requiring lengthy integrations. For the reader unfamiliar with optimisation, an outline is provided in \autoref{cha:Optimisation}. Specific trajectory optimisation techniques available to accomplish this task are described in \autoref{sec:Process}. This section addresses how effective previous studies have found those methods to be, and how applicable they are to \BW.
+
+Firstly there are a number of existing literature reviews compiled by other authors. \textcite{Betts1998} provides a generalised explanation of the different optimisation algorithms, without addressing any particular scenarios. 
+
+\textcite{McKay2011} provide a survey of non-keplerian orbits, which they define as any orbit with forces additional to the primary point-mass gravitational force. Literature is included in this survey covering a broad spectrum of trajectory planning and optimisation from optimal control and sequential quadratic programming to genetic algorithms. Their study was focussed towards using low thrust propulsion to maintain a stable orbit in the presence of these secondary forces, and while \BW1 requires a transfer trajectory rather than a stable orbit their paper does conclude that there are some serious deficiencies with established research in the area: 
+
+\begin{quotation}It is clear, however, that work still has to be done to transform the steadily growing body of literature on highly-non-Keplerian orbits from interesting theory into actual, practical missions.
+\end{quotation}
+
+The survey did not include analysis of any actual missions, but rather compared existing theoretical studies. For the purposes of this literature review, those studies and additional ones will be divided into indirect optimal control and gradient projection methods, direct nonlinear programming techniques, and other direct numerical techniques, as defined in \autoref{sec:Process}.
+
+
+
+
+
 
 % Optimal control
 \subsection{Optimal control and gradient projection methods} \label{sub:Optimal-control-lit}
 
-\textcite{Golan1994} performed some of the earliest trajectory optimisation for low-thrust spacecraft, based on optimal control laws. Their study assumed a specific thrust of $9.81\times10^{-3}\text{ ms}^{-2}$, over 200 times more thrust per kilogram than \BW\ will have. While their trajectory analysis does allow for a variable thrust engine, it does not consider practical issues such as coasting phases to recharge the batteries, or transitions through the Earth's shadow. The larger thrust allows a much shorter transfer time than anticipated for \BW, so weaker perturbations such as the Earth's oblateness and the gravitational pull of the Sun and Jupiter were neglected.
+As mentioned, chemical rocket trajectories do not generally need optimisation for lunar missions. Interplanetary missions are a different matter entirely, as gravitational assists can lead to a very complex solution space. The traditional approach is by patching simplified two-body segments together. Consequently, this technique was widely used to apply optimal control theory to low-thrust trajectory optimisation, such as that performed by \textcite{Stuhlinger1964}. However, many technological hurdles emerged restricting the uptake of electrical propulsion systems on spacecraft, so interest in the topic waned.
+
+Most of these hurdles had been overcome by the early 1990s. \textcite{Golan1994} resumed trajectory planning by optimal control for low-thrust spacecraft, starting from an analytical solution developed by \textcite{Breakwell1966}. \citeauthor{Golan1994} expanded on the previous work by patching two optimally-controlled spirals together in an Earth-Moon fixed frame, albeit assuming a specific thrust of $9.81\times10^{-3}\text{ ms}^{-2}$, over 200 times more thrust per kilogram than \BW\ will have. While their trajectory analysis does allow for a variable thrust engine, it does not consider practical issues such as coasting phases to recharge the batteries, or transits through the Earth's shadow. The larger thrust allows a much shorter transfer time than anticipated for \BW, so weaker perturbations such as the Earth's oblateness and the gravitational pull of the Sun and Jupiter were neglected.
 
 \textcite{Guelman1995} performed a similar optimal control based trajectory analysis within a three-body plane. An interesting difference to \citeauthor{Golan1994}'s approach is that \citeauthor{Guelman1995} centred his coordinate system at the Earth-Moon barycentre. This smoothes the equations of motion in the region where the Earth and Moon have comparable influence on the spacecraft; however, since a lunar transfer generally spends very little time in this region, it is usually preferable to model with the conceptually easier Earth- and lunar-centred frames.
  
 \citeauthor{Guelman1995} still uses a very simplified gravitational model, with a continuously thrusting spacecraft. Variable thrust is allowed for by minimising the total thrust required to achieve a lunar orbit/impact given a constant thrust duration. While this approach achieved lower magnitude thrust profiles than \citeauthor{Golan1994} (for 1000 hours of thrust \citeauthor{Guelman1995} found a maximum of $4.3\times10^{-3}\text{ ms}^{-2}$ was required), it is inappropriate in the current scenario since the mission is constrained by specific impulse (total thrust delivered over the flight) rather than thrust duration. Furthermore, calculating the gravitational field within a barycentric frame becomes increasingly complex with the number of bodies in the gravitational model, making it unsuitable for very low thrust missions which must allow for the weaker perturbations mentioned above.
 
-% need review of \cite{Guelman2000}
+\textcite{Guelman2000} improved on their gravitational model by time averaging the effects of gravity and thrust, ignoring the short term cyclical changes and focussing instead on the slower changes of orbital elements and thrust profile. This scenario was then solved via Pontryagin's Maximum Principle using their own SQP procedure. However, even with this simplification he ran into severe computational problems, requiring \enquote{about 100,000 evaluations of trigonometric integrands per integration node. Thus even a modest number of nodes, say 100 per trajectory, requires significant time expenditure}. 
 
-\textcite{Pierson1994} developed a three stage approach to solving optimal planar Earth-Moon trajectories. The three stages consisted of a constant thrust Earth-escape, a cis-lunar coast, and a constant thrust lunar capture. This method was extended to a full three-dimensional problem by \textcite{Kluever1995,Kluever1996,Kluever1997}. However, all of these papers assume a continuous thrust profile which is incompatible with both \BW's thrust constraints, and the inherent restrictions placed on thrusting by passing through the Earth's shadow. Furthermore, the optimisation method developed in these papers is adapted from \textcite{Edelbaum1964}, using curve fitting to develop an approximate solution with much less computational effort than the analytical methods utilised previously.
+In contrast, \textcite{Pierson1994} simplified the optimal control problem by breaking it into three two-dimensional stages. These three stages consisted of a constant thrust Earth-escape, a cis-lunar coast, and a constant thrust lunar capture. This method was extended to a full three-dimensional problem by \textcite{Kluever1995,Kluever1996,Kluever1997}. However, all of these papers assume a continuous thrust profile which is incompatible with both \BW's thrust constraints, and the inherent restrictions placed on thrusting by passing through the Earth's shadow. Furthermore, the optimisation method developed in these papers is adapted from \textcite{Edelbaum1964}, using curve fitting to develop an approximate solution with much less computational effort than the analytical methods utilised previously. Sequential quadratic programming is then used to solve the curve-fitted problem.
+
+The starting conditions of 100,000~kg with 2942~N of electric propulsion pose a confusingly ambitious scenario, given the magnitude of thrust available from current electric propulsion systems and the expectation of sending a mass similar to that of the International Space Station to the Moon. Worthy of note, however, is their utilisation of backwards propagation to assist with achieving lunar capture. To ensure strong capture, their optimisation maximised orbital energy with respect to the Moon over a fixed time. Within their two-dimensional model, they investigated the difference between targeting posigrade and retrograde about the Moon, and found a slight advantage in the posigrade orbit (final LLO mass of 93,092~kg compared with 93,032~kg for retrograde). Both scenarios improved on their respective initial guesses by less than 10~kg (about 0.1\%) suggesting that either the optimisation method employed was not particularly effective, or the problem was particularly smooth and very little improvement could be made. 
+
+The papers of \textcite{Kluever1995, Kluever1996} adapt the solution technique into a hybrid approach. First an experimental procedure is presented to find an initial guess. The trajectory under full thrust is simulated, and the phase time increased until the spacecraft gets near the lunar sphere of influence (SOI, defined in \autoref{sec:SOI}). The simulation is extended with no thrust to observe the lunar fly-by, and the initial angle is adjusted (in a 2D moon-fixed frame) until the coasting trajectory enters the SOI with a negative radial velocity relative to the Moon. The process is then repeated in reverse for the lunar descent, and the problem then becomes making the two trajectories meet in the middle. This two dimensional solution technique assumes that the initial orbit of the spacecraft about the Earth is coplanar with the Moon's orbit. Many other simplifications are made, such as neglecting external forces. These simplifications were required so that the inverse costate equations could be found allowing Pontryagin's principle to be exploited, giving a very accurate initial guess for the thrust profiles in ascent and descent phases. SQP was then used to blend the phases together. All of these papers assume the (very large) spacecraft can deliver constant thrust and constant mass flow. They do not address initial launch conditions such as inclination, not to mention the feasibility of launching such a mass in the first place.
+
+\textcite{Kluever1997} extended the work to three dimensions, and even targeted a polar lunar orbit. The transfer still starts from very high earth orbit, and still implements a thrust-to-weight ratio of $1.3\times10^{-4}$, much higher than \BW\ will have available. Pontryagin necessary conditions were used to parameterise the intial guess control profile, but the problem was then solved entirely using direct optimisation. The initial guess is based on the 2D optimisations for a GEO-HLO transfer, with the plane change occuring during the HLO-LLO descent phase. During optimisation the plane change slowly adjusted from the HLO-LLO phase until it is almost entirely included in GEO-HLO phase, demonstrating the efficiency of trajectory targeting maneouvres in cis-lunar space.
+
+% Conclusion - shortcomings of indirect methods leading in to direct? No, not making that distinction here. 
+
+
+
 
 \subsection{Nonlinear programming and sequential quadratic programming methods} \label{sub:NLP-lit}
 
-% \cite{Herman1998} parallel Runge-Kutta method optimal Earth-Moon transfers (with continuous thrust? without shadowing?)
-% \cite{Enright1992} collocation method - optimal?
+
+
+% \cite{Herman1998} parallel Runge-Kutta method optimal Earth-Moon transfers (with continuous thrust? without shadowing?) 
+
+% \cite{Enright1992} collocation method - optimal? direct transcription with Conway
+%\textcite{Enright1992} hermite simpson/RK integration, direct shooting/multiple shooting/collocation, concludes -- direct transcription, NLP, \emph{parallel shooting} RK. collocation, determining a single minimum fuel, low thrust, earth-moon transfer.
+%future work - lower thrust levels, lower initial and final orbits, non-coplanar transfers
+%size of problem - much better mesh distribution, exploit sparsity
+%lunar eccentricity and better geopotential do not affect problem size (just time to solve; longer computation each step, but doesn't increase the number of steps).
+\textcite{Enright1992} identify some shortcomings of their study: \enquote{it is desirable to solve lunar transfer problems for lower thrust levels, lower initial and final orbit radii, and for the noncoplanar case. The main obstacle is the size of the nonlinear programming problem that results. (Other enhancements, such as lunar eccentricity and a better Earth gravity potential, do not affect the problem size.)}
+They go on to outline how solving these larger problems may be accomplished. \enquote{First, the previous problem was solved using uniform mesh point distribution within a phase (and also the same number of mesh points for each phase). The data suggest that this is extremely inefficient, and an intelligent redistribution should be performed. Second, the NLP algorithm NPSOL is not designed to handle large sparse problems efficiently. The authors have had some success with the MINOS package that is designed for large-scale systems, and we recommend it for problems with more than 400 variables. Finally, alternate coordinate systems could be employed to possibly increase the smoothness of the solution, reducing the number of mesh points required. A variation-of-parameters approach or other strategies might be attempted.}
 
 \textcite{Betts1993} investigated numerical techniques to determine near-optimal trajectories. In particular, they utilised direct transcription and collocation to approximate the optimisation problem, which was then solved numerically using sparse nonlinear programming.
  
@@ -151,13 +165,20 @@ The direct transcription approach of \textcite{Betts1993} was extended by \textc
 
 \begin{quotation}The design of an initial guess for a trajectory with a vast number of revolutions, significant inclination changes, capturing and orbital corrections is a challenging task on its own.\end{quotation}
 
-\textcite{Letterio_thesis} described the optimisation of a low thrust transfer using an identical thrust regime to \BW\ (in fact, \citeauthor{Letterio_thesis}'s study was completed as part of the same project with Universit\"{a}t Stuttgart). However, this study only covers the ascent phase, from geosynchronous transfer orbit (GTO) to the outer limits of the van Allen belts, using the higher thrust arcjet. The emphasis was on increasing the radius of the orbit as quickly as possible to escape the van Allen belts. Furthermore, at these relatively low altitudes the gravitational perturbations due to the Moon's gravity are fairly uniform. This limits the extent to which they can be exploited to optimise the trajectory of the spacecraft.
+\textcite{Letterio_thesis} described the optimisation of a low thrust transfer using an identical thrust regime to \BW\ (in fact, \citeauthor{Letterio_thesis}'s study was completed as part of the same project with Universit\"{a}t Stuttgart). However, his study only covers the ascent phase, from geosynchronous transfer orbit (GTO) to the outer limits of the van Allen belts, using the higher thrust arcjet. The emphasis was on increasing the radius of the orbit as quickly as possible to escape the van Allen belts. Furthermore, at these relatively low altitudes the gravitational perturbations due to the Moon's gravity are fairly uniform. This limits the extent to which they can be exploited to optimise the trajectory of the spacecraft.
 
 An interesting series of articles in \emph{Acta Astronautica} describe a competition devised by ESA to develop a benchmark test for low thrust optimisation. As the winners of the inaugural competition, held in 2007, \textcite{Petropoulos2007} summarised their findings: 
 
 \begin{quotation}...it seems that a rough global search, based on simple numerical schemes coupled with mission design intuitions, is a necessary precursor activity to the local optimisation, and one which is a rich area for research.\end{quotation}
 
 The 2007 competition was dominated by gravity assists to maximise a spacecraft's velocity, and as such is most relevant to inter-planetary low-thrust trajectories. Several entries attempted to optimise direct transfers from Earth to the target orbit, a scenario with similarities to the planned lunar transfer of \BW. In particular, \textcite{Dachwald2007} developed a program that combines evolutionary algorithms and neural networks to search for an optimal thrust profile. Despite the apparent failure of this method in the competition, their diagnosis of the resulting trajectory demonstrates key aspects of exploiting gravitational perturbations. Due to the short timescale of the competition this research was not continued.
+
+% Something about objective functions, to lead in to...
+This highlights that selection of an objective function can be a difficult task in itself. Many studies instead search for Pareto-optimality, based on the economic theory by Italian Vilfredo Pareto. Pareto-optimisation is a search for the best solution that can be found without compromising other objectives, in this case the best fuel efficiency that can be found without taking an unreasonable amount of time \parencite{Lee2005, Coverstone2000}.
+
+
+
+
 
 \subsection{Other methods} \label{sub:Other-lit}
 
@@ -167,10 +188,19 @@ Reviewed literature such as \textcite{Dachwald2005} and \textcite{Jackson2008} h
 
 An interesting methodological approach to optimisation is presented by \textcite{Jackson2008}. Rather than developing an analytic equation to optimise, or a numerical algorithm to iteratively determine a search direction, a coarse mesh of possible trajectories is plotted based on a few controlled parameters. The largest basin of convergence is then selected based on the assumption that it will be the most robust - even if the global optimum is found using another technique, the spacecraft will never be able to follow that trajectory \emph{exactly}. If the basin of convergence is too narrow, any number of unexpected events could easily push the spacecraft onto a severely sub-optimal trajectory, potentially resulting in the spacecraft not completing its mission. Iteratively calculating trajectories over a mesh of possible launch parameters determines a near-optimal trajectory, within a very broad basin of convergence. While the test case used by \textcite{Jackson2008} involved continual thrust from Earth orbit to the Sun-Earth libration point L1, the methodological nature of this approach allows easy implementation of discontinuous thrust profiles for \BW. This will allow experimentation with exploiting lunar gravitational assists, as well as multiple non-linearities ignored or neglected in previous studies.
 
+%evolutionary algorithms often need distributed computing environments due to the number of computations involved \textcite{Lee2005}
+%genetic algorithms and simulated annealing \textcite{Lee2005}
+
+
+
+
+
+
 \subsection{Summary of optimisation methods}
 
 %direct transcription allows more flexibility, as required by the complexity of orbital dynamics. Requires initial guess, which requires a strong prior knowledge and understanding of orbital mechanics \cite{}.
 %genetic algorithms show potential in for global searches, but have shortcomings with particularly stiff problems, which orbital mechanics tends to present. Best future approach may be to use hybrid methods, GA to do global search then NLP to find optimum.
+% unfortunately CGA in GESOP not up to scratch, use SOCS for higher-order problems
 
 \section{Summary of gaps in existing knowledge}
 
