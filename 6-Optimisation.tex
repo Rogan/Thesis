@@ -82,7 +82,9 @@ Fundamentally, any trajectory that safely gets the spacecraft from Earth orbit t
 \begin{gather}
 F = -m(t_f) \label{eq:objective}
 \end{gather}
- This objective function is commonly used throughout entire low-thrust trajectory analyses in literature (for example, \cite{Ichimura2008}). Since the dry mass of the spacecraft was unknown, a starting wet mass was assumed; therefore to minimise the fuel used one must simply minimise the final mass. Modifications were considered, for example adding a time penalty to discourage unreasonably long transfer times, but found to be unnecessary. Preliminary, simplified optimisations for the Cruise phase used an additional term to minimise the orbital energy with respect to the Moon, $\epsilon_{LCI}$, to encourage a stronger capture. This helped develop the initial guess, but was found to be very sensitive to the weighting factors, $\sigma_1$ and $\sigma_2$, as shown in equation \eqref{eq:objective2},
+ This objective function is commonly used throughout entire low-thrust trajectory analyses in literature (for example, \cite{Ichimura2008}). Many other studies instead search for Pareto-optimality, based on the economic theory by Italian Vilfredo Pareto. Pareto-optimisation is a search for the best solution that can be found without compromising other objectives, in this case the best fuel efficiency that can be found without taking an unreasonable amount of time \parencite{Lee2005, Coverstone2000}.  
+ 
+ Since the dry mass of \BW\ was unknown, a starting wet mass was assumed; therefore to minimise the fuel used one must simply minimise the final mass. Modifications were considered, for example adding a time penalty to discourage unreasonably long transfer times, but found to be unnecessary. Preliminary, simplified optimisations for the Cruise phase used an additional term to minimise the orbital energy with respect to the Moon, $\epsilon_{LCI}$, to encourage a stronger capture. This helped develop the initial guess, but was found to be very sensitive to the weighting factors, $\sigma_1$ and $\sigma_2$, as shown in equation \eqref{eq:objective2},
 \begin{gather}
 F = \sigma_1m(t_f)+\sigma_2\epsilon_{LCI} \label{eq:objective2}
 \end{gather}
@@ -90,6 +92,9 @@ F = \sigma_1m(t_f)+\sigma_2\epsilon_{LCI} \label{eq:objective2}
 %fixed launch mass at initial guess because that is how it is booked with launch service provider. saving fuel means more scientific payload.
 %choice of objective function and bounds for cruise phase - computational difficulties due to it being captured by moon (and therefore retrograde relative to earth) or escaping earth and losing dependence on L. Therefore put path constraint that it does not escape earth, and terminal constraint that it is not closer to escaping than the Moon is. Objective function is orbital energy wrt Moon to ensure capture, scaled by magnitude of energy last orbit so that it does not drown out fuel objective.
 %mention that Erb used lower limit on lunar energy to prevent it dropping too far into lunar orbit, and limit on eccentricity (although he was aiming for an eccentric final orbit). Then used objective function of minimising orbital energy and eccentricity, for the counter-intuitive approach of putting a limit on the parameters you are trying to optimise. This scenario becomes a delicate balancing act between the two variables, based on the arbitrary weightings given to them in the cost function.
+
+
+
 
 % BVP
 \section{Boundary value problem} \label{sec:BVP}
@@ -323,6 +328,10 @@ Tabu search
 
 More robust, tolerates stiffness and caverns better than indirect. Often described as a better global search - not neccessarily true.
 
+\cite{Hughes2004} co-evolutionary on-line evolutionary algorithm
+
+\cite{Vasile2009} meta-heuristic, domain decomposition. GA?
+
 %-----------------------------------------------------------------------------------------------------------------------------------------------
 
 % Survey of methods
@@ -337,7 +346,7 @@ CAMTOS (Collocation And Multiple Shooting Trajectory Optimisation Software) was 
 
 Two SQP methods are then available within GESOP to solve the sub-problems. SLLSQP is a fairly generic SQP solver, and computes local optima in order $n^{3}$ time, where $n$ is the number of optimisable parameters. Consequently it is useful for scenarios with up to about 100 parameters. SNOPT \parencite[Sparse Nonlinear Optimizer, ][]{Gill1997} was developed at Stanford University and is a widely used BFGS implementation with a dense quasi-Newton Hessian approximation. It improves upon SLLSQP with a few modifications that exploit sparsity within the Jacobian matrix (by treating non-linear parameters as linear within a constrained region) thus allowing it to compute local optima in order $n^{2}$ time. However it cannot exploit sparsity of the Hessian matrix, and consequently is ill suited for large sparse optimisations such as low-thrust trajectories \parencite{Betts2002}. SNOPT is useful for problems of about 1000 parameters \parencite{ASTOS_guide}.
 
-For larger problems, ASTOS Solutions GmbH has licensed SOCS \parencite[Sparse Optimal Control Software, ][]{SOCS_guide}. SOCS is a combined transcription and SQP algorithm developed by The Boeing Company. Its direct collocation method further exploits sparsity, resulting in a computational time that increases with order $n$. SOCS has documented solutions for problems with over 500,000 parameters.
+For larger problems, ASTOS Solutions GmbH has licensed SOCS \parencite[Sparse Optimal Control Software, ][]{SOCS_guide}. SOCS is a combined transcription and SQP algorithm developed by The Boeing Company. Its direct collocation method further exploits sparsity, resulting in a computational time that increases with order $n$. SOCS has documented solutions for problems with over 500,000 parameters. The subroutine within SOCS that solves the nonlinear problems is called HDSNLP.
 
 CGA \parencite[Constrained Genetic Algorithm, ][]{ASTOS_guide} is an early implementation of a genetic algorithm developed by ASTOS Solutions GmbH, currently limited to integer parameters. It gives a better global search than the other implemented methods (all gradient based methods) but is not very computationally efficient, and was empirically shown to be ineffective for more than about 20 parameters, compared to the 40,000 required for the simplified \BW\ scenario.
 
@@ -345,9 +354,8 @@ CGA \parencite[Constrained Genetic Algorithm, ][]{ASTOS_guide} is an early imple
 %-------
 
 can perhaps use \cite{Well2001} for reference about GESOP, SQP, collocation, direct shooting
-\textcite{Enright1992} outline of calculus of variations (indirect) vs. NLP (direct)
-\cite{Hughes2004}
-\cite{Vasile2009}
+
+
 %From Wiki?:\enquote{As computation time has become cheap compared to manpower, direct sample methods have evolved as the optimization algorithms of choice. These algorithms may require orders of magnitude increases in the number of functional samples but exhibit robustness to non-smoothness in the trajectory code. Examples include: genetic algorithms\parencite{Hughes2004,Vasile2009}, stochastic sampling methods, and hill climbing algorithms. An overview of the state of the art in numerical methods is given in \textcite{Betts1998}.}
 \textcite{Nocedal2006} basic intro to optimisation
 
@@ -366,8 +374,6 @@ Within each of these shooting intervals, a finer mesh of control nodes may be sp
 Single shooting methods only use the major nodes (ignore control refinement mesh). SOCS is a single shooting method.
 
 Constraint violations are evaluated at each shooting node, although a finer mesh may be specified by the user. SOCS does not support additional constraint evaluations.
-
-HDSNLP within SOCS
 
 
 %-----------------------------------------------------------------------------------------------------------------------------------------------
@@ -392,7 +398,7 @@ In any optimisation the parameters should be scaled so that the optimisation alg
 
 Linear scaling is often sufficient, however if changes in a variable are very small relative to the average value of that variable the process of linear scaling on a computer will result in loss of precision due to truncation. The affine transformation \parencite{ASTOS_guide} uses expected upper and lower bounds for each optimisable parameter to scale it to within 1 and -1.
 
-\section{Summary} \label{sec:Optimisation-Summary}
+\section{Summary of optimisation problem} \label{sec:Optimisation-Summary}
 
 A variety of optimisation methods have been investigated, and a robust COTS software package that encapsulates several methods has been chosen to reduce development time. Unfortunately this package is limited to gradient based methods for complex multi-parameter scenarios, so rigourous analysis of initial conditions and basins of convergence will be required to ensure a global optimum is found. At present the package requires many simplifications for long duration low-thrust trajectories. Close cooperation will be required with the proprietors of the software to model the complexities and non-linearities involved with the \BW\ spacecraft.
  

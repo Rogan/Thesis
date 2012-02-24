@@ -2,13 +2,15 @@
 
 In any complex, concave optimisation problem the only way to be certain of an optimal solution is a brute force search. This is of course computationally prohibitive. Luckily, in the context of planetary missions it is not an operational requirement to find the optimal path, merely to find a good path. 
 
-
+% Findings
 \section{Summary of major findings}
 initial guess for trajectory perhaps not good. use velocity vector instead of tangent? This will maintain eccentricity, since lunar assist is best at \enquote{circularising} (lunar force will be applied at apoapsis, which will raise periapsis).
 Also, if we can focus thrust around periapsis this will generate more delta v according to Oberth effect. This will increase the apoapsis, allowing lunar assists to increase the periapsis.
 
+% Research
 \section{Conclusions of the research}
 
+% Additions to program
 \section{Additions to \BW\ program} \label{sec:BW1-additions}
 power surplus - use higher pulse frequency or additional thruster units - leads to higher approach velocity if orbital energy is used as termination condition, making rendezvous and strong capture quite difficult.
 
@@ -16,10 +18,12 @@ doesn't give a complete, final trajectory
 does give a procedure for determining a good trajectory once launch date is known
 does give an estimate for the transfer duration and fuel requirements
 
+% Additions to knowledge
 \section{Additions to low thrust trajectory optimisation} \label{sec:Optimisation-additions}
 
 high fidelity optimisation is possible using SOCS, just needs better processing - future support for multiple cores, parallel processing. SOCS is currently a direct shooting method - perhaps adapt it to multiple shooting
 
+% Future work
 \section{Future work} \label{sec:Future-work}
 Further applications of low thrust trajectory optimisation using SOCS and GESOP? IAC2011 paper
 try additional thrust profiles, for initial guess sensitivity (basins of convergence), montecarlo for trajectory sensitivity, and of course optimise the whole lot linked together - cruise phase should define descent
