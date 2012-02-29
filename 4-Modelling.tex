@@ -319,10 +319,12 @@ In an elliptical orbit, thrust (approximately) tangential to orbital radius is t
 Since these perturbing forces vary over the course of the trajectory, and are often quite computationally intensive to calculate, a plot of them all clearly demonstrates which forces need be included in the optimisation. Since many of these forces vary with a cyclical nature depending on the orbits of the satellite, the Moon and other bodies, the plot in \autoref{fig:Perturbing-forces} shows the upper limit of these forces. Jupiter's gravitational pull is almost negligible compared with the spacecraft's thrust, and the acceleration due to the Earth's $J_{2}$ spherical harmonic (representative of the total force due to Earth oblateness) is only significant for the first $10^{8}$ metres.
 
 \begin{figure}[h]
-\caption{Upper limit on perturbing forces over the lunar transfer.}
+\caption{Upper limit on perturbing forces between the Earth and the Moon.}
 \label{fig:Perturbing-forces}
 \centering
-\includegraphics[scale=0.4]{Images/relative_forces.png}
+%\includegraphics[scale=0.4]{Images/relative_forces.png}
+\def\svgwidth{\figurewidth}
+\input{Images/relative_forces.pdf_tex}
 \end{figure}
 
 %-----------------------------------------------------------------------------------------------------------------------------------------------
@@ -368,7 +370,7 @@ Since every orbit has a unique orbital speed associated with it, a common measur
 \end{equation}
 where $T\left(t\right)$ is the instantaneous thrust, and $m\left(t\right)$ is the instantaneous mass.
 
-Conversely, orbital transfers may be described by the typical change in velocity required. This is known as a delta-v budget. Launching to LEO requires a change of 7.8~kms$^{-1}$ and ascent to lunar orbit requires an additional 4.1~kms$^{-1}$ (this mission profile was used by Apollo), but typically an additional 1.5 to 2~kms$^{-1}$ is lost to atmospheric drag and gravity drag. Thrust vectoring adds further losses depending upon the angle of thrust. 
+Conversely, orbital transfers may be described by the typical change in velocity required. This is known as a delta-v budget. Launching to low Earth orbit (LEO) requires a change of 7.8~kms$^{-1}$, but typically an additional 1.5 to 2~kms$^{-1}$ is lost to atmospheric drag and gravity drag. Ascent from LEO to low lunar orbit (LLO) requires an additional 4.1~kms$^{-1}$ (this mission profile was used by Apollo). Thrust vectoring adds further losses depending upon the angle of thrust. 
 
 These gravitational, atmospheric and thrust vectoring losses can be calculated with similar integrals over the flight, shown in equation \eqref{eq:Delta-Vs},
 \begin{subequations} \label{eq:Delta-Vs}
@@ -390,7 +392,7 @@ where $D(t)$ is the instantaneous aerodynamic drag, $g$ is the local gravitation
 Little can be done within the scope of this project to reduce atmospheric drag and gravity drag, since these effects are strongest during launch. However, gravity drag is still present during orbit raising if the thrust line has any component parallel to the gravitational force; when this occurs, the thrust is fighting against gravity rather than increasing the velocity of the spacecraft (and providing delta-v). Similarly, thrust vectoring decreases effective delta-v because the thrust is changing the direction of the spacecraft, rather than increasing its speed. 
 % These parameters will be monitored throughout the optimisation, and if gravity drag is significant modifications will be made to improve the results, for example by relaxing the constraints on thrust angle.
  
-Delta-v forms a very important performance criterion. It is particularly important in tracking gravitational assists from the Moon, as velocity may be gained without expending delta-v in the form of thrust. Initial simulations at the Institut f\"{u}r Raumfahrtsystem determined an approximate benchmark of 3.5~kms$^{-1}$ \parencite{Roeser2006}. This includes an estimated 1.1~kms$^{-1}$ in phase 2 to ascend beyond the van Allen belts, 1.6~kms$^{-1}$ in phase 3 to cruise to near EML1, 0.5~kms$^{-1}$ to in phase 4 to be captured into a lunar orbit, and 0.4~kms$^{-1}$ in phase 5 to descend into the operating orbit.
+Delta-v forms a very important performance criterion. It is particularly important in tracking gravitational assists from the Moon, as velocity may be gained without expending delta-v in the form of thrust. Initial simulations at the Institut f\"{u}r Raumfahrtsystem determined an approximate benchmark of 3.5~kms$^{-1}$ for \BW\ \parencite{Roeser2006}. This includes an estimated 1.1~kms$^{-1}$ in phase 2 to ascend beyond the van Allen belts, 1.6~kms$^{-1}$ in phase 3 to cruise to near EML1, 0.5~kms$^{-1}$ to in phase 4 to be captured into a lunar orbit, and 0.4~kms$^{-1}$ in phase 5 to descend into the operating orbit.
 
 \subsection{Tsiolkovsky's rocket equation} \label{sec:Tsiolkovsky}
 
@@ -400,19 +402,14 @@ A well established equation, derived in the 19th century by Konstantin Tsiolkovs
 \end{equation}
 where $m_{0}$ represents the initial wet mass of the rocket (structural mass plus fuel), $m_{1}$ represents the final mass, $v_{e}$ is the effective exhaust velocity \parencite{Tsiolkovsky1903,Chobotov2002}. Tsiolkovsky's rocket equation \eqref{eq:Tsiolkovsky} is particularly relevant to low thrust missions because it shows that the most efficient way to achieve a fixed delta-v requirement such as an Earth escape orbit or lunar transfer orbit, is to increase the propellant exhaust velocity. Missions such as \BW\ maximise their delta-v by increasing propellant exhaust velocity at the expense of other design parameters, such as thrust.
 
-The exhaust velocity is directly proportional to the specific impulse, as shown by equation \eqref{eq:Exhaust_velocity},
-\begin{equation}\label{eq:Exhaust_velocity}
-v_{e}=I_{sp}g_{o}
-\end{equation}
-where $I_{sp}$ is the specific impulse (impulse, or change in momentum, gained per unit fuel). The SIMPLEX pulsed plasma thrusters developed at the Institut f\"{u}r Raumfahrtsysteme \parencite{Nawaz2008} provide an exhaust velocity of about 19000~ms$^{-1}$, resulting in the specific impulse of 1950~s stated in \autoref{tab:BW1-performance}. Assuming a dry mass of 150~kg, 75~kg of fuel should allow for a delta-v of 7.7~kms$^{-1}$, far more than is theoretically required for ascent from GTO to lunar orbit.
+The SIMPLEX pulsed plasma thrusters developed at the Institut f\"{u}r Raumfahrtsysteme \parencite{Nawaz2008} provide an exhaust velocity of about 19000~ms$^{-1}$, resulting in the specific impulse of 1950~s stated in \autoref{tab:BW1-performance}. Assuming a dry mass of 150~kg, 75~kg of fuel should allow for a delta-v of 7.7~kms$^{-1}$, far more than is theoretically required for ascent from GTO to lunar orbit.
 
-\begin{equation}
-\Delta v= c_{PPT}\ln\frac{m_4}{m_3}+c_{arcjet}\ln\frac{m_3}{m_2}+c_{PPT}\ln\frac{m_2}{m_1}+c_{arcjet}\ln\frac{m_1}{m_0}
-\end{equation}
+% \begin{equation}
+% \Delta v= c_{PPT}\ln\frac{m_4}{m_3}+c_{arcjet}\ln\frac{m_3}{m_2}+c_{PPT}\ln\frac{m_2}{m_1}+c_{arcjet}\ln\frac{m_1}{m_0}
+% \end{equation}
 
 % Comparison of delta Vs? Required vs. used?
 
 \section{Summary of orbital dynamics} 
-% A mission was proposed by Universit\"{a}t Stuttgart to launch a small 200~kg satellite named \BW. This satellite will use a very low-thrust electric propulsion system to accelerate outwards until a proposed rendezvous is made with the Moon.
 
-% This research project aims to find innovative methods to optimise the trajectory of \BW. Given the very low-thrust of its propulsion system, the intention is to judiciously regulate thrusting to adjust the orbital parameters such that the gravitational pull of the Moon contributes substantially to the transfer. Constraints on the thrusting profile result in a high degree of non-linearity throughout the optimisation process, requiring improvement in optimisation methods.
+Designing and optimising a low-thrust space trajectory requires a carefully selected, high fidelity model. To this end, reference times or \emph{epochs} were defined, followed by Earth-centred, Moon-centred and spacecraft-centred reference frames. The infrequently used \emph{equinoctial elements} were reproduced from literature as the best available representation of a slowly-changing orbit. The equations of motion derived from these equinoctial elements include a term for perturbing forces, such as 3rd body gravitational forces, gravitational oblateness of the Earth and the Moon, the force acting on the spacecraft due to solar wind, and the applied thrust. Finally, several key performance indicators were introduced, most notably the specific impulse and delta-v.

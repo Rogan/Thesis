@@ -287,72 +287,58 @@ After thruster power is also subtracted from generated power (see \autoref{sec:P
 
 \section{Orbital behaviour}
 
+Previous theoretical analysis and numerical studies have identified a number of phenomena related to orbital transfers. The theory behind gravitational assists and the Oberth effect is briefly presented here.
+
 \subsection{Gravitational assists} \label{sub:Grav-assist}
 
-Due to the low thrust of spacecraft \BW, it is expected that a substantial part of the orbit raising will be achieved by exploiting gravitational assists from the Moon. This technique has been well studied, although previous higher-thrust missions did not find it efficient to attempt more than one or two lunar resonances. \textcite{Kemble2006} explains that \enquote{It is possible to utilise lunar gravity to assist in the orbit raising prior to lunar encounter. This takes the form of a \emph{gravitational pumping} effect if the correct phase with respect to the Moon can be established}. He goes on to quantify that \enquote{A typical $\Delta V$ saving of 800~ms$^{-1}$ is obtained by use of lunar gravity assist}. Due to the extended duration of \BW's transit, more lunar resonances should be possible than in a \enquote{typical} scenario, so this should reduce the required delta-v for \BW's ascent from GTO to lunar orbit from 4.1~kms$^{-1}$ to less than 3.3~kms$^{-1}$.
+Due to the low thrust of spacecraft \BW, a substantial part of the orbit raising can be achieved by exploiting the gravitational pull of the Moon. This technique has been well studied, although previous higher-thrust missions did not find it efficient to attempt more than one or two lunar resonances. \textcite{Kemble2006} explains that \enquote{It is possible to utilise lunar gravity to assist in the orbit raising prior to lunar encounter. This takes the form of a \emph{gravitational pumping} effect if the correct phase with respect to the Moon can be established}. He goes on to quantify that \enquote{A typical $\Delta V$ saving of 800~ms$^{-1}$ is obtained by use of lunar gravity assist}. 
 
-Because lunar gravitational assists provide delta-v without fuel expenditure, they should be implicitly accounted for during optimisation. Preliminary results have already shown this to be the case, as seen in \autoref{fig:Lunar-resonance}. From an initial orbit of 180,000~km (semi-cis-lunar, representing the later stages of the transfer to highlight the lunar assist) the spacecraft takes two orbits to align its phase with the Moon, then receives a very apparent boost purely from the Moon's gravity.
+Because lunar gravitational assists provide delta-v without fuel expenditure, they should be implicitly accounted for during optimisation. Preliminary results did indicate this to be the case, as seen in \autoref{fig:Lunar-resonance}. From an initial orbit of 180,000~km (semi-cis-lunar, representing the later stages of the transfer to highlight the lunar assist) the spacecraft takes two orbits to align its phase with the Moon, then receives a very apparent boost purely from the Moon's gravity during the close passes seen in \autoref{fig:Lunar-resonance2}.
 
 \begin{figure}
-\caption{Preliminary optimisation showing a lunar resonance implicitly realised by the optimiser.}
+\caption{Trajectory of preliminary optimisation showing a lunar resonance implicitly realised by the optimiser.}
 \label{fig:Lunar-resonance}
 \centering
-%\includegraphics{}
+\def\svgwidth{\figurewidth}
+\input{Images/grav-assist.pdf_tex}
 \end{figure}
 
-\subsection{Oberth effect} \label{sub:Oberth}
-
-Regarding the thrust profile, it is well known that thrusting at particular points in the orbit are more efficient than others. \textcite{Kemble2006} once again explains, \enquote{Insertion of coast arcs allows the apogee raising input to be concentrated closer to perigee and hence increase the efficiency of the transfer (in terms of $\Delta V$ required)}. The reason for concentrating thrust near the perigee is known as the Oberth effect: over a period of thrusting, the specific orbital energy gained per unit delta-v exerted is equal to the instantaneous speed \parencite{Oberth1923}. Therefore thrusting is more efficient at high speed, which occurs at periapsis.
- 
-The resultant effect on the trajectory is that when variable thrust is implemented, the majority of the thrusting should occur near perigee; there should be an inverse relationship between thrust magnitude and orbital radius. 
-
 \begin{figure}
-\caption{Thrust profile during orbit raising.}
-\label{fig:Thrust_profile}
+\caption{Distance of spacecraft from Earth and Moon during preliminary optimisation showing a lunar resonance implicitly realised by the optimiser.}
+\label{fig:Lunar-resonance2}
 \centering
-%\includegraphics{Images/thrust-vs-time.jpg}
+\def\svgwidth{\figurewidth}
+\input{Images/grav-assist2.pdf_tex}
 \end{figure}
 
-Continuous thrust (tangential to the orbital radius) leads to circular trajectories because an eccentric starting trajectory spends more time at apoapsis than periapsis; hence more thrusting occurs at apoapsis than periapsis. As demonstrated by a Hohmann transfer, thrusting at apoapsis circularises the orbit.
-
-The cycling observed in the figure is due to the elliptical orbit; at apogee and perigee the spacecraft is travelling perpendicularly to its position vector, resulting in a pitch angle of zero. As it travels towards the Earth, it has negative pitch angle, and positive pitch as it travels away again.
- 
-\begin{figure}
-\caption{Pitch angle during the orbit raising.}
-\label{fig:BW1-Pitch}
-\centering
-%\includegraphics{Images/pitch-vs-time.jpg}
-\end{figure}
-
-As observed in \autoref{fig:Thrust_profile} the thrust of \BW\ is almost constant throughout this simplified scenario. Consequently the traditional parameter for aircraft performance, thrust-to-weight ratio, seen in \autoref{fig:BW1-T/W-ratio}, is dominated by the changing effective weight, as the spacecraft moves closer to the Earth and then away again.
-
-\begin{figure}
-\caption{\BW\ T/W ratio compared to radial position during the orbit raising. Plot exported from ASTOS.}
-\label{fig:BW1-T/W-ratio}\centering
-%\includegraphics{Images/thrust-to-weight-and-radius-vs-time.jpg}
-\end{figure}
-
-A spacecraft orbiting the Moon (in the same direction as the Moon orbits the Earth) undergoes a period of low velocity relative to the Earth every time it is on the Earthward side of the Moon. A spacecraft orbiting the Earth in a highly elliptical orbit undergoes a period of low velocity relative to the Earth when it reaches apoapsis, which is conveniently also the furthest point from the Earth, as shown in \autoref{fig:Apoapsis-and-periapsis}. Therefore the trajectory is expected to deliver the spacecraft at apoapsis to a \enquote{stationary point} in the intended lunar orbit, such that the Moon's gravity will then pull it into a steady lunar orbit, avoiding the need for a high-thrust capture maneuvre.
-
-\begin{figure}
-\caption{Apoapsis and periapsis.}
-\label{fig:Apoapsis-and-periapsis}
-\centering
-\includegraphics[scale=0.4]{Images/apsides.pdf}
-\end{figure}
-
-To maximise the gravitational effect of the Moon on the spacecraft, it should be phase-locked with respect to the Moon's orbit. However, this would require constantly adjusting the orbital line of apsides, which is a high delta-v maneuvre. Gravitational resonance is generally exploited by pointing the apoapsis towards the Moon's ascending node (to remove any dependence on inclination) and adjust the orbital period to resonate with the Moon (that is, the spacecraft completes two orbits to every lunar orbit, or three orbits to every lunar orbit, or five orbits to every two lunar orbits, etcetera). However, based on the unique thrusting constraints of \BW, an alternative optimal scenario may be to maintain the fastest part of the orbit (periapsis) within the Earth's shadow (eclipse), to minimise the amount of time that the craft cannot charge its batteries. In this scenario the spacecraft should also thrust as it passes through the eclipse since it cannot recharge during this time, and thrusting will help it to escape the eclipse as quickly as possible. It will also be interesting to see whether it is optimal to correct inclination, apoapsis or eccentricity first, or whether the optimal solution adjusts all of these parameters simultaneously.
- 
-% It is well known how to most efficiently control various aspects of an orbit by thrusting at fortuitous times: increasing apoapsis efficiently by thrusting near periapsis, inclination by thrusting out of the orbital plane at apoapsis, and so forth, as anticipated by \textcite{Dachwald2007} in their discussion of optimisation results. \citet{Gao2008} outlines a convenient mathematical model to generate continuous, smooth parameters describing thrust steering, which can easily be used in an optimisation engine.
+% It is well known how to most efficiently control various aspects of an orbit by thrusting at fortuitous times: increasing apoapsis efficiently by thrusting near periapsis, inclination by thrusting out of the orbital plane at apoapsis, and so forth, as anticipated by \textcite{Dachwald2007} in their discussion of optimisation results. \textcite{Gao2008} outlines a convenient mathematical model to generate continuous, smooth parameters describing thrust steering, which can easily be used in an optimisation engine.
 
 %\textcite{Edelbaum1964} gives an outline of some optimal low-thrust maneouvres (a, e, plane changes)
 % arg of periapsis most efficiently changed at low eccentricity, inclination at high eccentricity, RAAN constant, a at periapsis.
  
-% quantify stochastic & deterministic inputs, robustness
+\subsection{Oberth effect} \label{sub:Oberth}
 
+Regarding the thrust profile, it is well known that thrusting at particular points in the orbit are more efficient than others. \textcite{Kemble2006} once again explains, \enquote{Insertion of coast arcs allows the apogee raising input to be concentrated closer to perigee and hence increase the efficiency of the transfer (in terms of $\Delta V$ required)}. The reason for concentrating thrust near the perigee is known as the Oberth effect: over a period of thrusting, the specific orbital energy gained per unit delta-v exerted is equal to the instantaneous speed \parencite{Oberth1923}. Therefore thrusting is more efficient at high speed, which occurs at periapsis. The resultant effect on the trajectory is that when variable thrust is implemented, the majority of the thrusting should occur near perigee; there is an inverse relationship between optimal thrust magnitude and orbital radius. 
 
+Continuous thrust (tangential to the orbital radius) leads to circular trajectories because an eccentric starting trajectory spends more time at apoapsis than periapsis; hence more thrusting occurs at apoapsis than periapsis. As demonstrated by a Hohmann transfer, thrusting at apoapsis circularises the orbit.
 
-\cite{Estublier2007} SMART-1 facts and figures
+\begin{figure}
+\caption{Thrust to effective weight ratio during preliminary optimisation demonstrates the Oberth effect.}
+\label{fig:BW1-T/W-ratio}
+\centering
+\def\svgwidth{\figurewidth}
+\input{Images/oberth.pdf_tex}
+\end{figure}
 
+\subsection{Lunar capture} \label{sub:Capture}
+
+A spacecraft orbiting the Moon (in the same direction as the Moon orbits the Earth) undergoes a period of low velocity relative to the Earth every time it is on the Earthward side of the Moon. A spacecraft orbiting the Earth in a highly elliptical orbit undergoes a period of low velocity relative to the Earth when it reaches apoapsis, which is conveniently also the furthest point from the Earth, as shown in \autoref{fig:Apoapsis-and-periapsis}. Therefore the aim is to deliver the spacecraft at apoapsis to a \enquote{stationary point} in the intended lunar orbit, such that the Moon's gravity will then pull it into a steady lunar orbit, avoiding the need for a high-thrust capture maneuvre.
+
+To maximise the gravitational effect of the Moon on the spacecraft, it should be phase-locked with respect to the Moon's orbit. However, this would require constantly adjusting the orbital line of apsides, which is a high delta-v maneuvre. Gravitational resonance is generally exploited by pointing the apoapsis towards the Moon's ascending node (to remove any dependence on inclination) and adjust the orbital period to resonate with the Moon (that is, the spacecraft completes two orbits to every lunar orbit, or three orbits to every lunar orbit, or five orbits to every two lunar orbits, etcetera). However, based on the unique thrusting constraints of \BW, an alternative optimal scenario may be to maintain the fastest part of the orbit (periapsis) within the Earth's shadow (eclipse), to minimise the amount of time that the craft cannot charge its batteries. In this scenario the spacecraft should also thrust as it passes through the eclipse since it cannot recharge during this time, and thrusting will help it to escape the eclipse as quickly as possible. It will also be interesting to see whether it is optimal to correct inclination, apoapsis or eccentricity first, or whether the optimal solution adjusts all of these parameters simultaneously.
+ 
 
 \section{Summary of vehicle modelling} \label{sec:Summary-vehicle}
+
+This section presented an assortment of important issues uncovered while modelling and optimising the trajectory of \BW. First, modifications to the differential equations of motion were required due to the implementation of equi-angular grid points over the trajectory instead of equal-time grid points. Different techniques and models to discretise the thrust profile were discussed, and a number of recommendations were made for future revision of this work. 
+
+A discussion of the propulsion systems included performance modelling and potential improvements to the vehicle design. The models used for Earth and Moon shadow, power generation and consumption and degradation of the solar panels were then presented. Finally a number of important phenomena related to orbital mechanics that play a large role in the Earth-Moon transfer were explained, to aid in understanding the results presented in \autoref{cha:Results}.

@@ -1,0 +1,84 @@
+%% Creator: Inkscape 0.48.2, www.inkscape.org
+%% PDF/EPS/PS + LaTeX output extension by Johan Engelen, 2010
+%% Accompanies image file 'oberth.pdf' (pdf, eps, ps)
+%%
+%% To include the image in your LaTeX document, write
+%%   \input{<filename>.pdf_tex}
+%%  instead of
+%%   \includegraphics{<filename>.pdf}
+%% To scale the image, write
+%%   \def\svgwidth{<desired width>}
+%%   \input{<filename>.pdf_tex}
+%%  instead of
+%%   \includegraphics[width=<desired width>]{<filename>.pdf}
+%%
+%% Images with a different path to the parent latex file can
+%% be accessed with the `import' package (which may need to be
+%% installed) using
+%%   \usepackage{import}
+%% in the preamble, and then including the image with
+%%   \import{<path to file>}{<filename>.pdf_tex}
+%% Alternatively, one can specify
+%%   \graphicspath{{<path to file>/}}
+%% 
+%% For more information, please see info/svg-inkscape on CTAN:
+%%   http://tug.ctan.org/tex-archive/info/svg-inkscape
+%%
+\begingroup%
+  \makeatletter%
+  \providecommand\color[2][]{%
+    \errmessage{(Inkscape) Color is used for the text in Inkscape, but the package 'color.sty' is not loaded}%
+    \renewcommand\color[2][]{}%
+  }%
+  \providecommand\transparent[1]{%
+    \errmessage{(Inkscape) Transparency is used (non-zero) for the text in Inkscape, but the package 'transparent.sty' is not loaded}%
+    \renewcommand\transparent[1]{}%
+  }%
+  \providecommand\rotatebox[2]{#2}%
+  \ifx\svgwidth\undefined%
+    \setlength{\unitlength}{576.5bp}%
+    \ifx\svgscale\undefined%
+      \relax%
+    \else%
+      \setlength{\unitlength}{\unitlength * \real{\svgscale}}%
+    \fi%
+  \else%
+    \setlength{\unitlength}{\svgwidth}%
+  \fi%
+  \global\let\svgwidth\undefined%
+  \global\let\svgscale\undefined%
+  \makeatother%
+  \begin{picture}(1,0.7496392)%
+    \put(0,0){\includegraphics[width=\unitlength]{Images/oberth.pdf}}%
+    \put(0.12518092,0.05){\makebox(0,0)[lb]{\smash{0}}}%
+    \put(0.20265915,0.05){\makebox(0,0)[lb]{\smash{5}}}%
+    \put(0.27536860,0.05){\makebox(0,0)[lb]{\smash{10}}}%
+    \put(0.35284822,0.05){\makebox(0,0)[lb]{\smash{15}}}%
+    \put(0.43032611,0.05){\makebox(0,0)[lb]{\smash{20}}}%
+    \put(0.50794970,0.05){\makebox(0,0)[lb]{\smash{25}}}%
+    \put(0.58542931,0.05){\makebox(0,0)[lb]{\smash{30}}}%
+    \put(0.66290893,0.05){\makebox(0,0)[lb]{\smash{35}}}%
+    \put(0.74038682,0.05){\makebox(0,0)[lb]{\smash{40}}}%
+    \put(0.81786644,0.05){\makebox(0,0)[lb]{\smash{45}}}%
+    \put(0.89549003,0.05){\makebox(0,0)[lb]{\smash{50}}}%
+    \put(0.4,0.02){\makebox(0,0)[lb]{\smash{Mission time $t$ [days]}}}%
+    \put(0.08,0.07603469){\makebox(0,0)[lb]{\smash{0.0}}}%
+    \put(0.08,0.16334258){\makebox(0,0)[lb]{\smash{0.5}}}%
+    \put(0.08,0.25065048){\makebox(0,0)[lb]{\smash{1.0}}}%
+    \put(0.08,0.33796010){\makebox(0,0)[lb]{\smash{1.5}}}%
+    \put(0.08,0.42526800){\makebox(0,0)[lb]{\smash{2.0}}}%
+    \put(0.08,0.51257589){\makebox(0,0)[lb]{\smash{2.5}}}%
+    \put(0.08,0.59988552){\makebox(0,0)[lb]{\smash{3.0}}}%
+    \put(0.08,0.68704944){\makebox(0,0)[lb]{\smash{3.5}}}%
+    \put(0.06,0.1){\rotatebox{90}{\makebox(0,0)[lb]{\smash{Thrust to effective weight ratio [$\times10^{-4}$]}}}}%
+    \put(0.90994449,0.07603469){\makebox(0,0)[lb]{\smash{0.5}}}%
+    \put(0.90994449,0.16334258){\makebox(0,0)[lb]{\smash{1.0}}}%
+    \put(0.90994449,0.25065048){\makebox(0,0)[lb]{\smash{1.5}}}%
+    \put(0.90994449,0.33796010){\makebox(0,0)[lb]{\smash{2.0}}}%
+    \put(0.90994449,0.42526800){\makebox(0,0)[lb]{\smash{2.5}}}%
+    \put(0.90994449,0.51257589){\makebox(0,0)[lb]{\smash{3.0}}}%
+    \put(0.90994449,0.59988552){\makebox(0,0)[lb]{\smash{3.5}}}%
+    \put(0.90994449,0.68704944){\makebox(0,0)[lb]{\smash{4.0}}}%
+    \put(0.99,0.15){\rotatebox{90}{\makebox(0,0)[lb]{\smash{Distance from Earth [$\times10^8$~m]}}}}%
+  \end{picture}%
+\endgroup%
