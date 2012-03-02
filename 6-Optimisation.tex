@@ -109,8 +109,7 @@ As mentioned in Section \ref{sec:Objective-function}, candidate states include a
 In the case of orbital trajectories, the initial and final states are orbits. For preliminary simulations, a GTO with periapsis 175~km, apoapsis 35975~km, and inclination 21.7\degrees\ was used, as the approximate \BW\ parking orbit after launch via GSLV \parencite{GSLV}. This corresponds to Keplerian elements as shown in \autoref{tab:Phase-2-constraints}. The argument of periapsis, $\omega$, and right ascension of the ascending node, $\Omega$, are dependent on the launch date and time, which as previously stated remains unknown. For the purposes of optimisation these were initialised at 180\degrees\ and 0\degrees\ respectively, but optimisations were performed with other values proved to have very little effect on the results. True anomaly, $\nu$, is an arbitrary starting point within the defined orbit, and so was initialised to 0\degrees\ (periapsis).
 
 \begin{table}[h]
-\caption{Keplerian elements for the initial orbit of \BW\ trajectory optimisation (start of ascent phase).}
-\label{tab:Phase-2-constraints}
+\caption{Keplerian elements for the initial orbit of \BW\ trajectory optimisation (start of ascent phase).} \label{tab:Phase-2-constraints}
 \centering
 \begin{tabular} {ccc}\toprule
 Parameter & & Value\\\midrule
@@ -123,8 +122,7 @@ Inclination, $i$ (rad) &=& 0.379\\\bottomrule
 Since the purpose of this phase is to escape the van Allen Belts, the final boundary condition is defined as the lowest point in the orbit (the periapsis) exceeding the outer limits of the van Allen Belts. \textcite{Letterio_thesis} used an orbital radius of 22,668~km from the centre of the Earth as a good estimate for this point. This termination condition forms the initial condition of the next phase. A very important additional constraint is that all states must be smooth and continuous over the phase transition.
 
 \begin{table}[h]
-\caption{Phase 2 to 3 transition constraints.}
-\label{tab:Phase-2-3-constraints}
+\caption{Phase 2 to 3 transition constraints.} \label{tab:Phase-2-3-constraints}
 \centering
 \begin{tabular} {ccc}\toprule
 Parameter & & Value\\\midrule
@@ -132,7 +130,7 @@ Periapsis, $r_{peri}$ (m) &$\ge$& $2.2668\times 10^7$\\\bottomrule
 \end{tabular}
 \end{table}
 
-The original proposal \parencite{Roeser2006} suggested that the subsequent cruise phase would terminate on reaching the sphere of influence of the Moon, as defined in \autoref{sub:SOI}. There are two possibilities to determine this transition: either a distance from the lunar centre, or alternately if the forward propagation is required to make no reference to the Moon the SOI can be assumed to be an equivalent distance from the Earth, in which case establishing lunar SOI requires an additional constraint that the phase difference between the Moon and the spacecraft is close to zero (lunar phase difference is primarily a function of when the transfer starts). 
+The original proposal \parencite{Roeser2006} suggested that the subsequent cruise phase would terminate on reaching the sphere of influence of the Moon, as defined in \autoref{sec:SOI}. There are two possibilities to determine this transition: either a distance from the lunar centre, or alternately if the forward propagation is required to make no reference to the Moon the SOI can be assumed to be an equivalent distance from the Earth, in which case establishing lunar SOI requires an additional constraint that the phase difference between the Moon and the spacecraft is close to zero (lunar phase difference is primarily a function of when the transfer starts). 
 
 There are a number of different parameters that measure the proximity of the satellite from the lunar sphere of influence. First is the basic distance of the satellite from the central body, $r$. However, this value exhibits large oscillations as the satellite follows an elliptical orbit. There are several orbital parameters proportional to the characteristic energy of an orbit which rise smoothly under thrust, such as radius of periapsis $r_{peri}$, semimajor axis $a$, semilatus rectum $p$ and of course the orbital energy itself, $\epsilon$. These parameters are usually interchangeable as they have very similar definitions, proportional to semimajor axis and/or eccentricity.
 \begin{gather}
@@ -144,8 +142,7 @@ p = a(1-e^2)\\
 However, the eccentricity can undergo rapid changes during lunar assists. Consequently, the periapsis and semilatus rectum both reveal sudden jumps. Furthermore, the semimajor axis changes exhibits a discontinuity when an orbit transitions from elliptical to hyperbolic (that is, if the spacecraft achieves escape velocity). Therefore the orbital energy, $\epsilon$, was chosen as the phase constraint.
 
 \begin{table}[h]
-\caption{Phase 3 to 4 transition constraints.}
-\label{tab:Phase-3-4-constraints}
+\caption{Phase 3 to 4 transition constraints.} \label{tab:Phase-3-4-constraints}
 \centering
 \begin{tabular} {ccc}\toprule
 Parameter & & Value\\\midrule
@@ -159,8 +156,7 @@ Earth orbital energy, $\epsilon_{ECI}$ (m$^2$s$^{-2}$) &$\le$& 0.0 \\\bottomrule
 Once again defined by \citeauthor{Roeser2006}, the subsequent capture phase would then terminate when the spacecraft is less than 1400 km above the lunar surface.
 
 \begin{table}[h]
-\caption{Phase 4 to 5 transition constraints.}
-\label{tab:Phase-4-5-constraints}
+\caption{Phase 4 to 5 transition constraints.} \label{tab:Phase-4-5-constraints}
 \centering
 \begin{tabular} {ccc}\toprule
 Parameter && Value\\\midrule
@@ -171,8 +167,7 @@ Lunar altitude, $r_{LCI}$ (m) &$\le$& $1.4\times 10^6$\\\bottomrule
 The final state is lunar orbit at an altitude of 100~km above the surface of the Moon. A polar or near-polar orbit is desired for maximum surface coverage.
 
 \begin{table}[h]
-\caption{Keplerian elements for the final orbit of \BW\ trajectory optimisation (end of descent phase).}
-\label{tab:Phase-5-constraints}
+\caption{Keplerian elements for the final orbit of \BW\ trajectory optimisation (end of descent phase).} \label{tab:Phase-5-constraints}
 \centering
 \begin{tabular} {ccc}\toprule
 Parameter && Value\\\midrule
@@ -299,6 +294,9 @@ Various schemes exist to calculate the step size, $\alpha$. These algorithms, co
 
 % John von Neumann developed an alternative to gradient methods, known as the \emph{interior point method}...
 
+%can perhaps use \cite{Well2001} for reference about GESOP, SQP, collocation, direct shooting
+%\textcite{Nocedal2006} basic intro to optimisation
+
 % Need comment on sparsity 
 
 % Direct methods
@@ -306,10 +304,7 @@ Various schemes exist to calculate the step size, $\alpha$. These algorithms, co
 
 Direct methods, in comparison to indirect methods, do not try to determine additional information from the objective function. They simply evaluate the objective function at a number of points, and then adjust the search space towards the best solution found. Consequently direct methods cannot be analytical. %However, the resulting direct numerical methods rely on the same principles as indirect numerical methods, so the general optimisation scheme presented in equation \eqref{eq:NLP} is still valid. 
 
-There are many different techniques to determine which solutions to evaluate.
-
-Dynamic programming is a technique particularly used in financial programming and management science, with the aim of finding the path of least cost in a discrete system by evaluating each step backwards from the goal using the recursive Bellman equations. As such it is best suited to heavily discretised states and paths between states, and consequently a very limited number of controls.
-% This technique has been expanded to continuous time problems using the Hamilton-Jacobi-Bellman equations. 
+There are many different techniques to determine which solutions to evaluate. Dynamic programming is a technique particularly used in financial programming and management science, with the aim of finding the path of least cost in a discrete system by evaluating each step backwards from the goal using the recursive Bellman equations. As such it is best suited to heavily discretised states and paths between states, and consequently a very limited number of controls. This technique has been expanded to solve continuous time problems using the Hamilton-Jacobi-Bellman equations. 
 
 Genetic algorithms avoid local minima by performing random mutations. In theory this will find the global optimum as the number of mutations increases; in other words, as this technique approaches a brute force search.
 
@@ -332,6 +327,16 @@ More robust, tolerates stiffness and caverns better than indirect. Often describ
 
 \cite{Vasile2009} meta-heuristic, domain decomposition. GA?
 
+
+\cite{Yam2011} attempts global search using basin hopping and simulated annealing, each hybridized with a local search algorithm. Has to approximate the low thrust maneouvre as a series of impulsive maneouvers.
+cartesian state
+theoretical nuclear electric mission to Jupiter, 2.26~N, 6000~s, 20000~kg with gravitational swing-bys.
+another one to Mercury, 1300~kg, 0.34~N and 3200~s.
+
+
+homotopy/embedding/continuation methods: optimise a simplified case (two body problem), then use that solution as the initial guess for a more sophisticated case, etc.
+
+
 %-----------------------------------------------------------------------------------------------------------------------------------------------
 
 % Survey of methods
@@ -351,31 +356,6 @@ For larger problems, ASTOS Solutions GmbH has licensed SOCS \parencite[Sparse Op
 CGA \parencite[Constrained Genetic Algorithm, ][]{ASTOS_guide} is an early implementation of a genetic algorithm developed by ASTOS Solutions GmbH, currently limited to integer parameters. It gives a better global search than the other implemented methods (all gradient based methods) but is not very computationally efficient, and was empirically shown to be ineffective for more than about 20 parameters, compared to the 40,000 required for the simplified \BW\ scenario.
 
 
-%-------
-
-can perhaps use \cite{Well2001} for reference about GESOP, SQP, collocation, direct shooting
-
-
-%From Wiki?:\enquote{As computation time has become cheap compared to manpower, direct sample methods have evolved as the optimization algorithms of choice. These algorithms may require orders of magnitude increases in the number of functional samples but exhibit robustness to non-smoothness in the trajectory code. Examples include: genetic algorithms\parencite{Hughes2004,Vasile2009}, stochastic sampling methods, and hill climbing algorithms. An overview of the state of the art in numerical methods is given in \textcite{Betts1998}.}
-\textcite{Nocedal2006} basic intro to optimisation
-
-
-% PARAMETERISATION
-
-% Transcription
-\subsubsection{Transcription}
-
-GESOP transcribes each problem into sub-problems
-
-However, with long phases requiring many thousands of control nodes, the size of the problem becomes huge (typically hundreds of thousands of parameters). 
-
-Within each of these shooting intervals, a finer mesh of control nodes may be specified. The state and control profile are approximated over each of these sub-intervals as a piecewise polynomial function. Thus, with enough control nodes, the state and control profiles appear almost continuously variable.
-
-Single shooting methods only use the major nodes (ignore control refinement mesh). SOCS is a single shooting method.
-
-Constraint violations are evaluated at each shooting node, although a finer mesh may be specified by the user. SOCS does not support additional constraint evaluations.
-
-
 %-----------------------------------------------------------------------------------------------------------------------------------------------
 
 % Numerical considerations
@@ -387,9 +367,9 @@ Constraint violations are evaluated at each shooting node, although a finer mesh
 % Integration error
 \subsection{Integration error} \label{sub:Integration-error}
 
-The differential equations presented in equation \eqref{eq:state-updates} were integrated in MATLAB over a sufficient timespan to allow the craft to reach the Moon. An absolute error of $10^{-6}$ was allowed within each orbital element ($p$ metres, $f$, $g$, $h$, $k$ and $L$ dimensionless), and a relative error of $10^{-9}$ ($10^{-7}$\%). Since the longitude is continually growing (not bound within 0º to 360º) yet the useful information within this parameter (the position of the spacecraft within 0º to 360º) is not increasing, relative error must be severely limited. Continual thrust allows \BW\ to obtain lunar orbit in about 100 rotations, corresponding to a longitude of 36000\degrees. The relative error in the spacecraft's position at a radius of 360000~km is therefore 12.96~km, which should be sufficiently small to allow lunar insertion (for initial simulation, at least). MATLAB uses the larger of the two tolerances, so at small longitudes (the start of the simulation) absolute tolerance is dominant, minimising unnecessary computational effort.
+The differential equations presented in equation \eqref{eq:state-updates} were integrated in MATLAB over a sufficient timespan to allow the craft to reach the Moon. An absolute error of $10^{-6}$ was allowed within each orbital element ($p$ metres, $f$, $g$, $h$, $k$ and $L$ dimensionless), and a relative error of $10^{-9}$ ($10^{-7}$\%). Since the longitude is continually growing (not bound within 0º to 360º) yet the useful information within this parameter (the position of the spacecraft within 0º to 360º) is not increasing, relative error must be severely limited. Continual thrust allows \BW\ to achieve lunar insertion in about 100 rotations, corresponding to a longitude of 36000\degrees. The relative error in the spacecraft's position at a radius of 360000~km is therefore 12.96~km, which should be sufficiently small to allow lunar insertion (for initial simulation, at least). MATLAB uses the larger of the two tolerances, so at small longitudes (the start of the simulation) absolute tolerance is dominant, minimising unnecessary computational effort.
 
-As outlined in \textcite{Milani1987}, using a simple rule of thumb a limit on the ratio of simulation timespan to stepsize based on error accumulation can be determined. If the error at each step is $\epsilon$ and the number of steps is $N$, then $N^{2}\epsilon$ should remain less than 1. With a relative error of $10^{-9}$ the number of steps should be limited to 31,500. If more timesteps are needed the relative error may be reduced further, limited only by machine accuracy (in fact, many previous simulations including \citeauthor{Milani1987} appear to have assumed machine accuracy). Using double precision floating point variables according to IEEE standard 754 has a mantissa of 52 bits. This corresponds to a relative machine accuracy $\epsilon=2^{-52}\approx2.2\times10^{-16}$.
+As outlined in \textcite{Milani1987}, using a simple rule of thumb a limit on the ratio of simulation timespan to stepsize based on error accumulation can be determined. If the error at each step is $\epsilon$ and the number of steps is $N$, then $N^{2}\epsilon$ should remain less than 1. With a relative error of $10^{-9}$ the number of steps should be limited to 31,500. If more timesteps are needed the relative error may be reduced further, limited only by machine accuracy (in fact, many previous simulations including \citeauthor{Milani1987} appear to have assumed machine accuracy). According to IEEE standard 754, double precision floating point variables have a mantissa of 52 bits. This corresponds to a relative machine accuracy $\epsilon=2^{-52}\approx2.2\times10^{-16}$.
 
 % Scaling
 \subsection{Scaling} \label{sub:Scaling}

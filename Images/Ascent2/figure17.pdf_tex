@@ -66,7 +66,7 @@
     \put(0.12,0.485){\makebox(0,0)[lb]{\smash{1.8}}}%
     \put(0.12,0.56){\makebox(0,0)[lb]{\smash{2.0}}}%
     \put(0.12,0.63){\makebox(0,0)[lb]{\smash{2.2}}}%
-    \put(0.22087285,0.71234484){\makebox(0,0)[lb]{\smash{$\times10^7$}}}%
-    \put(0.10,0.26770859){\rotatebox{90}{\makebox(0,0)[lb]{\smash{Periapsis radius [m]}}}}%
+    \put(0.22087285,0.71234484){\makebox(0,0)[lb]{\smash{}}}%
+    \put(0.10,0.2){\rotatebox{90}{\makebox(0,0)[lb]{\smash{Periapsis radius [$\times10^7$~m]}}}}%
   \end{picture}%
 \endgroup%

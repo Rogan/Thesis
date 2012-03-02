@@ -68,8 +68,8 @@
     \put(0.13,0.52153859){\makebox(0,0)[lb]{\smash{1.5}}}%
     \put(0.13,0.59988552){\makebox(0,0)[lb]{\smash{2.0}}}%
     \put(0.13,0.67837641){\makebox(0,0)[lb]{\smash{2.5}}}%
-    \put(0.24443539,0.71408014){\makebox(0,0)[lb]{\smash{$\times10^6$}}}%
-    \put(0.10,0.23){\rotatebox{90}{\makebox(0,0)[lb]{\smash{Orbital energy $\epsilon$ [m$^2$s$^{-2}$]}}}}%
+    \put(0.24443539,0.71408014){\makebox(0,0)[lb]{\smash{}}}%
+    \put(0.10,0.17){\rotatebox{90}{\makebox(0,0)[lb]{\smash{Orbital energy $\epsilon$ [$\times10^6$~m$^2$s$^{-2}$]}}}}%
     \put(0.72940156,0.66637814){\makebox(0,0)[lb]{\smash{\tiny{From Earth}}}}%
     \put(0.72940156,0.64787511){\makebox(0,0)[lb]{\smash{\tiny{From Moon}}}}%
   \end{picture}%

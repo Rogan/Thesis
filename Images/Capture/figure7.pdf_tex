@@ -53,17 +53,13 @@
     \put(0.10118508,0.56750564){\makebox(0,0)[lb]{\smash{−1}}}%
     \put(0.11332732,0.62662619){\makebox(0,0)[lb]{\smash{0}}}%
     \put(0.11332732,0.68574848){\makebox(0,0)[lb]{\smash{1}}}%
-    \put(0.0861523,0.61433998){\rotatebox{90}{\makebox(0,0)[lb]{\smash{[}}}}%
-    \put(0.0861523,0.62214571){\rotatebox{90}{\makebox(0,0)[lb]{\smash{m}}}}%
-    \put(0.0861523,0.64556288){\rotatebox{90}{\makebox(0,0)[lb]{\smash{]}}}}%
-    \put(0.87467476,0.67129228){\makebox(0,0)[lb]{\smash{a}}}%
+    \put(0.0861523,0.61433998){\rotatebox{90}{\makebox(0,0)[lb]{\smash{[m]}}}}%
+    \put(0.87467476,0.67129228){\makebox(0,0)[lb]{\smash{$a$}}}%
     \put(0.10118508,0.40329575){\makebox(0,0)[lb]{\smash{−1}}}%
     \put(0.11332732,0.46241804){\makebox(0,0)[lb]{\smash{0}}}%
     \put(0.11332732,0.52153859){\makebox(0,0)[lb]{\smash{1}}}%
-    \put(0.0861523,0.45157676){\rotatebox{90}{\makebox(0,0)[lb]{\smash{[}}}}%
-    \put(0.0861523,0.45938248){\rotatebox{90}{\makebox(0,0)[lb]{\smash{−}}}}%
-    \put(0.0861523,0.48019775){\rotatebox{90}{\makebox(0,0)[lb]{\smash{]}}}}%
-    \put(0.87597572,0.50708413){\makebox(0,0)[lb]{\smash{e}}}%
+    \put(0.0861523,0.45157676){\rotatebox{90}{\makebox(0,0)[lb]{\smash{[-]}}}}%
+    \put(0.87597572,0.50708413){\makebox(0,0)[lb]{\smash{$e$}}}%
     \put(0.15177797,0.22246314){\makebox(0,0)[lb]{\smash{1684}}}%
     \put(0.23793062,0.22246314){\makebox(0,0)[lb]{\smash{1686}}}%
     \put(0.32408153,0.22246314){\makebox(0,0)[lb]{\smash{1688}}}%
@@ -76,12 +72,10 @@
     \put(0.10118508,0.2390876){\makebox(0,0)[lb]{\smash{−1}}}%
     \put(0.11332732,0.29820815){\makebox(0,0)[lb]{\smash{0}}}%
     \put(0.11332732,0.35732871){\makebox(0,0)[lb]{\smash{1}}}%
-    \put(0.0861523,0.27695924){\rotatebox{90}{\makebox(0,0)[lb]{\smash{[}}}}%
-    \put(0.0861523,0.28476496){\rotatebox{90}{\makebox(0,0)[lb]{\smash{rad}}}}%
-    \put(0.0861523,0.32581752){\rotatebox{90}{\makebox(0,0)[lb]{\smash{]}}}}%
-    \put(0.8699046,0.33940503){\makebox(0,0)[lb]{\smash{i}}}%
-    \put(0.8699046,0.32610581){\makebox(0,0)[lb]{\smash{ω}}}%
-    \put(0.8699046,0.30774848){\makebox(0,0)[lb]{\smash{Ω}}}%
+    \put(0.0861523,0.27695924){\rotatebox{90}{\makebox(0,0)[lb]{\smash{[rad]}}}}%
+    \put(0.8699046,0.33940503){\makebox(0,0)[lb]{\smash{$i$}}}%
+    \put(0.8699046,0.32610581){\makebox(0,0)[lb]{\smash{$\omega$}}}%
+    \put(0.8699046,0.30774848){\makebox(0,0)[lb]{\smash{$\Omega$}}}%
     \put(0.15177797,0.05810928){\makebox(0,0)[lb]{\smash{1684}}}%
     \put(0.23793062,0.05810928){\makebox(0,0)[lb]{\smash{1686}}}%
     \put(0.32408153,0.05810928){\makebox(0,0)[lb]{\smash{1688}}}%
@@ -94,14 +88,8 @@
     \put(0.10118508,0.07473374){\makebox(0,0)[lb]{\smash{−1}}}%
     \put(0.11332732,0.13399827){\makebox(0,0)[lb]{\smash{0}}}%
     \put(0.11332732,0.19312056){\makebox(0,0)[lb]{\smash{1}}}%
-    \put(0.0861523,0.11274935){\rotatebox{90}{\makebox(0,0)[lb]{\smash{[}}}}%
-    \put(0.0861523,0.12055507){\rotatebox{90}{\makebox(0,0)[lb]{\smash{rad}}}}%
-    \put(0.0861523,0.16160763){\rotatebox{90}{\makebox(0,0)[lb]{\smash{]}}}}%
-    \put(0.38912923,0.02948829){\makebox(0,0)[lb]{\smash{Missiontime}}}%
-    \put(0.55073686,0.02948829){\makebox(0,0)[lb]{\smash{t}}}%
-    \put(0.57039549,0.02948829){\makebox(0,0)[lb]{\smash{[}}}%
-    \put(0.57820121,0.02948829){\makebox(0,0)[lb]{\smash{days}}}%
-    \put(0.6338536,0.02948829){\makebox(0,0)[lb]{\smash{]}}}%
-    \put(0.87351778,0.17866435){\makebox(0,0)[lb]{\smash{ν}}}%
+    \put(0.0861523,0.11274935){\rotatebox{90}{\makebox(0,0)[lb]{\smash{[rad]}}}}%
+    \put(0.38912923,0.02948829){\makebox(0,0)[lb]{\smash{Mission time $t$ [days]}}}%
+    \put(0.87351778,0.17866435){\makebox(0,0)[lb]{\smash{$\nu$}}}%
   \end{picture}%
 \endgroup%

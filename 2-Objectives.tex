@@ -8,8 +8,7 @@ This project also provides a rare opportunity to actually test a low-thrust traj
 Furthermore, there are a number of very unique constraints on \BW. The thrusters produce substantially less thrust than modelled in most previous studies, resulting in a much tighter range of possible trajectories. The craft used in this program is also very limited by onboard power storage. This is yet another practical engineering issue barely considered in existing literature. Every few hours the craft must rotate to point its solar panels towards the Sun, and recharge its batteries. Once fully charged, it then rotates back to continue thrust vectoring for guidance control. Consequently the optimisation model must allow for variable thrust, including the ability to constrain thrust magnitude (to zero) at certain times. Developing a method to optimise intermittent thrust profiles like this will ensure the theoretical research of trajectory optimisation is applicable to real spacecraft.
 
 \begin{figure}
-\caption{A simplified trajectory for demonstration purposes early in the project.}
-\label{fig:Early-trajectory}
+\caption{A simplified trajectory for demonstration purposes early in the project.} \label{fig:Early-trajectory}
 \centering
 \includegraphics[width=\textwidth]{Images/BW1_Transfer.png}
 \end{figure}

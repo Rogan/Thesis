@@ -51,7 +51,7 @@
   \begin{picture}(1,0.75028993)%
     \put(0,0){\includegraphics[width=\unitlength]{Images/Ascent/figure11.pdf}}%
     \put(0.14916111,0.05){\makebox(0,0)[lb]{\smash{-140}}}%
-    \put(0.2627309,0.05){\makebox(0,0)[lb]{\smash{-135}}}%
+    \put(0.26273090,0.05){\makebox(0,0)[lb]{\smash{-135}}}%
     \put(0.37630208,0.05){\makebox(0,0)[lb]{\smash{-130}}}%
     \put(0.48987326,0.05){\makebox(0,0)[lb]{\smash{-125}}}%
     \put(0.60344271,0.05){\makebox(0,0)[lb]{\smash{-120}}}%
@@ -64,8 +64,8 @@
     \put(0.14,0.50159166){\makebox(0,0)[lb]{\smash{4}}}%
     \put(0.14,0.58998923){\makebox(0,0)[lb]{\smash{5}}}%
     \put(0.14,0.67838506){\makebox(0,0)[lb]{\smash{6}}}%
-    \put(0.2064528,0.71252881){\makebox(0,0)[lb]{\smash{$\times10^7$}}}%
-    \put(0.12,0.23741284){\rotatebox{90}{\makebox(0,0)[lb]{\smash{Orbital energy $\epsilon$ [m$^2$s$^{-2}$]}}}}%
+    \put(0.2064528,0.71252881){\makebox(0,0)[lb]{\smash{}}}%
+    \put(0.12,0.2){\rotatebox{90}{\makebox(0,0)[lb]{\smash{Orbital energy $\epsilon$ [$\times10^7$~m$^2$s$^{-2}$]}}}}%
     \put(0.41145833,0.02){\makebox(0,0)[lb]{\smash{Mission time $t$ [days]}}}%
     \put(0.75607639,0.66941631){\makebox(0,0)[lb]{\smash{\tiny{From Earth}}}}%
     \put(0.75607639,0.65335729){\makebox(0,0)[lb]{\smash{\tiny{From Moon}}}}%

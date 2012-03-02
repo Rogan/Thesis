@@ -59,7 +59,7 @@
     \put(0.68198959,0.05){\makebox(0,0)[lb]{\smash{1.0}}}%
     \put(0.75845620,0.05){\makebox(0,0)[lb]{\smash{1.5}}}%
     \put(0.85226886,0.05){\makebox(0,0)[lb]{\smash{2.0}}}%
-    \put(0.89707997,0.03743903){\makebox(0,0)[lb]{\smash{$\times10^6$}}}%
+    \put(0.89707997,0.03){\makebox(0,0)[lb]{\smash{$\times10^6$~m}}}%
     \put(0.07,0.12474761){\makebox(0,0)[lb]{\smash{-1.5}}}%
     \put(0.07,0.21003296){\makebox(0,0)[lb]{\smash{-1.0}}}%
     \put(0.07,0.29517259){\makebox(0,0)[lb]{\smash{-0.5}}}%
@@ -67,6 +67,6 @@
     \put(0.08,0.46545360){\makebox(0,0)[lb]{\smash{0.5}}}%
     \put(0.08,0.55059324){\makebox(0,0)[lb]{\smash{1.0}}}%
     \put(0.08,0.63587858){\makebox(0,0)[lb]{\smash{1.5}}}%
-    \put(0.16941336,0.71408014){\makebox(0,0)[lb]{\smash{$\times10^6$}}}%
+    \put(0.16941336,0.71408014){\makebox(0,0)[lb]{\smash{$\times10^6$~m}}}%
   \end{picture}%
 \endgroup%

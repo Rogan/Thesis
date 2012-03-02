@@ -53,8 +53,8 @@
     \put(0.09,0.57357676){\makebox(0,0)[lb]{\smash{-4}}}%
     \put(0.09,0.62532524){\makebox(0,0)[lb]{\smash{-2}}}%
     \put(0.10,0.67707546){\makebox(0,0)[lb]{\smash{0}}}%
-    \put(0.17982099,0.71234553){\makebox(0,0)[lb]{\smash{$\times10^{11}$}}}%
-    \put(0.06,0.59280139){\rotatebox{90}{\makebox(0,0)[lb]{\smash{[m]}}}}%
+    \put(0.17982099,0.71234553){\makebox(0,0)[lb]{\smash{}}}%
+    \put(0.06,0.55){\rotatebox{90}{\makebox(0,0)[lb]{\smash{[$\times10^{11}$~m]}}}}%
     \put(0.87467476,0.67129228){\makebox(0,0)[lb]{\smash{\tiny{$a$}}}}%
     \put(0.07,0.35082394){\makebox(0,0)[lb]{\smash{200}}}%
     \put(0.07,0.40127320){\makebox(0,0)[lb]{\smash{400}}}%
