@@ -2,46 +2,6 @@
 
 
 
-\enquote{While the lunar orbit in DE 421 is close to that in DE 418, it is a major improvement over the widely distributed DE 405 (Standish 1998). For DE 405 the lunar orbit was not fit in a way consistent with the other planets}\cite{DE421}.
-
-Ephemeris Time, used by the \textcite{NAIF2010}. Number of seconds since J2000 epoch.
-
-
-ITRF - international terrestrial reference frame \url{http://itrf.ensg.ign.fr/} for oblateness
-
-Lunar reference frames \url{http://naif.jpl.nasa.gov/naif/lunar_kernels.txt} \textcite{LCF}.
-
-third body forces from Jupiter barycenter
-
-The geographic parameters of satellite radius $r$, longitude $\lambda$ and latitude $\phi$ are calculated by converting the ECI frame to a body-fixed frame. The conversion is provided by the International Earth Rotation Service \parencite{Petit2010}.
-
-Define J2000 frame and epoch
-
-The IERS Celestial Reference Frame (ICRF) is offset from the J2000 reference frame (equivalent to EME 2000) by a small rotation:  the J2000 pole offset magnitude is about 18 milliarcseconds (mas) and the equinox offset magnitude is approximately 78 milliarcseconds (see [3]). \url{http://naif.jpl.nasa.gov/pub/naif/GRAIL/kernels/fk/moon_080317.tf}
-
-The ITRF93 high accuracy Earth rotation model takes into account:
-\begin{itemize}
-\item Precession: 1976 IAU model due to Lieske.
-\item  Nutation: 1980 IAU model, with IERS corrections due to Herring et al.
-\item  True sidereal time using accurate values of TAI-UT1
-\item  Polar motion
-\end{itemize}
-
-
-
-backwards propagation allows optimisation of mass - once final dry mass is known, can propagate backwards to determine how much wet mass is required.
-
-
-
-\section{SOCS output}
-No DOF : number of parameters minus active constraints. Approx 50,000 for Cruise phase
-Cond KKT system: condition number of Hessian matrix of Lagrangian, from Newton's method: $A\vec{x}=\vec{b}$ where $A$ is the Hessian, $\vec{x}$ is the system and $\vec{b}$ represents the perturbations. A high condition number means the system is highly sensitive to small changes in the perturbation vector. Approx 1e11
-
-SOCS uses BFGS (Broyden-Fletcher-Goldfarb-Schanno) quasi-Netwon method to approximate Hessian .
-
-Cruise with NASA libraries: 200000000 doubles and 80000000 words
-1e-4 opt tolerance, 1e-5 constraint tolerance, 2e-5 ODE tolerance
-
 
 
 tangential thrusting is optimal to raise periapsis
@@ -52,19 +12,6 @@ thrust in velocity vector to increase semimajor axis
 
 
 
-% Lunar capture
-Even with capture phases provided by arcjet, there is very little thrust available to perform lunar insertion. When simulating the transfer this problem is compounded by the fact that lunar insertion must be predicted very accurately, as simulating a lunar orbit in an Earth-centred frame, or vice-versa, causes the trajectory to periodically appear to move backwards relative to the central body. In other words, the anomaly decreases, which causes computational errors.
 
-review this: Low Energy Motions in the Earth-Moon System, Chaos, and Weak Capture \parencite{Belbruno2007}
+Also Kordylewski clouds.
 
-aim for a \emph{weak capture} at the Moon. This is a capture where the Kepler energy with respect to the Moon is non-positive and the motion of the particle with respect to the Moon is unstable. Such captures are generally temporary. Weak capture occurs in a special region in phase space about the Moon called the \emph{weak stability boundary}, WSB, rigorously defined by \textcite{Belbruno2004}
-
-all Belbruno stuff is for impulsive transfers; WSB trajectory to the Moon through deep space.
-
-Hiten probe tested aerobraking and WSB transfers. Also Kordylewski clouds.
-Put all of this in section 7.1/7.2
-
-% Discretisation
-\cite{ASTOS_guide} \enquote{all major grid nodes are also control nodes by definition. When the major grid is too coarse for the controls, pure control nodes can be added.} \enquote{Collocation methods ignore any control refinement points.} \enquote{The constraint grid will be ignored [by] SOCS, since SOCS computes constraint evaluation only at each collocation grid point.}
-% Parameterisation
-% Vehicle

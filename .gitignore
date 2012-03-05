@@ -6,7 +6,7 @@
 *.exe
 *.o
 *.so
-*.pdf
+#*.pdf
 
 # Packages #
 ############
@@ -47,6 +47,8 @@ Thumbs.db
 # Intermediary graphics #
 #########################
 *.eps
+*.bmp
+*.eps.pdf
 
 # Specific files #
 ##################

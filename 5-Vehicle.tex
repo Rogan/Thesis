@@ -243,8 +243,8 @@ The universal definition for delta-v was provided in \autoref{sub:Delta-v}. Unfo
 
 \subsection{Thrust profile parameterisation} \label{sub:Thrust-parameterisation}
 
-% Launch date
-Due to the particularly non-linear variations with launch date (periodic over 27.5~days based on the Moon's orbit) a good parameterisation of the launch date would be to use two variables, one to increment an integer number of lunar months forwards or backwards, the other a floating point capped at $\pm 0.5$ to indicate the fraction of a month either side. This allows the optimiser to find the optimal time of month for a launch, and therefore the optimal position of the Moon, to achieve lunar capture. Then the optimiser can adjust the month forwards or backwards based on other variations in the search space. While this parameterisation would assist in developing a truly optimal solution, since the launch date is not negotiable beyond the time spent in the GTO parking orbit it was not implemented at this time.
+% Departure date
+Due to the particularly non-linear variations with departure date (periodic over 27.5~days based on the Moon's orbit) a good parameterisation of the departure date would be to use two variables, one to increment an integer number of lunar months forwards or backwards, the other a floating point capped at $\pm 0.5$ to indicate the fraction of a month either side. This allows the optimiser to find the optimal time of month for a launch, and therefore the optimal position of the Moon, to achieve lunar capture. Then the optimiser can adjust the month forwards or backwards based on other variations in the search space. While this parameterisation would assist in developing a truly optimal solution, since the departure date is not negotiable beyond the time spent in the GTO parking orbit it was not implemented at this time.
 
 % Thrust duty cycle
 An additional parameterisation considered to decrease the numerical complexity of the optimisation is to model the thrust duty cycle as a percentage of the orbit. Depending on the phase objective, a thrust segment was centred around the periapsis or apoapsis, with a parameter controlling for which percentage of the orbit the thrusters were active. However, when implemented as a constant throughout the phase replacing the continuous thrust magnitude, the optimiser's flexibility is severely compromised. When implemented as a constant throughout the phase in addition to the thrust magnitude parameter, there is no improvement in computational load. An alternative would be to implement duty cycle as a continuous variable. The computational load is just as great, but the author suspects that this modification would significantly smooth the search space. Unfortunately, due to the complications experienced when optimising the system with a continuous thrust magnitude parameter this modification was not trialled.
@@ -264,6 +264,18 @@ Within each of these shooting intervals, a finer mesh of control nodes may be sp
 Single shooting methods only use the major nodes (ignore control refinement mesh). SOCS is a single shooting method.
 
 Constraint violations are evaluated at each shooting node, although a finer mesh may be specified by the user. SOCS does not support additional constraint evaluations.
+
+
+
+
+\subsubsection{SOCS output}
+No DOF : number of parameters minus active constraints. Approx 50,000 for Cruise phase
+Cond KKT system: condition number of Hessian matrix of Lagrangian, from Newton's method: $A\vec{x}=\vec{b}$ where $A$ is the Hessian, $\vec{x}$ is the system and $\vec{b}$ represents the perturbations. A high condition number means the system is highly sensitive to small changes in the perturbation vector. Approx 1e11
+
+SOCS uses BFGS (Broyden-Fletcher-Goldfarb-Schanno) quasi-Netwon method to approximate Hessian.
+
+Cruise with NASA libraries: 200000000 doubles and 80000000 words
+1e-4 opt tolerance, 1e-5 constraint tolerance, 2e-5 ODE tolerance
 
 
 
@@ -358,9 +370,18 @@ In addition to orbital energy and the corresponding semimajor axis, there are we
 
 \subsection{Lunar capture} \label{sub:Capture}
 
-A spacecraft orbiting the Moon (in the same direction as the Moon orbits the Earth) undergoes a period of low velocity relative to the Earth every time it is on the Earthward side of the Moon. A spacecraft orbiting the Earth in a highly elliptical orbit undergoes a period of low velocity relative to the Earth when it reaches apoapsis, which is conveniently also the furthest point from the Earth. Therefore the aim to achieve lunar capture is to deliver the spacecraft at apoapsis to a \enquote{stationary point} in the intended lunar orbit, such that the Moon's gravity will then pull it into a steady lunar orbit, avoiding the need for a high-thrust capture maneuvre.
+A spacecraft orbiting the Moon (in the same direction as the Moon orbits the Earth) undergoes a period of low velocity relative to the Earth every time it is on the Earthward side of the Moon. A spacecraft orbiting the Earth in a highly elliptical orbit undergoes a period of low velocity relative to the Earth when it reaches apoapsis, which is conveniently also the furthest point from the Earth. Therefore the aim to achieve lunar capture is to deliver the spacecraft at apoapsis to a \enquote{stationary point} in the intended lunar orbit, such that the Moon's gravity will then pull it into a steady lunar orbit, avoiding the need for a high-thrust capture manoeuvre.
 
 To maximise the gravitational effect of the Moon on the spacecraft, it should be phase-locked with respect to the Moon's orbit. However, this would require constantly adjusting the orbital line of apsides, which is a high delta-v maneuvre. Gravitational resonance is generally exploited by pointing the apoapsis towards the Moon's ascending node (to remove any dependence on inclination) and adjust the orbital period to resonate with the Moon (that is, the spacecraft completes two orbits to every lunar orbit, or three orbits to every lunar orbit, or five orbits to every two lunar orbits, etcetera). However, based on the unique thrusting constraints of \BW, an alternative optimal scenario may be to maintain the fastest part of the orbit (periapsis) within the Earth's shadow (eclipse), to minimise the amount of time that the craft cannot charge its batteries. In this scenario the spacecraft should also thrust as it passes through the eclipse since it cannot recharge during this time, and thrusting will help it to escape the eclipse as quickly as possible. 
+
+Even with capture phases provided by arcjet, there is very little thrust available to perform lunar insertion. When simulating the transfer this problem is compounded by the fact that lunar insertion must be predicted very accurately, as simulating a lunar orbit in an Earth-centred frame, or vice-versa, causes the trajectory to periodically appear to move backwards relative to the central body. In other words, the anomaly decreases, which causes computational errors.
+
+Low-thrust or zero-thrust captures, also known as ballistic captures, have been studied by many authors, most particularly \textcite{Belbruno2004} following the partial failure of the Japanese Hiten probe. \citeauthor{Belbruno2004} utilised a low-energy transfer
+aim for a \emph{weak capture} at the Moon. This is a capture where the Kepler energy with respect to the Moon is non-positive and the motion of the particle with respect to the Moon is unstable. Such captures are generally temporary. Weak capture occurs in a special region in phase space about the Moon called the \emph{weak stability boundary}, WSB, rigorously defined by \textcite{Belbruno2004}
+
+Unfortunately all of \citeauthor{Belbruno2004}'s work, and much of the remaining literature, concerns impulsive transfers following invariant manifolds while coasting between burns.
+
+%---
  
 
 \section{Summary of vehicle modelling} \label{sec:Summary-vehicle}
