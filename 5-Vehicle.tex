@@ -265,37 +265,38 @@ Single shooting methods only use the major nodes (ignore control refinement mesh
 
 Constraint violations are evaluated at each shooting node, although a finer mesh may be specified by the user. SOCS does not support additional constraint evaluations.
 
+\subsubsection{SOCS}
+SOCS uses BFGS (Broyden-Fletcher-Goldfarb-Schanno) quasi-Netwon method to approximate Hessian.
 
+SOCS implements a sparse SQP method based on a Schur-complement algorithm suggested by Gill et al. (Stanford technical papers)
 
 
 \subsubsection{SOCS output}
 No DOF : number of parameters minus active constraints. Approx 50,000 for Cruise phase
 Cond KKT system: condition number of Hessian matrix of Lagrangian, from Newton's method: $A\vec{x}=\vec{b}$ where $A$ is the Hessian, $\vec{x}$ is the system and $\vec{b}$ represents the perturbations. A high condition number means the system is highly sensitive to small changes in the perturbation vector. Approx 1e11
 
-SOCS uses BFGS (Broyden-Fletcher-Goldfarb-Schanno) quasi-Netwon method to approximate Hessian.
+
 
 Cruise with NASA libraries: 200000000 doubles and 80000000 words
 1e-4 opt tolerance, 1e-5 constraint tolerance, 2e-5 ODE tolerance
 
 
 
-
-direct transcription
-\begin{subequations}
+\textcite{Betts1998} provides a simple algorithm to estimate the number of variables required in a large optimsation problem, as a function of the number of states $n_y$, the number of control parameters $n_u$, the number of optimisable phases $M$ and the number of gridpoints per phase $N$.
+%\begin{subequations}
 \begin{gather}
-n \approx (n_y + n_u)MN \\
-n_y = 8 \\
-n_u = 4 \\
-M = 4 optimisable phases \\
-N = 80,000 grid points per phase \\
-=2.56e6 \\
-\end{gather}
-\end{subequations}
-\cite{Betts1998}
+n \approx (n_y + n_u)MN %\\
+%n_y = 8 \\
+%n_u = 4 \\
+%M = 4 optimisable phases \\
+%N = 80,000 grid points per phase \\
+%=2.56e6 \\
+\end{gather} %\end{subequations}
+Given the problem formulation outlined for \BW\ in \autoref{cha:Optimisation}, $n_y=8$, $n_u=4$, $M=4$, and $N=80,0000$, approximately $2.56\times10^6$ variables are required for the entire problem. 
 
-SOCS implements a sparse SQP method based on a Schur-complement algorithm suggested by Gill et al. (Stanford technical papers)
 
-Jacobian and Hessian matrices are computed efficiently using sparse finite differencing as proposed by \cite{Coleman1983} SIAM journal of numerical analysis and \cite{Curtis1974} Journal of the Institute of Mathematics and Applications
+
+Jacobian and Hessian matrices are computed efficiently using sparse finite differencing as proposed by \cite{Coleman1983} and \cite{Curtis1974} 
 %---
 
 Due to the direct shooting inherent in the SOCS algorithm, initial guesses are not required for all the states at each grid point during optimisation \parencite{SOCS_guide}. However, if the trajectory is simulated using a multiple shooting method, the algorithm propagates the state forwards independently from each of these grid points. Fortunately the multiple shooting algorithm implemented in GESOP includes automatic initial guess estimation for the grid points.
