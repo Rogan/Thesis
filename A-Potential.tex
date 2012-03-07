@@ -1,16 +1,29 @@
 \chapter{Gravitational potential} \label{cha:Gravitational-potential}
 
-\autoref{eq:Grav-Potential} presents the gravitational potential of a body, as defined by \textcite{WGS84}. Within two summation series, there is a term described as a normalised associated Legendre polynomial. The detailed definition from \textcite{WGS84} is reproduced below, where $n$ and $m$ are the degree and order of the normalised gravitational coefficients, $r$ is the distance from the body’s centre of mass and $\phi'$ is the geocentric latitude. For $m = 0$, $k = 1$ and for $m \neq 0$, $k = 2$.
+\autoref{sub:Oblateness} introduces gravitational potential models, to accurately calculate the gravitational field around a central body, and thus the gravitational forces a nearby spacecraft would experience. The rather complicated equation \eqref{eq:A-Grav-Potential} is reproduced from \textcite{WGS84}. 
+\begin{equation} \label{eq:A-Grav-Potential}
+V=\frac{\mu}{r}\left[1+\sum_{n=2}^{n_{max}}\sum_{m=0}^{n}\left(\frac{a}{r}\right)^{n}\bar{P}_{nm}\left(\sin\phi'\right)\left(\bar{C}_{nm}\cos m\lambda+\bar{S}_{nm}\sin m\lambda\right)\right]
+\end{equation}
 
-\begin{eqnarray}\notag
-\bar{P}_{nm}\left(\sin\phi'\right) & = & \text{Normalized associated Legendre polynomial}\\
- & = & \left[\frac{\left(n-m\right)!\left(2n+1\right)k}{\left(n+m\right)!}\right]^{\frac{1}{2}}P_{nm}\left(\sin\phi'\right)\\\notag
-P_{nm}\left(\sin\phi'\right) & = & \text{Associated Legendre polynomial}\\
- & = & \left(\cos\phi'\right)^{m}\frac{d^{m}}{d\left(\sin\phi'\right)^{m}}\left[P_{n}\left(\sin\phi'\right)\right]\\\notag
-P_{n}\left(\sin\phi'\right) & = & \text{Legendre polynomial}\\
- & = & \frac{d^{n}}{2^{n}n!d\left(\sin\phi'\right)^{n}}\left(\sin^{2}\phi'-1\right)^{n}
-\end{eqnarray}
+The parameters $n$ and $m$ are the degree and order of the normalised gravitational coefficients, $r$ is the distance from the body's centre of mass, $\phi'$ is the polar latitude and $\lambda$ is the polar longitude. For $m = 0$, $k = 1$ and for $m \neq 0$, $k = 2$.
+The remaining term within the two summation series, is described as a normalised associated Legendre polynomial. \\
 
-According to \textcite{WGS84} the series is theoretically valid for $r\geq a$, though it can be used with probably negligible error near or on the body's surface, that is, $r\geq\text{body's surface}$. But the series should not be used for $r<\text{body's surface}$.
+\begin{subequations}\label{eq:A-Legendre-polys}
+\centering 
+Normalized associated Legendre polynomial
+\begin{equation}
+\bar{P}_{nm}\left(\sin\phi'\right) = \left[\frac{\left(n-m\right)!\left(2n+1\right)k}{\left(n+m\right)!}\right]^{\frac{1}{2}}P_{nm}\left(\sin\phi'\right)
+\end{equation}
+Associated Legendre polynomial
+\begin{equation}
+P_{nm}\left(\sin\phi'\right) = \left(\cos\phi'\right)^{m}\frac{d^{m}}{d\left(\sin\phi'\right)^{m}}\left[P_{n}\left(\sin\phi'\right)\right]
+\end{equation}
+Legendre polynomial
+\begin{equation}
+P_{n}\left(\sin\phi'\right) = \frac{d^{n}}{2^{n}n!d\left(\sin\phi'\right)^{n}}\left(\sin^{2}\phi'-1\right)^{n}
+\end{equation}
+\end{subequations}
 
-The normalised gravitational coefficients $\bar{C}_{nm}$ and $\bar{S}_{nm}$ for the Earth were taken from the Joint Gravity Model 3 \cite{Tapley1996} due to availability of data. Several newer models have been released such as the \textcite{EIGEN-5C}, but the JGM3 accuracy was sufficient for this project. The lunar gravitational potential utilised \textcite{LP165}.
+According to \textcite{WGS84} the series is theoretically valid for $r\geq a$, though it can be used with probably negligible error near or on the body's surface, that is, $r\geq\text{body's surface}$. The series should not be used for $r<\text{body's surface}$.
+
+% The normalised gravitational coefficients $\bar{C}_{nm}$ and $\bar{S}_{nm}$ for the Earth were taken from the Joint Gravity Model 3 \parencite{Tapley1996} due to availability of data. Several newer models have been released such as the Gravity Recovery and Climate Experiment \parencite{EIGEN-5C}, but the JGM3 accuracy was sufficient for this project. For similar reasons the lunar gravitational model was used from the Lunar Prospector mission \parencite[LP165, ][]{Konopliv2001}.

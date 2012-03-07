@@ -251,58 +251,13 @@ An additional parameterisation considered to decrease the numerical complexity o
 
 
 \subsection{Discretisation} \label{sub:Discretisation}
-As mentioned in \autoref{sec:Process}, numerical solution methods require the continuous state and control profiles to be discretised into a series of grid points or nodes.
+As mentioned in \autoref{sec:Process}, numerical solution methods require the continuous state and control profiles to be discretised into a series of grid points or nodes. GESOP allows these grid points to be distributed arbitrarily over the independent parameter, although given the number of grid points required for low thrust transfers and how the shape of the trajectory can change during optimisation anything other than a uniform distribution makes no sense.
 
-As mentioned in \autoref{sec:Independent-parameter}, longitude was selected as the independent parameter to allow equiangular node distribution. As a rule of thumb, for the initial coarse mesh at least 10~grid points were implemented for each orbit. As a result, the cruise phase had over 7300~grid points. Later in the project an automatic mesh generator was implemented in GESOP. Using this mesh generator based on an error tolerance of $1.0\times10^4$ gave a starting baseline of 20003~grid points for the cruise phase. At each of these points, the control variables may be set to approximate a continuous function. 
+As mentioned in \autoref{sec:Independent-parameter}, longitude was selected as the independent parameter to allow equiangular node distribution. As a rule of thumb, for the initial coarse mesh at least 10~grid points were implemented for each orbit. As a result, the cruise phase had over 7300~grid points. Later in the project an automatic mesh generator was implemented in GESOP. Using this mesh generator based on an error tolerance of $1.0\times10^4$ gave a starting baseline of 20003~grid points for the cruise phase. 
 
-GESOP transcribes each problem into sub-problems
+Within each of these shooting intervals, a finer mesh of control nodes may be specified. Multiple shooting methods allow the state and control profiles to be approximated over each of these sub-intervals as a piecewise polynomial function. Thus, with enough control nodes, the state and control profiles appear almost continuously variable. Single shooting methods use only the major nodes, and ignore the control refinement mesh. Constraint violations are evaluated at each shooting node, although GESOP once again allows a finer mesh to be specified by the user. However, SOCS does not support additional constraint evaluations, and as a single shooting method it ignores the control refinement mesh.
 
-However, with long phases requiring many thousands of control nodes, the size of the problem becomes huge (typically hundreds of thousands of parameters). 
-
-Within each of these shooting intervals, a finer mesh of control nodes may be specified. The state and control profile are approximated over each of these sub-intervals as a piecewise polynomial function. Thus, with enough control nodes, the state and control profiles appear almost continuously variable.
-
-Single shooting methods only use the major nodes (ignore control refinement mesh). SOCS is a single shooting method.
-
-Constraint violations are evaluated at each shooting node, although a finer mesh may be specified by the user. SOCS does not support additional constraint evaluations.
-
-\subsubsection{SOCS}
-SOCS uses BFGS (Broyden-Fletcher-Goldfarb-Schanno) quasi-Netwon method to approximate Hessian.
-
-SOCS implements a sparse SQP method based on a Schur-complement algorithm suggested by Gill et al. (Stanford technical papers)
-
-
-\subsubsection{SOCS output}
-No DOF : number of parameters minus active constraints. Approx 50,000 for Cruise phase
-Cond KKT system: condition number of Hessian matrix of Lagrangian, from Newton's method: $A\vec{x}=\vec{b}$ where $A$ is the Hessian, $\vec{x}$ is the system and $\vec{b}$ represents the perturbations. A high condition number means the system is highly sensitive to small changes in the perturbation vector. Approx 1e11
-
-
-
-Cruise with NASA libraries: 200000000 doubles and 80000000 words
-1e-4 opt tolerance, 1e-5 constraint tolerance, 2e-5 ODE tolerance
-
-
-
-\textcite{Betts1998} provides a simple algorithm to estimate the number of variables required in a large optimsation problem, as a function of the number of states $n_y$, the number of control parameters $n_u$, the number of optimisable phases $M$ and the number of gridpoints per phase $N$.
-%\begin{subequations}
-\begin{gather}
-n \approx (n_y + n_u)MN %\\
-%n_y = 8 \\
-%n_u = 4 \\
-%M = 4 optimisable phases \\
-%N = 80,000 grid points per phase \\
-%=2.56e6 \\
-\end{gather} %\end{subequations}
-Given the problem formulation outlined for \BW\ in \autoref{cha:Optimisation}, $n_y=8$, $n_u=4$, $M=4$, and $N=80,0000$, approximately $2.56\times10^6$ variables are required for the entire problem. 
-
-
-
-Jacobian and Hessian matrices are computed efficiently using sparse finite differencing as proposed by \cite{Coleman1983} and \cite{Curtis1974} 
-%---
-
-Due to the direct shooting inherent in the SOCS algorithm, initial guesses are not required for all the states at each grid point during optimisation \parencite{SOCS_guide}. However, if the trajectory is simulated using a multiple shooting method, the algorithm propagates the state forwards independently from each of these grid points. Fortunately the multiple shooting algorithm implemented in GESOP includes automatic initial guess estimation for the grid points.
-
-During optimisation, this mesh undergoes repeated refinement until the optimisation and errors are within user-defined tolerances. At the time when the cruise phase optimisation was stopped, the mesh had been refined to 99979~grid points. The ascent phase also started from 20003 grid points and was refined to 29999~points by the time it found a feasible solution. For comparison, the reduced complexity ascent phase was started from 1002~grid points, and reached 13990~points by the time it found an optimal solution.
-
+Nonetheless, during optimisation the major control mesh undergoes repeated refinement until the optimisation and errors are within user-defined tolerances. At the time when the cruise phase optimisation was stopped (see \autoref{sec:Cruise}), the mesh had been refined to 99979~grid points. The ascent phase also started from 20003 grid points and was refined to 29999~points by the time it found a feasible solution with a targeted optimisation tolerance of $10^{-4}$, constraint tolerance of $10^{-5}$ and ODE tolerance of $2\times10^{-5}$. For comparison, the reduced complexity ascent phase (see \autoref{sec:Reduced-complexity}) was started from 1002~grid points, and reached 13990~points by the time it found an optimal solution.
 
 % ascent2 - initial guess 1000 grid points, opt tolerance 1.0e-4, constraint tolerance 1.5e-8, ode tolerance 1.0e-7, 10 mesh refinements, 2000 iterations, hermite simpson separate method, 8e7 real workspace, 4e7 integer
 % 1002 initi guess, 13990 optimised
@@ -321,6 +276,22 @@ During optimisation, this mesh undergoes repeated refinement until the optimisat
 
 % NOT OPTIMISED
 % descent - automatic mesh generation, opt tolerance 1.0e-7, constraint tolerance 1.5e-8, ode tolerance 1.0e-7, 10 mesh refinements, 2000 iterations, hermite simpson separate method, 8e7 real workspace, 4e7 integer 
+
+\textcite{Betts1998} provides a simple algorithm to estimate the number of variables required in a large optimsation problem, as a function of the number of states $n_x$, the number of control parameters $n_u$, the number of optimisable phases $M$ and the number of gridpoints per phase $N$.
+%\begin{subequations}
+\begin{gather}
+n \approx (n_x + n_u)MN %\\
+%n_y = 8 \\
+%n_u = 4 \\
+%M = 4 optimisable phases \\
+%N = 80,000 grid points per phase \\
+%=2.56e6 \\
+\end{gather} %\end{subequations}
+Given the problem formulation outlined for \BW\ in \autoref{cha:Optimisation}, just the cruise phase ends up with $1.2\times10^6$ variables, substantially more than the 500,000 cited by \textcite{ASTOS_guide} as the largest problem SOCS has solved. Consequently, running the optimisation routine on the cruise phase required $2\times10^8$ 64-bit doubles for floating point operations and $8\times10^7$ 32-bit words for integer operations. The desktop PC kindly provided by the Institute of Space Systems in Stuttgart, an AMD~2.8GHz~X6 with 2GB~RAM, was unable to handle a problem of this order. Despite an upgrade to 4GB, the optimisation was still sluggish, and consequently was terminated before it could achieve an optimal solution. 
+
+
+%No DOF : number of parameters minus active constraints. Approx 50,000 for Cruise phase
+
 
 %-----------------------------------------------------------------------------------------------------------------------------------------------
 

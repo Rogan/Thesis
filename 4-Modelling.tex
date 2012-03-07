@@ -16,7 +16,7 @@ Due to the discontinuous timescales traditionally used for time (seconds, minute
 In order to model a dynamic rigid body system, it is important to first define the appropriate reference frames. The International Earth Rotation Service (IERS) defined the International Celestial Reference Frame (ICRF) as a quasi-inertial frame centred on the barycentre of the solarsystem \parencite{Ma1998}. %{shown in Figure XX}
 Relativity requires that no truly inertial frames can exist, but by defining the ICRF relative to extragalactic microwave sources the angular rotation of the frame is so slow it can be assumed to be negligible.
 
-The fundamental $XY$ plane coincides the Earth's equatorial plane at Julian epoch J2000. The $x$-axis is defined as the intersection of the equatorial and ecliptic planes (the ecliptic plane is the plane within which the Earth orbits the Sun), with positive being towards the Earth during the March (vernal) equinox at Julian epoch J2000. Because this direction points roughly towards the constellation Aries it is often denoted $\Aries$, as shown in \autoref{fig:Ecliptic-plane}. This coordinate system is useful as an absolute reference within the solar system. However, since the majority of \BW's trajectory will be an Earth escape spiral, an Earth-centred inertial (ECI) reference frame will be used.
+The fundamental $XY$~plane coincides with the Earth's equatorial plane at Julian epoch J2000. The $x$-axis is defined as the intersection of the equatorial and ecliptic planes (the ecliptic plane is the plane within which the Earth orbits the Sun), with positive being towards the Earth during the March (vernal) equinox at Julian epoch J2000. Because this direction points roughly towards the constellation Aries it is often denoted $\Aries$, as shown in \autoref{fig:Ecliptic-plane}. This coordinate system is useful as an absolute reference within the solar system. However, since the majority of \BW's trajectory will be an Earth escape spiral, an Earth-centred inertial (ECI) reference frame will be used.
 
 \begin{figure}
 \caption{Ecliptic and equatorial planes. From an Earth-centred frame, the Sun appears to orbit the Earth. The plane of its orbit is the ecliptic plane. Image used courtesy of Dr. Guy Worthey, \url{http://astro.wsu.edu/worthey/astro/html/lec-celestial-sph.html}.} \label{fig:Ecliptic-plane}
@@ -24,15 +24,15 @@ The fundamental $XY$ plane coincides the Earth's equatorial plane at Julian epoc
 \includegraphics [scale=0.45]{Images/cel-sphere-2.png}
 \end{figure}
 
-ECI frames are also quasi-inertial, because there are residual centrifugal forces within the frame as the origin (the Earth) orbits around the Sun and the Sun orbits around the galactic centre. The galactic rotation is neglected as mentioned above. The forces due to the Earth's orbit around the Sun are compensated for by including the Sun as a gravitational perturbation (as outlined in \autoref{sub:Ephemerides}).
+ECI frames remain quasi-inertial because of neglected centrifugal and coriolis forces due to the solar system's orbit around the galactic centre. Additionally there are residual centrifugal forces within the frame as the origin (the Earth) orbits around the Sun. These forces may be compensated by including the Sun as a gravitational perturbation (as outlined in \autoref{sub:Ephemerides}).
 
-While it is possible to translate the ICRF to be Earth-centred, the ICRF has not been universally adopted yet. In particular, the NASA SPICE libraries use an older standard, the J2000.0 frame (not to be confused with the J2000 epoch, upon which it is dependent), based on optical measurements of galactic stars called the FK5 catalogue. Due to this discrepancy in measurement, the J2000 reference frame is offset from the ICRF  by a small rotation: the J2000 pole offset is about 18 milliarcseconds (mas) and the equinox offset is approximately 78~mas, increasing by about 3~mas per year \parencite{Gontier2002}. 
-The optimisations performed in GESOP were restricted to the J2000.0 frame, so it was also used in the STK simulations.
+While it is possible to translate the ICRF to be Earth-centred, the ICRF has not been universally adopted yet. In particular, the NASA SPICE libraries use an older standard, the J2000.0 frame (not to be confused with the J2000 epoch, upon which it is dependent), based on optical measurements of galactic stars called the FK5 catalogue. Due to this discrepancy in measurement, the J2000 reference frame is offset from the ICRF  by a small rotation: the J2000 pole offset is about 18~milliarcseconds (mas) and the equinox offset is approximately 78~mas, increasing by about 3~mas per year \parencite{Gontier2002}. 
+To use the NASA SPICE libraries the optimisations performed in GESOP were restricted to the J2000.0 frame, so for consistency it was also used in the STK simulations.
 %\url{http://naif.jpl.nasa.gov/pub/naif/GRAIL/kernels/fk/moon_080317.tf}.
 
-Surface coverage analysis and higher order gravitational forces (discussed in \autoref{sub:Oblateness}) require an additional frame that rotates about the poles (the $z$-axis) in time with the body's rotation, so that the surface appears stationary. This is often called a surface-fixed frame, but is sometimes given a dedicated name (for example, the lunar-centred fixed frame is often called \emph{selenocentric}, and the Earth-fixed frame is often called \emph{geodetic}). The IERS maintains an Earth-centred fixed (ECF) frame called the International Terrestrial Reference Frame (ITRF). The NASA SPICE libraries implement ITRF93, which allows for precession based on the 1976~IAU model by \textcite{Lieske1977}, nutation based on the 1980 model with IERS corrections by \textcite{Herring1986}, the differences between terrestrial time and atomic sidereal time, and polar motion.
+Surface coverage analysis and higher order gravitational forces (discussed in \autoref{sub:Oblateness}) require an additional frame that rotates about the poles (the $z$-axis) in time with the body's rotation, so that the surface appears stationary. This is often called a surface-fixed frame, but is sometimes given a dedicated name (for example, the lunar-centred fixed frame is often called \emph{selenocentric}, and the Earth-fixed frame is often called \emph{geodetic}). The IERS maintains an Earth-centred fixed (ECF) frame called the International Terrestrial Reference Frame (ITRF). The NASA SPICE libraries implement ITRF93, which allows for precession based on the 1976~IAU model by \textcite{Lieske1977}, nutation based on the 1980 model with IERS corrections by \textcite{Herring1986}, the differences between terrestrial time and atomic sidereal time, and polar motion due to changes in the Earth's moment of inertia \parencite{Montenbruck2000}.
 
-During the lunar descent the spacecraft is orbiting the Moon. Since most coordinate systems (discussed in \autoref{sec:Orbital-Elements}) are designed to have the central body at the origin, a lunar-centred inertial (LCI) frame will be used for these phases. Conversion to lunar centred frames requires accurate determination of the Moon's position, addressed in \autoref{sub:Ephemerides}. For higher order gravitational forces, a fixed lunar frame is available in both STK and SPICE known as the Mean Earth frame. The $z$-axis is defined along the primary inertial axis of the Moon, while the $x$-axis is defined towards the mean position of the Earth relative to the Moon (since the Moon is tidally locked to the Earth) \parencite{LCF}.
+During the later stages of the trajectory the spacecraft is orbiting the Moon. Since most coordinate systems (discussed in \autoref{sec:Orbital-Elements}) are designed to have the primary body at the origin, a lunar-centred inertial (LCI) frame will be used for these phases. Translation to lunar centred frames requires accurate determination of the Moon's position, addressed in \autoref{sub:Ephemerides}. The rotation required to determine a fixed lunar frame is available in both STK and SPICE and known as the Mean Earth frame. The $z$-axis is defined along the primary inertial axis of the Moon, while the $x$-axis is defined towards the mean position of the Earth relative to the Moon (since the Moon is tidally locked to the Earth, the Earth vector traces a circle on the Moon's surface) \parencite{LCF}.
 %Lunar reference frames %\url{http://naif.jpl.nasa.gov/naif/lunar_kernels.txt} 
 
 Finally, to model the forces acting on the spacecraft it is necessary to define a local frame. Within the ECI frame, $\vec{r}$ represents the position vector of the spacecraft from the origin (defined as the centre of the primary body), as shown in \autoref{fig:Earth-Centred-Inertial-frame}, while $\vec{v}$ is the velocity vector of the spacecraft.
@@ -183,7 +183,7 @@ The acceleration vector is then resolved as per equation \eqref{eq:delta-v}.
 \vec{\Delta_q} = -\sum_{k=1}^{n}\frac{\mu_{k}}{d_{k}^{3}}(\vec{r}+F(q_{k})\vec{s_{k}})
 \end{equation}
 
-These equations are used repeatedly in every phase; to calculate the perturbing forces due to the Moon's gravity (while in the Earth's sphere of influence), the Earth's gravity (while in the Moon's sphere of influence), and the gravity from the Sun, Jupiter, Mars, and Venus. Saturn is usually excluded even from low-thrust long duration studies such as this due to its large orbit (9-10~AU, compared to Jupiter's 5~AU) and comparatively low mass (95~Earths, compared to Jupiter's 317~Earths). Finally, while the gravity due to the other planets and the Moon was calculated from their respective centres of Mass, the total gravity from the Jupiter system was calculated from its barycentre.
+These equations are used repeatedly in every phase; to calculate the perturbing forces due to the Moon's gravity (while in the Earth's sphere of influence), the Earth's gravity (while in the Moon's sphere of influence), and the gravity from the Sun, Jupiter, Mars, and Venus. Saturn is usually excluded even from low-thrust long duration studies such as this due to its large orbit (9-10~AU, compared to Jupiter's 5~AU) and comparatively low mass (95~Earths, compared to Jupiter's 317~Earths). Finally, while the gravity due to the other planets and the Moon was calculated from their respective centres of mass, the total gravity from the Jupiter system was calculated from its barycentre.
 
 
 
@@ -200,7 +200,7 @@ The Earth is not a perfect sphere. These imperfections are most commonly approxi
 
 The centrifugal force of the Earth spinning causes it to bulge outwards at the equator. This causes the equatorial radius of the Earth to be over 30~km greater than the polar radius, resulting in a significant first zonal harmonic coefficient, $J_{2}$. Since $J_{2}$ is three orders of magnitude greater than $J_{3}$ and $J_{4}$ these higher order terms have often been neglected in simulations, such as those performed by \textcite{Yang2007}. Similar coefficients are available to approximate the shape of the Moon.
 
-However, modelling the central body as an ellipsoid does not allow for inconsistent density of the body's crust. The Moon in particular has very inconsistent density due to the presence of mass concentrations or \emph{mascons}, so severe that most low lunar orbits (LLOs) will decay and impact the surface within 6 months \parencite{Zeile2010}. To include variations in density, recent satellite missions have developed very accurate models of the gravitational potential around the Earth (such as the Gravity Recovery and Climate Experiment mission, GRACE), and the Moon (such as the Gravity Recovery and Interior Laboratory, GRAIL).
+However, modelling the central body as an ellipsoid does not allow for inconsistent density of the body's crust. The Moon in particular has very inconsistent density due to the presence of mass concentrations or \emph{mascons}, so severe that most low lunar orbits (LLOs) will decay and impact the surface within 6 months \parencite{Zeile2010}. To include variations in density, recent satellite missions have developed very accurate models of the gravitational potential around the Earth (such as the Gravity Recovery and Climate Experiment mission, GRACE, sponsored by the \cite{EIGEN-5C}), and the Moon (such as NASA's Gravity Recovery and Interior Laboratory, GRAIL).
 
 Potential energy ($W$) is defined in the Global Geodetic Survey \parencite{WGS84} as per equation \eqref{eq:Total-Grav-Potential},
 \begin{equation}\label{eq:Total-Grav-Potential}
@@ -211,32 +211,13 @@ where $\Phi$ is the potential due to the body's angular momentum, when rotating 
 \Phi=\frac{1}{2}\omega^{2}r^{2}
 \end{equation}
 
-The gravitational potential function ($V$, units~m$^{2}$s$^{-2}$) is defined as per equation \eqref{eq:Grav-Potential}. The geographic parameters of satellite radius $r$, longitude $\lambda$ and latitude $\phi$ are calculated by converting the inertial frame to a body-fixed frame, as outlined by the International Earth Rotation Service \parencite{Petit2010}.
+The gravitational potential function ($V$, units~m$^{2}$s$^{-2}$) is defined as per equation \eqref{eq:Grav-Potential}. The geographic parameters of satellite radius $r$, longitude $\lambda$ and latitude $\phi$ are calculated by converting the inertial frame to a surface-fixed frame, as outlined by the International Earth Rotation Service \parencite{Petit2010}.
 \begin{equation} \label{eq:Grav-Potential}
 V=\frac{\mu}{r}\left[1+\sum_{n=2}^{n_{max}}\sum_{m=0}^{n}\left(\frac{a}{r}\right)^{n}\bar{P}_{nm}\left(\sin\phi'\right)\left(\bar{C}_{nm}\cos m\lambda+\bar{S}_{nm}\sin m\lambda\right)\right]
 \end{equation}
-where $\mu$ is the body's gravitational constant (defined in \autoref{sec:Orbital-equations-of-motion}), $a$ is the semi-major axis of the ellipsoid body (defined by \citeauthor{WGS84} as 6378137.0~m for the Earth). $\bar{P}_{nm}\left(\sin\phi'\right)$ represents the series of normalised associated Legendre polynomials, further defined by \textcite{WGS84} as per equation \eqref{eq:Legendre-polys},\\
+where $\mu$ is the body's gravitational constant (defined in \autoref{sec:Orbital-equations-of-motion}), $a$ is the semi-major axis of the ellipsoid body (defined by \citeauthor{WGS84} as 6378137.0~m for the Earth). $\bar{P}_{nm}\left(\sin\phi'\right)$ represents the series of normalised associated Legendre polynomials defined by \textcite{WGS84} and reproduced in \autoref{cha:Gravitational-potential}. Parameters $n$ and $m$ represent the degree and order of the normalised gravitational coefficients $C_{nm}$ and $S_{nm}$. It is these normalised coefficients that are calculated, recorded and published. 
 
-\begin{subequations}\label{eq:Legendre-polys}
-\centering 
-Normalized associated Legendre polynomial
-\begin{equation}
-\bar{P}_{nm}\left(\sin\phi'\right) = \left[\frac{\left(n-m\right)!\left(2n+1\right)k}{\left(n+m\right)!}\right]^{\frac{1}{2}}P_{nm}\left(\sin\phi'\right)
-\end{equation}
-Associated Legendre polynomial
-\begin{equation}
-P_{nm}\left(\sin\phi'\right) = \left(\cos\phi'\right)^{m}\frac{d^{m}}{d\left(\sin\phi'\right)^{m}}\left[P_{n}\left(\sin\phi'\right)\right]
-\end{equation}
-Legendre polynomial
-\begin{equation}
-P_{n}\left(\sin\phi'\right) = \frac{d^{n}}{2^{n}n!d\left(\sin\phi'\right)^{n}}\left(\sin^{2}\phi'-1\right)^{n}
-\end{equation}
-\end{subequations}
-where parameters $n$ and $m$ represent the degree and order of the normalised gravitational coefficients $C_{nm}$ and $S_{nm}$. It is these normalised coefficients that are calculated, recorded and published. The most detailed measurements of gravitational coefficients for the Earth to date are available from \textcite{EIGEN-5C}.  For $m = 0$, $k = 1$ and for $m \neq 0$, $k = 2$. 
-
-According to the \textcite{WGS84} the series is theoretically valid for $r\geq a$, though it can be used with probably negligible error near or on the body's surface, that is, $r\geq\text{body's surface}$. The series should not be used for $r<\text{body's surface}$.
-
-The normalised gravitational coefficients $\bar{C}_{nm}$ and $\bar{S}_{nm}$ for the Earth were taken from the Joint Gravity Model 3 \parencite[JGM3,][]{Tapley1996} due to availability of data. Several newer models have been released such as the GRACE models mentioned earlier, but the JGM3 accuracy was sufficient for this project. The lunar gravitational model was used from the Lunar Prospector mission \parencite{Konopliv2001}.
+The normalised gravitational coefficients $\bar{C}_{nm}$ and $\bar{S}_{nm}$ for the Earth were taken from the Joint Gravity Model 3 \parencite[JGM3,][]{Tapley1996} due to availability of data. Several newer models have been released such as the GRACE models mentioned earlier, but the JGM3 accuracy was sufficient for this project. For similar reasons the lunar gravitational model was used from the Lunar Prospector mission \parencite[LP165, ][]{Konopliv2001}.
 
 The perturbing force acting on the spacecraft is then determined using equation \eqref{eq:Oblateness-perturbation}.
 \begin{equation}\label{eq:Oblateness-perturbation}
@@ -245,7 +226,7 @@ The perturbing force acting on the spacecraft is then determined using equation 
 
 Obviously the factorials and summations make this equation inappropriate for repetitive computer evaluation. A recursive algorithm developed by \textcite{Montenbruck2000} was used to simplify the calculation, while still retaining the higher order accuracy. 
 
-The impact of gravitational harmonics is obviously going to be greater at lower altitudes. The Earth harmonics, dominated by the J2 bulge, affect mostly $\omega$ and $\Omega$ \parencite{Eshagh2007, Montenbruck2000}; for example, a sun-synchronous orbit (SSO) precesses around the Earth by 360\degrees\ per year, but suffers minimal inclination change. The equations that approximate this behaviour are reproduced in equation \eqref{eq:Precession}, where $p$ is the periapsis of the orbit.
+The impact of gravitational harmonics is obviously going to be greater at lower altitudes. The Earth harmonics, dominated by the J2 bulge, affect mostly $\omega$ and $\Omega$ \parencite{Montenbruck2000,Eshagh2007}; for example, a sun-synchronous orbit (SSO) precesses around the Earth by 360\degrees\ per year, but suffers minimal inclination change. For rough analysis of results, equations \eqref{eq:Precession} approximate this behaviour, where $p$ is the periapsis of the orbit.
 
 \begin{subequations}\label{eq:Precession}
 \begin{gather}
