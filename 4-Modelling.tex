@@ -19,9 +19,12 @@ Relativity requires that no truly inertial frames can exist, but by defining the
 The fundamental $XY$~plane coincides with the Earth's equatorial plane at Julian epoch J2000. The $x$-axis is defined as the intersection of the equatorial and ecliptic planes (the ecliptic plane is the plane within which the Earth orbits the Sun), with positive being towards the Earth during the March (vernal) equinox at Julian epoch J2000. Because this direction points roughly towards the constellation Aries it is often denoted $\Aries$, as shown in \autoref{fig:Ecliptic-plane}. This coordinate system is useful as an absolute reference within the solar system. However, since the majority of \BW's trajectory will be an Earth escape spiral, an Earth-centred inertial (ECI) reference frame will be used.
 
 \begin{figure}
-\caption{Ecliptic and equatorial planes. From an Earth-centred frame, the Sun appears to orbit the Earth. The plane of its orbit is the ecliptic plane. Image used courtesy of Dr. Guy Worthey, \url{http://astro.wsu.edu/worthey/astro/html/lec-celestial-sph.html}.} \label{fig:Ecliptic-plane}
+\caption{Ecliptic and equatorial planes. From an Earth-centred frame, the Sun appears to orbit the Earth. The plane of its orbit is the ecliptic plane. %Image used courtesy of Dr. Guy Worthey, \url{http://astro.wsu.edu/worthey/astro/html/lec-celestial-sph.html}.
+The solstices and equinoctia are labelled based on the northern hemisphere seasons.} \label{fig:Ecliptic-plane}
 \centering
-\includegraphics [scale=0.45]{Images/cel-sphere-2.png}
+\def\svgwidth{\figurewidth}
+\input{Images/ecliptic.pdf_tex}
+%\includegraphics [scale=0.45]{Images/cel-sphere-2.png}
 \end{figure}
 
 ECI frames remain quasi-inertial because of neglected centrifugal and coriolis forces due to the solar system's orbit around the galactic centre. Additionally there are residual centrifugal forces within the frame as the origin (the Earth) orbits around the Sun. These forces may be compensated by including the Sun as a gravitational perturbation (as outlined in \autoref{sub:Ephemerides}).
@@ -37,9 +40,12 @@ During the later stages of the trajectory the spacecraft is orbiting the Moon. S
 
 Finally, to model the forces acting on the spacecraft it is necessary to define a local frame. Within the ECI frame, $\vec{r}$ represents the position vector of the spacecraft from the origin (defined as the centre of the primary body), as shown in \autoref{fig:Earth-Centred-Inertial-frame}, while $\vec{v}$ is the velocity vector of the spacecraft.
 \begin{figure}
-\caption{Earth-Centred Inertial frame. Image used couresty of \textcite{Keppeler_thesis}.} \label{fig:Earth-Centred-Inertial-frame}
+\caption{Earth-Centred Inertial frame. %Image used couresty of \textcite{Keppeler_thesis}.
+} \label{fig:Earth-Centred-Inertial-frame}
 \centering
-\includegraphics[scale=0.75]{Images/ECI-frame.JPG}
+\def\svgwidth{\figurewidth}
+\input{Images/ECI.pdf_tex}
+%\includegraphics[scale=0.75]{Images/ECI-frame.JPG}
 \end{figure}
 Designating the position vector as the local vertical, and the tangent relative to the central body as the local horizontal, this defines a local frame known as the Gauss frame, or the Local Vertical-Local Horizontal (LVLH) frame \parencite{STK}. It is important to note that the local horizontal is not necessarily parallel to the velocity.
 

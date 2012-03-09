@@ -83,8 +83,8 @@ Fundamentally, any trajectory that safely gets the spacecraft from Earth orbit t
 F = -m(t_f) \label{eq:objective}
 \end{gather}
  This objective function is commonly used throughout entire low-thrust trajectory analyses in literature (for example, \cite{Ichimura2008}). Many other studies instead search for Pareto-optimality, based on the economic theory by Italian Vilfredo Pareto. Pareto-optimisation is a search for the best solution that can be found without compromising other objectives, in this case the best fuel efficiency that can be found without taking an unreasonable amount of time \parencite{Lee2005, Coverstone2000}.  
- 
- Since the dry mass of \BW\ was unknown, a starting wet mass was assumed; therefore to minimise the fuel used one must simply minimise the final mass. Modifications were considered, for example adding a time penalty to discourage unreasonably long transfer times, but found to be unnecessary. Preliminary, simplified optimisations for the Cruise phase used an additional term to minimise the orbital energy with respect to the Moon, $\epsilon_{LCI}$, to encourage a stronger capture. This helped develop the initial guess, but was found to be very sensitive to the weighting factors, $\sigma_1$ and $\sigma_2$, as shown in equation \eqref{eq:objective2},
+
+Since the dry mass of \BW\ was unknown, a starting wet mass was assumed; therefore to minimise the fuel used one must simply minimise the final mass. Modifications were considered, for example adding a time penalty to discourage unreasonably long transfer times, but found to be unnecessary. Preliminary, simplified optimisations for the Cruise phase used an additional term to minimise the orbital energy with respect to the Moon, $\epsilon_{LCI}$, to encourage a stronger capture. This helped develop the initial guess, but was found to be very sensitive to the weighting factors, $\sigma_1$ and $\sigma_2$, as shown in equation \eqref{eq:objective2},
 \begin{gather}
 F = \sigma_1m(t_f)+\sigma_2\epsilon_{LCI} \label{eq:objective2}
 \end{gather}
