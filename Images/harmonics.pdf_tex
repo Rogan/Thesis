@@ -1,0 +1,104 @@
+%% Creator: Inkscape 0.48.2, www.inkscape.org
+%% PDF/EPS/PS + LaTeX output extension by Johan Engelen, 2010
+%% Accompanies image file 'harmonics.pdf' (pdf, eps, ps)
+%%
+%% To include the image in your LaTeX document, write
+%%   \input{<filename>.pdf_tex}
+%%  instead of
+%%   \includegraphics{<filename>.pdf}
+%% To scale the image, write
+%%   \def\svgwidth{<desired width>}
+%%   \input{<filename>.pdf_tex}
+%%  instead of
+%%   \includegraphics[width=<desired width>]{<filename>.pdf}
+%%
+%% Images with a different path to the parent latex file can
+%% be accessed with the `import' package (which may need to be
+%% installed) using
+%%   \usepackage{import}
+%% in the preamble, and then including the image with
+%%   \import{<path to file>}{<filename>.pdf_tex}
+%% Alternatively, one can specify
+%%   \graphicspath{{<path to file>/}}
+%% 
+%% For more information, please see info/svg-inkscape on CTAN:
+%%   http://tug.ctan.org/tex-archive/info/svg-inkscape
+%%
+\begingroup%
+  \makeatletter%
+  \providecommand\color[2][]{%
+    \errmessage{(Inkscape) Color is used for the text in Inkscape, but the package 'color.sty' is not loaded}%
+    \renewcommand\color[2][]{}%
+  }%
+  \providecommand\transparent[1]{%
+    \errmessage{(Inkscape) Transparency is used (non-zero) for the text in Inkscape, but the package 'transparent.sty' is not loaded}%
+    \renewcommand\transparent[1]{}%
+  }%
+  \providecommand\rotatebox[2]{#2}%
+  \ifx\svgwidth\undefined%
+    \setlength{\unitlength}{326.5625bp}%
+    \ifx\svgscale\undefined%
+      \relax%
+    \else%
+      \setlength{\unitlength}{\unitlength * \real{\svgscale}}%
+    \fi%
+  \else%
+    \setlength{\unitlength}{\svgwidth}%
+  \fi%
+  \global\let\svgwidth\undefined%
+  \global\let\svgscale\undefined%
+  \makeatother%
+  \begin{picture}(1,1.1)%
+    \put(0,0){\includegraphics[width=\unitlength]{Images/harmonics.pdf}}%
+
+    \put(0.10,0.89){\makebox(0,0)[lb]{\smash{+}}}%
+
+    \put(0.10,0.65){\makebox(0,0)[lb]{\smash{+}}}%
+    \put(0.11,0.56){\makebox(0,0)[lb]{\smash{-}}}%
+    \put(0.32,0.61){\makebox(0,0)[lb]{\smash{+}}}%
+    \put(0.44,0.61){\makebox(0,0)[lb]{\smash{-}}}%
+
+    \put(0.10,0.42){\makebox(0,0)[lb]{\smash{+}}}%
+    \put(0.11,0.34){\makebox(0,0)[lb]{\smash{-}}}%
+    \put(0.10,0.27){\makebox(0,0)[lb]{\smash{+}}}%
+    \put(0.32,0.38){\makebox(0,0)[lb]{\smash{+}}}%
+    \put(0.43,0.38){\makebox(0,0)[lb]{\smash{-}}}%
+    \put(0.33,0.31){\makebox(0,0)[lb]{\smash{-}}}%
+    \put(0.42,0.31){\makebox(0,0)[lb]{\smash{+}}}%
+    \put(0.55,0.35){\makebox(0,0)[lb]{\smash{+}}}%
+    \put(0.64,0.35){\makebox(0,0)[lb]{\smash{-}}}%
+    \put(0.71,0.35){\makebox(0,0)[lb]{\smash{+}}}%
+    
+    \put(0.10,0.17){\makebox(0,0)[lb]{\smash{+}}}%
+    \put(0.11,0.11){\makebox(0,0)[lb]{\smash{-}}}%
+    \put(0.10,0.05){\makebox(0,0)[lb]{\smash{+}}}%
+    \put(0.11,0.01){\makebox(0,0)[lb]{\smash{-}}}%
+    \put(0.32,0.16){\makebox(0,0)[lb]{\smash{+}}}%
+    \put(0.42,0.16){\makebox(0,0)[lb]{\smash{-}}}%
+    \put(0.32,0.08){\makebox(0,0)[lb]{\smash{-}}}%
+    \put(0.42,0.08){\makebox(0,0)[lb]{\smash{+}}}%
+    \put(0.33,0.01){\makebox(0,0)[lb]{\smash{+}}}%
+    \put(0.40,0.01){\makebox(0,0)[lb]{\smash{-}}}%
+    \put(0.55,0.12){\makebox(0,0)[lb]{\smash{+}}}%
+    \put(0.64,0.12){\makebox(0,0)[lb]{\smash{-}}}%
+    \put(0.71,0.12){\makebox(0,0)[lb]{\smash{+}}}%
+    \put(0.56,0.05){\makebox(0,0)[lb]{\smash{-}}}%
+    \put(0.63,0.03){\makebox(0,0)[lb]{\smash{+}}}%
+    \put(0.71,0.05){\makebox(0,0)[lb]{\smash{-}}}%
+    \put(0.81,0.09){\makebox(0,0)[lb]{\smash{+}}}%
+    \put(0.87,0.09){\makebox(0,0)[lb]{\smash{-}}}%
+    \put(0.93,0.09){\makebox(0,0)[lb]{\smash{+}}}%
+    \put(0.98,0.09){\makebox(0,0)[lb]{\smash{-}}}%
+
+    \put(0.05,1.05){\makebox(0,0)[lb]{\smash{$n=0$}}}%
+    \put(0.33,1.05){\makebox(0,0)[lb]{\smash{$n=1$}}}%
+    \put(0.60,1.05){\makebox(0,0)[lb]{\smash{$n=2$}}}%
+    \put(0.85,1.05){\makebox(0,0)[lb]{\smash{$n=3$}}}%
+
+    \put(-0.2,0.89){\makebox(0,0)[lb]{\smash{$m=0$}}}%
+    \put(-0.2,0.61){\makebox(0,0)[lb]{\smash{$m=1$}}}%
+    \put(-0.2,0.35){\makebox(0,0)[lb]{\smash{$m=2$}}}%
+    \put(-0.2,0.08){\makebox(0,0)[lb]{\smash{$m=3$}}}%
+
+  \end{picture}%
+\endgroup%

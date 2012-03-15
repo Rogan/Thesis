@@ -1,6 +1,6 @@
 %% Creator: Inkscape 0.48.2, www.inkscape.org
 %% PDF/EPS/PS + LaTeX output extension by Johan Engelen, 2010
-%% Accompanies image file 'ellipse.pdf' (pdf, eps, ps)
+%% Accompanies image file 'Eclipse-3.pdf' (pdf, eps, ps)
 %%
 %% To include the image in your LaTeX document, write
 %%   \input{<filename>.pdf_tex}
@@ -36,7 +36,7 @@
   }%
   \providecommand\rotatebox[2]{#2}%
   \ifx\svgwidth\undefined%
-    \setlength{\unitlength}{286.29919895bp}%
+    \setlength{\unitlength}{265.9375bp}%
     \ifx\svgscale\undefined%
       \relax%
     \else%
@@ -48,11 +48,12 @@
   \global\let\svgwidth\undefined%
   \global\let\svgscale\undefined%
   \makeatother%
-  \begin{picture}(1,0.7029703)%
-    \put(0,0){\includegraphics[width=\unitlength]{Images/ellipse.pdf}}%
-    \put(0.51,0.59889209){\rotatebox{-90}{\makebox(0,0)[lb]{\color{green}{Minor axis}}}}%
-    \put(0.11923705,0.35040593){\makebox(0,0)[lb]{\color{red}{Major axis}}}%
-    \put(0.62790144,0.48868221){\makebox(0,0)[lb]{\smash{Focus}}}%
-    \put(0.865,0.5){\rotatebox{-90}{\makebox(0,0)[lb]{\color{cyan}{Latus rectum}}}}%
+  \begin{picture}(1,0.51210341)%
+    \put(0,0){\includegraphics[width=\unitlength]{Images/Eclipse-3.pdf}}%
+    \put(0.14804324,0.34586397){\makebox(0,0)[lb]{\smash{$2R_\Sun$}}}%
+    \put(0.73429189,0.34586397){\makebox(0,0)[lb]{\smash{$2R_\Earth$}}}%
+    \put(0.35,0.0404189){\makebox(0,0)[lb]{\smash{$r_\Earth$}}}%
+    \put(0.40497166,0.34540033){\makebox(0,0)[lb]{\smash{$2\alpha_p$}}}%
+    \put(0.62,0.14710035){\makebox(0,0)[lb]{\smash{$x_p$}}}%
   \end{picture}%
 \endgroup%

@@ -1,6 +1,6 @@
 %% Creator: Inkscape 0.48.2, www.inkscape.org
 %% PDF/EPS/PS + LaTeX output extension by Johan Engelen, 2010
-%% Accompanies image file 'ellipse.pdf' (pdf, eps, ps)
+%% Accompanies image file 'LVLH.pdf' (pdf, eps, ps)
 %%
 %% To include the image in your LaTeX document, write
 %%   \input{<filename>.pdf_tex}
@@ -36,7 +36,7 @@
   }%
   \providecommand\rotatebox[2]{#2}%
   \ifx\svgwidth\undefined%
-    \setlength{\unitlength}{286.29919895bp}%
+    \setlength{\unitlength}{326bp}%
     \ifx\svgscale\undefined%
       \relax%
     \else%
@@ -48,11 +48,12 @@
   \global\let\svgwidth\undefined%
   \global\let\svgscale\undefined%
   \makeatother%
-  \begin{picture}(1,0.7029703)%
-    \put(0,0){\includegraphics[width=\unitlength]{Images/ellipse.pdf}}%
-    \put(0.51,0.59889209){\rotatebox{-90}{\makebox(0,0)[lb]{\color{green}{Minor axis}}}}%
-    \put(0.11923705,0.35040593){\makebox(0,0)[lb]{\color{red}{Major axis}}}%
-    \put(0.62790144,0.48868221){\makebox(0,0)[lb]{\smash{Focus}}}%
-    \put(0.865,0.5){\rotatebox{-90}{\makebox(0,0)[lb]{\color{cyan}{Latus rectum}}}}%
+  \begin{picture}(1,0.73916794)%
+    \put(0,0){\includegraphics[width=\unitlength]{Images/LVLH.pdf}}%
+    \put(0.8366069,0.3764138){\makebox(0,0)[lb]{\smash{$\nu$}}}%
+    \put(0.83920567,0.44308436){\rotatebox{63.39907811}{\makebox(0,0)[lb]{\smash{$\vec{r}$}}}}%
+    \put(0.92211396,0.61080061){\rotatebox{-26.60092189}{\makebox(0,0)[lb]{\smash{$\vec{\hat{i}}_r$}}}}%
+    \put(0.7859066,0.5443816){\rotatebox{63.39907811}{\makebox(0,0)[lb]{\smash{$\vec{\hat{i}}_\theta$}}}}%
+    \put(0.82890629,0.61853497){\rotatebox{-49.99781932}{\makebox(0,0)[lb]{\smash{$\vec{v}$}}}}%
   \end{picture}%
 \endgroup%
