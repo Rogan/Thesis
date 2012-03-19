@@ -49,8 +49,11 @@ Thumbs.db
 *.eps
 *.bmp
 *.eps.pdf
+*.svg
+*.png
 
 # Specific files #
 ##################
 Bibliography/authoryear-comp.cbx
 Thesis-blx.bib
+Thesis.pdf

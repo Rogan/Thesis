@@ -266,7 +266,7 @@ As introduced in \autoref{sub:Neccessary-and-sufficient}, indirect methods attem
 
 % explain what is done once the Hamiltonian is optimised
 
-Pontryagin's minimum principle usually requires solution of the adjoint equations. % define adjoint equations?
+Pontryagin's minimum principle requires solution of the adjoint equations. % define adjoint equations?
 The existence of an analytical solution consequently becomes highly dependent on the linearity of the adjoint equations, but assumptions and simplifications can sometimes be made in order to determine a general solution to the equations. These assumptions are usually only valid for short duration scenarios such as the missile trajectory described by \textcite{Ohlmeyer2006} and the re-entry of the two exo-atmospheric stages of the Saturn~V rocket presented by \textcite{Haeussermann1965}. Given the long durations and non-linearities present in low-thrust trajectories, an analytical solution usually cannot be found.
 
 An alternative to solving the infinite-dimensional optimal control problem is to discretise the problem and solve it using indirect numerical methods. Forgoing a general solution to the objective function, these methods break the problem down into many sub-problems, each of which may be solved locally. This is collectively known as nonlinear programming (NLP) \parencite{Betts1998}. 
@@ -292,12 +292,12 @@ A second-order variant on this scheme is often referred to as \emph{Newton's met
 
 Various schemes exist to calculate the step size, $\alpha$. These algorithms, collectively called a \emph{line search}, can often be very computationally inefficient and time consuming. When the step size, $\alpha$ is equal to one, gradient methods assume a linear behaviour in the vicinity of the candidate solution, and select the next iteration accordingly. Newton's method assumes a quadratic behaviour in the vicinity. Variations on Newton's method have been used to great success in many optimisation applications, not least trajectory optimisation, leading to the techniques being collectively named \emph{sequential quadratic programming} (SQP). Quasi-Newton methods such as the Broyden-Fletcher-Goldfarb-Shanno (BFGS) method use an approximation of the Hessian to speed up computation while retaining the benefits of second-order gradient information. 
 
+In certain applications such as low thrust trajectories, the long propagation times requiring many grid points result in very large, sparse Jacobian and Hessian matrices. A sparse matrix is characterised by very few non-zero terms \parencite{Stoer2002}, due to very loose coupling; changes early in the trajectory do not have a direct effect on the later stages of the trajectory, except by influencing all of the intervening states. Some algorithms are able to exploit this sparsity to calculate the Hessian and Jacobian matrices very efficiently.
+
 % John von Neumann developed an alternative to gradient methods, known as the \emph{interior point method}...
 
 %can perhaps use \cite{Well2001} for reference about GESOP, SQP, collocation, direct shooting
 %\textcite{Nocedal2006} basic intro to optimisation
-
-% Need comment on sparsity 
 
 %A useful measure of stiffness is the condition number of the Hessian matrix. A high condition number means the system is very sensitive to small changes in the perturbation vector. During optimisations conducted for this project, the condition number was often of the order $10^{11}$, demonstrating the stiffness of this problem.
 
@@ -305,13 +305,15 @@ Various schemes exist to calculate the step size, $\alpha$. These algorithms, co
 % Direct methods
 \subsection{Direct methods}
 
-Direct methods, in comparison to indirect methods, do not try to determine additional information from the objective function. They simply evaluate the objective function at a number of points, and then adjust the search space towards the best solution found. Consequently direct methods cannot be analytical. %However, the resulting direct numerical methods rely on the same principles as indirect numerical methods, so the general optimisation scheme presented in equation \eqref{eq:NLP} is still valid. 
+Direct methods, in contrast to indirect methods, do not try to determine additional information from the objective function. They simply evaluate the objective function at a number of points, and then adjust the search space towards the best solution found. Consequently direct methods cannot be analytical. %However, the resulting direct numerical methods rely on the same principles as indirect numerical methods, so the general optimisation scheme presented in equation \eqref{eq:NLP} is still valid. 
 
-There are many different techniques to determine which solutions to evaluate. Dynamic programming is a technique particularly used in financial programming and management science, with the aim of finding the path of least cost in a discrete system by evaluating each step backwards from the goal using the recursive Bellman equations. As such it is best suited to heavily discretised states and paths between states, and consequently a very limited number of controls. This technique has been expanded to solve continuous time problems using the Hamilton-Jacobi-Bellman equations. 
+There are many different techniques to determine which solutions to evaluate. Dynamic programming is a technique particularly used in financial programming and management science, with the aim of finding the path of least cost in a discrete system by evaluating each step backwards from the goal using the recursive Bellman equations. As such it is best suited to heavily discretised states and paths between states, and consequently a very limited number of controls. This technique has been expanded to solve continuous time problems using the Hamilton-Jacobi-Bellman equations, although this adaptation requires calculation of the cost function gradient, converting the technique to an indirect method. 
 
-Genetic algorithms avoid local minima by performing random mutations. In theory this will find the global optimum as the number of mutations increases; in other words, as this technique approaches a brute force search.
+Another class of techniques is evolutionary algorithms. In general, these techniques evaluate a number of candidate states, make a few random changes and then re-evaluate the new generation, picking the best solutions to continue with. Genetic algorithms avoid local minima by performing random mutations and genetic crossovers, emulating the biological process of evolution. Another example called simulated annealing was introduced by \textcite{Kirkpatrick1983}, which emulates a blacksmithing technique where the metal is cooled slowly to allow the particles to align into an optimised (crystallised) low energy state. 
 
-First proposed by \textcite{Kirkpatrick1983}, simulated annealing once again avoids local minima by performing random mutations and checking whether the change improves the heuristic score. Named after a technique in blacksmithing whereby the metal is cooled slowly to allow the particles to align into an optimised (crystallised) low energy state, it differs from genetic algorithms in that ...
+With evolutionary algorithms, the chance of finding the global optimum should improve with every generation; in other words, the technique improves as it approaches a brute force search. These techniques are heavily dependent on their implementation, and the efficiency of their mutations, to steer the evolution of the solution. Furthermore with delicate problems such as \BW\ random mutations frequently lead to invalid solutions (the spacecraft does not reach the target orbit) and consequently can struggle to jump from one feasible solution to another, as changes may be required to multiple parameters.
+
+
 
 \textcite{Dreo2006} more detailed intro to metaheuristics
 
@@ -331,12 +333,6 @@ More robust, tolerates stiffness and caverns better than indirect. Often describ
 \cite{Vasile2009} meta-heuristic, domain decomposition. GA?
 
 
-\cite{Yam2011} attempts global search using basin hopping and simulated annealing, each hybridized with a local search algorithm. Has to approximate the low thrust maneouvre as a series of impulsive maneouvers.
-cartesian state
-theoretical nuclear electric mission to Jupiter, 2.26~N, 6000~s, 20000~kg with gravitational swing-bys.
-another one to Mercury, 1300~kg, 0.34~N and 3200~s.
-
-
 homotopy/embedding/continuation methods: optimise a simplified case (two body problem), then use that solution as the initial guess for a more sophisticated case, etc.
 
 
@@ -354,7 +350,7 @@ CAMTOS (Collocation And Multiple Shooting Trajectory Optimisation Software) was 
 
 Two SQP methods are then available within GESOP to solve the sub-problems. SLLSQP is a fairly generic SQP solver, and computes local optima in order $n^{3}$ time, where $n$ is the number of optimisable parameters. Consequently it is useful for scenarios with up to about 100 parameters. SNOPT \parencite[Sparse Nonlinear Optimizer, ][]{Gill1997} was developed at Stanford University and is a widely used BFGS implementation with a dense quasi-Newton Hessian approximation. It improves upon SLLSQP with a few modifications that exploit sparsity within the Jacobian matrix (by treating non-linear parameters as linear within a constrained region) thus allowing it to compute local optima in order $n^{2}$ time. However it cannot exploit sparsity of the Hessian matrix, and consequently is ill suited for large sparse optimisations such as low-thrust trajectories \parencite{Betts2002}. SNOPT is useful for problems of about 1000 parameters \parencite{ASTOS_guide}.
 
-For larger problems, ASTOS Solutions GmbH has licensed SOCS \parencite[Sparse Optimal Control Software, ][]{SOCS_guide}. SOCS is a combined transcription and SQP algorithm developed by The Boeing Company. Its direct collocation method further exploits sparsity, resulting in a computational time that increases with order $n$. SOCS has documented solutions for problems with over 500,000 parameters. The subroutine within SOCS that solves the nonlinear problems is called HDSNLP. HDSNLP is another BFGS implementation, using a Schur-complement developed by \textcite{Gill1987} to solve the SQP. The Jacobian and Hessian matrices are computed efficiently using sparse finite differencing as proposed by \cite{Coleman1983} and \cite{Curtis1974}.
+For larger problems, ASTOS Solutions GmbH has licensed SOCS \parencite[Sparse Optimal Control Software, ][]{SOCS_guide}. SOCS is a combined transcription and SQP algorithm developed by The Boeing Company. Its direct collocation method further exploits sparsity, resulting in a computational time that increases with order $n$. SOCS has documented solutions for problems with over 500,000 parameters. The subroutine within SOCS that solves the nonlinear problems is another BFGS implementation, called HDSNLP, using a Schur-complement developed by \textcite{Gill1987} to solve the SQP. The Jacobian and Hessian matrices are computed efficiently using sparse finite differencing as proposed by \textcite{Coleman1983} and \textcite{Curtis1974}.
 
 CGA \parencite[Constrained Genetic Algorithm, ][]{ASTOS_guide} is an early implementation of a genetic algorithm developed by ASTOS Solutions GmbH, currently limited to integer parameters. It gives a better global search than the other implemented methods (all gradient based methods) but is not very computationally efficient, and was empirically shown to be ineffective for more than about 20 parameters, compared to the 40,000 required for the simplified \BW\ scenario.
 

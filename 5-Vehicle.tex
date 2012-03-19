@@ -62,7 +62,7 @@ The occlusion of a luminous sphere by a smaller sphere creates a conical shadow 
 \caption{Umbra, penumbra and antumbra.} \label{fig:Eclipse}
 \centering
 \def\svgwidth{0.85\textwidth}
-\input{Images/eclipse.pdf_tex}
+\input{Images/eclipse-1.pdf_tex}
 %\includegraphics[width=\textwidth]{Images/eclipse.png}
 \end{figure}
 
@@ -96,11 +96,11 @@ where $\alpha_u$ is the apex angle of the umbral cone and $\alpha_p$ is the apex
 %Next a fundamental plane is defined through the centre of the Sun and the spacecraft, perpendicular to the plane including the Sun, spacecraft and planet.
 %First the distance between the occluding body and the fundamental plane is calculated.
 %First the position vector of the spacecraft relative to the central body is projected onto the fundamental plane.
-The spacecraft's position is then projected onto the Earth-Sun vector, and the satellite's distance from the Earth-Sun line is calculated.
+The spacecraft's position is then projected onto the Earth-Sun vector, and the satellite's distance from the Earth-Sun line is calculated using the geometry shown in \autoref{fig:Spacecraft-shadow}.
 \begin{subequations}
 \begin{gather}
-x = \frac{\vec{r}\cdot\vec{r_\Sun}}{|\vec{r_\Sun}|} \\
-y = \sqrt{|\vec{r_\Earth}|^2-x^2} 
+x = \frac{\vec{r}\cdot\vec{r_\Earth}}{|\vec{r_\Earth}|} \\
+y = \sqrt{|\vec{r}|^2-x^2} 
 \end{gather}
 \end{subequations}
 
@@ -108,6 +108,7 @@ y = \sqrt{|\vec{r_\Earth}|^2-x^2}
 \caption{Spacecraft position relative to Earth-Sun line.} \label{fig:Spacecraft-shadow}
 \centering
 \def\svgwidth{\figurewidth}
+\input{Images/eclipse-4b.pdf_tex}
 %\includegraphics[width=\textwidth]{Images/earth-shadow.png}
 \end{figure}
 
@@ -300,7 +301,7 @@ Given the problem formulation outlined for \BW\ in \autoref{cha:Optimisation}, j
 
 \section{Orbital behaviour}
 
-Previous theoretical analysis and numerical studies have identified a number of phenomena related to orbital transfers. The theory behind gravitational assists and the Oberth effect is briefly presented here.
+Previous theoretical analysis and numerical studies have identified a number of phenomena related to orbital transfers. A description of the theory behind gravitational assists, the Oberth effect, and weak lunar capture as they relate to \BW\ is briefly presented here.
 
 \subsection{Gravitational assists} \label{sub:Grav-assist}
 
@@ -336,9 +337,9 @@ It is well known that thrusting at particular points in the orbit is more effici
 \input{Images/oberth.pdf_tex}
 \end{figure}
 
-Continuous thrust (tangential to the orbital radius) leads to circular trajectories because an eccentric starting trajectory spends more time at apoapsis than periapsis; hence more impulse is imparted to the vehicle at apoapsis than at periapsis. As demonstrated by a Hohmann transfer, thrusting at apoapsis circularises the orbit.
+Constant thrust (tangential to the orbital radius) leads to circular trajectories because an eccentric starting trajectory spends more time at apoapsis than periapsis; hence more impulse is imparted to the vehicle at apoapsis than at periapsis. As evident in a Hohmann transfer, thrusting at apoapsis circularises the orbit. \textcite{Racca9} found that tangential thrust is the most efficient way to increase the periapsis of a constant-thrust vehicle.
 
-The resulting effect on a trajectory with variable thrust is that the majority of the thrusting should occur near perigee; there is an inverse relationship between optimal thrust magnitude and orbital radius. However, the ascent phase of \BW\ requires raising the periapsis above the van Allen belts as quickly as possible. This may be achieved by focussing thrust around the apoapsis; unfortunately this also minimises the orbital energy gained per unit of propellant expended. The cruise phase requires gaining orbital energy as efficiently as possible, so it would be expected that thrust is focussed around the periapsis. However, during this phase some other maneouvres are required. 
+In a vehicle with variable thrust however, the majority of the thrusting should occur near perigee; there is an inverse relationship between optimal thrust magnitude and orbital radius. However, the ascent phase of \BW\ requires raising the periapsis above the van Allen belts as quickly as possible. This may be achieved by focussing thrust around the apoapsis; unfortunately this also minimises the orbital energy gained per unit of propellant expended. Consequently, in the subsequent cruise phase once the periapsis requirement is removed and the sole aim is to gain orbital energy as efficiently as possible, it would be expected that thrust is focussed around the periapsis. \textcite{Racca9} found that the most efficient thrust profile for a constant-thrust vehicle to increase orbital energy (proportional to semimajor axis) is to thrust along the velocity vector. However, \BW\ requires some additional maneouvres during this phase. 
 
 In addition to orbital energy and the corresponding semimajor axis, there are well established strategies for efficiently changing other orbital parameters. For example, \textcite{Edelbaum1964} demonstrates that the argument of periapsis ($\omega$) is most efficiently changed during a low eccentricity orbit and that the inclination ($i$) is most efficiently changed at high eccentricity. These results have often been used to anticipate thrust profiles within low-thrust trajectory studies such as \textcite{Dachwald2007}. \textcite{Gao2008} introduces a convenient mathematical parameterisation scheme that generates continuous, smooth parameters describing thrust steering, and can easily be used in an optimisation engine. This modification may be useful to improve the computational complexity in the future, but has not been implemented at present. Nonetheless, the optimiser must adjust the orbital elements during the cruise phase to set up a lunar capture.
 
@@ -347,14 +348,15 @@ In addition to orbital energy and the corresponding semimajor axis, there are we
 
 A spacecraft orbiting the Moon (in the same direction as the Moon orbits the Earth) undergoes a period of low velocity relative to the Earth every time it is on the Earthward side of the Moon. A spacecraft orbiting the Earth in a highly elliptical orbit undergoes a period of low velocity relative to the Earth when it reaches apoapsis, which is conveniently also the furthest point from the Earth. Therefore the aim to achieve lunar capture is to deliver the spacecraft at apoapsis to a \enquote{stationary point} in the intended lunar orbit, such that the Moon's gravity will then pull it into a steady lunar orbit, avoiding the need for a high-thrust capture manoeuvre.
 
-To maximise the gravitational effect of the Moon on the spacecraft, it should be phase-locked with respect to the Moon's orbit. However, this would require constantly adjusting the orbital line of apsides, which is a high delta-v maneuvre. Gravitational resonance is generally exploited by pointing the apoapsis towards the Moon's ascending node (to remove any dependence on inclination) and adjust the orbital period to resonate with the Moon (that is, the spacecraft completes two orbits to every lunar orbit, or three orbits to every lunar orbit, or five orbits to every two lunar orbits, etcetera). However, based on the unique thrusting constraints of \BW, an alternative optimal scenario may be to maintain the fastest part of the orbit (periapsis) within the Earth's shadow (eclipse), to minimise the amount of time that the craft cannot charge its batteries. In this scenario the spacecraft should also thrust as it passes through the eclipse since it cannot recharge during this time, and thrusting will help it to escape the eclipse as quickly as possible. 
+To maximise the gravitational effect of the Moon on the spacecraft, it should be phase-locked with respect to the Moon's orbit. However, this would require constantly adjusting the orbital line of apsides, which is a high delta-v maneuvre. Gravitational resonance is generally exploited by pointing the apoapsis towards the Moon's ascending node (to remove any dependence on inclination) and adjust the orbital period to resonate with the Moon (that is, the spacecraft completes two orbits to every lunar orbit, or three orbits to every lunar orbit, or five orbits to every two lunar orbits, etcetera). However, based on the unique thrusting constraints of \BW, an alternative optimal scenario may be to maintain the fastest part of the orbit (periapsis) within the Earth's shadow (eclipse), to minimise the amount of time that the craft cannot charge its batteries. In this scenario the spacecraft should also thrust as it passes through the eclipse since it cannot recharge during this time, and thrusting will help it to escape the eclipse as quickly as possible. \textcite{Racca9} found the SMART-1 trajectory was affected by the need to avoid eclipse, particularly at apoapsis.
 
 Even with capture phases provided by arcjet, there is very little thrust available to perform lunar insertion. When simulating the transfer this problem is compounded by the fact that lunar insertion must be predicted very accurately, as simulating a lunar orbit in an Earth-centred frame, or vice-versa, causes the trajectory to periodically appear to move backwards relative to the central body. In other words, the anomaly decreases, which causes computational errors.
 
-Low-thrust or zero-thrust captures, also known as ballistic captures, have been studied by many authors, most particularly \textcite{Belbruno2004} following the partial failure of the Japanese Hiten probe. \citeauthor{Belbruno2004} utilised a low-energy transfer
-aim for a \emph{weak capture} at the Moon. This is a capture where the Kepler energy with respect to the Moon is non-positive and the motion of the particle with respect to the Moon is unstable. Such captures are generally temporary. Weak capture occurs in a special region in phase space about the Moon called the \emph{weak stability boundary}, WSB, rigorously defined by \textcite{Belbruno2004}
+In cases where the transition from Earth-orbit to lunar-orbit is predicted correctly, the simulation may be transferred from an Earth-centric frame to a lunar-centric frame. Unfortunately, this may still run into computational errors, as the spacecraft may be recaptured by the Earth.
 
-Unfortunately all of \citeauthor{Belbruno2004}'s work, and much of the remaining literature, concerns impulsive transfers following invariant manifolds while coasting between burns.
+Zero-thrust captures, also known as ballistic captures, have been studied by many authors, most particularly \textcite{Belbruno1993} following the partial failure of the Japanese Hiten probe. \citeauthor{Belbruno2004} exploited a low-energy transfer to recover the probe, prompting further study into the phenomenon he termed the \emph{weak stability boundary}. This is a region around the body where the orbital energy is negative (that is, the spacecraft has technically been captured, and would orbit indefinitely in the absence of external forces) but the motion of the spacecraft is unstable. In the case of lunar transfers this is because the spacecraft is usually in a high energy orbit, and after some amount of time the Earth's gravity pulls it back into geocentric orbit. These \emph{weak captures} are rigorously defined by \textcite{Belbruno2004}.
+
+Unfortunately all of \citeauthor{Belbruno2004}'s work, and much of the remaining literature, concerns impulsive transfers following invariant manifolds while coasting between burns. Low-thrust transfers follow similar trajectories, but do not possess impulsive thrusters to provide large amounts of delta-v ensuring the spacecraft enters the desired manifold. Consequently even developing an initial guess for the optimisation proved challenging, and required extensive preliminary simulations as outlined in \autoref{sec:STK}.
 
 %---
  
