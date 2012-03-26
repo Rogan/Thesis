@@ -116,8 +116,7 @@ Determining conditions for strong lunar capture proved difficult and unreliable.
 
 \section{STK modelling} \label{sec:STK}
 
-As outlined above, STK was chosen to model the trajectory. STK is widely used in industry for defence and space simulation, and has developed an impressive tool kit of features. Recent developments have even implemented an optimiser for interplanetary trajectories. Unfortunately, STK still only supports a very limited number of optimisable parameters, for example the direction and magnitude of an impulsive burn to perform a trans-lunar injection. The 
-high number of parameters resulting from discretisation of a continuous trajectory is, for the moment, beyond the capabilities of STK, even to the extent of solving the 2-point boundary value problem (in other words, STK cannot find a feasible solution to the problem let alone optimise it).
+As outlined above, the Satellite Tool Kit (STK), provided by AGI (Analytical Graphics, Inc.), was chosen to model the trajectory. STK is widely used in industry for defence and space simulation, and has developed an extensive collection of features. Recent developments have even implemented an optimiser for interplanetary trajectories. Unfortunately, STK still only supports a very limited number of optimisable parameters, for example the direction and magnitude of an impulsive burn to perform a trans-lunar injection. The high number of parameters resulting from discretisation of a continuous trajectory is, for the moment, beyond the capabilities of STK, even to the extent of solving the 2-point boundary value problem (in other words, STK cannot find a feasible solution to the problem let alone optimise it).
 
 Therefore STK cannot target a specific orbit, such as the correct inclination and eccentricity of the GTO (after backwards propagating from LLO). However, as stated above the fact that any ascent from the Moon passes through Earth orbit, with an inclination of approximately 19\degrees\ means that it can be a very useful tool to study lunar capture. A number of simulations were performed, mostly resulting in escape orbits. However, by manipulating the start date and anomaly, it was found that some \enquote{ascents} would put the spacecraft into a stable Earth orbit (provided the thrust stops once lunar escape is achieved). From this point a geocentric frame of reference could be implemented and the PPTs could lower the orbital radius of the spacecraft relative to the Earth. Once the PPT \enquote{descent} reaches the van Allen belts for the first time, this is equivalent to the last time the spacecraft would be within the van Allen belts in the chronologically correct simulation, and consequently defines the phase boundary perfectly.
 
@@ -160,7 +159,7 @@ Given the arbitrary nature of these continuity conditions, they were used for th
 \input{Images/Ascent/figure10.pdf_tex}
 \end{figure}
 
-The orbital energy of the spacecraft relative to the two bodies shown in \autoref{fig:Ascent-orbeng} does not reveal much during this phase, except that the spacecraft is slowly ascending from, although still very much captured within, Earth's gravitational field. The orbital energy with respect to the Moon fluctuates wildly as the spacecraft orbits Earth, as the gravitational potential remains relatively constant but the craft's velocity vector rotates towards the Moon and then away again. It is interesting that at times even from the GTO parking orbit, the spacecraft is very close to lunar capture ($\epsilon_m\approx0$).
+The orbital energy of the spacecraft relative to the two bodies shown in \autoref{fig:Ascent-orbeng} does not reveal much during this phase, except that the spacecraft is slowly ascending from, although still very much captured within, Earth's gravitational field. The orbital energy with respect to the Moon fluctuates as the spacecraft orbits Earth, because the gravitational potential remains relatively constant but the craft's velocity vector rotates towards the Moon and then away again. It is interesting that at times even from the GTO parking orbit, the spacecraft is very close to lunar capture ($\epsilon_m\approx0$).
 
 \begin{figure}
 \caption{Orbital energy of the satellite relative to Earth and Moon during ascent phase.} \label{fig:Ascent-orbeng}
@@ -425,7 +424,7 @@ Seen relative to the lunar frame in \autoref{fig:Propagate-kep-lci}, the semimaj
 \input{Images/Propagate/figure4.pdf_tex}
 \end{figure}
 
-The perturbing forces in \autoref{fig:Propagate-pert} continue on from the previous phase, with solar and lunar gravity dominant, although there is no thrust present during this phase. As the spacecraft is descends into lunar orbit, unsurprisingly the lunar gravity becomes the dominant force. Another interesting point is the cyclical nature of the force due to Earth's oblateness that is highlighted in this plot. The sudden drops are caused when the spacecraft passes the Earth's equator, and the J2 harmonic no longer has any effect on the vehicle. Furthermore, the alternating short-long-short duration between these drops is caused by the short periapsis half of the orbit, followed by the lengthy apoapsis.
+The perturbing forces in \autoref{fig:Propagate-pert} continue on from the previous phase, with solar and lunar gravity dominant, although there is no thrust present during this phase. As the spacecraft is descends into lunar orbit, unsurprisingly the lunar gravity becomes the dominant force. Another interesting point is the cyclical nature of the force due to Earth's oblateness that is highlighted in this plot. The sudden drops are caused when the spacecraft passes the Earth's equator, and the $J_2$ harmonic no longer has any effect on the vehicle. Furthermore, the alternating short-long-short duration between these drops is caused by the short periapsis half of the orbit, followed by the lengthy apoapsis.
 
 %\begin{figure}
 %\caption{Perturbing accelerations acting on spacecraft during propagate phase.} \label{fig:Propagate-pert2}
@@ -725,82 +724,89 @@ The keplerian elements shown in \autoref{fig:Science-kep-lci} shows oscillations
 %--------------------------------------------------------------------------------------------------------------------------------------------%
 
 \section{Validation} \label{sec:Validation}
-For obvious reasons there have been few experimental flights to validate low-thrust trajectory theory, and no flight testing is possible to verify this particular proposed trajectory. However, the laws governing forces acting on spacecraft are known better than other theory, for example atmospheric trajectories. This trajectory was imported into STK (Satellite Tool Kit), the most widely used industry tool for modelling spacecraft trajectories, provided by AGI (Analytical Graphics, Inc.). There were minor differences as seen in \autoref{fig:STK-verification} due to different orders of complexity in Earth oblateness and the algorithms used to calculate third body perturbations, but these differences were essentially negligible as seen in \autoref{fig:STK-error}.
+For obvious reasons there have been few experimental flights to validate low-thrust trajectory theory, and no flight testing is possible to verify this particular proposed trajectory prior to final launch. However, the laws governing forces acting on spacecraft are known better than other theory, for example atmospheric trajectories. 
+
+The mechanics outlined in \autoref{cha:Orbital-dynamics-and-modelling} have been well established for many decades \parencite{Kaplan1976}, but were further verified in Matlab prior to commencing work with GESOP. The optimisation routines within GESOP, and the flight mechanics of ASTOS, have been numerically verified by ESTEC, Dassault, ASTRIUM, CNES, EADS and JAXA, among other industrial partners. It is practically validated by ongoing use on real missions launched by ESA and DLR, including Ariane 5 and Vega rocket launches, the ExoMars and Beagle 2 missions, and X38 re-entry scenarios.
+
+The independently computed phases from GESOP are plotted together in \autoref{fig:Whole-trajectory}. Note that this is merely conceptual; the temporal discontinuities between phases require parking orbits be inserted, or else the trajectories be revised. Once launch data is known, the complete trajectory may be calculated. Nonetheless, it is worth comparing the trajectory to \autoref{fig:STK} for a qualitative analysis that orbital energy is conserved.
 
 \begin{figure}
 \centering
-%\includegraphics{}
-\caption{STK validation modelling.} \label{fig:STK-verification}
-\end{figure}
-
-\begin{figure}
-\centering
-%\includegraphics{}
-\caption{Difference between STK modelling and GESOP modelling.} \label{fig:STK-error}
-\end{figure}
-
-
-
-% Verification
-\subsection{Verification} \label{sub:ASTOS-Verification}
-
-The mathematics behind ASTOS has been well established for many decades \parencite{Kaplan1976}. The implementation within ASTOS itself has been numerically verified by ESTEC, Dassault, ASTRIUM, CNES, EADS and JAXA, among other industrial partners. It is practically validated by ongoing use on real missions launched by ESA and DLR, including Ariane 5 and Vega rocket launches, the ExoMars and Beagle 2 missions, and X38 re-entry scenarios.
- 
-Final results for the \BW\ optimisation will be further verified by simulating the trajectory in both Matlab and STK. While these packages will not verify that the solution is optimal, they will confirm that the solution is feasible, and can be used to compare trajectories on a case-by-case basis. The trajectory will receive final, practical verification when satellite is launched.
-
-Compare the objective function score against a few other cases.
-
-Of course, the ultimate validation is the launch. Unfortunately at this stage in the design, there is still no fixed launch date scheduled.
-
-Final optimal solution.
-
-Why it is optimal – comparison of objective function (fuel) against other profiles (eg. Pure thrust)
-
-Comment on gravitational assists, thrust profile (Oberth affect – thrusting more at periapsis).
-
-Requires addition of thrust magnitude as a parameter. Minimal work.
-
-Link in to battery level?! Much work.
-
-Verification – STK, matlab?
-
-\textcite{Pollard2000} describes a numer of steering programs for low thrust orbital maneuvres.
-
-Optimisation run from 15/4/2011 to 21/4/2011. neglected to constrain mass starting value for ascent phase. optimiser found best way to maximise final mass was to increase the initial mass as far as possible (hard limit set by parameter bounds for affine transform). suggests a continuous optimisation to higher mass. computation took so long perhaps because the entire trajectory changed every time the mass changed? just VAB escape so minor changes probably less significant than later on (closer to moon). Less stiff problem.
-
-explanation of optimal thrust strategies - \textcite{Herbiniere2000}
-
-verify by putting thrust profile in STK (and get nice videos!)
-
-compare fuel used to SMART-1 (BW1 average Isp is lowered by use of arcjet)
-
-compare fuel use to initial guess
-
-
-\begin{figure}
-\centering
-\def\svgwidth{\textwidth}
+\def\svgwidth{0.8\textwidth}
 \input{Images/figure0.pdf_tex}
-\caption{The complete trajectory generated in GESOP.} \label{fig:Whole-trajectory}
+\caption{The complete GESOP trajectory.} \label{fig:Whole-trajectory}
 \end{figure}
 
-The independently computed phases are plotted together in \autoref{fig:Whole-trajectory}. Note that this is merely conceptual; the temporal discontinuities between phases require parking orbits to be inserted, or else the trajectories to be revised. Once launch data is known, the complete trajectory may be calculated.
+For the purposes of further validation, the control vector profile developed in GESOP was converted into quaternions using Matlab, and then combined with the Ephemeris Time to fit the specifications for STK external attitude files. A generic scenario was then produced in STK using the external attitude files along with thruster specifications and phase lengths identical to those used in GESOP with a high precision propagator, resulting in the trajectories as seen in \autoref{fig:STK-verification-ascent}, \autoref{fig:STK-verification-cruise}, \autoref{fig:STK-verification-capture}, and \autoref{fig:STK-verification-descent}.
+
+\begin{figure}
+\centering
+\includegraphics[width=0.8\textwidth]{Images/STK/ascent.png}
+\caption{STK validation of ascent phase.} \label{fig:STK-verification-ascent}
+\end{figure}
+
+
+\begin{figure}
+\centering
+\includegraphics[width=0.8\textwidth]{Images/STK/cruise.png}
+\caption{STK validation of cruise phase.} \label{fig:STK-verification-cruise}
+\end{figure}
+
+
+\begin{figure}
+\centering
+\includegraphics[width=0.8\textwidth]{Images/STK/capture.png}
+\caption{STK validation of capture phase.} \label{fig:STK-verification-capture}
+\end{figure}
+
+
+\begin{figure}
+\centering
+\includegraphics[width=0.8\textwidth]{Images/STK/descent.png}
+\caption{STK validation of descent phase.} \label{fig:STK-verification-descent}
+\end{figure}
+
+There were minor differences %as seen in \autoref{fig:STK-verification}
+due to different orders of accuracy in Earth oblateness and the algorithms used to calculate third body perturbations, but these differences were negligible in most cases% as seen in \autoref{fig:STK-error}
+. \autoref{fig:STK-verification-capture} does highlight the importance of updating the trajectory during flight; due to these minor numerical differences, the thrust profile gets slightly out of synchrony with the orbit. Consequently, instead of approaching a low, circular lunar orbit the argument of periapsis starts precess and the eccentricity increases, until the trajectory intersects the Moon's surface. This problem could be avoided by monitoring the spacecraft's position from the ground, and periodically uploading a revised thrust profile to the craft.
+
+%\begin{figure}
+%\centering
+%%\includegraphics{}
+%\caption{STK validation modelling.} \label{fig:STK-verification}
+%\end{figure}
+%
+%\begin{figure}
+%\centering
+%%\includegraphics{}
+%\caption{Difference between STK modelling and GESOP modelling.} \label{fig:STK-error}
+%\end{figure}
+
+While this trajectory simulation cannot verify that the solution is optimal, it does confirm that the solution is feasible, and can be used to compare trajectories on a case-by-case basis. For example, this trajectory required 93.25~kg of ammonia propellant for the arcjet over the ascent and capture phases, and 18.98~kg of PTFE propellant for the PPTs over the cruise and descent phases. In comparison, SMART-1 used 82~kg of xenon propellant to complete a similar trajectory \parencite{Estublier2007}. This discrepancy suggests that despite the efficiency of the PPT thrusters, the fuel efficiency and average $I_{sp}$ of \BW\ are severely compromised by excessive use of the thermal arcjet. It is assumed that should sufficient computational power allow the entire trajectory be optimised as a whole, arcjet phases would be reduced and PPT phases extended to reduce the total propellant consumption.
+
+%59.82~kg ammonia on the ascent phase over 32.22~days
+%6~kg less for reduced complexity ascent (10\% saving) but took 2 days longer
+%17.55~kg PTFE during cruise phase over 1123.91~days
+%33.43~kg ammonia during capture phase over 18~days
+%1.43~kg PTFE during descent phase over 91.791~days
+
+% Comparison SMART-1 \cite{Estublier2002} 82~kg Xe 4958~hours thrust 1540~s average Isp 3.7~kms$^{-1}$ total delta-V (74~kg and 3.5~kms$^{-1}$ before stationkeeping)
+
+The fully optimised but lower complexity ascent phase verifies that this optimisation process does improve the propellant consumption. When the computational cycle was allowed to finish, the new trajectory required 6~kg less propellant at the expense of 2~days longer phase duration. This represents a 10\% improvement over the phase. While the subsequent phases are too different to assume a similar improvement, further exploitation of lunar gravitational assists and the Oberth effect will improve the fuel efficiency.
+
+Failed optimisation runs demonstrate the resilience of the optimisation process. For example, one optimisation run for the reduced complexity ascent phase inadvertently neglected to constrain the starting mass. The optimiser subsequently maximised the final mass by increasing the starting mass up to the hard limit set by the parameter bounds (see \autoref{sub:Scaling}). While this optimisation took 6~days to complete due to the chaotic solution space, the fact that the optimiser was able to incrementally adjust the starting mass all the way to the hard limit demonstrates a surprising tolerance for a stiff, chaotic solution space.
+
+%Optimisation run from 15/4/2011 to 21/4/2011. neglected to constrain mass starting value for ascent phase. optimiser found best way to maximise final mass was to increase the initial mass as far as possible (hard limit set by parameter bounds for affine transform). suggests a continuous optimisation to higher mass. computation took so long perhaps because the entire trajectory changed every time the mass changed? just VAB escape so minor changes probably less significant than later on (closer to moon). Less stiff problem.
+
+Finally, the trajectory will receive ultimate verification when satellite is launched. Unfortunately at this stage in the design, there is still no fixed launch date scheduled.
+
+
+
+
 
 \section{Summary} \label{sec:Results-summary}
 
 Results have been presented for a reduced complexity ascent phase that was able to find an optimal solution, followed by a high fidelity ascent phase that was stopped after finding a feasible solution. A partially optimised cruise phase was then presented, followed by the subsequent capture, descent and science phases. The initial guess was derived from an STK backwards propagation model which is also described.
 
-Significant observations are made 
-
-Major findings
-
-
-
-get cruise phase to terminate at apoapsis for capture
-
-ascent phase not so important, since it keeps going in circles around the same focus anyway.
-
-cruise phase adjusts departure date for lunar resonances (thrust profile not as important)
-
-ascent phase just changes thrust profile, departure date not as important since it doesn't get near Moon (therefore individual phase optimisation departure date not important; combined scenario departure date should be dominated by cruise phase)
+These results do not constitute a complete trajectory due to the absence of important mission data such as launch date and spacecraft payload mass. However, a robust trajectory design procedure is demonstrated with indicative results to aid in refining the mission architecture. 
 

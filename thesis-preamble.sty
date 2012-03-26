@@ -14,7 +14,7 @@
 	setspace,		% line spacing
 	longtable,		% for long tables
 	csquotes,		% for automating left and right quote marks
-	eufrak,		% mathematical alphabets
+	eufrak,			% mathematical alphabets
 	colortbl,		% duh
 	multirow,		% duh
 }%
@@ -84,6 +84,10 @@ mathb,
 \def\equationautorefname{equation}
 \def\tableautorefname{Table}
 \def\appendixautorefname{Appendix}
+
+% load cleveref last - hyperref interferes with it
+\usepackage{cleveref}	% for grouped cross-references
+
 
 % set up columns for array package
 \newcolumntype{L}[1]{>{\raggedright\hspace{0pt}}p{#1}}%
