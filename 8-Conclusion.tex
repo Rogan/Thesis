@@ -5,22 +5,27 @@ In any complex, concave optimisation problem the only way to be certain of an op
 % Findings
 \section{Summary of major findings}
 
-total delta v 
-1.3 2.5 1.0 0.4 = 4.2km/s
-chemical propulsion GTO-moon usually takes 4.04 (LEO @ Kennedy to LLO) but all of this is applied at LEO, so it benefits from the Oberth affect. (LEO-GTO = 2.5, GTO-LLO = 1.6!!)
-LEO-Moon with EP 8km/s
+A complete trajectory has been presented for each phase in the mission architecture, with a coasting phase inserted between cruise and capture. Of the powered phases, to achieve the phase boundaries defined in the mission architecture the ascent from GTO to LLO requires a total of 4.2~kms$^{-1}$. Chemically propelled trajectories typically required about 4~kms$^{-1}$ from LEO to LLO, but as most of this impulse is applied deep within the Earth's gravity well it is magnified by the Oberth effect.
 
-time spent in van allen belts, time on each phase, delta v on each phase, fuel spent on each phase, energy used on each phase
+The ascent through the van Allen belts uses the higher-thrust, lower efficiency thermal arcjet to minimise the time spent in this damaging environment. Following a simple tangential thrust scheme to raise periapsis as quickly as possible resulted in this phase taking 32.22~days. A fuel optimal trajectory required 34.17~days but saved over 6~kg of propellant, which is 10\% of the fuel required for the phase. The remaining numerical results are summarised in \autoref{tab:Results}.
 
-From the simulation the arcjet requires 1205.28~hours of operation, and the PPTs require 29176.82~hours of operation. For comparison, the Hall-effect thrusters used for 4958~hours during the SMART-1 mission had a total of 9200~hours of ground qualification testing before flight. Maintaining the same ratio of testing to flight time requires 54140~hours of PPT ground testing before flight. This is equivalent to over 6 years of continuous thrusting in a thermal vacuum chamber. 
+\begin{table}
+\caption{Summary of numerical results from trajectory simulation}
+\label{tab:Results}
+\centering
+\begin{tabular}{ccccc} \toprule
+Phase & Time & Propellant & Delta-v & Energy \tabularnewline
+& (days) & (kg) & (kms$^{-1}$) & (MWh) \tabularnewline\midrule
+Ascent & 32.22 & 59.82 & 1.3 & 1.14 \tabularnewline
+Cruise & 1123.91 & 17.55 & 2.5 & 32.18 \tabularnewline
+Propagate & 30.0 & 0.0 & 0.0 & 1.15 \tabularnewline
+Capture &18.0 & 33.43 & 1.0 & 0.475 \tabularnewline
+Descent & 91.79 & 1.43 & 0.4 & 2.72 \tabularnewline
+Science &180.0 & 0.0 & 0.0 & 5.50 \tabularnewline\bottomrule
+\end{tabular}
+\end{table}
 
-get cruise phase to terminate at apoapsis for capture
-
-ascent phase not so important, since it keeps going in circles around the same focus anyway.
-
-cruise phase adjusts departure date for lunar resonances (thrust profile not as important)
-
-ascent phase just changes thrust profile, departure date not as important since it doesn't get near Moon (therefore individual phase optimisation departure date not important; combined scenario departure date should be dominated by cruise phase)
+Based on this simulation the arcjet requires a total of 1205.28~hours of operation, and the PPTs require 29176.82~hours of operation. For comparison, the Hall-effect thrusters used for 4958~hours during the SMART-1 mission had a total of 9200~hours of ground qualification testing before flight. Maintaining the same ratio of testing to flight time requires 54140~hours of PPT ground testing before flight. This is equivalent to over 6 years of continuous thrusting in a thermal vacuum chamber. 
 
 
 
@@ -30,11 +35,12 @@ ascent phase just changes thrust profile, departure date not as important since 
 
 As repeatedly highlighted in literature, making an initial guess remains one of the biggest problems to trajectory optimisation. This is in part because low thrust trajectories are extremely sensitive to small changes, resulting in narrow basins of convergence surrounded by trajectories that do not achieve lunar capture. Thus finding lunar capture scenarios is an important step in optimising the trajectory of \BW.
 
-Furthermore, some conclusions can be made about the thrust profile in these initial guesses. At the start of this project a thrust profile was implemented tangential to the spacecraft's position. This circularises the orbit as it rises. Based on the limited thrust profiles available in STK a new strategy of thrusting along the velocity vector was modelled. This profile preserves the orbital elements, in particular eccentricity. While this profile loses some delta-v due to gravitational drag, maintaining a low periapsis magnifies the thrust due to the Oberth effect, while raising the apoapsis allows greater exploitation of lunar gravitational assists. The thrust profile may be further improved under the thrust power constraints by focussing thrust over the periapsis, and coasting over apoapsis.
+Furthermore, some conclusions can be made about the thrust profile in these initial guesses. At the start of this project a thrust profile was implemented tangential to the spacecraft's position. This circularises the orbit as it rises. Based on the limited thrust profiles available in STK a new strategy of thrusting along the velocity vector was modelled. This profile preserves the orbital elements, in particular eccentricity. While this profile loses some delta-v due to gravitational drag, maintaining a low periapsis magnifies the thrust due to the Oberth effect, while raising the apoapsis allows greater exploitation of lunar gravitational assists. The thrust profile would be further improved under the thrust power constraints by focussing thrust over the periapsis, and coasting over apoapsis.
 
-%fully optimised (reduced complexity) phase does use thrust-coast-thrust profile. maybe not due to power limitation though - batteries and solar panels sized well enough to not require coasting phases, even during higher energy arcjet phases. Potential to use extra energy for more thrust? Additional energy requirements for communications and payload? Allow for radiation damage
+This strategy was comprehensively ignored when the reduced complexity ascent phase was allowed to reach a fully optimised solution. In this scenario, the spacecraft uses an intermittent thrust-coast-thrust profile. While there is a possibility that this is due to power limitations, further simulations indicated that the batteries and solar panels are sized well enough to not require coasting phases, even during higher energy arcjet phases. Rather, this profile seems to be an artefact of the phase objective: raising the periapsis while using as little propellant as possible. Thus the optimisation does achieve its objective of escaping the van Allen belts very effectively. However, the overall mission objective of getting to the Moon using as little propellant as possible may benefit from additionally raising the apoapsis during this phase, by exploiting the Oberth effect to maximise the orbital energy obtained per unit of propellant expended.
 
-%combination of right ascension and departure date can affect power level during ascent phase substantially. unfortunately, both of these parameters are dependent on the launch.
+Regarding the power consumption, it was revealed not to be a limiting factor on the trajectory for the planned satellite configuration. However, the discrepancy between the optimised ascent phase and the higher fidelity ascent phase revealed that power generation does increase significantly as the Earth-Moon system approaches periapsis on its orbit around the Sun. Furthermore, due to the thrust vector constraint the spacecraft attitude only has one degree of freedom (roll). Thus the power generation is also heavily dependent on the right ascension. Unfortunately, both launch date and right ascension are dependent on the launch, which is not under the control of the Institute for Space Systems.
+
 
 
 
@@ -46,11 +52,14 @@ Furthermore, some conclusions can be made about the thrust profile in these init
 % Additions to program
 \section{Additions to \BW\ program} \label{sec:BW1-additions}
 
-The power modelling undertaken during this project revealed that \BW\ experiences a power surplus for most of the lunar transfer. This may be exploited by increasing the PPT pulse frequency or installing additional thruster units. Simulation of the higher thrust resulting from these modifications indicates a higher lunar approach velocity complicating rendezvous and strong capture. These simulations did perhaps suffer from implementing orbital energy as the termination condition, thus sacrificing approach velocity for low altitutde. If \BW\ is to be modified to exploit the surplus power available, future trajectory modelling would be well advised to implement 
+The power modelling undertaken during this project revealed that \BW\ experiences a power surplus for most of the lunar transfer. While payload standby and communications power requirements are unknown, they are not expected to exceed this surplus. Consequently, the vehicle configuration could be modified based on these results.
 
-It is important to note that this project does not intend to give a complete, final trajectory for \BW. In fact, this would be impossible given unknowns such as launch date and payload. Rather, this project developed a procedure for determining a good trajectory once those parameters are known. Perhaps more importantly for mission planning, the work described in this thesis provides an estimate for the transfer duration and fuel requirements.
+The excess power may be exploited by increasing the PPT pulse frequency or installing additional thruster units. Simulation of the higher thrust resulting from these modifications indicates a higher lunar approach velocity complicating rendezvous and strong capture. These simulations did perhaps suffer from implementing orbital energy as the termination condition, thus sacrificing approach velocity for low altitude. If \BW\ is to be modified to exploit the surplus power available, future trajectory modelling would be well advised to implement velocity relative to the Moon as a termination constraint. Alternatively, removing extraneous solar panels would significantly decrease the launch mass of the vehicle, and also simplify thermal control. 
 
-%power efficiency perhaps not critical performance marker for thrusters - plenty of power available. improve thrust! 
+Furthermore, the power surplus suggests that the developmental focus of thruster research at Stuttgart on power efficiency is perhaps misplaced. Rather, fuel efficiency could be improved by focussing research on $I_{sp}$ (by improving exhaust velocity). More practically useful would be improving the thrust; this would not only simplify complicated maneouvres such as the lunar capture and course corrections, but it would also decrease total transfer time, currently about 3.5~years.
+
+Finally, it is important to note that this project does not intend to give a complete, final trajectory for \BW. In fact, this would be impossible given unknowns such as launch date and payload. Rather, this project developed a procedure for determining a good trajectory once those parameters are known. Perhaps more importantly for mission planning, the work described in this thesis provides an estimate for the transfer duration and fuel requirements, as presented in \autoref{tab:Results}. This data should inform future revision of the mission architecture. In particular, the radiation modelling suggests that the selected boundary of the van Allen belts is too conservative; the cruise phase could start at a much lower altitude, using the much more fuel-efficient PPTs. Additionally, repeated simulations suggested the spacecraft is only susceptible to being recaptured for the first two or three orbits of the Moon during the capture phase. Consequently the descent phase could also begin much earlier, once again saving many kilograms of ammonia propellant by using the more efficient PPTs. Of course, these two strategies would both increase the total mission time. That is a decision for the project management team.
+
 
 
 
@@ -72,9 +81,7 @@ There are quite a number of improvements that should be made if the development 
 
 First are a number of modelling techniques that the author came across during the project, and would implement if he were starting over. These include the parameterised departure date and thrust duty cycle described in \autoref{sub:Thrust-parameterisation}. Additionally, the thrust profile could be modelled using euler angles instead of the unit vector described in \autoref{sub:Applied-Thrust}. Not only is this expected to further smooth the solution space, it would supercede one of the constraint evaluations; specifically, the repeated calculations to ensure the control vector is  a unit vector would no longer be required.
 
-Secondly there are a number of modifications recommended to the mission architecture. 
-try modifying mission architecture (shorter ascent, higher thrust during cruise). Greater power limitations would require more effort in modelling power degradation of the solar panels.
-
+Secondly, subsequent to the mission architecture and vehicle configuration recommendations in \autoref{sec:BW1-additions} more detail would be required in the power modelling. Payload and communications power budgets would be required, and the power degradation model described in \autoref{sub:Power-generation} should be implemented in software.
 
 Colleagues working on the project have identified a number of lunar inclinations that reduce station-keeping costs throughout the science phase. \textcite{Zeile2010} recommend a final inclination of 70\degrees, having used an argument of periapsis of 43.3\degrees\ and a right ascension of 285\degrees. This would be easily be achievable using minor course corrections during the arcjet-powered capture phase, or even during the lengthy descent phase with the PPTs. The recent study by \textcite{Gupta2011} reinforces this conclusion, showing that the "transition altitude", that is, the altitude above which a sudden increase in orbital life time is observed, is lowest for a 70\degrees\ inclined orbit (Figure 14a) and provides a range of right ascensions that could be trialled.
 
@@ -93,13 +100,23 @@ Lunar Longitude of the Ascending Node, $\Omega$ (rad) &$\le$& 4.9742 \\\bottomru
 \end{center}
 \end{table}
 
+Finally, to derive a truly optimal trajectory it would be necessary to optimise all of the phases simultaneously to determine inter-dependencies. This was attempted at the start of the project, but abandoned due to insufficient computational power. 
 
-optimise whole trajectory together
-obviously implementation of real launch date, once that is known
+
 
 analysis of additional thrust profiles, for initial guess sensitivity (basins of convergence), montecarlo for trajectory sensitivity, and of course optimise the whole lot linked together - cruise phase should define descent
 
 Finally, the author had an abstract accepted for the 62nd International Astronautical Congress on alternate mission profiles. Unfortunately completion of this thesis took precedence, but this work remains of interest to the \BW\ team. Of particular interest is the possibility to pass through, or send a parasitic probe to, the Kordylewski clouds hypothesised to exist at the Earth-Moon Lagrange points L4 and L5.
 
 Further applications of low thrust trajectory optimisation using SOCS and GESOP? IAC2011 paper
+
+
+
+get cruise phase to terminate at apoapsis for capture
+
+ascent phase not so important, since it keeps going in circles around the same focus anyway.
+
+cruise phase adjusts departure date for lunar resonances (thrust profile not as important)
+
+ascent phase just changes thrust profile, departure date not as important since it doesn't get near Moon (therefore individual phase optimisation departure date not important; combined scenario departure date should be dominated by cruise phase)
 
