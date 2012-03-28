@@ -79,9 +79,14 @@ This project has undertaken one of the highest fidelity low-thrust trajectory op
 
 There are quite a number of improvements that should be made if the development of \BW\ is continued. 
 
-First are a number of modelling techniques that the author came across during the project, and would implement if he were starting over. These include the parameterised departure date and thrust duty cycle described in \autoref{sub:Thrust-parameterisation}. Additionally, the thrust profile could be modelled using euler angles instead of the unit vector described in \autoref{sub:Applied-Thrust}. Not only is this expected to further smooth the solution space, it would supercede one of the constraint evaluations; specifically, the repeated calculations to ensure the control vector is  a unit vector would no longer be required.
+First are a number of modelling techniques that the author came across during the project, and would implement if he were starting over. These include the parameterised departure date and thrust duty cycle described in \autoref{sub:Thrust-parameterisation}. Additionally, the thrust profile could be modelled using Euler angles instead of the unit vector described in \autoref{sub:Applied-Thrust}. Not only is this expected to further smooth the solution space, it would supercede one of the constraint evaluations; specifically, the repeated calculations to ensure the control vector is  a unit vector would no longer be required.
 
 Secondly, subsequent to the mission architecture and vehicle configuration recommendations in \autoref{sec:BW1-additions} more detail would be required in the power modelling. Payload and communications power budgets would be required, and the power degradation model described in \autoref{sub:Power-generation} should be implemented in software.
+
+% get cruise phase to terminate at apoapsis for capture
+% ascent phase not so important, since it keeps going in circles around the same focus anyway.
+% cruise phase adjusts departure date for lunar resonances (thrust profile not as important)
+% ascent phase just changes thrust profile, departure date not as important since it doesn't get near Moon (therefore individual phase optimisation departure date not important; combined scenario departure date should be dominated by cruise phase)
 
 Colleagues working on the project have identified a number of lunar inclinations that reduce station-keeping costs throughout the science phase. \textcite{Zeile2010} recommend a final inclination of 70\degrees, having used an argument of periapsis of 43.3\degrees\ and a right ascension of 285\degrees. This would be easily be achievable using minor course corrections during the arcjet-powered capture phase, or even during the lengthy descent phase with the PPTs. The recent study by \textcite{Gupta2011} reinforces this conclusion, showing that the "transition altitude", that is, the altitude above which a sudden increase in orbital life time is observed, is lowest for a 70\degrees\ inclined orbit (Figure 14a) and provides a range of right ascensions that could be trialled.
 
@@ -89,34 +94,19 @@ Colleagues working on the project have identified a number of lunar inclinations
 \caption{Revised keplerian elements for the final orbit of \BW\ trajectory optimisation (end of descent phase)}
 \label{tab:Phase-5-constraints-revised}
 \begin{center}
-\begin{tabular} {ccc}\toprule
-Parameter && Value\\\midrule
-Semimajor axis, $a$ (m) &$\le$& $1.8371\times 10^6$\\
-Eccentricity, $e$ (-) &$\le$& 0.0\\
-Inclination, $i$ (rad) &$\le$& 1.222\\
-Argument of periapsis, $\omega$ (rad) &$\le$& 0.7382 \\
-Lunar Longitude of the Ascending Node, $\Omega$ (rad) &$\le$& 4.9742 \\\bottomrule
+\begin{tabular} {cc}\toprule
+Parameter & Value\\\midrule
+Semimajor axis, $a$ (m) & $1.8371\times 10^6$\\
+Eccentricity, $e$ (-) & 0.0\\
+Inclination, $i$ (rad) & 1.222\\
+Argument of periapsis, $\omega$ (rad) & 0.7382 \\
+Lunar Longitude of the Ascending Node, $\Omega$ (rad) & 4.9742 \\\bottomrule
 \end{tabular}
 \end{center}
 \end{table}
 
-Finally, to derive a truly optimal trajectory it would be necessary to optimise all of the phases simultaneously to determine inter-dependencies. This was attempted at the start of the project, but abandoned due to insufficient computational power. 
-
-
-
-analysis of additional thrust profiles, for initial guess sensitivity (basins of convergence), montecarlo for trajectory sensitivity, and of course optimise the whole lot linked together - cruise phase should define descent
+To derive a truly optimal trajectory it would be necessary to optimise all of the phases simultaneously to determine inter-dependencies. This was attempted at the start of the project, but abandoned due to insufficient computational power. Once a completed trajectory is determined, a Monte Carlo analysis should be performed to determine the sensitivity of the trajectory to small changes in thruster performance, imperfections in gravitational modelling, and other parameters.
 
 Finally, the author had an abstract accepted for the 62nd International Astronautical Congress on alternate mission profiles. Unfortunately completion of this thesis took precedence, but this work remains of interest to the \BW\ team. Of particular interest is the possibility to pass through, or send a parasitic probe to, the Kordylewski clouds hypothesised to exist at the Earth-Moon Lagrange points L4 and L5.
 
-Further applications of low thrust trajectory optimisation using SOCS and GESOP? IAC2011 paper
-
-
-
-get cruise phase to terminate at apoapsis for capture
-
-ascent phase not so important, since it keeps going in circles around the same focus anyway.
-
-cruise phase adjusts departure date for lunar resonances (thrust profile not as important)
-
-ascent phase just changes thrust profile, departure date not as important since it doesn't get near Moon (therefore individual phase optimisation departure date not important; combined scenario departure date should be dominated by cruise phase)
 
