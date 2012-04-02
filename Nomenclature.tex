@@ -3,13 +3,39 @@
 
 \section*{Notation}
 
+Bold text represents a vector. A hat (for example $\hat{\vec{r}}$) represents a unit vector. A quantity that is normally a vector that is not in bold (for example $r$) represents the magnitude of that vector.
+
 \begin{longtable}{l p{0.8\textwidth}}
 
-$\vec{r}$ & position of spacecraft relative to primary body (m) \\
-$\vec{v}$ & velocity of spacecraft relative to primary body (ms$^{-1}$) \\
-$I_{sp}$ & specific impulse (s) \\
-$m$ & mass (kg) \\
-$\mu$ & gravitational constant of given body (m$^3$s$^{-2}$) \\
+\textbf{\autoref{cha:Rocket-science}} \\
+$\epsilon$ & Specific orbital energy (m$^2$s$^{-2}$) \\
+$\epsilon_k$ & Specific orbital kinetic energy (m$^2$s$^{-2}$) \\
+$\epsilon_p$ & Specific orbital potential energy (m$^2$s$^{-2}$) \\
+$\vec{v}$ & Velocity of spacecraft relative to central body (ms$^{-1}$ \\
+$\mu$ & Gravitational constant of central body (m$^3$s$^{-2}$) \\
+$\vec{r}$ & Distance of spacecraft from central body (m) \\
+$I$ & Impulse (ms$^{-1}$) \\
+$\vec{p}$ & Momentum (kgms$^{-1}$) \\
+$I_{sp}$ & Specific impulse (s, see \autoref{sub:Isp}) \\
+$g_0$ & Standard Earth gravity \parencite[9.80665~ms$^{-2}$,][]{CGPM} \\
+$g(r)$ & Classic gravity relative to the primary body at $r$ metres from its centre \\
+$m_{exhaust}$ & Mass of exhaust (kg) \\
+$v_{exhaust}$, $v_e$ & Exhaust velocity (ms$^{-1}$) \\
+$\Delta v$ & Delta-v (ms$^{-1}$, see \autoref{sub:Delta-v}) \\
+$m$ & Mass of spacecraft (kg) \\
+$\vec{T}$ & Applied thrust (N) \\
+$\vec{D}$ & Aerodynamic drag (N) \\
+$\gamma$ & Velocity vector angle (\degrees, see \autoref{fig:path-angles}) \\
+$\alpha$ & Body axis angle (\degrees, see \autoref{fig:path-angles}) \\
+$\varepsilon$ & Thrust angle (\degrees, see \autoref{fig:path-angles}) \\
+$r_{SOI}$ & Radius of sphere of influence (m) \\
+$a_s$ & Semimajor axis of the secondary body's orbit about the primary body (m) \\
+$m_s$ & Mass of the secondary body (kg) \\
+$m_p$ & Mass of the primary body (kg) \\
+\\
+\textbf{\autoref{cha:Orbital-dynamics-and-modelling}} \\
+$\vec{r}$ & Position of spacecraft relative to primary body (m) \\
+$\vec{v}$ & Velocity of spacecraft relative to primary body (ms$^{-1}$) \\
 \\
 $a$ & Keplerian element semimajor axis (m) \\
 $e$ & Keplerian element eccentricity (-) \\
@@ -18,54 +44,48 @@ $\omega$ & Keplerian element argument of periapsis (\degrees) \\
 $\Omega$ & Keplerian element longitude of the ascending node (\degrees) \\
 $\nu$ & Keplerian element true anomaly (\degrees) \\
 \\
-$p$ & modified equinoctial element semilatus rectum (m) \\
-$f$ & modified equinoctial element f (-) \\
-$g$ & modified equinoctial element g (-) \\
-$h$ & modified equinoctial element h (-) \\
-$k$ & modified equinoctial element k (-) \\
-$L$ & modified equinoctial element true longitude (\degrees) \\
+$p$ & Modified equinoctial element semilatus rectum (m) \\
+$f$ & Modified equinoctial element f (-) \\
+$g$ & Modified equinoctial element g (-) \\
+$h$ & Modified equinoctial element h (-) \\
+$k$ & Modified equinoctial element k (-) \\
+$L$ & Modified equinoctial element true longitude (\degrees) \\
 \\
-$w$ & auxiliary function \\
-$s$ & auxiliary function \\
+$\vec{\hat{i}}_r$ & Unit vector in radial direction \\
+$\vec{\hat{i}}_\theta$ & Unit vector tangential to primary body \\
+$\vec{\hat{i}}_h$ & Unit vector in direction of orbital momentum \\
 \\
-$\vec{\hat{i}}_r$ & unit vector in radial direction \\
-$\vec{\hat{i}}_\theta$ & unit vector tangential to primary body \\
-$\vec{\hat{i}}_h$ & unit vector in direction of orbital momentum \\
+$\Delta_r$ & Total force acting on spacecraft in the $\vec{\hat{i}}_r$ direction (N) \\
+$\Delta_\theta$ & Total force acting on spacecraft in the $\vec{\hat{i}}_\theta$ direction (N) \\
+$\Delta_h$ & Total force acting on spacecraft in the $\vec{\hat{i}}_h$ direction (N) \\
 \\
-$\Delta_r$ & total force acting on spacecraft in the $\vec{\hat{i}}_r$ direction (N) \\
-$\Delta_\theta$ & total force acting on spacecraft in the $\vec{\hat{i}}_\theta$ direction (N) \\
-$\Delta_h$ & total force acting on spacecraft in the $\vec{\hat{i}}_h$ direction (N) \\
+$\vec{\Delta_q}$ & Total force on spacecraft due to third bodies (N) \\
+$\vec{d}_j$ & Position of third body $j$ relative to spacecraft (m) \\
+$\vec{s}_j$ & Position of third body $j$ relative to primary body (m) \\
 \\
-$\vec{\Delta_q}$ & total force on spacecraft due to third bodies (N) \\
-$\vec{d}_j$ & position of third body $j$ relative to spacecraft (m) \\
-$\vec{s}_j$ & position of third body $j$ relative to primary body (m) \\
+$\vec{\Delta_g}$ & Total force on spacecraft due to primary body oblateness (N) \\
+$J_2$ & Second zonal harmonic coefficient of Earth\\
+$J_3$ & Third zonal harmonic coefficient of Earth\\
+$J_4$ & Fourth zonal harmonic coefficient of Earth\\
+$W$ & Orbital energy (J) \\
+$\Phi$ & Energy due to angular momentum of orbit (J) \\
+$V$ & Gravitational potential energy of orbit (J) \\
+$\bar{P}_{nm}\left(\sin\phi'\right)$ & Normalised associated Legendre polynomials\\
+$C_{n,m}$ & Normalised gravitational coefficient \\
+$S_{n,m}$ & Normalised gravitational coefficient \\
+$r_{peri}$ & Periapsis of the orbit (m) \\
 \\
-$\vec{\Delta_g}$ & total force on spacecraft due to primary body oblateness (N) \\
-$J_2$ & second order oblateness of Earth \\
-$J_3$ & third order oblateness of Earth \\
-$J_4$ & fourth order oblateness of Earth \\
-$W$ & energy of given orbit (J) \\
-$\Phi$ & kinetic energy of orbit (J) \\
-$V$ & gravitational potential energy of orbit (J) \\
-$\bar{P}_{nm}\left(\sin\phi'\right)$ & normalised associated Legendre polynomials\\
-$C_{nm}$ & normalised gravitational coefficient \\
-$S_{nm}$ & normalised gravitational coefficient \\
-\\
-$a_p$ & magnitude of force on spacecraft due to solar wind (N) \\
+$\vec{\Delta_\Sun}$ & Total force on spacecraft due to solar wind (N) \\
 $\beta$ & optical reflection constant (-) \\
 $A_{craft}$ & effective satellite projected area (m$^2$)\\
-$a_\odot$ & effective semimajor axis of satellite around Sun (m) \\
-$r_\odot$ & distance of satellite from centre of Sun (m) \\
-$M_\odot$ & mean anomaly of orbit around Sun (\degrees) \\
+$r_\Sun$ & distance of satellite from centre of Sun (m) \\
+%$a_\Sun$ & effective semimajor axis of satellite around Sun (m) \\
+%$M_\Sun$ & mean anomaly of orbit around Sun (\degrees) \\
 \\
 $\vec{\Delta_T}$ & total force on spacecraft due to thrust (N) \\
 $\vec{\hat{u}}$ & unit control vector governing thrust direction \\
-$T$ & thrust magnitude (N) \\
 \\
-$\gamma$ & vernal equinox \\
-$r_{SOI}$ & radius of sphere of influence (m) \\
-$\vec{h}$ & angular momentum (m$^2$s$^{-2}$) \\
-$\Psi$ & flight angle (\degrees) \\
+\textbf{\autoref{cha:Results}}
 \\
 $\Sun$ & Subscript relating parameter to the Sun \\
 $\Earth$ & Subscript relating parameter to the Earth \\
@@ -82,9 +102,9 @@ $\Jupiter$ & Subscript relating parameter to the Jupiter
 \begin{longtable}{l p{0.8\textwidth}}
 
 AOCS & Attitude \& Orbit Control System \\
-ASTOS & AeroSpace Trajectory Optimisation Software \\
+ASTOS & Aerospace Trajectory Optimisation Software \\
 CAD & Computer Aided Design \\
-CAMTOS & Collocation And Multiple shooting Trajectory Optimisation Software \\
+CAMTOS & Collocation and Multiple Shooting Trajectory Optimisation Software \\
 CGA & Constrained Genetic Algorithm \\
 COTS & Commercial Off-The-Shelf \\
 CNES & Centre National d'\'{E}tudes Spatiales \\
@@ -95,21 +115,28 @@ ECI & Earth Centred Inertial \\
 ECR & Electron Cyclotron Resonance \\
 EML & Earth-Moon Lagrange point \\
 ESA & European Space Agency \\
+ET & Ephemeris Time \\
 ESTEC &  European Space Research and Technology Centre \\
 GESOP & Graphical Environment for Simulation and Optimisation \\
 GSLV & Geosynchronous Satellite Launch Vehicle \\
+GEO & Geostationary (Earth) Orbit \\
 GTO & Geosynchronous Transfer Orbit \\
+HEO & High Earth Orbit \\
+HLO & High Lunar Orbit \\
 IAU & International Astronomical Union \\
 ICRF & International Celestial Reference Frame \\
 IEEE & Institute of Electrical \& Electronic Engineers \\
+IERS & International Earth Rotation Service \\
 IFR & Institut f\"{u}r Flugmekanik und Flugregelung \\
 IRS & Institut f\"{u}r Raumfahrtsysteme \\
 ISRO & Indian Space Research Organisation \\
-JAXA & Japanese Aerospace eXploration Agency \\
+ITRF & International Terrestrial Reference Frame \\
+JAXA & Japanese Aerospace Exploration Agency \\
 JD & Julian Date \\
 JGM3 & Joint Gravity Model 3 \\
 JPL & Jet Propulsion Laboratory \\
 LEO & Low Earth Orbit \\
+LLO & Low Lunar Orbit \\
 LP165 & Lunar Prospector Gravity Model, degree and order 165 \\
 NASA & National Aeronautics \& Space Administration \\
 NIMA & National Imagery \& Mapping Agency \\
@@ -121,9 +148,12 @@ SEL & Sun-Earth Lagrange point \\
 SIMPLEX & Stuttgart Impulsing MagnetoPlasmadynamic thruster for Lunar EXploration \\
 SNOPT & Sparse Nonlinear OPTimiser \\
 SOCS & Sparse Optimal Control Software \\
-SQP & Sequential Quadratic Problem \\
+SOI & Sphere of Influence \\
+SQP & Sequential Quadratic Programming \\
+SSO & Sun Synchronous Orbit \\
 STK & Satellite Tool Kit \\
 TALOS & Thermal Arcjet for Lunar Orbiting Satellite \\
+TLI & Trans-lunar Injection \\
 TROPIC & Trajectory OPtimisation by dIrect Collocation \\
 TT & Terrestrial Time \\
 UTC & Universal Coordinate Time

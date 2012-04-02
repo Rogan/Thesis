@@ -1,4 +1,4 @@
-\chapter{Rocket science}
+\chapter{Rocket science} \label{cha:Rocket-science}
 
 \section{Orbits} \label{sec:Orbits}
 
@@ -88,42 +88,42 @@ I &= \int_{t_0}^{t_f}\frac{d\vec{p}}{dt}\quad dt \\
 &= \int_{t_0}^{t_f}d\vec{p} 
 \end{align}
 \end{subequations}
-which has units of kgms$^{-1}$, and in the special case of collinear forces is equal to the change in momentum $|\Delta\vec{p}|$. 
+which has units of kgms$^{-1}$, and in the special case of collinear forces is equal to the change in momentum $\Delta p$. 
 
 By the conservation of momentum in the satellite's moving frame, the increase in momentum of the spacecraft is equal and opposite to the momentum imparted to the exhaust, as in equation \eqref{eq:Isp},
 \begin{subequations}\label{eq:Isp}
 \begin{gather}
-|\Delta\vec{p}_{craft}| - |\Delta\vec{p}_{exhaust}| = 0 \\
-|\Delta\vec{p}_{craft}| = m_{exhaust}|\vec{v}_{exhaust}| \\
-I = m_{exhaust}|\vec{v}_{exhaust}| \\
-I_{sp} = |\vec{v}_{exhaust}|
+\Delta p_{craft} - \Delta p_{exhaust} = 0 \\
+\Delta p_{craft} = m_{exhaust}v_{exhaust} \\
+I = m_{exhaust}v_{exhaust} \\
+I_{sp} = v_{exhaust}
 \end{gather}
 \end{subequations}
 so the specific impulse of the spacecraft should be equal to the exhaust velocity, and its units should be ms$^{-1}$. However, the use of imperial units meant that specific impulse was traditionally reported as momentum change per unit {\em weight} of propellant, so the final value is divided by standard gravity on Earth, $g_0$. Consequently specific impulse is reported in seconds.
 
 \begin{equation}
-I_{sp}=\frac{|\vec{v}_e|}{g_0}
+I_{sp}=\frac{v_e}{g_0}
 \end{equation}
 
 \subsection{Delta-v} \label{sub:Delta-v}
 
 Since every circular orbit has a unique orbital speed associated with it, a common measure of rocket capability is the change in velocity the rocket can provide. Mathematically, this \emph{delta-v} is calculated as the integral of the acceleration the rocket provides, or more intuitively, the total thrust the rocket provides over time, given by equation \eqref{eq:Delta-V},
 \begin{equation}\label{eq:Delta-V}
-\Delta v=\int_{t_{0}}^{t_{1}}\frac{\left\Vert T\left(t\right)\right\Vert }{m\left(t\right)}\quad dt
+\Delta v=\int_{t_{0}}^{t_{1}}\frac{T(t)}{m(t)}\quad dt
 \end{equation}
-where $T\left(t\right)$ is the instantaneous thrust, and $m\left(t\right)$ is the instantaneous mass.
+where $T(t)$ is the instantaneous thrust magnitude, and $m(t)$ is the instantaneous mass.
 
 Conversely, orbital transfers may be described by the typical change in velocity required. This is known as a delta-v budget. Launching to low Earth orbit (LEO) requires a change of 7.8~kms$^{-1}$, but typically an additional 1.5 to 2~kms$^{-1}$ is lost to atmospheric drag and gravity drag. Ascent from LEO to low lunar orbit (LLO) requires an additional 4.1~kms$^{-1}$ (this mission profile was used by Apollo). Thrust vectoring adds further losses depending upon the angle of thrust. 
 
 These gravitational, atmospheric and thrust vectoring losses can be calculated with similar integrals over the flight, shown in equation \eqref{eq:Delta-Vs},
 \begin{subequations} \label{eq:Delta-Vs}
 \begin{gather}
-\Delta v_{drag}=\int_{t_0}^{t_1}\frac{\left\Vert D\left(t\right)\right\Vert }{m\left(t\right)}\quad dt\label{eq:drag-penalty} \\
-\Delta v_{gravity}=\int_{t_0}^{t_1}g(r)\cdot\sin\gamma\quad dt\label{eq:gravity-penalty} \\
-\Delta v_\varepsilon=\int_{t_0}^{t_1}\frac{\left\Vert T\left(t\right)\right\Vert }{m\left(t\right)}(1-\cos(\alpha-\varepsilon))\quad dt\label{eq:thrust-vectoring-penalty}
+\Delta v_{drag}=\int_{t_0}^{t_1}\frac{D(t)}{m(t)}\quad dt \label{eq:drag-penalty} \\
+\Delta v_{gravity}=\int_{t_0}^{t_1}g(r)\cdot\sin\gamma\quad dt \label{eq:gravity-penalty} \\
+\Delta v_\varepsilon=\int_{t_0}^{t_1}\frac{T(t)}{m(t)}(1-\cos(\alpha-\varepsilon))\quad dt \label{eq:thrust-vectoring-penalty}
 \end{gather}
 \end{subequations}
-where $D(t)$ is the instantaneous aerodynamic drag, $g$ is the local gravitational acceleration $r$ metres from the centre of the Earth, $\gamma$ is the angle from the velocity vector to the horizontal, $\alpha$ is the body axis line (above the velocity vector) and $\varepsilon$ is the thrust vector (above the body axis line), as shown in \autoref{fig:path-angles} \parencite{Tetlow2003}. Because the thrusters are fixed relative to the body, the thrust vector is fixed, at $\varepsilon=0\degrees$.
+where $D(t)$ is the instantaneous aerodynamic drag magnitude, $g(r)$ is the local gravitational acceleration $r$ metres from the centre of the Earth, $\gamma$ is the angle from the velocity vector to the horizontal, $\alpha$ is the body axis line (above the velocity vector) and $\varepsilon$ is the thrust vector (above the body axis line), as shown in \autoref{fig:path-angles} \parencite{Tetlow2003}. Because the thrusters of \BW\ are fixed relative to the body, the thrust vector is fixed at $\varepsilon=0\degrees$.
 
 \begin{figure}
 \caption{Flight angle and thrust vector of the spacecraft relative to LVLH frame. $\vec{i}_r$ and $\vec{i}_\theta$ are the local vertical and horizontal, respectively (see \autoref{sec:Reference-frames} for definition). The thrust vector is $\vec{u}$ and the velocity vector is $\vec{v}$. The body axis line represents the orientation of the vehicle.} 
@@ -157,9 +157,9 @@ The SIMPLEX pulsed plasma thrusters developed at the Institut f\"{u}r Raumfahrts
 \section{Sphere of influence} \label{sec:SOI}
 The sphere of influence approximates the region of space in which a primary body dominates the gravitational forces on any small object such as a spacecraft. This is traditionally used to determine coasting trajectories of chemically propelled spacecraft, thus ignoring third-body gravitational forces. Due to the longer transfer times of low-thrust spacecraft it is necessary to include these additional gravitational forces across the entire trajectory, although the sphere of influence provides a convenient point to switch reference frames. The sphere of influence is defined in equation \eqref{eq:SOI},
 \begin{equation}
-r_{SOI}=a_{p}\left(\frac{m_{p}}{m_{s}}\right)^{\frac{2}{5}} \label{eq:SOI}
+r_{SOI}=a_{s}\left(\frac{m_{p}}{m_{s}}\right)^{\frac{2}{5}} \label{eq:SOI}
 \end{equation}
-where $m_{p}$ and $m_{s}$ are the mass of the primary and secondary bodies, respectively, and $a_{p}$ is the semi-major axis of the secondary body's orbit around the primary \parencite{Kemble2006}. The Earth-Moon system spheres of influence are as shown in \autoref{fig:Spheres-of-Influence}.
+where $m_{p}$ and $m_{s}$ are the mass of the primary and secondary bodies, respectively, and $a_{s}$ is the semimajor axis of the secondary body's orbit around the primary \parencite{Kemble2006}. The Earth-Moon system spheres of influence are as shown in \autoref{fig:Spheres-of-Influence}.
  Note that the Moon's sphere of influence (with respect to the Earth)\footnote{calculated as just over 66,000~km from the Moon's centre, just under 5/6 of the distance from the Earth to the Moon.} lies entirely within the Earth's (with respect to the Sun)\footnote{calculated as almost 925,000~km from the Earth's centre.}.
 
 \begin{figure} [h]
