@@ -52,7 +52,7 @@ Since we are concerned with the state of the spacecraft, in this particular scen
 \begin{equation}
 \dot{m}=-\frac{T}{v_{ex}} \label{eq:mdot}
 \end{equation}
-where $T$ is the instantaneous thrust level and $v_{ex}$ is the instantaneous exhaust velocity. \enquote{Real time} is added as another (albeit independent) state to allow ephemeris calculation. Finally the energy stored in the batteries is also critical to the state of the spacecraft, and similarly to mass it is reduced by using the thrusters (dependent on the power level required by the thrusters over the given phase), as defined in equation \eqref{eq:edot}, 
+where $T$ is the instantaneous thrust magnitude and $v_{ex}$ is the instantaneous exhaust velocity. \enquote{Real time} is added as another (albeit independent) state to allow ephemeris calculation. Finally the energy stored in the batteries is also critical to the state of the spacecraft, and similarly to mass it is reduced by using the thrusters (dependent on the power level required by the thrusters over the given phase), as defined in equation \eqref{eq:edot}, 
 \begin{subequations}\label{eq:edot}
 \begin{align}
 \Delta E &= \int_{t_0}^{t_f} P\,\text{dt} \label{eq:delta-E}\\
@@ -184,7 +184,7 @@ While the path between initial and final states is defined by the differential e
 
 Firstly, the control vector $\vec{u}$ must be a unit vector. This ensures that the thrust level is realistic throughout the simulation, when multiplied by the thrust magnitude $T$ which must also be constrained to the appropriate upper limit for the phase (depending on whether the phase uses the PPTs or the arcjet).
 
-To guide the optimiser towards an appropriate solution, some bounds are placed on the trajectory itself. At no point in the optimisation is the spacecraft allowed to escape Earth orbit (by ensuring that $e_{ECI}<0$), nor is the spacecraft allowed to come within 100km of either the Earth's surface, or the Moon's surface.
+To guide the optimiser towards an appropriate solution, some bounds are placed on the trajectory itself. At no point in the optimisation is the spacecraft allowed to escape Earth orbit (by ensuring that $e_{ECI}<1$), nor is the spacecraft allowed to come within 100km of either the Earth's surface, or the Moon's surface.
 
 Equinoctial elements are better for this optimisation than Keplerian elements, but they are still not perfect. They do exhibit singularities as the inclination approaches 180\degrees; in other words, they do not model strongly retrograde orbits well. Constraining the trajectory to keep away from these orbits is not a severe limitation on this optimisation since the spacecraft is highly unlikely to approach a retrograde orbit prior to Earth departure (starting at 21\degrees\ while aiming for the lunar plane of 6\degrees\ from the ecliptic, that is 15-24\degrees\ relative to Earth). Even the polar lunar orbit provides a large margin of safety.
 
@@ -338,7 +338,7 @@ In general, direct methods are more robust, and tolerate stiffness and caverns i
 
 There have been many implementations of the optimisation methods described above. Examples of direct methods include the collocation method OTIS \parencite[Optimal Trajectories by Implicit Simulation, ][]{Hargraves1987}, and the single shooting control parameterised method POST \parencite[Program to Optimize Simulated Trajectories, ][]{Brauer1977}, both developed by US industry. These codes are both in widespread use at NASA and at various US government laboratories and universities, but are not generally available to European organisations. TOMP \parencite[Trajectory Optimization by Mathematical Programming, ][]{Kraft1994} is very similar to POST. MUSCOD \parencite[Multiple Shooting Code for optimization, ][]{Bock1984}, developed at the University of Heidelberg, combines control parameterisation with multiple shooting. 
 
-The sequential gradient restoration algorithm \parencite[SGRA, ][]{Miele1975} is an indirect method as are the codes ASTROP developed by \textcite{Bartholomew-Biggs1988} and BNDSCO by \textcite{Bulirsch1971}. ASTROP has been used at the European Space Operations Center (ESOC) extensively for exo-atmospheric trajectory optimization. 
+The sequential gradient restoration algorithm \parencite[SGRA, ][]{Miele1975} is an indirect method as are the codes ASTROP developed by \textcite{Bartholomew-Biggs1988} and BNDSCO by \textcite{Bulirsch1971}. ASTROP has been used at the European Space Operations Centre (ESOC) extensively for exo-atmospheric trajectory optimization. 
 
 However, these methods are mostly superseded by newer methods with additional features, and so were not selected for inclusion in GESOP. Instead, TROPIC (Trajectory Optimisation by Direct Collocation) and PROMIS (Parameterised Trajectory Optimisation by Direct Multiple Shooting) are two transcription algorithms developed at DLR \parencite{Jansch1990}. % TROPIC is a collocation code similar to OTIS, but with additional features such as automatic function and parameter scaling. PROMIS is similar MUSCOD, but once again implements parameter and function scaling and a more flexible problem interface.
 CAMTOS (Collocation And Multiple Shooting Trajectory Optimisation Software) was developed internally by ASTOS Solutions GmbH. Each of these algorithms transcribes the optimal control problem into smaller NLPs. 

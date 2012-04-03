@@ -30,7 +30,7 @@ T = v_e\dot{m} \label{eq:thrust}
 \end{gather}
 \end{subequations}
 
-Counter-intuitively given the above definition, during testing the power efficiency often improves at the expense of thrust. This is a cause for concern, as the low thrust has already required a much longer transfer than any used in the past, and the longer the mission the greater the chance of impact with space debris or micrometeorites, damage from radiation, or computer failure due to solar proton events (SPEs) or galactic cosmic rays (GCRs).
+Counter-intuitively given the above definition, during testing the power efficiency often improves at the expense of thrust. This is a cause for concern, as the low thrust has already required a much longer transfer than any used in the past, and the longer the mission the greater the chance of impact with space debris or micrometeorites, damage from radiation, or computer failure due to solar particle events (SPEs) or galactic cosmic rays (GCRs).
 
 Furthermore, the length of the cruise phase frequently resulted in computational difficulty, so a number of design compromises were investigated to solve the problem (it is acknowledged by the author that changing hardware design to make the simulation easier is a poor design philosophy, but the project management was interested to know the effects of these changes regardless of any simulation difficulties). For example, a design configuration was being investigated with 6 PPTs rather than 4, thereby increasing the available thrust without losing $I_{sp}$. The trade-off with this change is the additional thrusters would increase the dry mass of the vehicle, decreasing available payload space. The same effect could be achieved by changing the pulse rate of the PPTs. A higher pulse frequency increases thrust, increases mass flow, and increases power consumption, but impulse is conserved. However, an additional unknown is introduced: the heat flux within the electrodes is increased. 
 
@@ -99,8 +99,8 @@ where $\alpha_u$ is the apex angle of the umbral cone and $\alpha_p$ is the apex
 The spacecraft's position is then projected onto the Earth-Sun vector, and the satellite's distance from the Earth-Sun line is calculated using the geometry shown in \autoref{fig:Spacecraft-shadow}.
 \begin{subequations}
 \begin{gather}
-x = \frac{\vec{r}\cdot\vec{r_\Earth}}{|\vec{r_\Earth}|} \\
-y = \sqrt{|\vec{r}|^2-x^2} 
+x = \frac{\vec{r}\cdot\vec{r_\Earth}}{r_\Earth} \\
+y = \sqrt{r^2-x^2} 
 \end{gather}
 \end{subequations}
 
@@ -138,13 +138,13 @@ where $Q$ represents the solar energy flux near the Earth-Moon system, $\eta_a$ 
 
 The solar energy flux is calculated by dividing the average solar luminosity \parencite[$3.846\times10^{26}$ W,][]{Montenbruck2000} by the surface area of a sphere with radius equal to the spacecraft's distance from the Sun ($4\pi r_\Sun^2$). This is important because the Earth's distance from the Sun varies by 6\% over the year \parencite{Montenbruck2000} due to the eccentricity of its orbit. The solar intensity is then multiplied by the effective area of the solar panels, $A_{eff}$. Although the spacecraft has 6~m$^2$ of panels, because the central two panels are positioned at 45\degrees\ the effective area is only 5.4~m$^2$.
 
-Based on the latest design work by my colleague Alexander Uryu, the area efficiency is about 0.8, that is, only 80\% of the effective solar panel area will actually be covered in solar cells, due to the geometric arrangement of the cells and the additional surface area required for circuitry. The solar cells will be state-of-the-art TEC-STAR GaAs/InP 34 series solar arrays with 200~$\mu$m front cover glass and 500~$\mu$m back cover glass. Consequently it is estimated that the cell efficiency will be about 27\% at launch. The exact power control circuitry is not yet known, but based on modern power conversion ciruits it is expected that the DC voltage regulator will be approximately 85\% efficient. 
+Based on the latest design work by my colleague Alexander Uryu, the area efficiency is about 0.8, that is, only 80\% of the effective solar panel area will actually be covered in solar cells, due to the geometric arrangement of the cells and the additional surface area required for circuitry. The solar cells will be state-of-the-art TecStar GaAs/InP 34 series solar arrays with 200~$\mu$m front cover glass and 500~$\mu$m back cover glass. Consequently it is estimated that the cell efficiency will be about 27\% at launch. The exact power control circuitry is not yet known, but based on modern power conversion ciruits it is expected that the DC voltage regulator will be approximately 85\% efficient. 
 
 It is assumed that while one axis of the solar panels is constrained to the thrust vector $\vec{u}$, the other is free to rotate about the thrust vector to obtain the best sun angle possible. Consequently the sun angle can be calculated using equation \eqref{eq:sun-angle}.
 \begin{subequations}
 \begin{gather} \label{eq:sun-angle}
-\vec{u}\cdot\vec{r}_\Sun = |\vec{u}|.|\vec{r}_\Sun|\cos\Psi \\
-\Psi = \arccos\frac{\vec{u}\cdot\vec{r}_\Sun}{|\vec{u}|.|\vec{r}_\Sun|}
+\vec{u}\cdot\vec{r}_\Sun = ur_\Sun\cos\Psi_\Sun \\
+\Psi_\Sun = \arccos\frac{\vec{u}\cdot\vec{r}_\Sun}{ur_\Sun}
 \end{gather}
 \end{subequations}
 
@@ -238,9 +238,9 @@ where $\dot{p}$, $\dot{f}$,  $\dot{g}$, $\dot{h}$, $\dot{k}$ and $\dot{L}$ are t
 The universal definition for delta-v was provided in \autoref{sub:Delta-v}. Unfortunately this definition also depends on time-domain integration. Therefore another substitution of parameters is required.
 \begin{subequations}
 \begin{align}
-\Delta v &= \int^{Ln_f}_{Ln_i}\frac{|T|}{m}\frac{\text{dt}}{\text{dLn}}\text{dLn}\\
-&= \int^{1}_{0}\frac{|T|}{m}\frac{\text{dt}}{\text{dL}}\cdot\frac{\text{dL}}{\text{dLn}}\text{dLn}\\
-&= \int^{1}_{0}\frac{|T|}{m}\frac{\Delta L}{\dot L}\text{dLn}
+\Delta v &= \int^{Ln_f}_{Ln_i}\frac{T}{m}\frac{\text{dt}}{\text{dLn}}\text{dLn}\\
+&= \int^{1}_{0}\frac{T}{m}\frac{\text{dt}}{\text{dL}}\cdot\frac{\text{dL}}{\text{dLn}}\text{dLn}\\
+&= \int^{1}_{0}\frac{T}{m}\frac{\Delta L}{\dot L}\text{dLn}
 \end{align}
 \end{subequations}
 
@@ -291,7 +291,7 @@ n \approx (n_x + n_u)MN %\\
 %N = 80,000 grid points per phase \\
 %=2.56e6 \\
 \end{gather} %\end{subequations}
-Given the problem formulation outlined for \BW\ in \autoref{cha:Optimisation}, just the cruise phase ends up with $1.2\times10^6$ variables, substantially more than the 500,000 cited by \textcite{ASTOS_guide} as the largest problem SOCS has solved. Consequently, running the optimisation routine on the cruise phase required $2\times10^8$ 64-bit doubles for floating point operations and $8\times10^7$ 32-bit words for integer operations. The desktop PC kindly provided by the Institute of Space Systems in Stuttgart, an AMD~2.8GHz~X6 with 2GB~RAM, was unable to handle a problem of this order. Despite an upgrade to 4GB, the optimisation was still sluggish, and consequently was terminated before it could achieve an optimal solution. 
+Given the problem formulation outlined for \BW\ in \autoref{cha:Optimisation}, the cruise phase alone generates $1.2\times10^6$ variables, substantially more than the 500,000 cited by \textcite{ASTOS_guide} as the largest problem SOCS has solved. Consequently, running the optimisation routine on the cruise phase required $2\times10^8$ 64-bit doubles for floating point operations and $8\times10^7$ 32-bit words for integer operations. The desktop PC kindly provided by the Institute of Space Systems in Stuttgart, an AMD~2.8GHz~X6 with 2GB~RAM, was unable to handle a problem of this order. Despite an upgrade to 4GB, the optimisation was still sluggish, and consequently was terminated before it could achieve an optimal solution. 
 
 
 %No DOF : number of parameters minus active constraints. Approx 50,000 for Cruise phase
