@@ -59,7 +59,7 @@
     \put(0.67765308,0.05){\makebox(0,0)[lb]{\smash{1.0}}}%
     \put(0.75209540,0.05){\makebox(0,0)[lb]{\smash{1.5}}}%
     \put(0.84374154,0.05){\makebox(0,0)[lb]{\smash{2.0}}}%
-    \put(0.89708066,0.03743903){\makebox(0,0)[lb]{\smash{$\times10^6$~m}}}%
+    \put(0.15,0.01){\makebox(0,0)[lb]{\smash{Distance from the centre of the Moon [$\times10^6$~m]}}}%
     \put(0.07,0.13125239){\makebox(0,0)[lb]{\smash{-1.5}}}%
     \put(0.07,0.21422376){\makebox(0,0)[lb]{\smash{-1.0}}}%
     \put(0.07,0.29719688){\makebox(0,0)[lb]{\smash{-0.5}}}%
@@ -67,6 +67,8 @@
     \put(0.08,0.46328534){\makebox(0,0)[lb]{\smash{0.5}}}%
     \put(0.08,0.54640069){\makebox(0,0)[lb]{\smash{1.0}}}%
     \put(0.08,0.62937381){\makebox(0,0)[lb]{\smash{1.5}}}%
-    \put(0.16941336,0.71408014){\makebox(0,0)[lb]{\smash{$\times10^6$~m}}}%
+    \put(0.0,0.2){\rotatebox{90}{\makebox(0,0)[lb]{\smash{Distance from the centre of}}}}
+    \put(0.04,0.25){\rotatebox{90}{\makebox(0,0)[lb]{\smash{the Moon [$\times10^6$~m]}}}}%
+
   \end{picture}%
 \endgroup%

@@ -57,18 +57,19 @@
     \put(0.58268343,0.05){\makebox(0,0)[lb]{\smash{1}}}%
     \put(0.69210755,0.05){\makebox(0,0)[lb]{\smash{2}}}%
     \put(0.80167736,0.05){\makebox(0,0)[lb]{\smash{3}}}%
-    \put(0.89708066,0.03){\makebox(0,0)[lb]{\smash{$\times10^7$~m}}}%
-    \put(0.06,0.092513440){\makebox(0,0)[lb]{\smash{-2.0}}}%
+    \put(0.15,0.01){\makebox(0,0)[lb]{\smash{Distance from the centre of the Moon [$\times10^7$~m]}}}%
+    \put(0.06,0.09251344){\makebox(0,0)[lb]{\smash{-2.0}}}%
     \put(0.06,0.14729748){\makebox(0,0)[lb]{\smash{-1.5}}}%
     \put(0.06,0.20208153){\makebox(0,0)[lb]{\smash{-1.0}}}%
     \put(0.06,0.25672160){\makebox(0,0)[lb]{\smash{-0.5}}}%
-    \put(0.06,0.31150737){\makebox(0,0)[lb]{\smash{0.0}}}%
-    \put(0.06,0.36629141){\makebox(0,0)[lb]{\smash{0.5}}}%
-    \put(0.06,0.42107546){\makebox(0,0)[lb]{\smash{1.0}}}%
-    \put(0.06,0.47586123){\makebox(0,0)[lb]{\smash{1.5}}}%
-    \put(0.06,0.5305013){\makebox(0,0)[lb]{\smash{2.0}}}%
-    \put(0.06,0.58528534){\makebox(0,0)[lb]{\smash{2.5}}}%
-    \put(0.06,0.64006938){\makebox(0,0)[lb]{\smash{3.0}}}%
-    \put(0.16941336,0.71407944){\makebox(0,0)[lb]{\smash{$\times10^7$~m}}}%
+    \put(0.07,0.31150737){\makebox(0,0)[lb]{\smash{0.0}}}%
+    \put(0.07,0.36629141){\makebox(0,0)[lb]{\smash{0.5}}}%
+    \put(0.07,0.42107546){\makebox(0,0)[lb]{\smash{1.0}}}%
+    \put(0.07,0.47586123){\makebox(0,0)[lb]{\smash{1.5}}}%
+    \put(0.07,0.53050130){\makebox(0,0)[lb]{\smash{2.0}}}%
+    \put(0.07,0.58528534){\makebox(0,0)[lb]{\smash{2.5}}}%
+    \put(0.07,0.64006938){\makebox(0,0)[lb]{\smash{3.0}}}%
+    \put(0.0,0.2){\rotatebox{90}{\makebox(0,0)[lb]{\smash{Distance from the centre of}}}}
+    \put(0.04,0.25){\rotatebox{90}{\makebox(0,0)[lb]{\smash{the Moon [$\times10^7$~m]}}}}%
   \end{picture}%
 \endgroup%

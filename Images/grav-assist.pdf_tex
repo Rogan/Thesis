@@ -57,7 +57,7 @@
     \put(0.63515525,0.05){\makebox(0,0)[lb]{\smash{2}}}%
     \put(0.76149176,0.05){\makebox(0,0)[lb]{\smash{3}}}%
     \put(0.88782827,0.05){\makebox(0,0)[lb]{\smash{4}}}%
-    \put(0.89838092,0.02){\makebox(0,0)[lb]{\smash{$\times10^8$~m}}}%
+    \put(0.15,0.01){\makebox(0,0)[lb]{\smash{Distance from the centre of the Earth [$\times10^8$~m]}}}%
     \put(0.06,0.13544493){\makebox(0,0)[lb]{\smash{-1.5}}}%
     \put(0.06,0.19861232){\makebox(0,0)[lb]{\smash{-1.0}}}%
     \put(0.06,0.26178144){\makebox(0,0)[lb]{\smash{-0.5}}}%
@@ -67,6 +67,7 @@
     \put(0.07,0.51460017){\makebox(0,0)[lb]{\smash{1.5}}}%
     \put(0.07,0.57776930){\makebox(0,0)[lb]{\smash{2.0}}}%
     \put(0.07,0.64093669){\makebox(0,0)[lb]{\smash{2.5}}}%
-    \put(0.16276357,0.71191119){\makebox(0,0)[lb]{\smash{$\times10^8$~m}}}%
+    \put(0.0,0.2){\rotatebox{90}{\makebox(0,0)[lb]{\smash{Distance from the centre of}}}}
+    \put(0.04,0.25){\rotatebox{90}{\makebox(0,0)[lb]{\smash{the Earth [$\times10^8$~m]}}}}%
   \end{picture}%
 \endgroup%
