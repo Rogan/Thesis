@@ -8,17 +8,17 @@ The biggest impact of vehicle design on the trajectory is the thruster selection
 A number of laboratory test results for the PPTs are reproduced in \autoref{sec:PPT-characteristics}. The test apparatus is shown in \autoref{fig:PPT}. By varying the power supplied to the PPTs, different levels of thrust were achieved for a small sacrifice in $I_{sp}$. As can be seen in \autoref{tab:PPT-performance}, increasing the power supplied to the thruster increases the mass of propellant that is vapourised and then accelerated. This increases the thrust, but the greater mass is not accelerated as efficiently resulting in a lower exhaust velocity, and consequently a lower specific impulse. 
 
 \begin{figure}
-\caption{SIMPLEX PPT during a laboratory test. The spark plug (centre left) ignites an arc between the two electrodes (pointing towards the camera) which vapourises the surface of the block of white PTFE between them. The electric field between the two electrodes then accelerates the plasma towards the camera.} \label{fig:PPT}
 \centering
 \includegraphics[width=0.7\textwidth]{Images/PPT_test.JPG}
+\caption{SIMPLEX PPT during a laboratory test. The spark plug (centre left) ignites an arc between the two electrodes (pointing towards the camera) which vapourises the surface of the block of white PTFE between them. The electric field between the two electrodes then accelerates the plasma towards the camera.} \label{fig:PPT}
 \end{figure}
 
 The thermal arcjet, shown in \autoref{fig:Arcjet}, underwent similar testing. The results provided to the author are reproduced in \autoref{sec:Arcjet-characteristics}. There are many more variables affecting the arcjet performance, mostly not listed in the table, but the biggest difference to the PPTs is that the rate at which propellant is provided to the arcjet can be varied independently of the power. 
 
 \begin{figure}
-\caption{TALOS arcjet during a laboratory test. An arc is generated between the axial cathode and the nozzle anode, which heats up the ammonia, accelerating it outwards.} \label{fig:Arcjet}
 \centering
 \includegraphics[width=0.7\textwidth]{Images/hiparc_betrieb.png}
+\caption{TALOS arcjet during a laboratory test. An arc is generated between the axial cathode and the nozzle anode, which heats up the ammonia, accelerating it outwards.} \label{fig:Arcjet}
 \end{figure}
 
 The thruster development at the time of writing  is focussed on improving power efficiency. The power efficiency, defined in equation \eqref{eq:thruster-efficiency}, is proportional to the thrust squared, and inversely proportional to the mass flow. Since the thrust, defined in equation \eqref{eq:thrust}, is directly proportional to mass flow, reducing mass flow will not improve power efficiency \parencite{Wollenhaupt2011}. Indeed, based on this criterion some of the arcjet tests found that the power efficiency is highest when the arc is not operated, and the thruster functions purely as a cold gas jet! 
@@ -59,11 +59,11 @@ During the transfer, the spacecraft may be eclipsed by the Earth or the Moon. Wh
 The occlusion of a luminous sphere by a smaller sphere creates a conical shadow called the \emph{umbra}, as shown in \autoref{fig:Eclipse}. Within the umbra a total eclipse is observed. Surrounding the umbra is an inverted cone of partial shadow called the \emph{penumbra}. An observer within the penumbra would experience a partial eclipse. Beyond the umbra is another inverted cone of partial shadow called the \emph{antumbra}, within which an annular eclipse would be observed \parencite{Longo1995}.
 
 \begin{figure}
-\caption{Umbra, penumbra and antumbra.} \label{fig:Eclipse}
 \centering
 \def\svgwidth{0.85\textwidth}
 \input{Images/eclipse-1.pdf_tex}
 %\includegraphics[width=\textwidth]{Images/eclipse.png}
+\caption{Umbra, penumbra and antumbra.} \label{fig:Eclipse}
 \end{figure}
 
 First the apices and lengths of the cones may be determined using the simple geometry shown in \autoref{fig:Umbra} and \autoref{fig:Penumbra} giving equation \eqref{eq:cones}.
@@ -78,19 +78,19 @@ x_p = \frac{R_\Earth r_\Earth}{R_\Earth+R_\Sun}
 where $\alpha_u$ is the apex angle of the umbral cone and $\alpha_p$ is the apex angle of the penumbral cone, $x_u$ is the length of the umbral cone and $x_p$ is the length of the penumbral cone, $R_\Sun$ is the radius of the Sun and $R_\Earth$ is the radius of the Earth, and $r_\Earth$ is the distance between the Earth and the Sun.
 
 \begin{figure}
-\caption{Umbral cone.} \label{fig:Umbra}
 \centering
 \def\svgwidth{0.6\textwidth}
 \input{Images/eclipse-2.pdf_tex}
 %\reflectbox{\includegraphics[width=\textwidth]{Images/umbra.png}}
+\caption{Umbral cone.} \label{fig:Umbra}
 \end{figure}
 
 \begin{figure}
-\caption{Penumbral cone.} \label{fig:Penumbra}
 \centering
 \def\svgwidth{0.6\textwidth}
 \input{Images/eclipse-3.pdf_tex}
 %\reflectbox{\includegraphics[width=\textwidth]{Images/penumbra.png}}
+\caption{Penumbral cone.} \label{fig:Penumbra}
 \end{figure}
 
 %Next a fundamental plane is defined through the centre of the Sun and the spacecraft, perpendicular to the plane including the Sun, spacecraft and planet.
@@ -105,11 +105,11 @@ y = \sqrt{r^2-x^2}
 \end{subequations}
 
 \begin{figure}
-\caption{Spacecraft position relative to Earth-Sun line.} \label{fig:Spacecraft-shadow}
 \centering
 \def\svgwidth{\figurewidth}
 \input{Images/eclipse-4b.pdf_tex}
 %\includegraphics[width=\textwidth]{Images/earth-shadow.png}
+\caption{Spacecraft position relative to Earth-Sun line.} \label{fig:Spacecraft-shadow}
 \end{figure}
 
 Now the radii of the umbral cones at the satellite's position may be calculated.
@@ -151,19 +151,19 @@ It is assumed that while one axis of the solar panels is constrained to the thru
 The greatest unknown in the power model is how much the solar cells will degrade over time. As \textcite{Erb_thesis} points out, the solar panel degradation, $\mathfrak{R}$, is directly related to total equivalent \emph{fluence}, $\mathfrak{F}$ (that is, the radiation dose received), which must be integrated over the transfer, where the derivative with respect to time $\frac{d\mathfrak{F}}{dt}$ is approximated as a function of the distance from Earth, as shown in \autoref{fig:Fluence}. 
 
 \begin{figure}
-\caption{Radiation fluence during a 24 hour orbit as a function of distance from Earth.} \label{fig:Fluence}
 \centering
 \def\svgwidth{\figurewidth}
 \input{Images/fluence.pdf_tex}
+\caption{Radiation fluence during a 24 hour orbit as a function of distance from Earth.} \label{fig:Fluence}
 \end{figure}
   
 At each time step the equivalent radiation dose of a 24~hour orbit may be taken from the graph, and scaled to the appropriate time interval. This effective radiation dose is added to the accumulated radiation dose. The total accumulated radiation dose may be translated to a power degradation factor using \autoref{fig:Fluence2}.
 
 \begin{figure}
-\caption{Power degradation as a consequence of radiation fluence.} \label{fig:Fluence2}
 \centering
 \def\svgwidth{\figurewidth}
 \input{Images/fluence2.pdf_tex}
+\caption{Power degradation as a consequence of radiation fluence.} \label{fig:Fluence2}
 \end{figure}
 
 Data for the panel degradation model was based on the work done by \textcite{Hechler2002} during planning for the SMART-1 mission, via \textcite{Erb_thesis}. During the SMART-1 mission, it was found that their solar cells degraded by approximately 0.12\% per day, or about 2~W \parencite{Racca5}. It was also found that during a solar storm on 20~October 2003, an additional 1\% panel degradation occurred \parencite{Racca8}. However, soon after the solar storm, the spacecraft reached a periapsis of 11790~km whereupon no further radiation damage occurred. Thus it can be assumed that the phase boundary defined in the mission architecture may be quite conservative, which should be factored into further power degredation modelling if not simply changing the mission architecture.
@@ -310,17 +310,17 @@ Due to the low thrust of spacecraft \BW, a substantial part of the orbit raising
 Because lunar gravitational assists provide delta-v without fuel expenditure, they should be implicitly accounted for during optimisation. Preliminary results did indicate this to be the case, as seen in \autoref{fig:Lunar-resonance}. From an initial orbit of 180,000~km (semi-cis-lunar, representing the later stages of the transfer to highlight the lunar assist) the spacecraft takes two orbits to align its phase with the Moon, then receives a very apparent boost purely from the Moon's gravity during the close passes seen in \autoref{fig:Lunar-resonance2}.
 
 \begin{figure}
-\caption{Trajectory of preliminary optimisation showing a lunar resonance implicitly realised by the optimiser.} \label{fig:Lunar-resonance}
 \centering
 \def\svgwidth{\figurewidth}
 \input{Images/grav-assist.pdf_tex}
+\caption{Trajectory of preliminary optimisation showing a lunar resonance implicitly realised by the optimiser.} \label{fig:Lunar-resonance}
 \end{figure}
 
 \begin{figure}
-\caption{Distance of spacecraft from Earth and Moon during preliminary optimisation showing a lunar resonance implicitly realised by the optimiser.} \label{fig:Lunar-resonance2}
 \centering
 \def\svgwidth{\figurewidth}
 \input{Images/grav-assist2.pdf_tex}
+\caption{Distance of spacecraft from Earth and Moon during preliminary optimisation showing a lunar resonance implicitly realised by the optimiser.} \label{fig:Lunar-resonance2}
 \end{figure}
 
 
@@ -331,10 +331,10 @@ Because lunar gravitational assists provide delta-v without fuel expenditure, th
 It is well known that thrusting at particular points in the orbit is more efficient than others \parencite{Kemble2006}. \textcite{Oberth1923} states that the specific orbital energy gained per unit delta-v exerted is equal to the instantaneous speed. Therefore, thrusting is more efficient at high speed, which occurs at periapsis. This is known as the Oberth effect, and is demonstrated quite effectively in \autoref{fig:oberth} where the \emph{effective weight} is the weight minus the centrifugal force due to the horizontal velocity.
 
 \begin{figure}
-\caption{Thrust to effective weight ratio during preliminary optimisation demonstrates the Oberth effect.} \label{fig:oberth}
 \centering
 \def\svgwidth{\figurewidth}
 \input{Images/oberth.pdf_tex}
+\caption{Thrust to effective weight ratio during preliminary optimisation demonstrates the Oberth effect.} \label{fig:oberth}
 \end{figure}
 
 Constant thrust (tangential to the orbital radius) leads to circular trajectories because an eccentric starting trajectory spends more time at apoapsis than periapsis; hence more impulse is imparted to the vehicle at apoapsis than at periapsis. As evident in a Hohmann transfer, thrusting at apoapsis circularises the orbit. \textcite{Racca9} found that tangential thrust is the most efficient way to increase the periapsis of a constant-thrust vehicle.

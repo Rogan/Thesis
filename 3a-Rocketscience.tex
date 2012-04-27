@@ -20,11 +20,11 @@ Only two of these conic sections are important. In a frame centred on one of the
 The primary body is at a point mathematically defined by the conic section, called a focus. A number of other parameters are defined for all conic sections, but only shown for an ellipse in \autoref{fig:ellipse} because ellipses are conceptually easier and the majority of \BW's orbit is expected to be elliptical.
 
 \begin{figure} 
-\caption{Elliptical parameters.} \label{fig:ellipse}
 \centering
 \def\svgwidth{0.6\textwidth}
 \input{Images/ellipse.pdf_tex}
 %\includegraphics[width=\textwidth]{Images/ellipse_parameters.pdf}
+\caption{Elliptical parameters.} \label{fig:ellipse}
 \end{figure}
 
 The semimajor axis, $a$, is half of the length of the major axis, and the semilatus rectum, $p$, is half of the length of the latus rectum. Finally, the \emph{periapsis} is the point in the orbit closest to the primary body, whilst the \emph{apoapsis} is the point furthest from the primary body.
@@ -39,30 +39,30 @@ During the transfer from Earth to Moon, there are a number of issues to consider
 The most hazardous element of the journey is radiation. In particular, the Earth's magnetosphere traps particle radiation in two bands above the equator, as seen in the conceptual cross-section in \autoref{fig:vabs}. 
 
 \begin{figure}
-\caption{The van Allen Belts conceptual image.} \label{fig:vabs}
 \centering
 \def\svgwidth{\figurewidth}
 \input{Images/vab.pdf_tex}
 %\includegraphics[width=\textwidth]{Images/350px-Van_Allen_radiation_belt_svg.png}
+\caption{The van Allen Belts conceptual image.} \label{fig:vabs}
 \end{figure}
 
 The outer radiation belt extends from an altitude of about three to ten Earth radii, and is characterised by a relatively high density of high energy (0.1-10~MeV) electrons. The density varies wildly based on geomagnetic storms and variations in solar wind, but an averaged distribution is shown in \autoref{fig:vabs2}.
 
 %\begin{figure} 
-%\caption{The AP8MIN van Allen Belt proton flux distribution \parencite{Sawyer1976}. Contours represent particles per square centimetre per second.} \label{fig:vabs2}
 %\includegraphics[width=\textwidth,clip,trim=0 35 0 35]{Images/800px-Ap8-omni-1_000MeV.png}
+%\caption{The AP8MIN van Allen Belt proton flux distribution \parencite{Sawyer1976}. Contours represent particles per square centimetre per second.} \label{fig:vabs2}
 %\end{figure}
 
 \begin{figure} 
-\caption{The AP8MIN van Allen Belt proton flux distribution \parencite{Sawyer1976}. Contours represent particles per square centimetre per second.} \label{fig:vabs2}
 \includegraphics[width=\textwidth,clip,trim=0 35 0 30]{Images/800px-Ap8-omni-0_100MeV.png}
+\caption{The AP8MIN van Allen Belt proton flux distribution \parencite{Sawyer1976}. Contours represent particles per square centimetre per second.} \label{fig:vabs2}
 \end{figure}
 
-Much more problematic is the inner belt which extends from an altitude of 100~km (the limit of our atmosphere) to about 10,000~km, and consists of high concentrations of energetic protons (some over 400~MeV, which can penetrate 143~mm of lead) thought to be caused by cosmic ray collisions with nuclei of the upper atmosphere \parencite{Hess1968}.
+Much more problematic is the inner belt which extends from an altitude of 100~km (the limit of our atmosphere) to about 10,000~km, and consists of high concentrations of energetic protons (some over 400~MeV, which can penetrate 143~mm of lead) thought to be caused by cosmic ray collisions with nuclei of the upper atmosphere \parencite{Hess1968}. The averaged distribution of lower-energy particles is shown in \autoref{fig:vabs3}.
 
 \begin{figure} 
-\caption{The AP8MIN van Allen Belt proton flux distribution \parencite{Sawyer1976}. Contours represent particles per square centimetre per second.} \label{fig:vabs3}
 \includegraphics[width=\textwidth,clip,trim=0 35 0 67]{Images/800px-Ap8-omni-400_0MeV.png}
+\caption{The AP8MIN van Allen Belt proton flux distribution \parencite{Sawyer1976}. Contours represent particles per square centimetre per second.} \label{fig:vabs3}
 \end{figure}
 
 While the lower energy radiation can and frequently does corrupt computer data on satellites, preventive measures can be taken such as using radiation hardened hardware, or shielding the processors. The higher energy radiation however damages the solar panels, reducing the amount of power they can generate. The only known solution to this problem is to spend as little time within the van Allen belts as possible. This is the reason for the higher thrust ascent phase.
@@ -126,11 +126,11 @@ These gravitational, atmospheric and thrust vectoring losses can be calculated w
 where $D(t)$ is the instantaneous aerodynamic drag magnitude, $g(r)$ is the local gravitational acceleration $r$ metres from the centre of the Earth, $\gamma$ is the angle from the velocity vector to the horizontal, $\alpha$ is the body axis line (above the velocity vector) and $\varepsilon$ is the thrust vector (above the body axis line), as shown in \autoref{fig:path-angles} \parencite{Tetlow2003}. Because the thrusters of \BW\ are fixed relative to the body, the thrust vector is fixed at $\varepsilon=0\degrees$.
 
 \begin{figure}
-\caption{Flight angle and thrust vector of the spacecraft relative to LVLH frame. $\vec{i}_r$ and $\vec{i}_\theta$ are the local vertical and horizontal, respectively (see \autoref{sec:Reference-frames} for definition). The thrust vector is $\vec{u}$ and the velocity vector is $\vec{v}$. The body axis line represents the orientation of the vehicle.} 
-\label{fig:path-angles}
 \centering
 \def\svgwidth{0.4\textwidth}
 \input{Images/flight-angle.pdf_tex}
+\caption{Flight angle and thrust vector of the spacecraft relative to LVLH frame. $\vec{i}_r$ and $\vec{i}_\theta$ are the local vertical and horizontal, respectively (see \autoref{sec:Reference-frames} for definition). The thrust vector is $\vec{u}$ and the velocity vector is $\vec{v}$. The body axis line represents the orientation of the vehicle.} 
+\label{fig:path-angles}
 \end{figure}
 
 Little can be done within the scope of this project to reduce atmospheric drag and gravity drag, since these effects are strongest during launch. However, gravity drag is still present during orbit raising if the thrust line has any component parallel to the gravitational force; when this occurs, the thrust is fighting against gravity rather than increasing the velocity of the spacecraft (and providing delta-v). Similarly, thrust vectoring decreases effective delta-v because the thrust is changing the direction of the spacecraft, rather than increasing its speed. 
@@ -163,11 +163,11 @@ where $m_{p}$ and $m_{s}$ are the mass of the primary and secondary bodies, resp
  Note that the Moon's sphere of influence (with respect to the Earth)\footnote{calculated as just over 66,000~km from the Moon's centre, just under 5/6 of the distance from the Earth to the Moon.} lies entirely within the Earth's (with respect to the Sun)\footnote{calculated as almost 925,000~km from the Earth's centre.}.
 
 \begin{figure} [h]
-\caption{Earth and Moon spheres of influence.} \label{fig:Spheres-of-Influence}
 \centering
 \def\svgwidth{\figurewidth}
 \input{Images/soi.pdf_tex}
 %\includegraphics[scale=0.4]{Images/Spheres-of-Influence.png}
+\caption{Earth and Moon spheres of influence.} \label{fig:Spheres-of-Influence}
 \end{figure}
 
 \section{Summary} \label{sec:Rocket-science-summary}
