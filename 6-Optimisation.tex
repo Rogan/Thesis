@@ -1,49 +1,7 @@
 \chapter{Optimisation} \label{cha:Optimisation}
 \section{Introduction} \label{sec:Optimisation-Introduction}
 
-Optimisation is, intuitively, the process of finding an optimum value (minimum or maximum) for a given function. This is achieved by defining an \emph{objective function} or \emph{cost function} to rank results based on perceived value, allowing the result with the highest value to be chosen. The difficulty of performing optimisation arises from the potentially large number of results, and the difficulty of mathematically defining what is \enquote{good} or \enquote{bad}. This section describes the mathematical process of optimisation, and how it applies to spacecraft trajectories.
-
-% Generic definition
-\section{Problem formulation} \label{sec:Formulation}
-
-As a typical optimal control problem, the trajectory optimisation was formulated to find the required control history $\vec{u}(t)$ to deliver the vehicle from the initial state $\vec{x}(t_0)$ to the final state $\vec{x}(t_f)$ while minimising the cost function $F$, where $t$ is some smoothly increasing or decreasing parameter. 
-
-Along with the control history there are several other parameters such as departure date, slackness within the initial and final conditions, and phase lengths, that make up the optimisable parameter set $\vec{p}$. The generic optimisation problem is shown in equation \eqref{eq:Optimisation}.
-\begin{equation} \label{eq:Optimisation}
-\min F(\vec{u}(t),\vec{p})
-\end{equation}
-
-This is, of course, subject to certain equality and inequality constraints which depend on the state $\vec{x}$, control parameters $\vec{u}$, optimisable parameters $\vec{p}$ and independent parameter $t$, as outlined in equation \eqref{eq:Constraints}.
-\begin{subequations} \label{eq:Constraints}
-\begin{align}
-g_{eq}(\vec{x}(t),\vec{u}(t),\vec{p},t) &= 0 \\
-g_{ineq}(\vec{x}(t),\vec{u}(t),\vec{p},t) &\ge 0 
-\end{align}
-\end{subequations}
-
-A differential equation \eqref{eq:generic-DE} then describes how the state evolves over the trajectory.
-\begin{equation}\label{eq:generic-DE}
-\frac{d\vec{x}}{dt} = f(\vec{x}(t),\vec{u}(t),\vec{p},t)
-\end{equation}
-
-For computational reasons (see \autoref{sub:Scaling}), upper and lower bounds are supplied for the states, controls and optimisation parameters as per equation \eqref{eq:Bounds}.
-\begin{subequations} \label{eq:Bounds}
-\begin{gather}
-\vec{x}_l\le\vec{x}(t)\le\vec{x}_u \label{eq:state-bounds}\\
-\vec{u}_l\le\vec{u}(t)\le\vec{u}_u \label{eq:control-bounds}\\
-\vec{p}_l\le\vec{p}\le\vec{p}_u \label{eq:parameter-bounds}
-\end{gather}
-\end{subequations}
-
-The cost function $F$ must be defined with the same parameters, but may include components evaluated at the start of the trajectory, end of the trajectory, and integrated over the trajectory, added together with appropriate weighting factors $\sigma$.
-\begin{subequations}
-\begin{gather}
-F_0=f(\vec{x}(t_0),\vec{u}(t_0),\vec{p},t_0) \label{eq:init-cost}\\
-F_f=f(\vec{x}(t_f),\vec{u}(t_f),\vec{p},t_f) \label{eq:final-cost}\\
-F_i=\int^{t_f}_{t_0}f(\vec{x}(t),\vec{u}(t),\vec{p},t)\,dt \label{eq:integral-cost} \\
-F = \vec\sigma_0 F_0+\vec\sigma_f F_f+\vec\sigma_i F_i \label{eq:total-cost}
-\end{gather}
-\end{subequations}
+This section describes how the mathematical process of optimisation, described in \autoref{sec:Optimisation-methods}, applies to \BW.
 
 % State vector
 \section{State vector} \label{sec:state-vector}
@@ -52,7 +10,7 @@ Since we are concerned with the state of the spacecraft, in this particular scen
 \begin{equation}
 \dot{m}=-\frac{T}{v_{ex}} \label{eq:mdot}
 \end{equation}
-where $T$ is the instantaneous thrust magnitude and $v_{ex}$ is the instantaneous exhaust velocity. \enquote{Real time} is added as another (albeit independent) state to allow ephemeris calculation. Finally the energy stored in the batteries is also critical to the state of the spacecraft, and similarly to mass it is reduced by using the thrusters (dependent on the power level required by the thrusters over the given phase), as defined in equation \eqref{eq:edot}, 
+where $T$ is the instantaneous thrust magnitude and $v_{ex}$ is the exhaust velocity. \enquote{Real time} is added as another (albeit independent) state to allow ephemeris calculation. Finally the energy stored in the batteries is also critical to the state of the spacecraft, and similarly to mass it is reduced by using the thrusters (dependent on the power level required by the thrusters over the given phase), as defined in equation \eqref{eq:edot}, 
 \begin{subequations}\label{eq:edot}
 \begin{align}
 \Delta E &= \int_{t_0}^{t_f} P\,\text{dt} \label{eq:delta-E}\\
@@ -86,7 +44,7 @@ F = -m(t_f) \label{eq:objective}
 
 Since the dry mass of \BW\ was unknown, a starting wet mass was assumed; therefore to minimise the fuel used one must simply maximise the final mass. A time penalty was considered to discourage unreasonably long transfer times, but found to be unnecessary. Preliminary, simplified optimisations for the cruise phase used an additional term to minimise the orbital energy with respect to the Moon, $\epsilon_{LCI}$, to encourage a stronger capture. This helped develop the initial guess, but was found to be very sensitive to the weighting factors, $\sigma_1$ and $\sigma_2$, as shown in equation \eqref{eq:objective2},
 \begin{gather}
-F = \sigma_2\epsilon_{LCI}-\sigma_1m(t_f) \label{eq:objective2}
+F = \sigma_1\epsilon_{LCI}-\sigma_2m(t_f) \label{eq:objective2}
 \end{gather}
  
 %fixed launch mass at initial guess because that is how it is booked with launch service provider. saving fuel means more scientific payload.
@@ -119,7 +77,7 @@ Inclination, $i$ (rad) &=& 0.379\\\bottomrule
 \end{tabular}
 \end{table}
 
-Since the purpose of this phase is to escape the van Allen Belts, the final boundary condition is defined as the lowest point in the orbit (the periapsis) exceeding the outer limits of the van Allen Belts. \textcite{Letterio_thesis} used an orbital radius of 22,668~km from the centre of the Earth as a good estimate for this point. This termination condition forms the initial condition of the next phase. A very important additional constraint is that all states must be smooth and continuous over the phase transition.
+Since the purpose of this phase is to escape the van Allen Belts, the final boundary condition is defined as the lowest point in the orbit (the periapsis) exceeding the outer limits of the van Allen Belts. \textcite{Letterio_thesis} used an orbital radius of 22,668~km from the centre of the Earth as a good estimate for this point. This termination condition forms the initial condition of the next phase, as shown in \autoref{tab:Phase-2-3-constraints}. A very important additional constraint is that all states must be smooth and continuous over the phase transition.
 
 \begin{table}[h]
 \caption{Phase 2 to 3 transition constraints.} \label{tab:Phase-2-3-constraints}
@@ -139,7 +97,7 @@ p = a(1-e^2)\\
 \epsilon = -\frac{\mu}{2a}
 \end{gather}
 
-However, the eccentricity can undergo rapid changes during lunar assists. Consequently, the periapsis and semilatus rectum both reveal sudden jumps. Furthermore, the semimajor axis changes exhibits a discontinuity when an orbit transitions from elliptical to hyperbolic (that is, if the spacecraft achieves escape velocity). Therefore the orbital energy, $\epsilon$, was chosen as the phase constraint.
+However, the eccentricity can undergo rapid changes during lunar assists. Consequently, the periapsis and semilatus rectum both reveal sudden jumps. Furthermore, the semimajor axis exhibits a discontinuity when an orbit transitions from elliptical to hyperbolic (that is, if the spacecraft achieves escape velocity). Therefore the orbital energy, $\epsilon$, was chosen as the phase constraint, as shown on the bottom of \autoref{tab:Phase-3-4-constraints}.
 
 \begin{table}[h]
 \caption{Phase 3 to 4 transition constraints.} \label{tab:Phase-3-4-constraints}
@@ -153,7 +111,7 @@ Earth orbital energy, $\epsilon_{ECI}$ (m$^2$s$^{-2}$) &$\le$& 0.0 \\\bottomrule
 \end{tabular}
 \end{table}
 
-As also defined in the mission architecture by \textcite{Roeser2006}, the subsequent capture phase would then terminate when the spacecraft is less than 1400 km above the lunar surface.
+As also defined in the mission architecture by \textcite{Roeser2006}, the subsequent capture phase would then terminate when the spacecraft is less than 1400 km above the lunar surface, as per \autoref{tab:Phase-4-5-constraints}.
 
 \begin{table}[h]
 \caption{Phase 4 to 5 transition constraints.} \label{tab:Phase-4-5-constraints}
@@ -164,7 +122,7 @@ Lunar altitude, $r_{LCI}$ (m) &$\le$& $1.4\times 10^6$\\\bottomrule
 \end{tabular}
 \end{table}
 
-The final state is lunar orbit at an altitude of 100~km above the surface of the Moon. A polar or near-polar orbit is desired for maximum surface coverage.
+The final state is lunar orbit at an altitude of 100~km above the surface of the Moon. A polar or near-polar orbit is desired for maximum surface coverage. The corresponding orbital elements are shown in \autoref{tab:Phase-5-constraints}.
 
 \begin{table}[h]
 \caption{Keplerian elements for the final orbit of \BW\ trajectory optimisation (end of descent phase).} \label{tab:Phase-5-constraints}
@@ -192,176 +150,19 @@ Upon implementation of the power generation and consumption model, the constrain
 
 %-----------------------------------------------------------------------------------------------------------------------------------------------
 
-% Trajectory propagation
-\section{Trajectory propagation} \label{sec:Propagation}
-The path between initial and final states is defined by the differential equations of motion outlined in \autoref{sec:state-vector}. A number of numerical methods are available for approximating the solution to differential equations such as these. In general, the gradient at some starting point is used to estimate another point a small distance away. Most common are the Runge-Kutta methods, which use an iterative estimate of the gradient at the midpoint to get a more accurate estimate for the endpoint. The fourth order Runge-Kutta method for $y'=f(t,y)$ is shown in equation \eqref{eq:RK4},
-\begin{subequations}
-\begin{gather} \label{eq:RK4}
-y_{n+1}=y_n+\frac{1}{6}\left(k_1+2k_2+2k_3+k_4\right) \\
-k_1=hf\left(t_n,y_n\right) \\
-k_2=hf\left(t_n+\frac{h}{2},y_n+\frac{k_1}{2}\right) \\
-k_3=hf\left(t_n+\frac{h}{2},y_n+\frac{k_2}{2}\right) \\
-k_4=hf\left(t_n+h,y_n+k_3\right)
-\end{gather}
-\end{subequations}
-where $h$ is the step size.
-
-Adaptive Runge-Kutta methods use the difference between two fixed-step Runge-Kutta methods to place bounds on the accuracy of the estimated endpoint. If the accuracy is not within some predefined tolerance, the interval size is revised. Particular care must be taken when integrating a non-linear differential equation over an extended duration such as the \BW, due to the accumulation of numerical errors.
-
-%\subsection{Integration techniques} \label{sub:Integration}
-
-Regardless of the numerical method used, trajectory optimisation requires solving the differential equations over a span of time; low-thrust trajectory optimisation requires very long timespans. Every integration step is associated with a potential error, which accumulates over the timespan. Methods that integrate from the start to the finish, termed \emph{direct shooting} or \emph{single shooting} methods, become increasingly error-prone as the timespan increases. Small changes early in the trajectory create large changes later on, which can make the constraints behave very non-linearly \parencite{Betts1998}. 
-
-If some intermediate states can be reliably guessed, the integration may be started anew from that \enquote{node}. Any discontinuity at the node is added to the set of constraints, resulting in a relatively larger number of optimisation variables. Methods that perform multiple independent integrations like this, termed \emph{multiple shooting} methods, are less prone to integration error, but convergence is heavily dependent on the accuracy of the intermediate state guesses \parencite{Betts1998, ASTOS_guide}. Consequently, many multiple shooting methods now incorporate automatic initial guess estimation. Multiple shooting is sometimes called \emph{parallel shooting}, because each segment may be calculated in parallel. This method therefore lends itself well to parallel processing, across multiple core processors or even clusters of networked computers. 
-
-Finally, to save on computational complexity the changes in control and/or state over time may be approximated by a piecewise linear or polynomial function. Any algorithm that uses a simplification like this is said to solve the \emph{parameterised optimal control problem}. If the algorithm approximates control and state nodes at the same points, it is a \emph{collocation} method. Since this reduces the number of nodes required, collocation is generally faster than multiple shooting, but not as accurate.%cite
-
-For this project, a multiple shooting Runge-Kutta 4/5 integrator was used to simulate the trajectory from the initial guess, and then again using the optimised parameters and control profile determined by the optimiser. The optimisation algorithm used its inbuilt single shooting collocation separated Hermite-Simpson integrator \parencite{Betts2010}.
-
-% Optimisation 
-\section{The process of optimisation} \label{sec:Process}
-
-Any trajectory propagated as in \autoref{sec:Propagation} that satisfies the boundary value problem stated in \autoref{sec:BVP}, within acceptable error bounds, is a potential solution to the optimal control problem. These solutions may then be ranked using the objective function presented in \autoref{sec:Objective-function}. The remaining task is to evaluate enough potential solutions to be confident that the highest scoring one is indeed optimal. 
-
-There are two general approaches to this problem, classified consistently across literature such as \textcite{Betts1998} and \textcite{ASTOS_guide}. \emph{Indirect methods} attempt to solve the derivative of the cost function and thus determine a stationary point in the function space. \emph{Direct methods} simply evaluate the cost function at a number of nearby points in the function space, and repeat the process from the best solution found. Once no adjacent points in the function space possess better costs, an optimum has been attained. Both of these methods satisfy the neccessary and sufficient conditions of an optimum. 
-
-\subsection{Necessary and sufficient conditions} \label{sub:Neccessary-and-sufficient}
-
-Pierre de Fermat first proved that optima of unconstrained problems are found at stationary points in the objective function. The addition of inequality constraints adds some complexity in that the global optimum may be located on the edge of the acceptable set; that is, where an active constraint disallows any points deeper along the gradient. These constraints may be appended to the objective function to form a \emph{Lagrangian}, which models the overall problem as an unconstrained set. Because this test requires the multi-dimensional gradient (called the \emph{Jacobian}) to be calculated, it is called a \emph{first order condition}. Satisfying the first order condition is necessary for the point to be a local optimum.
-
-While the first derivative test identifies points that might be optima, it does not disinguish a point which is a minimum from one that is a maximum or an inflection point. When the objective function is twice differentiable, these cases can be distinguished by checking the second derivative (the gradient of the gradient, called the \emph{Hessian}). The conditions that distinguish maxima, or minima, from other stationary points are called \emph{second order conditions}. If a candidate solution satisfies the first order conditions, then satisfaction of the second order conditions is sufficient to establish at least local optimality.
-
-Indirect methods rely on these tests to determine search direction. Direct methods include these tests implicitly by adjusting the search space towards the most favourable solution (consequently along the steepest gradient) until there is no more favourable solution (the gradient is zero). If the second order test were not satisfied, better solutions would be found adjacent to the candidate solution. Both types of methods do require evaluation of the Lagrangian.
-
-% Lagrangian
-\subsection{Lagrangian} \label{sub:Lagrangian}
-
-As mentioned in \autoref{sub:Neccessary-and-sufficient}, adding the constraints to the cost function transforms the constrained problem into an unconstrained problem. The resulting cost function is known as the Lagrangian, $\mathcal{L}$, and defined in equation \eqref{eq:Lagrangian},
-\begin{equation} \label{eq:Lagrangian}
-\mathcal{L} = F(\vec{u}(t),\vec{p}) - \sum\lambda g_{eq}(\vec{x},\vec{u},\vec{p},t) - \sum\mu g_{ineq}(\vec{x},\vec{u},\vec{p},t)
-\end{equation}
-where the cost function $F$ was explained in \autoref{sec:Formulation}. The Karush-Kuhn-Tucker (KKT) multipliers, $\lambda$ and $\mu$, are added to the set of optimisable parameters, and subject to additional constraints ($\lambda_i\ge0$ and $\mu_i\ge0$ for all $i$). This forms the \emph{complementary slackness condition}. For any feasible solution, the equality constraints and active inequality constraints will give $g(\vec{x})=0$.  Since the inactive inequality constraints $g(\vec{x})>0$, their respective KKT multipliers will be driven down to improve the Lagrangian until $\lambda=0$. Therefore, minimising the Lagrangian minimises the objective function and ensures all constraints are met.
-
-% Indirect methods
-\subsection{Indirect methods}
-
-As introduced in \autoref{sub:Neccessary-and-sufficient}, indirect methods attempt to solve the optimal control problem by determining a stationary point in the solution space that satisfies the second order condition of being an optimum. Traditionally this is achieved analytically through the calculus of variations, using Pontryagin's minimum principle \parencite{Pontryagin1962}. 
-
-%This states that optimising the Hamiltonian of a system is a necessary condition for the optimal control of that system. As shown by \textcite{Ren2007}, generating the Hamiltonian for the modified equinoctial elements is simple, by placing equation \eqref{eq:state-updates} in the form $\dot{\vec{x}}=\mathbf{B}\Delta+\vec{d}$
-%here the state variable $\vec{x}=\left[\begin{array}{cccccc} p & f & g & h & k & L\end{array}\right]^{T}$
-%consists of the equinoctial element set defined in Section \ref{sec:Orbital-Elements}, $\mathbf{B}$ is a $3\times6$ matrix that represents the thrust coefficients, and $\vec{d}=\left[\begin{array}{cccccc} 0 & 0 & 0 & 0 & 0 & D\end{array}\right]^{T}$
-%where $D=\sqrt{\mu p}\left(\frac{w}{p}\right)^{2}$ and represents the natural circular motion (zero thrust trajectory).
-%The Hamiltonian is then %need to define terms here too, 
-%$\lambda,\lambda_{L},\lambda_{m},m$
-%\begin{equation}
-%H=\vec{\lambda}^{T}\mathbf{B\Delta}+\lambda_{L}d-\lambda_{m}\frac{T}{I_{sp}g_{0}}\label{eq:hamiltonian}
-%\end{equation}
-%with costate equations
-%\begin{equation}
-%\dot{\vec\lambda}=-\frac{\delta H}{\delta\vec{x}}=-\vec{\lambda}^{T}\frac{\delta\mathbf{B}}{\delta\vec{x}}\Delta-\lambda_{L}\frac{\delta d}{\delta\vec{x}}\label{eq:lambda_dot}
-%\end{equation}
-%\begin{equation}
-%\dot{\lambda}_{m}=-\frac{\delta H}{\delta m}=\vec{\lambda}^{T}\mathbf{B}\frac{\mathbf{\Delta}}{m}=\left\Vert \vec{\lambda}^{T}\mathbf{B}\right\Vert \frac{T}{m^{2}}\label{eq:lambda_m_dot}
-%\end{equation}
-
-% explain what is done once the Hamiltonian is optimised
-
-Pontryagin's minimum principle requires solution of the adjoint equations. % define adjoint equations?
-The existence of an analytical solution consequently becomes highly dependent on the linearity of the adjoint equations, but assumptions and simplifications can sometimes be made in order to determine a general solution to the equations. These assumptions are usually only valid for short duration scenarios such as the missile trajectory described by \textcite{Ohlmeyer2006} and the re-entry of the two exo-atmospheric stages of the Saturn~V rocket presented by \textcite{Haeussermann1965}. Given the long durations and non-linearities present in low-thrust trajectories, an analytical solution usually cannot be found.
-
-An alternative to solving the infinite-dimensional optimal control problem is to discretise the problem and solve it using indirect numerical methods. Forgoing a general solution to the objective function, these methods break the problem down into many sub-problems, each of which may be solved locally. This is collectively known as nonlinear programming (NLP) \parencite{Betts1998}. 
-
-The general approach to nonlinear programming is take a candidate solution, $\vec{x}_0$. An iterative procedure is then used to improve this solution by varying the state a certain amount, $\alpha$, in a certain direction, $\vec{k}$, as defined in equation \eqref{eq:NLP}. The sign of the step direction, $\alpha$, determines whether the algorithm finds a minimum or a maximum.
-
-\begin{equation} \label{eq:NLP}
-\vec{x}_{n+1}=\vec{x}_n+\alpha\vec{k}
-\end{equation}
-
-\textcite{Gauss1827} pioneered gradient-based methods in the early 19th century, by using the Jacobian of the Lagrangian with respect to the state vector, $\nabla\mathcal{L}$, as the search direction, as shown in equation \eqref{eq:gradient-method}. This technique is also known as the method of steepest descent, because the Jacobian matrix functions as a multi-dimensional gradient. When a candidate solution is found with no gradient that leads to a better solution, the candidate solution must be a local optimum.
-
-\begin{equation} \label{eq:gradient-method}
-\vec{x}_{n+1}=\vec{x}_n + \alpha\nabla\mathcal{L}(\vec{x}_n)
-\end{equation}
-
-Pure gradient methods are prone to slow optimisation, particularly with stiff problems. %define stiff problems, cite
-A second-order variant on this scheme is often referred to as \emph{Newton's method} because it uses the iterative root-finding scheme devised by \textcite{Newton1711, Newton1736} to determine the zeroes of the gradient. Since the gradient is itself a derivative of the Lagrangian, this technique requires computation of a second derivative, as seen in equation \eqref{eq:newtons-method}. The curvature information held within the second derivative matrix (called the Hessian matrix, $\nabla^2\mathcal{L}$) allows this technique to converge faster, but each iteration takes more computational effort.
-
-\begin{equation} \label{eq:newtons-method}
-\vec{x}_{n+1}=\vec{x}_n + \alpha\frac{\nabla\mathcal{L}(\vec{x}_n)}{\nabla^2\mathcal{L}(\vec{x}_n)}
-\end{equation}
-
-Various schemes exist to calculate the step size, $\alpha$. These algorithms, collectively called a \emph{line search}, can often be very computationally inefficient and time consuming. When the step size, $\alpha$ is equal to one, gradient methods assume a linear behaviour in the vicinity of the candidate solution, and select the next iteration accordingly. Newton's method assumes a quadratic behaviour in the vicinity. Variations on Newton's method have been used to great success in many optimisation applications, not least trajectory optimisation, leading to the techniques being collectively named \emph{sequential quadratic programming} (SQP). Quasi-Newton methods such as the Broyden-Fletcher-Goldfarb-Shanno (BFGS) method use an approximation of the Hessian to speed up computation while retaining the benefits of second-order gradient information. 
-
-In certain applications such as low thrust trajectories, the long propagation times requiring many grid points result in very large, sparse Jacobian and Hessian matrices. A sparse matrix is characterised by very few non-zero terms \parencite{Stoer2002}, due to very loose coupling; changes early in the trajectory do not have a direct effect on the later stages of the trajectory, except by influencing all of the intervening states. Some algorithms are able to exploit this sparsity to calculate the Hessian and Jacobian matrices very efficiently.
-
-% John von Neumann developed an alternative to gradient methods, known as the \emph{interior point method}...
-
-%can perhaps use \cite{Well2001} for reference about GESOP, SQP, collocation, direct shooting
-%\textcite{Nocedal2006} basic intro to optimisation
-
-%A useful measure of stiffness is the condition number of the Hessian matrix. A high condition number means the system is very sensitive to small changes in the perturbation vector. During optimisations conducted for this project, the condition number was often of the order $10^{11}$, demonstrating the stiffness of this problem.
-
-
-% Direct methods
-\subsection{Direct methods}
-
-Direct methods, in contrast to indirect methods, do not try to determine additional information from the objective function. They simply evaluate the objective function at a number of points, and then adjust the search space towards the best solution found. Consequently direct methods cannot be analytical. %However, the resulting direct numerical methods rely on the same principles as indirect numerical methods, so the general optimisation scheme presented in equation \eqref{eq:NLP} is still valid. 
-
-There are many different techniques to determine which solutions to evaluate. A number of techniques such as tabu search and hill-climbing merely search adjacent solutions, and consequently function only as local search methods. Without using gradient information each iteration must exhaustively search the adjacent function space, so these techniques are less efficient than indirect methods (subject to the difficulty of gradient computation). The real advantage of direct methods emerges when each iteration is allowed to search a wider space.
-
-The largest group of direct methods is evolutionary algorithms. In general, these techniques evaluate a number of candidate states, make a few random changes and then re-evaluate the new generation, picking the best solutions to continue with. For example, genetic algorithms avoid local minima by performing random mutations and genetic crossovers, emulating the biological process of evolution. Another example called simulated annealing was introduced by \textcite{Kirkpatrick1983}, which emulates a blacksmithing technique where the metal is cooled slowly to allow the particles to align into an optimised (crystallised) low energy state. 
-
-Evolutionary algorithms are heavily dependent on their implementation, and the efficiency of their mutations, to steer the evolution of the solution. Furthermore with delicate problems such as \BW\ random mutations frequently lead to invalid solutions (the spacecraft does not reach the target orbit) and consequently these techniques can struggle to find alternative feasible solutions, as changes may be required to multiple parameters.
-
-Another group of direct methods are called dynamic programming. These techniques are particularly used in financial programming and management science, with the aim of finding the path of least cost in a discrete system by evaluating each step backwards from the goal using the recursive Bellman equations. As such dynamic programming is best suited to heavily discretised states and paths between states, and consequently a very limited number of controls. Dynamic programming has been expanded to solve continuous time problems using the Hamilton-Jacobi-Bellman equations, but this adaptation requires calculation of the cost function gradient, converting the technique to an indirect method. 
-
-% Memetic algorithm - like genetic algorithms with memes
-% Differential evolution - another algorithm to create next generation [a + F(b-c)]
-% Dynamic relaxation - modelling springs & dampers (or electrical circuits)
-% Nelder-Mead simplicial heuristic: A popular heuristic for approximate minimization (without calling gradients)
-% Particle swarm optimization
-
-%\cite{Hughes2004} co-evolutionary on-line evolutionary algorithm
-%\cite{Vasile2009} meta-heuristic, domain decomposition. GA?
-
-% Some techniques take a different approach. Because so many optimisation methods rely on an initial guess, homotopy/embedding/continuation methods provide a way to develop that guess. They optimise a simplified case (for example, the restricted two body problem) and then use that solution as the initial guess for a more sophisticated case. 
-
-
-In general, direct methods are more robust, and tolerate stiffness and caverns in the solution space better than indirect methods. They are often described as a better global search, which is not neccessarily true. Unlike indirect methods, they can find alternative basins of convergence, but essentially rely on guided guesses to find these basins. With large, complex problems, the probability of finding the correct basin diminishes. While various metaheuristics, many of which are described in \textcite{Dreo2006}, have different degrees of success in finding basins of convergence, as the size and complexity of the problem scales up they all must approach a brute force search before they can be certain of finding the global optimum.
-
-
-
-%-----------------------------------------------------------------------------------------------------------------------------------------------
-
-% Survey of methods
-\section{Survey of commercial optimisation algorithms} \label{sec:Algorithms}
-
-There have been many implementations of the optimisation methods described above. Examples of direct methods include the collocation method OTIS \parencite[Optimal Trajectories by Implicit Simulation, ][]{Hargraves1987}, and the single shooting control parameterised method POST \parencite[Program to Optimize Simulated Trajectories, ][]{Brauer1977}, both developed by US industry. These codes are both in widespread use at NASA and at various US government laboratories and universities, but are not generally available to European organisations. TOMP \parencite[Trajectory Optimization by Mathematical Programming, ][]{Kraft1994} is very similar to POST. MUSCOD \parencite[Multiple Shooting Code for optimization, ][]{Bock1984}, developed at the University of Heidelberg, combines control parameterisation with multiple shooting. 
-
-The sequential gradient restoration algorithm \parencite[SGRA, ][]{Miele1975} is an indirect method as are the codes ASTROP developed by \textcite{Bartholomew-Biggs1988} and BNDSCO by \textcite{Bulirsch1971}. ASTROP has been used at the European Space Operations Centre (ESOC) extensively for exo-atmospheric trajectory optimization. 
-
-These methods are mostly superseded by newer methods with additional features, and so were not selected for inclusion in GESOP. Instead, TROPIC (Trajectory Optimisation by Direct Collocation) and PROMIS (Parameterised Trajectory Optimisation by Direct Multiple Shooting) are two transcription algorithms developed at DLR \parencite{Jansch1990}. % TROPIC is a collocation code similar to OTIS, but with additional features such as automatic function and parameter scaling. PROMIS is similar MUSCOD, but once again implements parameter and function scaling and a more flexible problem interface.
-CAMTOS (Collocation And Multiple Shooting Trajectory Optimisation Software) was developed internally by ASTOS Solutions GmbH. Each of these algorithms transcribes the optimal control problem into smaller NLPs. 
-
-Two SQP methods are then available within GESOP to solve the sub-problems. SLLSQP is a fairly generic SQP solver, and computes local optima in order $n^{3}$ time, where $n$ is the number of optimisable parameters. Consequently it is useful for scenarios with up to about 100 parameters. SNOPT \parencite[Sparse Nonlinear Optimizer, ][]{Gill1997} was developed at Stanford University and is a widely used BFGS implementation with a dense quasi-Newton Hessian approximation. It improves upon SLLSQP with a few modifications that exploit sparsity within the Jacobian matrix (by treating non-linear parameters as linear within a constrained region) thus allowing it to compute local optima in order $n^{2}$ time. However it cannot exploit sparsity of the Hessian matrix, and consequently is ill suited for large sparse optimisations such as low-thrust trajectories \parencite{Betts2002}. SNOPT is useful for problems of about 1000 parameters \parencite{ASTOS_guide}.
-
-For larger problems, ASTOS Solutions GmbH has licensed SOCS \parencite[Sparse Optimal Control Software, ][]{SOCS_guide}. SOCS is a combined transcription and SQP algorithm developed by The Boeing Company. Its direct collocation method further exploits sparsity, resulting in a computational time that increases with order $n$. SOCS has documented solutions for problems with over 500,000 parameters. The subroutine within SOCS that solves the nonlinear problems is another BFGS implementation, called HDSNLP, using a Schur-complement developed by \textcite{Gill1987} to solve the SQP. The Jacobian and Hessian matrices are computed efficiently using sparse finite differencing as proposed by \textcite{Coleman1983} and \textcite{Curtis1974}.
-
-CGA \parencite[Constrained Genetic Algorithm, ][]{ASTOS_guide} is an early implementation of a genetic algorithm developed by ASTOS Solutions GmbH, currently limited to integer parameters. It gives a better global search than the other implemented methods (all gradient based methods) but is not very computationally efficient, and was empirically shown to be ineffective for more than about 20 parameters, compared to the 40,000 required for the simplified \BW\ scenario.
-
-
-%-----------------------------------------------------------------------------------------------------------------------------------------------
-
 % Numerical considerations
 \section{Numerical considerations} \label{sec:Numerical-considerations}
 
 %normalisation / scaling of constraints - show output graphs, path constraints up to 200 (due to being many times the minimum distance from the earth) but better than $1.0\times10^8$~m 
 %real workspace size is measured in doubles (8~Bytes each) and integer workspace size is measured in longs (4~Bytes each), so numerical accuracy for doubles is 64~bits, with 53~bits of significand precision. Also, 1.6e8 doubles required for Cruise phase 1220~MB RAM, and 0.8e8 longs required, 305~MB RAM.
 
+For this project, a multiple shooting Runge-Kutta 4/5 integrator was used to propagate the trajectory from the initial state using the control profile provided in the initial guess, and then again using the optimised parameters and control profile determined by the optimiser. The SOCS algorithm used its inbuilt single shooting collocation separated Hermite-Simpson integrator \parencite{Betts2010} to propagate the trajectory.
+
+
 % Integration error
 \subsection{Integration error} \label{sub:Integration-error}
 
-The differential equations presented in equation \eqref{eq:state-updates} were integrated in MATLAB over a sufficient timespan to allow the craft to reach the Moon. An absolute error of $10^{-6}$ was allowed within each orbital element ($p$ metres, $f$, $g$, $h$, $k$ and $L$ dimensionless), and a relative error of $10^{-9}$ ($10^{-7}$\%). Since the longitude is continually growing (not bound within 0º to 360º) yet the useful information within this parameter (the position of the spacecraft within 0º to 360º) is not increasing, relative error must be severely limited. Continual thrust allows \BW\ to achieve lunar insertion in about 100 rotations, corresponding to a longitude of 36000\degrees. The relative error in the spacecraft's position at a radius of 360000~km is therefore 12.96~km, which should be sufficiently small to allow lunar insertion (for initial simulation, at least). MATLAB uses the larger of the two tolerances, so at small longitudes (the start of the simulation) absolute tolerance is dominant, minimising unnecessary computational effort.
+At the start of this project, in order to verify the flight mechanics described in \autoref{cha:Orbital-dynamics-and-modelling} the differential equations presented in equation \eqref{eq:state-updates} were integrated in Matlab over sufficient time to allow the spacecraft to reach the Moon. An absolute error of $10^{-6}$ was allowed within each orbital element ($p$ metres, $f$, $g$, $h$, $k$ and $L$ dimensionless), and a relative error of $10^{-9}$ ($10^{-7}$\%). Since the longitude is continually growing (not bound within 0º to 360º) yet the useful information within this parameter (the position of the spacecraft within 0º to 360º) is not increasing, relative error must be severely limited. Continual thrust allows \BW\ to achieve lunar insertion in about 100 rotations, corresponding to a longitude of 36000\degrees. The relative error in the spacecraft's position at a radius of 360000~km is therefore 12.96~km, which should be sufficiently small to allow lunar insertion (for initial simulation, at least). Matlab uses the larger of the two tolerances, so at small longitudes (the start of the simulation) absolute tolerance is dominant, minimising unnecessary computational effort.
 
 As outlined in \textcite{Milani1987}, using a simple rule of thumb a limit on the ratio of simulation timespan to stepsize based on error accumulation can be determined. If the error at each step is $\epsilon$ and the number of steps is $N$, then $N^{2}\epsilon$ should remain less than 1. With a relative error of $10^{-9}$ the number of steps should be limited to 31,500. If more timesteps are needed the relative error may be reduced further, limited only by machine accuracy (in fact, many previous simulations including \citeauthor{Milani1987} appear to have assumed machine accuracy). According to IEEE standard 754, double precision floating point variables have a mantissa of 52 bits. This corresponds to a relative machine accuracy $\epsilon=2^{-52}\approx2.2\times10^{-16}$.
 
@@ -374,6 +175,6 @@ Linear scaling is often sufficient, however if changes in a variable are very sm
 
 \section{Summary of the optimisation problem} \label{sec:Optimisation-Summary}
 
-\BW\ was defined and fitted to the generic structure of an optimisation problem. Algorithms available for propagating the trajectory of a spacecraft were discussed, and the numerical problems inherent with them investigated. The process of optimisation was described, followed by a discussion of optimisation techniques and a brief survey of commercial algorithms implementing these techniques.
+\BW\ was defined and fitted to the generic structure of an optimisation problem. Algorithms available for propagating the trajectory of a spacecraft were discussed, and the numerical problems inherent with them investigated.
  
 \clearpage

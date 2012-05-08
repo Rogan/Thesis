@@ -3,15 +3,29 @@
 
 \section*{Notation}
 
-Bold text represents a vector. A hat (for example $\hat{\vec{r}}$) represents a unit vector. A quantity that is normally a vector that is not in bold (for example $r$) represents the magnitude of that vector. Parameters are relative to the central body of that phase, except where identified with the following subscripts.
+Bold text represents a vector. A hat (for example $\hat{\vec{r}}$) represents a unit vector. A quantity that is normally a vector that is not in bold (for example $r$) represents the magnitude of that vector. Parameters are relative to the central body of that phase, except where identified with an astronomical symbol.
 
 \begin{longtable}{l p{0.8\textwidth}}
 
-$\Sun$ & Subscript relating parameter to the Sun \\
-$\Earth$ & Subscript relating parameter to the Earth \\
-$\Venus$ & Subscript relating parameter to Venus \\
-$\Mars$ & Subscript relating parameter to Mars \\
-$\Jupiter$ & Subscript relating parameter to Jupiter \\
+$\Sun$ & Astronomical symbol for the Sun \\
+$\Earth$ & Astronomical symbol for the Earth \\
+$\Moon$ & Astronomical symbol for the Moon \\
+$\Venus$ & Astronomical symbol for Venus \\
+$\Mars$ & Astronomical symbol for Mars \\
+$\Jupiter$ & Astronomical symbol for Jupiter \\
+\\
+\textbf{\autoref{cha:Literature-review}} \\
+$t_0$ & Start of the phase (symbolic) \\
+$t_f$ & End of the phase (symbolic) \\
+$\vec{p}$ & Set of optimisable parameters \\
+$\vec{x}$ & Set of state parameters \\
+$\vec{u}$ & Set of control variables \\
+$F$ & Cost function \\
+$\sigma$ & Cost function weighting factor (-) \\
+$\mathfrak{L}$ & Lagrangian (see \autoref{sub:Lagrangian}) (symbolic) \\
+$\lambda_i$ & Equality Lagrangian/KKT multipliers (-) \\
+$\mu_i$ & Inequality Lagrangian/KKT multipliers (-) \\
+$\alpha$ & Optimisation step size (-) \\
 \\
 \textbf{\autoref{cha:Rocket-science}} \\
 $\epsilon$ & Specific orbital energy (m$^2$s$^{-2}$) \\
@@ -92,20 +106,9 @@ $\vec{\Delta_T}$ & Total force on spacecraft due to thrust (N) \\
 $\vec{\hat{u}}$ & Unit control vector governing thrust direction \\
 \\
 \textbf{\autoref{cha:Optimisation}}\\
-$t_0$ & Start of the phase (symbolic) \\
-$t_f$ & End of the phase (symbolic) \\
-$\vec{p}$ & Set of optimisable parameters \\
-$\vec{x}$ & Set of state parameters \\
-$\vec{u}$ & Set of control variables \\
 $E$ & Energy level in the batteries (J) \\
 $P$ & Net power generation or consumption (W) \\
 $Ln$ & Normalised longitude (-) \\
-$F$ & Cost function \\
-$\sigma$ & Cost function weighting factor (-) \\
-$\mathfrak{L}$ & Lagrangian (see \autoref{sub:Lagrangian}) (symbolic) \\
-$\lambda_i$ & Equality Lagrangian/KKT multipliers (-) \\
-$\mu_i$ & Inequality Lagrangian/KKT multipliers (-) \\
-$\alpha$ & Optimisation step size (-) \\
 \\
 \textbf{\autoref{cha:Vehicle}}\\
 $\eta$ & Power efficiency \\

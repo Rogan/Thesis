@@ -50,11 +50,11 @@
   \makeatother%
   \begin{picture}(1,0.55142857)%
     \put(0,0){\includegraphics[width=\unitlength]{Images/vab2.pdf}}%
-    \put(0.02,0.30){\color{black}\parbox{20mm}{\centering\bf Outer radiation belt}}%
-    \put(0.20,0.30){\color{black}\parbox{20mm}{\centering\bf Inner radiation belt}}%
+%    \put(0.02,0.30){\color{black}\parbox{20mm}{\centering\bf Outer radiation belt}}%
+%    \put(0.20,0.30){\color{black}\parbox{20mm}{\centering\bf Inner radiation belt}}%
     \put(0.38,0.48){\color{black}\parbox{20mm}{\centering\bf Rotational axis}}%
     \put(0.32,0.06){\color{black}\parbox{20mm}{\centering\bf Magnetic axis}}%
-    \put(0.65,0.22){\color{black}\parbox{20mm}{\centering\bf Inner radiation belt}}%
-    \put(0.84,0.22){\color{black}\parbox{20mm}{\centering\bf Outer radiation belt}}%
+%    \put(0.65,0.22){\color{black}\parbox{20mm}{\centering\bf Inner radiation belt}}%
+%    \put(0.84,0.22){\color{black}\parbox{20mm}{\centering\bf Outer radiation belt}}%
   \end{picture}%
 \endgroup%

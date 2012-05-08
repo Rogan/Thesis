@@ -61,8 +61,8 @@
     \put(0.70121422,0.05){\makebox(0,0)[lb]{\smash{6}}}%
     \put(0.76727320,0.05){\makebox(0,0)[lb]{\smash{8}}}%
     \put(0.84200694,0.05){\makebox(0,0)[lb]{\smash{10}}}%
-    \put(0.30,0.0){\makebox(0,0)[lb]{\smash{Distance from the centre of}}}
-    \put(0.35,-0.04){\makebox(0,0)[lb]{\smash{the Earth [$\times10^5$~km]}}}%
+    \put(0.30,0.02){\makebox(0,0)[lb]{\smash{Distance from the centre of}}}
+    \put(0.35,-0.01){\makebox(0,0)[lb]{\smash{the Earth [$\times10^5$~km]}}}%
     \put(0.10,0.11593062){\makebox(0,0)[lb]{\smash{-8}}}%
     \put(0.10,0.18198959){\makebox(0,0)[lb]{\smash{-6}}}%
     \put(0.10,0.24819428){\makebox(0,0)[lb]{\smash{-4}}}%
@@ -72,8 +72,8 @@
     \put(0.11,0.51243192){\makebox(0,0)[lb]{\smash{4}}}%
     \put(0.11,0.5786366){\makebox(0,0)[lb]{\smash{6}}}%
     \put(0.11,0.64469558){\makebox(0,0)[lb]{\smash{8}}}%
-    \put(0.04,0.15){\rotatebox{90}{\makebox(0,0)[lb]{\smash{Distance from the centre of}}}}
-    \put(0.08,0.2){\rotatebox{90}{\makebox(0,0)[lb]{\smash{the Earth [$\times10^5$~km]}}}}%
+    \put(0.04,0.2){\rotatebox{90}{\makebox(0,0)[lb]{\smash{Distance from the centre of}}}}
+    \put(0.08,0.25){\rotatebox{90}{\makebox(0,0)[lb]{\smash{the Earth [$\times10^5$~km]}}}}%
     \put(0.42598959,0.12431396){\makebox(0,0)[lb]{\smash{\tiny{$\Earth$ sphere of influence}}}}%
     \put(0.42598959,0.09901821){\makebox(0,0)[lb]{\smash{\tiny{$\Moon$ sphere of influence}}}}%
   \end{picture}%
