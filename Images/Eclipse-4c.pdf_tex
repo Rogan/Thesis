@@ -1,6 +1,6 @@
 %% Creator: Inkscape 0.48.2, www.inkscape.org
 %% PDF/EPS/PS + LaTeX output extension by Johan Engelen, 2010
-%% Accompanies image file 'figure2.pdf' (pdf, eps, ps)
+%% Accompanies image file 'Eclipse_4b.pdf' (pdf, eps, ps)
 %%
 %% To include the image in your LaTeX document, write
 %%   \input{<filename>.pdf_tex}
@@ -36,7 +36,7 @@
   }%
   \providecommand\rotatebox[2]{#2}%
   \ifx\svgwidth\undefined%
-    \setlength{\unitlength}{576bp}%
+    \setlength{\unitlength}{274.40625bp}%
     \ifx\svgscale\undefined%
       \relax%
     \else%
@@ -48,30 +48,16 @@
   \global\let\svgwidth\undefined%
   \global\let\svgscale\undefined%
   \makeatother%
-  \begin{picture}(1,0.75028993)%
-    \put(0,0){\includegraphics[width=\unitlength]{Images/Ascent2/figure2.pdf}}%
-    \put(0.07,0.53){\makebox(0,0)[lb]{\smash{-0.5}}}%
-    \put(0.08,0.60){\makebox(0,0)[lb]{\smash{0.0}}}%
-    \put(0.08,0.67){\makebox(0,0)[lb]{\smash{0.5}}}%
-    \put(0.05,0.59){\rotatebox{90}{\makebox(0,0)[lb]{\smash{$T_r$}}}}%
-    \put(0.06,0.31){\makebox(0,0)[lb]{\smash{0.85}}}%
-    \put(0.08,0.36){\makebox(0,0)[lb]{\smash{0.9}}}%
-    \put(0.06,0.41){\makebox(0,0)[lb]{\smash{0.95}}}%
-    \put(0.08,0.46){\makebox(0,0)[lb]{\smash{1.0}}}%
-    \put(0.05,0.37){\rotatebox{90}{\makebox(0,0)[lb]{\smash{$T_\theta$}}}}%
-    \put(0.07,0.08){\makebox(0,0)[lb]{\smash{-2.0}}}%
-    \put(0.07,0.13){\makebox(0,0)[lb]{\smash{-1.0}}}%
-    \put(0.08,0.18){\makebox(0,0)[lb]{\smash{0.0}}}%
-    \put(0.08,0.23){\makebox(0,0)[lb]{\smash{1.0}}}%
-    \put(0.16,0.26){\makebox(0,0)[lb]{\smash{$\times10^{-4}$}}}%
-    \put(0.05,0.09){\rotatebox{90}{\makebox(0,0)[lb]{\smash{$T_h$}}}}%
-    \put(0.12,0.05){\makebox(0,0)[lb]{\smash{0}}}%
-    \put(0.24,0.05){\makebox(0,0)[lb]{\smash{5}}}%
-    \put(0.35,0.05){\makebox(0,0)[lb]{\smash{10}}}%
-    \put(0.46,0.05){\makebox(0,0)[lb]{\smash{15}}}%
-    \put(0.57,0.05){\makebox(0,0)[lb]{\smash{20}}}%
-    \put(0.69,0.05){\makebox(0,0)[lb]{\smash{25}}}%
-    \put(0.80,0.05){\makebox(0,0)[lb]{\smash{30}}}%
-    \put(0.39,0.02){\makebox(0,0)[lb]{\smash{Mission time, $t$ [days]}}}%
-  \end{picture}%
+  \begin{picture}(1,0.3863103)%
+    \put(0,0){\includegraphics[width=\unitlength]{Images/Eclipse-4c.pdf}}%
+    \put(0.73,0.05){\makebox(0,0)[lb]{\smash{$x$}}}%
+    \put(0.93,0.23){\makebox(0,0)[lb]{\smash{$y$}}}%
+    \put(0.72,0.25){\makebox(0,0)[lb]{\rotatebox{45}{$\vec{r}$}}}%
+    \put(0.4,0.16){\makebox(0,0)[lb]{\smash{$\vec{r}_\Earth$}}}%
+
+    \put(0.11,0.30){\makebox(0,0)[lb]{\smash{Sun}}}%
+    \put(0.60,0.22){\makebox(0,0)[lb]{\smash{Earth}}}%
+
+  
+    \end{picture}%
 \endgroup%

@@ -49,7 +49,7 @@
   \global\let\svgscale\undefined%
   \makeatother%
   \begin{picture}(1,0.3863103)%
-    \put(0,0){\includegraphics[width=\unitlength]{Images/Eclipse-4b.pdf}}%
+    \put(0,0){\includegraphics[width=\unitlength]{Images/Eclipse-4c.pdf}}%
     \put(0.73349732,0.03921266){\makebox(0,0)[lb]{\smash{$x$}}}%
     \put(0.93940116,0.23350452){\makebox(0,0)[lb]{\smash{$y$}}}%
     \put(0.73,0.24){\makebox(0,0)[lb]{\rotatebox{45}{$\vec{r}$}}}%

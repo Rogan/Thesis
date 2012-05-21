@@ -3,7 +3,7 @@
 % Propulsion
 \section{Propulsion} \label{sec:Propulsion}
 
-The biggest impact of vehicle design on the trajectory is the thruster selection. As briefly outlined in \autoref{sec:Spacecraft}, the preliminary design specified a thermal arcjet and four pulsed plasma thrusters, all of which were developed within the IRS. 
+The biggest impact of vehicle design on the trajectory is the thruster selection. As briefly outlined in \autoref{sec:Spacecraft}, the preliminary design specified a thermal arcjet and four pulsed plasma thrusters (PPTs), all of which were developed within the IRS. 
 
 A number of laboratory test results for the PPTs are reproduced in \autoref{sec:PPT-characteristics}. The test apparatus is shown in \autoref{fig:PPT}. By varying the power supplied to the PPTs, different levels of thrust were achieved for a small sacrifice in $I_{sp}$. As can be seen in \autoref{tab:PPT-performance}, increasing the power supplied to the thruster increases the mass of propellant that is vapourised and then accelerated. This increases the thrust, but the greater mass is not accelerated as efficiently resulting in a lower exhaust velocity, and consequently a lower specific impulse. 
 
@@ -13,7 +13,7 @@ A number of laboratory test results for the PPTs are reproduced in \autoref{sec:
 \caption{SIMPLEX PPT during a laboratory test. The spark plug (centre left) ignites an arc between the two electrodes (pointing towards the camera) which vapourises the surface of the block of white PTFE between them. The electric field between the two electrodes then accelerates the plasma towards the camera.} \label{fig:PPT}
 \end{figure}
 
-The thermal arcjet, shown in \autoref{fig:Arcjet}, underwent similar testing. The results provided to the author are reproduced in \autoref{sec:Arcjet-characteristics}. There are many more variables affecting the arcjet performance, mostly not listed in the table, but the biggest difference to the PPTs is that the rate at which propellant is provided to the arcjet can be varied independently of the power. 
+The thermal arcjet, shown in \autoref{fig:Arcjet}, underwent similar testing, and the results are reproduced in \autoref{sec:Arcjet-characteristics}. There are many more variables affecting the arcjet performance, mostly not listed in \autoref{tab:Arcjet-performance}, but the biggest difference to the PPTs is that the rate at which propellant is provided to the arcjet can be varied independently of the power. 
 
 \begin{figure}
 \centering
@@ -21,8 +21,7 @@ The thermal arcjet, shown in \autoref{fig:Arcjet}, underwent similar testing. Th
 \caption{TALOS arcjet during a laboratory test. An arc is generated between the axial cathode and the nozzle anode, which heats up the ammonia, accelerating it outwards.} \label{fig:Arcjet}
 \end{figure}
 
-The thruster development at the time of writing  is focussed on improving power efficiency. The power efficiency, defined in equation \eqref{eq:thruster-efficiency}, is proportional to the thrust squared, and inversely proportional to the mass flow. Since the thrust, defined in equation \eqref{eq:thrust}, is directly proportional to mass flow, reducing mass flow will not improve power efficiency \parencite{Wollenhaupt2011}. Indeed, based on this criterion some of the arcjet tests found that the power efficiency is highest when the arc is not operated, and the thruster functions purely as a cold gas jet! 
-
+The thruster development at the time of writing this thesis is focussed on improving power efficiency. The power efficiency, $\eta$, is proportional to the thrust squared, $T^2$, and inversely proportional to the mass flow, $\dot{m}$ \parencite{Wollenhaupt2011}. Since the thrust is directly proportional to mass flow, reducing mass flow will not improve power efficiency. Indeed, based on this criterion some of the arcjet tests found that the power efficiency is highest when the arc is not operated, and the thruster functions purely as a cold gas jet! 
 \begin{subequations}
 \begin{gather}
 \eta = \frac{T^2}{2\dot{m}P} \label{eq:thruster-efficiency}\\
@@ -30,13 +29,11 @@ T = v_e\dot{m} \label{eq:thrust}
 \end{gather}
 \end{subequations}
 
-Counter-intuitively given the above definition, during testing the power efficiency often improves at the expense of thrust. This is a cause for concern, as the low thrust has already required a much longer transfer than any used in the past, and the longer the mission the greater the chance of impact with space debris or micrometeorites, damage from radiation, or computer failure due to solar particle events (SPEs) or galactic cosmic rays (GCRs).
-
-Furthermore, the length of the cruise phase frequently resulted in computational difficulty, so a number of design compromises were investigated to solve the problem (it is acknowledged by the author that changing hardware design to make the simulation easier is a poor design philosophy, but the project management was interested to know the effects of these changes regardless of any simulation difficulties). For example, a design configuration was being investigated with 6 PPTs rather than 4, thereby increasing the available thrust without losing $I_{sp}$. The trade-off with this change is the additional thrusters would increase the dry mass of the vehicle, decreasing available payload space. The same effect could be achieved by changing the pulse rate of the PPTs. A higher pulse frequency increases thrust, increases mass flow, and increases power consumption, but impulse is conserved. However, an additional unknown is introduced: the heat flux within the electrodes is increased. 
+Counter-intuitively given the above definition, during testing the power efficiency often improves at the expense of thrust. This is a cause for concern, as the low thrust of \BW\ has already required a much longer transfer than any used in the past, and the longer the mission the greater the chance of impact with space debris or micrometeorites, damage from radiation, or computer failure due to solar particle events (SPEs) or galactic cosmic rays (GCRs). Furthermore, during modelling for this project the length of the cruise phase frequently resulted in computational problems, so a number of design compromises were investigated to solve the problem (it is acknowledged by the author that changing hardware design to make the simulation easier is a poor design philosophy, but the project management was interested to know the effects of these changes regardless of any simulation difficulties). For example, a design configuration was being investigated with 6 PPTs rather than 4, thereby increasing the available thrust without losing $I_{sp}$. The trade-off with this change is the additional thrusters would increase the dry mass of the vehicle, decreasing available payload space. The same effect could be achieved by changing the pulse rate of the PPTs. A higher pulse frequency increases thrust, increases mass flow, and increases power consumption, but impulse is conserved. However, an additional unknown is introduced: the heat flux within the electrodes is increased. 
 
 % Thrust and power can also be linearly scaled by simply introducing more PPTs to the structure. This has been championed by the PPT designer, Matthias Lau. This option increases the redundancy of the system (and therefore reliability). However, it also carries the associated cost of extra weight.
 
-Increasing the heat generated by the PPTs causes a corresponding increase in the electrodes operating temperature, until a new equilibrium is reached with the heat radiated into space. This higher temperature can cause damage to the electrodes, structural failure in the surrounding satellite components, or even melt the propellant! There is literature indicating that some designs can tolerate higher pulse frequencies \parencite{Mueller2000} but the majority of documented laboratory tests use 1~Hz. Consequently, thorough lifecycle testing will be required on the thrusters to determine operational lifetime variability with pulse frequency before a 4 year mission such as \BW\ may be undertaken. 
+Increasing the heat generated by the PPTs causes a corresponding increase in the electrodes operating temperature, until a new equilibrium is reached with the heat radiated into space. This higher temperature can cause damage to the electrodes, structural failure in the surrounding satellite components, or even melt the propellant! There is literature indicating that some designs can tolerate higher pulse frequencies \parencite{Mueller2000} but the majority of documented laboratory tests use 1~Hz. Consequently, thorough lifecycle testing will be required on the thrusters to determine operational lifetime variability with pulse frequency before a four year mission such as \BW\ may be undertaken. 
 
 % From the power output, realised that the design could use more power to transfer faster - take many forms. Higher pulse frequency most promising, this linearly increases thrust at exactly the same Isp, at the cost of linearly increasing power consumption. The only limitation is wear and tear to the service life of the thruster; should be proportional to the number of pulses and since each pulse provides a certain Impulse bit, the number of pulses required to perform the lunar transfer should be constant. Thrusters have not been endurance tested yet meaning we don't know how many cycles they can perform. Other constraint is cooling - over about 3~Hz the PTFE is not able to cool properly between cycles and can interfere in the thruster performance. However, some tests performed in Russia (cite Matthias and/or Pedro here?) have successfully used a design similar to SIMPLEX at 20~Hz.
 
@@ -44,7 +41,7 @@ Increasing the heat generated by the PPTs causes a corresponding increase in the
 
 Nonetheless, when modelling the PPTs an additional variable was implemented representing maximum pulse frequency. Operationally, the variable thrust magnitude would be implemented by reducing the pulse frequency from the maximum available. Colleagues at IRS advised that the SIMPLEX PPT should be able to operate up to at least 3~Hz with minimal side effects \parencite{Cabrera2011}.
 
-The first simulation implemented 4 PPTs operating at 1~Hz for the cruise phase. This implementation took 2298~radians $\Delta L$ and about 950~days to ascend to the phase boundary. Optimisation was not possible due to numerical limitations. Given the surplus power available at all stages of this ascent, it was run again at 2~Hz. This second simulation took 1347~radians and about 500~days to ascend to the phase boundary. Based on the discretisation philosophy outlined in \autoref{sec:Parameterisation}, this almost halved the number of optimisable parameters. 
+%The first simulation implemented 4 PPTs operating at 1~Hz for the cruise phase. This implementation took 2298~radians $\Delta L$ and about 950~days to ascend to the phase boundary. Optimisation was not possible due to numerical limitations. Given the surplus power available at all stages of this ascent, it was run again at 2~Hz. This second simulation took 1347~radians and about 500~days to ascend to the phase boundary. Based on the discretisation philosophy outlined in \autoref{sec:Parameterisation}, this almost halved the number of optimisable parameters. 
 
 % regardless, it was found that increasing the thrust shortens the transfer but makes lunar capture more difficult. The higher thrust may be targeted at the Moon, and an appropriate orbital energy can be attained for lunar capture (about 5000~m$^2$s$^{-2}$) but due to the higher thrust, a larger proportion of the energy is made up of kinetic energy. In other words, the spacecraft is going too fast to achieve a strong lunar capture, even with a very low lunar pass. Perhaps relative velocity might be a better termination criterion?
 
@@ -54,7 +51,7 @@ The first simulation implemented 4 PPTs operating at 1~Hz for the cruise phase. 
 % Earth shadow
 \section{Earth shadow}
 
-During the transfer, the spacecraft may be eclipsed by the Earth or the Moon. When either of these large bodies are blocking the Sun, the spacecraft does not gain any charge to its solar panels, and is unaffected by solar wind. 
+During the \BW\ transfer, the spacecraft may be eclipsed by the Earth or the Moon. When either of these large bodies are blocking the Sun, the spacecraft does not gain any charge from its solar panels. It is also unaffected by solar wind. 
 
 The occlusion of a luminous sphere by a smaller sphere creates a conical shadow called the \emph{umbra}, as shown in \autoref{fig:Eclipse}. Within the umbra a total eclipse is observed. Surrounding the umbra is an inverted cone of partial shadow called the \emph{penumbra}. An observer within the penumbra would experience a partial eclipse. Beyond the umbra is another inverted cone of partial shadow called the \emph{antumbra}, within which an annular eclipse would be observed \parencite{Longo1995}.
 
@@ -66,61 +63,61 @@ The occlusion of a luminous sphere by a smaller sphere creates a conical shadow 
 \caption{Umbra, penumbra and antumbra.} \label{fig:Eclipse}
 \end{figure}
 
-First the apices and lengths of the cones may be determined using the simple geometry shown in \autoref{fig:Umbra} and \autoref{fig:Penumbra} giving equation \eqref{eq:cones}.
+To quantify the impact eclipsing has on the spacecraft, it is important to define key geometric parameters. First the apices and lengths of the cones may be determined using the simple geometry shown in \autoref{fig:Umbra} and \autoref{fig:Penumbra} giving the equations 
 \begin{subequations} \label{eq:cones}
 \begin{gather}
-\alpha_u = \arcsin\frac{R_\Sun-R_\Earth}{r_\Earth} \\
-\alpha_p = \arcsin\frac{R_\Sun+R_\Earth}{r_\Earth} \\
-x_u = \frac{R_\Earth r_\Earth}{R_\Earth-R_\Sun} \\
-x_p = \frac{R_\Earth r_\Earth}{R_\Earth+R_\Sun}
+\alpha_u = \arcsin\frac{R_\Sun-R_\Earth}{r_\Earth}, \\
+\alpha_p = \arcsin\frac{R_\Sun+R_\Earth}{r_\Earth}, \\
+x_u = \frac{R_\Earth r_\Earth}{R_\Earth-R_\Sun}, \\
+x_p = \frac{R_\Earth r_\Earth}{R_\Earth+R_\Sun},
 \end{gather}
 \end{subequations}
 where $\alpha_u$ is the apex angle of the umbral cone and $\alpha_p$ is the apex angle of the penumbral cone, $x_u$ is the length of the umbral cone and $x_p$ is the length of the penumbral cone, $R_\Sun$ is the radius of the Sun and $R_\Earth$ is the radius of the Earth, and $r_\Earth$ is the distance between the Earth and the Sun.
 
 \begin{figure}
 \centering
-\def\svgwidth{0.6\textwidth}
+\def\svgwidth{\textwidth}
 \input{Images/eclipse-2.pdf_tex}
 %\reflectbox{\includegraphics[width=\textwidth]{Images/umbra.png}}
-\caption{Umbral cone.} \label{fig:Umbra}
+\caption{Geometry associated with the umbral cone. $R_\Sun$ and $R_\Earth$ are the radii of the Sun and the Earth respectively. The distance between the Earth and the Sun is $r_\Earth$, allowing the calculation of the length of the umbral cone $x_u$ and the apex angle $\alpha_u$.} \label{fig:Umbra}
 \end{figure}
 
 \begin{figure}
 \centering
-\def\svgwidth{0.6\textwidth}
-\input{Images/eclipse-3.pdf_tex}
+\def\svgwidth{\textwidth}
+\input{Images/eclipse-3c.pdf_tex}
 %\reflectbox{\includegraphics[width=\textwidth]{Images/penumbra.png}}
-\caption{Penumbral cone.} \label{fig:Penumbra}
+\caption{Geometry associated with the penumbral cone. $R_\Sun$ and $R_\Earth$ are the radii of the Sun and the Earth respectively. The distance between the Earth and the Sun is $r_\Earth$, allowing the calculation of the length of the penumbral cone $x_p$ and the apex angle $\alpha_p$.} \label{fig:Penumbra}
 \end{figure}
 
 %Next a fundamental plane is defined through the centre of the Sun and the spacecraft, perpendicular to the plane including the Sun, spacecraft and planet.
 %First the distance between the occluding body and the fundamental plane is calculated.
 %First the position vector of the spacecraft relative to the central body is projected onto the fundamental plane.
-The spacecraft's position is then projected onto the Earth-Sun vector, and the satellite's distance from the Earth-Sun line is calculated using the geometry shown in \autoref{fig:Spacecraft-shadow}.
+The spacecraft's position $\vec{r}$ is then projected onto the Earth-Sun vector $\vec{r}_\Earth$ giving the satellite's distance from the Earth along the Earth-Sun line $x$, and the satellite's distance from the Earth-Sun line $y$ is calculated using the geometry shown in \autoref{fig:Spacecraft-shadow}, giving
 \begin{subequations}
 \begin{gather}
-x = \frac{\vec{r}\cdot\vec{r_\Earth}}{r_\Earth} \\
-y = \sqrt{r^2-x^2} 
+x = \frac{\vec{r}\cdot\vec{r_\Earth}}{r_\Earth}, \\
+y = \sqrt{r^2-x^2}.
 \end{gather}
 \end{subequations}
 
 \begin{figure}
 \centering
 \def\svgwidth{\figurewidth}
-\input{Images/eclipse-4b.pdf_tex}
+\input{Images/eclipse-4c.pdf_tex}
 %\includegraphics[width=\textwidth]{Images/earth-shadow.png}
-\caption{Spacecraft position relative to Earth-Sun line.} \label{fig:Spacecraft-shadow}
+\caption{Spacecraft position $\vec{r}$ broken down into components $x$ and $y$ relative to Earth-Sun line $\vec{r}_\Earth$.} \label{fig:Spacecraft-shadow}
 \end{figure}
 
-Now the radii of the umbral cones at the satellite's position may be calculated.
+Now the radii of the umbral cones at the satellite's position may be calculated,
 \begin{subequations}
 \begin{gather}
-y_u = (x_u-x)\tan\alpha_u \\
-y_p = (x+x_p)\tan\alpha_p
+y_u = (x_u-x)\tan\alpha_u, \\
+y_p = (x+x_p)\tan\alpha_p.
 \end{gather}
 \end{subequations}
 
-Within this frame, if the spacecraft's position $y$ is less than the radius of the umbral cone $y_u$, the spacecraft experiences total eclipse. If the spacecraft's position is more than the radius of the penumbral cone $y_p$, the spacecraft is in full sunshine. For simplicity, solar exposure within the penumbra was taken as a simple linear interpolation of position $y$ between the umbral and penumbral cones. During lunar-centric phases the same equations apply but with the spacecraft's position relative to the Moon $r_\Moon$ rather than the Earth $r_\Earth$.
+Within this frame, if the spacecraft's position $y$ is less than the radius of the umbral cone $y_u$, the spacecraft experiences total eclipse. If the spacecraft's position is more than the radius of the penumbral cone $y_p$, the spacecraft is in full sunshine. For simplicity, solar exposure within the penumbra was taken as a linear interpolation of position $y$ between the umbral and penumbral cones. During lunar-centric phases the same equations apply but relative to the Moon $\vec{r}_\Moon$ rather than the Earth $\vec{r}_\Earth$.
 
 % Antumbra?
 % If closer to the Sun than the central body?
@@ -130,21 +127,21 @@ Within this frame, if the spacecraft's position $y$ is less than the radius of t
 
 \subsection{Power generation} \label{sub:Power-generation}
 
-At the commencement of this project, it was anticipated that power would be one of the defining factors in determining an optimal trajectory. Consequently power was implemented as one of the states to be tracked during optimisation. The power generation was calculated using equation \eqref{eq:Power-generation},
+At the commencement of this project, it was anticipated that power would be one of the defining factors in determining an optimal trajectory. Consequently power was implemented as one of the states to be tracked during optimisation. The power generation, $P$, was calculated using 
 \begin{gather} \label{eq:Power-generation}
-P = Q\times A_{eff}\times\eta_a\times\eta_c\times\eta_{DC}\times\cos\Psi_\Sun\times\mathfrak{R}
+P = Q\times A_{eff}\times\eta_a\times\eta_c\times\eta_{DC}\times\cos\Psi_\Sun\times\mathfrak{R},
 \end{gather}
-where $Q$ represents the solar energy flux near the Earth-Moon system, $\eta_a$ represents the area efficiency of the solar cells arranged within the panel, $\eta_c$ represents the solar cell efficiency, and $\eta_{DC}$ represents the efficiency of the voltage regulator. The angle subtended by the sun on the solar panels is $\Psi_\Sun$, and the power degradation is $\mathfrak{R}$.
+where $Q$ represents the solar energy flux near the Earth-Moon system, $A_{eff}$ is the effective area of the solar panels, $\eta_a$ represents the area efficiency of the solar cells arranged within the panel, $\eta_c$ represents the solar cell efficiency, and $\eta_{DC}$ represents the efficiency of the voltage regulator. The angle subtended by the sun on the solar panels is $\Psi_\Sun$, and the power degradation is $\mathfrak{R}$.
 
 The solar energy flux is calculated by dividing the average solar luminosity \parencite[$3.846\times10^{26}$ W,][]{Montenbruck2000} by the surface area of a sphere with radius equal to the spacecraft's distance from the Sun ($4\pi r_\Sun^2$). This is important because the Earth's distance from the Sun varies by 6\% over the year \parencite{Montenbruck2000} due to the eccentricity of its orbit. The solar intensity is then multiplied by the effective area of the solar panels, $A_{eff}$. Although the spacecraft has 6~m$^2$ of panels, because the central two panels are positioned at 45\degrees\ the effective area is only 5.4~m$^2$.
 
 Based on the latest design work by my colleague Alexander Uryu, the area efficiency is about 0.8, that is, only 80\% of the effective solar panel area will actually be covered in solar cells, due to the geometric arrangement of the cells and the additional surface area required for circuitry. The solar cells will be state-of-the-art TecStar GaAs/InP 34 series solar arrays with 200~$\mu$m front cover glass and 500~$\mu$m back cover glass. Consequently it is estimated that the cell efficiency will be about 27\% at launch. The exact power control circuitry is not yet known, but based on modern power conversion ciruits it is expected that the DC voltage regulator will be approximately 85\% efficient. 
 
-It is assumed that while one axis of the solar panels is constrained to the thrust vector $\vec{u}$, the other is free to rotate about the thrust vector to obtain the best sun angle possible. Consequently the sun angle can be calculated using equation \eqref{eq:sun-angle}.
+It is assumed that while one axis of the solar panels is constrained to the thrust vector $\vec{u}$, the other is free to rotate about the thrust vector to obtain the best sun angle possible. Consequently the sun angle can be calculated by
 \begin{subequations}
 \begin{gather} \label{eq:sun-angle}
-\vec{u}\cdot\vec{r}_\Sun = ur_\Sun\cos\Psi_\Sun \\
-\Psi_\Sun = \arccos\frac{\vec{u}\cdot\vec{r}_\Sun}{ur_\Sun}
+\vec{u}\cdot\vec{r}_\Sun = r_\Sun\cos\Psi_\Sun, \\
+\Psi_\Sun = \arccos\frac{\vec{u}\cdot\vec{r}_\Sun}{r_\Sun}.
 \end{gather}
 \end{subequations}
 
@@ -154,7 +151,7 @@ The greatest unknown in the power model is how much the solar cells will degrade
 \centering
 \def\svgwidth{\figurewidth}
 \input{Images/fluence.pdf_tex}
-\caption{Radiation fluence during a 24 hour orbit as a function of distance from Earth.} \label{fig:Fluence}
+\caption{Radiation fluence during a 24 hour orbit as a function of distance from Earth, based on data from \textcite{Erb_thesis}. The obvious peak is due to the higher concentration of radiation in the van Allen belt.} \label{fig:Fluence}
 \end{figure}
   
 At each time step the equivalent radiation dose of a 24~hour orbit may be taken from the plotted function, and scaled to the appropriate time interval. This effective radiation dose is added to the accumulated radiation dose. The total accumulated radiation dose may be translated to a power degradation factor using \autoref{fig:Fluence2}.
@@ -163,7 +160,7 @@ At each time step the equivalent radiation dose of a 24~hour orbit may be taken 
 \centering
 \def\svgwidth{\figurewidth}
 \input{Images/fluence2.pdf_tex}
-\caption{Power degradation as a consequence of radiation fluence.} \label{fig:Fluence2}
+\caption{Power degradation as a consequence of radiation fluence, based on data from \textcite{Erb_thesis}.} \label{fig:Fluence2}
 \end{figure}
 
 Data for the panel degradation model was based on the work done by \textcite{Hechler2002} during planning for the SMART-1 mission, via \textcite{Erb_thesis}. During the SMART-1 mission, it was found that their solar cells degraded by approximately 0.12\% per day, or about 2~W \parencite{Racca5}. It was also found that during a solar storm on 20~October 2003, an additional 1\% panel degradation occurred \parencite{Racca8}. However, soon after the solar storm, the spacecraft reached a periapsis of 11790~km whereupon no further radiation damage occurred. Thus it can be assumed that the phase boundary defined in the mission architecture may be quite conservative, which should be factored into further power degredation modelling if not simply changing the mission architecture.
@@ -172,7 +169,7 @@ Data for the panel degradation model was based on the work done by \textcite{Hec
 
 \subsection{Power consumption} \label{sub:Power-consumption}
 
-At each timestep the power required for communications, payload and thrust would be subtracted from the power generated. 
+At each timestep of the simulation the power required for communications, payload and thrust should be subtracted from the power generated. 
 
 The payload has not yet been confirmed, but it is expected that most of the payload will be in standby until the spacecraft is confirmed in the science orbit, so power requirements during the transfer will be minimal. During the science phase the payload is expected to require approximately 300~W \parencite{web_BW-1}, which should be well within the solar panels' remaining capacity.
 
@@ -185,79 +182,22 @@ After thruster power is also subtracted from generated power (see \autoref{sec:P
 % Parameterisation
 \section{Parameterisation} \label{sec:Parameterisation}
 
-\subsection{Substitution of parameters}\label{sub:subst-param}
-\autoref{sec:state-vector} establishes the state vector $\vec{x}=\{p,f,g,h,k,L,m,t,E\}$, and provides the differential equations with respect to time. However, as outlined in \autoref{sec:Independent-parameter}, the normalised true anomaly, $Ln$, was the independent parameter. Therefore a subsitution of parameters is required to give derivatives with respect to $Ln$, $\frac{d}{dLn}$. Differentiating equation \eqref{eq:Ln} results in \eqref{eq:dLndt},
-\begin{subequations} \label{eq:dLndt}
-\begin{gather}
-\frac{dLn}{dt}=\frac{1}{\Delta L}\frac{dL}{dt} \\
-\frac{dLn}{dt}\cdot\frac{dt}{dL}=\frac{1}{\Delta L} \\
-\frac{dLn}{dL}=\frac{1}{\Delta L} \\
-\frac{dL}{dLn}=\Delta L
-\end{gather}
-\end{subequations}
 
-Using this identity, the state differential equations with respect to normalised longitude \eqref{eq:dpdLn} may be determined.
-\begin{subequations}\label{eq:dpdLn}
-\begin{align}
-\frac{dp}{dLn}&=\frac{dp}{dt}\cdot\frac{dt}{dLn}\\
-&=\frac{dp}{dt}\cdot\frac{dt}{dL}\cdot\frac{dL}{dLn}\\
-&=\frac{\dot{p}}{\dot{L}}\Delta L
-\end{align}
-\end{subequations}
-
-%The differential equations for $f$, $g$, $h$, $k$ and $m$ are modified similarly to $p$. $L$ is simply $\frac{dL}{dLn}$. Substituting the parameters of the remaining differential equations gives:
-%\begin{subequations}
-%\begin{align}
-%\frac{dt}{dLn}&=\frac{dt}{dL}\cdot\frac{dL}{dLn}\\
-%&= \frac{1}{\dot L}\cdot\Delta L
-%\end{align}
-%\end{subequations}
-%\begin{subequations}
-%\begin{align}
-%\frac{dE}{dLn} &= \frac{dE}{dt}\cdot\frac{dt}{dL}\cdot\frac{dL}{dLn} \\
-%&= \frac{P}{\dot{L}}\cdot\Delta L 
-%\end{align}
-%\end{subequations}
-The remaining differential equations are modified similarly. The final equations are presented in \eqref{eq:dLn},
-\begin{subequations} \label{eq:dLn}
-\begin{gather}
-\frac{dp}{dLn}=\frac{\dot{p}}{\dot{L}}\Delta L \\
-\frac{df}{dLn}=\frac{\dot{f}}{\dot{L}}\Delta L \\
-\frac{dg}{dLn}=\frac{\dot{g}}{\dot{L}}\Delta L \\
-\frac{dh}{dLn}=\frac{\dot{h}}{\dot{L}}\Delta L \\
-\frac{dk}{dLn}=\frac{\dot{k}}{\dot{L}}\Delta L \\
-\frac{dL}{dLn}=\Delta L \\
-\frac{dm}{dLn}=\frac{\dot{m}}{\dot{L}}\Delta L \\
-\frac{dt}{dLn}=\frac{1}{\dot{L}}\Delta L \\
-\frac{dE}{dLn}=\frac{P}{\dot{L}}\Delta L 
-\end{gather}
-\end{subequations}
-where $\dot{p}$, $\dot{f}$,  $\dot{g}$, $\dot{h}$, $\dot{k}$ and $\dot{L}$ are the original time-domain differential equations provided by \textcite{Walker1985}.
-
-\subsubsection{Delta-v calculation}
-The universal definition for delta-v was provided in \autoref{sub:Delta-v}. Unfortunately this definition also depends on time-domain integration. Therefore another substitution of parameters is required.
-\begin{subequations}
-\begin{align}
-\Delta v &= \int^{Ln_f}_{Ln_i}\frac{T}{m}\frac{\text{dt}}{\text{dLn}}\text{dLn}\\
-&= \int^{1}_{0}\frac{T}{m}\frac{\text{dt}}{\text{dL}}\cdot\frac{\text{dL}}{\text{dLn}}\text{dLn}\\
-&= \int^{1}_{0}\frac{T}{m}\frac{\Delta L}{\dot L}\text{dLn}
-\end{align}
-\end{subequations}
 
 
 \subsection{Thrust profile parameterisation} \label{sub:Thrust-parameterisation}
 
 % Departure date
-Due to the particularly non-linear variations with departure date (periodic over 27.5~days based on the Moon's orbit) a good parameterisation of the departure date would be to use two variables, one to increment an integer number of lunar months forwards or backwards, the other a floating point capped at $\pm 0.5$ to indicate the fraction of a month either side. This allows the optimiser to find the optimal time of month for a launch, and therefore the optimal position of the Moon, to achieve lunar capture. Then the optimiser can adjust the month forwards or backwards based on other variations in the search space. While this parameterisation would assist in developing a truly optimal solution, since the departure date is not negotiable beyond the time spent in the GTO parking orbit it was not implemented at this time.
+Due to the strongly non-linear variations of the transfer relative to departure date (periodic over 27.5~days based on the Moon's orbit), a good parameterisation of the departure date would be to use two variables, one to increment an integer number of lunar months forwards or backwards, the other a floating point capped at $\pm 0.5$ to indicate the fraction of a month either side. This would allow the optimiser to find the optimal time of month for a launch, and therefore the optimal position of the Moon, to achieve lunar capture. Then the optimiser can adjust the month forwards or backwards based on other variations in the search space. While this parameterisation would assist in developing a truly optimal solution, since the departure date is not negotiable beyond the time spent in the GTO parking orbit it was not implemented at this time.
 
 % Thrust duty cycle
-An additional parameterisation considered to decrease the numerical complexity of the optimisation is to model the thrust duty cycle as a percentage of the orbit. Depending on the phase objective, a thrust segment was centred around the periapsis or apoapsis, with a parameter controlling for which percentage of the orbit the thrusters were active. However, when implemented as a constant throughout the phase replacing the continuous thrust magnitude, the optimiser's flexibility is severely compromised. When implemented as a constant throughout the phase in addition to the thrust magnitude parameter, there is no improvement in computational load. An alternative would be to implement duty cycle as a continuous variable. The computational load is just as great, but the author suspects that this modification would significantly smooth the search space. Unfortunately, due to the complications experienced when optimising the system with a continuous thrust magnitude parameter this modification was not trialled.
+An additional parameterisation considered to decrease the numerical complexity of the optimisation was to model the thrust duty cycle as a percentage of the orbit. Depending on the phase objective, a thrust segment was centred around either the periapsis or the apoapsis, with a parameter controlling length of the thrust segment. However, when implemented as a constant throughout the phase replacing the continuous thrust magnitude, the optimiser's flexibility is severely compromised. When implemented as a constant throughout the phase in addition to the thrust magnitude parameter, there is no improvement in computational load. An alternative would be to implement duty cycle as a continuous variable. The computational load is just as great, but the author suspects that this modification would significantly smooth the search space. Unfortunately, due to the complications experienced when optimising the system with a continuous thrust magnitude parameter this modification was not trialled.
 
 
 \subsection{Discretisation} \label{sub:Discretisation}
-As mentioned in \autoref{sec:Process}, numerical solution methods require the continuous state and control profiles to be discretised into a series of grid points or nodes. GESOP allows these grid points to be distributed arbitrarily over the independent parameter, although given the number of grid points required for low thrust transfers and how the shape of the trajectory can change during optimisation anything other than a uniform distribution makes no sense.
+As mentioned in \autoref{sec:Process}, numerical solution methods require the continuous state and control profiles to be discretised into a series of grid points or nodes. GESOP allows these grid points to be distributed arbitrarily over the independent parameter. Given the number of grid points required for low thrust transfers and how the shape of the trajectory can change during optimisation, anything other than a uniform distribution makes no sense.
 
-As mentioned in \autoref{sec:Independent-parameter}, longitude was selected as the independent parameter to allow equiangular node distribution. As a rule of thumb, for the initial coarse mesh at least 10~grid points were implemented per orbit. As a result, the cruise phase had over 7300~grid points. Later in the project an automatic mesh generator was implemented in GESOP. Using this mesh generator based on an error tolerance of $10^{-4}$ gave a starting baseline of 20003~grid points for the cruise phase. 
+As mentioned in \autoref{sec:Independent-parameter}, longitude was selected as the independent parameter to allow equiangular node distribution. As a rule of thumb, for the initial coarse mesh at least 10~grid points were implemented per orbit. As a result, the cruise phase had over 7300~grid points. Later in the project an automatic mesh generator was implemented in GESOP. Using this mesh generator based on an error tolerance of $10^{-4}$ gave a starting baseline of 20003~grid points for the cruise phase, equivalent to over 27 per orbit. 
 
 Within each of these shooting intervals, a finer mesh of control nodes may be specified. Multiple shooting methods allow the state and control profiles to be approximated over each of these sub-intervals as a piecewise polynomial function. Thus, with enough control nodes, the state and control profiles appear almost continuously variable. Single shooting methods use only the major nodes, and ignore the control refinement mesh. Constraint violations are evaluated at each shooting node, although GESOP once again allows a finer mesh to be specified by the user. However, SOCS does not support additional constraint evaluations, and as a single shooting method it ignores the control refinement mesh.
 
@@ -281,10 +221,10 @@ Nonetheless, during optimisation the major control mesh undergoes repeated refin
 % NOT OPTIMISED
 % descent - automatic mesh generation, opt tolerance 1.0e-7, constraint tolerance 1.5e-8, ode tolerance 1.0e-7, 10 mesh refinements, 2000 iterations, hermite simpson separate method, 8e7 real workspace, 4e7 integer 
 
-\textcite{Betts1998} provides a simple algorithm to estimate the number of variables required in a large optimsation problem, as a function of the number of states $n_x$, the number of control parameters $n_u$, the number of optimisable phases $M$ and the number of gridpoints per phase $N$.
+\textcite{Betts1998} provides a simple algorithm to estimate the number of variables, $n$, required in a large optimsation problem, as a function of the number of states $n_x$, the number of control parameters $n_u$, the number of optimisable phases $M$ and the number of gridpoints per phase $N$,
 %\begin{subequations}
 \begin{gather}
-n \approx (n_x + n_u)MN %\\
+n \approx (n_x + n_u)MN. %\\
 %n_y = 8 \\
 %n_u = 4 \\
 %M = 4 optimisable phases \\
@@ -305,15 +245,22 @@ Previous theoretical analysis and numerical studies have identified a number of 
 
 \subsection{Gravitational assists} \label{sub:Grav-assist}
 
-Due to the low thrust of spacecraft \BW, a substantial part of the orbit raising can be achieved by exploiting the gravitational pull of the Moon. This technique has been well studied, although previous higher-thrust missions did not find it efficient to attempt more than one or two lunar resonances. \textcite{Kemble2006} explains that \enquote{It is possible to utilise lunar gravity to assist in the orbit raising prior to lunar encounter. This takes the form of a \emph{gravitational pumping} effect if the correct phase with respect to the Moon can be established}. He goes on to quantify that \enquote{A typical $\Delta V$ saving of 800~ms$^{-1}$ is obtained by use of lunar gravity assist}. 
+Due to the low thrust of spacecraft \BW, a substantial part of the orbit raising can be achieved by exploiting the gravitational pull of the Moon. This technique has been well studied, although previous higher-thrust missions did not find it efficient to attempt more than one or two lunar assists. \textcite{Kemble2006} explains that,
+\begin{quotation}
+\enquote{It is possible to utilise lunar gravity to assist in the orbit raising prior to lunar encounter. This takes the form of a \emph{gravitational pumping} effect if the correct phase with respect to the Moon can be established} \parencite[p.249]{Kemble2006}. 
+\end{quotation}
+He quantifies the benefit,
+\begin{quotation}
+\enquote{A typical $\Delta V$ saving of 800~ms$^{-1}$ is obtained by use of lunar gravity assist} \parencite[p.248]{Kemble2006}.
+\end{quotation}
 
-Because lunar gravitational assists provide delta-v without fuel expenditure, they should be implicitly accounted for during optimisation. Preliminary results did indicate this to be the case, as seen in \autoref{fig:Lunar-resonance}. From an initial orbit of 180,000~km (semi-cis-lunar, representing the later stages of the transfer to highlight the lunar assist) the spacecraft takes two orbits to align its phase with the Moon, then receives a very apparent boost purely from the Moon's gravity during the close passes seen in \autoref{fig:Lunar-resonance2}.
+Because lunar gravitational assists provide delta-v without fuel expenditure, they should be implicitly accounted for during optimisation. Preliminary results did indicate this to be the case, as seen in \autoref{fig:Lunar-resonance}. From an initial orbit of 180,000~km (semi-cis-lunar, representing the later stages of the cruise phase to highlight the lunar assist) the spacecraft takes two orbits to align its phase with the Moon, then receives a very apparent boost purely from the Moon's gravity during the close passes seen in \autoref{fig:Lunar-resonance2}.
 
 \begin{figure}
 \centering
 \def\svgwidth{\figurewidth}
 \input{Images/grav-assist.pdf_tex}
-\caption{Trajectory of preliminary optimisation showing a lunar resonance implicitly realised by the optimiser.} \label{fig:Lunar-resonance}
+\caption{Trajectory of preliminary optimisation for \BW\ showing a lunar resonance implicitly realised by the optimiser.} \label{fig:Lunar-resonance}
 \end{figure}
 
 \begin{figure}
@@ -334,7 +281,7 @@ It is well known that thrusting at particular points in the orbit is more effici
 \centering
 \def\svgwidth{\figurewidth}
 \input{Images/oberth.pdf_tex}
-\caption{Thrust to effective weight ratio during preliminary optimisation demonstrates the Oberth effect.} \label{fig:oberth}
+\caption{Thrust to effective weight ratio (darker line) plotted with distance from Earth (dotted line) during preliminary optimisation demonstrates the Oberth effect.} \label{fig:oberth}
 \end{figure}
 
 Constant thrust (tangential to the orbital radius) leads to circular trajectories because an eccentric starting trajectory spends more time at apoapsis than periapsis; hence more impulse is imparted to the vehicle at apoapsis than at periapsis. As evident in a Hohmann transfer, thrusting at apoapsis circularises the orbit. \textcite{Racca9} found that tangential thrust is the most efficient way to increase the periapsis of a constant-thrust vehicle.
@@ -342,15 +289,15 @@ Constant thrust (tangential to the orbital radius) leads to circular trajectorie
 In a vehicle with variable thrust however, the majority of the thrusting should occur near perigee; there is an inverse relationship between optimal thrust magnitude and orbital radius. However, the ascent phase of \BW\ requires raising the periapsis above the van Allen belts as quickly as possible. This may be achieved by focussing thrust around the apoapsis; unfortunately this also minimises the orbital energy gained per unit of propellant expended. Consequently, in the subsequent cruise phase once the periapsis requirement is removed and the sole aim is to gain orbital energy as efficiently as possible, it would be expected that thrust is focussed around the periapsis. \textcite{Racca9} found that the most efficient thrust profile for a constant-thrust vehicle to increase orbital energy (proportional to semimajor axis) is to thrust along the velocity vector. However, \BW\ requires additional maneouvres during each phase to achieve the boundary conditions of the next phase. 
 
 In addition to orbital energy and the corresponding semimajor axis, there are well established strategies for efficiently changing other orbital parameters. For example, \textcite{Edelbaum1964} demonstrates that the argument of periapsis ($\omega$) is most efficiently changed during a low eccentricity orbit and that the inclination ($i$) is most efficiently changed at high eccentricity. These results have often been used to anticipate thrust profiles within low-thrust trajectory studies such as \textcite{Dachwald2007}. 
-\textcite{Pollard2000} and \textcite{Herbiniere2000} further describe a numer of steering programs for low thrust orbital manoeuvres. 
-\textcite{Gao2008} introduces a convenient mathematical parameterisation scheme that generates continuous, smooth parameters describing thrust steering, and can easily be used in an optimisation engine. This modification may be useful to improve the computational complexity in the future, but has not been implemented at present. Nonetheless, the optimiser must adjust the orbital elements during the cruise phase using a combination of these semi-optimal thrust profiles in order to set up a lunar capture.
+\textcite{Pollard2000} and \textcite{Herbiniere2000} further describe a number of steering programs for low thrust orbital manoeuvres. 
+\textcite{Gao2008} introduces a convenient mathematical parameterisation scheme that generates continuous, smooth parameters describing thrust steering, and can easily be used in an optimisation engine. This modification may be useful to improve the computational complexity in the future, but has not been implemented in this thesis. Nonetheless, the optimiser must adjust the orbital elements during the cruise phase using a combination of these semi-optimal thrust profiles in order to set up a lunar capture.
 
 
 \subsection{Lunar capture} \label{sub:Capture}
 
 A spacecraft orbiting the Moon (in the same direction as the Moon orbits the Earth) undergoes a period of low velocity relative to the Earth every time it is on the Earthward side of the Moon. A spacecraft orbiting the Earth in a highly elliptical orbit undergoes a period of low velocity relative to the Earth when it reaches apoapsis, which is conveniently also the furthest point from the Earth. Therefore the aim to achieve lunar capture is to deliver the spacecraft at apoapsis to a \enquote{stationary point} in the intended lunar orbit, such that the Moon's gravity will then pull it into a steady lunar orbit, avoiding the need for a high-thrust capture manoeuvre.
 
-To maximise the gravitational effect of the Moon on the spacecraft, it should be phase-locked with respect to the Moon's orbit. However, this would require constantly adjusting the orbital line of apsides, which is a high delta-v maneuvre. Gravitational resonance is generally exploited by pointing the apoapsis towards the Moon's ascending node (to remove any dependence on inclination) and adjust the orbital period to resonate with the Moon (that is, the spacecraft completes two orbits to every lunar orbit, or three orbits to every lunar orbit, or five orbits to every two lunar orbits, etcetera). However, based on the unique thrusting constraints of \BW, an alternative optimal scenario may be to maintain the fastest part of the orbit (periapsis) within the Earth's shadow (eclipse), to minimise the amount of time that the craft cannot charge its batteries. In this scenario the spacecraft should also thrust as it passes through the eclipse since it cannot recharge during this time, and thrusting will help it to escape the eclipse as quickly as possible. \textcite{Racca9} found the SMART-1 trajectory was affected by the need to avoid eclipse, particularly at apoapsis.
+To maximise the gravitational effect of the Moon on the spacecraft, it should be phase-locked with respect to the Moon's orbit. However, this would require constantly adjusting the orbital line of apsides, which is a high delta-v maneuvre. Gravitational resonance is generally exploited by pointing the apoapsis towards the Moon's ascending node (to remove any dependence on inclination) and adjust the orbital period to resonate with the Moon (that is, the ratio of the spacecraft orbital period to the lunar cycle is a rational fraction, for example the spacecraft completes two orbits to every lunar orbit, or three orbits to every lunar orbit, or five orbits to every two lunar orbits, etcetera). However, based on the unique thrusting constraints of \BW, an alternative optimal scenario may be to maintain the fastest part of the orbit (periapsis) within the Earth's shadow (eclipse), to minimise the amount of time that the craft is unable to charge its batteries. In this scenario the spacecraft should also thrust as it passes through the eclipse since it cannot recharge during this time, and thrusting will help it to escape the eclipse as quickly as possible. \textcite{Racca9} found the SMART-1 trajectory was affected by the need to avoid eclipse, particularly at apoapsis.
 
 Even with capture phases provided by arcjet, there is very little thrust available to perform lunar insertion. When simulating the transfer this problem is compounded by the fact that lunar insertion must be predicted very accurately, as simulating a lunar orbit in an Earth-centred frame, or vice-versa, causes the trajectory to periodically appear to move backwards relative to the central body. In other words, the anomaly decreases, which causes computational errors.
 

@@ -67,7 +67,7 @@
     \put(0.42,0.31){\makebox(0,0)[lb]{\smash{+}}}%
     \put(0.55,0.35){\makebox(0,0)[lb]{\smash{+}}}%
     \put(0.64,0.35){\makebox(0,0)[lb]{\smash{-}}}%
-    \put(0.71,0.35){\makebox(0,0)[lb]{\smash{+}}}%
+    \put(0.705,0.35){\makebox(0,0)[lb]{\smash{+}}}%
     
     \put(0.10,0.17){\makebox(0,0)[lb]{\smash{+}}}%
     \put(0.11,0.11){\makebox(0,0)[lb]{\smash{-}}}%
@@ -81,10 +81,10 @@
     \put(0.40,0.01){\makebox(0,0)[lb]{\smash{-}}}%
     \put(0.55,0.12){\makebox(0,0)[lb]{\smash{+}}}%
     \put(0.64,0.12){\makebox(0,0)[lb]{\smash{-}}}%
-    \put(0.71,0.12){\makebox(0,0)[lb]{\smash{+}}}%
+    \put(0.705,0.12){\makebox(0,0)[lb]{\smash{+}}}%
     \put(0.56,0.05){\makebox(0,0)[lb]{\smash{-}}}%
     \put(0.63,0.03){\makebox(0,0)[lb]{\smash{+}}}%
-    \put(0.71,0.05){\makebox(0,0)[lb]{\smash{-}}}%
+    \put(0.705,0.05){\makebox(0,0)[lb]{\smash{-}}}%
     \put(0.81,0.09){\makebox(0,0)[lb]{\smash{+}}}%
     \put(0.87,0.09){\makebox(0,0)[lb]{\smash{-}}}%
     \put(0.93,0.09){\makebox(0,0)[lb]{\smash{+}}}%

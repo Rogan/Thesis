@@ -50,20 +50,21 @@
   \makeatother%
   \begin{picture}(1,0.75028993)%
     \put(0,0){\includegraphics[width=\unitlength]{Images/Ascent2/figure8.pdf}}%
-    \put(0.17361111,0.06148749){\makebox(0,0)[lb]{\smash{0}}}%
-    \put(0.27994792,0.06148749){\makebox(0,0)[lb]{\smash{5}}}%
-    \put(0.38165451,0.06148749){\makebox(0,0)[lb]{\smash{10}}}%
-    \put(0.48799132,0.06148749){\makebox(0,0)[lb]{\smash{15}}}%
-    \put(0.59447396,0.06148749){\makebox(0,0)[lb]{\smash{20}}}%
-    \put(0.70095486,0.06148749){\makebox(0,0)[lb]{\smash{25}}}%
-    \put(0.80729167,0.06148749){\makebox(0,0)[lb]{\smash{30}}}%
-    \put(0.16377292,0.07609999){\makebox(0,0)[lb]{\smash{0}}}%
-    \put(0.14438681,0.18243715){\makebox(0,0)[lb]{\smash{200}}}%
-    \put(0.14438681,0.28862812){\makebox(0,0)[lb]{\smash{400}}}%
-    \put(0.14438681,0.39496493){\makebox(0,0)[lb]{\smash{600}}}%
-    \put(0.14438681,0.50115763){\makebox(0,0)[lb]{\smash{800}}}%
-    \put(0.13483819,0.60749444){\makebox(0,0)[lb]{\smash{1000}}}%
-    \put(0.11993611,0.2617184){\rotatebox{90}{\makebox(0,0)[lb]{\smash{$\Delta v$ expended [ms$^{-1}$]}}}}%
-    \put(0.41377257,0.03284166){\makebox(0,0)[lb]{\smash{Mission time $t$ [days]}}}%
+    \put(0.17361111,0.05){\makebox(0,0)[lb]{\smash{0}}}%
+    \put(0.27994792,0.05){\makebox(0,0)[lb]{\smash{5}}}%
+    \put(0.38165451,0.05){\makebox(0,0)[lb]{\smash{10}}}%
+    \put(0.48799132,0.05){\makebox(0,0)[lb]{\smash{15}}}%
+    \put(0.59447396,0.05){\makebox(0,0)[lb]{\smash{20}}}%
+    \put(0.70095486,0.05){\makebox(0,0)[lb]{\smash{25}}}%
+    \put(0.80729167,0.05){\makebox(0,0)[lb]{\smash{30}}}%
+    \put(0.41377257,0.02){\makebox(0,0)[lb]{\smash{Mission time $t$ [days]}}}%
+    \put(0.15,0.07609999){\makebox(0,0)[lb]{\smash{0}}}%
+    \put(0.12,0.18243715){\makebox(0,0)[lb]{\smash{200}}}%
+    \put(0.12,0.28862812){\makebox(0,0)[lb]{\smash{400}}}%
+    \put(0.12,0.39496493){\makebox(0,0)[lb]{\smash{600}}}%
+    \put(0.12,0.50115763){\makebox(0,0)[lb]{\smash{800}}}%
+    \put(0.10,0.60749444){\makebox(0,0)[lb]{\smash{1000}}}%
+    \put(0.08,0.2617184){\rotatebox{90}{\makebox(0,0)[lb]{\smash{$\Delta v$ expended [ms$^{-1}$]}}}}%
+
   \end{picture}%
 \endgroup%

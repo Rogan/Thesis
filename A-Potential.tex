@@ -1,26 +1,23 @@
 \chapter{Gravitational potential} \label{cha:Gravitational-potential}
 
-\autoref{sub:Oblateness} introduces gravitational potential models, to accurately calculate the gravitational field around a central body, and thus the gravitational forces a nearby spacecraft would experience. The rather complicated equation \eqref{eq:A-Grav-Potential} is reproduced from \textcite{WGS84}. 
+\autoref{sub:Oblateness} introduces potential energy models, to accurately calculate the gravitational field around a central body, and thus the gravitational forces a nearby spacecraft would experience. The rather complicated equation \eqref{eq:A-Grav-Potential} is reproduced from \textcite{WGS84}, representing the gravitational component of the potential (compared to the angular momentum component),
 \begin{equation} \label{eq:A-Grav-Potential}
-V=\frac{\mu}{r}\left[1+\sum_{n=2}^{n_{max}}\sum_{m=0}^{n}\left(\frac{a}{r}\right)^{n}\bar{P}_{nm}\left(\sin\phi'\right)\left(\bar{C}_{nm}\cos m\lambda+\bar{S}_{nm}\sin m\lambda\right)\right]
+V=\frac{\mu}{r}\left[1+\sum_{n=2}^{n_{max}}\sum_{m=0}^{n}\left(\frac{a}{r}\right)^{n}\bar{P}_{nm}(\sin\phi')(\bar{C}_{nm}\cos m\lambda+\bar{S}_{nm}\sin m\lambda)\right].
 \end{equation}
 
-The parameters $n$ and $m$ are the degree and order of the normalised gravitational coefficients, $r$ is the distance from the body's centre of mass, $\phi'$ is the polar latitude and $\lambda$ is the polar longitude. For $m = 0$, $k = 1$ and for $m \neq 0$, $k = 2$.
-The remaining term within the two summation series, is described as a normalised associated Legendre polynomial. \\
-
+The parameters $n$ and $m$ are the degree and order of the normalised gravitational coefficients, $r$ is the distance from the body's centre of mass, $\phi'$ is the polar latitude and $\lambda$ is the polar longitude. The gravitational coefficients, $\bar{C}_{nm}$ and $\bar{C}_{nm}$ are published in data tables with the gravitational constant for the central body, $\mu$, and the semimajor axis of the oblate body, $a$. For $m = 0$, $k = 1$ and for $m \neq 0$, $k = 2$.
+The remaining term within the two summation series, is described as a normalised associated Legendre polynomial,
 \begin{subequations}\label{eq:A-Legendre-polys}
-\centering 
-Normalized associated Legendre polynomial
 \begin{equation}
-\bar{P}_{nm}\left(\sin\phi'\right) = \left[\frac{\left(n-m\right)!\left(2n+1\right)k}{\left(n+m\right)!}\right]^{\frac{1}{2}}P_{nm}\left(\sin\phi'\right)
+\bar{P}_{nm}(\sin\phi') = \left[\frac{(n-m)!(2n+1)k}{(n+m)!}\right]^{\frac{1}{2}}P_{nm}(\sin\phi'),
 \end{equation}
-Associated Legendre polynomial
+where $P_{nm}(\sin\phi')$ is the associated Legendre polynomial,
 \begin{equation}
-P_{nm}\left(\sin\phi'\right) = \left(\cos\phi'\right)^{m}\frac{d^{m}}{d\left(\sin\phi'\right)^{m}}\left[P_{n}\left(\sin\phi'\right)\right]
+P_{nm}(\sin\phi') = (\cos\phi')^{m}\frac{d^{m}}{d(\sin\phi')^{m}}[P_{n}(\sin\phi')], 
 \end{equation}
-Legendre polynomial
+and $P_{n}\left(\sin\phi'\right)$ is the Legendre polynomial,
 \begin{equation}
-P_{n}\left(\sin\phi'\right) = \frac{d^{n}}{2^{n}n!d\left(\sin\phi'\right)^{n}}\left(\sin^{2}\phi'-1\right)^{n}
+P_{n}(\sin\phi') = \frac{d^{n}}{2^{n}n!d(\sin\phi')^{n}}(\sin^{2}\phi'-1)^{n}.
 \end{equation}
 \end{subequations}
 

@@ -6,45 +6,103 @@ This section describes how the mathematical process of optimisation, described i
 % State vector
 \section{State vector} \label{sec:state-vector}
 
-Since we are concerned with the state of the spacecraft, in this particular scenario the state vector $\vec{x}$ represents the position, velocity and mass of the spacecraft. The osculating orbit is stored in modified equinoctial elements $p$, $f$, $g$, $h$, $k$ and $L$ as outlined in \autoref{sec:Orbital-Elements}. Mass is added to the state vector, and is reduced by thrusting the propellant (reaction mass) out the back of the spacecraft, defined in equation \eqref{eq:mdot},
+Since we are concerned with the state of the spacecraft, in this particular scenario the state vector $\vec{x}$ represents the position, velocity and mass of the spacecraft. The osculating orbit is stored in modified equinoctial elements $p$, $f$, $g$, $h$, $k$ and $L$ as outlined in \autoref{sec:Orbital-Elements}. Mass is appended to the state vector, and is reduced by thrusting the propellant (reaction mass) out the back of the spacecraft, 
 \begin{equation}
-\dot{m}=-\frac{T}{v_{ex}} \label{eq:mdot}
+\dot{m}=-\frac{T}{v_{exhaust}} \label{eq:mdot},
 \end{equation}
-where $T$ is the instantaneous thrust magnitude and $v_{ex}$ is the exhaust velocity. \enquote{Real time} is added as another (albeit independent) state to allow ephemeris calculation. Finally the energy stored in the batteries is also critical to the state of the spacecraft, and similarly to mass it is reduced by using the thrusters (dependent on the power level required by the thrusters over the given phase), as defined in equation \eqref{eq:edot}, 
+where $T$ is the instantaneous thrust magnitude and $v_{exhaust}$ is the exhaust velocity. \enquote{Real time} is added as another (albeit independent) state to allow ephemeris calculation. Finally the energy stored in the batteries is also critical to the state of the spacecraft, and similarly to the mass, it is reduced by using the thrusters (dependent on the power level required by the thrusters over the given phase), as defined by
 \begin{subequations}\label{eq:edot}
 \begin{align}
-\Delta E &= \int_{t_0}^{t_f} P\,\text{dt} \label{eq:delta-E}\\
-\dot{E} &= P(t) \label{eq:Edot}
+\Delta E &= \int_{t_0}^{t_f} P(t)\quad \text{dt} \label{eq:delta-E}, \\
+\dot{E} &= P(t) \label{eq:Edot},
 \end{align} 
-\end{subequations} where $P(t)$ is the instantaneous net power consumption (or generation). Unlike the mass, the energy level may be increased, as the solar panels may cause $P$ to become positive.
+\end{subequations} where $P(t)$ is the instantaneous net power consumption (or generation). Unlike the mass, the energy level may be increased, as the solar panels may cause $P(t)$ to become positive.
 
 Consequently, the differential equation \eqref{eq:generic-DE} becomes the equations of motion described in \autoref{sec:Orbital-equations-of-motion}, appended with equations \eqref{eq:mdot} and \eqref{eq:Edot}. However, these differential equations assume time as the independent parameter.
 
 %Independent parameter
 \section{Independent parameter} \label{sec:Independent-parameter}
 
-Traditionally the independent parameter in this sort of optimisation is time. However, due to the high velocity of the space vehicle near periapsis, time is not the best suited independent parameter because very few gridpoints would occur in this important area. Ideally, gridpoints would concentrate near periapsis, but the easiest alternative to model is equiangular steps, a technique previously used by \textcite{Betts2003}. 
+Traditionally the independent parameter in trajectory optimisation is time. However, due to the high velocity of the space vehicle near periapsis, time is not the best independent parameter because very few gridpoints would occur in this important area - ideally, gridpoints would concentrate near periapsis. The easiest alternative to equal-time steps is to model is equiangular steps, a technique previously used by \textcite{Betts2003}. 
 
-Equiangular stepping is implemented by using the true longitude (angle of the spacecraft relative to its starting position) as the independent parameter. However, using the longitude as the independent parameter causes a large discontinuity at the transition from the Earth-centred to the lunar-centred frame, so a normalised phase longitude is defined as shown in equation \eqref{eq:Ln},
+Equiangular stepping is implemented by using the true longitude (angle of the spacecraft relative to its starting position) as the independent parameter. However, using the longitude as the independent parameter causes a large discontinuity at the transition from the Earth-centred to the lunar-centred frame, so a normalised phase longitude is defined by
 \begin{equation}
-Ln(t) = \frac{L(t)-L(t_0)}{\Delta L}+\Phi \label{eq:Ln}
+Ln(t) = \frac{L(t)-L(t_0)}{\Delta L}+\Phi \label{eq:Ln},
 \end{equation}
 where $L(t_0)$ is the (constant but optimisable) starting position for the given phase, $\Delta L$ is the (constant but optimisable) phase length, and $\Phi$ is the phase number. 
 
-Consequently a substitution of parameters is required in the state differential equation \eqref{eq:state-updates} to reflect this change. The equations required to convert the time domain differential equation \eqref{eq:state-updates} to normalised longitude are presented in \autoref{sub:subst-param}.
+\subsection{Substitution of parameters}\label{sub:subst-param}
+
+Given the state vector of $\vec{x}=\{p,f,g,h,k,L,m,t,E\}$, the time-domain differential equations \eqref{eq:state-updates} must be modified to allow the normalised true anomaly, $Ln$, as the independent parameter. Therefore a subsitution of parameters is required to give derivatives with respect to $Ln$, $\frac{d}{dLn}$. Differentiating equation \eqref{eq:Ln} gives
+\begin{subequations} \label{eq:dLndt}
+\begin{gather}
+\frac{dLn}{dt}=\frac{1}{\Delta L}\frac{dL}{dt} \\
+\frac{dLn}{dt}\cdot\frac{dt}{dL}=\frac{1}{\Delta L} \\
+\frac{dLn}{dL}=\frac{1}{\Delta L} \\
+\frac{dL}{dLn}=\Delta L.
+\end{gather}
+\end{subequations}
+
+Using this identity, the state differential equations with respect to normalised longitude may be determined, starting with \eqref{eq:pdot},
+\begin{subequations}\label{eq:dpdLn}
+\begin{align}
+\frac{dp}{dLn}&=\frac{dp}{dt}\cdot\frac{dt}{dLn}\\
+&=\frac{dp}{dt}\cdot\frac{dt}{dL}\cdot\frac{dL}{dLn}\\
+&=\frac{\dot{p}}{\dot{L}}\Delta L.
+\end{align}
+\end{subequations}
+
+%The differential equations for $f$, $g$, $h$, $k$ and $m$ are modified similarly to $p$. $L$ is simply $\frac{dL}{dLn}$. Substituting the parameters of the remaining differential equations gives:
+%\begin{subequations}
+%\begin{align}
+%\frac{dt}{dLn}&=\frac{dt}{dL}\cdot\frac{dL}{dLn}\\
+%&= \frac{1}{\dot L}\cdot\Delta L
+%\end{align}
+%\end{subequations}
+%\begin{subequations}
+%\begin{align}
+%\frac{dE}{dLn} &= \frac{dE}{dt}\cdot\frac{dt}{dL}\cdot\frac{dL}{dLn} \\
+%&= \frac{P}{\dot{L}}\cdot\Delta L 
+%\end{align}
+%\end{subequations}
+The remaining differential equations \eqref{eq:state-updates}, \eqref{eq:mdot} and \eqref{eq:Edot} are modified similarly, resulting in the differential equations
+\begin{subequations} \label{eq:dLn}
+\begin{gather}
+\frac{dp}{dLn}=\frac{\dot{p}}{\dot{L}}\Delta L, \\
+\frac{df}{dLn}=\frac{\dot{f}}{\dot{L}}\Delta L, \\
+\frac{dg}{dLn}=\frac{\dot{g}}{\dot{L}}\Delta L, \\
+\frac{dh}{dLn}=\frac{\dot{h}}{\dot{L}}\Delta L, \\
+\frac{dk}{dLn}=\frac{\dot{k}}{\dot{L}}\Delta L, \\
+\frac{dL}{dLn}=\Delta L, \\
+\frac{dm}{dLn}=\frac{\dot{m}}{\dot{L}}\Delta L, \\
+\frac{dt}{dLn}=\frac{1}{\dot{L}}\Delta L, \\
+\frac{dE}{dLn}=\frac{P}{\dot{L}}\Delta L,
+\end{gather}
+\end{subequations}
+where $\dot{p}$, $\dot{f}$,  $\dot{g}$, $\dot{h}$, $\dot{k}$ and $\dot{L}$ are the original time-domain differential equations \eqref{eq:state-updates} provided by \textcite{Walker1985}.
+
+\subsubsection{Delta-v calculation}
+The universal definition for delta-v was provided in \autoref{sub:Delta-v}. Unfortunately this definition also depends on time-domain integration. Therefore another substitution of parameters is required, using similar arithmetic to the state vector. Starting with equation \eqref{eq:Delta-V},
+\begin{subequations}
+\begin{align}
+\Delta v &= \int^{Ln_f}_{Ln_i}\frac{T}{m}\frac{\text{dt}}{\text{dLn}}\text{dLn}\\
+&= \int^{1}_{0}\frac{T}{m}\frac{\text{dt}}{\text{dL}}\cdot\frac{\text{dL}}{\text{dLn}}\text{dLn}\\
+&= \int^{1}_{0}\frac{T}{m}\frac{\Delta L}{\dot L}\text{dLn}.
+\end{align}
+\end{subequations}
 
 % Objective function
 \section{Objective function} \label{sec:Objective-function}
 
-Fundamentally, any trajectory that safely gets the spacecraft from Earth orbit to lunar orbit is a candidate solution. The only further considerations are the amount of fuel it takes to get there, and the amount of time it takes. Consequently, the simplest objective function for \BW\ is the total fuel used, as shown in equation \eqref{eq:objective},
+Fundamentally, any trajectory that safely gets the spacecraft from Earth orbit to lunar orbit is a candidate solution. The only further considerations are the amount of fuel it takes to get there, and the amount of time it takes. Consequently, the simplest objective function for \BW\ is the total fuel used, 
 \begin{gather}
-F = -m(t_f) \label{eq:objective}
+F = -m(t_f) \label{eq:objective}.
 \end{gather}
- This objective function is commonly used throughout entire low-thrust trajectory analyses in literature (for example, \cite{Ichimura2008}). Many other studies instead search for Pareto-optimality, based on the economic theory by Vilfredo Pareto. Pareto-optimisation is a search for the best solution that can be found without compromising other objectives, in this case the best fuel efficiency that can be found without taking an unreasonable amount of time \parencite{Lee2005, Coverstone2000}.  
+This objective function is commonly used throughout entire low-thrust trajectory analyses in literature (for example, \cite{Ichimura2008}). Many other studies instead search for Pareto-optimality, based on the economic theory by Vilfredo Pareto. Pareto-optimisation is a search for the best solution that can be found without compromising other objectives, in this case the best fuel efficiency that can be found without taking an unreasonable amount of time \parencite{Lee2005, Coverstone2000}.  
 
-Since the dry mass of \BW\ was unknown, a starting wet mass was assumed; therefore to minimise the fuel used one must simply maximise the final mass. A time penalty was considered to discourage unreasonably long transfer times, but found to be unnecessary. Preliminary, simplified optimisations for the cruise phase used an additional term to minimise the orbital energy with respect to the Moon, $\epsilon_{LCI}$, to encourage a stronger capture. This helped develop the initial guess, but was found to be very sensitive to the weighting factors, $\sigma_1$ and $\sigma_2$, as shown in equation \eqref{eq:objective2},
+Since the dry mass of \BW\ was unknown, a starting wet mass was assumed; therefore to minimise the fuel used one must simply maximise the final mass. A time penalty was considered to discourage unreasonably long transfer times, but found to be unnecessary. Preliminary, simplified optimisations for the cruise phase used an additional term to minimise the orbital energy with respect to the Moon, $\epsilon_{LCI}$, to encourage a stronger capture. This helped develop the initial guess, but was found to be very sensitive to the weighting factors, $\sigma_1$ and $\sigma_2$, in the modified cost function
 \begin{gather}
-F = \sigma_1\epsilon_{LCI}-\sigma_2m(t_f) \label{eq:objective2}
+F = \sigma_1\epsilon_{LCI}-\sigma_2m(t_f) \label{eq:objective2}.
 \end{gather}
  
 %fixed launch mass at initial guess because that is how it is booked with launch service provider. saving fuel means more scientific payload.
@@ -64,7 +122,7 @@ As mentioned in Section \ref{sec:Objective-function}, candidate states include a
 % Boundary constraints
 \subsection{Boundary constraints} \label{sub:Boundary-constraints}
 
-In the case of orbital trajectories, the initial and final states are orbits. For preliminary simulations, a GTO with periapsis 175~km, apoapsis 35975~km, and inclination 21.7\degrees\ was used, as the approximate \BW\ parking orbit after launch via GSLV \parencite{GSLV}. This corresponds to Keplerian elements as shown in \autoref{tab:Phase-2-constraints}. The argument of periapsis, $\omega$, and right ascension of the ascending node, $\Omega$, are dependent on the launch date and time, which as previously stated remains unknown. For the purposes of optimisation these were initialised at 180\degrees\ and 0\degrees\ respectively, but optimisations were performed with other values proved to have very little effect on the results. True anomaly, $\nu$, is an arbitrary starting point within the defined orbit, and so was initialised to 0\degrees\ (periapsis).
+In the case of orbital trajectories, the initial and final states are orbits. For preliminary simulations, a GTO with periapsis 175~km, apoapsis 35975~km, and inclination 21.7\degrees\ was used, as the approximate \BW\ parking orbit after launch via GSLV \parencite{GSLV}. This corresponds to Keplerian elements as shown in \autoref{tab:Phase-2-constraints}. The argument of periapsis, $\omega$, and right ascension of the ascending node, $\Omega$, are dependent on the launch date, which as previously stated remains unknown. For the purposes of optimisation these were initialised at 180\degrees\ and 0\degrees\ respectively. Optimisations were performed with other values, although these proved to have very little effect on the results. True anomaly, $\nu$, is an arbitrary starting point within the defined orbit, and so was initialised to 0\degrees\ (periapsis).
 
 \begin{table}[h]
 \caption{Keplerian elements for the initial orbit of \BW\ trajectory optimisation (start of ascent phase).} \label{tab:Phase-2-constraints}
@@ -77,7 +135,7 @@ Inclination, $i$ (rad) &=& 0.379\\\bottomrule
 \end{tabular}
 \end{table}
 
-Since the purpose of this phase is to escape the van Allen Belts, the final boundary condition is defined as the lowest point in the orbit (the periapsis) exceeding the outer limits of the van Allen Belts. \textcite{Letterio_thesis} used an orbital radius of 22,668~km from the centre of the Earth as a good estimate for this point. This termination condition forms the initial condition of the next phase, as shown in \autoref{tab:Phase-2-3-constraints}. A very important additional constraint is that all states must be smooth and continuous over the phase transition.
+Since the purpose of the ascent phase is to escape the van Allen Belts, the final boundary condition is defined as the lowest point in the orbit (the periapsis) exceeding the outer limits of the van Allen Belts. \textcite{Letterio_thesis} used an orbital radius of 22,668~km from the centre of the Earth as a good estimate for this point. This termination condition forms the initial condition of the next phase, as shown in \autoref{tab:Phase-2-3-constraints}. A very important additional constraint is that all states must be smooth and continuous over the phase transition.
 
 \begin{table}[h]
 \caption{Phase 2 to 3 transition constraints.} \label{tab:Phase-2-3-constraints}
@@ -88,13 +146,13 @@ Periapsis, $r_{peri}$ (m) &$\ge$& $2.2668\times 10^7$\\\bottomrule
 \end{tabular}
 \end{table}
 
-The original proposal \parencite{Roeser2006} suggested that the subsequent cruise phase would terminate on reaching the sphere of influence of the Moon, as defined in \autoref{sec:SOI}. There are two possibilities to determine this transition: either a distance from the lunar centre, or alternately if the forward propagation is required to make no reference to the Moon the SOI can be assumed to be an equivalent distance from the Earth, in which case establishing lunar SOI requires an additional constraint that the phase difference between the Moon and the spacecraft is close to zero (lunar phase difference is primarily a function of when the transfer starts). 
+The original mission proposal \parencite{Roeser2006} suggested that the subsequent cruise phase would terminate on reaching the sphere of influence of the Moon, as defined in \autoref{sec:SOI}. There are two possibilities to determine this transition: either a distance from the lunar centre, or alternately if the forward propagation is required to make no reference to the Moon the SOI can be assumed to be an equivalent distance from the Earth, in which case establishing lunar SOI requires an additional constraint that the phase difference between the Moon and the spacecraft is close to zero (lunar phase difference is primarily a function of when the transfer starts). 
 
-There are a number of different parameters that measure the proximity of the satellite from the lunar sphere of influence. First is the basic distance of the satellite from the central body, $r$. However, this value exhibits large oscillations as the satellite follows an elliptical orbit. There are several orbital parameters proportional to the characteristic energy of an orbit which rise smoothly under thrust, such as radius of periapsis $r_{peri}$, semimajor axis $a$, semilatus rectum $p$ and of course the orbital energy itself, $\epsilon$. These parameters are usually interchangeable as they have very similar definitions, proportional to semimajor axis and/or eccentricity.
+There are a number of different parameters that measure the proximity of the satellite from the lunar SOI. First is the basic distance of the satellite from the central body, $r$. However, this value exhibits large oscillations as the satellite follows an elliptical orbit. There are several orbital parameters proportional to the characteristic energy of an orbit which rise smoothly under thrust, such as radius of periapsis $r_{peri}$, semimajor axis $a$, semilatus rectum $p$ and of course the orbital energy itself, $\epsilon$. These parameters are usually interchangeable as they have very similar definitions, proportional to semimajor axis and/or eccentricity, 
 \begin{gather}
-r_{peri} = a(1-e)\\
-p = a(1-e^2)\\
-\epsilon = -\frac{\mu}{2a}
+r_{peri} = a(1-e), \\
+p = a(1-e^2), \\
+\epsilon = -\frac{\mu}{2a}.
 \end{gather}
 
 However, the eccentricity can undergo rapid changes during lunar assists. Consequently, the periapsis and semilatus rectum both reveal sudden jumps. Furthermore, the semimajor axis exhibits a discontinuity when an orbit transitions from elliptical to hyperbolic (that is, if the spacecraft achieves escape velocity). Therefore the orbital energy, $\epsilon$, was chosen as the phase constraint, as shown on the bottom of \autoref{tab:Phase-3-4-constraints}.
@@ -140,13 +198,33 @@ Inclination, $i$ (rad) &$\le$& 1.57\\\bottomrule
 
 While the path between initial and final states is defined by the differential equations of motion outlined in \autoref{sec:state-vector}, there are a number of additional constraints on the trajectory, both physical and operational.
 
-Firstly, the control vector $\vec{u}$ must be a unit vector. This ensures that the thrust level is realistic throughout the simulation, when multiplied by the thrust magnitude $T$ which must also be constrained to the appropriate upper limit for the phase (depending on whether the phase uses the PPTs or the arcjet).
+Firstly, the control vector $\vec{u}=\{u_1,u_2,u_3\}$ must be a unit vector. This ensures that the thrust level is realistic throughout the simulation, when multiplied by the thrust magnitude $T$ which must also be constrained to the appropriate upper limit for the phase (depending on whether the phase uses the PPTs or the arcjet), leading to the equation
+\begin{subequations}
+\begin{gather}
+|\vec{u}|=1 \\
+\sqrt{u_1^2+u_2^2+u_3^2}=1
+\end{gather}
+\end{subequations}
 
-To guide the optimiser towards an appropriate solution, some bounds are placed on the trajectory itself. At no point in the optimisation is the spacecraft allowed to escape Earth orbit (by ensuring that $e_{ECI}<1$), nor is the spacecraft allowed to come within 100km of either the Earth's surface, or the Moon's surface.
+To guide the optimiser towards an appropriate solution, some bounds are placed on the trajectory itself. At no point in the optimisation is the spacecraft allowed to escape Earth orbit (by ensuring that the eccentricity does not approach a parabolic escape orbit), nor is the spacecraft allowed to come within 100km of either the Earth's surface, or the Moon's surface, by enforcing
+\begin{gather}
+e_{ECI}<1 \\
+r_{ECI}>R_\Earth+100\text{km} \\
+r_{LCI}>R_\Moon+100\text{km} 
+\end{gather}
+where $R_\Earth$ is the Earth's mean radius and $R_\Moon$ is the Moon's mean radius.
 
-Equinoctial elements are better for this optimisation than Keplerian elements, but they are still not perfect. They do exhibit singularities as the inclination approaches 180\degrees; in other words, they do not model strongly retrograde orbits well. Constraining the trajectory to keep away from these orbits is not a severe limitation on this optimisation since the optimiser is highly unlikely to suggest a retrograde orbit prior to Earth departure due to the large delta-v required for inclination changes (the spacecraft starts at 21\degrees\ and aims for the lunar plane of 6\degrees\ from the ecliptic, that is 15-24\degrees\ relative to Earth). Even the polar lunar orbit provides a large margin of safety.
+Equinoctial elements are better for this optimisation than Keplerian elements, but they are still not perfect. They do exhibit singularities as the inclination approaches 180\degrees; in other words, they do not model strongly retrograde orbits well. Constraining the trajectory to keep away from these orbits is not a severe limitation on this optimisation since the optimiser is highly unlikely to suggest a retrograde orbit prior to Earth departure due to the large delta-v required for inclination changes (the spacecraft starts at 21\degrees\ and aims for the lunar plane of 6\degrees\ from the ecliptic, that is 15-24\degrees\ relative to Earth). Even the polar lunar orbit provides a large margin of safety. Nonetheless, the optimisation should be constrained to avoid these singularities so that
+\begin{equation}
+i<180\degrees
+\end{equation}
+where $i$ is the inclination of the orbit (whether geo-centric or lunar-centric).
 
-Upon implementation of the power generation and consumption model, the constraint that battery charge must be greater than zero had a significant affect on the trajectory, particularly introducing coast phases in the ascent phase. A final intuitive but hugely important numerical constraint is that the spacecraft mass must remain positive! %Practically, the wet mass should remain greater than the dry mass, but as the dry mass was unknown this constraint was initially neglected. One Earth-escape trajectory was propagated until the mass became negative, and the spacecraft started accelerating backwards.
+Upon implementation of the power generation and consumption model, the constraint that battery charge must be greater than zero had a significant affect on the ascent trajectory, particularly introducing coast phases in the ascent phase. A final intuitive but hugely important numerical constraint is that the spacecraft mass must remain positive, so the remaining path constraints are %Practically, the wet mass should remain greater than the dry mass, but as the dry mass was unknown this constraint was initially neglected. One Earth-escape trajectory was propagated until the mass became negative, and the spacecraft started accelerating backwards.
+\begin{gather}
+E\ge0\\
+m\ge0.
+\end{gather}
 
 %-----------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -162,19 +240,19 @@ For this project, a multiple shooting Runge-Kutta 4/5 integrator was used to pro
 % Integration error
 \subsection{Integration error} \label{sub:Integration-error}
 
-At the start of this project, in order to verify the flight mechanics described in \autoref{cha:Orbital-dynamics-and-modelling} the differential equations presented in equation \eqref{eq:state-updates} were integrated in Matlab over sufficient time to allow the spacecraft to reach the Moon. An absolute error of $10^{-6}$ was allowed within each orbital element ($p$ metres, $f$, $g$, $h$, $k$ and $L$ dimensionless), and a relative error of $10^{-9}$ ($10^{-7}$\%). Since the longitude is continually growing (not bound within 0º to 360º) yet the useful information within this parameter (the position of the spacecraft within 0º to 360º) is not increasing, relative error must be severely limited. Continual thrust allows \BW\ to achieve lunar insertion in about 100 rotations, corresponding to a longitude of 36000\degrees. The relative error in the spacecraft's position at a radius of 360000~km is therefore 12.96~km, which should be sufficiently small to allow lunar insertion (for initial simulation, at least). Matlab uses the larger of the two tolerances, so at small longitudes (the start of the simulation) absolute tolerance is dominant, minimising unnecessary computational effort.
+At the start of this project, in order to verify the flight mechanics described in \autoref{cha:Orbital-dynamics-and-modelling}, the differential equations presented in equation \eqref{eq:state-updates} were integrated in Matlab over sufficient time to allow the spacecraft to reach the Moon. An absolute error of $10^{-6}$ was allowed within each orbital element ($p$ metres, $f$, $g$, $h$, $k$ and $L$ dimensionless), and a relative error of $10^{-9}$ ($10^{-7}$\%). Since the longitude is continually growing (not bound within 0º to 360º) yet the useful information within this parameter (the position of the spacecraft within 0º to 360º) is not increasing, relative error must be severely limited. Continual thrust allows \BW\ to achieve lunar insertion in about 100 rotations, corresponding to a longitude of 36000\degrees. The relative error in the spacecraft's position at a radius of 360000~km is therefore 12.96~km, which should be sufficiently small to allow lunar insertion (for initial simulation, at least). The Matlab code used for this project uses the larger of the two tolerances, so at small longitudes (the start of the simulation) absolute tolerance is dominant, minimising unnecessary computational effort.
 
-As outlined in \textcite{Milani1987}, using a simple rule of thumb a limit on the ratio of simulation timespan to stepsize based on error accumulation can be determined. If the error at each step is $\epsilon$ and the number of steps is $N$, then $N^{2}\epsilon$ should remain less than 1. With a relative error of $10^{-9}$ the number of steps should be limited to 31,500. If more timesteps are needed the relative error may be reduced further, limited only by machine accuracy (in fact, many previous simulations including \citeauthor{Milani1987} appear to have assumed machine accuracy). According to IEEE standard 754, double precision floating point variables have a mantissa of 52 bits. This corresponds to a relative machine accuracy $\epsilon=2^{-52}\approx2.2\times10^{-16}$.
+\textcite{Milani1987} provide a simple rule of thumb to limit error accumulation by limiting the ratio of simulation timespan to stepsize. If the error at each step is $\epsilon$ and the number of steps is $N$, then $N^{2}\epsilon$ should remain less than 1. With a relative error of $10^{-9}$ the number of steps should be limited to 31,500. If more timesteps are needed the relative error may be reduced further, limited only by machine accuracy (in fact, many previous simulations including \citeauthor{Milani1987} appear to have assumed machine accuracy). According to IEEE standard 754, double precision floating point variables have a mantissa of 52 bits. This corresponds to a relative machine accuracy $\epsilon=2^{-52}\approx2.2\times10^{-16}$, giving an upper limit of $N=2^26=67108864$ grid points.
 
 % Scaling
 \subsection{Scaling} \label{sub:Scaling}
 
-In any optimisation the parameters should be scaled so that the optimisation algorithm is not biased towards optimising any one variable at the expense of the others. This is particularly important in low thrust trajectory optimisation using equinoctial elements because variables $f$, $g$, $h$ and $k$ are typically between one and minus one, while $L$ grows continually throughout the trajectory and $p$ as the orbital semi-latus rectum can exceed many millions of metres. Consequently, without very specifically chosen weightings in the objective function the optimisation might try to correct $p$ by 10 metres rather than $f$ by 0.1, although the latter change might have a much greater effect on the result.
+In any optimisation the parameters should be scaled so that the optimisation algorithm is not biased towards optimising any one variable at the expense of the others. This is particularly important in low thrust trajectory optimisation using equinoctial elements because variables $f$, $g$, $h$ and $k$ are typically between one and minus one, while $L$ grows continually throughout the trajectory and $p$ as the orbital semi-latus rectum can exceed many millions of metres. Consequently, without very specifically chosen weightings in the objective function, the optimiser may (for example) adjust the higher absolute value of $p$ rather than make a tiny adjustment to $f$, although the latter change might have a much greater effect on the result.
 
-Linear scaling is often sufficient, however if changes in a variable are very small relative to the average value of that variable the process of linear scaling on a computer will result in loss of precision due to truncation. The affine transformation \parencite{ASTOS_guide} uses expected upper and lower bounds for each optimisable parameter to scale it to within 1 and -1, based on absolute upper and lower limits provided by the user for each parameter.
+Linear scaling is often sufficient, however if changes in a variable are very small relative to the average value of that variable then the process of linear scaling on a computer will result in loss of precision due to truncation. The affine transformation \parencite{ASTOS_guide} uses expected upper and lower bounds for each optimisable parameter to scale it to within 1 and -1, based on absolute upper and lower limits provided by the user for each parameter.
 
 \section{Summary of the optimisation problem} \label{sec:Optimisation-Summary}
 
-\BW\ was defined and fitted to the generic structure of an optimisation problem. Algorithms available for propagating the trajectory of a spacecraft were discussed, and the numerical problems inherent with them investigated.
+In this section \BW\ was defined and fitted to the generic structure of an optimisation problem. Phase boundaries and path constraints were defined numerically. Numerical problems inherent in long-duration optimisation problems were examined, specifically integration error and scaling. An upper limit was established for the number of grid points that can be implemented during optimisation, and an affine transformation was implemented for each optimisable parameter, state and control variable. 
  
 \clearpage

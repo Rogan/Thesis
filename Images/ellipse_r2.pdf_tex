@@ -1,6 +1,6 @@
 %% Creator: Inkscape 0.48.2, www.inkscape.org
 %% PDF/EPS/PS + LaTeX output extension by Johan Engelen, 2010
-%% Accompanies image file 'figure2.pdf' (pdf, eps, ps)
+%% Accompanies image file 'ellipse_r2.pdf' (pdf, eps, ps)
 %%
 %% To include the image in your LaTeX document, write
 %%   \input{<filename>.pdf_tex}
@@ -36,7 +36,7 @@
   }%
   \providecommand\rotatebox[2]{#2}%
   \ifx\svgwidth\undefined%
-    \setlength{\unitlength}{576bp}%
+    \setlength{\unitlength}{427.28312964bp}%
     \ifx\svgscale\undefined%
       \relax%
     \else%
@@ -48,30 +48,15 @@
   \global\let\svgwidth\undefined%
   \global\let\svgscale\undefined%
   \makeatother%
-  \begin{picture}(1,0.75028993)%
-    \put(0,0){\includegraphics[width=\unitlength]{Images/Ascent2/figure2.pdf}}%
-    \put(0.07,0.53){\makebox(0,0)[lb]{\smash{-0.5}}}%
-    \put(0.08,0.60){\makebox(0,0)[lb]{\smash{0.0}}}%
-    \put(0.08,0.67){\makebox(0,0)[lb]{\smash{0.5}}}%
-    \put(0.05,0.59){\rotatebox{90}{\makebox(0,0)[lb]{\smash{$T_r$}}}}%
-    \put(0.06,0.31){\makebox(0,0)[lb]{\smash{0.85}}}%
-    \put(0.08,0.36){\makebox(0,0)[lb]{\smash{0.9}}}%
-    \put(0.06,0.41){\makebox(0,0)[lb]{\smash{0.95}}}%
-    \put(0.08,0.46){\makebox(0,0)[lb]{\smash{1.0}}}%
-    \put(0.05,0.37){\rotatebox{90}{\makebox(0,0)[lb]{\smash{$T_\theta$}}}}%
-    \put(0.07,0.08){\makebox(0,0)[lb]{\smash{-2.0}}}%
-    \put(0.07,0.13){\makebox(0,0)[lb]{\smash{-1.0}}}%
-    \put(0.08,0.18){\makebox(0,0)[lb]{\smash{0.0}}}%
-    \put(0.08,0.23){\makebox(0,0)[lb]{\smash{1.0}}}%
-    \put(0.16,0.26){\makebox(0,0)[lb]{\smash{$\times10^{-4}$}}}%
-    \put(0.05,0.09){\rotatebox{90}{\makebox(0,0)[lb]{\smash{$T_h$}}}}%
-    \put(0.12,0.05){\makebox(0,0)[lb]{\smash{0}}}%
-    \put(0.24,0.05){\makebox(0,0)[lb]{\smash{5}}}%
-    \put(0.35,0.05){\makebox(0,0)[lb]{\smash{10}}}%
-    \put(0.46,0.05){\makebox(0,0)[lb]{\smash{15}}}%
-    \put(0.57,0.05){\makebox(0,0)[lb]{\smash{20}}}%
-    \put(0.69,0.05){\makebox(0,0)[lb]{\smash{25}}}%
-    \put(0.80,0.05){\makebox(0,0)[lb]{\smash{30}}}%
-    \put(0.39,0.02){\makebox(0,0)[lb]{\smash{Mission time, $t$ [days]}}}%
+  \begin{picture}(1,0.4710222)%
+    \put(0,0){\includegraphics[width=\unitlength]{Images/ellipse_r2.pdf}}%
+    \put(0.82,0.32744004){\makebox(0,0)[lb]{\smash{Periapsis}}}%
+    \put(0.00004114,0.32744004){\makebox(0,0)[lb]{\smash{Apoapsis}}}%
+    \put(0.48862187,0.33){\rotatebox{-90}{\makebox(0,0)[lb]{\color{green}{Minor axis $2b$}}}}%
+    \put(0.22760523,0.23744163){\makebox(0,0)[lb]{\color{red}{Major axis $2a$}}}%
+    \put(0.56858483,0.32744004){\makebox(0,0)[lb]{\smash{Focus}}}%
+    \put(0.72493371,0.34967162){\rotatebox{-90}{\makebox(0,0)[lb]{\color{cyan}{Latus rectum $2p$}}}}%
+    
+   
   \end{picture}%
 \endgroup%

@@ -2,23 +2,23 @@
 
 \section{Reduced complexity optimisation} \label{sec:Reduced-complexity}
 
-As explained in \autoref{sec:Development}, a reduced complexity ascent phase was modelled to gain an initial idea of the thrust profile and optimisation procedure. Many useful conclusions can still be drawn from the results of this simulation. The thrust profile shown in \autoref{fig:Ascent2-thrust} demonstrates oscillations in the thrust direction between radial and tangential thrust components. This is similar to a result discovered by \textcite{Betts2003}. Unlike \textcite{Betts2003}, this is accompanied by a varying thrust magnitude, as shown in \autoref{fig:Ascent2-thrustM}. It is interesting to note that the variations in thrust magnitude are synchronous with the orbit; during the apoapsis, when thrusting is most effective in raising the periapsis, the thrust magnitude is very near to 100\%. Towards the end of the phase however, near periapsis the spacecraft often ceases thrusting altogether. The fact that thrust is continuous at the start of the phase is a result of the Oberth effect: it is most efficient to thrust when close to the central body. However, once sufficient orbital energy is attained for the periapsis to be raised beyond the van Allen belts, thrusting near periapsis contributes nothing more to achieve the objective. Thus a major objective of this study is achieved: to discover an optimal thrust profile given the thrust constraints.
+As explained in \autoref{sec:Development}, a reduced complexity ascent phase was modelled to gain an initial idea of the thrust profile and optimisation procedure. Many useful conclusions can still be drawn from the results of this simulation. The thrust profile shown in \autoref{fig:Ascent2-thrust} demonstrates oscillations in the thrust direction between radial and tangential thrust components. This is similar to a result found by \textcite{Betts2003}. However, unlike \textcite{Betts2003}, this is accompanied by a varying thrust magnitude, as shown in \autoref{fig:Ascent2-thrustM}. It is interesting to note that the variations in thrust magnitude are synchronous with the orbit; during the apoapsis, when thrusting is most effective in raising the periapsis, the thrust magnitude is very near to 100\%. Towards the end of the phase however, near periapsis the spacecraft often ceases thrusting altogether. The fact that thrust is continuous at the start of the phase is a result of the Oberth effect: it is most efficient to thrust when close to the central body. However, once sufficient orbital energy is attained for the periapsis to be raised beyond the van Allen belts, thrusting near periapsis contributes nothing more to achieve the objective. Thus a major objective of this study is achieved: to discover an optimal thrust profile given the thrust constraints.
 
 \begin{figure}
 \centering
 \def\svgwidth{\figurewidth}
 \input{Images/Ascent2/figure2.pdf_tex}
-\caption{Direction of thrust vector during reduced complexity ascent phase.} \label{fig:Ascent2-thrust}
+\caption{Direction of thrust vector during reduced complexity ascent phase. $T_r$ is the radial component, $T_\theta$ is the tangential component within the orbital plane, and $T_h$ is the out-of-plane component.} \label{fig:Ascent2-thrust}
 \end{figure}
 
 \begin{figure}
 \centering
 \def\svgwidth{\figurewidth}
 \input{Images/Ascent2/figure3.pdf_tex}
-\caption{Magnitude of thrust vector during reduced complexity ascent phase.} \label{fig:Ascent2-thrustM}
+\caption{Magnitude of thrust vector shown in \autoref{fig:Ascent2-thrust} during reduced complexity ascent phase.} \label{fig:Ascent2-thrustM}
 \end{figure}
 
-The resulting trajectory presents some interesting artefacts in the 3D plot at \autoref{fig:Ascent2-3D}. Once thrusting at periapsis ceases, the apoapsis stops increasing significantly. Thus the orbits are much closer together in the plot, appearing as though an inclination change has occurred.
+The resulting trajectory presents some interesting artefacts in the 3D plot in \autoref{fig:Ascent2-3D}. Once thrusting at periapsis ceases, the apoapsis stops increasing significantly. Thus the orbits are much closer together in the plot, appearing as though an inclination change has occurred.
 
 \begin{figure}
 \centering
@@ -69,7 +69,7 @@ The resulting trajectory presents some interesting artefacts in the 3D plot at \
 %\caption{Perturbing accelerations acting on spacecraft during reduced complexity ascent phase.} \label{fig:Ascent2-pert2}
 %\end{figure}
 
-The terminal condition of this phase optimisation, raising the periapsis above the van Allen belts, is shown in \autoref{fig:Ascent2-peri}. The cyclical nature of periapsis growth is due to the orbit: periapsis cannot be raised from periapsis, regardless of the amount of thrust applied. As a result of this effect, the optimised profile reduces thrust during apoapsis, thus conserving fuel when it is inefficient to thrust. Each of the sharp increases in periapsis corresponds to an apoapsis pass. The spacecraft's mass, seen in \autoref{fig:Ascent2-mass}, shows a steady decrease during the period of constant thrust. Then the latter half of the phase shows the results of the variable thrusting magnitude, as fuel mass is conserved at the expense of time. Consequently, this simulation used a total of 53.63~kg of ammonia, over 34.17~days. This is very close to the mission architecture's estimation of time spent in the van Allen belts, and thus corresponds to acceptable levels of radiation damage.
+The terminal condition of this phase optimisation, raising the periapsis above the van Allen belts, is shown in \autoref{fig:Ascent2-peri}. The cyclical nature of periapsis growth is due to the orbit: the periapsis height cannot be raised while the spacecraft is at periapsis, regardless of the amount of thrust applied. As a result of this effect, the optimised profile reduces thrust during apoapsis, thus conserving fuel when it is inefficient to thrust. Each of the sharp increases in periapsis corresponds to an apoapsis pass. The spacecraft's mass, seen in \autoref{fig:Ascent2-mass}, shows a steady decrease during the period of constant thrust. Then the latter half of the phase shows the results of the variable thrusting magnitude, as fuel mass is conserved at the expense of time. Consequently, this simulation used a total of 53.63~kg of ammonia, over 34.17~days. This is very close to the mission architecture's estimation of time spent in the van Allen belts, and thus corresponds to acceptable levels of radiation damage.
 
 \begin{figure}
 \centering
@@ -85,7 +85,14 @@ The terminal condition of this phase optimisation, raising the periapsis above t
 \caption{Mass of spacecraft during reduced complexity ascent phase.} \label{fig:Ascent2-mass}
 \end{figure}
 
-The $\Delta v$ expenditure shows a very similar profile to mass flow, albeit inverted, adding up to a total of about 1.15~kms$^{-1}$. This is very close to the expenditure estimated in the mission architecture of 1.1~kms$^{-1}$.
+The $\Delta v$ expenditure in \autoref{fig:Ascent2-deltav} shows a very similar profile to mass flow, albeit inverted, adding up to a total of about 1.15~kms$^{-1}$. This is very close to the expenditure estimated in the mission architecture of 1.1~kms$^{-1}$.
+
+\begin{figure}
+\centering
+\def\svgwidth{\figurewidth}
+\input{Images/Ascent2/figure8.pdf_tex}
+\caption{Delta-V generated by spacecraft during reduced complexity ascent phase.} \label{fig:Ascent2-deltav}
+\end{figure}
 
 Finally, \autoref{fig:Ascent2-energy} shows the power levels throughout this phase. The energy used by the thrusters very closely maps the energy generated by the solar panels, until the later stages whereupon the intermittent thrusting occurs, lowering the energy requirements. Thus the constraint that the energy use does not exceed the energy generation by more than the batteries' capacity is fulfilled.
 
@@ -170,6 +177,7 @@ The thrust profile calculated by the optimisation is shown in \autoref{fig:Ascen
 
 The stronger forces acting on the spacecraft during the ascent phase are shown in \autoref{fig:Ascent-pert}, and the weaker forces in \autoref{fig:Ascent-pert2}. It is immediately apparent that only the Earth's oblateness plays a significant role in defining the spacecraft trajectory from such a low orbit. However, as outlined in \autoref{sub:Oblateness} this only affects the argument of periapsis and right ascension of the ascending node, and therefore cannot be exploited to raise the orbit faster. As outlined above, adjusting the argument of periapsis may assist with lining up gravitational assists from the Moon later in the transfer, but due to the limitation of modelling phases separately this assist could not be included. Consequently, the thrust profile was optimised purely for a fast ascent. Interestingly, the optimiser did adjust the trajectory starting date from the initial guess derived from STK, which has the effect of adjusting the phase between the spacecraft and the Moon. This shows that even the relatively weak lunar gravity present during this phase may still be exploited. The orders of magnitude between the forces shown in \autoref{fig:Ascent-pert} and the gravitational forces due to Jupiter, Venus and Mars in \autoref{fig:Ascent-pert2} highlight the reason why so many earlier studies neglect these forces. 
 
+\begin{subfigures}
 \begin{figure}
 \centering
 \def\svgwidth{\figurewidth}
@@ -181,8 +189,9 @@ The stronger forces acting on the spacecraft during the ascent phase are shown i
 \centering
 \def\svgwidth{\figurewidth}
 \input{Images/Ascent/figure5.pdf_tex}
-\caption{Perturbing accelerations acting on spacecraft during ascent phase.} \label{fig:Ascent-pert2}
+\caption{Smaller magnitude perturbing accelerations acting on spacecraft during ascent phase.} \label{fig:Ascent-pert2}
 \end{figure}
+\end{subfigures}
 
 The spacecraft periapsis is shown again in \autoref{fig:Ascent-peri}. The profile is very similar to that observed in the reduced complexity ascent, although by thrusting through the periapsis the growth is smoothed somewhat. As this is the termination condition for the phase, the final periapsis is the same between the fully optimised reduced complexity version and this one. However, the optimised phase traded off semimajor axis (and thus orbital energy) to reduce the eccentricity faster. 
 
@@ -203,7 +212,7 @@ Since the reduced complexity ascent, which was allowed to reach an optimal solut
 \caption{Mass of spacecraft during ascent phase.} \label{fig:Ascent-mass}
 \end{figure}
 
-\autoref{fig:Ascent-energy} shows the power generated and consumed during the phase. The energy required for the thruster demonstrates the same linear behaviour as the first half of the reduced complexity simulation, continued for the whole phase as the optimisation was not allowed to proceed to the intermittent thrust profile as the reduced complexity simulation. However, the solar panels show a much higher power generation: 1140~kWh in 32.22~days, compared to 787~kWh in 34.17~days. Given that the inclination, argument of periapsis and right ascension of the ascending node are identical to the reduced complexity ascent, and the trajectory is also very similar, there are few factors that could account for this difference. 
+\autoref{fig:Ascent-energy} shows the power generated and consumed during the ascent phase. The energy required for the thruster demonstrates the same linear behaviour as the first half of the reduced complexity simulation, continued for the whole phase as the optimisation was not allowed to proceed to the intermittent thrust profile as the reduced complexity simulation. However, the solar panels show a much higher power generation: 1140~kWh in 32.22~days, compared to 787~kWh in 34.17~days for the reduced complexity model. Given that the inclination, argument of periapsis and right ascension of the ascending node are identical to the reduced complexity ascent, and the trajectory is also very similar, there are few factors that could account for this difference. The biggest difference between the two simulations is the starting date: the reduced complexity phase started at the mission epoch, 1~January~2014. This simulation, based on the backwards propagated STK simulation, starts at epoch minus 140~days. In other words, due to the dependency on later phases in the STK simulation this GESOP simulation starts about 4.6 months earlier than the reduced complexity one, resulting in the sun subtending a very different angle on the Earth relative to the vernal equinox. Given the constraints on pointing the solar panels towards the sun (see \autoref{sec:Vehicle-power}) this must have an affect on power generation. Since power generation has been greater than power consumption in both GEOSP simulations, it does not affect the optimal trajectory, but is a factor worth investigating if more power is directed to the thrusters for a quicker ascent, as recommended in \autoref{sec:BW1-additions}.
 
 \begin{figure}
 \centering
@@ -212,9 +221,7 @@ Since the reduced complexity ascent, which was allowed to reach an optimal solut
 \caption{Power budget of spacecraft during ascent phase.} \label{fig:Ascent-energy}
 \end{figure}
 
-The biggest difference between the two simulations is the starting date: the reduced complexity phase started at the mission epoch, 1~January~2014. This simulation, based on the backwards propagated STK simulation, starts at epoch minus 140~days. In other words, due to the dependency on later phases in the STK simulation this GESOP simulation starts about 4.6 months earlier than the reduced complexity one, resulting in the sun subtending a very different angle on the Earth relative to the vernal equinox. Given the constraints on pointing the solar panels towards the sun (see \autoref{sec:Vehicle-power}) this must have an affect on power generation. Since power generation has been greater than power consumption in both GEOSP simulations, it does not affect the optimal trajectory, but is a factor worth investigating if more power is directed to the thrusters for a quicker ascent, as recommended in \autoref{sec:BW1-additions}.
-
-A total $\Delta v$ of 1304~ms$^{-1}$ was expended over this phase, at an almost constant rate due to the linear thrust profile. This is rather more than the reduced complexity phase, and the $\Delta v$ estimation in the mission architecture. However, as mentioned above this sub-optimal trajectory results in a higher orbital energy than the optimised reduced complexity phase, which would decrease time and propellant needed for the subsequent cruise phase.
+A total $\Delta v$ of 1304~ms$^{-1}$ was expended over the ascent phase, at an almost constant rate due to the linear thrust profile. This is rather more than the reduced complexity phase, and the $\Delta v$ estimation in the mission architecture. However, as mentioned previously this sub-optimal trajectory results in a higher orbital energy than the optimised reduced complexity phase, which would decrease time and propellant needed for the subsequent cruise phase.
 
 % In comparison, the SMART-1 ascent phase (from an initial perigee altitude of 656~km to their defined phase boundary of 20,000~km) took 1070~ms$^{-1}$ and 24~kg Xe and 1500~hours \cite{Racca9}
 
@@ -256,7 +263,7 @@ As seen in the 3~dimensional trajectory plotted in \autoref{fig:Cruise-3D}, cont
 \caption{Orbital energy of the satellite relative to Earth and Moon during cruise phase.} \label{fig:Cruise-orbeng}
 \end{figure}
 
-The thrust profile shown in \autoref{fig:Cruise-thrust} resulted from the incomplete optimisation attempted on this phase. Despite the optimisation not having been allowed to reach an optimal solution, it is apparent that the thrust profile is once again displaying the characteristics outlined in \autoref{sec:Reduced-complexity}, by oscillating the thrust vector over the orbital period. It is interesting to note that the deviations from purely tangential thrust seem to be directly proportional to the eccentricity, shown in \autoref{fig:Cruise-kep}, suggesting that the thrust profile is trying to circularise the orbit. Otherwise, the semimajor axis and anomaly are increasing similarly to the ascent phase. \autoref{fig:Cruise-mee} shows the corresponding equinoctial elements.
+The thrust profile shown in \autoref{fig:Cruise-thrust} resulted from the incomplete optimisation attempted on this phase. The noise in the out-of-plane component results from truncation error when evaluating the unit thrust vector constraint. Despite the optimisation not having been allowed to reach an optimal solution, it is apparent that the thrust profile is once again displaying the characteristics outlined in \autoref{sec:Reduced-complexity}, by oscillating the thrust vector over the orbital period. It is interesting to note that the deviations from purely tangential thrust seem to be directly proportional to the eccentricity, shown in \autoref{fig:Cruise-kep}, suggesting that the thrust profile is trying to circularise the orbit. Otherwise, the semimajor axis and anomaly are increasing similarly to the ascent phase. \autoref{fig:Cruise-mee} shows the corresponding equinoctial elements.
 
 \begin{figure}
 \centering
@@ -281,6 +288,7 @@ The thrust profile shown in \autoref{fig:Cruise-thrust} resulted from the incomp
 
 The perturbations shown in \autoref{fig:Cruise-pert} show the spacecraft thrust has dropped by two orders of magnitude, since it is now using the PPTs rather than the arcjet from the ascent phase. At the start of the cruise phase, the Earth's oblateness is still the strongest secondary force acting on the spacecraft, but this rapidly drops off as the spacecraft raises its orbit. The Moon's gravity becomes more dominant towards the end of the phase, with spikes starting to occur indicating gravitational assists caused by close passes to the Moon in the last few orbits. The sun's gravity also has a more significant effect on the spacecraft as its orbit is raised, exhibiting high frequency oscillations due to the spacecraft's orbit around the Earth, and lower frequency oscillations closely following the averaged force due to solar wind, both due to the Earth's elliptical orbit around the sun. Similar cyclical behaviour is visible in \autoref{fig:Cruise-pert2}, showing the resonances of Earth's orbit with Jupiter, Venus and Mars' orbits.
 
+\begin{subfigures}
 \begin{figure}
 \centering
 \def\svgwidth{\figurewidth}
@@ -292,8 +300,9 @@ The perturbations shown in \autoref{fig:Cruise-pert} show the spacecraft thrust 
 \centering
 \def\svgwidth{\figurewidth}
 \input{Images/Cruise/figure5.pdf_tex}
-\caption{Perturbing accelerations acting on spacecraft during cruise phase.} \label{fig:Cruise-pert2}
+\caption{Smaller magnitude perturbing accelerations acting on spacecraft during cruise phase.} \label{fig:Cruise-pert2}
 \end{figure}
+\end{subfigures}
 
 Throughout the cruise phase, 17.55~kg of PTFE was consumed, generating 2519~ms$^{-1}$ of $\Delta v$. While this comprehensively demonstrates the efficacy of the PPTs compared to the arcjet used in the previous phase, the $\Delta v$ requirement was still much higher than that anticipated in the mission architecture of 1.6~kms$^{-1}$. Given the theoretical optimality of tangential thrust, and how closely the other phases lined up with anticipated delta-v expenditure, such a large discrepancy may be due to a calculation error or invalid assumption during mission planning.
 
@@ -320,21 +329,21 @@ Throughout the cruise phase, 17.55~kg of PTFE was consumed, generating 2519~ms$^
 \centering
 \def\svgwidth{\figurewidth}
 \input{Images/Propagate/figure1.pdf_tex}
-\caption{Propagated trajectory in ECI frame viewed from north pole. The Moon's orbit is also shown.} \label{fig:Propagate-3D}
+\caption{Propagated trajectory in ECI frame viewed from north pole. The Moon's orbit is shown in blue.} \label{fig:Propagate-3D}
 \end{figure}
 
 \begin{figure}
 \centering
 \def\svgwidth{\figurewidth}
 \input{Images/Propagate/figure14.pdf_tex}
-\caption{Propagated trajectory in LCI frame viewed from north pole. The Earth's orbit is also shown.} \label{fig:Propagate-3D-lci}
+\caption{Propagated trajectory in LCI frame viewed from north pole. The Earth's orbit is shown in blue.} \label{fig:Propagate-3D-lci}
 \end{figure}
 
 \begin{figure}
 \centering
 \def\svgwidth{\figurewidth}
 \input{Images/Propagate/figure15.pdf_tex}
-\caption{Propagated trajectory in SEL frame viewed from north pole. The Earth's orbit is also shown.} \label{fig:Propagate-3D-sel}
+\caption{Propagated trajectory in SEL frame viewed from north pole. The Earth's orbit is shown in blue.} \label{fig:Propagate-3D-sel}
 \end{figure}
 
 \begin{figure}
@@ -378,6 +387,7 @@ The Keplerian elements shown in \autoref{fig:Propagate-kep} show a sudden jump i
 
 Seen relative to the lunar frame in \autoref{fig:Propagate-kep-lci}, the semimajor axis approaches negative infinity as the spacecraft approaches capture, while the eccentricity approaches 1. At the point of capture, the spacecraft is in a parabolic orbit and the semimajor axis is undefined. As the spacecraft then descends into lunar orbit, the semimajor axis drops down from positive infinity.
 
+%\begin{subfigures}
 \begin{figure}
 \centering
 \def\svgwidth{\figurewidth}
@@ -388,11 +398,12 @@ Seen relative to the lunar frame in \autoref{fig:Propagate-kep-lci}, the semimaj
 The perturbing forces in \autoref{fig:Propagate-pert} continue on from the previous phase, with solar and lunar gravity dominant, although there is no thrust present during this phase. As the spacecraft descends into lunar orbit, unsurprisingly the lunar gravity becomes the dominant force. Another interesting point is the cyclical nature of the force due to Earth's oblateness that is highlighted in this plot. The sudden drops are caused when the spacecraft passes the Earth's equator, and the $J_2$ harmonic no longer has any effect on the vehicle. Furthermore, the alternating short-long-short duration between these drops is caused by the short periapsis half of the orbit, followed by the lengthy apoapsis.
 
 %\begin{figure}
-%\caption{Perturbing accelerations acting on spacecraft during propagate phase.} \label{fig:Propagate-pert2}
+%\caption{Smaller magnitude perturbing accelerations acting on spacecraft during propagate phase.} \label{fig:Propagate-pert2}
 %\centering
 %\def\svgwidth{\figurewidth}
 %\input{Images/Propagate/figure5.pdf_tex}
 %\end{figure}
+%\end{subfigures}
 
 A factor that becomes important as the spacecraft approaches capture is the angle subtended between the craft and the Moon, relative to the Earth. This is shown in \autoref{fig:Propagate-phase}. At the start of the phase, the Moon is close to its ascending node, with the spacecraft leading it by about 2 radians. As the spacecraft is in a lower, faster orbit, this angle widens until 1660 days at which point the spacecraft and the Moon are on opposite sides of the Earth. The subtended angle then approaches zero as the spacecraft approaches lunar orbit.
 
@@ -482,6 +493,7 @@ The corresponding equinoctial elements are shown in \autoref{fig:Capture-mee}.
 
 In the plot of perturbations acting on the spacecraft over the capture phase, shown in \autoref{fig:Capture-pert}, the acceleration due to spacecraft thrust is observed to slowly increase. This is because propellant is expelled as the spacecraft thrusts, thereby reducing the mass being accelerated. This phenomenon is present in every powered phase, but is most apparent during the capture phase because the arcjet is in use, resulting in a higher mass flux than the descent phase, combined with the lighter load than previous phases because much of the fuel has already been used. The Earth's gravity continues to decrease in effect as the spacecraft settles to a steady distance from the Earth, but the perturbations due to the Moon's oblateness rapidly increase in magnitude. For completeness, the smaller perturbing forces are shown in \autoref{fig:Capture-pert2}.
 
+\begin{subfigures}
 \begin{figure}
 \centering
 \def\svgwidth{\figurewidth}
@@ -493,10 +505,11 @@ In the plot of perturbations acting on the spacecraft over the capture phase, sh
 \centering
 \def\svgwidth{\figurewidth}
 \input{Images/Capture/figure5.pdf_tex}
-\caption{Perturbing accelerations acting on spacecraft during capture phase.} \label{fig:Capture-pert2}
+\caption{Smaller magnitude perturbing accelerations acting on spacecraft during capture phase.} \label{fig:Capture-pert2}
 \end{figure}
+\end{subfigures}
 
-\autoref{fig:Capture-thrust} shows the thrust profile resulting from the capture phase simulation. This profile results from the initial guess, of continual thrust backwards along the velocity vector. Consequently the thrust initially has a substantial radial component due to the eccentricity of the orbit, but rapidly settles into almost purely tangential thrust. The noise in the out-of-plane component results from truncation error when evaluating the unit thrust vector constraint.
+\autoref{fig:Capture-thrust} shows the thrust profile resulting from the capture phase simulation. This profile results from the initial guess, of continual thrust backwards along the velocity vector. Consequently the thrust initially has a substantial radial component due to the eccentricity of the orbit, but rapidly settles into almost purely tangential thrust. The noise in the out-of-plane component again results from truncation error when evaluating the unit thrust vector constraint.
 
 \begin{figure}
 \centering
@@ -575,6 +588,7 @@ Throughout the phase, the semimajor axis in \autoref{fig:Descent-kep-lci} steadi
 
 In the plots of perturbing forces acting on the spacecraft during the descent phase (\autoref{fig:Descent-pert} and \autoref{fig:Descent-pert2}), the Earth's orbit about the Sun is once again apparent in the solar gravity and solar wind. Forces due to the Moon's gravitational harmonics are increasing in strength as the craft gets closer to the surface, but the dominant secondary force is still Earth's gravity.
 
+\begin{subfigures}
 \begin{figure}
 \centering
 \def\svgwidth{\figurewidth}
@@ -586,8 +600,9 @@ In the plots of perturbing forces acting on the spacecraft during the descent ph
 \centering
 \def\svgwidth{\figurewidth}
 \input{Images/Descent/figure5.pdf_tex}
-\caption{Perturbing accelerations acting on spacecraft during descent phase.} \label{fig:Descent-pert2}
+\caption{Smaller magnitude perturbing accelerations acting on spacecraft during descent phase.} \label{fig:Descent-pert2}
 \end{figure}
+\end{subfigures}
 
 The thrust throughout the descent phase is directed backwards along the velocity vector, as seen in \autoref{fig:Descent-thrust}. Since the orbit is very nearly circular, this thrust is primarily tangential to the circle being described, with very small radial components. Once again the out-of-plane thrust is a negligible truncation error.
 
@@ -653,6 +668,7 @@ The Keplerian elements shown in \autoref{fig:Science-kep-lci} shows oscillations
 \caption{Equinoctial elements of satellite within ECI frame during science phase.} \label{fig:Science-mee}
 \end{figure}
 
+%\begin{subfigures}
 \begin{figure}
 \centering
 \def\svgwidth{\figurewidth}
@@ -664,8 +680,9 @@ The Keplerian elements shown in \autoref{fig:Science-kep-lci} shows oscillations
 %\centering
 %\def\svgwidth{\figurewidth}
 %\input{Images/Science/figure5.pdf_tex}
-%\caption{Perturbing accelerations acting on spacecraft during science phase.} \label{fig:Science-pert2}
+%\caption{Smaller magnitude perturbing accelerations acting on spacecraft during science phase.} \label{fig:Science-pert2}
 %\end{figure}
+%\end{subfigures}
 
 % ECI 3D (figure1)
 % Thrust direction (figure2)

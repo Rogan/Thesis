@@ -1,6 +1,6 @@
 \chapter{Conclusion} \label{cha:Conclusion}
 
-In any complex, concave optimisation problem the only way to be certain of an optimal solution is a brute force search. This is of course computationally prohibitive. Luckily, in the context of planetary missions it is not an operational requirement to find the optimal path, merely to find a good path. 
+In any complex, concave optimisation problem the only way to be certain of an optimal solution is a brute force search. This is of course computationally prohibitive. Luckily, in the context of planetary missions it is not an operational requirement to find the optimal path, merely to find a good path. In this thesis a procedure to find good paths has been outlined for \BW, and recommendations are made for improving the procedure in the future.
 
 % Findings
 \section{Summary of major findings}
@@ -30,6 +30,37 @@ Based on this simulation the arcjet requires a total of 1205.28~hours of operati
 
 
 
+
+
+
+
+
+% Additions to program
+\section{Additions to \BW\ program} \label{sec:BW1-additions}
+
+It is important to note that this project does not intend to give a complete, final trajectory for \BW. In fact, this would be impossible given unknowns such as launch date and payload. Rather, this project developed a procedure for determining a good trajectory once those parameters are known as well as identifying issues that need to be considered when developing the trajectory. Perhaps more importantly for mission planning, the work described in this thesis provides an estimate for the transfer duration and fuel requirements, as presented in \autoref{tab:Results}. This data should inform future revision of the mission architecture. In particular, the radiation modelling suggests that the selected boundary of the van Allen belts is too conservative; the cruise phase could start at a much lower altitude, using the much more fuel-efficient PPTs. Additionally, repeated simulations suggested the spacecraft is only susceptible to being recaptured for the first two or three orbits of the Moon during the capture phase. Consequently the descent phase could also begin much earlier, once again saving many kilograms of ammonia propellant by using the more efficient PPTs. Of course, these two strategies would both increase the total mission time. That is a decision for the project management team.
+
+The power modelling undertaken during this project revealed that \BW\ experiences a power surplus for most of the lunar transfer. While payload standby and communications power requirements are unknown, they are not expected to exceed this surplus. Consequently, the vehicle configuration could be modified based on these results.
+
+The excess power may be exploited by increasing the PPT pulse frequency or installing additional thruster units. Simulation of the higher thrust resulting from these modifications indicates a higher lunar approach velocity complicating rendezvous and strong capture. These simulations did perhaps suffer from implementing orbital energy as the termination condition, thus sacrificing approach velocity for low altitude. If \BW\ is to be modified to exploit the surplus power available, future trajectory modelling would be well advised to implement velocity relative to the Moon as a termination constraint. Alternatively, removing extraneous solar panels would significantly decrease the launch mass of the vehicle, and also simplify thermal control. 
+
+Furthermore, the power surplus suggests that the developmental focus of thruster research at Stuttgart on power efficiency is perhaps misplaced. Rather, fuel efficiency could be improved by focussing research on $I_{sp}$ (by improving exhaust velocity). More practically useful would be improving the thrust; this would not only simplify complicated maneouvres such as the lunar capture and course corrections, but it would also decrease total transfer time, currently about 3.5~years. Of course, power efficiency may be important for other mission profiles, but to date the TALOS and SIMPLEX thrusters are only intended for use on \BW.
+
+
+
+
+
+
+
+
+% Additions to knowledge
+\section{Additions to low thrust trajectory optimisation} \label{sec:Optimisation-additions}
+
+This project has undertaken one of the highest fidelity low-thrust trajectory optimisations present in literature. It has  demonstrated the feasibility of such high fidelity optimisation using SOCS, subject to the advent of faster processing and greater computer storage. While computer hardware will eventually cover this gap, in the short term SOCS suffers from its direct shooting limitation. The field of trajectory optimisation would benefit greatly from modification of the SOCS algorithm to support multiple shooting that could be distributed over multiple processor cores.
+
+
+
+
 % Research
 \section{Conclusions of the research}
 
@@ -42,34 +73,6 @@ This strategy was ignored when the reduced complexity ascent phase was allowed t
 Regarding the power consumption, it was revealed not to be a limiting factor on the trajectory for the planned satellite configuration. However, the discrepancy between the optimised ascent phase and the higher fidelity ascent phase revealed that power generation does increase significantly as the Earth-Moon system approaches periapsis on its orbit around the Sun. Furthermore, due to the thrust vector constraint the spacecraft attitude only has one degree of freedom (roll). Thus the power generation is also heavily dependent on the right ascension. Unfortunately, both launch date and right ascension are dependent on the launch, which is not under the control of the Institute for Space Systems.
 
 
-
-
-
-
-
-
-
-% Additions to program
-\section{Additions to \BW\ program} \label{sec:BW1-additions}
-
-The power modelling undertaken during this project revealed that \BW\ experiences a power surplus for most of the lunar transfer. While payload standby and communications power requirements are unknown, they are not expected to exceed this surplus. Consequently, the vehicle configuration could be modified based on these results.
-
-The excess power may be exploited by increasing the PPT pulse frequency or installing additional thruster units. Simulation of the higher thrust resulting from these modifications indicates a higher lunar approach velocity complicating rendezvous and strong capture. These simulations did perhaps suffer from implementing orbital energy as the termination condition, thus sacrificing approach velocity for low altitude. If \BW\ is to be modified to exploit the surplus power available, future trajectory modelling would be well advised to implement velocity relative to the Moon as a termination constraint. Alternatively, removing extraneous solar panels would significantly decrease the launch mass of the vehicle, and also simplify thermal control. 
-
-Furthermore, the power surplus suggests that the developmental focus of thruster research at Stuttgart on power efficiency is perhaps misplaced. Rather, fuel efficiency could be improved by focussing research on $I_{sp}$ (by improving exhaust velocity). More practically useful would be improving the thrust; this would not only simplify complicated maneouvres such as the lunar capture and course corrections, but it would also decrease total transfer time, currently about 3.5~years.
-
-Finally, it is important to note that this project does not intend to give a complete, final trajectory for \BW. In fact, this would be impossible given unknowns such as launch date and payload. Rather, this project developed a procedure for determining a good trajectory once those parameters are known. Perhaps more importantly for mission planning, the work described in this thesis provides an estimate for the transfer duration and fuel requirements, as presented in \autoref{tab:Results}. This data should inform future revision of the mission architecture. In particular, the radiation modelling suggests that the selected boundary of the van Allen belts is too conservative; the cruise phase could start at a much lower altitude, using the much more fuel-efficient PPTs. Additionally, repeated simulations suggested the spacecraft is only susceptible to being recaptured for the first two or three orbits of the Moon during the capture phase. Consequently the descent phase could also begin much earlier, once again saving many kilograms of ammonia propellant by using the more efficient PPTs. Of course, these two strategies would both increase the total mission time. That is a decision for the project management team.
-
-
-
-
-
-
-
-% Additions to knowledge
-\section{Additions to low thrust trajectory optimisation} \label{sec:Optimisation-additions}
-
-This project has undertaken one of the highest fidelity low-thrust trajectory optimisations present in literature. It has  demonstrated the feasibility of such high fidelity optimisation using SOCS, subject to the advent of faster processing and greater computer storage. While computer hardware will eventually cover this gap, in the short term SOCS suffers from its direct shooting limitation. The field of trajectory optimisation would benefit greatly from modification of the SOCS algorithm to support multiple shooting that could be distributed over multiple processor cores.
 
 
 
@@ -88,7 +91,7 @@ Secondly, subsequent to the mission architecture and vehicle configuration recom
 % cruise phase adjusts departure date for lunar resonances (thrust profile not as important)
 % ascent phase just changes thrust profile, departure date not as important since it doesn't get near Moon (therefore individual phase optimisation departure date not important; combined scenario departure date should be dominated by cruise phase)
 
-Colleagues working on the project have identified a number of lunar inclinations that reduce station-keeping costs throughout the science phase. \textcite{Zeile2010} recommend a final inclination of 70\degrees, having used an argument of periapsis of 43.3\degrees\ and a right ascension of 285\degrees. This would be easily achievable using minor course corrections during the arcjet-powered capture phase, or even during the lengthy descent phase with the PPTs. The recent study by \textcite[Figure 14a]{Gupta2011} reinforces this conclusion, showing that the "transition altitude", that is, the altitude above which a sudden increase in orbital life time is observed, is lowest for a 70\degrees\ inclined orbit and provides a range of right ascensions that could be trialled.
+Colleagues working on the project have identified a number of lunar inclinations that reduce station-keeping costs throughout the science phase. \textcite{Zeile2010} recommend a final inclination of 70\degrees, having used an argument of periapsis of 43.3\degrees\ and a right ascension of 285\degrees, corresponding to the orbital elements in \autoref{tab:Phase-5-constraints-revised}. This would be easily achievable using minor course corrections during the arcjet-powered capture phase, or even during the lengthy descent phase with the PPTs. The recent study by \textcite[Figure 14a]{Gupta2011} reinforces this conclusion, showing that the "transition altitude", that is, the altitude above which a sudden increase in orbital life time is observed, is lowest for a 70\degrees\ inclined orbit and provides a range of right ascensions that could be trialled.
 
 \begin{table}[h]
 \caption{Revised Keplerian elements for the final orbit of \BW\ trajectory optimisation (end of descent phase)}
@@ -105,8 +108,8 @@ Lunar Longitude of the Ascending Node, $\Omega$ (rad) & 4.9742 \\\bottomrule
 \end{center}
 \end{table}
 
-To derive a truly optimal trajectory it would be necessary to optimise all of the phases simultaneously to determine inter-dependencies. This was attempted at the start of the project, but abandoned due to insufficient computational power. Once a completed trajectory is determined, a Monte Carlo analysis should be performed to determine the sensitivity of the trajectory to small changes in thruster performance, imperfections in gravitational modelling, and other parameters.
+To derive a truly optimal trajectory it would be necessary to optimise all of the phases simultaneously to determine inter-dependencies. This was attempted early in the project, but abandoned due to hardware and software limitations. Once a completed trajectory is determined, a Monte Carlo analysis should be performed to determine the sensitivity of the trajectory to small changes in thruster performance, imperfections in gravitational modelling, and other parameters.
 
-Finally, the author had an abstract accepted for the 62nd International Astronautical Congress on alternate mission profiles. Unfortunately completion of this thesis took precedence, but this work remains of interest to the \BW\ team. Of particular interest is the possibility to pass through, or send a parasitic probe to, the Kordylewski clouds hypothesised to exist at the Earth-Moon Lagrange points L4 and L5.
+Finally, the author had an abstract accepted for the 62nd International Astronautical Congress on alternate mission profiles. Unfortunately completion of this thesis took precedence, but this work remains of interest to the \BW\ team. Of particular interest is the possibility to pass through, or send a parasitic probe to, the Kordylewski clouds hypothesised to exist at the Earth-Moon Lagrange points L4 and L5. The trajectory model presented herein could easily be adapted to such alternative mission scenarios.
 
 
