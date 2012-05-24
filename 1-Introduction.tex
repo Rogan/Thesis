@@ -43,16 +43,20 @@ The inspiration for this project came from the Small Satellites Program (\emph{K
 
 Due to the design decision to fix both the solar panels and the thrusters with respect to the body, the spacecraft will have to alternate between thrusting along the desired vector with reduced power generation, and coasting in order to orient the solar panels towards the sun. Consequently on-board power storage is required, to hold the charge generated during the coasting arcs and discharge it during the thrust arcs.
 
-The \BW\ mission architecture has been broken down into the following seven phases, as published by \textcite{web_BW-1}:
-\begin{enumerate}
-  \item Launch phase: the spacecraft is delivered into Geosynchronous Transfer Orbit (GTO).
-  \item Ascent phase: the spacecraft's orbit is extended above the van Allen belts using the arcjet.
-  \item Cruise phase: orbit extension up to lunar gravitational sphere of influence using PPTs.
-  \item Capture phase: insertion into highly elliptical lunar orbit using the arcjet.
-  \item Descent phase: transfer of the satellite into a high inclined, circular orbit (approximately 100~km altitude) using PPTs.
-  \item Science phase: remote sensing of the surface of the Moon (stable orbit requiring minimal stationkeeping; however energy requirements are increased by scientific instruments and data transfer).
-  \item Impact phase: controlled impact of the satellite onto the lunar surface using the arcject.
-\end{enumerate}
+The \BW\ mission architecture has been broken down into the seven phases shown in \autoref{tab:Phases}.
+\begin{table}
+\caption{The phases of \BW, as published by \textcite{web_BW-1}.} \label{tab:Phases}
+\begin{tabular}{c p{0.8\textwidth}} \toprule
+Phase & Objective \tabularnewline\midrule
+Launch & The spacecraft is delivered into Geosynchronous Transfer Orbit (GTO). \tabularnewline
+Ascent & The spacecraft's orbit is extended above the van Allen belts using the arcjet. \tabularnewline
+Cruise & Orbit extension up to lunar gravitational sphere of influence using PPTs. \tabularnewline
+Capture & Insertion into highly elliptical lunar orbit using the arcjet. \tabularnewline
+Descent & Transfer of the satellite into a high, inclined circular orbit (approximately 100~km altitude) using PPTs. \tabularnewline
+Science & Remote sensing of the surface of the Moon (stable orbit requiring minimal stationkeeping; however energy requirements are increased by scientific instruments and data transfer). \tabularnewline
+Impact & Controlled impact of the satellite onto the lunar surface using the arcject. \tabularnewline\bottomrule
+\end{tabular}
+\end{table}
 Phase one is expected to be provided by a commercial launch vehicle such as the Indian Space Research Organisation (ISRO)'s Geosynchronous Satellite Launch Vehicle (GSLV), seen in \autoref{fig:GSLV}, which launches from Sriharikota, India. Phase two, concerning ascent from GTO to an orbit above the van Allen belts, has undergone preliminary analysis by \textcite{Letterio_thesis}. Phase four has undergone preliminary study by \textcite{Moellman2005}, while the specifications for the lunar orbit (phase six) have been developed by \textcite{Zeile2010}. Various impact scenarios have been developed by \textcite{Trawny2004}. The research presented in this thesis brings these preliminary studies together, including more detailed and accurate constraints, and examines the interdependencies between phases 2 to 5.
 
 \begin{figure} [h]

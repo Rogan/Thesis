@@ -159,7 +159,9 @@ k_3=hf\left(t_n+\frac{h}{2},y_n+\frac{k_2}{2}\right), \\
 k_4=hf\left(t_n+h,y_n+k_3\right),
 \end{gather}
 \end{subequations}
-where $h$ is the step size \parencite{recipes}. A similar, commonly used method in optimal control is Hermite-Simpson interpolation \parencite{recipes}.
+where $h$ is the step size \parencite[p. 797]{Kreyszig1979}%\parencite[p. 710]{recipes}
+. A similar, commonly used method in optimal control is Hermite-Simpson interpolation \parencite[p. 197]{Kreyszig1979}%\parencite[p. 134]{recipes}
+.
 
 Adaptive Runge-Kutta methods use the difference between two fixed-step Runge-Kutta methods to place bounds on the accuracy of the estimated endpoint. If the accuracy is not within some predefined tolerance, the interval size is revised. Particular care must be taken when integrating a non-linear differential equation over an extended duration such as the \BW, due to the accumulation of numerical errors.
 
@@ -268,7 +270,7 @@ The largest group of direct methods is evolutionary algorithms. In general, thes
 
 Evolutionary algorithms are heavily dependent on their implementation, and the efficiency of their mutations, to steer the evolution of the solution. Furthermore, with delicate problems such as \BW, random mutations frequently lead to invalid solutions (the spacecraft does not reach the target orbit) and consequently these techniques can struggle to find alternative feasible solutions, as changes may be required to multiple parameters before another basin of convergence is found.
 
-Another group of direct methods is called dynamic programming. These techniques are particularly used in financial programming and management science, with the aim of finding the path of least cost in a discrete system by evaluating each step backwards from the goal using the recursive Bellman equations \parencite{recipes}. As such dynamic programming is best suited to heavily discretised states and paths between states, and consequently a very limited number of controls. Dynamic programming has been expanded to solve continuous time problems using the Hamilton-Jacobi-Bellman equations, but this adaptation requires calculation of the cost function gradient, converting the technique to an indirect method \parencite{recipes}.
+Another group of direct methods is called dynamic programming. These techniques are particularly used in financial programming and management science, with the aim of finding the path of least cost in a discrete system by evaluating each step backwards from the goal using the recursive Bellman equations \parencite{Bellman1957}. As such dynamic programming is best suited to heavily discretised states and paths between states, and consequently a very limited number of controls. Dynamic programming has been expanded to solve continuous time problems using the Hamilton-Jacobi-Bellman equations, but this adaptation requires calculation of the cost function gradient, converting the technique to an indirect method \parencite{Bellman1957}.
 
 % Memetic algorithm - like genetic algorithms with memes
 % Differential evolution - another algorithm to create next generation [a + F(b-c)]
@@ -319,7 +321,7 @@ CGA \parencite[Constrained Genetic Algorithm, ][]{ASTOS_guide} is an early imple
 
 %Citing other peoples' graphs in Lit Review: .... Reproduced from \cite{}
 
-Traditional high-thrust chemical rocket trajectories do not need optimisation for lunar missions, since the duration is sufficiently small that perturbing forces are negligible. In the resulting restricted three-body scenario (the Earth and Moon are defined as static, with a spacecraft of negligible mass orbiting them) there are simple analytical solutions for the trajectory.
+Traditional high-thrust chemical rocket trajectories do not need optimisation for lunar missions, since the duration is sufficiently small that perturbing forces are negligible. In the resulting restricted three-body scenario (the Earth and Moon are defined as static, with a spacecraft of negligible mass orbiting them) there are simple analytical solutions for the trajectory \parencite{Euler1911}.
 
 As outlined in \autoref{cha:Objectives} the task of optimising a low-thrust trajectory is somewhat more complex due to the long duration of forces acting on the spacecraft requiring lengthy integrations. %For the reader unfamiliar with optimisation, an outline is provided in \autoref{cha:Optimisation}. Specific trajectory optimisation techniques available to accomplish this task are described in \autoref{sec:Process}. 
 \autoref{sec:Optimisation-methods} provided an explanation of optimisation methods, and \autoref{sec:Algorithms} introduced a number of implementations of these methods used in industry.

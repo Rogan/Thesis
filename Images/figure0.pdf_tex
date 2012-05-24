@@ -36,7 +36,7 @@
   }%
   \providecommand\rotatebox[2]{#2}%
   \ifx\svgwidth\undefined%
-    \setlength{\unitlength}{377.59286563bp}%
+    \setlength{\unitlength}{576.5bp}%
     \ifx\svgscale\undefined%
       \relax%
     \else%
@@ -48,29 +48,34 @@
   \global\let\svgwidth\undefined%
   \global\let\svgscale\undefined%
   \makeatother%
-  \begin{picture}(1,0.95607219)%
+  \begin{picture}(1,0.7496392)%
     \put(0,0){\includegraphics[width=\unitlength]{Images/figure0.pdf}}%
-    \put(0.89667481,0.22246183){\makebox(0,0)[lb]{\smash{-4}}}%
-    \put(0.77595536,0.16684637){\makebox(0,0)[lb]{\smash{-2}}}%
-    \put(0.65501293,0.11123065){\makebox(0,0)[lb]{\smash{0}}}%
-    \put(0.53429296,0.05561546){\makebox(0,0)[lb]{\smash{2}}}%
-    \put(0.41335053,0.00000000){\makebox(0,0)[lb]{\smash{4}}}%
-    \put(0.91300748,0.10438915){\makebox(0,0)[lb]{\smash{$\times10^8$~m}}}%
-    \put(0.05803105,0.28933227){\makebox(0,0)[lb]{\smash{-3}}}%
-    \put(0.09444593,0.24298632){\makebox(0,0)[lb]{\smash{-2}}}%
-    \put(0.13063862,0.19686309){\makebox(0,0)[lb]{\smash{-1}}}%
-    \put(0.18603400,0.15051609){\makebox(0,0)[lb]{\smash{0}}}%
-    \put(0.22222880,0.10417014){\makebox(0,0)[lb]{\smash{1}}}%
-    \put(0.25864395,0.05804400){\makebox(0,0)[lb]{\smash{2}}}%
-    \put(0.29483663,0.01169778){\makebox(0,0)[lb]{\smash{3}}}%
-    \put(-0.00023277,0.13153585){\makebox(0,0)[lb]{\smash{$\times10^8$~m}}}%
-    \put(0.04,0.40475844){\makebox(0,0)[lb]{\smash{-3}}}%
-    \put(0.04,0.45000029){\makebox(0,0)[lb]{\smash{-2}}}%
-    \put(0.04,0.49524214){\makebox(0,0)[lb]{\smash{-1}}}%
-    \put(0.05,0.54048691){\makebox(0,0)[lb]{\smash{0}}}%
-    \put(0.05,0.58594884){\makebox(0,0)[lb]{\smash{1}}}%
-    \put(0.05,0.63119280){\makebox(0,0)[lb]{\smash{2}}}%
-    \put(0.05,0.67643466){\makebox(0,0)[lb]{\smash{3}}}%
-    \put(0.08672121,0.75588504){\makebox(0,0)[lb]{\smash{$\times10^8$~m}}}%
+    \put(0.83376756,0.18025499){\makebox(0,0)[lb]{\smash{-4}}}%
+    \put(0.74327840,0.14137034){\makebox(0,0)[lb]{\smash{-2}}}%
+    \put(0.65278925,0.10263140){\makebox(0,0)[lb]{\smash{0}}}%
+    \put(0.56230182,0.06374675){\makebox(0,0)[lb]{\smash{2}}}%
+    \put(0.47181266,0.02500781){\makebox(0,0)[lb]{\smash{4}}}%
+    \put(0.86629072,0.11289471){\makebox(0,0)[lb]{\smash{$\times10^8$~m}}}%
+    \put(0.21275282,0.22605204){\makebox(0,0)[lb]{\smash{-3}}}%
+    \put(0.23891587,0.19251518){\makebox(0,0)[lb]{\smash{-2}}}%
+    \put(0.26493495,0.15883608){\makebox(0,0)[lb]{\smash{-1}}}%
+    \put(0.30121769,0.12529922){\makebox(0,0)[lb]{\smash{0}}}%
+    \put(0.32738075,0.09162012){\makebox(0,0)[lb]{\smash{1}}}%
+    \put(0.35339983,0.05808326){\makebox(0,0)[lb]{\smash{2}}}%
+    \put(0.37956288,0.02440416){\makebox(0,0)[lb]{\smash{3}}}%
+    \put(0.19,0.10){\makebox(0,0)[lb]{\smash{$\times10^8$~m}}}%
+    \put(0.19,0.31916739){\makebox(0,0)[lb]{\smash{-3}}}%
+    \put(0.19,0.35414918){\makebox(0,0)[lb]{\smash{-2}}}%
+    \put(0.19,0.38913096){\makebox(0,0)[lb]{\smash{-1}}}%
+    \put(0.20,0.42411101){\makebox(0,0)[lb]{\smash{0}}}%
+    \put(0.20,0.45909280){\makebox(0,0)[lb]{\smash{1}}}%
+    \put(0.20,0.49392888){\makebox(0,0)[lb]{\smash{2}}}%
+    \put(0.20,0.52891067){\makebox(0,0)[lb]{\smash{3}}}%
+    \put(0.26842984,0.59338040){\makebox(0,0)[lb]{\smash{$\times10^8$~m}}}%
+    \put(0.75975716,0.66551084){\makebox(0,0)[lb]{\smash{\tiny{Ascent phase}}}}%
+    \put(0.75975716,0.64426193){\makebox(0,0)[lb]{\smash{\tiny{Cruise phase}}}}%
+    \put(0.75975716,0.62286904){\makebox(0,0)[lb]{\smash{\tiny{Propagate phase}}}}%
+    \put(0.75975716,0.60162012){\makebox(0,0)[lb]{\smash{\tiny{Capture phase}}}}%
+    \put(0.75975716,0.58037121){\makebox(0,0)[lb]{\smash{\tiny{Descent phase}}}}%
   \end{picture}%
 \endgroup%

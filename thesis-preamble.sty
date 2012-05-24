@@ -78,14 +78,18 @@ mathb,
                     colorlinks]{hyperref}
 \definecolor{hypercolor}{rgb}{0.4,0,0}
 \hypersetup{linkcolor=hypercolor,urlcolor=hypercolor,filecolor=hypercolor,citecolor=hypercolor}
-\def\chapterautorefname{Section}
+\def\chapterautorefname{Chapter}
 \def\sectionautorefname{Section}
 \def\subsectionautorefname{Section}
 \def\subsubsectionautorefname{Section}
 \def\figureautorefname{Figure}
-\def\equationautorefname{equation}
+\def\equationautorefname{Equation}
 \def\tableautorefname{Table}
 \def\appendixautorefname{Appendix}
+\renewcommand\chaptername{Chapter}
+
+\renewcommand\maketitle{\include{Title}}
+\onehalfspace
 
 % load cleveref last - hyperref interferes with it
 \usepackage{cleveref}	% for grouped cross-references
@@ -128,6 +132,3 @@ mathb,
 \newcommand\BW{\emph{Lunar Mission BW-1}}
 \newcommand\degrees{\ensuremath{^\circ}}
 \renewcommand\vec{\mathbf}
-\renewcommand\chaptername{Section}
-\renewcommand\maketitle{\include{Title}}
-\onehalfspace

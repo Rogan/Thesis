@@ -2,7 +2,7 @@
 
 \section{Introduction} \label{sec:Method-intro}
 
-This section first explains the different software packages used throughout this project, and then outlines the recommended procedure to determine a suitable trajectory for \BW\ once the launch details and configuration are confirmed.
+This chapter first explains the different software packages used throughout this project, and then outlines the recommended procedure to determine a suitable trajectory for \BW\ once the launch details and configuration are confirmed.
 
 % Procedure
 \section{Developmental procedure} \label{sec:Development}
@@ -52,7 +52,29 @@ The $1.2\times10^6$ variables required to compute the cruise phase, as outlined 
 
 The initial mission architecture did not include a propagate phase, but during the STK simulation it was empirically found that the spacecraft achieves an appropriate orbit for lunar capture well before the Moon is in position for rendezvous. Consequently a coasting phase was inserted, when the spacecraft's trajectory was propagated forward in time without any thrusting. Given sufficient computational power, this phase could be shortened or removed entirely, much like the discontinuities between other phases, once the launch conditions are known. Whether this phase should be removed remains open to debate: it provides the spacecraft with an opportunity to recharge its batteries if the electrical system is not performing nominally, and allows time for critical adjustments if the spacecraft is drifting off course. The lunar approach is particularly important to ensure the final science phase orbit can be achieved without requiring too much propellant.
 
- Throughout the propagate phase the spacecraft transitions from the Earth's sphere of influence to the Moon's. Consequently longitude was discarded in favour of time as the independent parameter for modelling this phase, as all the benefits outlined in \autoref{sec:Independent-parameter} are not applicable to this phase.
+Throughout the propagate phase the spacecraft transitions from the Earth's sphere of influence to the Moon's. Consequently longitude was discarded in favour of time as the independent parameter for modelling this phase, as all the benefits outlined in \autoref{sec:Independent-parameter} are not applicable to this phase.
+
+The various considerations of the phases introduced in \autoref{tab:Phases} are outlined in \autoref{tab:Phase-constraints}.
+
+\begin{table}
+\caption{.} \label{tab:Phase-constraints}
+\begin{tabular}{l p{0.8\textwidth}} \toprule
+Phase & Considerations \tabularnewline\midrule
+Ascent & Earth-centred \tabularnewline
+& Longitude as independent parameter \tabularnewline
+Cruise & Earth-centred \tabularnewline
+& Longitude as independent parameter \tabularnewline
+Propagate & Earth-centred \tabularnewline
+& Time as independent parameter \tabularnewline
+Capture & Moon-centred \tabularnewline
+& Time as independent parameter \tabularnewline
+Descent & Moon-centred \tabularnewline
+& Longitude as independent parameter \tabularnewline
+Science & Moon-centred \tabularnewline
+& Longitude as independent parameter \tabularnewline
+\bottomrule
+\end{tabular}
+\end{table}
 
 \subsection{Data analysis} \label{sub:Data-analysis}
 
@@ -81,7 +103,7 @@ Data files containing the control profile are output by GESOP. These may be post
 
 \section{Summary} \label{sec:Method-summary}
 
-This section clarified the software packages used throughout this project, and some of the problems inherent with each. A brief roadmap was then given to apply this procedure, after launch, to determine the final trajectory.
+This chapter clarified the software packages used throughout this project, and some of the problems inherent with each. A brief roadmap was then given to apply this procedure, after launch, to determine the final trajectory.
 
   
 \clearpage
