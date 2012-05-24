@@ -54,24 +54,41 @@ The initial mission architecture did not include a propagate phase, but during t
 
 Throughout the propagate phase the spacecraft transitions from the Earth's sphere of influence to the Moon's. Consequently longitude was discarded in favour of time as the independent parameter for modelling this phase, as all the benefits outlined in \autoref{sec:Independent-parameter} are not applicable to this phase.
 
-The various considerations of the phases introduced in \autoref{tab:Phases} are outlined in \autoref{tab:Phase-constraints}.
+The various considerations in each of the phases introduced in \autoref{tab:Phases} are outlined in \autoref{tab:Phase-constraints}.
 
 \begin{table}
-\caption{.} \label{tab:Phase-constraints}
-\begin{tabular}{l p{0.8\textwidth}} \toprule
-Phase & Considerations \tabularnewline\midrule
-Ascent & Earth-centred \tabularnewline
-& Longitude as independent parameter \tabularnewline
-Cruise & Earth-centred \tabularnewline
-& Longitude as independent parameter \tabularnewline
-Propagate & Earth-centred \tabularnewline
-& Time as independent parameter \tabularnewline
-Capture & Moon-centred \tabularnewline
-& Time as independent parameter \tabularnewline
-Descent & Moon-centred \tabularnewline
-& Longitude as independent parameter \tabularnewline
-Science & Moon-centred \tabularnewline
-& Longitude as independent parameter \tabularnewline
+\caption{Operational differences between phases when modelling \BW} \label{tab:Phase-constraints}
+\begin{tabular}{l p{0.6\textwidth}} \toprule
+Phase & Requirement \tabularnewline
+\midrule\textbf{Ascent} \tabularnewline
+Frame & ECI \tabularnewline
+Thruster & Arcjet \tabularnewline
+Independent parameter & Longitude \tabularnewline
+Notes & Earth eclipse very important \tabularnewline
+& Radiation dose very important \tabularnewline
+\midrule\textbf{Cruise} \tabularnewline
+Frame & ECI \tabularnewline
+Thruster & PPT \tabularnewline
+Independent parameter & Longitude \tabularnewline
+\midrule\textbf{Propagate} \tabularnewline
+Frame & ECI \tabularnewline
+Thruster & Unpowered \tabularnewline
+Independent parameter & Time \tabularnewline
+\midrule\textbf{Capture} \tabularnewline
+Frame & LCI \tabularnewline
+Thruster & Arcjet \tabularnewline
+Independent parameter & Time \tabularnewline
+\midrule\textbf{Descent} \tabularnewline
+Frame & LCI \tabularnewline
+Thruster & PPT \tabularnewline
+Independent parameter & Longitude \tabularnewline
+Notes & Lunar eclipse very important \tabularnewline
+\midrule\textbf{Science} \tabularnewline
+Frame & LCI \tabularnewline
+Thruster & Unpowered \tabularnewline
+Independent parameter & Longitude \tabularnewline
+Notes & Lunar eclipse very important \tabularnewline
+& Increased payload and communications power requirements \tabularnewline
 \bottomrule
 \end{tabular}
 \end{table}
@@ -97,9 +114,9 @@ The primary objective of this study was to determine a procedure for finding a s
 
 First of all, the indicative results presented here may be used to estimate flight time, to produce a backward propagated trajectory in STK that departs GTO on a suitable date after launch. The capture and propagate phase durations may be adjusted to determine a lunar capture. Once a capture scenario is achieved, the state vector at each phase boundary must be inserted into GESOP as an initial guess prior to the optimisation process. 
 
-The optimisation process within GESOP then commences. Given the present computational limitations, each phase must be optimised, then continuity conditions must be adjusted between phases. This iterative process is repeated until a smooth, continuous trajectory is achieved. Obviously, this process is sub-optimal. Assuming SOCS and GESOP have been adapted to support parallel processing, the phases may be appended into one large optimisation problem with many million parameters, which may then be optimised in one run.
+The optimisation process within GESOP then commences. Given the present computational limitations, each phase must be optimised, then continuity conditions must be adjusted between phases. This iterative process is repeated until a smooth, continuous trajectory is achieved. Obviously, this process is not ideal. Assuming SOCS and GESOP have been adapted to support parallel processing, the phases may be appended into one large optimisation problem with many million parameters, which may then be optimised in one run.
 
-Data files containing the control profile are output by GESOP. These may be post-processed, within GESOP or another application, to a format appropriate for the satellite AOCS, before being uploaded to the satellite. During the transfer the anticipated trajectory should be matched against the observed trajectory, and recalculated as required (this will be particularly important early in the trajectory, as thruster performance is evaluated).
+Data files containing the control profile are output by GESOP. These may be post-processed, within GESOP or another application, to a format appropriate for the satellite ACS, before being uploaded to the satellite. During the transfer the anticipated trajectory should be matched against the observed trajectory, and recalculated as required (this will be particularly important early in the trajectory, as thruster performance is evaluated).
 
 \section{Summary} \label{sec:Method-summary}
 

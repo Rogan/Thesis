@@ -28,7 +28,7 @@ The resulting trajectory presents some interesting artefacts in the 3D plot in \
 \centering
 \def\svgwidth{\figurewidth}
 \input{Images/Ascent2/figure1.pdf_tex}
-\caption{Reduced complexity ascent trajectory of the satellite in ECI frame viewed from north pole.} \label{fig:Ascent2-3D}
+\caption{Reduced complexity ascent trajectory of the satellite in ECI frame viewed from north pole. Black represents full thrust magnitude, cyan represents zero thrust magnitude.} \label{fig:Ascent2-3D}
 \end{figure}
 
 %\begin{figure}
@@ -546,7 +546,7 @@ In the rotating surface-fixed frame of \autoref{fig:Descent-3D-sel}, the slow de
 \centering
 \def\svgwidth{\figurewidth}
 \input{Images/Descent/figure14.pdf_tex}
-\caption{Descent trajectory of the satellite in LCI frame viewed from north pole. The orbits behind the Moon partly show through due to a flaw in the vector graphics print driver.} \label{fig:Descent-3D-lci}
+\caption{Descent trajectory of the satellite in LCI frame viewed from north pole. The orbits behind the Moon partly show through due to a flaw in the vector graphics renderer.} \label{fig:Descent-3D-lci}
 \end{figure}
 
 \begin{figure}
@@ -646,7 +646,7 @@ As there is no propulsive thrust during the science phase, the orbit was propaga
 \centering
 \def\svgwidth{\figurewidth}
 \input{Images/Science/figure14.pdf_tex}
-\caption{Science trajectory of the satellite in LCI frame viewed from north pole. The orbits behind the Moon partly show through due to a flaw in the vector graphics print driver.} \label{fig:Science-3D-lci}
+\caption{Science trajectory of the satellite in LCI frame viewed from north pole. The orbits behind the Moon partly show through due to a flaw in the vector graphics renderer.} \label{fig:Science-3D-lci}
 \end{figure}
 
 \begin{figure}
@@ -656,7 +656,7 @@ As there is no propulsive thrust during the science phase, the orbit was propaga
 \caption{Science trajectory of the satellite in SEL frame viewed from north pole.} \label{fig:Science-3D-sel}
 \end{figure}
 
-The Keplerian elements shown in \autoref{fig:Science-kep-lci} shows oscillations in the semimajor axis caused by the mascons. More worryingly, the eccentricity shows a steady increase throughout the phase, indicating an increasingly elliptical orbit that would eventually cause the spacecraft to impact the Moon's surface. This trend is more visibly seen in \autoref{fig:Science-peri}, showing the resulting decrease in periapsis radius. On the other hand, the sudden change in argument of periapsis ($\omega$) towards the start of the phase holds little meaning as the orbit is almost circular at that point. The right ascension of the ascending node contines to precess. These behaviours all resemble the 130~km lunar orbit modelled by \textcite{Gupta2011} in their analysis of lunar orbital lifetimes very closely. Once again the corresponding equinoctial elements are shown in \autoref{fig:Science-mee}. The larger perturbing forces are shown in \autoref{fig:Science-pert}.
+The Keplerian elements shown in \autoref{fig:Science-kep-lci} shows oscillations in the semimajor axis caused by the mascons. More worryingly, the eccentricity shows a steady increase throughout the phase, indicating an increasingly elliptical orbit that would eventually cause the spacecraft to impact the Moon's surface. This trend is more visibly seen in \autoref{fig:Science-peri}, showing the resulting decrease in periapsis radius. On the other hand, the sudden change in argument of periapsis ($\omega$) towards the start of the phase merely represents the periapsis switching sides of the perfectly circular orbit. The right ascension of the ascending node contines to precess. These behaviours all resemble the 130~km lunar orbit modelled by \textcite{Gupta2011} in their analysis of lunar orbital lifetimes very closely. Once again the corresponding equinoctial elements are shown in \autoref{fig:Science-mee}. The larger perturbing forces are shown in \autoref{fig:Science-pert}.
 
 \begin{figure}
 \centering
@@ -669,7 +669,7 @@ The Keplerian elements shown in \autoref{fig:Science-kep-lci} shows oscillations
 \centering
 \def\svgwidth{\figurewidth}
 \input{Images/Science/figure17.pdf_tex}
-\caption{Periapsis of spacecraft during science phase.} \label{fig:Science-peri}
+\caption{Periapsis of spacecraft during science phase. The periapsis switches from one side of the orbit to the other when $e=0$.} \label{fig:Science-peri}
 \end{figure}
 
 \begin{figure}

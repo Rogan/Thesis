@@ -68,6 +68,8 @@
     \put(0.09,0.48453426){\makebox(0,0)[lb]{\smash{1836.0}}}%
     \put(0.09,0.55680833){\makebox(0,0)[lb]{\smash{1836.5}}}%
     \put(0.09,0.62908413){\makebox(0,0)[lb]{\smash{1837.0}}}%
+    \put(0.47,0.36){\rotatebox{90}{\makebox(0,0)[lb]{$e=0$}}}%
+    \put(0.44,0.20){\rotatebox{90}{\makebox(0,0)[lb]{Periapsis switches sides}}}%
     \put(0.07,0.26756288){\rotatebox{90}{\makebox(0,0)[lb]{\smash{Periapsis radius [km]}}}}%
-  \end{picture}%
+    \end{picture}%
 \endgroup%

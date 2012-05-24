@@ -19,6 +19,7 @@
 	multirow,		% duh
 	contour,		% to provide text outlines (for figures)
 	subfloat,		% for figures X(a) and X(b)
+	titling,			% for title, author etc macros
 }%
 
 % for astronomical symbols (mathb) but don't want to change infinity symbol or integrals (matha)
@@ -69,11 +70,24 @@ mathb,
 \def\figurewidth{0.85\textwidth}
 %\graphicspath{{Images/}{Images/Ascent/}{Images/Ascent2/}{Images/Cruise/}{Images/Propagate/}{Images/Capture/}{Images/Descent/}{Images/Science/}}
 
+
+\title{Trajectory Design for a Very-Low-Thrust Lunar Mission}% Subject to Highly Non-Linear Constraints}
+\author{Rogan Shimmin}
+\newcommand\supervisors{
+Assoc. Prof. Benjamin Cazzolato\\%, University of Adelaide\\
+%  Dr. Vincent Wheatley, University of Queensland\\
+Dr. Matthew Tetlow\\%, Tigerfish Aviation\\
+%  Dr.-Ing. Michael Gr\"{a}\ss lin, Bertrandt A.G.\\
+%  Dr.-Ing. Ren\'{e} Laufer, Baylor University\\
+%  Dr.-Ing. Georg Herdrich, Universit\"{a}t Stuttgart
+}
+\newcommand\thesubject{Spacecraft trajectory design \& optimisation}
+
 % load hyperref last
 \usepackage[pdftex,
-                     pdfauthor={Rogan Shimmin},
-                     pdftitle={Trajectory Design for a Very-Low-Thrust Lunar Mission Subject to Highly Non-Linear Constraints},
-                     pdfsubject={Spacecraft trajectory optimisation},
+                     pdfauthor={\theauthor},
+                     pdftitle={\thetitle},
+                     pdfsubject={\thesubject},
                      bookmarks,
                     colorlinks]{hyperref}
 \definecolor{hypercolor}{rgb}{0.4,0,0}
@@ -127,6 +141,7 @@ mathb,
 %\fi
 
 \raggedbottom
+
 
 % my own macros
 \newcommand\BW{\emph{Lunar Mission BW-1}}
