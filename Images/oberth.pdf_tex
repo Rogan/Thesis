@@ -70,7 +70,7 @@
     \put(0.08,0.51257589){\makebox(0,0)[lb]{\smash{2.5}}}%
     \put(0.08,0.59988552){\makebox(0,0)[lb]{\smash{3.0}}}%
     \put(0.08,0.68704944){\makebox(0,0)[lb]{\smash{3.5}}}%
-    \put(0.06,0.08){\rotatebox{90}{\makebox(0,0)[lb]{\smash{Thrust to effective weight ratio [$\times10^{-4}$]}}}}%
+    \put(0.06,0.08){\rotatebox{90}{\makebox(0,0)[lb]{\smash{\textcolor{blue}{Thrust to effective weight ratio [$\times10^{-4}$]}}}}}%
     \put(0.90994449,0.07603469){\makebox(0,0)[lb]{\smash{0.5}}}%
     \put(0.90994449,0.16334258){\makebox(0,0)[lb]{\smash{1.0}}}%
     \put(0.90994449,0.25065048){\makebox(0,0)[lb]{\smash{1.5}}}%
@@ -79,6 +79,6 @@
     \put(0.90994449,0.51257589){\makebox(0,0)[lb]{\smash{3.0}}}%
     \put(0.90994449,0.59988552){\makebox(0,0)[lb]{\smash{3.5}}}%
     \put(0.90994449,0.68704944){\makebox(0,0)[lb]{\smash{4.0}}}%
-    \put(0.99,0.15){\rotatebox{90}{\makebox(0,0)[lb]{\smash{Distance from Earth [$\times10^8$~m]}}}}%
+    \put(0.99,0.15){\rotatebox{90}{\makebox(0,0)[lb]{\smash{\textcolor{darkgreen}{Distance from Earth [$\times10^8$~m]}}}}}%
   \end{picture}%
 \endgroup%

@@ -57,3 +57,11 @@ Thumbs.db
 Bibliography/authoryear-comp.cbx
 Thesis-blx.bib
 Thesis.pdf
+MATLAB/
+Papers/
+Trajectory/
+*.old
+*.old2
+*.new
+*.bcf
+*.bat

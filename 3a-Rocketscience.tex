@@ -36,7 +36,7 @@ During the transfer from Earth to Moon, there are a number of issues to consider
 
 \subsection{The van Allen belts} \label{sub:VABs}
 
-The greatest hazard to the spacecraft during the transfer is radiation. In particular, the Earth's magnetosphere traps particle radiation in two bands above the magnetic equator, as seen in the conceptual cross-section in \autoref{fig:vabs}. 
+The greatest hazard to \BW\ during the transfer is radiation. In particular, the Earth's magnetosphere traps particle radiation in two bands above the magnetic equator, as seen in the conceptual cross-section in \autoref{fig:vabs}. 
 
 \begin{figure}
 \centering
@@ -111,7 +111,7 @@ Since every circular orbit has a unique orbital speed associated with it, a comm
 \end{equation}
 where $T(t)$ is the instantaneous thrust magnitude, and $m(t)$ is the instantaneous mass.
 
-Conversely, orbital transfers may be described by the typical change in velocity required. This is known as a delta-v budget. Launching to low Earth orbit (LEO) requires a change of 7.8~kms$^{-1}$, but typically an additional 1.5 to 2~kms$^{-1}$ is lost to atmospheric drag and gravity drag. Ascent from LEO to low lunar orbit (LLO) requires an additional 4.1~kms$^{-1}$ (this mission profile was used by Apollo). Thrust vectoring adds further losses depending upon the angle of thrust. 
+Conversely, orbital transfers may be described by the typical change in velocity required. This is known as a delta-v budget. Launching to low Earth orbit (LEO) requires a change of 7.8~kms$^{-1}$, but typically an additional 1.5 to 2~kms$^{-1}$ is lost to atmospheric drag and gravity losses. Ascent from LEO to low lunar orbit (LLO) requires an additional 4.1~kms$^{-1}$ (this mission profile was used by Apollo). Thrust vectoring adds further losses depending upon the angle of thrust. 
 
 These atmospheric, gravitational, and thrust vectoring losses can be calculated with similar integrals over the flight, respectively
 \begin{subequations} \label{eq:Delta-Vs}
@@ -131,8 +131,8 @@ where $D(t)$ is the instantaneous aerodynamic drag magnitude, $g(r)$ is the loca
 \label{fig:path-angles}
 \end{figure}
 
-Little can be done within the scope of this project to reduce atmospheric drag and gravity drag, since these effects are strongest during launch. However, gravity drag is still present during orbit raising if the thrust line has any component parallel to the gravitational force; when this occurs, the thrust is fighting against gravity rather than increasing the velocity of the spacecraft (and providing delta-v). Similarly, thrust vectoring decreases effective delta-v because the thrust is changing the direction of the spacecraft, rather than increasing its speed. 
-% These parameters will be monitored throughout the optimisation, and if gravity drag is significant modifications will be made to improve the results, for example by relaxing the constraints on thrust angle.
+Little can be done within the scope of this project to reduce atmospheric drag and gravity losses, since these effects are strongest during launch. However, gravity losses are still present during orbit raising if the thrust line has any component parallel to the gravitational force; when this occurs, the thrust is fighting against gravity rather than increasing the velocity of the spacecraft (and providing orbital energy). Similarly, thrust vectoring decreases effective delta-v because the thrust is changing the direction of the spacecraft, rather than increasing its speed. 
+% These parameters will be monitored throughout the optimisation, and if gravity losses are significant modifications will be made to improve the results, for example by relaxing the constraints on thrust angle.
  
 Delta-v forms a very important performance criterion. It is particularly important in tracking gravitational assists from the Moon, as velocity may be gained without expending delta-v in the form of thrust. Initial simulations at the Institut f\"{u}r Raumfahrtsystem determined an approximate benchmark of 3.5~kms$^{-1}$ for \BW\ \parencite{Roeser2006}. This includes an estimated 1.1~kms$^{-1}$ in phase 2 to ascend beyond the van Allen belts, 1.6~kms$^{-1}$ in phase 3 to cruise to near EML1, 0.5~kms$^{-1}$ in phase 4 to be captured into a lunar orbit, and 0.4~kms$^{-1}$ in phase 5 to descend into the operating orbit.
 

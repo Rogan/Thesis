@@ -50,16 +50,16 @@
   \makeatother%
   \begin{picture}(1,0.7496392)%
     \put(0,0){\includegraphics[width=\unitlength]{Images/Science/figure4.pdf}}%
-    \put(0.20540676,0.05){\makebox(0,0)[lb]{\smash{1840}}}%
-    \put(0.28317433,0.05){\makebox(0,0)[lb]{\smash{1860}}}%
-    \put(0.36094189,0.05){\makebox(0,0)[lb]{\smash{1880}}}%
-    \put(0.43885516,0.05){\makebox(0,0)[lb]{\smash{1900}}}%
-    \put(0.51662272,0.05){\makebox(0,0)[lb]{\smash{1920}}}%
-    \put(0.59439202,0.05){\makebox(0,0)[lb]{\smash{1940}}}%
-    \put(0.67215958,0.05){\makebox(0,0)[lb]{\smash{1960}}}%
-    \put(0.74992715,0.05){\makebox(0,0)[lb]{\smash{1980}}}%
-    \put(0.82769644,0.05){\makebox(0,0)[lb]{\smash{2000}}}%
-    \put(0.41211275,0.02){\makebox(0,0)[lb]{\smash{Mission time $t$ [days]}}}%
+    \put(0.22540676,0.05){\makebox(0,0)[lb]{\smash{0}}}%
+    \put(0.29317433,0.05){\makebox(0,0)[lb]{\smash{20}}}%
+    \put(0.37094189,0.05){\makebox(0,0)[lb]{\smash{40}}}%
+    \put(0.44885516,0.05){\makebox(0,0)[lb]{\smash{60}}}%
+    \put(0.52662272,0.05){\makebox(0,0)[lb]{\smash{80}}}%
+    \put(0.59439202,0.05){\makebox(0,0)[lb]{\smash{100}}}%
+    \put(0.67215958,0.05){\makebox(0,0)[lb]{\smash{120}}}%
+    \put(0.74992715,0.05){\makebox(0,0)[lb]{\smash{140}}}%
+    \put(0.82769644,0.05){\makebox(0,0)[lb]{\smash{160}}}%
+    \put(0.3,0.02){\makebox(0,0)[lb]{\smash{Mission time $t-1840$ [days]}}}%
     \put(0.09,0.09656028){\makebox(0,0)[lb]{\smash{$10^{-7}$}}}%
     \put(0.09,0.23156982){\makebox(0,0)[lb]{\smash{$10^{-6}$}}}%
     \put(0.09,0.36658109){\makebox(0,0)[lb]{\smash{$10^{-5}$}}}%

@@ -5,7 +5,7 @@
 
 In any dynamic system, time is one of the most important parameters. Since the Universe is constantly changing, most of it beyond human control, any timescale needs an arbitrary starting point assigned. The current best practice is to use the epoch J2000, defined as noon, 1st~January~2000, Terrestrial Time~(TT). Terrestrial time is a theoretical time standard allowing for gravitational time dilation at the Earth's surface (general relativity) and the Lorentz transformation for moving bodies (special relativity); however, the Earth's rotation is also slowing down, so another transformation is needed to convert to Universal Coordinate Time~(UTC) as outlined by the \textcite[USNO, ][]{web_TimeServiceDept.2008}.
 
-Due to the discontinuous timescales traditionally used for time (seconds, minutes, hours, days and years) there are a number of measures commonly used to identify time. The Julian date~(JD) is the time in days and fractions of a day since noon, 1st~January~4713BC~UTC, giving the J2000 epoch a JD of 2451545.0~TT. For the optimisation, a fixed offset of 5113.5 was used, bringing the epoch up to midnight, 1st~January~2014 UTC. Adding the optimisable parameter for departure date gives the start of the trajectory. The time elapsed since this departure date (mission time) at each integration node is calculated as the trajectory is propagated forwards. Some applications required conversion to another continuous time scale called Ephemeris Time (ET). As outlined by the \textcite{NAIF2010}, Ephemeris Time is the number of seconds since the J2000 epoch.
+Due to the discontinuous timescales traditionally used for time (seconds, minutes, hours, days and years) there are a number of measures commonly used to identify time. The Julian date~(JD) is the time in days and fractions of a day (defined as 86,400~seconds) since noon, 1st~January~4713BC~UTC, giving the J2000 epoch a JD of 2451545.0~TT. For the optimisation, a fixed offset of 5113.5 was used, bringing the epoch up to midnight, 1st~January~2014 UTC. Adding the optimisable parameter for departure date gives the start of the trajectory. The time elapsed since this departure date (mission time) at each integration node is calculated as the trajectory is propagated forwards. Some applications required conversion to another continuous time scale called Ephemeris Time (ET). As outlined by the \textcite{NAIF2010}, Ephemeris Time is the number of seconds since the J2000 epoch (seconds themselves being defined by oscillations of caesium atoms).
 
 
 
@@ -71,7 +71,7 @@ The tangential direction, $\vec{\hat{i}}_{\theta}$, is perpendicular to radial d
 \def\svgwidth{0.6\textwidth}
 \input{Images/LVLH.pdf_tex}
 %\includegraphics[scale=0.50]{Images/local-orbit.JPG}
-\caption{Local Gauss frame. Vector $\vec{r}$ represents the spacecraft's position relative to the primary body. True anomaly $\nu$ represents the angle of this position relative to the periapsis. Vector $\vec{v}$ represents the spacecraft's velocity. %Angle $\Psi$ represents the deviation of this velocity from the tangent to the circle described by $\vec{r}$. Image used courtesy of \textcite{Keppeler_thesis}. 
+\caption{Local Gauss frame. Vector $\vec{v}$ represents the spacecraft's velocity. Vector $\vec{r}$ represents the spacecraft's position relative to the primary body. True anomaly $\nu$ represents the angle of this position relative to the periapsis. %Angle $\Psi$ represents the deviation of this velocity from the tangent to the circle described by $\vec{r}$. Image used courtesy of \textcite{Keppeler_thesis}. 
 } \label{fig:LVLH-frame}
 \end{figure}
 
@@ -138,7 +138,7 @@ w & = & 1+f\cos L+g\sin L\label{eq:w_helper},\\
 s^{2} & = & 1+h^{2}+k^{2}\label{eq:s2_helper},
 \end{eqnarray}
 \end{subequations}
-where $\mu$ represents the gravitational constant of the primary body \linebreak (3986004.418$\times$10$^8$~m$^3$s$^{-2}$ for the Earth as per \cite{WGS84} and  $4902.7989\times10^9$~m$^3$s$^{-2}$ for the Moon as per \cite{Zhang1994}). The perturbations $\Delta_r$, $\Delta_\theta$ and $\Delta_h$ represent the total acceleration due to forces other than the primary body's classical gravity, split into vector components using the LVLH frame outlined in \autoref{sec:Reference-frames}. Note that $\Delta_\theta$ is not necessarily parallel to the velocity vector. Also note that in the absence of perturbations, the only time-varying element is $L$, the true longitude. This is because the other elements specify an orbit, whereas the true longitude represents the position of the orbiting body within that orbit. In the absence of perturbing forces the orbit remains constant.
+where $\mu$ represents the gravitational constant of the primary body \linebreak (398600.4418$\times$10$^9$~m$^3$s$^{-2}$ for the Earth as per \cite{WGS84} and  $4902.7989\times10^9$~m$^3$s$^{-2}$ for the Moon as per \cite{Zhang1994}). The perturbations $\Delta_r$, $\Delta_\theta$ and $\Delta_h$ represent the total acceleration due to forces other than the primary body's classical gravity, split into vector components using the LVLH frame outlined in \autoref{sec:Reference-frames}. Note that $\Delta_\theta$ is not necessarily parallel to the velocity vector. Also note that in the absence of perturbations, the only time-varying element is $L$, the true longitude. This is because the other elements specify an orbit, whereas the true longitude represents the position of the orbiting body within that orbit. In the absence of perturbing forces the orbit remains constant.
 
 
 
@@ -241,7 +241,6 @@ The perturbing force acting on the spacecraft is then determined using
 \begin{equation}\label{eq:Oblateness-perturbation}
 \vec{\Delta_g}=\nabla W.
 \end{equation}
-
 Unfortunately the factorials and summations make this equation inappropriate for repetitive computer evaluation. A recursive algorithm developed by \textcite{Montenbruck2000} was used to simplify the calculation, while still retaining the higher order accuracy. 
 
 The impact of gravitational harmonics is obviously going to be greater at lower altitudes. The Earth harmonics, dominated by the $J_2$ bulge, affect mostly $\omega$ and $\Omega$ \parencite{Montenbruck2000,Eshagh2007}; for example, a sun-synchronous orbit (SSO) precesses around the Earth by 360\degrees\ per year, but suffers minimal inclination change. For rough analysis of results, this behaviour is approximated by
@@ -251,7 +250,7 @@ The impact of gravitational harmonics is obviously going to be greater at lower 
 \dot\omega = \pi\frac{3J_2}{2r_{peri}^2\mu}(5\cos^2i-1),
 \end{gather}
 \end{subequations}
-where $r_{peri}$ is the periapsis height.
+where $r_{peri}$ is the periapsis radius.
 
 
 
@@ -260,7 +259,7 @@ where $r_{peri}$ is the periapsis height.
 
 The solar wind consists of particles emitted by the Sun, mainly ionised nuclei and electrons. Because of the charged particles in the solar wind, it does not penetrate the magnetosphere around the Earth, except at the magnetic poles. The magnetosphere starts at about 10 Earth radii from the centre of the Earth. Thus, solar wind may be neglected during the ascent phase.
 
-The average solar power density is calculated by dividing the average solar luminosity, $L_\Sun$,  by the surface area of a sphere centred on the Sun, $4\pi r_\Sun^2$, giving approximately 1367.5~W of radiation per square metre of area near the Earth-Moon system. The momentum is subsequently determined by dividing through the speed of light, $c$, giving approximately $4.56\times10^{-6}$~Ns per square metre of cross-sectional area per second, in other words, a continual force of $4.56\times10^{-6}$~N on every square metre of area seen from the Sun. This \enquote{constant} forms the basis of \textcite[p. 223]{Chobotov2002}'s equation to average the acceleration of a body due to solar wind. Unfortunately \citeauthor{Chobotov2002}'s equation is intended for spacecraft in geostationary orbit. \BW\ travels much further from the Earth than GEO, and consequently requires calculation of the spacecraft's distance from the Sun to determine average solar pressure, as given by
+The average solar power density is calculated by dividing the average solar luminosity, $L_\Sun$,  by the surface area of a sphere centred on the Sun, $4\pi r_\Sun^2$, giving approximately 1367.5~W of radiation per square metre of area near the Earth-Moon system. The momentum is subsequently determined by dividing through the speed of light, $c$, giving approximately $4.56\times10^{-6}$~Ns per square metre of cross-sectional area per second, in other words, a continual force of $4.56\times10^{-6}$~N on every square metre of area seen from the Sun. This \enquote{constant} forms the basis of \citeauthor{Chobotov2002}'s equation to average the acceleration of a body due to solar wind \parencite[p. 223]{Chobotov2002}. Unfortunately \citeauthor{Chobotov2002}'s equation is intended for spacecraft in geostationary orbit. \BW\ travels much further from the Earth than GEO, and consequently requires calculation of the spacecraft's distance from the Sun to determine average solar pressure, as given by
 
 \begin{equation}\label{eq:solar-wind}
 \vec{\Delta_\Sun} = -\frac{L_\Sun}{4\pi r_\Sun^2c}\left(\frac{A_{eff}}{m}\right)(1+\beta)\vec{\hat{r_\Sun}},

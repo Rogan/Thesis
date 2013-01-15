@@ -1,0 +1,79 @@
+%% Creator: Inkscape 0.48.3.1, www.inkscape.org
+%% PDF/EPS/PS + LaTeX output extension by Johan Engelen, 2010
+%% Accompanies image file 'figure20.pdf' (pdf, eps, ps)
+%%
+%% To include the image in your LaTeX document, write
+%%   \input{<filename>.pdf_tex}
+%%  instead of
+%%   \includegraphics{<filename>.pdf}
+%% To scale the image, write
+%%   \def\svgwidth{<desired width>}
+%%   \input{<filename>.pdf_tex}
+%%  instead of
+%%   \includegraphics[width=<desired width>]{<filename>.pdf}
+%%
+%% Images with a different path to the parent latex file can
+%% be accessed with the `import' package (which may need to be
+%% installed) using
+%%   \usepackage{import}
+%% in the preamble, and then including the image with
+%%   \import{<path to file>}{<filename>.pdf_tex}
+%% Alternatively, one can specify
+%%   \graphicspath{{<path to file>/}}
+%% 
+%% For more information, please see info/svg-inkscape on CTAN:
+%%   http://tug.ctan.org/tex-archive/info/svg-inkscape
+%%
+\begingroup%
+  \makeatletter%
+  \providecommand\color[2][]{%
+    \errmessage{(Inkscape) Color is used for the text in Inkscape, but the package 'color.sty' is not loaded}%
+    \renewcommand\color[2][]{}%
+  }%
+  \providecommand\transparent[1]{%
+    \errmessage{(Inkscape) Transparency is used (non-zero) for the text in Inkscape, but the package 'transparent.sty' is not loaded}%
+    \renewcommand\transparent[1]{}%
+  }%
+  \providecommand\rotatebox[2]{#2}%
+  \ifx\svgwidth\undefined%
+    \setlength{\unitlength}{576bp}%
+    \ifx\svgscale\undefined%
+      \relax%
+    \else%
+      \setlength{\unitlength}{\unitlength * \real{\svgscale}}%
+    \fi%
+  \else%
+    \setlength{\unitlength}{\svgwidth}%
+  \fi%
+  \global\let\svgwidth\undefined%
+  \global\let\svgscale\undefined%
+  \makeatother%
+  \begin{picture}(1,0.75028993)%
+    \put(0,0){\includegraphics[width=\unitlength]{Images/Cruise/figure20.pdf}}%
+    \put(0.05,0.44068368){\makebox(0,0)[lb]{\smash{-10.0}}}%
+    \put(0.065,0.48755868){\makebox(0,0)[lb]{\smash{-9.5}}}%
+    \put(0.065,0.53443368){\makebox(0,0)[lb]{\smash{-9.0}}}%
+    \put(0.065,0.58145277){\makebox(0,0)[lb]{\smash{-8.5}}}%
+    \put(0.065,0.62832777){\makebox(0,0)[lb]{\smash{-8.0}}}%
+    \put(0.065,0.67520277){\makebox(0,0)[lb]{\smash{-7.5}}}%
+    \put(0.15,0.7){\makebox(0,0)[lb]{\smash{$\times10^5$}}}%
+    \put(0.15581597,0.05){\makebox(0,0)[lb]{\smash{1630}}}%
+    \put(0.23799132,0.05){\makebox(0,0)[lb]{\smash{1640}}}%
+    \put(0.32016840,0.05){\makebox(0,0)[lb]{\smash{1650}}}%
+    \put(0.40248785,0.05){\makebox(0,0)[lb]{\smash{1660}}}%
+    \put(0.48466493,0.05){\makebox(0,0)[lb]{\smash{1670}}}%
+    \put(0.56684028,0.05){\makebox(0,0)[lb]{\smash{1680}}}%
+    \put(0.64916146,0.05){\makebox(0,0)[lb]{\smash{1690}}}%
+    \put(0.73133681,0.05){\makebox(0,0)[lb]{\smash{1700}}}%
+    \put(0.81365799,0.05){\makebox(0,0)[lb]{\smash{1710}}}%
+    \put(0.38,0.02){\makebox(0,0)[lb]{\smash{Mission time $t$ [days]}}}%
+    \put(0.075,0.11400486){\makebox(0,0)[lb]{\smash{0.5}}}%
+    \put(0.075,0.15306736){\makebox(0,0)[lb]{\smash{1.0}}}%
+    \put(0.075,0.19227395){\makebox(0,0)[lb]{\smash{1.5}}}%
+    \put(0.075,0.23133645){\makebox(0,0)[lb]{\smash{2.0}}}%
+    \put(0.075,0.27054479){\makebox(0,0)[lb]{\smash{2.5}}}%
+    \put(0.075,0.30960729){\makebox(0,0)[lb]{\smash{3.0}}}%
+    \put(0.15,0.35){\makebox(0,0)[lb]{\smash{$\times10^6$}}}%
+    \put(0.03,0.17){\rotatebox{90}{\makebox(0,0)[lb]{\smash{Orbital energy $\epsilon\ [m^2s^{-2}]$}}}}%
+  \end{picture}%
+\endgroup%

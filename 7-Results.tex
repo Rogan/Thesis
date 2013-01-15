@@ -129,7 +129,7 @@ Finally, \autoref{fig:Ascent2-energy} shows the power levels throughout this pha
 \caption{Ascent trajectory of the satellite in ECI frame viewed from north pole.} \label{fig:Ascent-3D}
 \end{figure}
 
-\autoref{fig:Ascent-dist} shows the distance of the spacecraft from the Earth and Moon throughout the phase. The oscillations about the Earth are seen to slowly increase in duration and altitude, as you would expect for a slowly ascending orbit. The spacecraft's apoapsis (furthest point from the Earth) occurs with approximately the same angle as the Moon's periapsis (closest point to Earth). This is an optimal scenario, as it leads to much greater gravitational assistance earlier on in the transfer, but is unfortunately not a scenario that can be planned for, as the initial argument of periapsis is defined by the launch. The optimisation is able to implicitly adjust the argument of periapsis during the transfer by controlling the thrust angle, but this technique requires a lot of delta-v and therefore can only compensate for a few degrees.
+\autoref{fig:Ascent-dist} shows the distance of the spacecraft from the Earth and Moon throughout the phase. The oscillations about the Earth are seen to slowly increase in duration and altitude, as you would expect for a slowly ascending orbit. For this scenario, the geometry permitted the spacecraft's apoapsis (furthest point from the Earth) to pass near the Moon's periapsis (closest point to Earth). This is an optimal scenario, as it leads to much greater gravitational assistance earlier on in the transfer, but is unfortunately not a scenario that can be planned for, as the initial argument of periapsis is defined by the launch. The optimisation is able to implicitly adjust the argument of periapsis during the transfer by controlling the thrust angle, but this technique requires a lot of delta-v and therefore can only compensate for a few degrees.
 
 \begin{figure}
 \centering
@@ -138,14 +138,14 @@ Finally, \autoref{fig:Ascent2-energy} shows the power levels throughout this pha
 \caption{Satellite's distance from Earth and Moon during ascent phase.} \label{fig:Ascent-dist}
 \end{figure}
 
-The orbital energy of the spacecraft relative to the two bodies shown in \autoref{fig:Ascent-orbeng} does not reveal much during this phase, except that the spacecraft is slowly ascending from, although still very much captured within, Earth's gravitational field. The orbital energy with respect to the Moon fluctuates as the spacecraft orbits Earth, because the gravitational potential remains relatively constant but the craft's velocity vector rotates towards the Moon and then away again. It is interesting that at times even from the GTO parking orbit, the spacecraft is very close to lunar capture ($\epsilon_\Moon\approx0$), albeit in a very high and therefore unstable lunar orbit.
-
-\begin{figure}
-\centering
-\def\svgwidth{\figurewidth}
-\input{Images/Ascent/figure11.pdf_tex}
-\caption{Orbital energy of the satellite relative to Earth and Moon during ascent phase.} \label{fig:Ascent-orbeng}
-\end{figure}
+% The orbital energy of the spacecraft relative to the two bodies shown in \autoref{fig:Ascent-orbeng} does not reveal much during this phase, except that the spacecraft is slowly ascending from, although still very much captured within, Earth's gravitational field. The orbital energy with respect to the Moon fluctuates as the spacecraft orbits Earth, because the gravitational potential remains relatively constant but the craft's velocity vector rotates towards the Moon and then away again. It is interesting that at times even from the GTO parking orbit, the spacecraft is very close to lunar capture ($\epsilon_\Moon\approx0$), albeit in a very high and therefore unstable lunar orbit.
+%
+%\begin{figure}
+%\centering
+%\def\svgwidth{\figurewidth}
+%\input{Images/Ascent/figure11.pdf_tex}
+%\caption{Orbital energy of the satellite relative to Earth and Moon during ascent phase.} \label{fig:Ascent-orbeng}
+%\end{figure}
 
 The thrust profile calculated by the optimisation is shown in \autoref{fig:Ascent-thrust}, along with the corresponding thrust magnitude in \autoref{fig:Ascent-thrustM}. While the scale of these results seems trivial, they are indicative of the direction the optimisation was pushing the solution, and suggest that the reduced complexity results constitute a good approximation. 
 
@@ -253,6 +253,8 @@ As seen in the 3~dimensional trajectory plotted in \autoref{fig:Cruise-3D}, cont
 
 \autoref{fig:Cruise-dist} shows the distance of the spacecraft from the Earth and the Moon over the course of the cruise phase. In comparison to the ascent phase, the spacecraft's greater distance from the Earth is apparent, resulting in greater oscillations in its distance from the Moon. The corresponding plot of orbital energies in \autoref{fig:Cruise-orbeng}, however, displays a decreasing oscillation in the spacecraft's orbital energy relative to the Moon, even as the minimum within the oscillation slowly approaches capture ($\epsilon_\Moon\le0$). Meanwhile the orbital energy relative to the Earth approaches escape ($\epsilon_\Earth\ge0$). 
 
+A closer inspection of the orbital energy relative to the Earth towards the end of the cruise phase, shown in \autoref{fig:Cruise-orbeng2}, reveals a number of small gravitational assists, as the spacecraft approaches the lunar anomaly each orbit. This is then followed by a small gravitational penalty as the spacecraft continues away from the Moon. A similar, albeit smaller, assist is demonstrated every time the spacecraft is exactly opposite the Moon.
+
 \begin{figure}
 \centering
 \def\svgwidth{\figurewidth}
@@ -260,12 +262,21 @@ As seen in the 3~dimensional trajectory plotted in \autoref{fig:Cruise-3D}, cont
 \caption{Satellite's distance from Earth and Moon during cruise phase.} \label{fig:Cruise-dist}
 \end{figure}
 
+\begin{subfigures}
 \begin{figure}
 \centering
 \def\svgwidth{\figurewidth}
 \input{Images/Cruise/figure11.pdf_tex}
 \caption{Orbital energy of the satellite relative to Earth and Moon during cruise phase.} \label{fig:Cruise-orbeng}
 \end{figure}
+
+\begin{figure}
+\centering
+\def\svgwidth{\figurewidth}
+\input{Images/Cruise/figure20.pdf_tex}
+\caption{Orbital energy of the satellite relative to Earth and Moon during cruise phase (zoomed in).} \label{fig:Cruise-orbeng2}
+\end{figure}
+\end{subfigures}
 
 The thrust profile shown in \autoref{fig:Cruise-thrust} resulted from the incomplete optimisation attempted on this phase. The noise in the out-of-plane component results from truncation error when evaluating the unit thrust vector constraint. Despite the optimisation not having been allowed to reach an optimal solution, it is apparent that the thrust profile is once again displaying the characteristics outlined in \autoref{sec:Reduced-complexity}, by oscillating the thrust vector over the orbital period. It is interesting to note that the deviations from purely tangential thrust seem to be directly proportional to the eccentricity, shown in \autoref{fig:Cruise-kep}, suggesting that the thrust profile is trying to circularise the orbit. Otherwise, the semimajor axis and anomaly are increasing similarly to the ascent phase. \autoref{fig:Cruise-mee} shows the corresponding equinoctial elements.
 
@@ -436,7 +447,7 @@ Following the weak capture during the coasting phase propagated by the simulator
 \centering
 \def\svgwidth{\figurewidth}
 \input{Images/Capture/figure1.pdf_tex}
-\caption{Capture trajectory of the satellite in ECI frame viewed from north pole.} \label{fig:Capture-3D}
+\caption{Capture trajectory of the satellite in ECI frame viewed from north pole. The Moon's orbit is shown in blue.} \label{fig:Capture-3D}
 \end{figure}
 
 The descending spiral trajectory is far more apparent from the lunar centred frame in \autoref{fig:Capture-3D-lci}. When this frame is rotated in \autoref{fig:Capture-3D-sel} the lunar surface coverage can be seen, indicating that the science payload could be activated during this phase subject to sufficient power.
@@ -556,25 +567,29 @@ In the rotating surface-fixed frame of \autoref{fig:Descent-3D-sel}, the slow de
 \caption{Descent trajectory of the satellite in SEL frame viewed from north pole.} \label{fig:Descent-3D-sel}
 \end{figure}
 
-The spacecraft's distance from the Earth and the Moon is almost trivial during this phase; the distance from the Moon decreases gradually, but on the plot (\autoref{fig:Descent-dist}) this change is overwhelmed by the distance from the Earth, which closely maps the distance of the Earth from the Moon.
+% The spacecraft's distance from the Earth and the Moon is almost trivial during this phase; the distance from the Moon decreases gradually, but on the plot (\autoref{fig:Descent-dist}) this change is overwhelmed by the distance from the Earth, which closely maps the distance of the Earth from the Moon.
+
+The spacecraft's distance from the Moon, shown in \autoref{fig:Descent-dist}, is almost trivial during this phase; the distance from the Moon decreases gradually, with a higher frequency oscillation due to the slightly eccentric orbit, while the distance from the Earth closely maps the distance of the Earth from the Moon.
 
 \begin{figure}
 \centering
 \def\svgwidth{\figurewidth}
 \input{Images/Descent/figure10.pdf_tex}
-\caption{Satellite's distance from Earth and Moon during descent phase.} \label{fig:Descent-dist}
+\caption{Satellite's distance from the Moon during descent phase.} \label{fig:Descent-dist}
 \end{figure}
 
-A more interesting artefact emerges in the plot of orbital energy seen in \autoref{fig:Descent-orbeng}. The spacecraft's orbital energy relative to the Earth oscillates as described in \autoref{sec:Capture}, but since the spacecraft is in a nearly polar orbit twice in every orbit the Moon makes around the Earth the spacecraft's orbit becomes perpendicular to the Earth-Moon vector. Consequently the amplitude of this oscillation is modulated. As the spacecraft gets closer to the Moon, its velocity increases, and its orbital energy relative to the Earth rises further beyond escape velocity.
+% A more interesting artefact emerges in the plot of orbital energy seen in \autoref{fig:Descent-orbeng}. The spacecraft's orbital energy relative to the Earth oscillates as described in \autoref{sec:Capture}, but since the spacecraft is in a nearly polar orbit twice in every orbit the Moon makes around the Earth the spacecraft's orbit becomes perpendicular to the Earth-Moon vector. Consequently the amplitude of this oscillation is modulated. As the spacecraft gets closer to the Moon, its velocity increases, and its orbital energy relative to the Earth rises further beyond escape velocity.
+
+The plot of orbital energy seen in \autoref{fig:Descent-orbeng} shows a similar characteristic: the spacecraft's orbital energy relative to the Moon slowly decreases without any oscillation.
 
 \begin{figure}
 \centering
 \def\svgwidth{\figurewidth}
 \input{Images/Descent/figure11.pdf_tex}
-\caption{Orbital energy of the satellite relative to Earth and Moon during descent phase.} \label{fig:Descent-orbeng}
+\caption{Orbital energy of the satellite relative to the Moon during descent phase.} \label{fig:Descent-orbeng}
 \end{figure}
 
-Throughout the phase, the semimajor axis in \autoref{fig:Descent-kep-lci} steadily drops as desired, while the eccentricity has already started a small but inexorable increase due to the lunar mascons that will ultimately cause the spacecraft to crash into the surface. The right ascension continues to precess. The corresponding equinoctial elements are shown in \autoref{fig:Descent-mee}.
+Throughout the phase, the semimajor axis in \autoref{fig:Descent-kep-lci} steadily drops as desired, while the eccentricity has already started a small but inexorable increase due to the asymmetric lunar gravity field that will ultimately cause the spacecraft to crash into the surface. The right ascension continues to precess. The corresponding equinoctial elements are shown in \autoref{fig:Descent-mee}.
 
 \begin{figure}
 \centering
@@ -640,7 +655,7 @@ The simulation of this phase estimated 1.43~kg PTFE was consumed, providing almo
 
 \section{Science phase} \label{sec:Science}
 
-As there is no propulsive thrust during the science phase, the orbit was propagated forwards for 6 months to determine the spacecraft's behaviour in the absence of stationkeeping manoeuvres. \autoref{fig:Science-3D-lci} shows the final orbit in an inertial frame. The surface coverage is shown in \autoref{fig:Science-3D-sel}; the whole Moon's surface covered repeatedly within the 6 month period. 
+As there is no propulsive thrust during the science phase, the orbit was propagated forwards for 6 months to determine the spacecraft's behaviour in the absence of stationkeeping manoeuvres. \autoref{fig:Science-3D-lci} shows the final orbit in an inertial frame. %The surface coverage is shown in \autoref{fig:Science-3D-sel}; the whole Moon's surface covered repeatedly within the 6 month period. 
 
 \begin{figure}[h]
 \centering
@@ -649,14 +664,14 @@ As there is no propulsive thrust during the science phase, the orbit was propaga
 \caption{Science trajectory of the satellite in LCI frame viewed from north pole. The orbits behind the Moon partly show through due to a flaw in the vector graphics renderer.} \label{fig:Science-3D-lci}
 \end{figure}
 
-\begin{figure}
-\centering
-\def\svgwidth{\figurewidth}
-\input{Images/Science/figure15.pdf_tex}
-\caption{Science trajectory of the satellite in SEL frame viewed from north pole.} \label{fig:Science-3D-sel}
-\end{figure}
+%\begin{figure}
+%\centering
+%\def\svgwidth{\figurewidth}
+%\input{Images/Science/figure15.pdf_tex}
+%\caption{Science trajectory of the satellite in SEL frame viewed from north pole.} \label{fig:Science-3D-sel}
+%\end{figure}
 
-The Keplerian elements shown in \autoref{fig:Science-kep-lci} shows oscillations in the semimajor axis caused by the mascons. More worryingly, the eccentricity shows a steady increase throughout the phase, indicating an increasingly elliptical orbit that would eventually cause the spacecraft to impact the Moon's surface. This trend is more visibly seen in \autoref{fig:Science-peri}, showing the resulting decrease in periapsis radius. On the other hand, the sudden change in argument of periapsis ($\omega$) towards the start of the phase merely represents the periapsis switching sides of the perfectly circular orbit. The right ascension of the ascending node contines to precess. These behaviours all resemble the 130~km lunar orbit modelled by \textcite{Gupta2011} in their analysis of lunar orbital lifetimes very closely. Once again the corresponding equinoctial elements are shown in \autoref{fig:Science-mee}. The larger perturbing forces are shown in \autoref{fig:Science-pert}.
+The Keplerian elements shown in \autoref{fig:Science-kep-lci} shows oscillations in the semimajor axis caused by the asymmetric lunar gravity field. More worryingly, the eccentricity shows a steady increase throughout the phase, indicating an increasingly elliptical orbit that would eventually cause the spacecraft to impact the Moon's surface. This trend is more visibly seen in \autoref{fig:Science-peri}, showing the resulting decrease in periapsis radius. On the other hand, the sudden change in argument of periapsis ($\omega$) towards the start of the phase merely represents the periapsis switching sides of the perfectly circular orbit. The right ascension of the ascending node continues to precess. These behaviours all resemble the 130~km lunar orbit modelled by \textcite{Gupta2011} in their analysis of lunar orbital lifetimes very closely. Once again the corresponding equinoctial elements are shown in \autoref{fig:Science-mee}. The larger perturbing forces are shown in \autoref{fig:Science-pert}.
 
 \begin{figure}
 \centering

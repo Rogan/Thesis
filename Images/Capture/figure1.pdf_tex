@@ -1,4 +1,4 @@
-%% Creator: Inkscape 0.48.2, www.inkscape.org
+%% Creator: Inkscape 0.48.3.1, www.inkscape.org
 %% PDF/EPS/PS + LaTeX output extension by Johan Engelen, 2010
 %% Accompanies image file 'figure1.pdf' (pdf, eps, ps)
 %%
@@ -36,7 +36,7 @@
   }%
   \providecommand\rotatebox[2]{#2}%
   \ifx\svgwidth\undefined%
-    \setlength{\unitlength}{576.5bp}%
+    \setlength{\unitlength}{576bp}%
     \ifx\svgscale\undefined%
       \relax%
     \else%
@@ -48,25 +48,25 @@
   \global\let\svgwidth\undefined%
   \global\let\svgscale\undefined%
   \makeatother%
-  \begin{picture}(1,0.7496392)%
+  \begin{picture}(1,0.75028993)%
     \put(0,0){\includegraphics[width=\unitlength]{Images/Capture/figure1.pdf}}%
-    \put(0.11910980,0.05){\makebox(0,0)[lb]{\smash{-4}}}%
-    \put(0.21219948,0.05){\makebox(0,0)[lb]{\smash{-3}}}%
-    \put(0.30529055,0.05){\makebox(0,0)[lb]{\smash{-2}}}%
-    \put(0.39823591,0.05){\makebox(0,0)[lb]{\smash{-1}}}%
-    \put(0.50346921,0.05){\makebox(0,0)[lb]{\smash{0}}}%
-    \put(0.59641457,0.05){\makebox(0,0)[lb]{\smash{1}}}%
-    \put(0.68950564,0.05){\makebox(0,0)[lb]{\smash{2}}}%
-    \put(0.78259670,0.05){\makebox(0,0)[lb]{\smash{3}}}%
-    \put(0.87554206,0.05){\makebox(0,0)[lb]{\smash{4}}}%
-    \put(0.15,0.01){\makebox(0,0)[lb]{\smash{Distance from the centre of the Earth [$\times10^8$~m]}}}%
-    \put(0.09,0.15235733){\makebox(0,0)[lb]{\smash{-3}}}%
-    \put(0.09,0.24544666){\makebox(0,0)[lb]{\smash{-2}}}%
-    \put(0.09,0.33839376){\makebox(0,0)[lb]{\smash{-1}}}%
-    \put(0.10,0.43148309){\makebox(0,0)[lb]{\smash{0}}}%
-    \put(0.10,0.52457415){\makebox(0,0)[lb]{\smash{1}}}%
-    \put(0.10,0.61751951){\makebox(0,0)[lb]{\smash{2}}}%
-    \put(0.04,0.2){\rotatebox{90}{\makebox(0,0)[lb]{\smash{Distance from the centre of}}}}
-    \put(0.08,0.25){\rotatebox{90}{\makebox(0,0)[lb]{\smash{the Earth [$\times10^8$~m]}}}}%
+    \put(0.11848958,0.05){\makebox(0,0)[lb]{\smash{-4}}}%
+    \put(0.21166146,0.05){\makebox(0,0)[lb]{\smash{-3}}}%
+    \put(0.30483160,0.05){\makebox(0,0)[lb]{\smash{-2}}}%
+    \put(0.39785938,0.05){\makebox(0,0)[lb]{\smash{-1}}}%
+    \put(0.50347222,0.05){\makebox(0,0)[lb]{\smash{0}}}%
+    \put(0.59649826,0.05){\makebox(0,0)[lb]{\smash{1}}}%
+    \put(0.68967014,0.05){\makebox(0,0)[lb]{\smash{2}}}%
+    \put(0.78284201,0.05){\makebox(0,0)[lb]{\smash{3}}}%
+    \put(0.87586806,0.05){\makebox(0,0)[lb]{\smash{4}}}%
+    \put(0.15,0.02){\makebox(0,0)[lb]{\smash{Distance from the centre of the Earth [$\times10^8$ m]}}}%
+    \put(0.09,0.15350138){\makebox(0,0)[lb]{\smash{-3}}}%
+    \put(0.09,0.24667326){\makebox(0,0)[lb]{\smash{-2}}}%
+    \put(0.09,0.33969930){\makebox(0,0)[lb]{\smash{-1}}}%
+    \put(0.1,0.43287118){\makebox(0,0)[lb]{\smash{0}}}%
+    \put(0.1,0.52604131){\makebox(0,0)[lb]{\smash{1}}}%
+    \put(0.1,0.61906909){\makebox(0,0)[lb]{\smash{2}}}%
+    \put(0.03,0.20){\rotatebox{90}{\makebox(0,0)[lb]{\smash{Distance from the centre of}}}}%
+    \put(0.07,0.27){\rotatebox{90}{\makebox(0,0)[lb]{\smash{the Earth [$\times10^8$ m]}}}}%
   \end{picture}%
 \endgroup%

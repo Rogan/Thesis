@@ -50,16 +50,16 @@
   \makeatother%
   \begin{picture}(1,0.75028993)%
     \put(0,0){\includegraphics[width=\unitlength]{Images/Descent/figure16.pdf}}%
-    \put(0.18113368,0.05){\makebox(0,0)[lb]{\smash{1710}}}%
-    \put(0.26562500,0.05){\makebox(0,0)[lb]{\smash{1720}}}%
-    \put(0.35011632,0.05){\makebox(0,0)[lb]{\smash{1730}}}%
-    \put(0.43460590,0.05){\makebox(0,0)[lb]{\smash{1740}}}%
-    \put(0.51924132,0.05){\makebox(0,0)[lb]{\smash{1750}}}%
-    \put(0.60373264,0.05){\makebox(0,0)[lb]{\smash{1760}}}%
-    \put(0.68822396,0.05){\makebox(0,0)[lb]{\smash{1770}}}%
-    \put(0.77271354,0.05){\makebox(0,0)[lb]{\smash{1780}}}%
-    \put(0.85720486,0.05){\makebox(0,0)[lb]{\smash{1790}}}%
-    \put(0.30946181,0.02){\makebox(0,0)[lb]{\smash{Mission time $t$ [$days$]}}}%
+    \put(0.18113368,0.05){\makebox(0,0)[lb]{\smash{10}}}%
+    \put(0.26562500,0.05){\makebox(0,0)[lb]{\smash{20}}}%
+    \put(0.35011632,0.05){\makebox(0,0)[lb]{\smash{30}}}%
+    \put(0.43460590,0.05){\makebox(0,0)[lb]{\smash{40}}}%
+    \put(0.51924132,0.05){\makebox(0,0)[lb]{\smash{50}}}%
+    \put(0.60373264,0.05){\makebox(0,0)[lb]{\smash{60}}}%
+    \put(0.68822396,0.05){\makebox(0,0)[lb]{\smash{70}}}%
+    \put(0.77271354,0.05){\makebox(0,0)[lb]{\smash{80}}}%
+    \put(0.85720486,0.05){\makebox(0,0)[lb]{\smash{90}}}%
+    \put(0.30946181,0.02){\makebox(0,0)[lb]{\smash{Mission time $t-1700$ [$days$]}}}%
     \put(0.11,0.07581041){\makebox(0,0)[lb]{\smash{0}}}%
     \put(0.07,0.18822361){\makebox(0,0)[lb]{\smash{500}}}%
     \put(0.05,0.3006368){\makebox(0,0)[lb]{\smash{1000}}}%

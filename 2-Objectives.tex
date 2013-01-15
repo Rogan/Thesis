@@ -57,7 +57,7 @@ To address this question, once a robust model was developed for the trajectory o
 %The sensitivity of the trajectory was examined by introducing deterministic and stochastic inputs into variables such as the thrust angles, magnitudes, and gravitational perturbations, to simulate errors in the spacecraft control system, non-linearities in the thruster output, or unknown gravitational influences, to ensure that the proposed theoretical thrust regimes are applicable to real-world spacecraft. The magnitude of these error inputs was determined through consultation with experts on each of the sub-systems, as a percentage of the intended input. Additionally, the trajectory was simulated with errors of increasing magnitude to determine mission failure scenarios. Contingency trajectories will have to be determined for these cases, such as a single engine failure.
 
 %Anticipated, predictable perturbing forces may be used to help propel the spacecraft towards the Moon. 
-It is well known from interplanetary trajectories such as those presented by \textcite{Petukhov2007} that a large amount of propulsive effort can be saved by exploiting gravitational assists. Some textbooks, such as \textcite{Kemble2006}, and other publications such as \textcite{Letterio_thesis} discuss the possibility of exploiting the Moon's gravity in a series of lunar \enquote{resonances} to assist a low thrust lunar transfer. Anticipated perturbations such as this are implicitly exploited by the optimiser since they represent optimal scenarios, however due to imperfections in optimisation algorithms the initial guess strongly affects whether the gravitational assist is found.
+It is well known from interplanetary trajectories such as those presented by \textcite{Petukhov2007} that a large amount of propulsive effort can be saved by exploiting gravitational assists. Some textbooks, such as \textcite{Kemble2006}, and other publications such as \textcite{Letterio_thesis} discuss the possibility of exploiting the Moon's gravity in a series of lunar \enquote{resonances} to assist a low thrust lunar transfer. A small number of missions have succeeded in doing this, such as NASA's ARTEMIS \parencite{Angelopoulos2011, Sweetser2011}. These anticipated perturbations are implicitly exploited by the optimiser since they represent optimal scenarios, however due to imperfections in optimisation algorithms the initial guess strongly affects whether the gravitational assist is found.
 
 % Investigate nonlinear constraints
 \section{Investigation of non-linear constraints} \label{sec:Constraint-objective}
@@ -82,8 +82,8 @@ A thorough outline of factors influencing the trajectory is presented in \autore
 Factor & Inclusion \tabularnewline\midrule
 \textbf{Perturbing forces} \tabularnewline
 Primary gravity & Inherent in equations of motion \tabularnewline
-Earth gravity & Included in Moon-centred phases \tabularnewline
-Moon gravity & Included in Earth-centred phases \tabularnewline
+Earth gravity field & JGM3 included in Moon-centred phases to degree and order 20\tabularnewline
+Moon gravity field & LP165 included in Earth-centred phases to degree and order 20\tabularnewline
 Sun gravity & Included \tabularnewline
 Mercury gravity & Not included \tabularnewline
 Venus gravity & Included \tabularnewline
@@ -91,8 +91,6 @@ Mars gravity & Included \tabularnewline
 Jupiter gravity & Included \tabularnewline
 Saturn gravity & Not included \tabularnewline
 Solar wind & Included as a time-average \tabularnewline
-Earth oblateness & Included in Earth-centred phases to degree and order 20 \tabularnewline
-Moon oblateness & Included in Moon-centred phases to degree and order 20 \tabularnewline\midrule
 \textbf{Vehicular constraints} \tabularnewline
 Thruster duty cycle & Neglected (see \autoref{sec:Propulsion}) \tabularnewline
 Thruster power & Included (see \autoref{sec:Propulsion}) \tabularnewline

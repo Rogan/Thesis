@@ -33,7 +33,7 @@ mathb,
 % citation and bibliography style control
 % backref 			adds bibliography references to where work is cited
 % sortcites			doesn't work - automatically sorts citations same as bib (nyt) when i want (ynt)
-\usepackage[bibstyle=Bibliography/au-standard,citestyle=Bibliography/au-standard,backref,maxnames=2,sortcites=false]{biblatex}%
+\usepackage[bibstyle=Bibliography/au-standard,citestyle=Bibliography/au-standard,backref,maxnames=2,maxbibnames=99,sortcites=false,backend=bibtex]{biblatex}%
 \def\multicitedelim{, }
 \bibliography{Bibliography/Thesis,Bibliography/Launcher-manuals,Bibliography/BW1-papers}
 
@@ -61,10 +61,12 @@ mathb,
 % removes indent and separator from footers
 \usepackage[hang,flushmargin,norule]{footmisc}
 
-% allows coloured rows in tables
-%\usepackage [table]{xcolor}
+% extends color package
+% table option allows coloured rows in tables (loads colortbl)
+%\usepackage [usenames,dvipsnames,table]{xcolor}
 % use with %\rowcolors {2}{}{gray!35}
 % seems to conflict with booktabs
+\definecolor{darkgreen}{rgb}{0,0.4,0}
 
 % For inkscape vector graphics
 \def\figurewidth{0.85\textwidth}

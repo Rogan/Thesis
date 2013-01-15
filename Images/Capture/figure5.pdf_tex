@@ -50,20 +50,20 @@
   \makeatother%
   \begin{picture}(1,0.7496392)%
     \put(0,0){\includegraphics[width=\unitlength]{Images/Capture/figure5.pdf}}%
-    \put(0.19991327,0.05){\makebox(0,0)[lb]{\smash{1684}}}%
-    \put(0.28028274,0.05){\makebox(0,0)[lb]{\smash{1686}}}%
-    \put(0.36079792,0.05){\makebox(0,0)[lb]{\smash{1688}}}%
-    \put(0.44116739,0.05){\makebox(0,0)[lb]{\smash{1690}}}%
-    \put(0.52168257,0.05){\makebox(0,0)[lb]{\smash{1692}}}%
-    \put(0.60219775,0.05){\makebox(0,0)[lb]{\smash{1694}}}%
-    \put(0.68256722,0.05){\makebox(0,0)[lb]{\smash{1696}}}%
-    \put(0.76308239,0.05){\makebox(0,0)[lb]{\smash{1698}}}%
-    \put(0.84345186,0.05){\makebox(0,0)[lb]{\smash{1700}}}%
-    \put(0.41471466,0.02){\makebox(0,0)[lb]{\smash{Mission time $t$ [days]}}}%
+    \put(0.20991327,0.05){\makebox(0,0)[lb]{\smash{4}}}%
+    \put(0.29028274,0.05){\makebox(0,0)[lb]{\smash{6}}}%
+    \put(0.37079792,0.05){\makebox(0,0)[lb]{\smash{8}}}%
+    \put(0.45116739,0.05){\makebox(0,0)[lb]{\smash{10}}}%
+    \put(0.53168257,0.05){\makebox(0,0)[lb]{\smash{12}}}%
+    \put(0.61219775,0.05){\makebox(0,0)[lb]{\smash{14}}}%
+    \put(0.69256722,0.05){\makebox(0,0)[lb]{\smash{16}}}%
+    \put(0.77308239,0.05){\makebox(0,0)[lb]{\smash{18}}}%
+    \put(0.85345186,0.05){\makebox(0,0)[lb]{\smash{20}}}%
+    \put(0.3,0.02){\makebox(0,0)[lb]{\smash{Mission time $t-1680$ [days]}}}%
     \put(0.13,0.10){\makebox(0,0)[lb]{\smash{0.8}}}%
     \put(0.13,0.15){\makebox(0,0)[lb]{\smash{0.9}}}%
     \put(0.13,0.19){\makebox(0,0)[lb]{\smash{1.0}}}%
-    \put(0.13,0.46){\makebox(0,0)[lb]{\smash{2.0}}}7
+    \put(0.13,0.46){\makebox(0,0)[lb]{\smash{2.0}}}%
     \put(0.13,0.63){\makebox(0,0)[lb]{\smash{3.0}}}%
     \put(0.08,0.18){\rotatebox{90}{\makebox(0,0)[lb]{\smash{Acceleration [$\times10^{-10}$~ms$^{-2}$]}}}}%
     \put(0.50375889,0.14252732){\makebox(0,0)[lb]{\smash{\tiny{$\Jupiter$ gravity}}}}%

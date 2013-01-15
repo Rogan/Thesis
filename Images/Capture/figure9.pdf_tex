@@ -65,16 +65,16 @@
     \put(0.87351778,0.42960451){\makebox(0,0)[lb]{\smash{\tiny{$g$}}}}%
     \put(0.87351778,0.40705464){\makebox(0,0)[lb]{\smash{\tiny{$h$}}}}%
     \put(0.87351778,0.38941891){\makebox(0,0)[lb]{\smash{\tiny{$k$}}}}%
-    \put(0.15177797,0.05){\makebox(0,0)[lb]{\smash{1684}}}%
-    \put(0.23793062,0.05){\makebox(0,0)[lb]{\smash{1686}}}%
-    \put(0.32408153,0.05){\makebox(0,0)[lb]{\smash{1688}}}%
-    \put(0.41023417,0.05){\makebox(0,0)[lb]{\smash{1690}}}%
-    \put(0.49624111,0.05){\makebox(0,0)[lb]{\smash{1692}}}%
-    \put(0.58239376,0.05){\makebox(0,0)[lb]{\smash{1694}}}%
-    \put(0.66854640,0.05){\makebox(0,0)[lb]{\smash{1696}}}%
-    \put(0.75469731,0.05){\makebox(0,0)[lb]{\smash{1698}}}%
-    \put(0.84070598,0.05){\makebox(0,0)[lb]{\smash{1700}}}%
-    \put(0.38912923,0.02){\makebox(0,0)[lb]{\smash{Mission time $t$ [days]}}}%
+    \put(0.15177797,0.05){\makebox(0,0)[lb]{\smash{4}}}%
+    \put(0.24793062,0.05){\makebox(0,0)[lb]{\smash{6}}}%
+    \put(0.33408153,0.05){\makebox(0,0)[lb]{\smash{8}}}%
+    \put(0.42023417,0.05){\makebox(0,0)[lb]{\smash{10}}}%
+    \put(0.50624111,0.05){\makebox(0,0)[lb]{\smash{12}}}%
+    \put(0.59239376,0.05){\makebox(0,0)[lb]{\smash{14}}}%
+    \put(0.67854640,0.05){\makebox(0,0)[lb]{\smash{16}}}%
+    \put(0.76469731,0.05){\makebox(0,0)[lb]{\smash{18}}}%
+    \put(0.85070598,0.05){\makebox(0,0)[lb]{\smash{20}}}%
+    \put(0.3,0.02){\makebox(0,0)[lb]{\smash{Mission time $t-1680$ [days]}}}%
     \put(0.09,0.10956982){\makebox(0,0)[lb]{\smash{50}}}%
     \put(0.07,0.14975542){\makebox(0,0)[lb]{\smash{100}}}%
     \put(0.07,0.18979532){\makebox(0,0)[lb]{\smash{150}}}%
