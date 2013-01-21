@@ -103,7 +103,7 @@ To increase its chances of success, a fuel-optimal trajectory must be sought.
 
 \section{The process of optimisation} \label{sec:Optimisation-methods}
 
-Optimisation is, intuitively, the process of finding an optimum value (minimum or maximum) for a given function. This is achieved by defining an \emph{objective function} or \emph{cost function} to rank results based on perceived value, allowing the result with the highest value to be chosen. The difficulty of performing optimisation arises from the potentially large number of results, and the difficulty of mathematically defining what is \enquote{good} or \enquote{bad}. 
+Optimisation is, intuitively, the process of finding a set of inputs that minimise (or maximise) a given output. This is achieved by defining an \emph{objective function} or \emph{cost function} to rank results based on perceived value, allowing the result with the highest value to be chosen. The difficulty of performing optimisation arises from the potentially large number of results, and the difficulty of mathematically defining what is \enquote{good} or \enquote{bad}. 
 
 % Generic definition
 \subsection{Problem formulation} \label{sub:Formulation}
@@ -227,7 +227,7 @@ Indirect methods attempt to solve the optimal control problem by finding a stati
 Pontryagin's minimum principle requires solution of the adjoint equations. % define adjoint equations?
 The existence of an analytical solution consequently becomes highly dependent on the linearity of the adjoint equations, but assumptions and simplifications can sometimes be made in order to determine a general solution to the equations. These assumptions are usually only valid for short duration scenarios such as the missile trajectory described by \textcite{Ohlmeyer2006} and the re-entry of the two exo-atmospheric stages of the Saturn~V rocket presented by \textcite{Haeussermann1965}. Given the long durations and non-linearities present in low-thrust trajectories, an analytical solution usually cannot be found.
 
-An alternative to solving the infinite-dimensional optimal control problem is to discretise the problem and solve the resulting high- but finite-dimensional problem using indirect numerical methods. Forgoing a general solution to the objective function, these methods break the problem down into many sub-problems, each of which may be solved locally. This is collectively known as nonlinear programming (NLP) \parencite{Betts1998}. 
+An alternative to solving the infinite-dimensional optimal control problem is to discretise the problem and solve the resulting high- but finite-dimensional problem using indirect numerical methods. Forgoing a general solution to the objective function, these methods break the problem down into many sub-problems, each of which may be solved locally. This is collectively known as nonlinear programming (NLP) \parencite{Stryck1992}. 
 
 The general approach to nonlinear programming is to take a candidate solution, $\vec{x}_0$. An iterative procedure is then used to improve this solution by varying the state a certain amount, $\alpha$, in a certain direction, $\vec{k}$, as defined in equation \eqref{eq:NLP}. The sign of the step direction, $\alpha$, determines whether the algorithm finds a minimum or a maximum,
 \begin{equation} \label{eq:NLP}
