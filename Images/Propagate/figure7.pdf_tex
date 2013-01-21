@@ -1,4 +1,4 @@
-%% Creator: Inkscape 0.48.2, www.inkscape.org
+%% Creator: Inkscape 0.48.3.1, www.inkscape.org
 %% PDF/EPS/PS + LaTeX output extension by Johan Engelen, 2010
 %% Accompanies image file 'figure7.pdf' (pdf, eps, ps)
 %%
@@ -36,7 +36,7 @@
   }%
   \providecommand\rotatebox[2]{#2}%
   \ifx\svgwidth\undefined%
-    \setlength{\unitlength}{576.5bp}%
+    \setlength{\unitlength}{470.833003bp}%
     \ifx\svgscale\undefined%
       \relax%
     \else%
@@ -48,39 +48,39 @@
   \global\let\svgwidth\undefined%
   \global\let\svgscale\undefined%
   \makeatother%
-  \begin{picture}(1,0.7496392)%
+  \begin{picture}(1,0.83805298)%
     \put(0,0){\includegraphics[width=\unitlength]{Images/Propagate/figure7.pdf}}%
-    \put(0.08,0.58716392){\makebox(0,0)[lb]{\smash{3.0}}}%
-    \put(0.08,0.61390633){\makebox(0,0)[lb]{\smash{3.5}}}%
-    \put(0.08,0.64064874){\makebox(0,0)[lb]{\smash{4.0}}}%
-    \put(0.08,0.66724545){\makebox(0,0)[lb]{\smash{4.5}}}%
-    \put(0.12,0.71234519){\makebox(0,0)[lb]{\smash{}}}%
-    \put(0.06,0.56){\rotatebox{90}{\makebox(0,0)[lb]{\smash{[$\times10^8$~m]}}}}%
-    \put(0.87467476,0.67129228){\makebox(0,0)[lb]{\smash{\tiny{$a$}}}}%
-    \put(0.08,0.42122116){\makebox(0,0)[lb]{\smash{0.1}}}%
-    \put(0.08,0.46183868){\makebox(0,0)[lb]{\smash{0.2}}}%
-    \put(0.08,0.50231396){\makebox(0,0)[lb]{\smash{0.3}}}%
-    \put(0.06,0.45157676){\rotatebox{90}{\makebox(0,0)[lb]{\smash{[-]}}}}%
-    \put(0.87597572,0.50708413){\makebox(0,0)[lb]{\smash{\tiny{$e$}}}}%
-    \put(0.1,0.27782654){\makebox(0,0)[lb]{\smash{2}}}%
-    \put(0.1,0.31541023){\makebox(0,0)[lb]{\smash{4}}}%
-    \put(0.1,0.3531379){\makebox(0,0)[lb]{\smash{6}}}%
-    \put(0.06,0.27695924){\rotatebox{90}{\makebox(0,0)[lb]{\smash{[rad]}}}}%
-    \put(0.8699046,0.33940503){\makebox(0,0)[lb]{\smash{\tiny{$i$}}}}%
-    \put(0.8699046,0.32610581){\makebox(0,0)[lb]{\smash{\tiny{$\omega$}}}}%
-    \put(0.8699046,0.30774848){\makebox(0,0)[lb]{\smash{\tiny{$\Omega$}}}}%
-    \put(0.15784909,0.05){\makebox(0,0)[lb]{\smash{1655}}}%
-    \put(0.28707719,0.05){\makebox(0,0)[lb]{\smash{1660}}}%
-    \put(0.41630529,0.05){\makebox(0,0)[lb]{\smash{1665}}}%
-    \put(0.54538942,0.05){\makebox(0,0)[lb]{\smash{1670}}}%
-    \put(0.67461752,0.05){\makebox(0,0)[lb]{\smash{1675}}}%
-    \put(0.80384562,0.05){\makebox(0,0)[lb]{\smash{1680}}}%
-    \put(0.38912923,0.02){\makebox(0,0)[lb]{\smash{Mission time $t$ [days]}}}%
-    \put(0.1,0.0962706){\makebox(0,0)[lb]{\smash{2}}}%
-    \put(0.1,0.12547095){\makebox(0,0)[lb]{\smash{4}}}%
-    \put(0.1,0.15466956){\makebox(0,0)[lb]{\smash{6}}}%
-    \put(0.1,0.18401388){\makebox(0,0)[lb]{\smash{8}}}%
-    \put(0.06,0.11274935){\rotatebox{90}{\makebox(0,0)[lb]{\smash{[rad]}}}}%
-    \put(0.87351778,0.17866435){\makebox(0,0)[lb]{\smash{\tiny{$\nu$}}}}%
+    \put(-0.02,0.67769931){\makebox(0,0)[lb]{\smash{3.0}}}%
+    \put(-0.02,0.70690287){\makebox(0,0)[lb]{\smash{3.5}}}%
+    \put(-0.02,0.73593015){\makebox(0,0)[lb]{\smash{4.0}}}%
+    \put(-0.02,0.76495530){\makebox(0,0)[lb]{\smash{4.5}}}%
+    \put(-0.06,0.65){\rotatebox{90}{\makebox(0,0)[lb]{\smash{[$\times10^8$~m]}}}}%
+    \put(0.94902694,0.76849584){\makebox(0,0)[lb]{\smash{\tiny{$a$}}}}%
+    \put(-0.02,0.47486731){\makebox(0,0)[lb]{\smash{0.1}}}%
+    \put(-0.02,0.51893814){\makebox(0,0)[lb]{\smash{0.2}}}%
+    \put(-0.02,0.56300897){\makebox(0,0)[lb]{\smash{0.3}}}%
+    \put(-0.06,0.5){\rotatebox{90}{\makebox(0,0)[lb]{\smash{[-]}}}}%
+    \put(0.95061986,0.56725676){\makebox(0,0)[lb]{\smash{\tiny{$e$}}}}%
+    \put(-0.02,0.28637161){\makebox(0,0)[lb]{\smash{2.0}}}%
+    \put(-0.02,0.32177057){\makebox(0,0)[lb]{\smash{4.0}}}%
+    \put(-0.02,0.35716741){\makebox(0,0)[lb]{\smash{6.0}}}%
+    \put(-0.06,0.3){\rotatebox{90}{\makebox(0,0)[lb]{\smash{[rad]}}}}%
+    \put(0.94477915,0.31132738){\makebox(0,0)[lb]{\smash{\tiny{$i$}}}}%
+    \put(0.94477915,0.2968148){\makebox(0,0)[lb]{\smash{\tiny{$\omega$}}}}%
+    \put(0.94477915,0.27716877){\makebox(0,0)[lb]{\smash{\tiny{$\Omega$}}}}%
+    \put(-0.02,0.07663695){\makebox(0,0)[lb]{\smash{2.0}}}%
+    \put(-0.02,0.10831867){\makebox(0,0)[lb]{\smash{4.0}}}%
+    \put(-0.02,0.13999954){\makebox(0,0)[lb]{\smash{6.0}}}%
+    \put(-0.02,0.17185797){\makebox(0,0)[lb]{\smash{8.0}}}%
+    \put(-0.06,0.10){\rotatebox{90}{\makebox(0,0)[lb]{\smash{[rad]}}}}%
+    \put(0.94902694,0.07805316){\makebox(0,0)[lb]{\smash{\tiny{$\nu$}}}}%
+    
+    \put(0.07663695,0.03){\makebox(0,0)[lb]{\smash{1655}}}%
+    \put(0.23486714,0.03){\makebox(0,0)[lb]{\smash{1660}}}%
+    \put(0.39309734,0.03){\makebox(0,0)[lb]{\smash{1665}}}%
+    \put(0.55115126,0.03){\makebox(0,0)[lb]{\smash{1670}}}%
+    \put(0.70938146,0.03){\makebox(0,0)[lb]{\smash{1675}}}%
+    \put(0.86761166,0.03){\makebox(0,0)[lb]{\smash{1680}}}%
+    \put(0.41274338,0.0){\makebox(0,0)[lb]{\smash{Mission time $t$ [days]}}}%
   \end{picture}%
 \endgroup%

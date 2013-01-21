@@ -1,4 +1,4 @@
-%% Creator: Inkscape 0.48.2, www.inkscape.org
+%% Creator: Inkscape 0.48.3.1, www.inkscape.org
 %% PDF/EPS/PS + LaTeX output extension by Johan Engelen, 2010
 %% Accompanies image file 'figure4.pdf' (pdf, eps, ps)
 %%
@@ -36,7 +36,7 @@
   }%
   \providecommand\rotatebox[2]{#2}%
   \ifx\svgwidth\undefined%
-    \setlength{\unitlength}{576.5bp}%
+    \setlength{\unitlength}{576bp}%
     \ifx\svgscale\undefined%
       \relax%
     \else%
@@ -48,32 +48,29 @@
   \global\let\svgwidth\undefined%
   \global\let\svgscale\undefined%
   \makeatother%
-  \begin{picture}(1,0.7496392)%
+  \begin{picture}(1,0.75028993)%
     \put(0,0){\includegraphics[width=\unitlength]{Images/Capture/figure4.pdf}}%
-    \put(0.21107025,0.05){\makebox(0,0)[lb]{\smash{4}}}%
-    \put(0.29129575,0.05){\makebox(0,0)[lb]{\smash{6}}}%
-    \put(0.37137554,0.05){\makebox(0,0)[lb]{\smash{8}}}%
-    \put(0.45145707,0.05){\makebox(0,0)[lb]{\smash{10}}}%
-    \put(0.53153859,0.05){\makebox(0,0)[lb]{\smash{12}}}%
-    \put(0.61161839,0.05){\makebox(0,0)[lb]{\smash{14}}}%
-    \put(0.69169991,0.05){\makebox(0,0)[lb]{\smash{16}}}%
-    \put(0.77178144,0.05){\makebox(0,0)[lb]{\smash{18}}}%
-    \put(0.85186123,0.05){\makebox(0,0)[lb]{\smash{20}}}%
-    \put(0.3,0.02){\makebox(0,0)[lb]{\smash{Mission time $t-1680$ [days]}}}%
-    \put(0.09,0.13717953){\makebox(0,0)[lb]{\smash{$10^{-11}$}}}%
-    \put(0.09,0.20280486){\makebox(0,0)[lb]{\smash{$10^{-10}$}}}%
-    \put(0.09,0.26843018){\makebox(0,0)[lb]{\smash{$10^{-9}$}}}%
-    \put(0.09,0.33420121){\makebox(0,0)[lb]{\smash{$10^{-8}$}}}%
-    \put(0.09,0.39982654){\makebox(0,0)[lb]{\smash{$10^{-7}$}}}%
-    \put(0.09,0.46559757){\makebox(0,0)[lb]{\smash{$10^{-6}$}}}%
-    \put(0.09,0.53122290){\makebox(0,0)[lb]{\smash{$10^{-5}$}}}%
-    \put(0.09,0.59684996){\makebox(0,0)[lb]{\smash{$10^{-4}$}}}%
-    \put(0.09,0.66261925){\makebox(0,0)[lb]{\smash{$10^{-3}$}}}%
-    \put(0.07,0.26669558){\rotatebox{90}{\makebox(0,0)[lb]{\smash{Acceleration [ms$^{-2}$]}}}}%
-    \put(0.48886904,0.18141197){\makebox(0,0)[lb]{\smash{\tiny{Thrust}}}}%
-    \put(0.48886904,0.16334258){\makebox(0,0)[lb]{\smash{\tiny{$\Earth$ gravity}}}}%
-    \put(0.48886904,0.14166002){\makebox(0,0)[lb]{\smash{\tiny{$\Sun$ gravity}}}}%
-    \put(0.48886904,0.11997745){\makebox(0,0)[lb]{\smash{\tiny{$\Moon$ oblateness}}}}%
-    \put(0.48886904,0.09829488){\makebox(0,0)[lb]{\smash{\tiny{Solar wind}}}}%
+    \put(0.20661458,0.05){\makebox(0,0)[lb]{\smash{4}}}%
+    \put(0.28792188,0.05){\makebox(0,0)[lb]{\smash{6}}}%
+    \put(0.36937500,0.05){\makebox(0,0)[lb]{\smash{8}}}%
+    \put(0.44082813,0.05){\makebox(0,0)[lb]{\smash{10}}}%
+    \put(0.52213542,0.05){\makebox(0,0)[lb]{\smash{12}}}%
+    \put(0.60358854,0.05){\makebox(0,0)[lb]{\smash{14}}}%
+    \put(0.68489583,0.05){\makebox(0,0)[lb]{\smash{16}}}%
+    \put(0.76634896,0.05){\makebox(0,0)[lb]{\smash{18}}}%
+    \put(0.84765625,0.05){\makebox(0,0)[lb]{\smash{20}}}%
+    \put(0.31116840,0.02){\makebox(0,0)[lb]{\smash{Mission time $t-1680$ [days]}}}%
+    \put(0.08,0.17751701){\makebox(0,0)[lb]{\smash{$10^{-10}$}}}%
+    \put(0.08,0.28226354){\makebox(0,0)[lb]{\smash{$10^{-8}$}}}%
+    \put(0.08,0.38715243){\makebox(0,0)[lb]{\smash{$10^{-6}$}}}%
+    \put(0.08,0.49189895){\makebox(0,0)[lb]{\smash{$10^{-4}$}}}%
+    \put(0.08,0.59678784){\makebox(0,0)[lb]{\smash{$10^{-2}$}}}%
+    \put(0.07,0.26707256){\rotatebox{90}{\makebox(0,0)[lb]{\smash{Acceleration [ms$^{-2}$]}}}}%
+    \put(0.50144618,0.20442673){\makebox(0,0)[lb]{\smash{\tiny{Thrust}}}}%
+    \put(0.50144618,0.18315937){\makebox(0,0)[lb]{\smash{\tiny{$\Earth$ gravity}}}}%
+    \put(0.50144618,0.16189236){\makebox(0,0)[lb]{\smash{\tiny{$\Sun$ gravity}}}}%
+    \put(0.50144618,0.14062499){\makebox(0,0)[lb]{\smash{\tiny{$\Moon$ gravity}}}}%
+    \put(0.50144618,0.11935763){\makebox(0,0)[lb]{\smash{\tiny{$\Moon$ harmonics}}}}%
+    \put(0.50144618,0.09809027){\makebox(0,0)[lb]{\smash{\tiny{Solar pressure}}}}%
   \end{picture}%
 \endgroup%

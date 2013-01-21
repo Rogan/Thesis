@@ -68,7 +68,7 @@
     \put(0.49,0.17){\makebox(0,0)[lb]{\smash{\tiny{Thrust}}}}%
     \put(0.49,0.15){\makebox(0,0)[lb]{\smash{\tiny{$\Moon$ gravity}}}}%
     \put(0.49,0.13){\makebox(0,0)[lb]{\smash{\tiny{$\Sun$ gravity}}}}%
-    \put(0.49,0.11){\makebox(0,0)[lb]{\smash{\tiny{$\Earth$ oblateness}}}}%
+    \put(0.49,0.11){\makebox(0,0)[lb]{\smash{\tiny{$\Earth$ harmonics}}}}%
     \put(0.49,0.09){\makebox(0,0)[lb]{\smash{\tiny{Solar pressure}}}}%
   \end{picture}%
 \endgroup%

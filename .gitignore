@@ -65,3 +65,4 @@ Trajectory/
 *.new
 *.bcf
 *.bat
+~$*.*

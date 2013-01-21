@@ -59,7 +59,7 @@
     \put(0.70208153,0.05){\makebox(0,0)[lb]{\smash{70}}}%
     \put(0.78086210,0.05){\makebox(0,0)[lb]{\smash{80}}}%
     \put(0.85978664,0.05){\makebox(0,0)[lb]{\smash{90}}}%
-    \put(0.41457069,0.02){\makebox(0,0)[lb]{\smash{Mission time $t-1700$ [days]}}}%
+    \put(0.31457069,0.02){\makebox(0,0)[lb]{\smash{Mission time $t-1700$ [days]}}}%
     \put(0.08,0.20641804){\makebox(0,0)[lb]{\smash{$10^{-13}$}}}%
     \put(0.08,0.41587164){\makebox(0,0)[lb]{\smash{$10^{-12}$}}}%
     \put(0.08,0.62532524){\makebox(0,0)[lb]{\smash{$10^{-11}$}}}%
