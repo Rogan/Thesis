@@ -70,6 +70,6 @@
     \put(0.45674132,0.16087986){\makebox(0,0)[lb]{\smash{\tiny{Thrust}}}}%
     \put(0.45674132,0.13961249){\makebox(0,0)[lb]{\smash{\tiny{$\Moon$ gravity}}}}%
     \put(0.45674132,0.11834513){\makebox(0,0)[lb]{\smash{\tiny{$\Sun$ gravity}}}}%
-    \put(0.45674132,0.09707777){\makebox(0,0)[lb]{\smash{\tiny{Solar wind}}}}%
+    \put(0.45674132,0.09707777){\makebox(0,0)[lb]{\smash{\tiny{Solar pressure}}}}%
   \end{picture}%
 \endgroup%

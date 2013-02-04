@@ -58,7 +58,7 @@ The arcjet allows continuous adjustment of the mass flow rate, and also continuo
 % Earth shadow
 \section{Eclipse} \label{sec:Eclipse}
 
-During the \BW\ transfer, the spacecraft may be eclipsed by the Earth or the Moon. When either of these large bodies are blocking the Sun, the spacecraft does not gain any charge from its solar panels. It is also unaffected by solar wind. 
+During the \BW\ transfer, the spacecraft may be eclipsed by the Earth or the Moon. When either of these large bodies are blocking the Sun, the spacecraft does not gain any charge from its solar panels. It is also unaffected by solar radiation pressure. 
 
 The occlusion of a luminous sphere by a smaller sphere creates a conical shadow called the \emph{umbra}, as shown in \autoref{fig:Eclipse}. Within the umbra a total eclipse is observed. Surrounding the umbra is an inverted cone of partial shadow called the \emph{penumbra}. An observer within the penumbra would experience a partial eclipse. Beyond the umbra is another inverted cone of partial shadow called the \emph{antumbra}, within which an annular eclipse would be observed \parencite{Longo1995}.
 
@@ -279,7 +279,7 @@ He quantifies the benefit,
 \begin{quotation}
 \enquote{A typical $\Delta V$ saving of 800~ms$^{-1}$ is obtained by use of lunar gravity assist} \parencite[p.248]{Kemble2006}.
 \end{quotation}
-Both of NASA's ARTEMIS spacecraft were able to save approximately 40~m/s of delta-v on their lunar insertions using gravitational assists \parencite{Sweetser2011}.  
+Both of NASA's ARTEMIS spacecraft were able to save approximately 40~ms$^{-1}$ of delta-v on their lunar insertions using gravitational assists \parencite{Sweetser2011}.  
 
 Because lunar gravitational assists provide delta-v without fuel expenditure, they should be implicitly accounted for during optimisation. Preliminary results did indicate this to be the case, as seen in \autoref{fig:Lunar-resonance}. From an initial orbit of 180,000~km (semi-cis-lunar, representing the later stages of the cruise phase to highlight the lunar assist) the spacecraft takes two orbits to align its phase with the Moon, then receives a very apparent boost purely from the Moon's gravity during the close passes seen in \autoref{fig:Lunar-resonance2}.
 
@@ -332,7 +332,7 @@ In cases where the transition from Earth-orbit to lunar-orbit is predicted corre
 
 Zero-thrust captures, also known as ballistic captures, have been studied by many authors, most particularly \textcite{Belbruno1993} following the partial failure of the Japanese Hiten probe. \citeauthor{Belbruno2004} exploited a low-energy transfer to recover the probe, prompting further study into the phenomenon he termed the \emph{weak stability boundary}. This is a region around the body where the orbital energy is negative (that is, the spacecraft has technically been captured, and would orbit indefinitely in the absence of external forces) but the motion of the spacecraft is unstable. In the case of lunar transfers this is because the spacecraft is usually in a high energy orbit, and after some amount of time the Earth's gravity pulls it back into geocentric orbit. These \emph{weak captures} are rigorously defined by \textcite{Belbruno2004}.
 
-Unfortunately all of \citeauthor{Belbruno2004}'s work, and much of the remaining literature, concerns impulsive transfers following invariant manifolds while coasting between burns. Low-thrust transfers follow similar trajectories, but do not possess impulsive thrusters to provide large amounts of delta-v ensuring the spacecraft enters the desired manifold. Consequently even developing an initial guess for the optimisation proved challenging, and required extensive preliminary simulations as outlined in \autoref{sec:Development}.
+Unfortunately all of \citeauthor{Belbruno2004}'s work, and much of the remaining literature (such as \textcite{Koon2001, Parker2008}), concerns impulsive transfers following invariant manifolds while coasting between burns. Low-thrust transfers follow similar trajectories, but do not possess impulsive thrusters to provide the required delta-v to ensure the spacecraft enters the desired manifold. Consequently even developing an initial guess for the optimisation proved challenging, and required extensive preliminary simulations as outlined in \autoref{sec:Development}.
 
 %---
  

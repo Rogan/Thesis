@@ -78,6 +78,6 @@
     \put(0.47152298,0.60162012){\makebox(0,0)[lb]{\smash{\tiny{$\Sun$ gravity}}}}%
     \put(0.47152298,0.58051518){\makebox(0,0)[lb]{\smash{\tiny{$\Jupiter$ gravity}}}}%
     \put(0.47152298,0.55926626){\makebox(0,0)[lb]{\smash{\tiny{$\Earth$ J2 harmonic}}}}%
-    \put(0.47152298,0.53801735){\makebox(0,0)[lb]{\smash{\tiny{Solar wind}}}}%
+    \put(0.47152298,0.53801735){\makebox(0,0)[lb]{\smash{\tiny{Solar pressure}}}}%
   \end{picture}%
 \endgroup%

@@ -68,6 +68,6 @@
     \put(0.5,0.16305291){\makebox(0,0)[lb]{\smash{\tiny{$\Sun$ gravity}}}}%
     \put(0.5,0.14151605){\makebox(0,0)[lb]{\smash{\tiny{$\Earth$ gravity}}}}%
     \put(0.5,0.11983348){\makebox(0,0)[lb]{\smash{\tiny{$\Earth$ harmonics}}}}%
-    \put(0.5,0.09829488){\makebox(0,0)[lb]{\smash{\tiny{Solar wind}}}}%
+    \put(0.5,0.09829488){\makebox(0,0)[lb]{\smash{\tiny{Solar pressure}}}}%
   \end{picture}%
 \endgroup%
