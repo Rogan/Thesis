@@ -130,7 +130,7 @@ Finally, \autoref{fig:Ascent2-energy} shows the power levels throughout this pha
 \end{figure}
 
 \autoref{fig:Ascent-dist} shows the distance of the spacecraft from the Earth and Moon throughout the phase. The oscillations about the Earth are seen to slowly increase in duration and altitude, as you would expect for a slowly ascending orbit. %For this scenario, the geometry permitted the spacecraft's apoapsis (furthest point from the Earth) to pass near the Moon's periapsis (closest point to Earth).
-For this scenario, the geometry permitted the spacecraft’s argument of periapsis relative to the Earth to be opposite the Moon’s argument of periapsis relative to the Earth, so the spacecraft is furthest from the Earth in the same region of space that the Moon is closest to the Earth.
+For this scenario, the geometry permitted the spacecraft's argument of periapsis relative to the Earth to be opposite the Moon’s argument of periapsis relative to the Earth, so the spacecraft is furthest from the Earth in the same region of space that the Moon is closest to the Earth.
 This is an optimal scenario, as it leads to much greater gravitational assistance earlier on in the transfer, but is unfortunately not a scenario that can be planned for, as the initial argument of periapsis is defined by the launch. The optimisation is able to implicitly adjust the argument of periapsis during the transfer by controlling the thrust angle, but this technique requires a lot of delta-v and therefore can only compensate for a few degrees.
 
 \begin{figure}
@@ -340,7 +340,7 @@ Throughout the cruise phase, 17.55~kg of PTFE was consumed, generating 2519~ms$^
 
 \section{Propagate phase} \label{sec:Propagate}
 
-\autoref{fig:Propagate-3D} shows the simulated coasting trajectory during the propagate phase. This consists of 1.5 orbits around the Earth followed by an lunar rendezvous that pulls the spacecraft into the desired lunar orbit. This orbit is apparent in \autoref{fig:Propagate-3D-lci} which plots the same trajectory but from a lunar centred frame. Since the spacecraft enters a polar orbit about the Moon, it appears to intersect the Moon given the camera is positioned above the Moon's pole. \autoref{fig:Propagate-3D-sel} shows the trajectory from the selenocentric frame, fixed relative to the Moon's surface. Because the Moon is tidally locked to the Earth, the Earth appears to be in a halo orbit in this frame.
+\autoref{fig:Propagate-3D} shows the simulated coasting trajectory during the propagate phase. This consists of 1.5 orbits around the Earth followed by a lunar rendezvous that pulls the spacecraft into the desired lunar orbit. This orbit is apparent in \autoref{fig:Propagate-3D-lci} which plots the same trajectory but from a lunar centred frame. Since the spacecraft enters a polar orbit about the Moon, it appears to intersect the Moon given the camera is positioned above the Moon's pole. \autoref{fig:Propagate-3D-sel} shows the trajectory from the selenocentric frame, fixed relative to the Moon's surface. Because the Moon is tidally locked to the Earth, the Earth appears to be in a halo orbit in this frame.
 
 \begin{figure}[ht]
 \centering
@@ -571,7 +571,8 @@ In the rotating surface-fixed frame of \autoref{fig:Descent-3D-sel}, the slow de
 
 % The spacecraft's distance from the Earth and the Moon is almost trivial during this phase; the distance from the Moon decreases gradually, but on the plot (\autoref{fig:Descent-dist}) this change is overwhelmed by the distance from the Earth, which closely maps the distance of the Earth from the Moon.
 
-The spacecraft's distance from the Moon, shown in \autoref{fig:Descent-dist}, is almost trivial during this phase; the distance from the Moon decreases gradually, with a higher frequency oscillation due to the slightly eccentric orbit, while the distance from the Earth closely maps the distance of the Earth from the Moon.
+The spacecraft's distance from the Moon, shown in \autoref{fig:Descent-dist}, is almost trivial during this phase; the distance from the Moon decreases gradually, with a higher frequency oscillation due to the slightly eccentric orbit%, while the distance from the Earth closely maps the distance of the Earth from the Moon.
+.
 
 \begin{figure}
 \centering
