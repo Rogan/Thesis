@@ -40,7 +40,7 @@ r_{SOI}=a_{s}\left(\frac{m_{p}}{m_{s}}\right)^{\frac{2}{5}} \label{eq:SOI},
 where $m_{p}$ and $m_{s}$ are the mass of the primary and secondary bodies respectively, and $a_{s}$ is the semimajor axis of the secondary body's orbit around the primary \parencite{Kemble2006}. The Earth-Moon system spheres of influence are shown in \autoref{fig:Spheres-of-Influence}.
  Note that the Moon's sphere of influence (with respect to the Earth)\footnote{calculated as just over 66,000~km from the Moon's centre, just under 5/6 of the distance from the Earth to the Moon.} lies entirely within the Earth's (with respect to the Sun)\footnote{calculated as almost 925,000~km from the Earth's centre.}.
 
-\begin{figure} [h]
+\begin{figure} [ht]
 \centering
 \def\svgwidth{\figurewidth}
 \input{Images/soi.pdf_tex}
@@ -310,16 +310,16 @@ where $r_{peri}$ is the periapsis radius.
 
 
 % Solar radiation pressure
-\subsection{Solar radiation pressure} \label{sub:Solar-Wind}
+\subsection{Solar effects} \label{sub:Solar-Wind}
 
-%The solar wind consists of particles emitted by the Sun, mainly ionised nuclei and electrons. Because of the charged particles in the solar wind, it does not penetrate the magnetosphere around the Earth, except at the magnetic poles. The magnetosphere starts at about 10 Earth radii from the centre of the Earth. Thus, solar wind may be neglected during the ascent phase.
+Beyond the Sun's gravity, there are two important kinematic effects of the Sun during the transfer: the solar wind, and the pressure from solar radiation. The solar wind consists of particles emitted by the Sun, mainly ionised nuclei and electrons. Because of the charged particles in the solar wind, it does not penetrate the magnetosphere around the Earth, except at the magnetic poles. The magnetosphere starts at about 10 Earth radii from the centre of the Earth. Thus, solar wind may be neglected during the ascent phase. However, even during the later lunar-centric phases the solar wind is extremely variable, and the high-energy particles often penetrate the spacecraft damaging electronics (see \autoref{sub:VABs}) but reducing the momentum transfer. As a result, solar wind has been neglected over the entire trajectory.
 
-The average solar power density is calculated by dividing the average solar luminosity, $L_\Sun$,  by the surface area of a sphere centred on the Sun, $4\pi r_\Sun^2$, giving approximately 1367.5~W of radiation per square metre of area near the Earth-Moon system. The momentum is subsequently determined by dividing through the speed of light, $c$, giving approximately $4.56\times10^{-6}$~Ns per square metre of cross-sectional area per second, in other words, a continual force of $4.56\times10^{-6}$~N on every square metre of area seen from the Sun. This \enquote{constant} forms the basis of \citeauthor{Chobotov2002}'s equation to average the acceleration of a body due to solar radiation pressure \parencite[p. 223]{Chobotov2002}. Unfortunately \citeauthor{Chobotov2002}'s equation is intended for spacecraft in geostationary orbit. \BW\ travels much further from the Earth than GEO, and consequently requires calculation of the spacecraft's distance from the Sun to determine average solar pressure, as given by
+Solar radiation, in contrast, is fairly constant and predictable. Specular reflection results in up to twice the momentum of each incident photon being transmitted to the spacecraft; this is the mechanism exploited by solar sails. The average solar power density is calculated by dividing the average solar luminosity, $L_\Sun$,  by the surface area of a sphere centred on the Sun, $4\pi r_\Sun^2$, giving approximately 1367.5~W of radiation per square metre of area near the Earth-Moon system. The momentum is subsequently determined by dividing through the speed of light, $c$, giving approximately $4.56\times10^{-6}$~Ns per square metre of cross-sectional area per second, in other words, a continual force of $4.56\times10^{-6}$~N on every square metre of area seen from the Sun. This \enquote{constant} forms the basis of \citeauthor{Chobotov2002}'s equation to average the acceleration of a body due to solar radiation pressure \parencite[p. 223]{Chobotov2002}. Unfortunately \citeauthor{Chobotov2002}'s equation is intended for spacecraft in geostationary orbit. \BW\ travels much further from the Earth than GEO, and consequently requires calculation of the spacecraft's distance from the Sun to determine average solar pressure, as given by
 
 \begin{equation}\label{eq:solar-wind}
 \vec{\Delta_\Sun} = -\frac{L_\Sun}{4\pi r_\Sun^2c}\left(\frac{A_{eff}}{m}\right)(1+\beta)\vec{\hat{r_\Sun}},
 \end{equation}
-where $\vec{\Delta_\Sun}$ is the magnitude of the acceleration due to solar radiation, in ms$^{-2}$, $\beta$ is the optical reflection constant (+1 for total mirror reflection, 0 for total black body absorption, -1 for total transparent transmission), $A_{eff}$ is the effective satellite projected area, and $m$ is the total spacecraft mass. The speed of light, $c$, is 299792458.0~ms$^{-1}$, and the average solar luminosity, $L_\Sun$, is $3.846\times10^{26}$~W.
+where $\vec{\Delta_\Sun}$ is the magnitude of the acceleration due to solar radiation, in ms$^{-2}$, $\beta$ is the specular reflection coefficient (+1 for total mirror reflection, 0 for total black body absorption, -1 for total transparent transmission), $A_{eff}$ is the effective satellite projected area, and $m$ is the total spacecraft mass. The speed of light, $c$, is 299792458.0~ms$^{-1}$, and the average solar luminosity, $L_\Sun$, is $3.846\times10^{26}$~W.
 
 For assumed values of 250~kg and 5.4~m$^2$ projected surface area, \BW\ will have an acceleration due to solar radiation varying from $1.906\times10^{-7}$~ms$^{-2}$ to $2.038\times10^{-7}$~ms$^{-2}$ over the course of the year. This force is two orders of magnitude less than the maximum thrust available to \BW.
 
@@ -349,7 +349,7 @@ In an elliptical orbit, thrust (approximately) tangential to orbital radius is t
 
 Since these perturbing forces vary over the course of the trajectory, and are often quite computationally intensive to calculate, a plot of them all clearly demonstrates which forces need be included in the optimisation. Since many of these forces vary with a cyclical nature depending on the orbits of the satellite, the Moon and other bodies, the plot in \autoref{fig:Perturbing-forces} shows the upper limit of these forces. Jupiter's gravitational pull is almost negligible compared with the spacecraft's thrust, and the acceleration due to the Earth's $J_{2}$ spherical harmonic (representative of the total force due to Earth oblateness) is only significant for the first $10^{8}$ metres.
 
-\begin{figure}[h]
+\begin{figure}[ht]
 \centering
 %\includegraphics[scale=0.4]{Images/relative_forces.png}
 \def\svgwidth{\figurewidth}

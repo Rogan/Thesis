@@ -124,7 +124,7 @@ As mentioned in Section \ref{sec:Objective-function}, candidate states include a
 
 In the case of orbital trajectories, the initial and final states are orbits. For preliminary simulations, a GTO with periapsis 175~km, apoapsis 35975~km, and inclination 21.7\degrees\ was used, as the approximate \BW\ parking orbit after launch via GSLV \parencite{GSLV}. This corresponds to Keplerian elements as shown in \autoref{tab:Phase-2-constraints}. The argument of periapsis, $\omega$, and right ascension of the ascending node, $\Omega$, are dependent on the launch date, which as previously stated remains unknown. For the purposes of optimisation these were initialised at 180\degrees\ and 0\degrees\ respectively. Optimisations were performed with other values, although these proved to have very little effect on the results. True anomaly, $\nu$, is an arbitrary starting point within the defined orbit, and so was initialised to 0\degrees\ (periapsis).
 
-\begin{table}[h]
+\begin{table}[ht]
 \caption{Keplerian elements for the initial orbit of \BW\ trajectory optimisation (start of ascent phase).} \label{tab:Phase-2-constraints}
 \centering
 \begin{tabular} {ccc}\toprule
@@ -137,7 +137,7 @@ Inclination, $i$ (rad) &=& 0.379\\\bottomrule
 
 Since the purpose of the ascent phase is to escape the van Allen Belts, the final boundary condition is defined as the lowest point in the orbit (the periapsis) exceeding the outer limits of the van Allen Belts. \textcite{Letterio_thesis} used an orbital radius of 22,668~km from the centre of the Earth as a good estimate for this point. This termination condition forms the initial condition of the next phase, as shown in \autoref{tab:Phase-2-3-constraints}. A very important additional constraint is that all states must be smooth and continuous over the phase transition.
 
-\begin{table}[h]
+\begin{table}[ht]
 \caption{Phase 2 to 3 transition constraints.} \label{tab:Phase-2-3-constraints}
 \centering
 \begin{tabular} {ccc}\toprule
@@ -157,7 +157,7 @@ p = a(1-e^2), \\
 
 However, the eccentricity can undergo rapid changes during lunar assists. Consequently, the periapsis and semilatus rectum both reveal sudden jumps. Furthermore, the semimajor axis exhibits a discontinuity when an orbit transitions from elliptical to hyperbolic (that is, if the spacecraft achieves escape velocity). Therefore the orbital energy, $\epsilon$, was chosen as the phase constraint, as shown on the bottom of \autoref{tab:Phase-3-4-constraints}.
 
-\begin{table}[h]
+\begin{table}[ht]
 \caption{Phase 3 to 4 transition constraints.} \label{tab:Phase-3-4-constraints}
 \centering
 \begin{tabular} {ccc}\toprule
@@ -171,7 +171,7 @@ Earth orbital energy, $\epsilon_{ECI}$ (m$^2$s$^{-2}$) &$\le$& 0.0 \\\bottomrule
 
 As also defined in the mission architecture by \textcite{Roeser2006}, the subsequent capture phase would then terminate when the spacecraft is less than 1400 km above the lunar surface, as per \autoref{tab:Phase-4-5-constraints}.
 
-\begin{table}[h]
+\begin{table}[ht]
 \caption{Phase 4 to 5 transition constraints.} \label{tab:Phase-4-5-constraints}
 \centering
 \begin{tabular} {ccc}\toprule
@@ -182,7 +182,7 @@ Lunar altitude, $r_{LCI}$ (m) &$\le$& $1.4\times 10^6$\\\bottomrule
 
 The final state is lunar orbit at an altitude of 100~km above the surface of the Moon. A polar or near-polar orbit is desired for maximum surface coverage. The corresponding orbital elements are shown in \autoref{tab:Phase-5-constraints}.
 
-\begin{table}[h]
+\begin{table}[ht]
 \caption{Keplerian elements for the final orbit of \BW\ trajectory optimisation (end of descent phase).} \label{tab:Phase-5-constraints}
 \centering
 \begin{tabular} {ccc}\toprule
@@ -240,7 +240,7 @@ For this project, a multiple shooting Runge-Kutta 4/5 integrator was used to pro
 % Integration error
 \subsection{Integration error} \label{sub:Integration-error}
 
-At the start of this project, in order to verify the flight mechanics described in \autoref{cha:Orbital-dynamics-and-modelling}, the differential equations presented in equation \eqref{eq:state-updates} were integrated in Matlab over sufficient time to allow the spacecraft to reach the Moon. An absolute error of $10^{-6}$ was allowed within each orbital element ($p$ metres, $f$, $g$, $h$, $k$ and $L$ dimensionless), and a relative error of $10^{-9}$ ($10^{-7}$\%). Since the longitude is continually growing (not bound within 0º to 360º) yet the useful information within this parameter (the position of the spacecraft within 0º to 360º) is not increasing, relative error must be severely limited. Continual thrust allows \BW\ to achieve lunar insertion in about 100 rotations, corresponding to a longitude of 36000\degrees. The relative error in the spacecraft's position at a radius of 360000~km is therefore 12.96~km, which should be sufficiently small to allow lunar insertion (for initial simulation, at least). The Matlab code used for this project uses the larger of the two tolerances, so at small longitudes (the start of the simulation) absolute tolerance is dominant, minimising unnecessary computational effort.
+At the start of this project, in order to verify the flight mechanics described in \autoref{cha:Orbital-dynamics}, the differential equations presented in equation \eqref{eq:state-updates} were integrated in Matlab over sufficient time to allow the spacecraft to reach the Moon. An absolute error of $10^{-6}$ was allowed within each orbital element ($p$ metres, $f$, $g$, $h$, $k$ and $L$ dimensionless), and a relative error of $10^{-9}$ ($10^{-7}$\%). Since the longitude is continually growing (not bound within 0º to 360º) yet the useful information within this parameter (the position of the spacecraft within 0º to 360º) is not increasing, relative error must be severely limited. Continual thrust allows \BW\ to achieve lunar insertion in about 100 rotations, corresponding to a longitude of 36000\degrees. The relative error in the spacecraft's position at a radius of 360000~km is therefore 12.96~km, which should be sufficiently small to allow lunar insertion (for initial simulation, at least). The Matlab code used for this project uses the larger of the two tolerances, so at small longitudes (the start of the simulation) absolute tolerance is dominant, minimising unnecessary computational effort.
 
 \textcite{Milani1987} provide a simple rule of thumb to limit error accumulation by limiting the ratio of simulation timespan to stepsize. If the error at each step is $\epsilon$ and the number of steps is $N$, then $N^{2}\epsilon$ should remain less than 1. With a relative error of $10^{-9}$ the number of steps should be limited to 31,500. If more timesteps are needed the relative error may be reduced further, limited only by machine accuracy (in fact, many previous simulations including \citeauthor{Milani1987} appear to have assumed machine accuracy). According to IEEE standard 754, double precision floating point variables have a mantissa of 52 bits. This corresponds to a relative machine accuracy $\epsilon=2^{-52}\approx2.2\times10^{-16}$, giving an upper limit of $N=2^26=67108864$ grid points.
 

@@ -93,7 +93,7 @@ Secondly, subsequent to the mission architecture and vehicle configuration recom
 
 Colleagues working on the project have identified a number of lunar inclinations that reduce station-keeping costs throughout the science phase. \textcite{Zeile2010} recommend a final inclination of 70\degrees, having used an argument of periapsis of 43.3\degrees\ and a right ascension of 285\degrees, corresponding to the orbital elements in \autoref{tab:Phase-5-constraints-revised}. This would be easily achievable using minor course corrections during the arcjet-powered capture phase, or even during the lengthy descent phase with the PPTs. The recent study by \textcite[Figure 14a]{Gupta2011} reinforces this conclusion, showing that the "transition altitude", that is, the altitude above which a sudden increase in orbital life time is observed, is lowest for a 70\degrees\ inclined orbit and provides a range of right ascensions that could be trialled.
 
-\begin{table}[h]
+\begin{table}[ht]
 \caption{Revised Keplerian elements for the final orbit of \BW\ trajectory optimisation (end of descent phase)}
 \label{tab:Phase-5-constraints-revised}
 \begin{center}
@@ -111,5 +111,7 @@ Lunar Longitude of the Ascending Node, $\Omega$ (rad) & 4.9742 \\\bottomrule
 To derive a truly optimal trajectory it would be necessary to optimise all of the phases simultaneously to determine inter-dependencies. This was attempted early in the project, but abandoned due to hardware and software limitations. Once a completed trajectory is determined, a Monte Carlo analysis should be performed to determine the sensitivity of the trajectory to small changes in thruster performance, imperfections in gravitational modelling, and other parameters.
 
 Finally, the author had an abstract accepted for the 62nd International Astronautical Congress on alternate mission profiles. Unfortunately completion of this thesis took precedence, but this work remains of interest to the \BW\ team. Of particular interest is the possibility to pass through, or send a parasitic probe to, the Kordylewski clouds hypothesised to exist at the Earth-Moon Lagrange points L4 and L5. The trajectory model presented herein could easily be adapted to such alternative mission scenarios.
+
+Furthermore for any practical mission it is important to examine failure scenarios. For traditional  missions with a finite number of impulses, there are a finite number of possible failures. Continuous thrust leads to an infinite number of failure scenarios, and although these may be categorised and evaluated, such extensive work is often worthy of a PhD by itself \parencite{Renk_thesis}.
 
 

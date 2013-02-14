@@ -122,7 +122,7 @@ Finally, \autoref{fig:Ascent2-energy} shows the power levels throughout this pha
 
 \autoref{fig:Ascent-3D} shows the 3-dimensional trajectory that resulted from the ascent phase. This optimisation was able to reach a feasible solution in the computational time available, but was not allowed to continue on to find an optimal solution. Consequently the ascending orbit does not show the Oberth effect to the same degree as in the reduced complexity optimisation.
 
-\begin{figure}[h]
+\begin{figure}[ht]
 \centering
 \def\svgwidth{\figurewidth}
 \input{Images/Ascent/figure1.pdf_tex}
@@ -246,7 +246,7 @@ A total $\Delta v$ of 1304~ms$^{-1}$ was expended over the ascent phase, at an a
 
 As seen in the 3~dimensional trajectory plotted in \autoref{fig:Cruise-3D}, continual thrust during the cruise phase leads to a circular orbit, even from the fairly elliptical starting orbit. Consequently a rendezvous with the Moon cannot really be scheduled as in previous studies involving short, higher thrust periods interspersed with coasting. Rather, lunar resonances will happen inevitably, as the spacecraft passes the Moon in its lower, faster orbit. The purpose of the optimisation therefore is to schedule the effects of these resonances, by changing the inclination or eccentricity of the spacecraft's orbit. Little manipulation is required to achieve this, because all orbital changes are implicitly included in the optimisation. Of particular interest are the outermost orbits seen in the figure, whereupon the perigee is lowered (the eccentricity is increased) by a lunar assist.
 
-\begin{figure}[h]
+\begin{figure}[ht]
 \centering
 \def\svgwidth{\figurewidth}
 \input{Images/Cruise/figure1.pdf_tex}
@@ -342,7 +342,7 @@ Throughout the cruise phase, 17.55~kg of PTFE was consumed, generating 2519~ms$^
 
 \autoref{fig:Propagate-3D} shows the simulated coasting trajectory during the propagate phase. This consists of 1.5 orbits around the Earth followed by an lunar rendezvous that pulls the spacecraft into the desired lunar orbit. This orbit is apparent in \autoref{fig:Propagate-3D-lci} which plots the same trajectory but from a lunar centred frame. Since the spacecraft enters a polar orbit about the Moon, it appears to intersect the Moon given the camera is positioned above the Moon's pole. \autoref{fig:Propagate-3D-sel} shows the trajectory from the selenocentric frame, fixed relative to the Moon's surface. Because the Moon is tidally locked to the Earth, the Earth appears to be in a halo orbit in this frame.
 
-\begin{figure}[h]
+\begin{figure}[ht]
 \centering
 \def\svgwidth{\figurewidth}
 \input{Images/Propagate/figure1.pdf_tex}
@@ -445,7 +445,7 @@ A factor that becomes important as the spacecraft approaches capture is the angl
 
 Following the weak capture during the coasting phase propagated by the simulator the arcjet is again used, this time to lower the orbit as quickly as possible to avoid being recaptured by the Earth. This results in the spacecraft mapping increasingly small and fast circles around the Moon, as shown from the Earth's perspective in \autoref{fig:Capture-3D}.
 
-\begin{figure}[h]
+\begin{figure}[ht]
 \centering
 \def\svgwidth{\figurewidth}
 \input{Images/Capture/figure1.pdf_tex}
@@ -555,7 +555,7 @@ Over the course of the capture phase, 33.43~kg of ammonia propellant was used. T
 \autoref{fig:Descent-3D-lci} shows the descent phase trajectory in an inertial lunar centred frame. The terminal conditions of the capture phase are propagated to the science orbit using the PPTs. This results in the very tight, very nearly circular spiral seen in the figure.
 In the rotating surface-fixed frame of \autoref{fig:Descent-3D-sel}, the slow decrease in orbital altitude can be seen.
 
-\begin{figure}[h]
+\begin{figure}[ht]
 \centering
 \def\svgwidth{\figurewidth}
 \input{Images/Descent/figure14.pdf_tex}
@@ -659,7 +659,7 @@ The simulation of this phase estimated 1.43~kg PTFE was consumed, providing almo
 
 As there is no propulsive thrust during the science phase, the orbit was propagated forwards for 6 months to determine the spacecraft's behaviour in the absence of stationkeeping manoeuvres. \autoref{fig:Science-3D-lci} shows the final orbit in an inertial frame. %The surface coverage is shown in \autoref{fig:Science-3D-sel}; the whole Moon's surface covered repeatedly within the 6 month period. 
 
-\begin{figure}[h]
+\begin{figure}[ht]
 \centering
 \def\svgwidth{\figurewidth}
 \input{Images/Science/figure14.pdf_tex}
@@ -728,7 +728,7 @@ The Keplerian elements shown in \autoref{fig:Science-kep-lci} shows oscillations
 %--------------------------------------------------------------------------------------------------------------------------------------------%
 
 \section{Validation} \label{sec:Validation}
-For obvious reasons there have been few experimental flights to validate low-thrust trajectory theory, and no flight testing is possible to verify this particular proposed trajectory prior to final launch. Fortunately, the mechanics outlined in \autoref{cha:Orbital-dynamics-and-modelling} have been well established for many decades \parencite{Kaplan1976}, and this particular implementation of them was further verified in Matlab prior to commencing work with GESOP. The optimisation routines within GESOP, and the flight mechanics of ASTOS, have been numerically verified by ESTEC, Dassault, Astrium, CNES, EADS and JAXA, among other industrial partners. ASTOS is practically validated by ongoing use on real missions launched by ESA and DLR, including Ariane 5 and Vega rocket launches, the ExoMars and Beagle 2 missions, and X38 re-entry scenarios.
+For obvious reasons there have been few experimental flights to validate low-thrust trajectory theory, and no flight testing is possible to verify this particular proposed trajectory prior to final launch. Fortunately, the mechanics outlined in \autoref{cha:Orbital-dynamics} have been well established for many decades \parencite{Kaplan1976}, and this particular implementation of them was further verified in Matlab prior to commencing work with GESOP. The optimisation routines within GESOP, and the flight mechanics of ASTOS, have been numerically verified by ESTEC, Dassault, Astrium, CNES, EADS and JAXA, among other industrial partners. ASTOS is practically validated by ongoing use on real missions launched by ESA and DLR, including Ariane 5 and Vega rocket launches, the ExoMars and Beagle 2 missions, and X38 re-entry scenarios.
 
 The independently computed phases from GESOP are plotted together in \autoref{fig:Whole-trajectory}. Note that this is merely conceptual; the temporal discontinuities between phases require parking orbits be inserted, or else the trajectories be revised. Once launch data is known, the complete trajectory may be calculated. Nonetheless, it is worth comparing the trajectory to \autoref{fig:STK} for a qualitative analysis that orbital energy is conserved.
 
