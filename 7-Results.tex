@@ -130,8 +130,8 @@ Finally, \autoref{fig:Ascent2-energy} shows the power levels throughout this pha
 \end{figure}
 
 \autoref{fig:Ascent-dist} shows the distance of the spacecraft from the Earth and Moon throughout the phase. The oscillations about the Earth are seen to slowly increase in duration and altitude, as you would expect for a slowly ascending orbit. %For this scenario, the geometry permitted the spacecraft's apoapsis (furthest point from the Earth) to pass near the Moon's periapsis (closest point to Earth).
-For this scenario, the geometry permitted the spacecraft's argument of periapsis relative to the Earth to be opposite the Moon’s argument of periapsis relative to the Earth, so the spacecraft is furthest from the Earth in the same region of space that the Moon is closest to the Earth.
-This is an optimal scenario, as it leads to much greater gravitational assistance earlier on in the transfer, but is unfortunately not a scenario that can be planned for, as the initial argument of periapsis is defined by the launch. The optimisation is able to implicitly adjust the argument of periapsis during the transfer by controlling the thrust angle, but this technique requires a lot of delta-v and therefore can only compensate for a few degrees.
+For this scenario, the geometry permitted the spacecraft's initial argument of periapsis relative to the Earth to be opposite the Moon's argument of periapsis relative to the Earth, so the spacecraft is furthest from the Earth in the same region of space that the Moon is closest to the Earth.
+This was found to be an optimal scenario, as it leads to much greater gravitational assistance earlier on in the transfer, but is unfortunately not a scenario that can be planned for, as the initial argument of periapsis is defined by the launch. The argument of periapsis may be adjusted during the transfer by controlling the thrust angle, but this technique requires a lot of delta-v and therefore can only compensate for a few degrees.
 
 \begin{figure}
 \centering
@@ -304,6 +304,12 @@ The thrust profile shown in \autoref{fig:Cruise-thrust} resulted from the incomp
 \end{figure}
 
 The perturbations shown in \autoref{fig:Cruise-pert} show the spacecraft thrust has dropped by two orders of magnitude, since it is now using the PPTs rather than the arcjet from the ascent phase. At the start of the cruise phase, the Earth's harmonics are still the strongest secondary force acting on the spacecraft, but this rapidly drops off as the spacecraft raises its orbit. The Moon's gravity becomes more dominant towards the end of the phase, with spikes starting to occur indicating gravitational assists caused by close passes to the Moon in the last few orbits. The sun's gravity also has a more significant effect on the spacecraft as its orbit is raised, exhibiting high frequency oscillations due to the spacecraft's orbit around the Earth, and lower frequency oscillations closely following the averaged force due to solar radiation, both due to the Earth's elliptical orbit around the sun. Similar cyclical behaviour is visible in \autoref{fig:Cruise-pert2}, showing the resonances of Earth's orbit with Jupiter, Venus and Mars' orbits.
+
+This phase best demonstrates orbital resonances with the other planets. Mars, with an orbital period of 1.88~years, aligns with Earth's orbit every 2.1~years, according to \autoref{eq:orbital-resonance}. Venus' orbital period of 0.62~years produces a resonance every 1.6~years, and Jupiter's orbital period of 11.85~years resonates every 1.09~years. All of these resonances are apparent in \autoref{fig:Cruise-pert2}. 
+
+\begin{equation} \label{eq:orbital-resonance}
+\text{Resonance period} = \frac{1}{|\frac{1}{\text{3rd body orbital period}}-\frac{1}{\text{Earth orbital period}}|}
+\end{equation}
 
 \begin{subfigures}
 \begin{figure}
@@ -573,6 +579,8 @@ In the rotating surface-fixed frame of \autoref{fig:Descent-3D-sel}, the slow de
 
 The spacecraft's distance from the Moon, shown in \autoref{fig:Descent-dist}, is almost trivial during this phase; the distance from the Moon decreases gradually, with a higher frequency oscillation due to the slightly eccentric orbit%, while the distance from the Earth closely maps the distance of the Earth from the Moon.
 .
+% A more interesting artefact emerges in the plot of orbital energy seen in \autoref{fig:Descent-orbeng}. The spacecraft's orbital energy relative to the Earth oscillates as described in \autoref{sec:Capture}, but since the spacecraft is in a nearly polar orbit twice in every orbit the Moon makes around the Earth the spacecraft's orbit becomes perpendicular to the Earth-Moon vector. Consequently the amplitude of this oscillation is modulated. As the spacecraft gets closer to the Moon, its velocity increases, and its orbital energy relative to the Earth rises further beyond escape velocity.
+The plot of orbital energy seen in \autoref{fig:Descent-orbeng} shows a similar characteristic: the spacecraft's orbital energy relative to the Moon slowly decreases without any oscillation.
 
 \begin{figure}
 \centering
@@ -580,10 +588,6 @@ The spacecraft's distance from the Moon, shown in \autoref{fig:Descent-dist}, is
 \input{Images/Descent/figure10.pdf_tex}
 \caption{Satellite's distance from the Moon during descent phase.} \label{fig:Descent-dist}
 \end{figure}
-
-% A more interesting artefact emerges in the plot of orbital energy seen in \autoref{fig:Descent-orbeng}. The spacecraft's orbital energy relative to the Earth oscillates as described in \autoref{sec:Capture}, but since the spacecraft is in a nearly polar orbit twice in every orbit the Moon makes around the Earth the spacecraft's orbit becomes perpendicular to the Earth-Moon vector. Consequently the amplitude of this oscillation is modulated. As the spacecraft gets closer to the Moon, its velocity increases, and its orbital energy relative to the Earth rises further beyond escape velocity.
-
-The plot of orbital energy seen in \autoref{fig:Descent-orbeng} shows a similar characteristic: the spacecraft's orbital energy relative to the Moon slowly decreases without any oscillation.
 
 \begin{figure}
 \centering

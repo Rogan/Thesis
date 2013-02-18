@@ -58,7 +58,7 @@ The arcjet allows continuous adjustment of the mass flow rate, and also continuo
 % Earth shadow
 \section{Eclipse} \label{sec:Eclipse}
 
-During the \BW\ transfer, the spacecraft may be eclipsed by the Earth or the Moon. When either of these large bodies are blocking the Sun, the spacecraft does not gain any charge from its solar panels. It is also unaffected by solar radiation pressure. 
+During the \BW\ transfer, the spacecraft may be eclipsed by the Earth or the Moon. When either of these large bodies are blocking the Sun, the spacecraft does not gain any charge from its solar panels. It is also occulted from solar radiation pressure. 
 
 The occlusion of a luminous sphere by a smaller sphere creates a conical shadow called the \emph{umbra}, as shown in \autoref{fig:Eclipse}. Within the umbra a total eclipse is observed. Surrounding the umbra is an inverted cone of partial shadow called the \emph{penumbra}. An observer within the penumbra would experience a partial eclipse. Beyond the umbra is another inverted cone of partial shadow called the \emph{antumbra}, within which an annular eclipse would be observed \parencite{Longo1995}.
 
@@ -176,7 +176,7 @@ Data for the panel degradation model was based on the work done by \textcite{Hec
 
 % optimisable fixed-body thrust vector allows trade-off between thrust angle and solar panel orientation - if the craft isn't thrusting, it can still use the thrust vector controls to point the solar panels at the sun
 
-Based on this model, at the start of the mission (with no panel degradation) with direct sunlight on the full panel surface the panels will generate 1.454~kW. This is substantially larger than the anticipated power requirements; while allowing freedom for unexpected payload requirements, it has affected the trajectory optimisation as addressed in \autoref{sec:BW1-additions}.
+Based on this model, at the start of the mission (with no panel degradation) with direct sunlight on the full panel surface the panels will generate 1.45~kW. The initial GTO spends less than 20\% of its time within the van Allen belts according to \autoref{fig:Fluence}, resulting in a very conservative upper limit of $6\times10^{14}$~MeV during the ascent phase, corresponding to solar panel degradation to 80\% of their original efficiency, giving a maximum power generation during the later phases of at least 1.16~kW. This is still substantially larger than the anticipated power requirements; while allowing freedom for unexpected payload requirements, it has affected the trajectory optimisation as addressed in \autoref{sec:BW1-additions}. 
 
 \subsection{Power consumption} \label{sub:Power-consumption}
 
@@ -198,10 +198,10 @@ Solar panels& Max. 1454~W \tabularnewline
 \end{tabular}
 \end{table}
 
-The payload has not yet been confirmed, but it is expected that most of the payload will be in standby until the spacecraft is confirmed in the science orbit, so power requirements during the transfer will be minimal. During the science phase the payload is expected to require a maximum of 300~W \parencite{web_BW-1}, recently refined to 42~W \parencite{Laufer_thesis}, which should be well within the solar panels' remaining capacity.
+The payload has not yet been confirmed, but it is expected that most of the payload will be in standby until the spacecraft is confirmed in the science orbit, so power requirements during the transfer will be minimal. During the science phase the payload is expected to require a maximum of 42~W \parencite{Laufer_thesis}, which should be well within the solar panels' remaining capacity.
 
 Agreements are being negotiated with ground stations in Stuttgart, USA, Japan and Australia to give continual access to the satellite during Earth orbit. The only downtime will occur in the later stages of the transfer, when the satellite transits through the Moon's shadow. %Access time notwithstanding, the satellite will have to rotate to point its antennae towards the Earth during transmission. Therefore it is expected that communications will only operate a fraction of the transfer time. %These communications intervals will be scheduled based on availability of both power and coasting phases, and as such should not impact the trajectory design. 
-During the transfer, telemetry and tracking signals will be periodically transmitted via the omni-directional S-band antenna. The science phase will require the satellite to reorient itself to point the Ka-band antenna at the Earth. Since the frequency and duration required for these transmissions are not yet known, they were not factored into the trajectory design. During communications intervals a maximum of 250~W will be required for the Ka-band transmission, and 10~W for the S-band \parencite[recently revised to 60~W for Ka-band and 20~W for S-band, ][]{Laufer_thesis}.
+During the transfer, telemetry and tracking signals will be periodically transmitted via the omni-directional S-band antenna. The science phase will require the satellite to reorient itself to point the Ka-band antenna at the Earth. Since the frequency and duration required for these transmissions are not yet known, they were not factored into the trajectory design. During communications intervals a maximum of 60~W will be required for the Ka-band transmission, and 20~W for the S-band \parencite{Laufer_thesis}.
 
 After thruster power is also subtracted from generated power (see \autoref{sec:Propulsion}), any surplus power generated by the solar panels is added to the battery levels, or any deficit is subtracted from them. According to the initial design stated by \textcite{Falke2004}, the lithium ion batteries were designed to hold 100~Ah supplying a common bus of 28~V. It is assumed the batteries will be fully charged at launch. At any stage during the transfer, if the batteries become fully charged the spacecraft will roll around its thrust vector to point the solar panels away from the Sun, thus preventing overcharge.
 
